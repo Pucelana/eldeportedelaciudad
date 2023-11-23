@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.logo_principal{
+    width: 100%;
+}
+.iconos{
+    width: 30px;
+    height: 30px;
+    filter: invert(100%);  
+}
+.iconos:hover{
+    filter: invert(0%); 
+}
+.usuario{
+    width: 30px;
+    height: 30px;
+    filter: invert(100%);
+}
+.usuario:hover{
+    filter: invert(0%);
+}
+.bg-menu{
+    background-color: #0d6efd;
+    content: 100%;
+}
+.menu-desple{
+    border: 0;
+    position: relative;
+    height: 180px;
+    width: 150px;
+    background: white;
+    box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+}
+.menu-desple:before{
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    top: -28px;
+    left: calc(35% - 15px)
+}
+.menu-desple2{
+    border: 0;
+    position: relative;
+    height: 520px;
+    width: 220px;
+    background: white;
+    box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+}
+.menu-desple2:before{
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    top: -28px;
+    left: calc(35% - 15px)
+}
+.menu-desple3{
+    border: 0;
+    position: relative;
+    height: 180px;
+    width: 150px;
+    background: white;
+    box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+}
+.menu-desple3:before{
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    top: 20px;
+    left: calc(35% - 15px)
+}
+.menu-desple4{
+    border: 0;
+    position: relative;
+    height: 520px;
+    width: 220px;
+    background: white;
+    box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+}
+.menu-desple4:before{
+    border: 15px solid white;
+    content: '';
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    top: 20px;
+    left: calc(35% - 15px)
+}
