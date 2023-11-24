@@ -1,3 +1,7 @@
 .letras_logo{
-    font-family: serif;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 3%;
+    color: red;
 }
