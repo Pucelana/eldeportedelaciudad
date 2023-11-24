@@ -1,7 +1,15 @@
 .letras_logo{
     font-family: 'Dancing Script', cursive;
+    font-size: 3.5em;
     font-weight: 700;
     text-align: center;
-    margin-top: 3%;
+    margin-top: 2%;
     color: red;
+}
+.slogan{
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 400;
+    font-size: 2em;
+    color: #0d6efd;
 }
