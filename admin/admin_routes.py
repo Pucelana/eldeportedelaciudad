@@ -3,7 +3,7 @@ from . import admin_blueprint
 
 noticias = []
 
-@admin_blueprint.route('/admin')
+@admin_blueprint.route('/admin/')
 def admin():
     return render_template('create_new.html')
 
