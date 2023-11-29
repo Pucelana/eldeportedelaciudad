@@ -3,6 +3,10 @@ from . import admin_blueprint
 
 noticias = []
 
+@admin_blueprint.route('/admin')
+def admin():
+    return render_template('create_new.html')
+
 @admin_blueprint.route('/create_new', methods=['GET','POST'])
 def create_new():
     if request.method == 'POST':
