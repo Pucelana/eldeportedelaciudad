@@ -2,7 +2,9 @@ from flask import Flask
 from flask import render_template, request, redirect,url_for, session
 from flask_mysqldb import MySQL
 from os import path
+from admin import init_app
 
+init_app(app)
 app = Flask(__name__)
 
 # Creado la conexión a la base de datos
@@ -16,6 +18,17 @@ mysql = MySQL(app)
 @app.route('/')
 def sitio_home():
     return render_template('sitio/home.html')
+
+# Creacción de noticias
+@app.route('/mi_zona/nueva_noticia', methods=['GET','POST'])
+def nueva_noticia():
+    return redirect(url_for('public_noticia'))
+
+# Publicar nuevas noticias
+@app.route('/mi_zona/public_noticia', methods=['GET','POST'])
+def public_noticia():
+    return redirect(url_for('noticias'))
+
 # Página de Noticias
 @app.route('/noticias/', methods=['GET','POST'])
 def noticias():
@@ -25,8 +38,7 @@ def noticias():
             'titulo': 'Asalto al Wicky Center',
             'contenido': 'El UEMC Valladolid lográ una victoria épica en casa del lider.Con un marcador final 91-92, y tras una prorroga, los jugadores pucelanos mostrarón un rendimiento excepcional, en una emocionante batalla en la cancha.La intensidad del juego mantuvo al público del Wicky Center al borde de sus asientos. Con esta victoria el UEMC Valladolid demuestra su determinación y habilidades excepcionales en esta Leb Oro.',
             'categoria': 'Baloncesto',
-            'fecha': 'Publicado: 26-11-2023',
-            'imagen': 'https://unsplash.com/es/fotos/fotografia-de-pelota-de-baloncesto-kXJksx1kdJ0'
+            'fecha': 'Publicado: 26-11-2023'
         },
         {
             'titulo': 'Victorias que valen ascensos',
