@@ -6,9 +6,9 @@
 
 {% for noticia in noticias %}
 <section class="container-lg mb-5 noticias">
-<article class="bg-white shadow text_noticias">
+<article class="bg-white shadow text_noticias" style="background-image: url('{{ noticia.imagen }}');">
     <h2 class="text-center fw-bold">{{ noticia.titulo }}</h2>
-    <p class="text-center">{{ noticia.contenido }}</p>
+    <p class="">{{ noticia.contenido }}</p>
     <h5>{{ noticia.categoria }}</h5>
     <h6>{{ noticia.fecha }}</h6>
 </article>
