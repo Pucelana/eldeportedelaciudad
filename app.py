@@ -5,7 +5,9 @@ from os import path
 from admin import init_app
 
 app = Flask(__name__)
-init_app(app)
+
+def init_app(app):
+    app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
 # Creado la conexión a la base de datos
 app.config['MYSQL_HOST'] = 'localhost'
