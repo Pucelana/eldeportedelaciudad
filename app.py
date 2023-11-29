@@ -26,7 +26,7 @@ def noticias():
             'contenido': 'El UEMC Valladolid lográ una victoria épica en casa del lider.Con un marcador final 91-92, y tras una prorroga, los jugadores pucelanos mostrarón un rendimiento excepcional, en una emocionante batalla en la cancha.La intensidad del juego mantuvo al público del Wicky Center al borde de sus asientos. Con esta victoria el UEMC Valladolid demuestra su determinación y habilidades excepcionales en esta Leb Oro.',
             'categoria': 'Baloncesto',
             'fecha': 'Publicado: 26-11-2023',
-            'imagen': 'static/img/pist_basket.jpg'
+            'imagen': 'https://unsplash.com/es/fotos/fotografia-de-pelota-de-baloncesto-kXJksx1kdJ0'
         },
         {
             'titulo': 'Victorias que valen ascensos',
