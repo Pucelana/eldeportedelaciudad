@@ -3,7 +3,7 @@ from . import admin_blueprint
 
 noticias = []
 
-@admin_blueprint.route('/admin/create_new', methods=['GET','POST'])
+@admin_blueprint.route('/create_new', methods=['GET','POST'])
 def create_new():
     if request.method == 'POST':
         titulo = request.form['titulo']
