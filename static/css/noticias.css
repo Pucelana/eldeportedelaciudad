@@ -7,6 +7,7 @@ h1{
     color: red;
 }
 .noticias{
+    background-image: url('https://unsplash.com/es/fotos/fotografia-de-pelota-de-baloncesto-kXJksx1kdJ0');
     margin-top: 2%;
     font-family: 'Caveat', cursive;
     text-align: start;
