@@ -1,5 +1,14 @@
 {% extends 'sitio/base.html' %}
 {% block titulo %} Eldeportedelaciudad-Noticias {% endblock %}
 {% block contenido %}
+<h1>Noticias Deportivas de la Ciudad</h1>
+{% for noticia in noticias %}
+<article>
+    <h2>{{ noticia.titulo }}</h2>
+    <p>{{ noticia.contenido }}</p>
+    <h5>{{ noticia.categoria }}</h5>
+    <h6>{{ noticia.fecha }}</h6>
+</article>
+{% endfor %}
 
 {% endblock %}
