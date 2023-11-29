@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import render_template, request, redirect,url_for, session
-from datetime import datetime
 from flask_mysqldb import MySQL
 from os import path
 
@@ -41,8 +40,7 @@ def noticias():
             'fecha': 'Publicado: 2023-11-25'   
         },
     ]
-    noticias_ordenadas=sorted(noticias, key=lambda x: datetime.strptime(x['fecha'],'%Y-%m-%d'), reverse=True),
-    return render_template('sitio/noticias.html', noticias=noticias_ordenadas)
+    return render_template('sitio/noticias.html', noticias=noticias)
 
 # Creando el registro del usuario
 @app.route('/registro/', methods=['GET', 'POST'])
