@@ -15,5 +15,5 @@ def create_new():
         
         noticias.append(nueva_noticia)
          
-        return render_template('/admin/new_news.html')
-    return render_template('/admin/create_new_admin.html')
+        return render_template('admin/new_news.html')
+    return render_template('admin/create_new_admin.html')
