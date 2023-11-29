@@ -1,6 +1,7 @@
 {% extends 'sitio/base.html' %}
 {% block titulo %} Eldeportedelaciudad-Noticias {% endblock %}
 {% block contenido %}
+<section class="container-lg">
 <h1>Noticias Deportivas de la Ciudad</h1>
 {% for noticia in noticias %}
 <article class="noticias bg-white shadow text_noticias">
@@ -10,5 +11,6 @@
     <h6>{{ noticia.fecha }}</h6>
 </article>
 {% endfor %}
+</section>
 
 {% endblock %}
