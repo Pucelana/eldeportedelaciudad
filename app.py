@@ -26,22 +26,22 @@ def noticias():
             'titulo': 'Asalto al Wicky Center',
             'contenido': 'El UEMC Valladolid lográ una victoria épica en casa del lider.Con un marcador final 91-92, y tras una prorroga, los jugadores pucelanos mostrarón un rendimiento excepcional, en una emocionante batalla en la cancha.La intensidad del juego mantuvo al público del Wicky Center al borde de sus asientos. Con esta victoria el UEMC Valladolid demuestra su determinación y habilidades excepcionales en esta Leb Oro.',
             'categoria': 'Baloncesto',
-            'fecha': 'Publicado: 26-11-23'
+            'fecha': 'Publicado: 2023-26-11'
         },
         {
             'titulo': 'Victorias que valen ascensos',
             'contenido': 'El Real Valladolid ganó 0-1 en casa del Huesca donde no había ganado en liga, sin desplegar un buen juego pero haciendo un buen trabajo en lo defensivo. Gracias a un penalti de Monchu, que lo tansformó en el rechace que el portero tocá, mandandoló al palo y vuleve a Monchu que hay no falló. Con esta victoria el Pucela dormira como segundo hasta el partido del lunes del Sporting.',
             'categoria': 'Fútbol',
-            'fecha': 'Publicado: 24-11-23' 
+            'fecha': 'Publicado: 2023-11-24' 
         },
         {
             'titulo': 'La Copa Ibérica viaja a Valladolid',
             'contenido': 'El VRAC se proclamó campeón por primera vez, en la Copa Ibérica ante el equipo portugues, con un resultado ajustado 9-13. Un partido vibrante y emocionante hasta el final,que no se podía ni pestañear. Primera vez que es ganada tanto por el VRAC como por un equipo español.',
             'categoria': 'Rugby',
-            'fecha': 'Publicado: 25-11-23'   
+            'fecha': 'Publicado: 2023-11-25'   
         },
     ]
-    noticias_ordenadas=sorted(noticias, key=lambda x: datetime.strptime(x['fecha'],'%d-%m-%Y'), reverse=True),
+    noticias_ordenadas=sorted(noticias, key=lambda x: datetime.strptime(x['fecha'],'%Y-%m-%d'), reverse=True),
     return render_template('sitio/noticias.html', noticias=noticias_ordenadas)
 
 # Creando el registro del usuario
