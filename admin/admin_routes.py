@@ -1,8 +1,19 @@
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 from . import admin_blueprint
+
+noticias = []
 
 @admin_blueprint.route('/create-new', methods=['GET','POST'])
 def create_new():
     if request.method == 'POST':
-        return render_template('new_created.html')
+        titulo = request.form['titulo']
+        contenido = request.form['contenido']
+        categoria = request.form['categoria']
+        fecha_publi = request.form['fecha_publi']
+        
+        nueva_noticia = {'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi':fecha_publi}
+        
+        noticias.append(nueva_noticia)
+         
+        return render_template('new_news.html')
     return render_template('create_new_admin.html')
