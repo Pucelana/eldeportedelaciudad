@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template, request, redirect,url_for, session
+from datetime import datetime
 from flask_mysqldb import MySQL
 from os import path
 
@@ -38,9 +39,10 @@ def noticias():
             'contenido': 'El VRAC se proclamó campeón por primera vez, en la Copa Ibérica ante el equipo portugues, con un resultado ajustado 9-13. Un partido vibrante y emocionante hasta el final,que no se podía ni pestañear. Primera vez que es ganada tanto por el VRAC como por un equipo español.',
             'categoria': 'Rugby',
             'fecha': 'Publicado: 25-11-23'   
-        }, 
+        },
     ]
-    return render_template('sitio/noticias.html', noticias=noticias)
+    noticias_ordenadas=sorted(noticias, key=lambda x: datetime.strptime(x['fecha'],'%Y-%m-%d'), reverse=True),
+    return render_template('sitio/noticias.html', noticias=noticias_ordenadas)
 
 # Creando el registro del usuario
 @app.route('/registro/', methods=['GET', 'POST'])
