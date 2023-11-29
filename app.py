@@ -41,7 +41,7 @@ def noticias():
             'fecha': 'Publicado: 25-11-23'   
         },
     ]
-    noticias_ordenadas=sorted(noticias, key=lambda x: datetime.strptime(x['fecha'],'%Y-%m-%d'), reverse=True),
+    noticias_ordenadas=sorted(noticias, key=lambda x: datetime.strptime(x['fecha'],'%d-%m-%Y'), reverse=True),
     return render_template('sitio/noticias.html', noticias=noticias_ordenadas)
 
 # Creando el registro del usuario
