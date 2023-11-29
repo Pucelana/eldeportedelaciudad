@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template, request
-
+from flask import render_template, request
 from . import admin_blueprint
 
-@admin.blueprint.router('/create-new', methods=['GET','POST'])
+@admin_blueprint.route('/create-new', methods=['GET','POST'])
 def create_new():
     if request.method == 'POST':
         return render_template('new_created.html')
