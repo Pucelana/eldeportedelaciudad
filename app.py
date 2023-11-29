@@ -4,8 +4,8 @@ from flask_mysqldb import MySQL
 from os import path
 from admin import init_app
 
-init_app(app)
 app = Flask(__name__)
+init_app(app)
 
 # Creado la conexión a la base de datos
 app.config['MYSQL_HOST'] = 'localhost'
