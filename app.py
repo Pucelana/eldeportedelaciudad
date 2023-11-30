@@ -2,11 +2,8 @@ from flask import Flask
 from flask import render_template, request, redirect,url_for, session
 from flask_mysqldb import MySQL
 from os import path
-from my_admin import my_admin
 
 app = Flask(__name__)
-
-app.register_blueprint(my_admin)
 
 # Creado la conexión a la base de datos
 app.config['MYSQL_HOST'] = 'localhost'
