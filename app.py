@@ -107,9 +107,9 @@ def sitio_login():
             return render_template('sitio/registro.html')
     else:
         return render_template('sitio/login.html')
-@app.route('/creadores/home')
+@app.route('/admin/home')
 def creadores_home():
-    return render_template('creadores/home.html')
+    return render_template('admin/home.html')
 
 @app.route('/usuarios/home')
 def usuarios_home():
