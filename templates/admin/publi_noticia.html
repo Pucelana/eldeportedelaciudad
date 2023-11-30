@@ -1,0 +1,15 @@
+{% extends 'admin/base.html' %}
+{% block titulo %} Admin - Publicar Noticia {% endblock %}
+{% block contenido %}
+
+<section class="container-lg mb-5 noticias">
+    <article class="bg-white shadow text_noticias">
+        <img src="/img/{{ noticia.imagen }}">
+        <h2 class="text-center fw-bold">Título</h2>
+        <p class="">Contenido: </p>
+        <h5>Categoría: </h5>
+        <h6>Publicado: </h6>
+    </article>
+</section>
+
+{% endblock %}
