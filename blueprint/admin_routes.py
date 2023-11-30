@@ -1,13 +1,13 @@
 from flask import render_template, request, redirect, url_for
-from . import admin
+from . import my_admin
 
 noticias = []
 
-@admin.route('/admin/home_admin')
+@my_admin.route('/admin/home_admin')
 def home_admin():
     return redirect(url_for('admin.home_admin'))
 
-@admin.route('/create_new', methods=['GET','POST'])
+@my_admin.route('/create_new', methods=['GET','POST'])
 def create_new():
     if request.method == 'POST':
         titulo = request.form['titulo']

@@ -1,5 +1,5 @@
 from flask import Blueprint
 
-admin = Blueprint('admin',__name__,template_folder='templates')
+my_admin = Blueprint('my_admin',__name__,template_folder='templates')
 
 from . import admin_routes    
