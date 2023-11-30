@@ -116,11 +116,10 @@ usuarios = {
 # Página del admin    
 @app.route('/news', methods=['GET','POST'])
 def admin_home():
-    datos = request.get_json()
-    usuario = datos.gett('usuario')
-    password = datos.get('password')
+    usuario = request.form.get('usuario')
+    password = request.form.get('password')
     if usuario in usuarios and usuarios[usuario] == password:
-        return redirect('/crear_noticia-')
+        return redirect('/crear_noticia')
     else:
         return render_template('admin/home.html')
 
