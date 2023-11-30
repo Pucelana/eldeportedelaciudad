@@ -125,7 +125,11 @@ def admin_home():
 
 @app.route('/admin/crear_noticia')
 def crear_noticia():
-    return render_template('admin/crear_noticia.html')        
+    return render_template('admin/crear_noticia.html')
+
+@app.route('/admin/publi_noticia')
+def publi_noticia():
+    return render_template('admin/publi_noticia.html')        
             
 
 
