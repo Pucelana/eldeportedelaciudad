@@ -5,7 +5,7 @@ noticias = []
 
 @admin_blueprint.route('/admin/home_admin')
 def home_admin():
-    return render_template('home_admin.html')
+    return render_template('admin/home_admin.html')
 
 @admin_blueprint.route('/create_new', methods=['GET','POST'])
 def create_new():
@@ -19,5 +19,5 @@ def create_new():
         
         noticias.append(nueva_noticia)
          
-        return render_template('new_news.html')
-    return render_template('create_new.html')
+        return render_template('admin/new_news.html')
+    return render_template('admin/create_new.html')
