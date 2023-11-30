@@ -113,8 +113,10 @@ usuarios = {
 }    
     
 # Página del admin    
-@app.route('/news', methods=['POST'])
+@app.route('/news', methods=['GET','POST'])
 def admin_home():
+    if request.method == 'GET':
+        return jsonify({'mensaje': 'Envia una solicitud POST con los datos de inicio de sesión'})
     datos = request.get_json()
     usuario = datos.gett('usuario')
     password = datos.get('password')
