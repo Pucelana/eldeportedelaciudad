@@ -5,7 +5,7 @@ noticias = []
 
 @admin.route('/admin/home_admin')
 def home_admin():
-    return render_template('admin/home_admin.html')
+    return redirect(url_for('admin.home_admin'))
 
 @admin.route('/create_new', methods=['GET','POST'])
 def create_new():
