@@ -109,13 +109,16 @@ def sitio_login():
         return render_template('sitio/login.html')
     
 # Página del admin    
-@app.route('/news')
+@app.route('/news',  )
 def admin_home():
+    password = request.form['password']
+    if password == 'Pucela83@':
+        return render_template('admin/crear_noticia.html')
     return render_template('admin/home.html')
 
-@app.route('/usuarios/home')
-def usuarios_home():
-    return render_template('usuarios/home.html')        
+@app.route('/admin/crear_noticia')
+def crear_noticia():
+    return render_template('admin/crear_noticia.html')        
             
 
 
