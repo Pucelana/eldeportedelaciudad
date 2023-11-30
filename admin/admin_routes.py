@@ -1,13 +1,13 @@
 from flask import render_template, request, redirect, url_for
-from . import admin_blueprint
+from . import admin
 
 noticias = []
 
-@admin_blueprint.route('/admin/home_admin')
+@admin.route('/admin/home_admin')
 def home_admin():
     return render_template('admin/home_admin.html')
 
-@admin_blueprint.route('/create_new', methods=['GET','POST'])
+@admin.route('/create_new', methods=['GET','POST'])
 def create_new():
     if request.method == 'POST':
         titulo = request.form['titulo']
