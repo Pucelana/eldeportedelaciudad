@@ -108,19 +108,20 @@ def sitio_login():
     else:
         return render_template('sitio/login.html')
     
-# Página del admin    
-@app.route('/news')
-def admin_home():
-    admin = {
+usuarios = {
     'acebesvanesa@gmail.com': 'Pucela83@'
-}
-datos = request.get_json()
-usuario = datos.get('usuario')
-password = datos.get('password')
-if usuario in usuarios and usuarios[usuario] == password:
-    return redirect(url_for('crear_noticia'))
-else:
-    return render_template('admin/home.html')
+}    
+    
+# Página del admin    
+@app.route('/news', methods=['POST'])
+def admin_home():
+    datos = request.get_json()
+    usuario = datos.gett('usuario')
+    password = datos.get('password')
+    if usuario in usuarios and usuarios[usuario] == password:
+        return render_template('admin/crear_noticia.html')
+    else:
+        return render_template('admin/home.html')
 
 @app.route('/admin/crear_noticia')
 def crear_noticia():
