@@ -109,7 +109,7 @@ def sitio_login():
         return render_template('sitio/login.html')
     
 # Página del admin    
-@app.route('/news',  )
+@app.route('/news', methods=['GET','POST'])
 def admin_home():
     password = request.form['password']
     if password == 'Pucela83@':
