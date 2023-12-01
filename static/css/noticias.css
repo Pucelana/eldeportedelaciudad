@@ -18,3 +18,11 @@ h1{
 .text_noticias{
     padding: 3%;
 }
+.publicacin{
+    margin-top: 2%;
+    text-align: start;
+    background-color: white;
+    font-size: 1.5em;
+    padding: 1.5%;
+    width: 50%;
+}
