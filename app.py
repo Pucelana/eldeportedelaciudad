@@ -137,6 +137,8 @@ def crear_noticia():
 
     nueva_noticia = {'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi}
 
+    noticias.append(nueva_noticia)
+
     return render_template('admin/publi_noticia.html', noticias=noticias)
 
 @app.route('/admin/publi_noticia')
