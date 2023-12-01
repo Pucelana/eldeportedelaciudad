@@ -7,10 +7,10 @@
 {% for publicado in noticias_publicadas %}
 <section class="container-lg mb-5 noticias">
     <article class="bg-white shadow text_noticias">
-        <h2 class="text-center fw-bold">{{ publicado['titulo'] }}</h2>
-        <p class="">{{ publicado['contenido'] }}</p>
-        <h5>{{ publicado['categoria'] }}</h5>
-        <h6>{{ publicado['fecha_publi'] }}</h6>
+        <h2 class="text-center fw-bold">{{ publicado[0] }}</h2>
+        <p class="">{{ publicado[1] }}</p>
+        <h5>{{ publicado[2] }}</h5>
+        <h6>{{ publicado[3] }}</h6>
     </article>
     <div>
         <button type="submit" class="bg-success text-white">Publicar</button>
