@@ -144,7 +144,7 @@ def crear_noticia():
 def publi_noticia():
     for noticia in noticias:
         noticias_publicadas.append(noticia)
-    noticias.clera()    
+    noticias.clear()    
     return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)      
 
             
