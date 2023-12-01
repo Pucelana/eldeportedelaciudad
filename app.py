@@ -52,7 +52,7 @@ def noticias():
             'fecha': 'Publicado: 25-11-2023'   
         },
     ]
-    return render_template('sitio/noticias.html', noticias=noticias)
+    return render_template('sitio/noticias.html', noticias=noticias_publicadas)
 
 # Creando el registro del usuario
 @app.route('/registro/', methods=['GET', 'POST'])
@@ -123,13 +123,30 @@ def admin_home():
     else:
         return render_template('admin/home.html')
 
-@app.route('/admin/crear_noticia')
+noticias = []
+noticias_publicadas = []
+
+@app.route('/admin/crear_noticia', methods=['GET','POST'])
 def crear_noticia():
-    return render_template('admin/crear_noticia.html')
+    if request.method == 'GET':
+        return render_template('admin/crear_noticia.html')
+    titulo = request.form.get('titulo')
+    contenido = request.form.get('contenido')
+    categoria = request.form.get('categoria')
+    fecha_publi = request.form.get('fecha_publi')
+    imagen = request.file.get('imagen')
+
+    nueva_noticia = {'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi, 'imagen': imagen}
+
+    return render_template('admin/publi_noticia.html', noticias=noticias)
 
 @app.route('/admin/publi_noticia')
 def publi_noticia():
-    return render_template('admin/publi_noticia.html')        
+    for noticia in noticias:
+        noticias_publicadas.append(noticia)
+    noticias.clera()    
+    return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)      
+
             
 
 
