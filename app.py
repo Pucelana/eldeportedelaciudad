@@ -134,9 +134,8 @@ def crear_noticia():
     contenido = request.form.get('contenido')
     categoria = request.form.get('categoria')
     fecha_publi = request.form.get('fecha_publi')
-    imagen = request.file.get('imagen')
 
-    nueva_noticia = {'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi, 'imagen': imagen}
+    nueva_noticia = {'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi}
 
     return render_template('admin/publi_noticia.html', noticias=noticias)
 
