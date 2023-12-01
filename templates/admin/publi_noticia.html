@@ -2,6 +2,8 @@
 {% block titulo %} Admin - Publicar Noticia {% endblock %}
 {% block contenido %}
 
+<h1 class="text-center">Publicación de las noticias</h1>
+
 {% for publicado in noticias_publicadas %}
 <section class="container-lg mb-5 noticias">
     <article class="bg-white shadow text_noticias">
@@ -11,6 +13,11 @@
         <h5>{{ publicado.categoria }}</h5>
         <h6>{{ publicado.fecha_publi }}</h6>
     </article>
+    <div>
+        <button type="submit" class="bg-success text-white">Publicar</button>
+        <button type="submit" class="bg-primary text-white">Modificar</button>
+        <button type="submit" class="bg-danger text-white">Eliminar</button>
+    </div>
 </section>
 {% endfor %}
 {% endblock %}
