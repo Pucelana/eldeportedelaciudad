@@ -19,7 +19,7 @@
     </div>
 </section>
 <!-- Modal para modificar la noticia -->
-<div class="modal fade" id="modal{{ post.id_posts }}" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modal{{ publicado.noticia_id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -28,13 +28,15 @@
         </div>
         <div class="modal-body">
           <form action="" method="POST">
-            <input type="hidden" name="csrf_token" value="">
+            <input type="hidden" name="" value="">
             <label for="titulo">Título</label>
-            <input type="text" name="titulo" id="titulo" class="form-control" value="">
+            <input type="text" name="titulo" id="titulo" class="form-control" value="{{ publicado.titulo }}">
             <label for="contenido">Contenido</label>
-            <textarea name="contenido" id="contenido" class="form-control" style="height: 300px;"></textarea>
-            <label for="fecha">Fecha de Publicación</label>
-            <input type="date" name="fecha" id="fecha" class="" value="">
+            <textarea name="contenido" id="contenido" class="form-control" style="height: 300px;">{{ publicado.contenido }}</textarea>
+            <label for="fecha">Categoría</label>
+            <input type="text" name="categoria" id="categoria" class="" value="{{ publicado.categoria }}">
+            <label for="fecha">Publicación</label>
+            <input type="date" name="fecha" id="fecha" class="" value="{{ publicado.fecha_publi }}">
             <div class="row">
               <div class="col-6">
                 <button type="submit" class="btn btn-success mt-3">Actualizar</button>
