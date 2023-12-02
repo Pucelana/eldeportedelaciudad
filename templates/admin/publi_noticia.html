@@ -14,9 +14,39 @@
     </article>
     <div class="mt-3">
         <button type="submit" class="bg-success text-white border-0 p-2">Publicar</button>
-        <button type="submit" class="bg-primary text-white border-0 p-2">Modificar</button>
+        <button type="submit" id="btn-modif" class="bg-primary text-white border-0 p-2" data-bs-toggle="modal" data-bs-target="#modal{{ publicado.noticia_id }}"><img src="" class=""><p class="p_editar">Modificar</p></button>
         <button type="submit" class="bg-danger text-white border-0 p-2">Eliminar</button>
     </div>
 </section>
+<!-- Modal para modificar la noticia -->
+<div class="modal fade" id="modal{{ post.id_posts }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title text-secondary fw-bold fs-3" id=""></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="POST">
+            <input type="hidden" name="csrf_token" value="">
+            <label for="titulo">Título</label>
+            <input type="text" name="titulo" id="titulo" class="form-control" value="">
+            <label for="contenido">Contenido</label>
+            <textarea name="contenido" id="contenido" class="form-control" style="height: 300px;"></textarea>
+            <label for="fecha">Fecha de Publicación</label>
+            <input type="date" name="fecha" id="fecha" class="" value="">
+            <div class="row">
+              <div class="col-6">
+                <button type="submit" class="btn btn-success mt-3">Actualizar</button>
+              </div>
+              <!--<div class="col-6">
+                <button type="button" class="btn btn-danger mt-3" data-bs-dismiss="modal">Cerrar</button>
+              </div>-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endfor %}
 {% endblock %}

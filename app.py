@@ -123,6 +123,7 @@ def admin_home():
     else:
         return render_template('admin/home.html')
 
+# Sección de la creación de las noticias 
 noticias = []
 noticias_publicadas = []
 
@@ -134,11 +135,8 @@ def crear_noticia():
     contenido = request.form.get('contenido')
     categoria = request.form.get('categoria')
     fecha_publi = request.form.get('fecha_publi')
-
     nueva_noticia = {'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi}
-
     noticias.append(nueva_noticia)
-
     return render_template('admin/publi_noticia.html', noticias=noticias)
 
 @app.route('/admin/publi_noticia')
