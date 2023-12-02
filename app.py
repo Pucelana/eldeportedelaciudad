@@ -146,9 +146,9 @@ def publi_noticia():
     noticias.clear()    
     return redirect(url_for('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas))
 
-@app.route('/admin/publi_noticia/modificar/<int:noticia_id>')
+"""@app.route('/admin/publi_noticia/modificar/<int:noticia_id>')
 def modif_noticia(noticia_id):
-    return render_template('admin/publi_noticia.html')
+    return render_template('admin/publi_noticia.html')"""
           
 
             
