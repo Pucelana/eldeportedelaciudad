@@ -144,7 +144,7 @@ def publi_noticia():
     for noticia in noticias:
         noticias_publicadas.append(noticia)
     noticias.clear()    
-    return redirect(url_for('/noticias'))
+    return redirect(url_for('noticias'))
 
 @app.route('/admin/publi_noticia/modificar/<int:noticia_id>')
 def modif_noticia(noticia_id):
