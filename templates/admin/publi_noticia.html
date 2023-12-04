@@ -18,37 +18,5 @@
         <button type="submit" class="bg-danger text-white border-0 p-2">Eliminar</button>
     </div>
 </section>
-<!-- Modal para modificar la noticia -->
-<!--<div class="modal fade" id="modal{{ publicado.noticia_id }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title text-secondary fw-bold fs-3" id=""></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="{{ url_for('modif_noticia', id=publicado.noticia_id) }}" method="POST">
-            <input type="hidden" name="" value="">
-            <label for="titulo">Título</label>
-            <input type="text" name="titulo" id="titulo" class="form-control" value="{{ publicado.titulo }}">
-            <label for="contenido">Contenido</label>
-            <textarea name="contenido" id="contenido" class="form-control" style="height: 300px;">{{ publicado.contenido }}</textarea>
-            <label for="fecha">Categoría</label>
-            <input type="text" name="categoria" id="categoria" class="" value="{{ publicado.categoria }}">
-            <label for="fecha">Publicación</label>
-            <input type="date" name="fecha" id="fecha" class="" value="{{ publicado.fecha_publi }}">
-            <div class="row">
-              <div class="col-6">
-                <button type="submit" class="btn btn-success mt-3">Actualizar</button>
-              </div>
-              <div class="col-6">
-                <button type="button" class="btn btn-danger mt-3" data-bs-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>-->
 {% endfor %}
 {% endblock %}

@@ -146,9 +146,34 @@ def publi_noticia():
     noticias.clear()    
     return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)
 
-"""@app.route('/admin/publi_noticia/modificar/<int:noticia_id>')
-def modif_noticia(noticia_id):
-    return render_template('admin/publi_noticia.html')"""
+# Creación de partidos y resultados
+resultados = []
+resultados_publicados = []
+
+@app.route('/admin/resultados', methods=['GET','POST'])
+def crear_resultado():
+    if request.method == 'GET':
+        return render_template('admin/resultados.html')
+    seccion = request.form.get('seccion')
+    liga = request.form.get('liga')
+    equipoA = request.form.get('equipoA')
+    resultado1 = request.form.get('resultado1')
+    equipoB = request.form.get('equipoB')
+    resultado2 = request.form.get('resultado2')
+    fecha_parti = request.form.get('fecha_parti')
+    nuevo_resultado = {'seccion': seccion, 'liga': liga, 'equipoA': equipoA, 'resultado1': resultado1, 'equipoB': equipoB, 'resultado2': resultado2, 'fecha_parti':fecha_parti}
+    resultados.append(nuevo_resultado)
+    return render_template('admin/publi_resultados.html', resultados = resultados)
+
+@app.route('/admin/publi_resultados')
+def publi_resultados():
+    for resultado in resultados:
+        resultados_publicados.append(resultado)
+    resultados.clear()    
+    return render_template('admin/publi_noticia.html', resultados_publicados=resultados_publicados)   
+    
+
+
           
 
             
