@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template, request, redirect,url_for, session
 from flask_mysqldb import MySQL
 from os import path
+import uuid
 
 
 app = Flask(__name__)
@@ -150,10 +151,13 @@ def publi_noticia():
 resultados = []
 resultados_publicados = []
 
-@app.route('/admin/resultados', methods=['GET','POST'])
+@app.route('/crear_resultados/', methods=['GET','POST'])
 def crear_resultado():
     if request.method == 'GET':
         return render_template('admin/resultados.html')
+    
+    id_nuevo = str(uuid.uuid4()) 
+     
     seccion = request.form.get('seccion')
     liga = request.form.get('liga')
     equipoA = request.form.get('equipoA')
@@ -161,16 +165,52 @@ def crear_resultado():
     equipoB = request.form.get('equipoB')
     resultado2 = request.form.get('resultado2')
     fecha_parti = request.form.get('fecha_parti')
-    nuevo_resultado = {'seccion': seccion, 'liga': liga, 'equipoA': equipoA, 'resultado1': resultado1, 'equipoB': equipoB, 'resultado2': resultado2, 'fecha_parti':fecha_parti}
+    nuevo_resultado = {'id': id_nuevo, 'seccion': seccion, 'liga': liga, 'equipoA': equipoA, 'resultado1': resultado1, 'equipoB': equipoB, 'resultado2': resultado2, 'fecha_parti':fecha_parti}
     resultados.append(nuevo_resultado)
-    return render_template('admin/publi_resultados.html', resultados = resultados)
+    return redirect(url_for('pub_marcadores'))
 
-@app.route('/admin/publi_resultados')
+"""@app.route('/admin/publi_resultados')
 def publi_resultados():
-    for resultado in resultados:
-        resultados_publicados.append(resultado)
+    for marcador in resultados:
+        resultados_publicados.append(marcador)
     resultados.clear()    
-    return render_template('admin/publi_noticia.html', resultados_publicados=resultados_publicados)   
+    return render_template('admin/publi_resultados.html', resultados_publicados=resultados_publicados)"""   
+
+@app.route('/modificar_marcador/<int:id>', methods=['POST'])
+def modificar_marcador(id):
+    if request.method == 'POST':
+        seccion = request.form.get('seccion')
+        liga = request.form.get('liga')
+        equipoA = request.form.get('equipoA')
+        resultado1 = request.form.get('resultado1')
+        equipoB = request.form.get('equipoB')
+        resultado2 = request.form.get('resultado2')
+        fecha_parti = request.form.get('fecha_parti')
+        indice_marcador = None
+        for idx, marcador in enumerate(resultados_publicados):
+            if marcador['id'] == id:
+                indice_marcador == idx
+                break
+            
+        if indice_marcador is not None:
+            resultados_publicados[indice_marcadormarcador]['seccion'] = seccion
+            resultados_publicados[indice_marcador]['liga'] = liga
+            resultados_publicados[indice_marcador]['equipoA'] = equipoA
+            resultados_publicados[indice_marcador]['resultado1'] = resultado1
+            resultados_publicados[indice_marcador]['equipoB'] = equipoB
+            resultados_publicados[indice_marcador]['resultado2'] = resultado2
+            resultados_publicados[indice_marcador]['fecha_parti'] = fecha_parti
+    return redirect(url_for('pub_marcadores'))   
+
+@app.route('/admin/pub_marcadores')
+def pub_marcadores():
+    for marcador in resultados:
+        resultados.append(marcador)
+    resultados.clear()    
+    return render_template('admin/pub_marcadores.html', resultados=resultados)
+    
+            
+
     
 
 
