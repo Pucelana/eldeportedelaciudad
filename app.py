@@ -174,7 +174,7 @@ def crear_resultado():
     fecha_parti = request.form.get('fecha_parti')
     nuevo_resultado = {'id': id_nuevo, 'seccion': seccion, 'liga': liga, 'equipoA': equipoA, 'resultado1': resultado1, 'equipoB': equipoB, 'resultado2': resultado2, 'fecha_parti':fecha_parti}
     resultados.append(nuevo_resultado)
-    return render_template('admin/pub_marcadores.html')
+    return redirect(url_for('pub_marcadores'))
 
 """@app.route('/admin/publi_resultados')
 def publi_resultados():
@@ -204,7 +204,7 @@ def modificar_marcador(id):
             marcador_a_modificar['equipoB'] = equipoB
             marcador_a_modificar['resultado2'] = resultado2
             marcador_a_modificar['fecha_parti'] = fecha_parti
-    return render_template('admin/pub_marcadores.html')   
+    return redirect(url_for('pub_marcadores'))   
 
 
     
