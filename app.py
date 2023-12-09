@@ -153,10 +153,10 @@ resultados_publicados = []
 
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
-    for marcador in resultados_publicados:
-        resultados_publicados.append(marcador)
+    for marcador in resultados:
+        resultados.append(marcador)
     resultados.clear()    
-    return render_template('admin/pub_marcadores.html', resultados_publicados=resultados_publicados)
+    return render_template('admin/pub_marcadores.html', resultados=resultados)
 
 @app.route('/crear_resultados/', methods=['GET','POST'])
 def crear_resultado():
