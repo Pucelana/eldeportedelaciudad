@@ -160,8 +160,8 @@ def pub_marcadores():
 
 @app.route('/crear_resultados/', methods=['GET','POST'])
 def crear_resultado():
-    """if request.method == 'GET':
-        return render_template('admin/.html')"""
+    if request.method == 'GET':
+        return render_template('admin/.html')
     
     id_nuevo = str(uuid.uuid4()) 
      
