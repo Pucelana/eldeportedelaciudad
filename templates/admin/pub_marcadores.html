@@ -1,12 +1,12 @@
 {% extends 'admin/base.html' %}
 {% block titulo %} Crear Marcadores {% endblock %}
 {% block contenido %}
-<div class="d-flex justify-content-center mb-4">
+<!--<div class="d-flex justify-content-center mb-4">
 <button onclick="mostrarFormulario()" class="btn btn-success text-center fs-3">Crear Resultados</button>
 </div>
-<!-- Creación del formulario para la creación del post -->
+Creación del formulario para la creación del post 
 <div class="container" id="form_resultados_admin">
-    <form method="POST" action="/crear_resultados/" enctype="multipart/form-data" class="">
+    <form method="POST" action="/admin/crear_resultados" enctype="multipart/form-data" class="">
       <div class="col-md-7">
         <label for="seccion">Sección</label>
         <input type="text" class="form-control" id="seccion" name="seccion" required>
@@ -35,22 +35,21 @@
         <label for="fecha_parti">Fecha Partido</label>
         <input type="text" class="form-control" id="fecha_parti" name="fecha_parti" required>
       </div>
-     <!-- <div class="col-md-4">
+      <div class="col-md-4">
         <label for="imagen">Imágen</label>
         <input type="file" class="form-control" id="imagen" name="imagen" required>
-      </div>-->
+      </div>
       <div class="col-md-12 mt-2">
         <button class="btn btn-primary" type="submit">Resultados</button>
       </div>
     </form>
-</div>
+</div>-->
 <!-- Fin del formulario del post -->
 <!-- Creación la visibilidad del post creado -->
-  <div class="container-lg my-3">
-   <div class="row">
-    {% for partidos in resultados %}
     <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+      
         <div class="carousel-inner">
+          {% for partidos in resultados_publicados %}
             <div class="d-flex">
                 <div class="card-2">
                     <h5 class="text-center text-secondary fw-bold deporte">{{ partidos.seccion }}</h5>
@@ -67,11 +66,12 @@
                 </div>
               </div>
               <div class="mt-1">
-                <button type="submit" class="bg-success text-white border-0 p-2">Publicar</button>
-                <button type="submit" id="btn-modificar{{ partidos.id }}" class="border-0 card_bordes" data-bs-toggle="modal" data-bs-target="#modal{{ partidos.id }}"><p class="p_editar">Modificar</p></button>
-                <button type="submit" class="bg-danger text-white border-0 p-2">Eliminar</button>
+                <button type="submit" class="bg-success text-white border-0 p-1">Publicar</button>
+                <button type="submit" id="btn-modificar{{ partidos.id }}" class="bg-info text-white border-0 p-1" data-bs-toggle="modal" data-bs-target="#modal{{ partidos.id }}">Modificar</button>
+                <button type="submit" class="bg-danger text-white border-0 p-1">Borrar</button>
             </div>
           </div>
+          {% endfor %}
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -83,6 +83,7 @@
         </button>
     </div>
     <!-- Modal para la editación del post -->
+    {% for partidos in resultados_publicados %}
     <div class="modal fade" id="modal{{ partidos.id }}" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -92,7 +93,6 @@
             </div>
             <div class="modal-body">
               <form action="{{ url_for('modificar_marcador', id=partidos.id) }}" method="POST">
-                <!--<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">-->
                 <label for="seccion">Sección</label>
                 <input type="text" name="seccion" id="seccion" class="form-control" value="{{ partidos.seccion }}">
                 <label for="liga">Liga</label>
@@ -120,7 +120,7 @@
           </div>
         </div>
       </div>
-    {% endfor %}
-   </div>
-  </div>
+      {% endfor %}
+      
+   
 {% endblock %}

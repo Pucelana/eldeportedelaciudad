@@ -149,19 +149,16 @@ def publi_noticia():
 
 # Creación de partidos y resultados
 resultados = []
-resultados_publicados = []
 
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
-    for marcador in resultados:
-        resultados.append(marcador)    
-    resultados.clear()    
-    return render_template('admin/pub_marcadores.html', resultados=resultados)
+    resultados_publicados = resultados[:]       
+    return render_template('admin/pub_marcadores.html', resultados_publicados=resultados_publicados)
 
-@app.route('/crear_resultados/', methods=['GET','POST'])
+@app.route('/admin/crear_resultados', methods=['GET','POST'])
 def crear_resultado():
-    """if request.method == 'GET':
-        return render_template('admin/.html')"""
+    if request.method == 'GET':
+        return render_template('admin/crear_resultados.html')
     
     id_nuevo = str(uuid.uuid4()) 
      
@@ -183,7 +180,7 @@ def publi_resultados():
     resultados.clear()    
     return render_template('admin/publi_resultados.html', resultados_publicados=resultados_publicados)"""   
 
-@app.route('/modificar_marcador/<int:id>', methods=['POST'])
+@app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
     if request.method == 'POST':
         seccion = request.form.get('seccion')
@@ -194,7 +191,7 @@ def modificar_marcador(id):
         resultado2 = request.form.get('resultado2')
         fecha_parti = request.form.get('fecha_parti')
         
-        marcador_a_modificar = next((marcador for marcador in resultados_publicados if marcador['id'] == id), None)
+        marcador_a_modificar = next((marcador for marcador in resultados if marcador['id'] == id), None)
           
         if marcador_a_modificar:
             marcador_a_modificar['seccion'] = seccion
@@ -204,7 +201,7 @@ def modificar_marcador(id):
             marcador_a_modificar['equipoB'] = equipoB
             marcador_a_modificar['resultado2'] = resultado2
             marcador_a_modificar['fecha_parti'] = fecha_parti
-    return redirect(url_for('pub_marcadores'))   
+    return redirect(url_for('pub_marcadores')) 
 
 
     

@@ -1,0 +1,50 @@
+{% extends 'admin/base.html' %}
+{% block titulo %} Admin - Crear Noticia {% endblock %}
+{% block contenido %}
+
+<section class="container-lg">
+<h1 class="text-center bg-danger text-white">Crear Resultados</h1>
+<!-- Creación del formulario para la creación del post -->
+<div class="container-lg" id="">
+  <form method="POST" action="/admin/crear_resultados" enctype="multipart/form-data" class="row mb-3">
+    <div class="col-md-7">
+      <label for="seccion">Sección</label>
+      <input type="text" class="form-control" id="seccion" name="seccion" required>
+    </div>
+    <div class="col-md-7">
+      <label for="liga">Liga</label>
+      <input type="text" class="form-control" id="liga" name="liga" required></input>
+    </div>
+    <div class="col-md-6">
+      <label for="equipoA">Equipo Local</label>
+      <input type="text" class="form-control" id="equipoA" name="equipoA" required>
+    </div>
+    <div class="col-md-1">
+      <label for="resultado1"></label>
+      <input type="text" class="form-control" id="resultado1" name="resultado1" required>
+    </div>
+    <div class="col-md-6">
+      <label for="equipoB">Equipo Visitante</label>
+      <input type="text" class="form-control" id="equipoB" name="equipoB" required>
+    </div>
+    <div class="col-md-1">
+      <label for="resultado2"></label>
+      <input type="text" class="form-control" id="resultado2" name="resultado2" required>
+    </div>
+    <div class="col-md-6">
+      <label for="fecha_parti">Fecha Partido</label>
+      <input type="text" class="form-control" id="fecha_parti" name="fecha_parti" required>
+    </div>
+   <!-- <div class="col-md-4">
+      <label for="imagen">Imágen</label>
+      <input type="file" class="form-control" id="imagen" name="imagen" required>
+    </div>-->
+    <div class="col-md-12 mt-2">
+      <button class="btn btn-primary" type="submit">Resultados</button>
+    </div>
+  </form>
+</div>
+  
+</section>
+
+{% endblock %}
