@@ -154,18 +154,14 @@ resultados_publicados = []
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
     for marcador in resultados:
-<<<<<<< HEAD
         resultados.append(marcador)    
-=======
-        resultados.append(marcador)
     resultados.clear()    
->>>>>>> 69369505b0269027869fa8f080baddfc853ca928
     return render_template('admin/pub_marcadores.html', resultados=resultados)
 
 @app.route('/crear_resultados/', methods=['GET','POST'])
 def crear_resultado():
-    if request.method == 'GET':
-        return render_template('admin/.html')
+    """if request.method == 'GET':
+        return render_template('admin/.html')"""
     
     id_nuevo = str(uuid.uuid4()) 
      
