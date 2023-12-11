@@ -154,13 +154,18 @@ resultados_publicados = []
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
     for marcador in resultados:
+<<<<<<< HEAD
         resultados.append(marcador)    
+=======
+        resultados.append(marcador)
+    resultados.clear()    
+>>>>>>> 69369505b0269027869fa8f080baddfc853ca928
     return render_template('admin/pub_marcadores.html', resultados=resultados)
 
 @app.route('/crear_resultados/', methods=['GET','POST'])
 def crear_resultado():
-    """if request.method == 'GET':
-        return render_template('admin/.html')"""
+    if request.method == 'GET':
+        return render_template('admin/.html')
     
     id_nuevo = str(uuid.uuid4()) 
      
@@ -173,7 +178,7 @@ def crear_resultado():
     fecha_parti = request.form.get('fecha_parti')
     nuevo_resultado = {'id': id_nuevo, 'seccion': seccion, 'liga': liga, 'equipoA': equipoA, 'resultado1': resultado1, 'equipoB': equipoB, 'resultado2': resultado2, 'fecha_parti':fecha_parti}
     resultados.append(nuevo_resultado)
-    return render_template('admin/pub_marcadores.html')
+    return redirect(url_for('pub_marcadores'))
 
 """@app.route('/admin/publi_resultados')
 def publi_resultados():
@@ -203,7 +208,7 @@ def modificar_marcador(id):
             marcador_a_modificar['equipoB'] = equipoB
             marcador_a_modificar['resultado2'] = resultado2
             marcador_a_modificar['fecha_parti'] = fecha_parti
-    return render_template('admin/pub_marcadores.html')   
+    return redirect(url_for('pub_marcadores'))   
 
 
     
