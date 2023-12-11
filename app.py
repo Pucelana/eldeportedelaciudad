@@ -120,7 +120,7 @@ def admin_home():
     usuario = request.form.get('usuario')
     password = request.form.get('password')
     if usuario in usuarios and usuarios[usuario] == password:
-        return redirect('/crear_noticia')
+        return redirect(url_for('crear_noticia'))
     else:
         return render_template('admin/home.html')
 
