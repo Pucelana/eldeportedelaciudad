@@ -6,7 +6,7 @@
 </div>
 <!-- Creación del formulario para la creación del post -->
 <div class="container" id="form_resultados_admin">
-    <form method="POST" action="/crear_resultados/'" enctype="multipart/form-data" class="">
+    <form method="POST" action="/crear_resultados/" enctype="multipart/form-data" class="">
       <div class="col-md-7">
         <label for="seccion">Sección</label>
         <input type="text" class="form-control" id="seccion" name="seccion" required>
@@ -48,7 +48,7 @@
 <!-- Creación la visibilidad del post creado -->
   <div class="container-lg my-3">
    <div class="row">
-    {% for partidos in resultados_publicados %}
+    {% for partidos in resultados %}
     <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="d-flex">
