@@ -65,10 +65,10 @@ Creación del formulario para la creación del post
                   <h6 class="text-center text-secondary">{{ partidos.fecha_parti }}</h6>
                 </div>
               </div>
-              <div class="mt-1">
-                <button type="submit" class="bg-success text-white border-0 p-1">Publicar</button>
-                <button type="submit" id="btn-modificar{{ partidos.id }}" class="bg-info text-white border-0 p-1" data-bs-toggle="modal" data-bs-target="#modal{{ partidos.id }}">Modificar</button>
-                <button type="submit" class="bg-danger text-white border-0 p-1">Borrar</button>
+              <div class="d-flex justify-content-center mt-1">
+                <button type="submit" class="bg-success text-white border-0 py-1 px-2">Publicar</button>
+                <button type="submit" id="btn-modificar{{ partidos.id }}" class="bg-info text-white border-0 py-1 px-2" data-bs-toggle="modal" data-bs-target="#modal{{ partidos.id }}">Modificar</button>
+                <button type="submit" class="bg-danger text-white border-0 py-1 px-2">Eliminar</button>
             </div>
           </div>
           {% endfor %}
@@ -92,23 +92,37 @@ Creación del formulario para la creación del post
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ url_for('modificar_marcador', id=partidos.id) }}" method="POST">
+              <form action="{{ url_for('modificar_marcador', id=partidos.id) }}" method="POST" class="row">
+                <div class="col-md-8 mb-2"> 
                 <label for="seccion">Sección</label>
                 <input type="text" name="seccion" id="seccion" class="form-control" value="{{ partidos.seccion }}">
+                </div>
+                <div class="col-md-8 mb-2">
                 <label for="liga">Liga</label>
                 <input name="liga" id="liga" class="form-control" value="{{ partidos.liga }}">
+                </div>
+                <div class="col-md-7 mb-2">
                 <label for="equipoA">Equipo A</label>
-                <input type="text" name="equipoA" id="equipoA" class="" value="{{ partidos.equipoA }}">
-                <label for="resultado1">Resultado 1</label>
-                <input type="text" name="resultado1" id="resultado1" class="" value="{{ partidos.resultado1 }}">
+                <input type="text" name="equipoA" id="equipoA" class="form-control" value="{{ partidos.equipoA }}">
+                </div>
+                <div class="col-md-2 mb-2"> 
+                <label for="resultado1"></label>
+                <input type="text" name="resultado1" id="resultado1" class="form-control" value="{{ partidos.resultado1 }}">
+                </div>
+                <div class="col-md-7 mb-2">
                 <label for="equipoB">Equipo B</label>
-                <input type="text" name="equipoB" id="equipoB" class="" value="{{ partidos.equipoB }}">
-                <label for="resultado2">Resultado 2</label>
-                <input type="text" name="resultado2" id="resultado2" class="" value="{{ partidos.resultado2 }}">
+                <input type="text" name="equipoB" id="equipoB" class="form-control" value="{{ partidos.equipoB }}">
+                </div>
+                <div class="col-md-2 mb-2">
+                <label for="resultado2" class="form-label"></label>
+                <input type="text" name="resultado2" id="resultado2" class="form-control" value="{{ partidos.resultado2 }}">
+                </div>
+                <div class="col-md-6 mb-2">
                 <label for="fecha_parti">Fecha partido</label>
-                <input type="text" name="fecha_parti" id="fecha_parti" class="" value="{{ partidos.fecha_parti}}">
+                <input type="text" name="fecha_parti" id="fecha_parti" class="form-control" value="{{ partidos.fecha_parti}}">
+                </div>
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-md-6">
                     <button type="submit" class="btn btn-success mt-3">Actualizar</button>
                   </div>
                   <!--<div class="col-6">
