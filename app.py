@@ -29,31 +29,7 @@ def nueva_noticia():
 def public_noticia():
     return redirect(url_for('noticias'))
 
-# Página de Noticias
-@app.route('/noticias/', methods=['GET','POST'])
-def noticias():
-    noticias=[
-        {
-            
-            'titulo': 'Asalto al Wicky Center',
-            'contenido': 'El UEMC Valladolid lográ una victoria épica en casa del lider.Con un marcador final 91-92, y tras una prorroga, los jugadores pucelanos mostrarón un rendimiento excepcional, en una emocionante batalla en la cancha.La intensidad del juego mantuvo al público del Wicky Center al borde de sus asientos. Con esta victoria el UEMC Valladolid demuestra su determinación y habilidades excepcionales en esta Leb Oro.',
-            'categoria': 'Baloncesto',
-            'fecha': 'Publicado: 26-11-2023'
-        },
-        {
-            'titulo': 'Victorias que valen ascensos',
-            'contenido': 'El Real Valladolid ganó 0-1 en casa del Huesca donde no había ganado en liga, sin desplegar un buen juego pero haciendo un buen trabajo en lo defensivo. Gracias a un penalti de Monchu, que lo tansformó en el rechace que el portero tocá, mandandoló al palo y vuleve a Monchu que hay no falló. Con esta victoria el Pucela dormira como segundo hasta el partido del lunes del Sporting.',
-            'categoria': 'Fútbol',
-            'fecha': 'Publicado: 24-11-2023' 
-        },
-        {
-            'titulo': 'La Copa Ibérica viaja a Valladolid',
-            'contenido': 'El VRAC se proclamó campeón por primera vez, en la Copa Ibérica ante el equipo portugues, con un resultado ajustado 9-13. Un partido vibrante y emocionante hasta el final,que no se podía ni pestañear. Primera vez que es ganada tanto por el VRAC como por un equipo español.',
-            'categoria': 'Rugby',
-            'fecha': 'Publicado: 25-11-2023'   
-        },
-    ]
-    return render_template('sitio/noticias.html', noticias=noticias_publicadas)
+
 
 # Creando el registro del usuario
 @app.route('/registro/', methods=['GET', 'POST'])
@@ -124,28 +100,61 @@ def admin_home():
     else:
         return render_template('admin/home.html')
 
+# Página de Noticias
+@app.route('/noticias/', methods=['GET','POST'])
+def noticias():
+    nuevas_noticias = [noticia for noticia in noticias if noticia['publicacion']]
+    return render_template('sitio/noticias.html', nuevas_noticias=nuevas_noticias)
+
 # Sección de la creación de las noticias 
 noticias = []
-noticias_publicadas = []
+
+@app.route('/admin/publi_noticia')
+def publi_noticia():
+    noticias_publicadas = noticias[:]  
+    return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)
 
 @app.route('/admin/crear_noticia', methods=['GET','POST'])
 def crear_noticia():
     if request.method == 'GET':
         return render_template('admin/crear_noticia.html')
+    
+    id_noticia = str(uuid.uuid4())
+    
     titulo = request.form.get('titulo')
     contenido = request.form.get('contenido')
     categoria = request.form.get('categoria')
     fecha_publi = request.form.get('fecha_publi')
-    nueva_noticia = {'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi}
+    nueva_noticia = {'id': id_noticia,'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi}
     noticias.append(nueva_noticia)
-    return render_template('admin/publi_noticia.html', noticias=noticias)
+    return redirect(url_for('publi_noticia'))
 
-@app.route('/admin/publi_noticia')
-def publi_noticia():
-    for noticia in noticias:
-        noticias_publicadas.append(noticia)
-    noticias.clear()    
-    return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)
+@app.route('/publicar_noticia/<string:id>', methods=['POST'])
+def publicar_noticia(id):
+        texto = next((item for item in noticias if item['id'] == id), None)
+        if texto:
+           texto['publicacion'] =True
+        return redirect(url_for('noticias'))   
+
+
+@app.route('/modificar_noticia/<string:id>', methods=['POST'])
+def modificar_noticia(id):
+    if request.method == 'POST':
+        titulo = request.form.get('titulo')
+        contenido = request.form.get('contenido')
+        categoria = request.form.get('categoria')
+        fecha_publi = request.form.get('fecha_publi')
+        
+        noticia_a_modificar = next((texto for texto in noticias if texto['id'] == id), None)
+          
+        if noticia_a_modificar:
+            noticia_a_modificar['titulo'] = titulo
+            noticia_a_modificar['contenido'] = contenido
+            noticia_a_modificar['categoria'] = categoria
+            noticia_a_modificar['fecha_publi'] = fecha_publi
+    return redirect(url_for('publi_noticia')) 
+
+
 
 # Creación de partidos y resultados
 resultados = []
