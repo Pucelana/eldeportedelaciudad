@@ -1,11 +1,19 @@
 from flask import Flask
 from flask import render_template, request, redirect,url_for, session
 from flask_mysqldb import MySQL
-from os import path
+from werkzeug.utils import secure_filename
+import os
 import uuid
 
+UPLOAD_FOLDER = 'static/imagenes/'
+ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 
 app = Flask(__name__)
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.',1)[1].lower()in ALLOWED_EXTENSIONS
 
 # Creado la conexión a la base de datos
 app.config['MYSQL_HOST'] = 'localhost'
@@ -14,12 +22,9 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)
 
-# Página Inicio
-@app.route('/')
-def sitio_home():
-    return render_template('sitio/home.html')
 
-# Creacción de noticias
+
+"""# Creacción de noticias
 @app.route('/mi_zona/nueva_noticia', methods=['GET','POST'])
 def nueva_noticia():
     return redirect(url_for('public_noticia'))
@@ -27,9 +32,7 @@ def nueva_noticia():
 # Publicar nuevas noticias
 @app.route('/mi_zona/public_noticia', methods=['GET','POST'])
 def public_noticia():
-    return redirect(url_for('noticias'))
-
-
+    return redirect(url_for('noticias'))"""
 
 # Creando el registro del usuario
 @app.route('/registro/', methods=['GET', 'POST'])
@@ -53,6 +56,7 @@ def sitio_registro():
         notificacion.message = "Ya te encuentras registrado en Cactus & Suculentas, ya puedes Iniciar sesión"
         notificacion.send()
         return render_template('sitio/login.html')
+    
 # Creando el login del usuario        
 @app.route('/login/', methods=['GET','POST'])
 def sitio_login():
@@ -109,11 +113,13 @@ def noticias():
 # Sección de la creación de las noticias 
 noticias = []
 
+# Ruta donde ver las noticias creadas
 @app.route('/admin/publi_noticia')
 def publi_noticia():
     noticias_publicadas = noticias[:]  
     return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)
 
+# Ruta para crear la noticia
 @app.route('/admin/crear_noticia', methods=['GET','POST'])
 def crear_noticia():
     if request.method == 'GET':
@@ -125,18 +131,34 @@ def crear_noticia():
     contenido = request.form.get('contenido')
     categoria = request.form.get('categoria')
     fecha_publi = request.form.get('fecha_publi')
-    nueva_noticia = {'id': id_noticia,'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi}
+    if 'imagen' in request.files:
+        imagen = request.files['imagen']
+        if imagen and allowed_file(imagen.filename):
+            filename = secure_filename(imagen.filename)
+            imagen.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        else:
+            filename = None
+    else:
+        filename = None        
+    nueva_noticia = {'id': id_noticia,'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi, 'imagen': filename, 'publicacion': False}
     noticias.append(nueva_noticia)
     return redirect(url_for('publi_noticia'))
 
+# Ruta para la publicación de la noticia
 @app.route('/publicar_noticia/<string:id>', methods=['POST'])
 def publicar_noticia(id):
         texto = next((item for item in noticias if item['id'] == id), None)
         if texto:
            texto['publicacion'] =True
-        return redirect(url_for('noticias'))   
+        return redirect(url_for('noticias'))
 
+#Ruta para mostrar las imagenes
+@app.route('/imagenes/<imagen>')
+def imagenes(imagen):
+    print(imagen)
+    return send_from_directory(UPLOAD_FOLDER, imagen)       
 
+# Ruta para modificar las noticias
 @app.route('/modificar_noticia/<string:id>', methods=['POST'])
 def modificar_noticia(id):
     if request.method == 'POST':
@@ -154,16 +176,22 @@ def modificar_noticia(id):
             noticia_a_modificar['fecha_publi'] = fecha_publi
     return redirect(url_for('publi_noticia')) 
 
-
+# Página inicio y resultados
+@app.route('/')
+def sitio_home():
+    nuevos_resultados = [dato for dato in resultados if dato['encuentros']]
+    return render_template('sitio/home.html', nuevos_resultados=nuevos_resultados)
 
 # Creación de partidos y resultados
 resultados = []
 
+# Ruta de los resultados creados
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
     resultados_publicados = resultados[:]       
     return render_template('admin/pub_marcadores.html', resultados_publicados=resultados_publicados)
 
+# Ruta de la creación de los resultados
 @app.route('/admin/crear_resultados', methods=['GET','POST'])
 def crear_resultado():
     if request.method == 'GET':
@@ -182,13 +210,15 @@ def crear_resultado():
     resultados.append(nuevo_resultado)
     return redirect(url_for('pub_marcadores'))
 
-"""@app.route('/admin/publi_resultados')
-def publi_resultados():
-    for marcador in resultados:
-        resultados_publicados.append(marcador)
-    resultados.clear()    
-    return render_template('admin/publi_resultados.html', resultados_publicados=resultados_publicados)"""   
+# Ruta para la publicación de los resultados
+@app.route('/publicar_resultados/<string:id>', methods=['POST'])
+def publicar_resultados(id):
+        marcadores = next((item for item in resultados if item['id'] == id), None)
+        if marcadores:
+           marcadores['encuentros'] =True
+        return redirect(url_for('sitio_home'))  
 
+# Ruta para modificar los resultados
 @app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
     if request.method == 'POST':

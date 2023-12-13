@@ -6,15 +6,6 @@ h1{
     margin-top: 2%;
     color: red;
 }
-.noticias{
-    margin-top: 2%;
-    font-family: 'Caveat', cursive;
-    text-align: start;
-    background-color: white;
-    font-size: 1.5em;
-    padding: 1.5%;
-    width: 60%;
-}
 .text_noticias{
     padding: 3%;
 }
@@ -27,6 +18,35 @@ h1{
     padding: 1.5%;
     width: 60%;
 }
-.text_publi{
-    padding: 3%;
+.text_publi .content{
+    position: absolute;
+    z-index: 1; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
 }
+.img_noticia{
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 350px;
+    overflow: hidden;
+}
+.img_noticia::before{
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: -1;
+}
+
+
+

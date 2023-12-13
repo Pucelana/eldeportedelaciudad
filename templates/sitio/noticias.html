@@ -1,20 +1,19 @@
 {% extends 'sitio/base.html' %}
 {% block titulo %} Eldeportedelaciudad-Noticias {% endblock %}
 {% block contenido %}
-
 <h1>Noticias Deportivas de la Ciudad</h1>
-
 {% for noticia in nuevas_noticias %}
-<section class="container-lg mb-5 noticias">
-<article class="bg-white shadow text_noticias">
-    <img src="/img/{{ noticia.imagen }}">
+<section class="container-lg mb-5 publi_noticias">
+<article class="bg-white shadow text_publi">
+    <div class="img_noticia" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/imagenes/{{ noticia.imagen }}');">
+    <div class="content">
     <h2 class="text-center fw-bold">{{ noticia.titulo }}</h2>
     <p class="">{{ noticia.contenido }}</p>
     <h5>{{ noticia.categoria }}</h5>
     <h6>{{ noticia.fecha_publi }}</h6>
+    </div>
+    </div>
 </article>
 </section>
 {% endfor %}
-
-
 {% endblock %}

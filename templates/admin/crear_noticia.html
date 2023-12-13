@@ -1,12 +1,15 @@
 {% extends 'admin/base.html' %}
 {% block titulo %} Admin - Crear Noticia {% endblock %}
 {% block contenido %}
-
 <section class="container-lg">
     <h1 class="text-center bg-danger text-white my-5">Creación de Noticias</h1>
     <div class="">
         <form method="POST" action="/admin/crear_noticia" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
-          <div class="col-md-12">
+          <div class="col-md-6">
+            <label for="imagen">Imagén</label>
+            <input type="file" class="form-control" id="imagen" name="imagen" accept=".txt,.pdf,.png,.jpg,.jpeg,.gif">
+          </div>
+          <div class="col-md-6">
             <label for="titulo">Título</label>
             <input type="text" class="form-control" id="titulo" name="titulo" required>
           </div>
@@ -22,16 +25,10 @@
             <label for="fecha_publi">Fecha Publicación</label>
             <input type="text" class="form-control" id="fecha_publi" name="fecha_publi" required>
           </div>
-         <!-- <div class="col-md-4">
-            <label for="imagen">Imágen</label>
-            <input type="file" class="form-control" id="imagen" name="imagen" required>
-          </div>-->
           <div class="col-12">
             <button class="btn btn-primary" type="submit">Ver Noticia</button>
           </div>
         </form>
     </div>
 </section>
-
-
 {% endblock %}

@@ -1,17 +1,20 @@
 {% extends 'admin/base.html' %}
 {% block titulo %} Admin - Publicar Noticia {% endblock %}
 {% block contenido %}
-
 <h1 class="text-center">Publicación de las noticias</h1>
-
 {% for publicado in noticias_publicadas %}
 <section class="container-lg mb-5 publi_noticias">
     <div class="">
     <article class="bg-white shadow text_publi">
-        <h2 class="text-center fw-bold">{{ publicado.titulo }}</h2>
-        <p class="">{{ publicado.contenido }}</p>
-        <h5>{{ publicado.categoria }}</h5>
-        <h6>{{ publicado.fecha_publi }}</h6>
+      <div class="img_noticia" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/imagenes/{{ publicado.imagen }}');">
+      <!--<img src="/static/imagenes/{{ publicado.imagen }}" alt="{{ publicado.categoria }}">-->
+      <div class="content">
+      <h2 class="text-center fw-bold">{{ publicado.titulo }}</h2>
+      <p class="">{{ publicado.contenido }}</p>
+      <h5>{{ publicado.categoria }}</h5>
+      <h6>{{ publicado.fecha_publi }}</h6>
+      </div>
+      </div>
     </article>
     <div class="row mt-3">
         <div class="col-md-2">
