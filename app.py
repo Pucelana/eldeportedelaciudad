@@ -22,18 +22,6 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)
 
-
-
-"""# Creacción de noticias
-@app.route('/mi_zona/nueva_noticia', methods=['GET','POST'])
-def nueva_noticia():
-    return redirect(url_for('public_noticia'))
-
-# Publicar nuevas noticias
-@app.route('/mi_zona/public_noticia', methods=['GET','POST'])
-def public_noticia():
-    return redirect(url_for('noticias'))"""
-
 # Creando el registro del usuario
 @app.route('/registro/', methods=['GET', 'POST'])
 def sitio_registro():
@@ -92,7 +80,7 @@ def sitio_login():
     
 usuarios = {
     'acebesvanesa@gmail.com': 'Pucela83@'
-}    
+}   
     
 # Página del admin    
 @app.route('/news', methods=['GET','POST'])
@@ -240,7 +228,32 @@ def modificar_marcador(id):
             marcador_a_modificar['equipoB'] = equipoB
             marcador_a_modificar['resultado2'] = resultado2
             marcador_a_modificar['fecha_parti'] = fecha_parti
-    return redirect(url_for('pub_marcadores')) 
+    return redirect(url_for('pub_marcadores'))
+
+# Ruta sección de baloncesto
+@app.route('/seccion/baloncesto')
+def seccion_baloncesto():
+    return render_template('secciones/baloncesto.html')
+
+# Ruta sección de balonmano
+@app.route('/seccion/balonmano')
+def seccion_balonmano():
+    return render_template('secciones/balonmano.html')
+
+# Ruta sección de fútbol
+@app.route('/seccion/futbol')
+def seccion_futbol():
+    return render_template('secciones/futbol.html')
+
+# Ruta sección de hockey línea
+@app.route('/seccion/hockey')
+def seccion_hockey():
+    return render_template('secciones/hockey.html')
+
+# Ruta sección de rugby
+@app.route('/seccion/rugby')
+def seccion_rugby():
+    return render_template('secciones/rugby.html') 
 
 
     

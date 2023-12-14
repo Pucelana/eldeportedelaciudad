@@ -1,0 +1,59 @@
+.h1_deportes{
+    color: #0d6efd;
+}
+.seccion_texto{
+    margin-top: 0%;
+    font-family: 'Caveat', cursive;
+    text-align: start;
+    font-size: 1.5em;
+    padding: 0.5%; 
+}
+.seccion_deportes{
+    margin-top: 1%;
+    font-family: 'Caveat', cursive;
+    text-align: start;
+    background-color: white;
+    font-size: 1.75em;
+    padding: 1.5%;
+}
+.text_seccion{
+    padding: 1%;
+}
+.bg_uemc{
+    background-color: #791379;
+}
+.text_uemc{
+    text-align: center;
+    font-size: 3.5em;
+    color: white;
+    font-weight: bold;
+}.bg_ponce{
+    background-color: #0871b8;
+}
+.text_ponce{
+    text-align: center;
+    font-size: 3.5em;
+    color: white;
+    font-weight: bold;
+}
+.bg_fundacion{
+    background-color: #8d098d;
+}
+.text_fundacion{
+    text-align: center;
+    font-size: 3.5em;
+    color: white;
+    font-weight: bold;
+}
+.bg_aula{
+    background-color: #693669;
+}
+.bg_recoletas{
+    background-color: #0d6efd;
+}
+.bg_valladolid{
+    background-color: #b92cb9;
+}
+.bg_promesas{
+    background-color: #613261;
+}
