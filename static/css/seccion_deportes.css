@@ -19,16 +19,39 @@
 .text_seccion{
     padding: 1%;
 }
-.bg_uemc{
-    background-color: #791379;
+.fondo_basket{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+@media screen and (max-width: 992px){
+    .fondo_basket{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
+    }
+}
+@media screen and (max-width: 768px){
+    .fondo_basket{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
+    }
+}
+@media screen and (max-width: 576px){
+    .fondo_basket{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
+    }
+}
+@media screen and (max-width: 320px){
+    .fondo_basket{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
+    }
 }
 .text_uemc{
     text-align: center;
     font-size: 3.5em;
     color: white;
     font-weight: bold;
-}.bg_ponce{
-    background-color: #0871b8;
 }
 .text_ponce{
     text-align: center;
@@ -36,24 +59,40 @@
     color: white;
     font-weight: bold;
 }
-.bg_fundacion{
-    background-color: #8d098d;
-}
 .text_fundacion{
     text-align: center;
     font-size: 3.5em;
     color: white;
     font-weight: bold;
 }
-.bg_aula{
-    background-color: #693669;
+.fondo_balonmano{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/balonmano.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
-.bg_recoletas{
-    background-color: #0d6efd;
+.fondo_futbol{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/img/futbol.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
-.bg_valladolid{
-    background-color: #b92cb9;
+.fondo_hockey{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/img/hockey3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
-.bg_promesas{
-    background-color: #613261;
+.fondo_rugby{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/rugby2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    overflow: hidden;
 }
