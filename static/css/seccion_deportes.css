@@ -19,6 +19,32 @@
 .text_seccion{
     padding: 1%;
 }
+@media screen and (min-width: 992px){
+    .fondo_basket{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
+    }
+}
+@media screen and (min-width: 768px){
+    .fondo_basket{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
+    }
+}
+@media screen and (min-width: 576px){
+    .fondo_basket{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket-mini.png');
+    }
+    .text_uemc{
+        font-size: 1em;
+    }
+}
+@media screen and (min-width: 320px){
+    .fondo_basket{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket-mini.png');
+    }
+    .text_uemc{
+        font-size: 1em;
+    }
+}
 .fondo_basket{
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
@@ -27,29 +53,9 @@
     background-position: center;
     overflow: hidden;
 }
-@media screen and (max-width: 992px){
-    .fondo_basket{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
-    }
-}
-@media screen and (max-width: 768px){
-    .fondo_basket{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
-    }
-}
-@media screen and (max-width: 576px){
-    .fondo_basket{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
-    }
-}
-@media screen and (max-width: 320px){
-    .fondo_basket{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
-    }
-}
 .text_uemc{
     text-align: center;
-    font-size: 3.5em;
+    font-size: 3em;
     color: white;
     font-weight: bold;
 }
