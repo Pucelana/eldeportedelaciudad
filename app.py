@@ -167,7 +167,7 @@ def modificar_noticia(id):
 # Página inicio y resultados
 @app.route('/')
 def sitio_home():
-    nuevos_resultados = [dato for dato in resultados if dato['encuentros']]
+    nuevos_resultados = [dato for dato in resultados if dato['enfrentamiento']]
     return render_template('sitio/home.html', nuevos_resultados=nuevos_resultados)
 
 # Creación de partidos y resultados
@@ -203,7 +203,7 @@ def crear_resultado():
 def publicar_resultados(id):
         marcadores = next((item for item in resultados if item['id'] == id), None)
         if marcadores:
-           marcadores['encuentros'] =True
+           marcadores['enfrentamiento'] =True
         return redirect(url_for('sitio_home'))  
 
 # Ruta para modificar los resultados
@@ -256,9 +256,19 @@ def seccion_rugby():
     return render_template('secciones/rugby.html')
 
 # Ruta sección de clasificación y áanalisis del UEMC Valladolid 
-@app.route('/equipos/clasif_analisis_uemc')
+@app.route('/equipos_basket/clasif_analisis_uemc')
 def clasif_analisis_uemc():
-    return render_template('equipos/clasif_analisis_uemc.html') 
+    return render_template('equipos_basket/clasif_analisis_uemc.html')
+
+# Ruta sección de clasificación y áanalisis del Ponce Valladolid 
+@app.route('/equipos_basket/clasif_analisis_ponce')
+def clasif_analisis_ponce():
+    return render_template('equipos_basket/clasif_analisis_ponce.html')
+
+# Ruta sección de clasificación y ánalisis del Fundaión Aliados 
+@app.route('/equipos_basket/clasif_analisis_aliados')
+def clasif_analisis_aliados():
+    return render_template('equipos_basket/clasif_analisis_aliados.html') 
 
 
     
