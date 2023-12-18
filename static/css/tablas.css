@@ -1,0 +1,12 @@
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+.table-responsive {
+    overflow-x: auto;
+}
+  
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}

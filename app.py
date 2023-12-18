@@ -253,7 +253,12 @@ def seccion_hockey():
 # Ruta sección de rugby
 @app.route('/seccion/rugby')
 def seccion_rugby():
-    return render_template('secciones/rugby.html') 
+    return render_template('secciones/rugby.html')
+
+# Ruta sección de clasificación y áanalisis del UEMC Valladolid 
+@app.route('/equipos/clasif_analisis_uemc')
+def clasif_analisis_uemc():
+    return render_template('equipos/clasif_analisis_uemc.html') 
 
 
     
