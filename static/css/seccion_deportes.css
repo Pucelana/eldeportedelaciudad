@@ -52,6 +52,7 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    box-shadow: 10px 5px 5px gray;
 }
 .text_uemc{
     text-align: center;
@@ -77,6 +78,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    box-shadow: 10px 5px 5px gray;
 }
 .fondo_futbol{
     position: relative;
@@ -85,6 +87,7 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    box-shadow: 10px 5px 5px gray;
 }
 .fondo_hockey{
     position: relative;
@@ -93,12 +96,13 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    box-shadow: 10px 5px 5px gray;
 }
 .fondo_rugby{
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/rugby2.png');
     background-repeat: no-repeat;
     background-size: cover;
-    
     overflow: hidden;
+    box-shadow: 10px 5px 5px gray;
 }

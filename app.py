@@ -268,7 +268,17 @@ def clasif_analisis_ponce():
 # Ruta sección de clasificación y ánalisis del Fundaión Aliados 
 @app.route('/equipos_basket/clasif_analisis_aliados')
 def clasif_analisis_aliados():
-    return render_template('equipos_basket/clasif_analisis_aliados.html') 
+    return render_template('equipos_basket/clasif_analisis_aliados.html')
+
+# Ruta calendario UEMC
+@app.route('/equipos_basket/calendario_uemc')
+def calendario_uemc():
+    return render_template('equipos_basket/calendario_uemc.html')
+
+# Ruta calendario Ponce Valladolid
+@app.route('/equipos_basket/calendario_ponce')
+def calendario_ponce():
+    return render_template('equipos_basket/calendario_ponce.html')  
 
 
     
