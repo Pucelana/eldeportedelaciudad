@@ -1,16 +1,12 @@
 function mostrarFormulario(){
     document.getElementById('form_resultados_admin').style.display='block';
 }
-
 const multipleItemCarousel=document.querySelector('#carouselExampleControls')
-
 if(window.matchMedia("(min-width:320px)").matches){
     const carousel = new bootstrap.Carousel(multipleItemCarousel,
     {
         interval: false
-
     })
-
     var carouselWidth=$('.carousel-inner')[0].scrollWidth;
     var cardWidth=$('.carousel-item').width();
     var scrollPosition=0;
@@ -34,6 +30,5 @@ if(window.matchMedia("(min-width:320px)").matches){
 
 }
 
-
-
+// Calendario de basket
 
