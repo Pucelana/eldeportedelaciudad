@@ -348,7 +348,8 @@ rows.forEach(row => {
         per1.textContent = '-';
         gan1.style.color = 'green';
         per1.style.color = 'black';
-    } else if (idV > idA) {
+    } 
+    if (idV > idA) {
         gan1.textContent = '1';
         //gan2.textContent = '1';
         per1.textContent = '-';
@@ -379,7 +380,8 @@ rows.forEach(row => {
         gan1.style.color = 'black';
         per1.style.color = 'red';
 
-    } else if (vtA > vtV){
+    } 
+    if (vtA > vtV){
         gan1.textContent = '-';
         //gan2.textContent = '-';
         per1.textContent = '1';
@@ -403,25 +405,25 @@ rows.forEach(row => {
         average.textContent = avgResult1;
         average.style.color = 'green';
     } else if (avgResult1 < 0) {
-        average.textContent = avgResult1;
+        average.textContent = '-' + avgResult1;
         average.style.color = 'red';
     } else if (avgResult2 > 0 ){
         average.textContent = avgResult2;
         average.style.color = 'green';
     } else if (avgResult2 < 0){
-        average.textContent = avgResult2;
+        average.textContent = '-' + avgResult2;
         average.style.color = 'red';
     } else if (avgResult3 > 0) {
         average.textContent = avgResult3;
         average.style.color = 'green';
     } else if (avgResult3 < 0) {
-        average.textContent = avgResult3;
+        average.textContent = '-' + avgResult3;
         average.style.color = 'red';
     } else if (avgResult4 > 0) {
         average.textContent = avgResult4;
         average.text.color = 'green';
     } else if (avgResult4 < 0) {
-        average.textContent = avgResult4;
+        average.textContent = '-' + avgResult4;
         average.style.color = 'red';
     }
      else {
