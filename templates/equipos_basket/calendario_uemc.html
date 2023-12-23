@@ -430,11 +430,10 @@ rows.forEach(row => {
         average.style.color = 'green';
     }
     // Calcular aver-tot
-    const averTotResult = average;
-    if (averTotResult > 0) {
+    if (average > 0) {
         averTot.textContent = 'Ganado';
         averTot.style.color = 'green';
-    } else if (averTotResult < 0) {
+    } else if (average < 0) {
         averTot.textContent = 'Perdido';
         averTot.style.color = 'red';
     }
