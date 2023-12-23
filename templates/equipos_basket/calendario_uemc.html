@@ -333,7 +333,7 @@ rows.forEach(row => {
     const average = row.querySelector('.average');
     const averTot = row.querySelector('.aver-tot');
 
-    // Calcular resultados y aplicar estilos
+    // Calcular resultados idA e idV y aplicar estilos
     if (idA > idV) {
         gan1.textContent = '-';
         //gan2.textContent = '-';
@@ -343,7 +343,12 @@ rows.forEach(row => {
         //gan2.style.color = 'black';
         per1.style.color = 'red';
         //per2.style.color = 'red';
-    } else if (idV < idA) {
+    } else if (idA < idV){
+        gan1.textContent = '1';
+        per1.textContent = '-';
+        gan1.style.color = 'green';
+        per1.style.color = 'black';
+    } else if (idV > idA) {
         gan1.textContent = '1';
         //gan2.textContent = '1';
         per1.textContent = '-';
@@ -352,7 +357,13 @@ rows.forEach(row => {
         //gan2.style.color = 'green';
         per1.style.color = 'black';
         //per2.style.color = 'black';
-    } 
+    } else if (idV < idA) {
+        gan1.textContent = '-';
+        per1.textContent = '1';
+        gan1.style.color = '-';
+        per1.style.color = 'red';
+    }
+    // Calcular resultador vtV y vtA 
     if (vtV > vtA) {
         gan1.textContent = '1';
         //gan2.textContent = '1';
@@ -362,7 +373,13 @@ rows.forEach(row => {
         //gan2.style.color = 'green';
         per1.style.color = 'black';
         //per2.style.color = 'black';
-    } else if (vtA < vtV){
+    } else if (vtV < vtA) {
+        gan1.textContent = '-';
+        per1.textContent = '1';
+        gan1.style.color = 'black';
+        per1.style.color = 'red';
+
+    } else if (vtA > vtV){
         gan1.textContent = '-';
         //gan2.textContent = '-';
         per1.textContent = '1';
@@ -371,6 +388,11 @@ rows.forEach(row => {
         //gan2.style.color = 'black';
         per1.style.color = 'red';
         //per2.style.color = 'red';
+    } else if (vtA < vtV) {
+        gan1.textContent = '1';
+        per1.textContent = '-';
+        gan1.style.color = 'green';
+        per1.style.color = '-';
     }
     // Calcular average
     const avgResult1 = idA - idV;
