@@ -434,10 +434,12 @@ rows.forEach(row => {
     if (averTotResult > 0) {
         averTot.textContent = 'Ganado';
         averTot.style.color = 'green';
-    } else if (averTotResult < 0) {
+    }
+    if (averTotResult < 0) {
         averTot.textContent = 'Perdido';
         averTot.style.color = 'red';
-    } else {
+    } 
+    if (averTotResult == 0) {
         averTot.textContent = 'Empatado';
         averTot.style.color = 'blue';
     }
