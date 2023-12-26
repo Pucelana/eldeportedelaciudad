@@ -319,6 +319,10 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
     // Obtener todas las filas de la tabla
 const rows = document.querySelectorAll('.tabla_equipos tbody tr');
 
+let totalVict = 0;
+let totalDer = 0;
+let totalAvg = 0;
+
 // Iterar sobre cada fila para realizar los cálculos
 rows.forEach(row => {
     const idA = parseFloat(row.querySelector('.id-A').textContent);
@@ -430,15 +434,18 @@ rows.forEach(row => {
         average.textContent = avgResult4;
         average.style.color = 'green';
     }
-    // Calcular average de ida y vuelta
-    if (aveTotal > 0) {
-        average.textContent = aveTotal;
-        average.style.color = 'green';
-    }else if ( aveTotal < 0) {
-        average.textContent = aveTotal;
-        average.style.color = 'red';
+    // Calcular y sumar victorias y derrotas
+    const victoriasIda = idA < idV ? 0:1;
+    const derrotasIda = idA > idV ? 1:0;
+    const victoriasVuelta = vtA < vtV ? 0:1;
+    const derrotasVuelta = vtA > vtV ? 1:0;
+    totalVictorias += victoriasIda + victoriasVuelta;
+    totalDerrotas += derrotasIda + derrotasVuelta;
+    // Calcular el average total
+    const averageIda = idA -idV;
+    const averageVuelta = vtA - vtV;
+    totalAverage += averageIda + averageVuelta
 
-    } 
 
 });
 </script>
