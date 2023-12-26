@@ -323,7 +323,7 @@ let totalVictorias = 0;
 let totalVictorias1 = 0;
 let totalDerrotas = 0;
 let totalDerrotas1 = 0;
-let totalAverage= 0;
+let totalAverage = 0;
 let totalAverage1 = 0;
 
 // Iterar sobre cada fila para realizar los cálculos
@@ -440,7 +440,7 @@ rows.forEach(row => {
     const victoriasIda = idA < idV ? 0:1;
     const derrotasIda = idA > idV ? 1:0;
     const victoriasIda1 = idV > idA ? 1:0;
-    const derrotaIda1 = idV < idA ? 0:1;
+    const derrotasIda1 = idV < idA ? 0:1;
     const victoriasVuelta = vtA < vtV ? 0:1;
     const derrotasVuelta = vtA > vtV ? 1:0;
     const victoriasVuelta1 = vtV > vtA ? 1:0;
@@ -448,7 +448,7 @@ rows.forEach(row => {
     totalVictorias += victoriasIda + victoriasVuelta;
     totalVictorias1 += victoriasIda1 + victoriasVuelta1;
     totalDerrotas += derrotasIda + derrotasVuelta;
-    totalDerrotas1 += derrotaIda1 + derrotasVuelta1;
+    totalDerrotas1 += derrotasIda1 + derrotasVuelta1;
     // Calcular el average total
     const averageIda = idA -idV;
     const averageIda1 = idV -idA;
@@ -456,10 +456,7 @@ rows.forEach(row => {
     const averageVuelta1 = vtV - vtA;
     totalAverage += averageIda + averageVuelta;
     totalAverage1 += averageIda1 + averageVuelta1;
-
-
 });
 </script>
-
 </body>
 </html>
