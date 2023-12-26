@@ -401,6 +401,7 @@ rows.forEach(row => {
     const avgResult2 = idV - idA;
     const avgResult3 = vtV - vtA;
     const avgResult4 = vtA - vtV;
+    const aveTotal = (idA + vtA) - (idV + vtV)
     if (avgResult1 < 0) {
         average.textContent = avgResult1;
         average.style.color = 'red';
@@ -429,6 +430,18 @@ rows.forEach(row => {
         average.textContent = avgResult4;
         average.style.color = 'green';
     }
+    // Calcular average de ida y vuelta
+    if (aveTotal > 0) {
+        average.textContent = aveTotal;
+        average.style.color = 'green';
+    else if ( aveTotal < 0) {
+        average.textContent = aveTotal;
+        average.style.color = 'red';
+
+    }    
+
+    }
+
 });
 </script>
 
