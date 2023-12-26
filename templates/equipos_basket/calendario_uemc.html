@@ -405,7 +405,6 @@ rows.forEach(row => {
     const avgResult2 = idV - idA;
     const avgResult3 = vtV - vtA;
     const avgResult4 = vtA - vtV;
-    const aveTotal = (idA + vtA) - (idV + vtV)
     if (avgResult1 < 0) {
         average.textContent = avgResult1;
         average.style.color = 'red';
@@ -437,14 +436,23 @@ rows.forEach(row => {
     // Calcular y sumar victorias y derrotas
     const victoriasIda = idA < idV ? 0:1;
     const derrotasIda = idA > idV ? 1:0;
+    const victoriasIda1 = idV > idA ? 1:0;
+    const derrotaIda1 = idV < idA ? 0:1;
     const victoriasVuelta = vtA < vtV ? 0:1;
     const derrotasVuelta = vtA > vtV ? 1:0;
+    const victoriasVuelta1 = vtV > vtA ? 1:0;
+    const derrotasVuelta1 = vtV < vtA ? 0:1;
     totalVictorias += victoriasIda + victoriasVuelta;
+    totalVictorias1 += victoriasIda1 + victoriasVuelta1;
     totalDerrotas += derrotasIda + derrotasVuelta;
+    totalDerrotas1 += derrotaIda1 + derrotasVuelta1;
     // Calcular el average total
     const averageIda = idA -idV;
+    const averageIda1 = idV -idA;
     const averageVuelta = vtA - vtV;
-    totalAverage += averageIda + averageVuelta
+    const averageVuelta1 = vtV - vtA;
+    totalAverage += averageIda + averageVuelta;
+    totalAverage1 += averageIda1 + averageVuelta1;
 
 
 });
