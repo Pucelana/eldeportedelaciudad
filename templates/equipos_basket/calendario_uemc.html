@@ -400,6 +400,17 @@ rows.forEach(row => {
         gan1.style.color = 'green';
         per1.style.color = '-';
     }
+    // Calcular y sumar victorias y derrotas
+    const victoriasFuIda = idA < idV ? 0:1;
+    const derrotasFuIda = idA > idV ? 1:0;
+    const victoriasCaIda = idV > idA ? 1:0;
+    const derrotasCaIda = idV < idA ? 0:1;
+    const victoriasFuVuelta = vtA < vtV ? 0:1;
+    const derrotasFuVuelta = vtA > vtV ? 1:0;
+    const victoriasCaVuelta = vtV > vtA ? 1:0;
+    const derrotasCaVuelta = vtV < vtA ? 0:1;
+    victorias.push(victoriasFuIda+victoriasCaIda+victoriasFuVuelta+victoriasCaVuelta);
+    derrotas.push(derrotasFuIda+derrotasCaIda+derrotasFuVuelta+derrotasCaVuelta);
     // Calcular average
     const avgResult1 = idA - idV;
     const avgResult2 = idV - idA;
@@ -433,17 +444,6 @@ rows.forEach(row => {
         average.textContent = avgResult4;
         average.style.color = 'green';
     }
-    // Calcular y sumar victorias y derrotas
-    const victoriasFuIda = idA < idV ? 0:1;
-    const derrotasFuIda = idA > idV ? 1:0;
-    const victoriasCaIda = idV > idA ? 1:0;
-    const derrotasCaIda = idV < idA ? 0:1;
-    const victoriasFuVuelta = vtA < vtV ? 0:1;
-    const derrotasFuVuelta = vtA > vtV ? 1:0;
-    const victoriasCaVuelta = vtV > vtA ? 1:0;
-    const derrotasCaVuelta = vtV < vtA ? 0:1;
-    victorias.push(victoriasFuIda+victoriasCaIda+victoriasFuVuelta+victoriasCaVuelta);
-    derrotas.push(derrotasFuIda+derrotasCaIda+derrotasFuVuelta+derrotasCaVuelta);
     // Calcular el average total
     const averageFuIda = idA -idV;
     const averageCaIda = idV -idA;
