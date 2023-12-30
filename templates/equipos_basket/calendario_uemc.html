@@ -52,9 +52,9 @@
                         <th class="text-white">Tizona Burgos</th>
                         <td class="text-secondary fw-bold">1ª-F</td>
                         <td class="text-secondary fw-bold">31ª-C</td>
-                        <td class="id-A">92</td>
+                        <td class="vta-A">92</td>
                         <td class="id-V">86</td>
-                        <td class="vta-V">90</td>
+                        <td class="id-V>A">90</td>
                         <td class="vta-A">80</td>
                         <td class="gan-1"></td>
                         <!--<td class="gan-2"></td>-->
@@ -68,9 +68,9 @@
                         <td class="text-secondary fw-bold">2ª-C</td>
                         <td class="text-secondary fw-bold">24ª-F</td>
                         <td class="id-V">70</td>
-                        <td class="id-A">66</td>
+                        <td class="vta-A">66</td>
                         <td class="vta-A">68</td>
-                        <td class="vta-V">71</td>
+                        <td class="id-V">71</td>
                         <td class="gan-1"></td>
                         <!--<td class="gan-2"></td>-->
                         <td class="per-1"></td>
@@ -319,10 +319,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
     // Obtener todas las filas de la tabla
 const rows = document.querySelectorAll('.tabla_equipos tbody tr');
 
-let victorias = [];
-let derrotas = [];
-let averageIda = [];
-let averageVuelta = [];
+let partidos = [];
 
 // Iterar sobre cada fila para realizar los cálculos
 rows.forEach(row => {
@@ -400,19 +397,13 @@ rows.forEach(row => {
         gan1.style.color = 'green';
         per1.style.color = '-';
     }
-    // Calcular y sumar victorias y derrotas
-    const victoriasFuIda = idA < idV ? 0:1;
-    const derrotasFuIda = idA > idV ? 1:0;
-    const victoriasCaIda = idV > idA ? 1:0;
-    const derrotasCaIda = idV < idA ? 0:1;
-    const victoriasFuVuelta = vtA < vtV ? 0:1;
-    const derrotasFuVuelta = vtA > vtV ? 1:0;
-    const victoriasCaVuelta = vtV > vtA ? 1:0;
-    const derrotasCaVuelta = vtV < vtA ? 0:1;
-    victorias.push(victoriasFuIda+victoriasCaIda+victoriasFuVuelta+victoriasCaVuelta);
-    derrotas.push(derrotasFuIda+derrotasCaIda+derrotasFuVuelta+derrotasCaVuelta);
+    // Guardar los resultados de los partidos
+    partidos.push({
+        ida:{resultado: idV, perdido: idV < vtA ? 0:1, ganado: idV > vtA ? 1:0},
+        vuelta: {resultado: vtA, ganado: vtA < idV ? 1:0, perdido: vtA > idV ? 0:1}
+    });
     // Calcular average
-    const avgResult1 = idA - idV;
+    /*const avgResult1 = idA - idV;
     const avgResult2 = idV - idA;
     const avgResult3 = vtV - vtA;
     const avgResult4 = vtA - vtV;
@@ -441,6 +432,7 @@ rows.forEach(row => {
         average.textContent = avgResult4;
         average.text.color = 'red';
     } else if (avgResult4 > 0) {
+
         average.textContent = avgResult4;
         average.style.color = 'green';
     }
@@ -450,8 +442,20 @@ rows.forEach(row => {
     const averageFuVuelta = vtA - vtV;
     const averageCaVuelta = vtV - vtA;
     averageIda.push(averageFuIda+averageCaIda);
-    averageVuelta.push(averageFuVuelta+averageCaVuelta);
+    averageVuelta.push(averageFuVuelta+averageCaVuelta);*/
 });
+// Calcular el total de victorias y derrotas en casa y fuera
+let victoriasCasa = 0;
+let derrotasCasa = 0;
+let victoriasFuera = 0;
+let derrotasFuera = 0;
+partidos.forEach(partido=>{
+    victoriasCasa += partido.ida.ganado;
+    derrotasCasa += partido.ida.perdido;
+    victoriasFuera += partido.vuelta.ganado;
+    derrotasFuera += partido.vuelta.perdido;
+});
+
 </script>
 </body>
 </html>
