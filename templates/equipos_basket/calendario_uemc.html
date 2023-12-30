@@ -319,12 +319,10 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
     // Obtener todas las filas de la tabla
 const rows = document.querySelectorAll('.tabla_equipos tbody tr');
 
-let totalVictorias = 0;
-let totalVictorias1 = 0;
-let totalDerrotas = 0;
-let totalDerrotas1 = 0;
-let totalAverage = 0;
-let totalAverage1 = 0;
+let victorias = [];
+let derrotas = [];
+let averageIda = [];
+let averageVuelta = [];
 
 // Iterar sobre cada fila para realizar los cálculos
 rows.forEach(row => {
@@ -386,7 +384,6 @@ rows.forEach(row => {
         per1.textContent = '1';
         gan1.style.color = 'black';
         per1.style.color = 'red';
-
     } 
     if (vtA > vtV){
         gan1.textContent = '-';
@@ -437,25 +434,23 @@ rows.forEach(row => {
         average.style.color = 'green';
     }
     // Calcular y sumar victorias y derrotas
-    const victoriasIda = idA < idV ? 0:1;
-    const derrotasIda = idA > idV ? 1:0;
-    const victoriasIda1 = idV > idA ? 1:0;
-    const derrotasIda1 = idV < idA ? 0:1;
-    const victoriasVuelta = vtA < vtV ? 0:1;
-    const derrotasVuelta = vtA > vtV ? 1:0;
-    const victoriasVuelta1 = vtV > vtA ? 1:0;
-    const derrotasVuelta1 = vtV < vtA ? 0:1;
-    totalVictorias += victoriasIda + victoriasVuelta;
-    totalVictorias1 += victoriasIda1 + victoriasVuelta1;
-    totalDerrotas += derrotasIda + derrotasVuelta;
-    totalDerrotas1 += derrotasIda1 + derrotasVuelta1;
+    const victoriasFuIda = idA < idV ? 0:1;
+    const derrotasFuIda = idA > idV ? 1:0;
+    const victoriasCaIda = idV > idA ? 1:0;
+    const derrotasCaIda = idV < idA ? 0:1;
+    const victoriasFuVuelta = vtA < vtV ? 0:1;
+    const derrotasFuVuelta = vtA > vtV ? 1:0;
+    const victoriasCaVuelta = vtV > vtA ? 1:0;
+    const derrotasCaVuelta = vtV < vtA ? 0:1;
+    victorias.push(victoriasFuIda+victoriasCaIda+victoriasFuVuelta+victoriasCaVuelta);
+    derrotas.push(derrotasFuIda+derrotasCaIda+derrotasFuVuelta+derrotasCaVuelta);
     // Calcular el average total
-    const averageIda = idA -idV;
-    const averageIda1 = idV -idA;
-    const averageVuelta = vtA - vtV;
-    const averageVuelta1 = vtV - vtA;
-    totalAverage += averageIda + averageVuelta;
-    totalAverage1 += averageIda1 + averageVuelta1;
+    const averageFuIda = idA -idV;
+    const averageCaIda = idV -idA;
+    const averageFuVuelta = vtA - vtV;
+    const averageCaVuelta = vtV - vtA;
+    averageIda.push(averageFuIda+averageCaIda);
+    averageVuelta.push(averageFuVuelta+averageCaVuelta);
 });
 </script>
 </body>
