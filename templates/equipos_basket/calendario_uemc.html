@@ -455,75 +455,33 @@ partidos.forEach(partido=>{
     victoriasFuera += partido.vuelta.ganado;
     derrotasFuera += partido.vuelta.perdido;
 });*/
-    // Obtener todas las filas de la tabla
     const rows = document.querySelectorAll('.tabla_equipos tbody tr');
 
-    let partidos = [];
-
-    // Iterar sobre cada fila para realizar los cálculos
     rows.forEach(row => {
-        const idA = parseFloat(row.querySelector('.id-A').textContent);
-        const idV = parseFloat(row.querySelector('.id-V').textContent);
-        const vtA = parseFloat(row.querySelector('.vta-A').textContent);
-        const vtV = parseFloat(row.querySelector('.vta-V').textContent);
-
         const gan1 = row.querySelector('.gan-1');
         const per1 = row.querySelector('.per-1');
-        const gan2 = row.querySelector('.gan-2');
-        const per2 = row.querySelector('.per-2');
         const average = row.querySelector('.average');
 
-        // Determinar resultados de la ida
-        if (idA > idV) {
-            gan1.textContent = '-';
-            per1.textContent = '1';
-        } else if (idA < idV) {
+        const idaResult = parseFloat(row.querySelector('.id-A').textContent);
+        const vueltaResult = parseFloat(row.querySelector('.vta-V').textContent);
+
+        // Determinar si se ganó o perdió en la ida y la vuelta
+        if (idaResult > vueltaResult) {
             gan1.textContent = '1';
             per1.textContent = '-';
+        } else if (idaResult < vueltaResult) {
+            gan1.textContent = '-';
+            per1.textContent = '1';
         } else {
             gan1.textContent = '-';
             per1.textContent = '-';
         }
 
-        // Determinar resultados de la vuelta
-        if (vtV > vtA) {
-            gan2.textContent = '-';
-            per2.textContent = '1';
-        } else if (vtV < vtA) {
-            gan2.textContent = '1';
-            per2.textContent = '-';
-        } else {
-            gan2.textContent = '-';
-            per2.textContent = '-';
-        }
-
-        // Calcular el average
-        const avgIda = idA - idV;
-        const avgVuelta = vtA - vtV;
-        const totalAverage = avgIda + avgVuelta;
-
-        average.textContent = totalAverage > 0 ? `+${totalAverage}` : totalAverage;
-        average.style.color = totalAverage > 0 ? 'green' : totalAverage < 0 ? 'red' : 'black';
-
-        // Guardar los resultados de los partidos
-        partidos.push({
-            ida: { resultado: idV, perdido: idV < vtA ? 0 : 1, ganado: idV > vtA ? 1 : 0 },
-            vuelta: { resultado: vtA, ganado: vtA < idV ? 1 : 0, perdido: vtA > idV ? 0 : 1 }
-        });
-    });
-
-    // Calcular el total de victorias y derrotas en casa y fuera
-    let victoriasCasa = 0;
-    let derrotasCasa = 0;
-    let victoriasFuera = 0;
-    let derrotasFuera = 0;
-
-    partidos.forEach(partido => {
-        victoriasCasa += partido.ida.ganado;
-        derrotasCasa += partido.ida.perdido;
-        victoriasFuera += partido.vuelta.ganado;
-        derrotasFuera += partido.vuelta.perdido;
-    });
+        // Calcular el average comparando los resultados de ida y vuelta
+        const avgResult = idaResult - vueltaResult;
+        average.textContent = avgResult > 0 ? `+${avgResult}` : avgResult;
+        average.style.color = avgResult > 0 ? 'green' : avgResult < 0 ? 'red' : 'black';
+    });   
 </script>
 </body>
 </html>
