@@ -455,6 +455,7 @@ partidos.forEach(partido=>{
     victoriasFuera += partido.vuelta.ganado;
     derrotasFuera += partido.vuelta.perdido;
 });*/
+
     const rows = document.querySelectorAll('.tabla_equipos tbody tr');
 
     rows.forEach(row => {
@@ -463,25 +464,35 @@ partidos.forEach(partido=>{
         const average = row.querySelector('.average');
 
         const idaResult = parseFloat(row.querySelector('.id-A').textContent);
-        const vueltaResult = parseFloat(row.querySelector('.vta-V').textContent);
+        const vueltaResult = parseFloat(row.querySelector('.vta-A').textContent);
+        const idaResultV = parseFloat(row.querySelector('.id-V').textContent);
+        const vueltaResultV = parseFloat(row.querySelector('.vta-V').textContent);
 
-        // Determinar si se ganó o perdió en la ida y la vuelta
-        if (idaResult > vueltaResult) {
-            gan1.textContent = '1';
-            per1.textContent = '-';
-        } else if (idaResult < vueltaResult) {
-            gan1.textContent = '-';
-            per1.textContent = '1';
-        } else {
-            gan1.textContent = '-';
-            per1.textContent = '-';
+        if (!isNaN(idaResult) && !isNaN(vueltaResult) && !isNaN(idaResultV) && !isNaN(vueltaResultV)) {
+            // Calculando si se ganó o perdió en la ida
+            if (idaResult > idaResultV) {
+                gan1.textContent = '-';
+                per1.textContent = '1';
+            } else if (idaResult < idaResultV) {
+                gan1.textContent = '1';
+                per1.textContent = '-';
+            } else {
+                gan1.textContent = '-';
+                per1.textContent = '-';
+            }
+
+            // Calculando si se ganó o perdió en la vuelta
+            const ganVuelta = idaResultV > vueltaResult ? 1 : idaResultV < vueltaResult ? -1 : 0;
+
+            // Calcular el average comparando los resultados de ida y vuelta
+            const avgResult = (idaResult - idaResultV) + (vueltaResultV - vueltaResult);
+            average.textContent = avgResult;
+            average.style.color = avgResult > 0 ? 'green' : avgResult < 0 ? 'red' : 'black';
         }
+    });
 
-        // Calcular el average comparando los resultados de ida y vuelta
-        const avgResult = idaResult - vueltaResult;
-        average.textContent = avgResult > 0 ? `+${avgResult}` : avgResult;
-        average.style.color = avgResult > 0 ? 'green' : avgResult < 0 ? 'red' : 'black';
-    });   
+
+     
 </script>
 </body>
 </html>
