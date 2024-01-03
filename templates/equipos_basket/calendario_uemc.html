@@ -267,9 +267,13 @@ rows.forEach(row => {
     const idV = parseFloat(row.querySelector('.id-V').textContent);
     const vtA = parseFloat(row.querySelector('.vta-A').textContent);
     const vtV = parseFloat(row.querySelector('.vta-V').textContent);
+
     const gan1 = row.querySelector('.gan-1');
+
     const per1 = row.querySelector('.per-1');
+
     const average = row.querySelector('.average');
+    
     if (idA > idV) {
         gan1.textContent = '-';
         per1.textContent = '1';
