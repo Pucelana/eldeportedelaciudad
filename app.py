@@ -278,7 +278,12 @@ def calendario_uemc():
 # Ruta calendario Ponce Valladolid
 @app.route('/equipos_basket/calendario_ponce')
 def calendario_ponce():
-    return render_template('equipos_basket/calendario_ponce.html')  
+    return render_template('equipos_basket/calendario_ponce.html')
+
+# Ruta calendario Fundación Aliados
+@app.route('/equipos_basket/calendario_aliados')
+def calendario_aliados():
+    return render_template('equipos_basket/calendario_aliados.html')  
 
 
     
