@@ -37,8 +37,8 @@ function calcularEstadisticas() {
     calcularEstadisticas();
   });
 // Segunda función para calcular el porcentaje al ascenso
-const filas = document.querySelectorAll("#tablaAscenso tbody tr");
-/*const totalEquipos = 18; // Total de equipos en la liga*/
+/*const filas = document.querySelectorAll("#tablaAscenso tbody tr");
+const totalEquipos = 18; // Total de equipos en la liga
 const partidosTotales = 34; // Total de partidos en la temporada
 const puntosPorVictoria = 2;
 const puntosPorDerrota = 1;
@@ -78,7 +78,59 @@ equipos.forEach((equipoData) => {
     <td class="pts-pesi1 fw-bold">${equipoData.puntosPesimistas}</td>
     `;
     tabla.appendChild(nuevaFila);
+});*/
+const filas = document.querySelectorAll("#tablaAscenso tbody tr");
+const partidosTotales = 34; // Total de partidos en la temporada
+const partidosPorGanar = 1; // Cantidad de puntos por partido ganado
+
+const equipos = [];
+
+filas.forEach((fila, indice) => {
+    const equipo = fila.querySelector(`.fw-bold`).textContent;
+    const partidosJugados = parseInt(fila.querySelector(`.jugados1`).textContent);
+    const puntosActuales = parseInt(fila.querySelector(`.pts-act1`).textContent);
+
+    const partidosRestantes = partidosTotales - partidosJugados;
+    const partidosGanadosNecesarios = Math.ceil((partidosTotales * 0.5) + 1);
+
+    const partidosGanadosMatematicos = Math.min(partidosRestantes * partidosPorGanar + puntosActuales, partidosTotales);
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos - 6, partidosTotales);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 3, partidosTotales);
+
+    const proximidadAscenso = (partidosGanadosMatematicos / partidosGanadosNecesarios) * 10;
+
+    equipos.push({
+        equipo,
+        partidosJugados,
+        puntosActuales,
+        proximidadAscenso,
+        partidosGanadosMatematicos,
+        partidosGanadosOptimistas,
+        partidosGanadosPesimistas
+    });
 });
+
+// Ordenar los equipos por proximidad descendente
+equipos.sort((a, b) => b.proximidadAscenso - a.proximidadAscenso);
+// Actualizar la tabla con los datos ordenados
+const tabla = document.querySelector("#tablaAscenso tbody");
+tabla.innerHTML = ""; // Limpiar la tabla antes de actualizar
+equipos.forEach((equipoData) => {
+    const nuevaFila = document.createElement("tr");
+    nuevaFila.innerHTML = `
+    <td class="fw-bold text-center">${equipoData.equipo}</td>
+    <td class="jugados1 fw-bold text-center">${equipoData.partidosJugados}</td>
+    <td class="pts-act1 fw-bold text-center">${equipoData.puntosActuales}</td>
+    <td class="proxi1 fw-bold text-center">${equipoData.proximidadAscenso.toFixed(2)}%</td>
+    <td class="pts-mate1 fw-bold text-center">${equipoData.partidosGanadosMatematicos}</td>
+    <td class="pts-opti1 fw-bold text-center">${equipoData.partidosGanadosOptimistas}</td>
+    <td class="pts-pesi1 fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
+    `;
+    tabla.appendChild(nuevaFila);
+});
+
+
+
 // Tercera función playoff y ordenar automaticamente
 
 
