@@ -37,48 +37,7 @@ function calcularEstadisticas() {
     calcularEstadisticas();
   });
 // Segunda función para calcular el porcentaje al ascenso
-/*const filas = document.querySelectorAll("#tablaAscenso tbody tr");
-const totalEquipos = 18; // Total de equipos en la liga
-const partidosTotales = 34; // Total de partidos en la temporada
-const puntosPorVictoria = 2;
-const puntosPorDerrota = 1;
-// Crear un array para almacenar los datos de cada equipo
-const equipos = [];
-filas.forEach((fila, indice) => {
-    // Obtener datos de la fila actual
-    const equipo = fila.querySelector(`.fw-bold`).textContent; 
-    const partidosJugados = parseInt(fila.querySelector(`.jugados1`).textContent);
-    const puntosActuales = parseInt(fila.querySelector(`.pts-act1`).textContent);
-    // Calcular puntos por partido y puntos restantes para la temporada
-    const partidosRestantes = partidosTotales - partidosJugados;
-    const puntosMatematicos = puntosActuales + (partidosRestantes * puntosPorVictoria);
-    // Calcular escenarios optimista y pesimista
-    const puntosOptimistas = puntosActuales + (partidosRestantes * puntosPorVictoria);
-    const puntosPesimistas = puntosActuales + (partidosRestantes * puntosPorDerrota);
-    // Calcular la proximidad al ascenso directo en porcentaje
-    const puntosAscensoDirecto = partidosTotales * puntosPorVictoria;
-    const proximidadAscenso = (puntosMatematicos / puntosAscensoDirecto) * 100;
-    // Guardar los datos del equipo en el array 'equipos'
-    equipos.push({ equipo, proximidadAscenso, puntosMatematicos, puntosOptimistas, puntosPesimistas, partidosJugados, puntosActuales });
-});
-// Ordenar los equipos por proximidad descendente
-equipos.sort((a, b) => b.proximidadAscenso - a.proximidadAscenso);
-// Actualizar la tabla con los datos ordenados
-const tabla = document.querySelector("#tablaAscenso tbody");
-tabla.innerHTML = ""; // Limpiar la tabla antes de actualizar
-equipos.forEach((equipoData) => {
-    const nuevaFila = document.createElement("tr");
-    nuevaFila.innerHTML = `
-    <td class="fw-bold">${equipoData.equipo}</td>
-    <td class="jugados1 fw-bold">${equipoData.partidosJugados}</td>
-    <td class="pts-act1 fw-bold">${equipoData.puntosActuales}</td>
-    <td class="proxi1 fw-bold">${equipoData.proximidadAscenso.toFixed(2)}%</td>
-    <td class="pts-mate1 fw-bold">${equipoData.puntosMatematicos}</td>
-    <td class="pts-opti1 fw-bold">${equipoData.puntosOptimistas}</td>
-    <td class="pts-pesi1 fw-bold">${equipoData.puntosPesimistas}</td>
-    `;
-    tabla.appendChild(nuevaFila);
-});*/
+
 const filas = document.querySelectorAll("#tablaAscenso tbody tr");
 const partidosTotales = 34; // Total de partidos en la temporada
 const partidosPorGanar = 1; // Cantidad de puntos por partido ganado
@@ -94,9 +53,8 @@ filas.forEach((fila, indice) => {
     const partidosGanadosNecesarios = Math.ceil((partidosTotales * 0.5) + 1);
 
     const partidosGanadosMatematicos = Math.min(partidosRestantes * partidosPorGanar + puntosActuales, partidosTotales);
-    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos - 6, partidosTotales);
-    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 3, partidosTotales);
-
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos - 4, partidosTotales);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 2, partidosTotales)
     const proximidadAscenso = (partidosGanadosMatematicos / partidosGanadosNecesarios) * 10;
 
     equipos.push({
@@ -129,9 +87,57 @@ equipos.forEach((equipoData) => {
     tabla.appendChild(nuevaFila);
 });
 
-
-
 // Tercera función playoff y ordenar automaticamente
+const filas1 = document.querySelectorAll("#tablaPlayUemc tbody tr");
+const partidosTotales1 = 34; // Total de partidos en la temporada
+const partidosPorGanar1 = 1; // Cantidad de puntos por partido ganado
+
+const equiposPlay = [];
+
+filas1.forEach((fila, indice) => {
+    const equipo = fila.querySelector(`.fw-bold`).textContent;
+    const partidosJugados = parseInt(fila.querySelector(`.play-jug`).textContent);
+    const puntosActuales = parseInt(fila.querySelector(`.play-act`).textContent);
+
+    const partidosRestantes = partidosTotales1 - partidosJugados;
+    const partidosGanadosNecesarios = Math.ceil((partidosTotales1 * 0.5) + 1);
+
+    const partidosGanadosMatematicos = Math.min(partidosRestantes * partidosPorGanar1 + puntosActuales, partidosTotales1);
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos - 8, partidosTotales1);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 5, partidosTotales1)
+    const proximidadAscenso = (partidosGanadosMatematicos / partidosGanadosNecesarios) * 10;
+
+    equiposPlay.push({
+        equipo,
+        partidosJugados,
+        puntosActuales,
+        proximidadAscenso,
+        partidosGanadosMatematicos,
+        partidosGanadosOptimistas,
+        partidosGanadosPesimistas
+    });
+});
+
+// Ordenar los equiposPlay por proximidad descendente
+equiposPlay.sort((a, b) => b.proximidadAscenso - a.proximidadAscenso);
+// Actualizar la tabla con los datos ordenados
+const tabla1 = document.querySelector("#tablaPlayUemc tbody");
+tabla1.innerHTML = ""; // Limpiar la tabla antes de actualizar
+equiposPlay.forEach((equipoData) => {
+    const nuevaFila = document.createElement("tr");
+    nuevaFila.innerHTML = `
+    <td class="fw-bold text-center">${equipoData.equipo}</td>
+    <td class="play-jug fw-bold text-center">${equipoData.partidosJugados}</td>
+    <td class="play-act fw-bold text-center">${equipoData.puntosActuales}</td>
+    <td class="play-prox fw-bold text-center">${equipoData.proximidadAscenso.toFixed(2)}%</td>
+    <td class="play-mate fw-bold text-center">${equipoData.partidosGanadosMatematicos}</td>
+    <td class="play-opti fw-bold text-center">${equipoData.partidosGanadosOptimistas}</td>
+    <td class="play-pesi fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
+    `;
+    tabla1.appendChild(nuevaFila);
+});
+
+// Cuarta función descenso y ordenar automaticamente
 
 
 
