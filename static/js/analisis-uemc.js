@@ -36,11 +36,12 @@ function calcularEstadisticas() {
   document.addEventListener('DOMContentLoaded', function() {
     calcularEstadisticas();
   });
-// Segunda función para calcular el porcentaje al ascenso
 
+// Segunda función para calcular el porcentaje al ascenso
 const filas = document.querySelectorAll("#tablaAscenso tbody tr");
 const partidosTotales = 34; // Total de partidos en la temporada
 const partidosPorGanar = 1; // Cantidad de puntos por partido ganado
+const puntosAscenso = 30; // Puntos relativos para quedar primero
 
 const equipos = [];
 
@@ -49,19 +50,21 @@ filas.forEach((fila, indice) => {
     const partidosJugados = parseInt(fila.querySelector(`.jugados1`).textContent);
     const puntosActuales = parseInt(fila.querySelector(`.pts-act1`).textContent);
 
-    const partidosRestantes = partidosTotales - partidosJugados;
-    const partidosGanadosNecesarios = Math.ceil((partidosTotales * 0.5) + 1);
+    const puntosParaAscenso = puntosAscenso * partidosPorGanar;
+    
+    const puntosQueFaltan = Math.max(0, puntosParaAscenso - puntosActuales);
+    const proxiDeAscenso = Math.min(((puntosParaAscenso - puntosQueFaltan) / puntosParaAscenso) * 100, 100);
 
-    const partidosGanadosMatematicos = Math.min(partidosRestantes * partidosPorGanar + puntosActuales, partidosTotales);
-    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos - 4, partidosTotales);
-    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 2, partidosTotales)
-    const proximidadAscenso = (partidosGanadosMatematicos / partidosGanadosNecesarios) * 10;
+    const partidosRestantesAscenso = puntosAscenso;
+    const partidosGanadosMatematicos = Math.min(puntosActuales + partidosRestantesAscenso * partidosPorGanar,puntosParaAscenso);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos -2, puntosParaAscenso);
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -3, puntosParaAscenso)
 
     equipos.push({
         equipo,
         partidosJugados,
         puntosActuales,
-        proximidadAscenso,
+        proxiDeAscenso,
         partidosGanadosMatematicos,
         partidosGanadosOptimistas,
         partidosGanadosPesimistas
@@ -69,7 +72,7 @@ filas.forEach((fila, indice) => {
 });
 
 // Ordenar los equipos por proximidad descendente
-equipos.sort((a, b) => b.proximidadAscenso - a.proximidadAscenso);
+equipos.sort((a, b) => b.proxiDeAscenso - a.proxiDeAscenso);
 // Actualizar la tabla con los datos ordenados
 const tabla = document.querySelector("#tablaAscenso tbody");
 tabla.innerHTML = ""; // Limpiar la tabla antes de actualizar
@@ -79,7 +82,7 @@ equipos.forEach((equipoData) => {
     <td class="fw-bold text-center">${equipoData.equipo}</td>
     <td class="jugados1 fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="pts-act1 fw-bold text-center">${equipoData.puntosActuales}</td>
-    <td class="proxi1 fw-bold text-center">${equipoData.proximidadAscenso.toFixed(2)}%</td>
+    <td class="proxi1 fw-bold text-center">${equipoData.proxiDeAscenso.toFixed(2)}%</td>
     <td class="pts-mate1 fw-bold text-center">${equipoData.partidosGanadosMatematicos}</td>
     <td class="pts-opti1 fw-bold text-center">${equipoData.partidosGanadosOptimistas}</td>
     <td class="pts-pesi1 fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
@@ -91,6 +94,7 @@ equipos.forEach((equipoData) => {
 const filas1 = document.querySelectorAll("#tablaPlayUemc tbody tr");
 const partidosTotales1 = 34; // Total de partidos en la temporada
 const partidosPorGanar1 = 1; // Cantidad de puntos por partido ganado
+const partidosPlayOff = 20; // Número de partidos para llegar a los playoffs
 
 const equiposPlay = [];
 
@@ -99,27 +103,31 @@ filas1.forEach((fila, indice) => {
     const partidosJugados = parseInt(fila.querySelector(`.play-jug`).textContent);
     const puntosActuales = parseInt(fila.querySelector(`.play-act`).textContent);
 
-    const partidosRestantes = partidosTotales1 - partidosJugados;
-    const partidosGanadosNecesarios = Math.ceil((partidosTotales1 * 0.5) + 1);
+    //const partidosRestantes = partidosTotales1 - partidosJugados;
+    const puntosParaPlayoffs = partidosPlayOff * partidosPorGanar1;
 
-    const partidosGanadosMatematicos = Math.min(partidosRestantes * partidosPorGanar1 + puntosActuales, partidosTotales1);
-    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos - 8, partidosTotales1);
-    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 5, partidosTotales1)
-    const proximidadAscenso = (partidosGanadosMatematicos / partidosGanadosNecesarios) * 10;
+    const puntosFaltantes = Math.max(0, puntosParaPlayoffs - puntosActuales);
+    const proximidadAscenso = Math.min(((puntosParaPlayoffs - puntosFaltantes) / puntosParaPlayoffs) * 100, 100);
+
+    const partidosRestantesParaPlayoffs = partidosPlayOff;
+    const puntosGanadosMatematicos = Math.min(puntosActuales + partidosRestantesParaPlayoffs * partidosPorGanar1, puntosParaPlayoffs);
+    const puntosGanadosPesimistas = Math.min(puntosGanadosMatematicos - 2, puntosParaPlayoffs);
+    const puntosGanadosOptimistas = Math.min(puntosGanadosMatematicos - 3, puntosParaPlayoffs);
 
     equiposPlay.push({
         equipo,
         partidosJugados,
         puntosActuales,
         proximidadAscenso,
-        partidosGanadosMatematicos,
-        partidosGanadosOptimistas,
-        partidosGanadosPesimistas
+        puntosGanadosMatematicos,
+        puntosGanadosOptimistas,
+        puntosGanadosPesimistas
     });
 });
 
 // Ordenar los equiposPlay por proximidad descendente
 equiposPlay.sort((a, b) => b.proximidadAscenso - a.proximidadAscenso);
+
 // Actualizar la tabla con los datos ordenados
 const tabla1 = document.querySelector("#tablaPlayUemc tbody");
 tabla1.innerHTML = ""; // Limpiar la tabla antes de actualizar
@@ -130,14 +138,65 @@ equiposPlay.forEach((equipoData) => {
     <td class="play-jug fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="play-act fw-bold text-center">${equipoData.puntosActuales}</td>
     <td class="play-prox fw-bold text-center">${equipoData.proximidadAscenso.toFixed(2)}%</td>
-    <td class="play-mate fw-bold text-center">${equipoData.partidosGanadosMatematicos}</td>
-    <td class="play-opti fw-bold text-center">${equipoData.partidosGanadosOptimistas}</td>
-    <td class="play-pesi fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
+    <td class="play-mate fw-bold text-center">${equipoData.puntosGanadosMatematicos}</td>
+    <td class="play-opti fw-bold text-center">${equipoData.puntosGanadosOptimistas}</td>
+    <td class="play-pesi fw-bold text-center">${equipoData.puntosGanadosPesimistas}</td>
     `;
     tabla1.appendChild(nuevaFila);
 });
 
 // Cuarta función descenso y ordenar automaticamente
+const filas2 = document.querySelectorAll("#tablaDescUemc tbody tr");
+const partidosTotales2 = 34; // Total de partidos en la temporada
+const partidosPorGanar2 = 1; // Cantidad de puntos por partido ganado
+const partidosDescenso = 12;
+
+const equiposDesc = [];
+
+filas2.forEach((fila, indice) => {
+    const equipo = fila.querySelector(`.fw-bold`).textContent;
+    const partidosJugados = parseInt(fila.querySelector(`.desc-jug`).textContent);
+    const puntosActuales = parseInt(fila.querySelector(`.desc-act`).textContent);
+
+    const puntosParaSalvar = partidosDescenso * partidosPorGanar2;
+
+    const puntosFaltan = Math.max((0, puntosParaSalvar - puntosActuales));
+    const proxiSalvacion = Math.min(((puntosParaSalvar - puntosFaltan) / puntosParaSalvar) * 100, 100);
+
+    const partidosRestantesSalvacion = partidosDescenso;
+    const partidosGanadosMatematicos = Math.min(puntosActuales + partidosRestantesSalvacion * partidosPorGanar2,puntosParaSalvar);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos -2, puntosParaSalvar);
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -3, puntosParaSalvar);
+
+    equiposDesc.push({
+        equipo,
+        partidosJugados,
+        puntosActuales,
+        proxiSalvacion,
+        partidosGanadosMatematicos,
+        partidosGanadosOptimistas,
+        partidosGanadosPesimistas
+    });
+});
+
+// Ordenar los equiposDesc por proximidad descendente
+equiposDesc.sort((a, b) => b.proxiSalvacion - a.proxiSalvacion);
+// Actualizar la tabla con los datos ordenados
+const tabla2 = document.querySelector("#tablaDescUemc tbody");
+tabla2.innerHTML = ""; // Limpiar la tabla antes de actualizar
+equiposDesc.forEach((equipoData) => {
+    const nuevaFila = document.createElement("tr");
+    nuevaFila.innerHTML = `
+    <td class="fw-bold text-center">${equipoData.equipo}</td>
+    <td class="desc-jug fw-bold text-center">${equipoData.partidosJugados}</td>
+    <td class="desc-act fw-bold text-center">${equipoData.puntosActuales}</td>
+    <td class="desc-prox fw-bold text-center">${equipoData.proxiSalvacion.toFixed(2)}%</td>
+    <td class="desc-mate fw-bold text-center">${equipoData.partidosGanadosMatematicos}</td>
+    <td class="desc-opti fw-bold text-center">${equipoData.partidosGanadosOptimistas}</td>
+    <td class="desc-pesi fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
+    `;
+    tabla2.appendChild(nuevaFila);
+});
 
 
 
