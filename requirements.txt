@@ -2,6 +2,7 @@ blinker==1.6.3
 click==8.1.7
 colorama==0.4.6
 Flask==2.2.5
+flask-caching==2.1.0
 Flask-MySQLdb==1.0.1
 gunicorn==21.2.0
 itsdangerous==2.1.2

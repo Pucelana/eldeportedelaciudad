@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template, request, redirect,url_for, session
 from flask_mysqldb import MySQL
 from werkzeug.utils import secure_filename
+from flask_caching import Cache
 import os
 import uuid
 
