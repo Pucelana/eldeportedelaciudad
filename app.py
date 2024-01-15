@@ -11,6 +11,12 @@ ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 
 app = Flask(__name__)
 
+cache = Cache()
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})  # Configura la caché
+cache.init_app(app)
+# Inicializar la caché con una lista vacía si aún no está definida
+cache.set('enfrentamiento', cache.get('enfrentamiento') or [])
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
@@ -177,7 +183,7 @@ resultados = []
 # Ruta de los resultados creados
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
-    resultados_publicados = resultados[:]       
+    resultados_publicados = resultados[:]    
     return render_template('admin/pub_marcadores.html', resultados_publicados=resultados_publicados)
 
 # Ruta de la creación de los resultados
@@ -196,20 +202,23 @@ def crear_resultado():
     resultado2 = request.form.get('resultado2')
     fecha_parti = request.form.get('fecha_parti')
     nuevo_resultado = {'id': id_nuevo, 'seccion': seccion, 'liga': liga, 'equipoA': equipoA, 'resultado1': resultado1, 'equipoB': equipoB, 'resultado2': resultado2, 'fecha_parti':fecha_parti}
+    
     resultados.append(nuevo_resultado)
+    cache.set('enfrentamiento', resultados)
     return redirect(url_for('pub_marcadores'))
 
 # Ruta para la publicación de los resultados
 @app.route('/publicar_resultados/<string:id>', methods=['POST'])
 def publicar_resultados(id):
-        marcadores = next((item for item in resultados if item['id'] == id), None)
-        if marcadores:
-           marcadores['enfrentamiento'] =True
-        return redirect(url_for('sitio_home'))  
+    marcadores = next((item for item in resultados if item['id'] == id), None)
+    if marcadores:
+        marcadores['enfrentamiento'] =True
+    return redirect(url_for('sitio_home'))  
 
 # Ruta para modificar los resultados
 @app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
+    global resultados
     if request.method == 'POST':
         seccion = request.form.get('seccion')
         liga = request.form.get('liga')
@@ -230,6 +239,14 @@ def modificar_marcador(id):
             marcador_a_modificar['resultado2'] = resultado2
             marcador_a_modificar['fecha_parti'] = fecha_parti
     return redirect(url_for('pub_marcadores'))
+
+# Ruta para eliminar los resultados (sin uso de momento)
+"""@app.route('/eliminar_resultado/<string:id>', methods=['POST'])
+def eliminar_resultado(id):
+    global resultados
+    resultados = [r for r in resultados if r['id'] != id]
+    cache.set('enfrentamiento', resultados)
+    return redirect(url_for('pub_marcadores'))"""
 
 # Ruta sección de baloncesto
 @app.route('/seccion/baloncesto')
