@@ -12,1120 +12,773 @@
   <!-- Favicon -->  
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
-<body>
-    <nav class="nav justify-content-start mb-3">
-      <a class="nav-link" href="#">Sección</a>
-      <a class="nav-link" href="">Calendario</a>
-      <a class="nav-link" href="#">Clasificación y Ánalisis</a>
-    </nav>
-    <h1 class="mb-4">Clasificación y Ánalisis</h1>
-    <section class="container-lg mb-5">
-    <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
-        <div class="carousel-inner">	
-          <div class="carousel-item active">
-            <div class="d-flex justify-content-center">
-              <div class="card" style="width: 70rem;">
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table tabla_resultados">
+<body class="calend_basket">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb ms-1">
+      <li class="breadcrumb-item"><a href="/seccion/baloncesto" class="text-white text-decoration-none">Sección</a></li>
+      <li class="breadcrumb-item active text-dark" aria-current="page">Clasificación y Ánalisis</li>
+    </ol>
+  </nav>
+<h2 class="text-white text-center">Fundación Aliados</h2>
+<section class="container-lg mb-5">
+  <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><!--Tabla Clasificación-->	
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equipos" style="width: 70rem;">
+              <div class="card-body"> <!--Tabla Clasificación-->
+                <div class="row table-responsive">
+                  <h3 class="text-center">Clasificación - Liga Leb Oro</h3>
+                  <div class="col-1">
+                    <table class="table"> <!--Posiciones-->
                       <thead>
                         <tr>
-                          <th></th>
-                          <th class="vertical">S.Pablo Burgos</th>
-                          <th class="vertical">M.Estudiantes</th>
-                          <th class="vertical">Club Ourense</th>
-                          <th class="vertical">Leyma Coruña</th>
-                          <th class="vertical">Guuk Gipuzkoa</th>
-                          <th class="vertical">HLA Alicante</th>
-                          <th class="vertical">Amics Castelló</th>
-                          <th class="vertical">UEMC Valladolid</th>
-                          <th class="vertical">Alimerka Oviedo</th>
-                          <th class="vertical">Tizona Burgos</th>
-                          <th class="vertical">Fuenlabrada</th>
-                          <th class="vertical">Alega Cantabria</th>
-                          <th class="vertical">Rioverede Clavijo</th>
-                          <th class="vertical">Força Lleida</th>
-                          <th class="vertical">Hestia Menorca</th>
-                          <th class="vertical">Caceres</th>
-                          <th class="vertical">Real Betis</th>
-                          <th class="vertical">Melilla</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><!--San Pablo Burgos-->
-                          <th>S.Pablo Burgos</th>
-                          <td class="bg-dark"></td>
-                          <td>87-91</td><!--M.Estudianes-->
-                          <td>105-55</td><!--Club Ourense-->
-                          <td>77-75</td><!--Leyma Coruña-->
-                          <td></td><!--Guuk Gipozkoa-->
-                          <td>98-95</td><!--HLA Alicante-->
-                          <td></td><!--Amics Castelló-->
-                          <td></td><!--UEMC Valladolid-->
-                          <td></td><!--Alimerka Oviedo-->
-                          <td></td><!--Tizona Burgos-->
-                          <td></td><!--Fuenlabrada-->
-                          <td></td><!--Alega Cantabria-->
-                          <td></td><!--Rioverde Clavijo-->
-                          <td></td><!--Força Lleida-->
-                          <td></td><!--Hestia Menorca-->
-                          <td></td><!--Caceres-->
-                          <td></td><!--Real Betid-->
-                          <td></td><!--Melilla-->
-                        </tr>
-                        <tr><!--M.Estudiantes-->
-                          <th>M.Estudiantes</th>
-                          <td></td><!--S.Pablo Burgos-->
-                          <td class="bg-dark"></td>
-                          <td></td><!--Club Ourense-->
-                          <td></td><!--Leyma Coruña-->
-                          <td></td><!--Guuk Gipuzkoa-->
-                          <td></td><!--HLA Alicante-->
-                          <td></td><!--Amics Castelló-->
-                          <td></td><!--UEMC Valladolid-->
-                          <td></td><!--Alimerka Oviedo-->
-                          <td></td><!--Tizona Burgos-->
-                          <td></td><!--Fuenlabrada-->
-                          <td></td><!--Alega Cantabria-->
-                          <td></td><!--Rioverde Clavijo-->
-                          <td></td><!--Força Lleida-->
-                          <td></td><!--Hestia Menorca-->
-                          <td></td><!--Caceres-->
-                          <td></td><!--Real Betis-->
-                          <td></td><!--Melilla-->
-                        </tr>
-                        <tr>
-                          <th>Club Ourense</th>
-                          <td></td><!--S.Pablo Burgos-->
-                          <td></td><!--M.Estudiantes-->
-                          <td class="bg-dark"></td>
-                          <td></td><!--Leyma Coruña-->
-                          <td></td><!--Guuk Gipuzkoa-->
-                          <td></td><!--HLA Alicante-->
-                          <td></td><!--Amics Castelló-->
-                          <td></td><!--UEMC Valladolid-->
-                          <td></td><!--Alimerka Oviedo-->
-                          <td></td><!--Tizona Burgos-->
-                          <td></td><!--Fuenlabrada-->
-                          <td></td><!--Alega Cantabria-->
-                          <td></td><!--Rioverde Clavijo-->
-                          <td></td><!--Força Lleida-->
-                          <td></td><!--Hestia Menorca-->
-                          <td></td><!--Caceres-->
-                          <td></td><!--Real Betis-->
-                          <td></td><!--Melilla-->
-                        </tr>
-                        <tr>
-                          <th>Leyma Coruña</th>
-                          <td></td><!--S.Pablo Burgos-->
-                          <td></td><!--M.Estudiantes-->
-                          <td></td><!--Club Ourense-->
-                          <td class="bg-dark"></td>
-                          <td></td><!--Guuk Gipuzkoa-->
-                          <td></td><!--HLA Alicante-->
-                          <td></td><!--Amics Castelló-->
-                          <td></td><!--UEMC Valladolid-->
-                          <td></td><!--Alimerka Oviedo-->
-                          <td></td><!--Tizona Burgos-->
-                          <td></td><!--Fuenlabrada-->
-                          <td></td><!--Alega Cantabria-->
-                          <td></td><!--Rioverde Clavijo-->
-                          <td></td><!--Força Lleida-->
-                          <td></td><!--Hestia Menorca-->
-                          <td></td><!--Caceres-->
-                          <td></td><!--Real Betis-->
-                          <td></td><!--Melilla-->
-                        </tr>
-                        <tr>
-                          <th>Guuk Gipuzkoa</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>HLA Alicante</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Amics Castelló</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>UEMC Valladolid</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Alimerka Oviedo</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Tizona Burgos</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Fuenlabrada</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Alega Cantabria</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Rioverde Clavijo</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Força Lleida</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark "></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Hestia Menorca</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Caceres</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Real Betis</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <th>Melilla</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="bg-dark"></td>
-                        </tr>
-                      </tbody>        
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-              <div class="card" style="width: 70rem;">
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                     <h3 class="text-center mb-4">Ascenso</h3>
-                      <thead class="py-3">
-                        <tr class="text-center">
                           <th>Posición</th>
-                          <th>Equipos</th>
-                          <th>Proximidad</th>
-                          <th>P.Matemáticos</th>
-                          <th>P.Optimista</th>
-                          <th>P.Pesimistas</th>
-                          <th>P.Actuales</th>
-                          <th></th>
-                          <th></th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr class="text-center">
-                          <th class="bg-success text-white">1</th>
-                          <th>S.Pablo Burgos</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-success text-white">1</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">2</th>
-                          <th>M.Estudiantes</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-success text-white">2</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">3</th>
-                          <th>UEMC Valladolid</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-success text-white">3</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">4</th>
-                          <th>Leyma Coruña</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-success text-white">4</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">5</th>
-                          <th>Gipuzkoa Basket</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-secondary text-white">5</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">6</th>
-                          <th>Tizona Burgos</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">7</th>
-                          <th>HLA Alicante</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">8</th>
-                          <th>Força Lleida</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">9</th>
-                          <th>Alimerka Oviedo</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">10</th>
-                          <th>Club Ourense</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">11</th>
-                          <th>Grupo Alega Cantabria</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
                         </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">12</th>
-                          <th>Melilla</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">13</th>
-                          <th>AMICS Castelló</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">14</th>
-                          <th>Real Betis</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">15</th>
-                          <th>Fuenlabrada</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">16</th>
-                          <th>Hestia Menorca</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></tr>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-danger text-white">17</th>
-                          <th>Caceres</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-danger text-white">18</th>
-                          <th>Rioverde Clavijo</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-              <div class="card" style="width: 70rem;">
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                     <h3 class="text-center mb-4">PlayOff</h3>
-                      <thead class="py-3">
-                        <tr class="text-center">
-                          <th>Posición</th>
-                          <th>Equipos</th>
-                          <th>Proximidad</th>
-                          <th>P.Matemáticos</th>
-                          <th>P.Optimista</th>
-                          <th>P.Pesimistas</th>
-                          <th>P.Actuales</th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="text-center">
-                          <th class="bg-success text-white">1</th>
-                          <th>S.Pablo Burgos</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">2</th>
-                          <th>M.Estudiantes</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">3</th>
-                          <th>UEMC Valladolid</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">4</th>
-                          <th>Leyma Coruña</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">5</th>
-                          <th>Gipuzkoa Basket</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">6</th>
-                          <th>Tizona Burgos</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">7</th>
-                          <th>HLA Alicante</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">8</th>
-                          <th>Força Lleida</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">9</th>
-                          <th>Alimerka Oviedo</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">10</th>
-                          <th>Club Ourense</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">11</th>
-                          <th>Grupo Alega Cantabria</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">12</th>
-                          <th>Melilla</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">13</th>
-                          <th>AMICS Castelló</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">14</th>
-                          <th>Real Betis</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">15</th>
-                          <th>Fuenlabrada</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">16</th>
-                          <th>Hestia Menorca</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></tr>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-danger text-white">17</th>
-                          <th>Caceres</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-danger text-white">18</th>
-                          <th>Rioverde Clavijo</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-              <div class="card" style="width: 70rem;">
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                     <h3 class="text-center mb-4">Descenso</h3>
-                      <thead class="py-3">
-                        <tr class="text-center">
-                          <th>Posición</th>
-                          <th>Equipos</th>
-                          <th>Proximidad</th>
-                          <th>P.Matemáticos</th>
-                          <th>P.Optimista</th>
-                          <th>P.Pesimistas</th>
-                          <th>P.Actuales</th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="text-center">
-                          <th class="bg-success text-white">1</th>
-                          <th>S.Pablo Burgos</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">2</th>
-                          <th>M.Estudiantes</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">3</th>
-                          <th>UEMC Valladolid</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">4</th>
-                          <th>Leyma Coruña</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">5</th>
-                          <th>Gipuzkoa Basket</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">6</th>
-                          <th>Tizona Burgos</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">7</th>
-                          <th>HLA Alicante</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">8</th>
-                          <th>Força Lleida</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-warning text-white">9</th>
-                          <th>Alimerka Oviedo</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">10</th>
-                          <th>Club Ourense</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">11</th>
-                          <th>Grupo Alega Cantabria</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">12</th>
-                          <th>Melilla</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">13</th>
-                          <th>AMICS Castelló</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">14</th>
-                          <th>Real Betis</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">15</th>
-                          <th>Fuenlabrada</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-secondary text-white">16</th>
-                          <th>Hestia Menorca</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></tr>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-danger text-white">17</th>
-                          <th>Caceres</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                        <tr class="text-center">
-                          <th class="bg-danger text-white">18</th>
-                          <th>Rioverde Clavijo</th>
-                          <th>13</th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div class="col-11">
+                  <table id="tablaClasificacion" class="table">
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>PG</th>
+                        <th>PP</th>
+                        <th>PF</th>
+                        <th>PC</th>
+                        <th>DP</th>
+                        <th>PTS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="text-center"> <!--CD Ilunion-->
+                        <td class="fw-bold">CD Ilunion</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">12</td>
+                        <td class="perdidos fw-bold">5</td>
+                        <td class="favor fw-bold">1463</td>
+                        <td class="contra fw-bold">1314</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Bidaideak Bilbao BSR-->
+                        <td class="fw-bold">Bidaideak Bilbao BSR</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">14</td>
+                        <td class="perdidos fw-bold">3</td>
+                        <td class="favor fw-bold">1460</td>
+                        <td class="contra fw-bold">1245</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Ucam Murcia BSR-->
+                        <td class="fw-bold">Ucam Murcia BSR</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">13</td>
+                        <td class="perdidos fw-bold">4</td>
+                        <td class="favor fw-bold">1523</td>
+                        <td class="contra fw-bold">1358</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--BSR Amiab Albacete-->
+                        <td class="fw-bold">BSR Amiab Albacete</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">12</td>
+                        <td class="perdidos fw-bold">5</td>
+                        <td class="favor fw-bold">1385</td>
+                        <td class="contra fw-bold">1270</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Econy Gran Canaria-->
+                        <td class="fw-bold">Econy Gran Canaria</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">12</td>
+                        <td class="perdidos fw-bold">5</td>
+                        <td class="favor fw-bold">1514</td>
+                        <td class="contra fw-bold">1408</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Amivel Reyes Gutierrez-->
+                        <td class="fw-bold">Amivel Reyes Gutierrez</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">11</td>
+                        <td class="perdidos fw-bold">6</td>
+                        <td class="favor fw-bold">1347</td>
+                        <td class="contra fw-bold">1343</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Iberconsa Amfiv-->
+                        <td class="fw-bold">Iberconsa Amfiv</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">11</td>
+                        <td class="perdidos fw-bold">6</td>
+                        <td class="favor fw-bold">1356</td>
+                        <td class="contra fw-bold">1275</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Fundación Aliados-->
+                        <td class="fw-bold">Fundación Aliados</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">10</td>
+                        <td class="perdidos fw-bold">7</td>
+                        <td class="favor fw-bold">1349</td>
+                        <td class="contra fw-bold">1309</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Servigest Burgos BSR-->
+                        <td class="fw-bold">Servigest Burgos BSR</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">8</td>
+                        <td class="perdidos fw-bold">9</td>
+                        <td class="favor fw-bold">1369</td>
+                        <td class="contra fw-bold">1364</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Mideba Extremadura-->
+                        <td class="fw-bold">Mideba Extremadura</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">7</td>
+                        <td class="perdidos fw-bold">10</td>
+                        <td class="favor fw-bold">1273</td>
+                        <td class="contra fw-bold">1340</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--IMF Getafe BSR-->
+                        <td class="fw-bold">IMF Getafe BSR</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">8</td>
+                        <td class="perdidos fw-bold">9</td>
+                        <td class="favor fw-bold">1233</td>
+                        <td class="contra fw-bold">1354</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Menarini Joventut-->
+                        <td class="fw-bold">Menarini Joventut</td>
+                        <td class="jugados fw-bold "></td>
+                        <td class="ganados fw-bold">6</td>
+                        <td class="perdidos fw-bold">11</td>
+                        <td class="favor fw-bold">1278</td>
+                        <td class="contra fw-bold">1347</td>
+                        <td class="dife fw-bold"></td>
+                        <td class="puntos fw-bold"></td>
+                      </tr>
+                    </tbody>
+                  </table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    </section>
+        <div class="carousel-item"><!--Tabla Ascenso-->
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equipos" style="width: 70rem;">
+              <div class="card-body">
+                <div class="row table-responsive">
+                  <h3 class="text-center">Ascenso - Liga ACB</h3>
+                  <div class="col-1">
+                    <table class="table"> <!--Posiciones-->
+                      <thead>
+                        <tr>
+                          <th>Posición</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-success text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaAscenso" class="table"><!--Tabla Ascenso-->
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>P.Ganados</th>
+                        <th>Proximidad</th>
+                        <th>P.Matem</th>
+                        <th>P.Optim</th>
+                        <th>P.Pesim</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="text-center"> <!--CD Ilunión-->
+                        <td class="fw-bold">CD Ilunion</td>
+                        <td class="jugados1 fw-bold">17</td>
+                        <td class="pts-act1 fw-bold">12</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Bidaideak Bilbao BSR-->
+                        <td class="fw-bold">Bidaideak Bilbao BSR</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">14</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Ucam Murcia BSR-->
+                        <td class="fw-bold">Ucam Murcia BSR</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">13</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--BSR Amiab Albacete-->
+                        <td class="fw-bold">BSR Amiab Albacete</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">12</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Econy Gran Canaria-->
+                        <td class="fw-bold">Econy Gran Canaria</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">12</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Amivel Reyes Gutierrez-->
+                        <td class="fw-bold">Amivel Reyes Gutierrez</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">11</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Iberconsa Amfiv-->
+                        <td class="fw-bold">Iberconsa Amfiv</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">11</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Fundación Aliados-->
+                        <td class="fw-bold">Fundación Aliados</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">10</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Servigest Burgos BSR-->
+                        <td class="fw-bold">Servigest Burgos BSR</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">8</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Mideba Extremadura-->
+                        <td class="fw-bold">Mideba Extremadura</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">7</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--IMF Getafe BSR-->
+                        <td class="fw-bold">IMF Getafe BSR</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">8</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Menarini Joventut-->
+                        <td class="fw-bold">Menarini Joventut</td>
+                        <td class="jugados1 fw-bold ">17</td>
+                        <td class="pts-act1 fw-bold">6</td>
+                        <td class="proxi1 fw-bold"></td>
+                        <td class="pts-mate1 fw-bold"></td>
+                        <td class="pts-opti1 fw-bold"></td>
+                        <td class="pts-pesi1 fw-bold"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item"><!--Tabla PlayOff-->
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equipos" style="width: 70rem;">
+              <div class="card-body">
+                <div class="row table-responsive">
+                   <h3 class="text-center mb-4">PlayOff - Liga ACB</h3>
+                   <div class="col-1">
+                    <table class="table"> <!--Posiciones-->
+                      <thead>
+                        <tr>
+                          <th>Posición</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-secondary text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaPlayUemc" class="table"><!--Tabla PlayOff-->
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>P.Ganados</th>
+                        <th>Proximidad</th>
+                        <th>P.Matem</th>
+                        <th>P.Optim</th>
+                        <th>P.Pesim</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="text-center"> <!--CD Ilunión-->
+                        <td class="fw-bold play-equipo">CD Ilunion</td>
+                        <td class="play-jug fw-bold">17</td>
+                        <td class="play-act fw-bold">12</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="plya-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Bidaideak Bilbao BSR-->
+                        <td class="fw-bold play-equipo">Bidaideak Bilbao BSR</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">14</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Ucam Murcia BSR-->
+                        <td class="fw-bold">Ucam Murcia BSR</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">13</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--BSR Amiab Albacete-->
+                        <td class="fw-bold play-equipo">BSR Amiab Albacete</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">12</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Econy Gran Canaria-->
+                        <td class="fw-bold play-equipo">Econy Gran Canaria</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">12</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Amivel Reyes Gutierrez-->
+                        <td class="fw-bold play-equipo">Amivel Reyes Gutierrez</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">11</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Iberconsa Amfiv-->
+                        <td class="fw-bold play-equipo">Iberconsa Amfiv</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">11</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Fundación Aliados-->
+                        <td class="fw-bold play-equipo">Fundación Aliados</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">10</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Servigest Burgos BSR-->
+                        <td class="fw-bold play-equipo">Servigest Burgos BSR</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">8</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Mideba Extremadura-->
+                        <td class="fw-bold play-equipo">Mideba Extremadura</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">7</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--IMF Getafe BSR-->
+                        <td class="fw-bold play-equipo">IMF Getafe BSR</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">8</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Menarini Joventut-->
+                        <td class="fw-bold play-equipo">Menarini Joventut</td>
+                        <td class="play-jug fw-bold ">17</td>
+                        <td class="play-act fw-bold">6</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item"><!--Tabla Descenso-->
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equipos" style="width: 70rem;">
+              <div class="card-body">
+                <div class="row table-responsive">
+                  <h3 class="text-center mb-4">Descenso - Liga Leb Plata</h3>
+                  <div class="col-1">
+                    <table class="table"> <!--Posiciones-->
+                      <thead>
+                        <tr>
+                          <th>Posición</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-secondary text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaDescUemc" class="table"><!--Tabla Descenso-->
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>P.Ganados</th>
+                        <th>Proximidad</th>
+                        <th>P.Matem</th>
+                        <th>P.Optim</th>
+                        <th>P.Pesim</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="text-center"> <!--CD Ilunión-->
+                        <td class="fw-bold">CD Ilunion</td>
+                        <td class="desc-jug fw-bold">16</td>
+                        <td class="desc-act fw-bold">12</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Bidaideak Bilbao BSR-->
+                        <td class="fw-bold">Bidaideak Bilbao BSR</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">14</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Ucam Murcia BSR -->
+                        <td class="fw-bold">Ucam Murcia BSR</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">13</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--BSR Amiab Albacete-->
+                        <td class="fw-bold">BSR Amiab Albacete</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">12</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Econy Gran Canaria-->
+                        <td class="fw-bold">Econy Gran Canaria</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">12</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Amivel Reyes Gutierrez-->
+                        <td class="fw-bold">Amivel Reyes Gutierrez</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">11</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Iberconsa Amfiv-->
+                        <td class="fw-bold">Iberconsa Amfiv</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">11</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Fundación Aliados-->
+                        <td class="fw-bold">Fundación Aliados</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">10</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Servigest Burgos BSR-->
+                        <td class="fw-bold">Servigest Burgos BSR</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">8</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Mideba Extremadura-->
+                        <td class="fw-bold">Mideba Extremadura</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">7</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--IMF Getafe BSR-->
+                        <td class="fw-bold">IMF Getafe BSR</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">8</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                      <tr class="text-center"> <!--Menarini Joventut-->
+                        <td class="fw-bold">Menarini Joventut</td>
+                        <td class="desc-jug fw-bold ">17</td>
+                        <td class="desc-act fw-bold">6</td>
+                        <td class="desc-prox fw-bold"></td>
+                        <td class="desc-mate fw-bold"></td>
+                        <td class="desc-opti fw-bold"></td>
+                        <td class="desc-pesi fw-bold"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+</section>
     <!--Fin Carrusel-->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- Bootstrap JavaScript Libraries -->

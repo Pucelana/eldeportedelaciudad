@@ -2,6 +2,7 @@
 {% block titulo %} Eldeportedelaciudad-Inicio {% endblock %}
 {% block contenido %}
 <!--Carrusel-->
+<section>
 <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
 	<div class="carousel-inner">
 	  {% for date in nuevos_resultados %}
@@ -32,9 +33,23 @@
 	  <span class="visually-hidden">Next</span>
 	</button>
 </div><!--Fin Carrusel-->
-<h1 class="letras_logo">El deporte de la ciudad</h1>
-<h2 class="slogan">Deporte local, corazón urbano</h2>
-<section id="seccion_home" class="container-lg card_coments mb-5">
+<section class="container-fluid logo_principal">
+	<div class="row container-lg">
+		<div class="col-lg-10 col-md-10 col-sm-10 text-center">
+			<h1 class="letras_logo">eldeportedelaciudad</h1>
+			<h2 class="slogan">Deporte local, Corazón urbano</h2>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-2 d-flex justify-content-center">
+			<img src="/static/img/logo_sinfondo.png" class="img-fluid img_principal" alt="eldeportedelaciudad">
+		</div>
+		
+        <!-- Agrega más bloques .equipo según sea necesario para otros equipos -->
+    </div>
+
+</section>
+<!--<h1 class="letras_logo">El deporte de la ciudad</h1>
+<h2 class="slogan">Deporte local, corazón urbano</h2>-->
+<!--<section id="seccion_home" class="container-lg card_coments mb-5">
   <div class="coment_text bg-white shadow text_home">
 	<h4>¡Bienvenid@s a Valladolid, donde el Deporte se Convierte en Historia!</h4>
       <p>En nuestra ciudad, el corazón del deporte late al ritmo de la diversidad. Desde los emocionantes encuentros de fútbol hasta la elegancia en las canchas de baloncesto, pasando por la intensidad del balonmano, la velocidad del hockey línea y la fuerza del rugby, el arte táctico del boxeo y la libertad sobre dos ruedas del ciclismo nuestra ciudad celebra la pasión y el esfuerzo en cada disciplina.</p>
@@ -46,5 +61,6 @@
       <p>Conéctate con el legado rico y vibrante del deporte en Valladolid. Desde los logros históricos hasta los eventos más recientes, te invitamos a ser parte de una comunidad que celebra la tradición mientras abraza la emoción del deporte en su forma más moderna y dinámica.</p>
   </div>
   <a href="#" class="leer_mas text-decoration-none text-primary">Leer más</a>
-</section>
+</section>-->
+
 {% endblock %}

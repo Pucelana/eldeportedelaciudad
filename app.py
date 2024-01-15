@@ -303,6 +303,16 @@ def calendario_ponce():
 def calendario_aliados():
     return render_template('equipos_basket/calendario_aliados.html')  
 
+# Ruta calendario y resultados R.Valladolid
+@app.route('/equipos_futbol/calend_resul_vallad')
+def calend_resul_vallad():
+    return render_template('equipos_futbol/calend_resul_vallad.html')
+
+# Ruta clasificación y analisis R.Valladolid
+@app.route('/equipos_futbol/clasi_analis_vallad')
+def clasi_analis_vallad():
+    return render_template('equipos_futbol/clasi_analis_vallad.html')
+
 
     
             
