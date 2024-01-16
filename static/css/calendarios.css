@@ -14,7 +14,6 @@
 .jornadas{
     color: #505050;
 }
-
 .tabla_resultados th{
     color: #474747;
     text-align: center;
@@ -37,10 +36,33 @@
 /*Seccion del futbol*/
 .calend_futbol{
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/static/img/campo_futbol.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/camp_futbolpng.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+.tabla_equ_futb{
+    background-color: transparent;
+    backdrop-filter: blur(12px);
+    border: 1px solid #1b8f1f;
+}
+.jor-futb{
+    color: #3d3a3a;
+}
+.tabla_resul_futbol th{
+    color: #161616;
+    text-align: center;
+    font-size: 0.88em;
+    border: 1px solid black;
+}
+.tabla_resul_futbol td{
+    text-align: center;
+    font-size: 0.79em;
+    border: 1px solid black;
+    padding: 0px;
+    padding-top: 8px;
+    font-weight: bold;
+
 }
 
 

@@ -1,6 +1,8 @@
 body{
-    background-color: #f4f9ff;
+    /*background: linear-gradient(top left, #ff7878, #3a71d8);*/
+    background: -webkit-linear-gradient(180deg, #ffa3a3, #89a8e2);
 }
 #body_secciones{
-    background-color: #ffefef;
+    /*background-color: #ffefef;*/
+    background: -webkit-linear-gradient(180deg, #ffc3c3, #a4bae2);
 }
