@@ -5,17 +5,18 @@ from werkzeug.utils import secure_filename
 from flask_caching import Cache
 import os
 import uuid
+import json
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 
 app = Flask(__name__)
 
-cache = Cache()
+"""cache = Cache()
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})  # Configura la caché
 cache.init_app(app)
 # Inicializar la caché con una lista vacía si aún no está definida
-cache.set('enfrentamiento', cache.get('enfrentamiento') or [])
+cache.set('enfrentamiento', cache.get('enfrentamiento') or [])"""
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -174,16 +175,24 @@ def modificar_noticia(id):
 # Página inicio y resultados
 @app.route('/')
 def sitio_home():
-    nuevos_resultados = [dato for dato in resultados if dato['enfrentamiento']]
+    nuevos_resultados = [dato for dato in resultados if dato]
     return render_template('sitio/home.html', nuevos_resultados=nuevos_resultados)
 
 # Creación de partidos y resultados
-resultados = []
+def cargar_resultados_desde_archivo():
+    archivo_resultados = 'resultados.json'
 
+    if os.path.exists(archivo_resultados):
+        with open(archivo_resultados, 'r') as archivo:
+            return json.load(archivo)
+    else:
+        return []
+resultados = cargar_resultados_desde_archivo()
+    
 # Ruta de los resultados creados
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
-    resultados_publicados = resultados[:]    
+    resultados_publicados = cargar_resultados_desde_archivo()    
     return render_template('admin/pub_marcadores.html', resultados_publicados=resultados_publicados)
 
 # Ruta de la creación de los resultados
@@ -204,8 +213,18 @@ def crear_resultado():
     nuevo_resultado = {'id': id_nuevo, 'seccion': seccion, 'liga': liga, 'equipoA': equipoA, 'resultado1': resultado1, 'equipoB': equipoB, 'resultado2': resultado2, 'fecha_parti':fecha_parti}
     
     resultados.append(nuevo_resultado)
-    cache.set('enfrentamiento', resultados)
+    
+    guardar_resultados_en_archivo(resultados)
+    
     return redirect(url_for('pub_marcadores'))
+
+# Toma la lista de los resultados y los guarda
+def guardar_resultados_en_archivo(resultados):
+    # Ruta del archivo donde guardar los resultados
+    archivo_resultados = 'resultados.json'
+    # Guardar en el archivo
+    with open(archivo_resultados, 'w') as archivo:
+        json.dump(resultados, archivo)        
 
 # Ruta para la publicación de los resultados
 @app.route('/publicar_resultados/<string:id>', methods=['POST'])
@@ -238,15 +257,20 @@ def modificar_marcador(id):
             marcador_a_modificar['equipoB'] = equipoB
             marcador_a_modificar['resultado2'] = resultado2
             marcador_a_modificar['fecha_parti'] = fecha_parti
+            
+            # Guardar los cambios en el archivo JSON
+            guardar_resultados_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
 
 # Ruta para eliminar los resultados (sin uso de momento)
-"""@app.route('/eliminar_resultado/<string:id>', methods=['POST'])
+@app.route('/eliminar_resultado/<string:id>', methods=['POST'])
 def eliminar_resultado(id):
     global resultados
     resultados = [r for r in resultados if r['id'] != id]
-    cache.set('enfrentamiento', resultados)
-    return redirect(url_for('pub_marcadores'))"""
+    
+    guardar_resultados_en_archivo(resultados)
+    
+    return redirect(url_for('pub_marcadores'))
 
 # Ruta sección de baloncesto
 @app.route('/seccion/baloncesto')
