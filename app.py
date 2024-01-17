@@ -12,12 +12,6 @@ ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 
 app = Flask(__name__)
 
-"""cache = Cache()
-cache = Cache(app, config={'CACHE_TYPE': 'simple'})  # Configura la caché
-cache.init_app(app)
-# Inicializar la caché con una lista vacía si aún no está definida
-cache.set('enfrentamiento', cache.get('enfrentamiento') or [])"""
-
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
@@ -336,6 +330,26 @@ def calend_resul_vallad():
 @app.route('/equipos_futbol/clasi_analis_vallad')
 def clasi_analis_vallad():
     return render_template('equipos_futbol/clasi_analis_vallad.html')
+
+# Ruta calendario y resultados V Simancas
+@app.route('/equipos_futbol/calend_resul_siman')
+def calend_resul_siman():
+    return render_template('equipos_futbol/calend_resul_siman.html')
+
+# Ruta clasificación y analisis V Simancas
+@app.route('/equipos_futbol/clasi_analis_siman')
+def clasi_analis_siman():
+    return render_template('equipos_futbol/clasi_analis_siman.html')
+
+# Ruta calendario y resultados Promesas
+@app.route('/equipos_futbol/calend_resul_prome')
+def calend_resul_prome():
+    return render_template('equipos_futbol/calend_resul_prome.html')
+
+# Ruta clasificación y analisis Promesas
+@app.route('/equipos_futbol/clasi_analis_prome')
+def clasi_analis_prome():
+    return render_template('equipos_futbol/clasi_analis_prome.html')
 
 
     
