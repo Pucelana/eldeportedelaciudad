@@ -1,6 +1,4 @@
-function mostrarFormulario(){
-    document.getElementById('form_resultados_admin').style.display='block';
-}
+
 const multipleItemCarousel=document.querySelector('#carouselExampleControls')
 if(window.matchMedia("(min-width:320px)").matches){
     const carousel = new bootstrap.Carousel(multipleItemCarousel,

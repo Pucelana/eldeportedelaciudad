@@ -18,11 +18,11 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.',1)[1].lower()in ALLOWED_EXTENSIONS
 
 # Creado la conexión a la base de datos
-app.config['MYSQL_HOST'] = 'localhost'
+"""app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
-mysql = MySQL(app)
+mysql = MySQL(app)"""
 
 # Creando el registro del usuario
 @app.route('/registro/', methods=['GET', 'POST'])
@@ -350,6 +350,64 @@ def calend_resul_prome():
 @app.route('/equipos_futbol/clasi_analis_prome')
 def clasi_analis_prome():
     return render_template('equipos_futbol/clasi_analis_prome.html')
+
+# Rutas de partidos
+part_uemc = 'partidos_uemc.json'
+def guardar_datos(data):
+    # Guardar los datos en el archivo JSON
+    with open(part_uemc, 'w') as file:
+        json.dump(data, file, indent=4)
+def obtener_datos():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_uemc, 'r') as file:
+        data = json.load(file)
+      return data
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos UEMC
+@app.route('/encuentros/uemc/')
+def encuentros_uemc():
+    data = obtener_datos()
+    print(data)
+    return render_template('tablas_partidos/uemc.html', data=data)
+# Ingresar los resultados de los partidos UEMC
+@app.route('/ingresar_resultado_uemc', methods=['POST'])
+def ingresar_resultado():
+    data = obtener_datos()
+    num_partidos = int(request.form.get('num_partidos', 0))
+    
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data if j["nombre"] == jornada_nombre), None)
+
+    
+    if jornada_existente:
+        jornada = jornada_existente
+    else:
+        jornada = {"nombre": jornada_nombre, "partidos": []}
+        data.append(jornada)
+
+    for i in range(num_partidos):
+        id_nuevo = str(uuid.uuid4()) 
+        equipoLocal = request.form.get(f'local{i}')
+        resultadoA = request.form.get(f'resultA{i}')
+        resultadoB = request.form.get(f'resultB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+       
+        nuevo_partido = {
+            'id': id_nuevo,
+            'local': equipoLocal,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+
+    guardar_datos(data)
+    return redirect(url_for('encuentros_uemc'))
+    
+    
 
 
     

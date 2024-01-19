@@ -1,0 +1,197 @@
+[
+    {
+        "nombre": "Jornada 1",
+        "partidos": [
+            {
+                "local": "Equipo1",
+                "resultadoA": 1,
+                "resultadoB": 2,
+                "visitante": "Equipo2"
+            },
+            {
+                "local": "Equipo3",
+                "resultadoA": 3,
+                "resultadoB": 1,
+                "visitante": "Equipo4"
+            },
+            {
+                "local": "Equipo1",
+                "resultadoA": 1,
+                "resultadoB": 2,
+                "visitante": "Equipo2"
+            },
+            {
+                "local": "Equipo3",
+                "resultadoA": 3,
+                "resultadoB": 1,
+                "visitante": "Equipo4"
+            },
+            {
+                "local": "Equipo1",
+                "resultadoA": 1,
+                "resultadoB": 2,
+                "visitante": "Equipo2"
+            },
+            {
+                "local": "Equipo3",
+                "resultadoA": 3,
+                "resultadoB": 1,
+                "visitante": "Equipo4"
+            },
+            {
+                "local": "Equipo1",
+                "resultadoA": 1,
+                "resultadoB": 2,
+                "visitante": "Equipo2"
+            },
+            {
+                "local": "Equipo3",
+                "resultadoA": 3,
+                "resultadoB": 1,
+                "visitante": "Equipo4"
+            },
+            {
+                "local": "Equipo1",
+                "resultadoA": 1,
+                "resultadoB": 2,
+                "visitante": "Equipo2"
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 2",
+        "partidos": [
+            {
+                "id": "bf410501-3449-4f88-9098-abb2ecd26e06",
+                "local": "UEMC Real Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "HLA Alicante"
+            },
+            {
+                "id": "b0b94730-f04e-412e-a512-8f88198ff50c",
+                "local": "Movistar Estudiantes",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Tizona Burgos"
+            },
+            {
+                "id": "cc42c742-7282-4dea-829b-8143fe01b0e3",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5ec9fff5-317b-4fec-9ab7-24b314f92f8f",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "446a0e09-8a89-405f-be3b-5c1e012f29a6",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "93895207-9b01-4426-8c46-b0c75a482060",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f94c1465-61b1-4462-8a74-d976660c1494",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "96e6e5da-357b-42db-9a71-3303b3916245",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "be7ceba9-cfdc-4b70-8f55-1e2c74ea6d0a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 3",
+        "partidos": [
+            {
+                "id": "ad0c9877-ce02-417b-aaa5-9da57382d85d",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "a26e8996-85ec-4dc2-a48d-5d66b54b575a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "4cce0b0f-6364-40ad-847f-d2b5daca3ff6",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "6c10aa16-14f3-49a0-9ab1-fa13aa8709c4",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "07fc16df-0b4c-497d-9f64-24c3cd653ba5",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "31a568f2-6c12-4233-abe7-3f7dff20c805",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "1cf45edf-1231-4365-8741-b547e8c2cf09",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f8ce64ab-c611-4fca-93d9-3a537bdcb07a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "2c7af802-d664-487a-afd0-086c624e6f6a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    }
+]

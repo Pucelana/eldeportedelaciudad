@@ -25,3 +25,7 @@
      readMoreLink.style.display = 'none';
    }
  }
+// Mostrar formulario para crear partidos
+ function mostrarFormulario(){
+  document.getElementById('form_partidos').style.display='block';
+}
