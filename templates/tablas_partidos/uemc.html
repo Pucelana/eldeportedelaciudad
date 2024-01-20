@@ -70,9 +70,9 @@
                                         <td colspan="5" class="text-center fw-bold">{{ jornada.nombre }}</td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody style="display:none">
                                     {% for partido in jornada.partidos %}
-                                    <tr class="text-center" style="display:none;">
+                                    <tr class="text-center">
                                         <td class="text-center fw-bold">{{ partido.local }}</td>
                                         <td class="text-center">{{ partido.resultadoA }}</td>
                                         <td class="text-center">{{ partido.resultadoB }}</td>
