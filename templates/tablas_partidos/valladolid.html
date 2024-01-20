@@ -60,23 +60,23 @@
         <!--Visibilidad de los resultados-->
         <div class="container-fluid">
             <div class="row">
-                {% for jornada in data %}
+                {% for jornada in data_bis %}
                 <div class="col-lg-6">
                     <div class="card mb-3">
                         <div class="table-responsive">
                             <table class="table table-bordered tabla_equipos">
                                 <thead>
                                     <tr class="text-center">
-                                        <td colspan="5" class="text-center fw-bold">{{ jornada.nombre }}</td>
+                                        <td colspan="5" class="text-center fw-bold">{{ jornada.nombres }}</td>
                                     </tr>
                                 </thead>
                                 <tbody style="display:none">
-                                    {% for partido in jornada.partidos %}
+                                    {% for partidos in jornada.partidos %}
                                     <tr class="text-center">
-                                        <td class="text-center fw-bold">{{ partido.local }}</td>
-                                        <td class="text-center">{{ partido.resultadoA }}</td>
-                                        <td class="text-center">{{ partido.resultadoB }}</td>
-                                        <td class="text-center fw-bold">{{ partido.visitante }}</td>
+                                        <td class="text-center fw-bold">{{ partidos.local }}</td>
+                                        <td class="text-center">{{ partidos.resultadoA }}</td>
+                                        <td class="text-center">{{ partidos.resultadoB }}</td>
+                                        <td class="text-center fw-bold">{{ partidos.visitante }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -89,7 +89,7 @@
                                 <!--<form action="" method="POST">
                                     <button type="submit" class="bg-danger text-white border-0 px-2">Eliminar</button>
                                 </form>-->
-                                <a href="#" onclick="toggleTabla(this, '{{ jornada.nombre }}') " class="text-decoration-none text-primary text-end">Ver Tabla</a>
+                                <a href="#" onclick="toggleTabla(this, '{{ jornada.nombres }}') " class="text-decoration-none text-primary text-end">Ver Tabla</a>
                             </div>
                         </div> 
                     </div>
