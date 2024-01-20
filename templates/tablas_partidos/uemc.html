@@ -106,10 +106,10 @@
             function toggleTabla(element) {
                 // Encuentra el contenedor padre de la tabla
                 var container = element.closest('.card');
-                // Encuentra la tabla dentro del contenedor
-                var tabla = container.querySelector('.tabla_equipos');
-                // Muestra u oculta la tabla
-                tabla.style.display = (tabla.style.display === 'none' || tabla.style.display === '') ? 'table' : 'none';
+                // Encuentra el tbody dentro de la tabla
+                var tbody = container.querySelector('.tabla_equipos tbody');
+                // Muestra u oculta el tbody
+                tbody.style.display = (tbody.style.display === 'none' || tbody.style.display === '') ? 'table-row-group' : 'none';
     }
      
         </script>
