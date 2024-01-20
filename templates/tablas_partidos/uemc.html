@@ -62,9 +62,9 @@
             <div class="row">
                 {% for jornada in data %}
                 <div class="col-lg-6">
-                    <div class="card mb-3 card_coments">
-                        <div class="table-responsive text_home">
-                            <table class="table table-bordered tabla_equipos">
+                    <div class="card mb-3">
+                        <div class="table-responsive card_coments>
+                            <table class="table table-bordered tabla_equipos text_home">
                                 <tbody>
                                     <tr class="text-center">
                                         <td colspan="5" class="text-center fw-bold">{{ jornada.nombre }}</td>
@@ -84,12 +84,14 @@
                                     <button type="submit" class="bg-success text-white border-0 px-2 me-2">Publicar</button>
                                 </form>
                                 <button type="submit" id="" class="bg-info text-white border-0 px-2" data-bs-toggle="modal" data-bs-target="#modal">Modificar</button>
-                                <form action="" method="POST">
+                                <!--<form action="" method="POST">
                                     <button type="submit" class="bg-danger text-white border-0 px-2">Eliminar</button>
-                                </form>
+                                </form>-->
+
                             </div>
+                            <a href="#" class="leer_mas text-decoration-none text-primary">Ver Tabla</a>
                         </div>
-                        <a href="#" class="leer_mas text-decoration-none text-primary">Ver Tabla</a>
+                        
                     </div>
                 </div>
                 {% endfor %}
