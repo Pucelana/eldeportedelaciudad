@@ -3,10 +3,10 @@
         "nombre": "Jornada 1",
         "partidos": [
             {
-                "local": "Equipo1",
-                "resultadoA": 1,
-                "resultadoB": 2,
-                "visitante": "Equipo2"
+                "local": "HLA Alicante",
+                "resultadoA": 92,
+                "resultadoB": 86,
+                "visitante": "Rioverde Clavijo"
             },
             {
                 "local": "Equipo3",
