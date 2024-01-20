@@ -27,8 +27,5 @@
  }
 // Mostrar formulario para crear partidos
  function mostrarFormulario(){
-  document.getElementById('form_partidos_uemc').style.display='block';
-}
-function mostrarFormulario(){
-  document.getElementById('form_partidos_vallad').style.display='block';
+  document.getElementById('form_partidos').style.display='block';
 }
