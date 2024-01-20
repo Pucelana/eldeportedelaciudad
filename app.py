@@ -400,56 +400,6 @@ def ingresar_resultado():
         jornada["partidos"].append(nuevo_partido)
     guardar_datos(data)
     return redirect(url_for('encuentros_uemc'))
-
-    # Rutas de partidos Valladolid
-part_vallad = 'partidos_valladolid.json'
-def guardar_datos(data):
-    # Guardar los datos en el archivo JSON
-    with open(part_vallad, 'w') as file:
-        json.dump(data, file, indent=4)
-def obtener_datos():
-    try:
-    # Leer los datos desde el archivo JSON
-      with open(part_vallad, 'r') as file:
-        data2 = json.load(file)
-      return data2
-    except json.decoder.JSONDecodeError:
-        # Manejar archivo vacío, inicializar con una estructura JSON válida
-        return []
-# Partidos Valladolid
-@app.route('/encuentros/valladolid/')
-def encuentros_valladolid():
-    data_bis = obtener_datos()
-    print(data_bis)
-    return render_template('tablas_partidos/valladolid.html', data_bis=data_bis)
-# Ingresar los resultados de los partidos UEMC
-@app.route('/ingresar_resultado_vallad', methods=['POST'])
-def ingresar_resultado_vallad():
-    data_bis2 = obtener_datos()
-    nums_partidos = int(request.form.get('num_partidos', 0))
-    jornada_nombres = request.form.get('nombre')
-    jornada_existente = next((j for j in data_bis2 if j["nombre"] == jornada_nombres), None)
-    if jornada_existente:
-        jornada = jornada_existente
-    else:
-        jornada1 = {"nombre": jornada_nombres, "partidos": []}
-        data_bis2.append(jornada1)
-    for i in range(num_partidos):
-        id_nuevo = str(uuid.uuid4()) 
-        equipoLocal = request.form.get(f'local{i}')
-        resultadoA = request.form.get(f'resultA{i}')
-        resultadoB = request.form.get(f'resultB{i}')
-        equipoVisitante = request.form.get(f'visitante{i}')
-        nuevo_partido2 = {
-            'id': id_nuevo,
-            'local': equipoLocal,
-            'resultadoA': resultadoA,
-            'resultadoB': resultadoB,
-            'visitante': equipoVisitante
-        }
-        jornada1["partidos"].append(nuevo_partido2)
-    guardar_datos(data_bis2)
-    return redirect(url_for('encuentros_valladolid'))
     
     
 
