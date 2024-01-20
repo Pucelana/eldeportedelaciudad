@@ -11,7 +11,7 @@
     </head>
     <body>
         <header>
-           <h1 class="text-center">Resultados Liga Led Oro 23/24</h1>
+           <h1 class="text-center">Resultados Liga Hypermotion 23/24</h1>
         </header>
         <main>
             <section class="container-lg">
@@ -19,8 +19,8 @@
                 <button onclick="mostrarFormulario()" class="btn btn-success text-center fs-3">Crear Resultados</button>
                 </div>
                 <!-- Formulario para los resultados de los partidos -->
-                <div class="container-lg" id="form_partidos">
-                  <form method="POST" action="/ingresar_resultado_uemc" enctype="multipart/form-data" class="row mb-3">
+                <div class="container-lg" class="form_partidos">
+                  <form method="POST" action="/ingresar_resultado_vallad" enctype="multipart/form-data" class="row mb-3">
                     <div class="col-md-12">
                         <label for="nombre">Jornada</label>
                         <input type="text" class="form-control" id="nombre" name="nombre">
@@ -29,7 +29,7 @@
                         <label for="num_partidos">Número de partidos</label>
                         <input type="text" class="form-control" id="num_partidos" name="num_partidos">
                     </div>
-                    {% for i in range(9) %}
+                    {% for i in range(11) %}
                     <div class="col-md-5">
                         <label for="local{{i}}">Equipo Local</label>
                         <input type="text" class="form-control" id="local{{i}}" name="local{{i}}">
@@ -114,8 +114,3 @@
         </script>
     </body>
 </html>
-
-
-
-
-
