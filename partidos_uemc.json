@@ -1,5 +1,5 @@
 [
-    { 
+    {
         "nombre": "Jornada 1",
         "partidos": [
             {
@@ -187,6 +187,1162 @@
             },
             {
                 "id": "2c7af802-d664-487a-afd0-086c624e6f6a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 4",
+        "partidos": [
+            {
+                "id": "523431ba-42ca-4f08-8a78-3bfbcb3a3cf1",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "9bf4dc2d-8af2-40f3-94a9-86fa7cd2f55f",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "583c3311-a689-4f88-a43d-bb6558e7747d",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "74184b8f-4d5d-49cd-abe2-363bfe857bde",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "29c12a32-a8c2-4dab-b56e-2f632f133e30",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "2aa0f84d-14a3-4ad1-83a0-c03260ebd911",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "624e1ffa-814a-48d4-99e9-957be2be8ac7",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "da8aab05-db52-4efa-b819-b46980840c9d",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "75059712-367f-4633-9e6f-80e0a5f6586d",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 5",
+        "partidos": [
+            {
+                "id": "5f6990d8-8fb4-4423-a6da-54381cca43fb",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "04edd0b4-ef73-4109-8241-b78e36b4f1b8",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "c1db700c-de3c-498e-9fb7-db8e521cba98",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "3d184564-51f7-462e-9c79-2d8ec70c8305",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "af627fe8-4e33-4d76-a254-9e39e39c5170",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "e40d9860-b9ab-45b8-85e9-6d221c74d603",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "a01d0c55-9c48-4010-ba41-ad0a0615602a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "bd44344d-34b6-4aba-8266-c6b94a3ec95c",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f734cdcd-b4b7-4b0c-8851-82f939cc6589",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 6",
+        "partidos": [
+            {
+                "id": "9d46e870-14c4-4fd3-a465-7e4e5d74d6b8",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "c781fe52-fc91-4bbc-affc-01c66720817c",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "4a44f17b-6722-418b-9797-18b21c6008b2",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "a4802a26-a84c-4377-8540-9dcf95636aa6",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "218e1556-a834-4471-9d6e-66099d5f0980",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "692e1509-c68a-421d-b287-6e6ee477fd8a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "a9eb32ef-f2f4-4bf0-8b41-78d72f01ee1b",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "a48431bb-95b1-41b8-beee-e3fd59c364cd",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "dcbc943c-09ae-420d-bf12-ec281ae1dac0",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 7",
+        "partidos": [
+            {
+                "id": "89108add-7513-442f-ba70-2a199c94b07f",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5e8feb86-5415-450d-854d-4c26923b8dec",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "9f217965-3b84-4ac7-83e6-533344461528",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "d7d6f8a1-88ab-41b7-944c-2d921bd993be",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "b01285ab-3405-4190-af77-99e96863abf2",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "459aa77b-c1d0-4990-a6a5-391ac8c061d4",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "1b642183-a1ab-461c-886b-a22b7df44800",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "4ee6c657-b58b-483f-bd29-7e621ecdd991",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "4be3074c-7fff-41a7-ba25-fbdf514632e8",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 8",
+        "partidos": [
+            {
+                "id": "3f8357b3-a604-452f-b27a-701be763cb3c",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "2b81fc07-97d5-4831-ab70-4943b9326839",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f0f08bde-e9eb-42f1-9d96-7200114d2a70",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "12a6d216-630d-4f72-9c9e-279f06cf256c",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "d9574878-3948-49fb-891d-6599f73d4a15",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5e022fe4-bbeb-4946-a01a-c642d16dcb55",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "3dd5690a-83af-4142-8d3f-4a712d4888da",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "13cca39f-b8df-49e9-ba29-179d8776dc99",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "fb1339ad-b0d1-46b7-b2bf-89f5df931cc7",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 9",
+        "partidos": [
+            {
+                "id": "0d7a9fe8-32db-49ec-9215-802c8231fd72",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "8af28e29-4626-4247-aa4f-0d53a34e6dd9",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "d6b8b299-ff1c-4389-b648-44b3232bd9f8",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "6e504546-8cee-41fc-a76c-b3365713a537",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5c707395-323f-46d4-ab11-8ccdafe7e70e",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5fd4f17a-bbab-402f-90c8-293ab8a4a76a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "7771b2ac-1445-4ea5-81a6-12a4f6cca756",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "6ab94222-7a19-4f2e-a3e4-a1beb658c7bd",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "1e2faf42-9de8-4c2c-ac53-f5dc7c997238",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 10",
+        "partidos": [
+            {
+                "id": "948c8ba3-dd4c-4d12-b3ce-f67023faa9fb",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5191a5a8-e5da-4811-91e8-52b43a84add5",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "3be9716f-5db8-4fd5-9683-a9e50330947f",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "9a82872a-814d-449a-81de-f9c0f214adfb",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "051d11e6-b795-4b31-b6b8-6536979d6ece",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "86374961-d3ee-45df-b25d-0125a0bcf266",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "16386002-1e93-43ad-b655-075772dc2d37",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "2fb381ad-c18e-4659-b75c-2bdde262c96c",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "b2080f1a-64f7-4039-a9bf-03a2cb8cd606",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 11",
+        "partidos": [
+            {
+                "id": "fcac8474-d88d-4ed3-a27c-62fd6801b343",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "0d7c19ce-beab-443c-8aaa-31f3bb4add34",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "728e3902-b777-4fa8-ad75-42b324bc666b",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "b29eb8be-6597-45b6-a1ee-6840e68f3024",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "be64b9ab-1048-494b-b398-75f9d6e225a3",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "53519287-df1b-4944-93ff-a28b17f7ff88",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "874c8c17-cdaa-48ce-b644-5bfd6aaf9b90",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "04e4917f-0489-4afc-b226-46ba4d62090d",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "4cd626f9-0eb0-4d31-82c0-c882e5d84775",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 12",
+        "partidos": [
+            {
+                "id": "d8f31cea-8367-49a9-9f17-f0d8e334dceb",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "acf7a7cd-051d-43a1-a9c0-812078711638",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "558b6395-d9c6-4f65-aaf5-f65c835ecba7",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "0be6bec8-541c-4cfe-8d67-51d4b22a0a7c",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "4ed4d0e5-981f-44de-bbbc-72d13bf0ba28",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "cb86d8ac-0da5-452f-b910-0cd0376533e8",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "06d1f8cb-d71d-444f-8dcb-ac10ecd46603",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "1497387a-10c2-46b5-b4d0-8466d30c58fb",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "a5e85503-f153-4657-8e3e-027d6b4d4db6",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 13",
+        "partidos": [
+            {
+                "id": "3c8f222b-996d-47eb-ad18-53ddcac53ab0",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "105268ff-a5ed-4195-a8ec-52e5b73f2338",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "3f8ac686-d1b4-4bd5-a732-79311ffab6e5",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "9f07b380-ec6e-4311-8964-f8743cd51bf9",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "b6170e6d-58f6-45a3-aa2d-b8d44d1e6000",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "2a6685a8-a3ca-4bf2-9718-780ae608c5f8",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "d8f9512b-cd38-449c-8e16-08d2c75d6368",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f2b476f5-0add-4724-8995-8b6bf71a5b97",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "b00d36f7-15b1-4c61-821b-674e6c6c1967",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 14",
+        "partidos": [
+            {
+                "id": "e50947cf-7314-47ed-a876-36ef5d964e65",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "085503d5-2907-4ffe-b8fc-f9bf3725b081",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "bd5fd96d-8e57-44f4-8099-72514136cd23",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "8634cb84-2a7e-438a-9e85-f53c0d0fd64d",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "9f32f7ed-c341-4650-af00-858ea42bb99c",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "bea17356-e433-4eeb-b926-f4801d5e66ed",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "99e669bf-d812-43ac-846e-a8bebac2acc5",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "ade27e29-1869-4db3-ab3d-1f6465dd4039",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "ab4d6a62-0ba9-4b2b-b4bc-5f4b7b5b7975",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 15",
+        "partidos": [
+            {
+                "id": "04746517-a9f8-474e-8150-8bcec9224dbf",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "34272ed4-f55a-4043-8799-c1ffc61aea41",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "ee28bd28-942e-4acd-b1e1-6c28192eaa4f",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "586ea71f-9e77-43ba-bd83-6a4d0e5415b7",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f85d3f01-4e6a-4d84-85d9-d5f9d592dcc4",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "857b92f5-ee0d-4ade-8797-6428826650ed",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "919dfeec-d745-4dec-bc25-3c65c4d52baa",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f05e7bc0-0bfd-49d9-99dc-b98d6a0c736e",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "79519f4d-7ccc-4979-9198-0f0bab760f37",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 16",
+        "partidos": [
+            {
+                "id": "a3b4e660-4607-482c-ab08-b66436e654b6",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "df05b23d-107a-4a09-a9c5-c8cf979ce436",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5f3386ad-c0a9-4a91-9f8d-121dbd580a83",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "7b82eef9-8544-41be-81c2-e950d45ca6b0",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "e9140fc6-817e-4018-aeb5-9d1c5241214b",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "ebd22339-1d88-45f1-84c2-d99fec1abfae",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "ad7ac2bc-9883-4082-8a30-10631f70aa03",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "cdc5babe-0319-4b19-95fb-158a402b492e",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "54f29eb3-4106-48de-b455-0660ad0992ce",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 17",
+        "partidos": [
+            {
+                "id": "8e9a23cc-5e3b-476a-9a65-895e74b446a2",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "93fc3d3a-3dd5-4fe2-9000-107889ed464f",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "d79715d4-1cce-4763-8125-63cb2ab1f2c5",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "1c873481-c299-4f39-a425-e48a1b304d56",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "64488a99-e7ad-406a-bf73-0bde4668678d",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f35b03fb-b5e7-4485-9bda-62aec6168a4f",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "036ebaa2-2c6a-4b65-8afe-204a92174bed",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "e9727fc3-d123-4b7d-937a-273a5a5d6cce",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "4d456428-9957-4aa9-84eb-326216aa424e",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 18",
+        "partidos": [
+            {
+                "id": "a91ab13f-a0a5-4a5e-b307-8f58c1fc8dc0",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5a4bdbc9-c9b0-4513-938f-b9a037beac71",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "e1f2a3b1-8de4-44f6-a931-beba4d657edc",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "389e12e3-e109-48d8-a4d0-446323676a97",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "60cee31c-9194-4925-bd75-d7bd2e1907b4",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "3e6a635d-d48b-4edd-bde4-96abb260f6e4",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "92263d60-87af-40d0-9d95-0204ede76346",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "9d6f3a17-e5bc-4d2b-aee6-6185b87a0571",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5b3987fe-b0ff-46b5-aeed-58981bffff2f",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 19",
+        "partidos": [
+            {
+                "id": "81a17752-7d01-4fc0-85a1-63345ef4d0bf",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "5c2d7e16-d663-417a-8794-f959c3784618",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "0bfe2a52-d6a9-4e3d-b5d0-abcb7eb89c12",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "c078d9d4-8587-4305-9882-490ee27725c1",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "bb473270-7972-40b6-bc87-b58008cc8568",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "ec49054c-d301-451c-9875-a1a9cb16e9c5",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "73441378-1ad8-44eb-89ad-41573162917a",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "65e760bf-40f1-4b6d-8eed-f455c70d4dc3",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "63e30120-7432-4f54-a64d-78c70128649e",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Jornada 20",
+        "partidos": [
+            {
+                "id": "c7ca0e54-be4e-4395-8bee-1018774a79d6",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "248ff638-c160-4760-9ae3-4192ba8d77ce",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "f7ea7d3d-fab3-40ac-8d39-451958c986d6",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "b75b4482-12c7-459b-8472-0e77d5fb2a72",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "2027a69b-3c2d-4a74-86f6-627460174188",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "9a58ba68-0844-44ac-a826-0f8b5423b756",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "0482a608-5506-4b67-9534-04a647798fa4",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "1ad99fa3-1d7b-4e97-8f46-9d20333e7dc8",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "id": "29c0cb5c-94b1-47f2-ac8c-27b1873f1bfb",
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
