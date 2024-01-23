@@ -291,12 +291,12 @@ def seccion_hockey():
 def seccion_rugby():
     return render_template('secciones/rugby.html')
 
-# Ruta sección de clasificación y áanalisis del UEMC Valladolid 
+# Ruta sección de clasificación y ánalisis del UEMC Valladolid 
 @app.route('/equipos_basket/clasif_analisis_uemc')
 def clasif_analisis_uemc():
     return render_template('equipos_basket/clasif_analisis_uemc.html')
 
-# Ruta sección de clasificación y áanalisis del Ponce Valladolid 
+# Ruta sección de clasificación y ánalisis del Ponce Valladolid 
 @app.route('/equipos_basket/clasif_analisis_ponce')
 def clasif_analisis_ponce():
     return render_template('equipos_basket/clasif_analisis_ponce.html')
@@ -367,39 +367,158 @@ def obtener_datos():
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
 # Partidos UEMC
-@app.route('/encuentros/uemc/')
-def encuentros_uemc():
+@app.route('/admin/calendario_uemc')
+def calendarios_uemc():
     data = obtener_datos()
     print(data)
-    return render_template('tablas_partidos/uemc.html', data=data)
+    return render_template('admin/calendario_uemc.html', data=data)
 # Ingresar los resultados de los partidos UEMC
-@app.route('/ingresar_resultado_uemc', methods=['POST'])
+@app.route('/admin/crear_calendario', methods=['POST'])
 def ingresar_resultado():
     data = obtener_datos()
     num_partidos = int(request.form.get('num_partidos', 0))
     jornada_nombre = request.form.get('nombre')
     jornada_existente = next((j for j in data if j["nombre"] == jornada_nombre), None)
     if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
         jornada = jornada_existente
     else:
-        jornada = {"nombre": jornada_nombre, "partidos": []}
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
         data.append(jornada)
     for i in range(num_partidos):
-        id_nuevo = str(uuid.uuid4()) 
+        #id_nuevo = str(uuid.uuid4())
         equipoLocal = request.form.get(f'local{i}')
-        resultadoA = request.form.get(f'resultA{i}')
-        resultadoB = request.form.get(f'resultB{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
+        
         nuevo_partido = {
-            'id': id_nuevo,
+            #'id': id_nuevo,
             'local': equipoLocal,
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
             'visitante': equipoVisitante
         }
         jornada["partidos"].append(nuevo_partido)
+        
     guardar_datos(data)
-    return redirect(url_for('encuentros_uemc'))
+    return redirect(url_for('calendarios_uemc'))
+
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo(data):
+    arch_guardar = 'partidos_uemc.json'
+    # Guardar en el archivo
+    with open(arch_guardar, 'w') as archivo:
+        json.dump(data, archivo)
+
+"""# Ruta para modificar la jornada
+@app.route('/modificar_jornada/<string:id>', methods=['GET', 'POST'])
+def modificar_jornada(id):
+    data = obtener_datos()
+    jornada = next((j for j in data if j["id"] == id), None)
+    if jornada is None:
+        abort(404)  # Si no se encuentra la jornada, retorna un error 404
+    if request.method == 'POST':
+        # Lógica para modificar la jornada si se envían datos del formulario
+        nueva_nombre = request.form.get('nombre')
+        # Actualiza el nombre de la jornada si se proporciona uno nuevo
+        if nueva_nombre:
+            jornada["nombre"] = nueva_nombre
+        # Lógica para modificar los partidos si se envían datos del formulario
+        for partido in jornada["partidos"]:
+            # Actualiza los resultados si se proporcionan valores nuevos
+            partido["local"] = request.form.get('local')
+            partido["resultadoA"] = request.form.get('resultadoA')
+            partido["resultadoB"] = request.form.get('resultadoB')
+            partido["visitante"] = request.form.get('visitante')
+            
+        guardar_datos(data)
+        return redirect(url_for('calendarios_uemc'))"""
+
+@app.route('/modificar_jornada/<string:id>', methods=['POST'])
+def modificar_jornada(id):
+    data = obtener_datos()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+
+        resultados_a_modificar = next((result for result in data if result['id'] == id), None)
+
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+
+            for i in range(9):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'visitante': equipoVisitante
+                }
+
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo(data)
+            
+            return redirect(url_for('calendarios_uemc'))
+
+    return redirect(url_for('calendarios_uemc'))
+
+
+
+
+
+         
+
+"""# Ruta para modificar los resultados de los partidos UEMC
+@app.route('/modif_partidos_uemc/<string:id>', methods=['POST'])
+def modif_partidos_uemc(id):
+    data = obtener_datos()
+    print(f'ID recibida: {id}')
+    print('Datos antes de la actualización:', data)
+    resultados_a_modificar = next((result for result in data if result['id'] == id), None)
+
+    if resultados_a_modificar and request.method == 'POST':
+        resultados_a_modificar['nombre'] = request.form.get('nuevo_nombre_jornada')
+        numero_partidos = int(request.form.get('nuevo_num_partidos'))
+        resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+
+        for i in range(numero_partidos):
+            equipoLocal = request.form.get(f'local{i}')
+            canastasA = request.form.get(f'canastasA{i}')
+            canastasB = request.form.get(f'canastasB{i}')
+            equipoVisitante = request.form.get(f'visitante{i}')
+
+            nuevo_partido = {
+                'id': str(uuid.uuid4()),
+                'local': equipoLocal,
+                'canastasA': canastasA,
+                'canastasB': canastasB,
+                'visitante': equipoVisitante
+            }
+            resultados_a_modificar['partidos'].append(nuevo_partido)
+
+        # Guardar los cambios en el archivo JSON
+        print('Datos después de la actualización:', data)
+        guardar_partidos_en_archivo(data)
+
+    return render_template('tablas_partidos/uemc.html', data=data)"""
+
+
+
+
+
+
+    
+
     
     
 
