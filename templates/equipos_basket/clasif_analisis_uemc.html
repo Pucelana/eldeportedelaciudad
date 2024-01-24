@@ -109,17 +109,19 @@
                       </tr>
                     </thead>
                     <tbody>
+                      {% for equipo in clasificacion_analisis %}
                       <tr class="text-center"> <!--S.Pablo Burgos-->
-                        <td class="fw-bold">San Pablo Burgos</td>
-                        <td class="jugados fw-bold "></td>
-                        <td class="ganados fw-bold">12</td>
-                        <td class="perdidos fw-bold">5</td>
-                        <td class="favor fw-bold">1463</td>
-                        <td class="contra fw-bold">1314</td>
-                        <td class="dife fw-bold"></td>
-                        <td class="puntos fw-bold"></td>
+                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
+                        <td class="perdidos fw-bold">{{ equipo['datos']['perdidos'] }}</td>
+                        <td class="favor fw-bold">{{ equipo['datos']['favor'] }}</td>
+                        <td class="contra fw-bold">{{ equipo['datos']['contra']}}</td>
+                        <td class="dife fw-bold">{{ equipo['datos']['diferencia_canastas'] }}</td>
+                        <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                       </tr>
-                      <tr class="text-center"> <!--M.Estudiantes-->
+                      {% endfor %}
+                      <!--<tr class="text-center"> !--M.Estudiantes--
                         <td class="fw-bold">Movistar Estudiantes</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">14</td>
@@ -129,7 +131,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--L.Coruña-->
+                      <tr class="text-center"> !--L.Coruña->
                         <td class="fw-bold">Leyma Coruña</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">13</td>
@@ -139,7 +141,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Guipuzkoa-->
+                      <tr class="text-center"> <--Guipuzkoa->
                         <td class="fw-bold">Guuk Gipuzkoa Basket</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">12</td>
@@ -149,7 +151,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Tizona Burgos-->
+                      <tr class="text-center"> <--Tizona Burgos->
                         <td class="fw-bold">Tizona Burgos</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">12</td>
@@ -159,7 +161,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--UEMC Valladolid-->
+                      <tr class="text-center"> <--UEMC Valladolid->
                         <td class="fw-bold">UEMC Valladolid</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">11</td>
@@ -169,7 +171,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Força Lleida-->
+                      <tr class="text-center"> <--Força Lleida->
                         <td class="fw-bold">Força Lleida</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">11</td>
@@ -179,7 +181,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--HLA Alicante-->
+                      <tr class="text-center"> <--HLA Alicante->
                         <td class="fw-bold">HLA Alicante</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">10</td>
@@ -189,7 +191,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Alimerka Oviedo-->
+                      <tr class="text-center"> !--Alimerka Oviedo->
                         <td class="fw-bold">Alimerka Oviedo</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">8</td>
@@ -199,7 +201,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Melilla-->
+                      <tr class="text-center"> <--Melilla->
                         <td class="fw-bold">Melilla</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">7</td>
@@ -209,7 +211,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Club Ourense-->
+                      <tr class="text-center"> <--Club Ourense->
                         <td class="fw-bold">Club Ourense</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">8</td>
@@ -219,7 +221,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Fuenlabrada-->
+                      <tr class="text-center"> <--Fuenlabrada->
                         <td class="fw-bold">Fuenlabrada</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">6</td>
@@ -229,7 +231,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Alega Cantabria-->
+                      <tr class="text-center"> <--Alega Cantabria->
                         <td class="fw-bold">Alega Cantabria</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">6</td>
@@ -239,7 +241,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Real Betis-->
+                      <tr class="text-center"> <--Real Betis->
                         <td class="fw-bold">Real Betis</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">6</td>
@@ -249,7 +251,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Amics Castelló-->
+                      <tr class="text-center"> <--Amics Castelló->
                         <td class="fw-bold">Amics Castelló</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">4</td>
@@ -259,7 +261,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Hestia Menorca-->
+                      <tr class="text-center"> <--Hestia Menorca->
                         <td class="fw-bold">Hestia Menorca</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">5</td>
@@ -269,7 +271,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Caceres-->
+                      <tr class="text-center"> <--Caceres->
                         <td class="fw-bold">Caceres</td>
                         <td class="jugados fw-bold"></td>
                         <td class="ganados fw-bold">5</td>
@@ -279,7 +281,7 @@
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Rioverde Clavijo-->
+                      <tr class="text-center"> <--Rioverde Clavijo->
                         <td class="fw-bold">Rioverde Clavijo</td>
                         <td class="jugados fw-bold "></td>
                         <td class="ganados fw-bold">3</td>
@@ -288,7 +290,7 @@
                         <td class="contra fw-bold">1287</td>
                         <td class="dife fw-bold"></td>
                         <td class="puntos fw-bold"></td>
-                      </tr>
+                      </tr>-->
                     </tbody>
                   </table>
                   </div>
@@ -382,16 +384,18 @@
                       </tr>
                     </thead>
                     <tbody>
+                      {% for equipo_info in clasificacion_analisis %}
                       <tr class="text-center"> <!--S.Pablo Burgos-->
-                        <td class="fw-bold">San Pablo Burgos</td>
-                        <td class="jugados1 fw-bold">17</td>
-                        <td class="pts-act1 fw-bold">12</td>
+                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="jugados1 fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="pts-act1 fw-bold">{{ equipo_info['datos']['ganados'] }}</td>
                         <td class="proxi1 fw-bold"></td>
                         <td class="pts-mate1 fw-bold"></td>
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--M.Estudiantes-->
+                      {% endfor %}
+                      <!--<tr class="text-center"> <!-M.Estudiantes->
                         <td class="fw-bold">Movistar Estudiantes</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">14</td>
@@ -400,7 +404,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--L.Coruña-->
+                      <tr class="text-center"> <!-L.Coruña->
                         <td class="fw-bold">Leyma Coruña</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">13</td>
@@ -409,7 +413,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Guipuzkoa-->
+                      <tr class="text-center"> <!-Guipuzkoa->
                         <td class="fw-bold">Guuk Gipuzkoa Basket</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">12</td>
@@ -418,7 +422,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Tizona Burgos-->
+                      <tr class="text-center"> <!-Tizona Burgos->
                         <td class="fw-bold">Tizona Burgos</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">12</td>
@@ -427,7 +431,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--UEMC Valladolid-->
+                      <tr class="text-center"> <!-UEMC Valladolid->
                         <td class="fw-bold">UEMC Valladolid</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">11</td>
@@ -436,7 +440,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Força Lleida-->
+                      <tr class="text-center"> <--Força Lleida->
                         <td class="fw-bold">Força Lleida</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">11</td>
@@ -445,7 +449,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--HLA Alicante-->
+                      <tr class="text-center"> <!-HLA Alicante->
                         <td class="fw-bold">HLA Alicante</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">10</td>
@@ -454,7 +458,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Alimerka Oviedo-->
+                      <tr class="text-center"> <!-Alimerka Oviedo->
                         <td class="fw-bold">Alimerka Oviedo</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">8</td>
@@ -463,7 +467,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Melilla-->
+                      <tr class="text-center"> <--Melilla->
                         <td class="fw-bold">Melilla</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">7</td>
@@ -472,7 +476,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Club Ourense-->
+                      <tr class="text-center"> <--Club Ourense->
                         <td class="fw-bold">Club Ourense</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">8</td>
@@ -481,7 +485,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Fuenlabrada-->
+                      <tr class="text-center"> <!-Fuenlabrada->
                         <td class="fw-bold">Fuenlabrada</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">6</td>
@@ -490,7 +494,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Alega Cantabria-->
+                      <tr class="text-center"> <--Alega Cantabria->
                         <td class="fw-bold">Alega Cantabria</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">6</td>
@@ -499,7 +503,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Real Betis-->
+                      <tr class="text-center"> <--Real Betis->
                         <td class="fw-bold">Real Betis</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">6</td>
@@ -508,7 +512,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Amics Castelló-->
+                      <tr class="text-center"> <--Amics Castelló->
                         <td class="fw-bold">Amics Castelló</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">4</td>
@@ -517,7 +521,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Hestia Menorca-->
+                      <tr class="text-center"> <--Hestia Menorca->
                         <td class="fw-bold">Hestia Menorca</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">5</td>
@@ -526,7 +530,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Caceres-->
+                      <tr class="text-center"> <--Caceres->
                         <td class="fw-bold">Caceres</td>
                         <td class="jugados1 fw-bold">17</td>
                         <td class="pts-act1 fw-bold">5</td>
@@ -535,7 +539,7 @@
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Rioverde Clavijo-->
+                      <tr class="text-center"> <--Rioverde Clavijo->
                         <td class="fw-bold">Rioverde Clavijo</td>
                         <td class="jugados1 fw-bold ">17</td>
                         <td class="pts-act1 fw-bold">3</td>
@@ -543,7 +547,7 @@
                         <td class="pts-mate1 fw-bold"></td>
                         <td class="pts-opti1 fw-bold"></td>
                         <td class="pts-pesi1 fw-bold"></td>
-                      </tr>
+                      </tr>-->
                     </tbody>
                   </table>
                   </div>
@@ -1083,6 +1087,6 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
   <script src="/static/js/script.js"></script>
-  <script src="/static/js/analisis-uemc.js"></script>
+  <!--<script src="/static/js/analisis-uemc.js"></script>-->
 </body>
 </html>
