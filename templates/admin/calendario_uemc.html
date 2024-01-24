@@ -10,6 +10,12 @@
     <link href="/static/css/estilo.css" rel="stylesheet" type="text/css">
   </head>
 <body>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb ms-1">
+      <li class="breadcrumb-item"><a href="/admin/crear_noticia" class="text-white text-decoration-none">Inicio</a></li>
+      <li class="breadcrumb-item active text-dark" aria-current="page">Temporada 23/24 UEMC</li>
+    </ol>
+  </nav>
   <header>
     <h1 class="text-center">Resultados Liga Led Oro 23/24</h1>
   </header>
@@ -84,9 +90,9 @@
                   <button type="button" class="bg-success text-white border-0 px-2 me-2">Publicar</button>
                   </form>-->
                   <button type="submit" id="btn-modificar{{ calendario.id }}" class="bg-info text-white border-0 rounded px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ calendario.id }}">Modificar</button>
-                  <!--<form action="" method="POST">
-                  <button type="submit" class="bg-danger text-white border-0 px-2">Eliminar</button>
-                  </form>-->
+                  <form action="{{ url_for('eliminar_jornada', id=calendario.id) }}" method="POST">
+                    <button type="submit" class="bg-danger text-white border-0 rounded px-2 py-2 me-2">Eliminar</button>
+                  </form>
                   <a href="#" onclick="toggleTabla(this, '{{ calendario.nombre }}') " class="text-decoration-none btn btn-primary text-white">Ver Tabla</a>
                 </div>
               </div> 

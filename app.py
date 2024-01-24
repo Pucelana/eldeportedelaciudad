@@ -174,7 +174,7 @@ def sitio_home():
 
 # Creación de partidos y resultados
 def cargar_resultados_desde_archivo():
-    archivo_resultados = 'resultados.json'
+    archivo_resultados = 'json/horarios.json'
 
     if os.path.exists(archivo_resultados):
         with open(archivo_resultados, 'r') as archivo:
@@ -215,7 +215,7 @@ def crear_resultado():
 # Toma la lista de los resultados y los guarda
 def guardar_resultados_en_archivo(resultados):
     # Ruta del archivo donde guardar los resultados
-    archivo_resultados = 'resultados.json'
+    archivo_resultados = 'json/horarios.json'
     # Guardar en el archivo
     with open(archivo_resultados, 'w') as archivo:
         json.dump(resultados, archivo)        
@@ -256,7 +256,7 @@ def modificar_marcador(id):
             guardar_resultados_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
 
-# Ruta para eliminar los resultados (sin uso de momento)
+# Ruta para eliminar los resultados
 @app.route('/eliminar_resultado/<string:id>', methods=['POST'])
 def eliminar_resultado(id):
     global resultados
@@ -290,11 +290,6 @@ def seccion_hockey():
 @app.route('/seccion/rugby')
 def seccion_rugby():
     return render_template('secciones/rugby.html')
-
-# Ruta sección de clasificación y ánalisis del UEMC Valladolid 
-@app.route('/equipos_basket/clasif_analisis_uemc')
-def clasif_analisis_uemc():
-    return render_template('equipos_basket/clasif_analisis_uemc.html')
 
 # Ruta sección de clasificación y ánalisis del Ponce Valladolid 
 @app.route('/equipos_basket/clasif_analisis_ponce')
@@ -352,7 +347,7 @@ def clasi_analis_prome():
     return render_template('equipos_futbol/clasi_analis_prome.html')
 
 # Rutas de partidos UEMC
-part_uemc = 'partidos_uemc.json'
+part_uemc = 'json/partidos_uemc.json'
 def guardar_datos(data):
     # Guardar los datos en el archivo JSON
     with open(part_uemc, 'w') as file:
@@ -409,108 +404,50 @@ def ingresar_resultado():
 
 # Toma la lista de los resultados y los guarda
 def guardar_partidos_en_archivo(data):
-    arch_guardar = 'partidos_uemc.json'
+    arch_guardar = 'json/partidos_uemc.json'
     # Guardar en el archivo
     with open(arch_guardar, 'w') as archivo:
         json.dump(data, archivo)
-
-"""# Ruta para modificar la jornada
-@app.route('/modificar_jornada/<string:id>', methods=['GET', 'POST'])
-def modificar_jornada(id):
-    data = obtener_datos()
-    jornada = next((j for j in data if j["id"] == id), None)
-    if jornada is None:
-        abort(404)  # Si no se encuentra la jornada, retorna un error 404
-    if request.method == 'POST':
-        # Lógica para modificar la jornada si se envían datos del formulario
-        nueva_nombre = request.form.get('nombre')
-        # Actualiza el nombre de la jornada si se proporciona uno nuevo
-        if nueva_nombre:
-            jornada["nombre"] = nueva_nombre
-        # Lógica para modificar los partidos si se envían datos del formulario
-        for partido in jornada["partidos"]:
-            # Actualiza los resultados si se proporcionan valores nuevos
-            partido["local"] = request.form.get('local')
-            partido["resultadoA"] = request.form.get('resultadoA')
-            partido["resultadoB"] = request.form.get('resultadoB')
-            partido["visitante"] = request.form.get('visitante')
-            
-        guardar_datos(data)
-        return redirect(url_for('calendarios_uemc'))"""
-
+# Modificar los partidos de cada jornada
 @app.route('/modificar_jornada/<string:id>', methods=['POST'])
 def modificar_jornada(id):
     data = obtener_datos()
     if request.method == 'POST':
         jornada_nombre = request.form.get('nombre')
-
         resultados_a_modificar = next((result for result in data if result['id'] == id), None)
-
         if resultados_a_modificar:
             resultados_a_modificar['nombre'] = jornada_nombre
             resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
-
             for i in range(9):  # Ajusta según la cantidad máxima de partidos
                 equipoLocal = request.form.get(f'local{i}')
                 resultadoA = request.form.get(f'resultadoA{i}')
                 resultadoB = request.form.get(f'resultadoB{i}')
                 equipoVisitante = request.form.get(f'visitante{i}')
-
                 nuevo_partido = {
                     'local': equipoLocal,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
                     'visitante': equipoVisitante
                 }
-
                 resultados_a_modificar['partidos'].append(nuevo_partido)
-
             # Guardar los cambios en el archivo JSON
-            guardar_partidos_en_archivo(data)
-            
+            guardar_partidos_en_archivo(data)            
             return redirect(url_for('calendarios_uemc'))
-
     return redirect(url_for('calendarios_uemc'))
 
-
-
-
-
-         
-
-"""# Ruta para modificar los resultados de los partidos UEMC
-@app.route('/modif_partidos_uemc/<string:id>', methods=['POST'])
-def modif_partidos_uemc(id):
+# Ruta para borrar jornadas
+@app.route('/eliminar_jornada/<string:id>', methods=['POST'])
+def eliminar_jornada(id):
     data = obtener_datos()
-    print(f'ID recibida: {id}')
-    print('Datos antes de la actualización:', data)
-    resultados_a_modificar = next((result for result in data if result['id'] == id), None)
+    jornada_a_eliminar = [j for j in data if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo(jornada_a_eliminar)
+    # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
+    return redirect(url_for('calendarios_uemc'))
 
-    if resultados_a_modificar and request.method == 'POST':
-        resultados_a_modificar['nombre'] = request.form.get('nuevo_nombre_jornada')
-        numero_partidos = int(request.form.get('nuevo_num_partidos'))
-        resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
-
-        for i in range(numero_partidos):
-            equipoLocal = request.form.get(f'local{i}')
-            canastasA = request.form.get(f'canastasA{i}')
-            canastasB = request.form.get(f'canastasB{i}')
-            equipoVisitante = request.form.get(f'visitante{i}')
-
-            nuevo_partido = {
-                'id': str(uuid.uuid4()),
-                'local': equipoLocal,
-                'canastasA': canastasA,
-                'canastasB': canastasB,
-                'visitante': equipoVisitante
-            }
-            resultados_a_modificar['partidos'].append(nuevo_partido)
-
-        # Guardar los cambios en el archivo JSON
-        print('Datos después de la actualización:', data)
-        guardar_partidos_en_archivo(data)
-
-    return render_template('tablas_partidos/uemc.html', data=data)"""
+# Ruta sección de clasificación y ánalisis del UEMC Valladolid 
+@app.route('/equipos_basket/clasif_analisis_uemc')
+def clasif_analisis_uemc():
+    return render_template('equipos_basket/clasif_analisis_uemc.html')
 
 
 
