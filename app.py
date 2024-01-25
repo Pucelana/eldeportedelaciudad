@@ -18,6 +18,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.',1)[1].lower()in ALLOWED_EXTENSIONS
 
+
+
 # Creado la conexión a la base de datos
 """app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -292,11 +294,6 @@ def seccion_hockey():
 def seccion_rugby():
     return render_template('secciones/rugby.html')
 
-# Ruta sección de clasificación y ánalisis del Ponce Valladolid 
-@app.route('/equipos_basket/clasif_analisis_ponce')
-def clasif_analisis_ponce():
-    return render_template('equipos_basket/clasif_analisis_ponce.html')
-
 # Ruta sección de clasificación y ánalisis del Fundaión Aliados 
 @app.route('/equipos_basket/clasif_analisis_aliados')
 def clasif_analisis_aliados():
@@ -347,16 +344,17 @@ def calend_resul_prome():
 def clasi_analis_prome():
     return render_template('equipos_futbol/clasi_analis_prome.html')
 
+#Todo el proceso de calendario y clasificación del UEMC
 # Rutas de partidos UEMC
 part_uemc = 'json/partidos_uemc.json'
 def guardar_datos(data):
     # Guardar los datos en el archivo JSON
-    with open(part_uemc, 'w') as file:
+    with open(part_uemc, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4)
 def obtener_datos():
     try:
     # Leer los datos desde el archivo JSON
-      with open(part_uemc, 'r') as file:
+      with open(part_uemc, 'r', encoding='utf-8') as file:
         data = json.load(file)
       return data
     except json.decoder.JSONDecodeError:
@@ -407,7 +405,7 @@ def ingresar_resultado():
 def guardar_partidos_en_archivo(data):
     arch_guardar = 'json/partidos_uemc.json'
     # Guardar en el archivo
-    with open(arch_guardar, 'w') as archivo:
+    with open(arch_guardar, 'w', encoding='UTF-8') as archivo:
         json.dump(data, archivo)
 # Modificar los partidos de cada jornada
 @app.route('/modificar_jornada/<string:id>', methods=['POST'])
@@ -445,17 +443,25 @@ def eliminar_jornada(id):
     # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
     return redirect(url_for('calendarios_uemc'))
 
-# Generar Clasificación y Análisis para Baloncesto
+# Crear la clasificación
 def generar_clasificacion_analisis_baloncesto(data, total_partidos_temporada):
+    default_dict = defaultdict(lambda: {})
     clasificacion = defaultdict(lambda: {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_canastas': 0, 'puntos': 0})
     print(clasificacion)
     for jornada in data:
         for partido in jornada['partidos']:
             equipo_local = partido['local']
-            resultado_local = int(partido['resultadoA'])
-            resultado_visitante = int(partido['resultadoB'])
             equipo_visitante = partido['visitante']
-
+            try:
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
             # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
             if resultado_local > resultado_visitante:
                 clasificacion[equipo_local]['puntos'] += 2
@@ -467,21 +473,17 @@ def generar_clasificacion_analisis_baloncesto(data, total_partidos_temporada):
                 clasificacion[equipo_local]['perdidos'] += 1
                 clasificacion[equipo_visitante]['puntos'] += 2
                 clasificacion[equipo_visitante]['ganados'] += 1
-
             clasificacion[equipo_local]['jugados'] += 1
             clasificacion[equipo_visitante]['jugados'] += 1
-
             clasificacion[equipo_local]['favor'] += resultado_local
             clasificacion[equipo_local]['contra'] += resultado_visitante
             clasificacion[equipo_visitante]['favor'] += resultado_visitante
             clasificacion[equipo_visitante]['contra'] += resultado_local
-
             clasificacion[equipo_local]['diferencia_canastas'] += resultado_local - resultado_visitante
             clasificacion[equipo_visitante]['diferencia_canastas'] += resultado_visitante - resultado_local
-
     # Ordena la clasificación por puntos y diferencia de canastas
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_canastas']), reverse=True)]
-
+    print(generar_clasificacion_analisis_baloncesto)
     return clasificacion_ordenada
 
 # Ruta para mostrar la clasificación y análisis del UEMC
@@ -492,72 +494,18 @@ def clasif_analisis_uemc():
     # Llama a la función para generar la clasificación y análisis
     clasificacion_analisis = generar_clasificacion_analisis_baloncesto(data, total_partidos_temporada)
     # Ordena la clasificación por puntos y diferencia de canastas
-    clasificacion_analisis = sorted(clasificacion_analisis, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_canastas']), reverse=True)
+    clasificacion_analisis = sorted(clasificacion_analisis, key=lambda x: (x['datos']['ganados'], x['datos']['diferencia_canastas']), reverse=True)
+    # Calcular la proximidad
+    #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_uemc.html', clasificacion_analisis=clasificacion_analisis)
+# Fin proceso del UEMC
 
-# Calcular proximidad al ascenso
-def calcular_proximidad(partidos_jugados, victorias_actuales, total_partidos_temporada,data):
-    proximidad_porcentaje = (victorias_actuales / partidos_jugados) * 100
-    partidos_restantes = total_partidos_temporada - partidos_jugados
-    victorias_posibles = victorias_actuales + partidos_restantes
-    victorias_optimistas = victorias_posibles + partidos_restantes
-    victorias_pesimistas = victorias_actuales
-    return {
-        'proximidad_porcentaje': proximidad_porcentaje,
-        'partidos_restantes': partidos_restantes,
-        'victorias_posibles': victorias_posibles,
-        'victorias_optimistas': victorias_optimistas,
-        'victorias_pesimistas': victorias_pesimistas
-    }
-
-# Ruta para la proximidad al ascenso
-@app.route('/equipos_basket/analisis_uemc/')
-def proximidad_ascenso():
-    total_partidos_temporada = 34
-    data = obtener_datos() 
-    # Llama a la función para generar la clasificación y análisis
-    clasificacion_analisis = generar_clasificacion_analisis_baloncesto(data, total_partidos_temporada)
-    proximidad_info = []
-
-    for equipo_info in clasificacion_analisis:
-        equipo_local = equipo_info['equipo']
-        datos_equipo = equipo_info['datos']
-
-        # Descomenta esta línea
-        proximidad_info.append({
-            'equipo': equipo_local,
-            'proximidad': calcular_proximidad(datos_equipo['jugados'], datos_equipo['ganados'], total_partidos_temporada)
-        })
-        print(proximidad_info)
-
-    return render_template('equipos_basket/clasif_analisis_uemc.html', proximidad_info=proximidad_info, clasificacion_analisis=clasificacion_analisis)
-
-
-
-
-
-
-
-
-
-    
-
-    
-    
-
-
-    
-            
-
-    
-
-
-          
-
-            
-
-
-
+#Todo el proceso de calendario y clasificación del Ponce
+# Ruta sección de clasificación y ánalisis del Ponce Valladolid 
+@app.route('/equipos_basket/clasif_analisis_ponce')
+def clasif_analisis_ponce():
+    return render_template('equipos_basket/clasif_analisis_ponce.html')
+# Fin proceso Ponce Valladolid
 
 
 

@@ -1,5 +1,5 @@
 // Primera función para calcular la clasificación y oredenar automaticamente
-function calcularEstadisticas() {
+/*function calcularEstadisticas() {
     const tablaDatos = document.getElementById('tablaClasificacion');
     const filasDatos = Array.from(tablaDatos.querySelectorAll('tbody tr'));
     filasDatos.forEach(row => {
@@ -35,7 +35,7 @@ function calcularEstadisticas() {
   }
   document.addEventListener('DOMContentLoaded', function() {
     calcularEstadisticas();
-  });
+  });*/
 
 // Segunda función para calcular el porcentaje al ascenso
 const filas = document.querySelectorAll("#tablaAscenso tbody tr");
