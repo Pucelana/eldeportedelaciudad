@@ -32,14 +32,14 @@
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
-                                  <th colspan="2">Jornadas</th>
+                                  <th></th>
                                   <th colspan="4">Resultados</th>
                                   <th colspan="2">Partidos</th>
                                 </tr>
                                 <tr class="text-center text-white">
                                   <th scope="col">Equipos</th>
-                                  <th>Ida</th>
-                                  <th>Vlt</th>
+                                  <th>Jornadas</th>
+                                  <!--<th></th>-->
                                   <th colspan="2">Ida</th>
                                   <th colspan="2">Vlt</th>
                                   <th>PG</th>
@@ -48,19 +48,45 @@
                                 </tr>
                             </thead>
                               <tbody>
-                                <tr class="text-center"><!--Tizona Burgos-->
-                                    <th class="text-white">Tizona Burgos</th>
-                                    <td class="jornadas fw-bold">1ª-F</td>
-                                    <td class="jornadas fw-bold">31ª-C</td>
-                                    <td class="id-A fw-bold">92</td>
-                                    <td class="id-V fw-bold">86</td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
+                                {% for equipo, datos_equipo in tabla_partidos_uemc.items() %}
+                                  <tr class="text-center">
+                                    <th class="text-white">{{ equipo }}</th>
+                                    <td class="jorn_ida fw-bold">
+                                      {% for jornada in datos_equipo['jornadas'] %}
+                                        J-{{ jornada.split()[1] }}  <!-- Obtenemos el número de jornada -->
+                                        {% if not loop.last %}/ {% endif %}  <!-- Separador, excepto para la última jornada -->
+                                      {% endfor %}
+                                    </td>
+                                    <td class="resultadoA fw-bold">
+                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
+                                        {{ resultados['resultadoA'] }}
+                                        {% if not loop.last %} {% endif %}
+                                      {% endfor %}
+                                    </td>
+                                    <td class="resultadoB fw-bold">
+                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
+                                        {{ resultados['resultadoB'] }}
+                                        {% if not loop.last %} {% endif %}
+                                      {% endfor %}
+                                    </td>
+                                    <td class="resultadoAA fw-bold">
+                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
+                                        {{ resultados['resultadoAA'] }}
+                                        {% if not loop.last %}{% endif %}
+                                      {% endfor %}
+                                    </td>
+                                    <td class="resultadoBB fw-bold">
+                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
+                                        {{ resultados['resultadoBB'] }}
+                                        {% if not loop.last %}{% endif %}
+                                      {% endfor %}
+                                    </td>
                                     <td class="gan-1"></td>
                                     <td class="per-1"></td>
                                     <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Hestia Menorca-->
+                                  </tr>
+                                {% endfor %}
+                                <!--<tr class="text-center"><!-Hestia Menorca->
                                     <th class="text-white">Hestia Menorca</th>
                                     <td class="jornadas fw-bold">2ª-C</td>
                                     <td class="jornadas fw-bold">24ª-F</td>
@@ -72,7 +98,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--HLA Alicante-->
+                                <tr class="text-center"><!-HLA Alicante->
                                     <th class="text-white">HLA Alicante</th>
                                     <td class="jornadas fw-bold">3ª-F</td>
                                     <td class="jornadas fw-bold">18ª-C</td>
@@ -84,7 +110,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Leyma Coruña-->
+                                <tr class="text-center"><!-Leyma Coruña->
                                     <th class="text-white">Leyma Coruña</th>
                                     <td class="jornadas fw-bold">4ª-C</td>
                                     <td class="jornadas fw-bold">30ª-F</td>
@@ -96,7 +122,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--S.Pablo Burgos-->
+                                <tr class="text-center"><!-S.Pablo Burgos->
                                     <th class="text-white">San Pablo Burgos</th>
                                     <td class="jornadas fw-bold">5ª-F</td>
                                     <td class="jornadas fw-bold">27ª-C</td>
@@ -108,7 +134,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Real Betis-->
+                                <tr class="text-center"><!-Real Betis->
                                     <th class="text-white">Real Betis</th>
                                     <td class="jornadas fw-bold">6ª-C</td>
                                     <td class="jornadas fw-bold">32ª-F</td>
@@ -120,7 +146,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Alega Cantabria-->
+                                <tr class="text-center"><!-Alega Cantabria->
                                     <th class="text-white">Alega Cantabria</th>
                                     <td class="jornadas fw-bold">7ª-F</td>
                                     <td class="jornadas fw-bold">21ª-C</td>
@@ -132,7 +158,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Força Lleida-->
+                                <tr class="text-center"><!-Força Lleida->
                                     <th class="text-white">Força Lleida</th>
                                     <td class="jornadas fw-bold">8ª-C</td>
                                     <td class="jornadas fw-bold">28ª-F</td>
@@ -144,7 +170,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--M.Estudiantes-->
+                                <tr class="text-center"><!-M.Estudiantes->
                                     <th class="text-white">Movistar Estudiantes</th>
                                     <td class="jornadas fw-bold">9ª-F</td>
                                     <td class="jornadas fw-bold">29ª-C</td>
@@ -156,7 +182,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Guuk Gipuzkoa-->
+                                <tr class="text-center"><--Guuk Gipuzkoa->
                                     <th class="text-white">Guuk Gipuzkoa</th>
                                     <td class="jornadas fw-bold">10ª-C</td>
                                     <td class="jornadas fw-bold">19ª-F</td>
@@ -168,7 +194,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Amics Castelló-->
+                                <tr class="text-center"><!-Amics Castelló->
                                     <th class="text-white">Amics Castello</th>
                                     <td class="jornadas fw-bold">11ª-C</td>
                                     <td class="jornadas fw-bold">22ª-F</td>
@@ -180,7 +206,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Rioverde Clavijo-->
+                                <tr class="text-center"><!-Rioverde Clavijo->
                                     <th class="text-white">Rioverde Clavijo</th>
                                     <td class="jornadas fw-bold">12ª-F</td>
                                     <td class="jornadas fw-bold">23ª-C</td>
@@ -192,7 +218,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Caceres-->
+                                <tr class="text-center"><!-Caceres->
                                     <th class="text-white">Caceres</th>
                                     <td class="jornadas fw-bold">13ª-F</td>
                                     <td class="jornadas fw-bold">20ª-C</td>
@@ -204,7 +230,7 @@
                                     <td class="per-1">-</td>
                                     <td class="text-success average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Melilla-->
+                                <tr class="text-center"><--Melilla->
                                     <th class="text-white">Melilla</th>
                                     <td class="jornadas fw-bold">14ª-C</td>
                                     <td class="jornadas fw-bold">26ª-F</td>
@@ -216,7 +242,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Alimerka Oviedo-->
+                                <tr class="text-center"><--Alimerka Oviedo->
                                     <th class="text-white">Alimerka Oviedo</th>
                                     <td class="jornadas fw-bold">15ª-F</td>
                                     <td class="jornadas fw-bold">33ª-C</td>
@@ -228,7 +254,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Fuenlabrada-->
+                                <tr class="text-center"><!-Fuenlabrada->
                                     <th class="text-white">Fuenlabrada</th>
                                     <td class="jornadas fw-bold">16ª-C</td>
                                     <td class="jornadas fw-bold">34ª-F</td>
@@ -240,7 +266,7 @@
                                     <td class="per-1"></td>
                                     <td class="average"></td>
                                 </tr>
-                                <tr class="text-center"><!--Club Ourense-->
+                                <tr class="text-center"><!-Club Ourense->
                                     <th class="text-white">Club Ourense</th>
                                     <td class="jornadas fw-bold">17ª-F</td>
                                     <td class="jornadas fw-bold">25ª-C</td>
@@ -251,7 +277,7 @@
                                     <td class="gan-1"></td>
                                     <td class="per-1"></td>
                                     <td class="average"></td>
-                                </tr>
+                                </tr>-->
                               </tbody>
                         </table>
                       </div>
@@ -701,11 +727,11 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 // Obtener todas las filas de la tabla
 const rows = document.querySelectorAll('.tabla_equipos tbody tr');
 // Iterar sobre cada fila para realizar los cálculos
-rows.forEach(row => {
-    const idA = parseFloat(row.querySelector('.id-A').textContent);
-    const idV = parseFloat(row.querySelector('.id-V').textContent);
-    const vtA = parseFloat(row.querySelector('.vta-A').textContent);
-    const vtV = parseFloat(row.querySelector('.vta-V').textContent);
+  rows.forEach(row => {
+    const idA = parseFloat(row.querySelector('.resultadoA')).textContent;
+    const idV = parseFloat(row.querySelector('.resultadoB')).textContent;
+    const vtA = parseFloat(row.querySelector('.resultadoAA')).textContent;
+    const vtV = parseFloat(row.querySelector('.resultadoBB')).textContent;
 
     const gan1 = row.querySelector('.gan-1');
 
@@ -713,7 +739,7 @@ rows.forEach(row => {
 
     const average = row.querySelector('.average');
     
-    if (idA > idV) {
+  if (idA > idV) {
         gan1.textContent = '-';
         per1.textContent = '1';
         gan1.style.color = 'black';
@@ -748,10 +774,10 @@ rows.forEach(row => {
         } else {
             average.textContent = avgTotal;
             average.style.color = 'blue';
-    }
-} else {
+        }
+  }else {
     average.textContent = '';
-}
+  }
 });
 </script>
 </body>

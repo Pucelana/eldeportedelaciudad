@@ -299,11 +299,6 @@ def seccion_rugby():
 def clasif_analisis_aliados():
     return render_template('equipos_basket/clasif_analisis_aliados.html')
 
-# Ruta calendario UEMC
-@app.route('/equipos_basket/calendario_uemc')
-def calendario_uemc():
-    return render_template('equipos_basket/calendario_uemc.html')
-
 # Ruta calendario Ponce Valladolid
 @app.route('/equipos_basket/calendario_ponce')
 def calendario_ponce():
@@ -498,6 +493,56 @@ def clasif_analisis_uemc():
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_uemc.html', clasificacion_analisis=clasificacion_analisis)
+
+# Ruta y creación del calendario individual del UEMC
+@app.route('/equipos_basket/calendario_uemc')
+def calendario_uemc():
+    datos = obtener_datos()
+    equipo_uemc = 'UEMC Real Valladolid'
+    tabla_partidos_uemc = {}
+
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']
+            
+            # Verificamos si el UEMC está jugando
+            if equipo_local == equipo_uemc or equipo_visitante == equipo_uemc:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_uemc:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a1 = resultado_local
+                    resultado_b1 = resultado_visitante
+
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_uemc:
+                    tabla_partidos_uemc[equipo_contrario] = {'jornadas': {}}
+
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_uemc[equipo_contrario]['jornadas']:
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': '',
+                        'resultadoB': '',
+                        'resultadoAA': '',
+                        'resultadoBB': ''
+                    }
+
+                # Asignamos los resultados según el rol del UEMC
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a1
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b1
+                else:
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+
+    return render_template('equipos_basket/calendario_uemc.html', tabla_partidos_uemc=tabla_partidos_uemc)  
 # Fin proceso del UEMC
 
 #Todo el proceso de calendario y clasificación del Ponce

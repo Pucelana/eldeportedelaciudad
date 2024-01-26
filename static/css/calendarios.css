@@ -11,7 +11,10 @@
     backdrop-filter: blur(12px);
     border: 1px solid #ad6331;
 }
-.jornadas{
+.jorn_ida{
+    color: #505050;
+}
+.jorn_vuelta{
     color: #505050;
 }
 .tabla_resultados th{
