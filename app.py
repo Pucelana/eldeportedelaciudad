@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request, redirect,url_for, session
+from flask import render_template, request, redirect,url_for, session, render_template_string
 from flask_mysqldb import MySQL
 from werkzeug.utils import secure_filename
 from flask_caching import Cache
@@ -12,6 +12,14 @@ UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 
 app = Flask(__name__)
+
+# Definir la función de reemplazo de regex
+def regex_replace(s, find, replace):
+    import re
+    return re.sub(find, replace, s)
+
+# Registrar la función como filtro personalizado en Flask
+app.jinja_env.filters['regex_replace'] = regex_replace
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -176,13 +184,17 @@ def sitio_home():
     return render_template('sitio/home.html', nuevos_resultados=nuevos_resultados)
 
 # Creación de partidos y resultados
+horarios_partidos = 'json/horarios.json'
+def guardar_horarios(data):
+    with open(horarios_partidos, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4)
+        
 def cargar_resultados_desde_archivo():
-    archivo_resultados = 'json/horarios.json'
-
-    if os.path.exists(archivo_resultados):
-        with open(archivo_resultados, 'r') as archivo:
-            return json.load(archivo)
-    else:
+    try:
+        with open(horarios_partidos, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+        return data
+    except json.decoder.JSONDecodeError:
         return []
 resultados = cargar_resultados_desde_archivo()
     
@@ -211,17 +223,17 @@ def crear_resultado():
     
     resultados.append(nuevo_resultado)
     
-    guardar_resultados_en_archivo(resultados)
+    guardar_horarios_en_archivo(resultados)
     
     return redirect(url_for('pub_marcadores'))
 
 # Toma la lista de los resultados y los guarda
-def guardar_resultados_en_archivo(resultados):
+def guardar_horarios_en_archivo(data):
     # Ruta del archivo donde guardar los resultados
-    archivo_resultados = 'json/horarios.json'
+    archivo_horarios = 'json/horarios.json'
     # Guardar en el archivo
-    with open(archivo_resultados, 'w') as archivo:
-        json.dump(resultados, archivo)        
+    with open(archivo_horarios, 'w', encoding='utf-8') as archivo:
+        json.dump(data, archivo)        
 
 # Ruta para la publicación de los resultados
 @app.route('/publicar_resultados/<string:id>', methods=['POST'])
@@ -256,7 +268,7 @@ def modificar_marcador(id):
             marcador_a_modificar['fecha_parti'] = fecha_parti
             
             # Guardar los cambios en el archivo JSON
-            guardar_resultados_en_archivo(resultados)
+            guardar_horarios_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
 
 # Ruta para eliminar los resultados
@@ -500,15 +512,13 @@ def calendario_uemc():
     datos = obtener_datos()
     equipo_uemc = 'UEMC Real Valladolid'
     tabla_partidos_uemc = {}
-
     # Iteramos sobre cada jornada y partido
     for jornada in datos:
         for partido in jornada['partidos']:
             equipo_local = partido['local']
             equipo_visitante = partido['visitante']
             resultado_local = partido['resultadoA']
-            resultado_visitante = partido['resultadoB']
-            
+            resultado_visitante = partido['resultadoB']           
             # Verificamos si el UEMC está jugando
             if equipo_local == equipo_uemc or equipo_visitante == equipo_uemc:
                 # Determinamos el equipo contrario y los resultados
@@ -516,32 +526,52 @@ def calendario_uemc():
                     equipo_contrario = equipo_visitante
                     resultado_a = resultado_local
                     resultado_b = resultado_visitante
+                    rol_uemc = 'C'
                 else:
                     equipo_contrario = equipo_local
-                    resultado_a1 = resultado_local
-                    resultado_b1 = resultado_visitante
-
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_uemc = 'F'
                 # Verificamos si el equipo contrario no está en la tabla
                 if equipo_contrario not in tabla_partidos_uemc:
-                    tabla_partidos_uemc[equipo_contrario] = {'jornadas': {}}
-
+                    tabla_partidos_uemc[equipo_contrario] = {'jornadas': {}}                
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_uemc[equipo_contrario]:
+                    tabla_partidos_uemc[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_uemc[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_uemc[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_uemc[equipo_contrario]:
+                    tabla_partidos_uemc[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_uemc[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_uemc[equipo_contrario]['resultadoBB'] = resultado_b    
                 # Agregamos la jornada y resultados
                 if jornada['nombre'] not in tabla_partidos_uemc[equipo_contrario]['jornadas']:
                     tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']] = {
                         'resultadoA': '',
                         'resultadoB': '',
                         'resultadoAA': '',
-                        'resultadoBB': ''
+                        'resultadoBB': '',
+                        'rol_uemc': ''
                     }
-
                 # Asignamos los resultados según el rol del UEMC
                 if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
-                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a1
-                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b1
-                else:
+                  if not tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_uemc
+                  else:
                     tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
                     tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
-
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_uemc
+                else:
+                  if not tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_uemc
+                  else:
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_uemc
     return render_template('equipos_basket/calendario_uemc.html', tabla_partidos_uemc=tabla_partidos_uemc)  
 # Fin proceso del UEMC
 

@@ -1,1 +1,722 @@
-[{"id": "c83e15ca-6690-4e5f-a995-45de2402bcd6", "nombre": "Jornada 1", "partidos": [{"local": "HLA Alicante", "resultadoA": "92", "resultadoB": "56", "visitante": "Rioverde Clavijo"}, {"local": "Hestia Menorca", "resultadoA": "66", "resultadoB": "83", "visitante": "Melilla"}, {"local": "Tizona Burgos", "resultadoA": "92", "resultadoB": "86", "visitante": "UEMC Real Valladolid"}, {"local": "Caceres", "resultadoA": "60", "resultadoB": "83", "visitante": "M.Estudiantes"}, {"local": "ICG For\u00e7a Lleida", "resultadoA": "75", "resultadoB": "68", "visitante": "Guuk Gipuzkoa Basket"}, {"local": "Fuenlabrada", "resultadoA": "73", "resultadoB": "78", "visitante": "Grupo Alega Cantabria"}, {"local": "Club Ourense", "resultadoA": "93", "resultadoB": "80", "visitante": "Amics Castell\u00f3"}, {"local": "Alimerka Oviedo", "resultadoA": "75", "resultadoB": "71", "visitante": "San Pablo Burgos"}, {"local": "Real Betis", "resultadoA": "77", "resultadoB": "81", "visitante": "Leyma Coru\u00f1a"}]}, {"id": "5a5fe38f-ba61-42df-a335-735d16c8e9f8", "nombre": "Jornada 2", "partidos": [{"local": "San Pablo Burgos", "resultadoA": "79", "resultadoB": "66", "visitante": "ICG For\u00e7a Lleida"}, {"local": "Amics Castell\u00f3", "resultadoA": "90", "resultadoB": "86", "visitante": "Caceres"}, {"local": "Leyma Coru\u00f1a", "resultadoA": "79", "resultadoB": "74", "visitante": "HLA Alicante"}, {"local": "Guuk Gipuzkoa Basket", "resultadoA": "76", "resultadoB": "74", "visitante": "Tizona Burgos"}, {"local": "Rioverde Clavijo", "resultadoA": "62", "resultadoB": "56", "visitante": "Real Betis"}, {"local": "M.Estudiantes", "resultadoA": "76", "resultadoB": "87", "visitante": "Alimerka Oviedo"}, {"local": "Grupo Alega Cantabria", "resultadoA": "76", "resultadoB": "80", "visitante": "Club Ourense"}, {"local": "UEMC Real Valladolid", "resultadoA": "70", "resultadoB": "66", "visitante": "Hestia Menorca"}, {"local": "Melilla", "resultadoA": "65", "resultadoB": "87", "visitante": "Fuenlabrada"}]}, {"id": "8db1dc40-4f3e-481d-8812-964b85fb5892", "nombre": "Jornada 3", "partidos": [{"local": "HLA Alicante", "resultadoA": "54", "resultadoB": "75", "visitante": "UEMC Real Valladolid"}, {"local": "Hestia Menorca", "resultadoA": "85", "resultadoB": "65", "visitante": "Amics Castell\u00f3"}, {"local": "Caceres", "resultadoA": "90", "resultadoB": "76", "visitante": "Melilla"}, {"local": "Leyma Coru\u00f1a", "resultadoA": "119", "resultadoB": "90", "visitante": "Grupo Alega Cantabria"}, {"local": "ICG For\u00e7a Lleida", "resultadoA": "66", "resultadoB": "86", "visitante": "Tizona Burgos"}, {"local": "Fuenlabrada", "resultadoA": "64", "resultadoB": "72", "visitante": "San Pablo Burgos"}, {"local": "Club Ourense", "resultadoA": "68", "resultadoB": "51", "visitante": "Rioverde Clavijo"}, {"local": "Alimerka Oviedo", "resultadoA": "81", "resultadoB": "86", "visitante": "Guuk Gipuzkoa Basket"}, {"local": "Real Betis", "resultadoA": "77", "resultadoB": "86", "visitante": "M.Estudiantes"}]}, {"id": "649d191d-d875-4669-8fda-c3c2c2371509", "nombre": "Jornada 4", "partidos": [{"local": "Tizona Burgos", "resultadoA": "109", "resultadoB": "93", "visitante": "Alimerka Oviedo"}, {"local": "Amics Castell\u00f3", "resultadoA": "81", "resultadoB": "94", "visitante": "San Pablo Burgos"}, {"local": "Guuk Gipuzkoa Basket", "resultadoA": "81", "resultadoB": "70", "visitante": "Fuenlabrada"}, {"local": "Rioverde Clavijo", "resultadoA": "64", "resultadoB": "55", "visitante": "Hestia Menorca"}, {"local": "M.Estudiantes", "resultadoA": "93", "resultadoB": "75", "visitante": "HLA Alicante"}, {"local": "Club Ourense", "resultadoA": "73", "resultadoB": "61", "visitante": "Caceres"}, {"local": "Grupo Alega Cantabria", "resultadoA": "75", "resultadoB": "63", "visitante": "ICG For\u00e7a Lleida"}, {"local": "UEMC Real Valladolid", "resultadoA": "94", "resultadoB": "111", "visitante": "Leyma Coru\u00f1a"}, {"local": "Melilla", "resultadoA": "83", "resultadoB": "87", "visitante": "Real Betis"}]}, {"id": "d7ba3882-3ba3-4b77-bc12-29913b527c9e", "nombre": "Jornada 5", "partidos": [{"local": "HLA Alicante", "resultadoA": "89", "resultadoB": "79", "visitante": "Grupo Alega Cantabria"}, {"local": "Hestia Menorca", "resultadoA": "56", "resultadoB": "51", "visitante": "Leyma Coru\u00f1a"}, {"local": "San Pablo Burgos", "resultadoA": "94", "resultadoB": "69", "visitante": "UEMC Real Valladolid"}, {"local": "Caceres", "resultadoA": "85", "resultadoB": "78", "visitante": "Rioverde Clavijo"}, {"local": "ICG For\u00e7a Lleida", "resultadoA": "96", "resultadoB": "62", "visitante": "Melilla"}, {"local": "M.Estudiantes", "resultadoA": "103", "resultadoB": "85", "visitante": "Tizona Burgos"}, {"local": "Fuenlabrada", "resultadoA": "85", "resultadoB": "98", "visitante": "Amics Castell\u00f3"}, {"local": "Alimerka Oviedo", "resultadoA": "87", "resultadoB": "78", "visitante": "Club Ourense"}, {"local": "Real Betis", "resultadoA": "81", "resultadoB": "83", "visitante": "Guuk Gipuzkoa Basket"}]}, {"id": "6069cc54-a920-4ab7-91d0-38c44625679b", "nombre": "Jornada 6", "partidos": [{"local": "Tizona Burgos", "resultadoA": "92", "resultadoB": "87", "visitante": "Caceres"}, {"local": "Amics Castell\u00f3", "resultadoA": "83", "resultadoB": "61", "visitante": "Alimerka Oviedo"}, {"local": "Leyma Coru\u00f1a", "resultadoA": "97", "resultadoB": "81", "visitante": "ICG For\u00e7a Lleida"}, {"local": "Guuk Gipuzkoa Basket", "resultadoA": "87", "resultadoB": "79", "visitante": "Hestia Menorca"}, {"local": "Rioverde Clavijo", "resultadoA": "73", "resultadoB": "77", "visitante": "M.Estudiantes"}, {"local": "Club Ourense", "resultadoA": "68", "resultadoB": "80", "visitante": "Fuenlabrada"}, {"local": "Grupo Alega Cantabria", "resultadoA": "72", "resultadoB": "84", "visitante": "San Pablo Burgos"}, {"local": "UEMC Real Valladolid", "resultadoA": "72", "resultadoB": "66", "visitante": "Real Betis"}, {"local": "Melilla", "resultadoA": "69", "resultadoB": "73", "visitante": "HLA Alicante"}]}, {"id": "b51f9558-6852-46b2-8b9b-e234fe65d474", "nombre": "Jornada 7", "partidos": [{"local": "HLA Alicante", "resultadoA": "71", "resultadoB": "70", "visitante": "Guuk Gipuzkoa Basket"}, {"local": "Hestia Menorca", "resultadoA": "50", "resultadoB": "74", "visitante": "Club Ourense"}, {"local": "San Pablo Burgos", "resultadoA": "83", "resultadoB": "66", "visitante": "Rioverde Clavijo"}, {"local": "Caceres", "resultadoA": "84", "resultadoB": "81", "visitante": "Leyma Coru\u00f1a"}, {"local": "ICG For\u00e7a Lleida", "resultadoA": "97", "resultadoB": "82", "visitante": "Amics Castell\u00f3"}, {"local": "Fuenlabrada", "resultadoA": "55", "resultadoB": "80", "visitante": "M.Estudiantes"}, {"local": "Alimerka Oviedo", "resultadoA": "71", "resultadoB": "79", "visitante": "Melilla"}, {"local": "Grupo Alega Cantabria", "resultadoA": "81", "resultadoB": "82", "visitante": "UEMC Real Valladolid"}, {"local": "Real Betis", "resultadoA": "84", "resultadoB": "85", "visitante": "Tizona Burgos"}]}, {"id": "3f0d18a4-9bd1-4d28-9ba9-67251b391926", "nombre": "Jornada 8", "partidos": [{"local": "HLA Alicante", "resultadoA": "83", "resultadoB": "79", "visitante": "Fuenlabrada"}, {"local": "Tizona Burgos", "resultadoA": "93", "resultadoB": "84", "visitante": "Grupo Alega Cantabria"}, {"local": "Amics Castell\u00f3", "resultadoA": "79", "resultadoB": "72", "visitante": "Rioverde Clavijo"}, {"local": "Leyma Coru\u00f1a", "resultadoA": "88", "resultadoB": "77", "visitante": "Alimerka Oviedo"}, {"local": "Guuk Gipuzkoa Basket", "resultadoA": "88", "resultadoB": "64", "visitante": "Caceres"}, {"local": "M.Estudiantes", "resultadoA": "81", "resultadoB": "56", "visitante": "Hestia Menorca"}, {"local": "Club Ourense", "resultadoA": "84", "resultadoB": "83", "visitante": "Real Betis"}, {"local": "UEMC Real Valladolid", "resultadoA": "80", "resultadoB": "74", "visitante": "ICG For\u00e7a Lleida"}, {"local": "Melilla", "resultadoA": "79", "resultadoB": "92", "visitante": "San Pablo Burgos"}]}, {"id": "daff3925-23dc-487d-a1d5-ea05c9f12fc2", "nombre": "Jornada 9", "partidos": [{"local": "Hestia Menorca", "resultadoA": "82", "resultadoB": "90", "visitante": "San Pablo Burgos"}, {"local": "Tizona Burgos", "resultadoA": "92", "resultadoB": "103", "visitante": "Leyma Coru\u00f1a"}, {"local": "Caceres", "resultadoA": "75", "resultadoB": "84", "visitante": "HLA Alicante"}, {"local": "Guuk Gipuzkoa Basket", "resultadoA": "99", "resultadoB": "65", "visitante": "Club Ourense"}, {"local": "ICG For\u00e7a Lleida", "resultadoA": "88", "resultadoB": "75", "visitante": "Real Betis"}, {"local": "Rioverde Clavijo", "resultadoA": "62", "resultadoB": "64", "visitante": "Melilla"}, {"local": "M.Estudiantes", "resultadoA": "91", "resultadoB": "92", "visitante": "UEMC Real Valladolid"}, {"local": "Alimerka Oviedo", "resultadoA": "81", "resultadoB": "60", "visitante": "Fuenlabrada"}, {"local": "Grupo Alega Cantabria", "resultadoA": "91", "resultadoB": "80", "visitante": "Amics Castell\u00f3"}]}, {"id": "859473bd-cd54-455b-84d3-10ade0ffc1ae", "nombre": "Jornada 10", "partidos": [{"local": "HLA Alicante", "resultadoA": "74", "resultadoB": "79", "visitante": "ICG For\u00e7a Lleida"}, {"local": "San Pablo Burgos", "resultadoA": "77", "resultadoB": "75", "visitante": "Leyma Coru\u00f1a"}, {"local": "Amics Castell\u00f3", "resultadoA": "68", "resultadoB": "84", "visitante": "M.Estudiantes"}, {"local": "Fuenlabrada", "resultadoA": "94", "resultadoB": "67", "visitante": "Caceres"}, {"local": "Club Ourense", "resultadoA": "72", "resultadoB": "79", "visitante": "Tizona Burgos"}, {"local": "Alimerka Oviedo", "resultadoA": "80", "resultadoB": "59", "visitante": "Rioverde Clavijo"}, {"local": "Grupo Alega Cantabria", "resultadoA": "75", "resultadoB": "69", "visitante": "Melilla"}, {"local": "Real Betis", "resultadoA": "88", "resultadoB": "57", "visitante": "Hestia Menorca"}, {"local": "UEMC Real Valladolid", "resultadoA": "71", "resultadoB": "65", "visitante": "Guuk Gipuzkoa Basket"}]}]
+[
+    {
+        "id": "c83e15ca-6690-4e5f-a995-45de2402bcd6",
+        "nombre": "Jornada 1",
+        "partidos": [
+            {
+                "local": "HLA Alicante",
+                "resultadoA": "92",
+                "resultadoB": "56",
+                "visitante": "Rioverde Clavijo"
+            },
+            {
+                "local": "Hestia Menorca",
+                "resultadoA": "66",
+                "resultadoB": "83",
+                "visitante": "Melilla"
+            },
+            {
+                "local": "Tizona Burgos",
+                "resultadoA": "92",
+                "resultadoB": "86",
+                "visitante": "UEMC Real Valladolid"
+            },
+            {
+                "local": "Caceres",
+                "resultadoA": "60",
+                "resultadoB": "83",
+                "visitante": "M.Estudiantes"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "75",
+                "resultadoB": "68",
+                "visitante": "Guuk Gipuzkoa Basket"
+            },
+            {
+                "local": "Fuenlabrada",
+                "resultadoA": "73",
+                "resultadoB": "78",
+                "visitante": "Grupo Alega Cantabria"
+            },
+            {
+                "local": "Club Ourense",
+                "resultadoA": "93",
+                "resultadoB": "80",
+                "visitante": "Amics Castell\u00f3"
+            },
+            {
+                "local": "Alimerka Oviedo",
+                "resultadoA": "75",
+                "resultadoB": "71",
+                "visitante": "San Pablo Burgos"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "77",
+                "resultadoB": "81",
+                "visitante": "Leyma Coru\u00f1a"
+            }
+        ]
+    },
+    {
+        "id": "5a5fe38f-ba61-42df-a335-735d16c8e9f8",
+        "nombre": "Jornada 2",
+        "partidos": [
+            {
+                "local": "San Pablo Burgos",
+                "resultadoA": "79",
+                "resultadoB": "66",
+                "visitante": "ICG For\u00e7a Lleida"
+            },
+            {
+                "local": "Amics Castell\u00f3",
+                "resultadoA": "90",
+                "resultadoB": "86",
+                "visitante": "Caceres"
+            },
+            {
+                "local": "Leyma Coru\u00f1a",
+                "resultadoA": "79",
+                "resultadoB": "74",
+                "visitante": "HLA Alicante"
+            },
+            {
+                "local": "Guuk Gipuzkoa Basket",
+                "resultadoA": "76",
+                "resultadoB": "74",
+                "visitante": "Tizona Burgos"
+            },
+            {
+                "local": "Rioverde Clavijo",
+                "resultadoA": "62",
+                "resultadoB": "56",
+                "visitante": "Real Betis"
+            },
+            {
+                "local": "M.Estudiantes",
+                "resultadoA": "76",
+                "resultadoB": "87",
+                "visitante": "Alimerka Oviedo"
+            },
+            {
+                "local": "Grupo Alega Cantabria",
+                "resultadoA": "76",
+                "resultadoB": "80",
+                "visitante": "Club Ourense"
+            },
+            {
+                "local": "UEMC Real Valladolid",
+                "resultadoA": "70",
+                "resultadoB": "66",
+                "visitante": "Hestia Menorca"
+            },
+            {
+                "local": "Melilla",
+                "resultadoA": "65",
+                "resultadoB": "87",
+                "visitante": "Fuenlabrada"
+            }
+        ]
+    },
+    {
+        "id": "8db1dc40-4f3e-481d-8812-964b85fb5892",
+        "nombre": "Jornada 3",
+        "partidos": [
+            {
+                "local": "HLA Alicante",
+                "resultadoA": "54",
+                "resultadoB": "75",
+                "visitante": "UEMC Real Valladolid"
+            },
+            {
+                "local": "Hestia Menorca",
+                "resultadoA": "85",
+                "resultadoB": "65",
+                "visitante": "Amics Castell\u00f3"
+            },
+            {
+                "local": "Caceres",
+                "resultadoA": "90",
+                "resultadoB": "76",
+                "visitante": "Melilla"
+            },
+            {
+                "local": "Leyma Coru\u00f1a",
+                "resultadoA": "119",
+                "resultadoB": "90",
+                "visitante": "Grupo Alega Cantabria"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "66",
+                "resultadoB": "86",
+                "visitante": "Tizona Burgos"
+            },
+            {
+                "local": "Fuenlabrada",
+                "resultadoA": "64",
+                "resultadoB": "72",
+                "visitante": "San Pablo Burgos"
+            },
+            {
+                "local": "Club Ourense",
+                "resultadoA": "68",
+                "resultadoB": "51",
+                "visitante": "Rioverde Clavijo"
+            },
+            {
+                "local": "Alimerka Oviedo",
+                "resultadoA": "81",
+                "resultadoB": "86",
+                "visitante": "Guuk Gipuzkoa Basket"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "77",
+                "resultadoB": "86",
+                "visitante": "M.Estudiantes"
+            }
+        ]
+    },
+    {
+        "id": "649d191d-d875-4669-8fda-c3c2c2371509",
+        "nombre": "Jornada 4",
+        "partidos": [
+            {
+                "local": "Tizona Burgos",
+                "resultadoA": "109",
+                "resultadoB": "93",
+                "visitante": "Alimerka Oviedo"
+            },
+            {
+                "local": "Amics Castell\u00f3",
+                "resultadoA": "81",
+                "resultadoB": "94",
+                "visitante": "San Pablo Burgos"
+            },
+            {
+                "local": "Guuk Gipuzkoa Basket",
+                "resultadoA": "81",
+                "resultadoB": "70",
+                "visitante": "Fuenlabrada"
+            },
+            {
+                "local": "Rioverde Clavijo",
+                "resultadoA": "64",
+                "resultadoB": "55",
+                "visitante": "Hestia Menorca"
+            },
+            {
+                "local": "M.Estudiantes",
+                "resultadoA": "93",
+                "resultadoB": "75",
+                "visitante": "HLA Alicante"
+            },
+            {
+                "local": "Club Ourense",
+                "resultadoA": "73",
+                "resultadoB": "61",
+                "visitante": "Caceres"
+            },
+            {
+                "local": "Grupo Alega Cantabria",
+                "resultadoA": "75",
+                "resultadoB": "63",
+                "visitante": "ICG For\u00e7a Lleida"
+            },
+            {
+                "local": "UEMC Real Valladolid",
+                "resultadoA": "94",
+                "resultadoB": "111",
+                "visitante": "Leyma Coru\u00f1a"
+            },
+            {
+                "local": "Melilla",
+                "resultadoA": "83",
+                "resultadoB": "87",
+                "visitante": "Real Betis"
+            }
+        ]
+    },
+    {
+        "id": "d7ba3882-3ba3-4b77-bc12-29913b527c9e",
+        "nombre": "Jornada 5",
+        "partidos": [
+            {
+                "local": "HLA Alicante",
+                "resultadoA": "89",
+                "resultadoB": "79",
+                "visitante": "Grupo Alega Cantabria"
+            },
+            {
+                "local": "Hestia Menorca",
+                "resultadoA": "56",
+                "resultadoB": "51",
+                "visitante": "Leyma Coru\u00f1a"
+            },
+            {
+                "local": "San Pablo Burgos",
+                "resultadoA": "94",
+                "resultadoB": "69",
+                "visitante": "UEMC Real Valladolid"
+            },
+            {
+                "local": "Caceres",
+                "resultadoA": "85",
+                "resultadoB": "78",
+                "visitante": "Rioverde Clavijo"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "96",
+                "resultadoB": "62",
+                "visitante": "Melilla"
+            },
+            {
+                "local": "M.Estudiantes",
+                "resultadoA": "103",
+                "resultadoB": "85",
+                "visitante": "Tizona Burgos"
+            },
+            {
+                "local": "Fuenlabrada",
+                "resultadoA": "85",
+                "resultadoB": "98",
+                "visitante": "Amics Castell\u00f3"
+            },
+            {
+                "local": "Alimerka Oviedo",
+                "resultadoA": "87",
+                "resultadoB": "78",
+                "visitante": "Club Ourense"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "81",
+                "resultadoB": "83",
+                "visitante": "Guuk Gipuzkoa Basket"
+            }
+        ]
+    },
+    {
+        "id": "6069cc54-a920-4ab7-91d0-38c44625679b",
+        "nombre": "Jornada 6",
+        "partidos": [
+            {
+                "local": "Tizona Burgos",
+                "resultadoA": "92",
+                "resultadoB": "87",
+                "visitante": "Caceres"
+            },
+            {
+                "local": "Amics Castell\u00f3",
+                "resultadoA": "83",
+                "resultadoB": "61",
+                "visitante": "Alimerka Oviedo"
+            },
+            {
+                "local": "Leyma Coru\u00f1a",
+                "resultadoA": "97",
+                "resultadoB": "81",
+                "visitante": "ICG For\u00e7a Lleida"
+            },
+            {
+                "local": "Guuk Gipuzkoa Basket",
+                "resultadoA": "87",
+                "resultadoB": "79",
+                "visitante": "Hestia Menorca"
+            },
+            {
+                "local": "Rioverde Clavijo",
+                "resultadoA": "73",
+                "resultadoB": "77",
+                "visitante": "M.Estudiantes"
+            },
+            {
+                "local": "Club Ourense",
+                "resultadoA": "68",
+                "resultadoB": "80",
+                "visitante": "Fuenlabrada"
+            },
+            {
+                "local": "Grupo Alega Cantabria",
+                "resultadoA": "72",
+                "resultadoB": "84",
+                "visitante": "San Pablo Burgos"
+            },
+            {
+                "local": "UEMC Real Valladolid",
+                "resultadoA": "72",
+                "resultadoB": "66",
+                "visitante": "Real Betis"
+            },
+            {
+                "local": "Melilla",
+                "resultadoA": "69",
+                "resultadoB": "73",
+                "visitante": "HLA Alicante"
+            }
+        ]
+    },
+    {
+        "id": "b51f9558-6852-46b2-8b9b-e234fe65d474",
+        "nombre": "Jornada 7",
+        "partidos": [
+            {
+                "local": "HLA Alicante",
+                "resultadoA": "71",
+                "resultadoB": "70",
+                "visitante": "Guuk Gipuzkoa Basket"
+            },
+            {
+                "local": "Hestia Menorca",
+                "resultadoA": "50",
+                "resultadoB": "74",
+                "visitante": "Club Ourense"
+            },
+            {
+                "local": "San Pablo Burgos",
+                "resultadoA": "83",
+                "resultadoB": "66",
+                "visitante": "Rioverde Clavijo"
+            },
+            {
+                "local": "Caceres",
+                "resultadoA": "84",
+                "resultadoB": "81",
+                "visitante": "Leyma Coru\u00f1a"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "97",
+                "resultadoB": "82",
+                "visitante": "Amics Castell\u00f3"
+            },
+            {
+                "local": "Fuenlabrada",
+                "resultadoA": "55",
+                "resultadoB": "80",
+                "visitante": "M.Estudiantes"
+            },
+            {
+                "local": "Alimerka Oviedo",
+                "resultadoA": "71",
+                "resultadoB": "79",
+                "visitante": "Melilla"
+            },
+            {
+                "local": "Grupo Alega Cantabria",
+                "resultadoA": "81",
+                "resultadoB": "82",
+                "visitante": "UEMC Real Valladolid"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "84",
+                "resultadoB": "85",
+                "visitante": "Tizona Burgos"
+            }
+        ]
+    },
+    {
+        "id": "3f0d18a4-9bd1-4d28-9ba9-67251b391926",
+        "nombre": "Jornada 8",
+        "partidos": [
+            {
+                "local": "HLA Alicante",
+                "resultadoA": "83",
+                "resultadoB": "79",
+                "visitante": "Fuenlabrada"
+            },
+            {
+                "local": "Tizona Burgos",
+                "resultadoA": "93",
+                "resultadoB": "84",
+                "visitante": "Grupo Alega Cantabria"
+            },
+            {
+                "local": "Amics Castell\u00f3",
+                "resultadoA": "79",
+                "resultadoB": "72",
+                "visitante": "Rioverde Clavijo"
+            },
+            {
+                "local": "Leyma Coru\u00f1a",
+                "resultadoA": "88",
+                "resultadoB": "77",
+                "visitante": "Alimerka Oviedo"
+            },
+            {
+                "local": "Guuk Gipuzkoa Basket",
+                "resultadoA": "88",
+                "resultadoB": "64",
+                "visitante": "Caceres"
+            },
+            {
+                "local": "M.Estudiantes",
+                "resultadoA": "81",
+                "resultadoB": "56",
+                "visitante": "Hestia Menorca"
+            },
+            {
+                "local": "Club Ourense",
+                "resultadoA": "84",
+                "resultadoB": "83",
+                "visitante": "Real Betis"
+            },
+            {
+                "local": "UEMC Real Valladolid",
+                "resultadoA": "80",
+                "resultadoB": "74",
+                "visitante": "ICG For\u00e7a Lleida"
+            },
+            {
+                "local": "Melilla",
+                "resultadoA": "79",
+                "resultadoB": "92",
+                "visitante": "San Pablo Burgos"
+            }
+        ]
+    },
+    {
+        "id": "daff3925-23dc-487d-a1d5-ea05c9f12fc2",
+        "nombre": "Jornada 9",
+        "partidos": [
+            {
+                "local": "Hestia Menorca",
+                "resultadoA": "82",
+                "resultadoB": "90",
+                "visitante": "San Pablo Burgos"
+            },
+            {
+                "local": "Tizona Burgos",
+                "resultadoA": "92",
+                "resultadoB": "103",
+                "visitante": "Leyma Coru\u00f1a"
+            },
+            {
+                "local": "Caceres",
+                "resultadoA": "75",
+                "resultadoB": "84",
+                "visitante": "HLA Alicante"
+            },
+            {
+                "local": "Guuk Gipuzkoa Basket",
+                "resultadoA": "99",
+                "resultadoB": "65",
+                "visitante": "Club Ourense"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "88",
+                "resultadoB": "75",
+                "visitante": "Real Betis"
+            },
+            {
+                "local": "Rioverde Clavijo",
+                "resultadoA": "62",
+                "resultadoB": "64",
+                "visitante": "Melilla"
+            },
+            {
+                "local": "M.Estudiantes",
+                "resultadoA": "91",
+                "resultadoB": "92",
+                "visitante": "UEMC Real Valladolid"
+            },
+            {
+                "local": "Alimerka Oviedo",
+                "resultadoA": "81",
+                "resultadoB": "60",
+                "visitante": "Fuenlabrada"
+            },
+            {
+                "local": "Grupo Alega Cantabria",
+                "resultadoA": "91",
+                "resultadoB": "80",
+                "visitante": "Amics Castell\u00f3"
+            }
+        ]
+    },
+    {
+        "id": "859473bd-cd54-455b-84d3-10ade0ffc1ae",
+        "nombre": "Jornada 10",
+        "partidos": [
+            {
+                "local": "HLA Alicante",
+                "resultadoA": "74",
+                "resultadoB": "79",
+                "visitante": "ICG For\u00e7a Lleida"
+            },
+            {
+                "local": "San Pablo Burgos",
+                "resultadoA": "77",
+                "resultadoB": "75",
+                "visitante": "Leyma Coru\u00f1a"
+            },
+            {
+                "local": "Amics Castell\u00f3",
+                "resultadoA": "68",
+                "resultadoB": "84",
+                "visitante": "M.Estudiantes"
+            },
+            {
+                "local": "Fuenlabrada",
+                "resultadoA": "94",
+                "resultadoB": "67",
+                "visitante": "Caceres"
+            },
+            {
+                "local": "Club Ourense",
+                "resultadoA": "72",
+                "resultadoB": "79",
+                "visitante": "Tizona Burgos"
+            },
+            {
+                "local": "Alimerka Oviedo",
+                "resultadoA": "80",
+                "resultadoB": "59",
+                "visitante": "Rioverde Clavijo"
+            },
+            {
+                "local": "Grupo Alega Cantabria",
+                "resultadoA": "75",
+                "resultadoB": "69",
+                "visitante": "Melilla"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "88",
+                "resultadoB": "57",
+                "visitante": "Hestia Menorca"
+            },
+            {
+                "local": "UEMC Real Valladolid",
+                "resultadoA": "71",
+                "resultadoB": "65",
+                "visitante": "Guuk Gipuzkoa Basket"
+            }
+        ]
+    },
+    {
+        "id": "2536da78-1a9c-4a94-a2c6-10fa6c79936e",
+        "nombre": "Jornada 11",
+        "partidos": [
+            {
+                "local": "Hestia Menorca",
+                "resultadoA": "57",
+                "resultadoB": "76",
+                "visitante": "HLA Alicante"
+            },
+            {
+                "local": "Caceres",
+                "resultadoA": "60",
+                "resultadoB": "81",
+                "visitante": "San Pablo Burgos"
+            },
+            {
+                "local": "Leyma Coru\u00f1a",
+                "resultadoA": "83",
+                "resultadoB": "86",
+                "visitante": "Fuenlabrada"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "90",
+                "resultadoB": "55",
+                "visitante": "Club Ourense"
+            },
+            {
+                "local": "Rioverde Clavijo",
+                "resultadoA": "56",
+                "resultadoB": "76",
+                "visitante": "Guuk Gipuzkoa Basket"
+            },
+            {
+                "local": "M.Estudiantes",
+                "resultadoA": "101",
+                "resultadoB": "61",
+                "visitante": "Grupo Alega Cantabria"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "85",
+                "resultadoB": "94",
+                "visitante": "Alimerka Oviedo"
+            },
+            {
+                "local": "UEMC Real Valladolid",
+                "resultadoA": "89",
+                "resultadoB": "71",
+                "visitante": "Amics Castell\u00f3"
+            },
+            {
+                "local": "Melilla",
+                "resultadoA": "83",
+                "resultadoB": "73",
+                "visitante": "Tizona Burgos"
+            }
+        ]
+    },
+    {
+        "id": "ab88eff1-9fd9-4ed2-806f-082a7e9c655c",
+        "nombre": "Jornada 18",
+        "partidos": [
+            {
+                "local": "UEMC Real Valladolid",
+                "resultadoA": "69",
+                "resultadoB": "84",
+                "visitante": "HLA Alicante"
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    }
+]

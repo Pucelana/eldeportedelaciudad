@@ -38,8 +38,7 @@
                                 </tr>
                                 <tr class="text-center text-white">
                                   <th scope="col">Equipos</th>
-                                  <th>Jornadas</th>
-                                  <!--<th></th>-->
+                                  <th >Jornadas</th>
                                   <th colspan="2">Ida</th>
                                   <th colspan="2">Vlt</th>
                                   <th>PG</th>
@@ -52,34 +51,15 @@
                                   <tr class="text-center">
                                     <th class="text-white">{{ equipo }}</th>
                                     <td class="jorn_ida fw-bold">
-                                      {% for jornada in datos_equipo['jornadas'] %}
-                                        J-{{ jornada.split()[1] }}  <!-- Obtenemos el número de jornada -->
-                                        {% if not loop.last %}/ {% endif %}  <!-- Separador, excepto para la última jornada -->
+                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
+                                        J -{{jornada|regex_replace('Jornada','') }} ({{ resultados['rol_uemc'] }})
+                                        {% if not loop.last %} / {% endif %}
                                       {% endfor %}
                                     </td>
-                                    <td class="resultadoA fw-bold">
-                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
-                                        {{ resultados['resultadoA'] }}
-                                        {% if not loop.last %} {% endif %}
-                                      {% endfor %}
-                                    </td>
-                                    <td class="resultadoB fw-bold">
-                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
-                                        {{ resultados['resultadoB'] }}
-                                        {% if not loop.last %} {% endif %}
-                                      {% endfor %}
-                                    </td>
-                                    <td class="resultadoAA fw-bold">
-                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
-                                        {{ resultados['resultadoAA'] }}
-                                        {% if not loop.last %}{% endif %}
-                                      {% endfor %}
-                                    </td>
-                                    <td class="resultadoBB fw-bold">
-                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
-                                        {{ resultados['resultadoBB'] }}
-                                        {% if not loop.last %}{% endif %}
-                                      {% endfor %}
+                                    <td class="resultadoA fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoA'] }}</td>
+                                    <td class="resultadoB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoB'] }}</td>
+                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoAA'] }}</td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoBB'] }}
                                     </td>
                                     <td class="gan-1"></td>
                                     <td class="per-1"></td>
