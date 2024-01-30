@@ -42,9 +42,7 @@ const filas = document.querySelectorAll("#tablaAscenso tbody tr");
 const partidosTotales = 34; // Total de partidos en la temporada
 const partidosPorGanar = 1; // Cantidad de puntos por partido ganado
 const puntosAscenso = 30; // Puntos relativos para quedar primero
-
 const equipos = [];
-
 filas.forEach((fila, indice) => {
     const equipo = fila.querySelector(`.fw-bold`).textContent;
     const partidosJugados = parseInt(fila.querySelector(`.jugados1`).textContent);
@@ -70,7 +68,6 @@ filas.forEach((fila, indice) => {
         partidosGanadosPesimistas
     });
 });
-
 // Ordenar los equipos por proximidad descendente
 equipos.sort((a, b) => b.proxiDeAscenso - a.proxiDeAscenso);
 // Actualizar la tabla con los datos ordenados
@@ -89,15 +86,12 @@ equipos.forEach((equipoData) => {
     `;
     tabla.appendChild(nuevaFila);
 });
-
 // Tercera función playoff y ordenar automaticamente
 const filas1 = document.querySelectorAll("#tablaPlayUemc tbody tr");
 const partidosTotales1 = 34; // Total de partidos en la temporada
 const partidosPorGanar1 = 1; // Cantidad de puntos por partido ganado
 const partidosPlayOff = 20; // Número de partidos para llegar a los playoffs
-
 const equiposPlay = [];
-
 filas1.forEach((fila, indice) => {
     const equipo = fila.querySelector(`.fw-bold`).textContent;
     const partidosJugados = parseInt(fila.querySelector(`.play-jug`).textContent);
@@ -124,10 +118,8 @@ filas1.forEach((fila, indice) => {
         puntosGanadosPesimistas
     });
 });
-
 // Ordenar los equiposPlay por proximidad descendente
 equiposPlay.sort((a, b) => b.proximidadAscenso - a.proximidadAscenso);
-
 // Actualizar la tabla con los datos ordenados
 const tabla1 = document.querySelector("#tablaPlayUemc tbody");
 tabla1.innerHTML = ""; // Limpiar la tabla antes de actualizar
@@ -144,15 +136,12 @@ equiposPlay.forEach((equipoData) => {
     `;
     tabla1.appendChild(nuevaFila);
 });
-
 // Cuarta función descenso y ordenar automaticamente
 const filas2 = document.querySelectorAll("#tablaDescUemc tbody tr");
 const partidosTotales2 = 34; // Total de partidos en la temporada
 const partidosPorGanar2 = 1; // Cantidad de puntos por partido ganado
 const partidosDescenso = 12;
-
 const equiposDesc = [];
-
 filas2.forEach((fila, indice) => {
     const equipo = fila.querySelector(`.fw-bold`).textContent;
     const partidosJugados = parseInt(fila.querySelector(`.desc-jug`).textContent);
@@ -178,7 +167,6 @@ filas2.forEach((fila, indice) => {
         partidosGanadosPesimistas
     });
 });
-
 // Ordenar los equiposDesc por proximidad descendente
 equiposDesc.sort((a, b) => b.proxiSalvacion - a.proxiSalvacion);
 // Actualizar la tabla con los datos ordenados
@@ -197,6 +185,8 @@ equiposDesc.forEach((equipoData) => {
     `;
     tabla2.appendChild(nuevaFila);
 });
+
+
 
 
 

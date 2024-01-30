@@ -534,7 +534,21 @@ def calendario_uemc():
                     rol_uemc = 'F'
                 # Verificamos si el equipo contrario no está en la tabla
                 if equipo_contrario not in tabla_partidos_uemc:
-                    tabla_partidos_uemc[equipo_contrario] = {'jornadas': {}}                
+                    tabla_partidos_uemc[equipo_contrario] = {'jornadas': {}} 
+                # Definir un contador de enfrentamientos por equipo
+                if 'contador_enfrentamientos' not in tabla_partidos_uemc[equipo_contrario]:
+                    tabla_partidos_uemc[equipo_contrario]['contador_enfrentamientos'] = 0 
+                # Verificar si es el primer o segundo enfrentamiento
+                if tabla_partidos_uemc[equipo_contrario]['contador_enfrentamientos'] == 0:
+                    tipo_jornada = 'jorn_ida'
+                else:
+                    tipo_jornada = 'jorn_vuelta'
+                # Registrar los resultados y la jornada correspondiente
+                tabla_partidos_uemc[equipo_contrario][f'{tipo_jornada}'] = jornada['nombre']
+                tabla_partidos_uemc[equipo_contrario][f'resultadoA{tipo_jornada}'] = resultado_a
+                tabla_partidos_uemc[equipo_contrario][f'resultadoB{tipo_jornada}'] = resultado_b
+                # Incrementar el contador de enfrentamientos para el próximo partido
+                tabla_partidos_uemc[equipo_contrario]['contador_enfrentamientos'] += 1                       
                 # Verificamos si es el primer o segundo enfrentamiento
                 if 'primer_enfrentamiento' not in tabla_partidos_uemc[equipo_contrario]:
                     tabla_partidos_uemc[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
@@ -543,10 +557,12 @@ def calendario_uemc():
                 elif 'segundo_enfrentamiento' not in tabla_partidos_uemc[equipo_contrario]:
                     tabla_partidos_uemc[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
                     tabla_partidos_uemc[equipo_contrario]['resultadoAA'] = resultado_a
-                    tabla_partidos_uemc[equipo_contrario]['resultadoBB'] = resultado_b    
+                    tabla_partidos_uemc[equipo_contrario]['resultadoBB'] = resultado_b  
                 # Agregamos la jornada y resultados
                 if jornada['nombre'] not in tabla_partidos_uemc[equipo_contrario]['jornadas']:
                     tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'jorn_ida': '',
+                        'jorn_vuelta': '',
                         'resultadoA': '',
                         'resultadoB': '',
                         'resultadoAA': '',
