@@ -28,7 +28,7 @@
                     <div class="card-body">
                       <div class="table-responsive">
                         <h3 class="text-center text-white fw-bold">Calendario</h3>
-                        <table class="table table-bordered tabla_equipos"><!--Tabla Calendario Ponce-->
+                        <table class="table table-bordered tabla_equipos tabla_ponce"><!--Tabla Calendario Ponce-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
@@ -38,172 +38,44 @@
                                 </tr>
                                 <tr class="text-center text-white">
                                   <th scope="col">Equipos</th>
-                                  <th>Ida</th>
-                                  <th>Vlt</th>
+                                  <th >Ida</th>
+                                  <th>Vta</th>
                                   <th colspan="2">Ida</th>
-                                  <th colspan="2">Vlt</th>
+                                  <th colspan="2">Vta</th>
                                   <th>PG</th>
                                   <th>PP</th>
                                   <th>Average</th>
                                 </tr>
                             </thead>
                               <tbody>
-                                <tr class="text-center"><!--Maristas Coruña-->
-                                    <th class="text-white">Maristas Coruña</th>
-                                    <td class="jornadas fw-bold">1ª-F</td>
-                                    <td class="jornadas fw-bold">14ª-C</td>
-                                    <td class="id-A fw-bold">83</td>
-                                    <td class="id-V fw-bold">62</td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
+                                {% for equipo, datos_equipo in tabla_partidos_ponce.items() %}
+                                  <tr class="text-center">
+                                    <th class="text-white">{{ equipo }}</th>
+                                    <td class="jorn_ida fw-bold">
+                                      {% if datos_equipo.get('primer_enfrentamiento') %}
+                                        J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
+                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_ponce'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_ponce'] }})
+                                        {% endif %}
+                                      {% endif %}
+                                    </td>
+                                    <td class="jorn_vuelta fw-bold">
+                                      {% if datos_equipo.get('segundo_enfrentamiento') %}
+                                        J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
+                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_ponce'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_ponce'] }})
+                                        {% endif %}
+                                      {% endif %}
+                                    </td>
+                                    <td class="resultadoA fw-bold">{{ tabla_partidos_ponce[equipo]['resultadoA'] }}</td>
+                                    <td class="resultadoB fw-bold">{{ tabla_partidos_ponce[equipo]['resultadoB'] }}</td>
+                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_ponce[equipo]['resultadoAA'] }}</td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_ponce[equipo]['resultadoBB'] }}</td>
                                     <td class="gan-1"></td>
                                     <td class="per-1"></td>
                                     <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Magec Tías Lanzarote-->
-                                    <th class="text-white">Magec Tías Lanzarote</th>
-                                    <td class="jornadas fw-bold">2ª-C</td>
-                                    <td class="jornadas fw-bold">15ª-F</td>
-                                    <td class="id-V fw-bold">55</td>
-                                    <td class="id-A fw-bold">57</td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Adba Sanfer-->
-                                    <th class="text-white">Adba Sanfer</th>
-                                    <td class="jornadas fw-bold">3ª-F</td>
-                                    <td class="jornadas fw-bold">16ª-C</td>
-                                    <td class="id-A fw-bold">65</td>
-                                    <td class="id-V fw-bold">67</td>                   
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Náutico Tenerife Ull-->
-                                    <th class="text-white">Náutico Tenerife Ull</th>
-                                    <td class="jornadas fw-bold">4ª-C</td>
-                                    <td class="jornadas fw-bold">17ª-F</td>
-                                    <td class="id-V fw-bold">67</td>
-                                    <td class="id-A fw-bold">59</td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--C.B. Arxil-->
-                                    <th class="text-white">C.B. Arxil</th>
-                                    <td class="jornadas fw-bold">5ª-F</td>
-                                    <td class="jornadas fw-bold">18ªC</td>
-                                    <td class="id-A fw-bold">68</td>
-                                    <td class="id-V fw-bold">60</td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Tenerife-->
-                                    <th class="text-white">Tenerife</th>
-                                    <td class="jornadas fw-bold">6ª-C</td>
-                                    <td class="jornadas fw-bold">19ª-F</td>
-                                    <td class="id-V fw-bold">69</td>
-                                    <td class="id-A fw-bold">55</td> 
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Mipelletymas B.F. León-->
-                                    <th class="text-white">Mipelletymas B.F León</th>
-                                    <td class="jornadas fw-bold">7ª-F</td>
-                                    <td class="jornadas fw-bold">20ª-C</td>
-                                    <td class="id-A fw-bold">67</td>
-                                    <td class="id-V fw-bold">43</td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Miralvalle Plasencia-->
-                                    <th class="text-white">Miralvalle Plasencia</th>
-                                    <td class="jornadas fw-bold">8ª-C</td>
-                                    <td class="jornadas fw-bold">21ª-F</td>
-                                    <td class="id-V fw-bold">46</td>
-                                    <td class="id-A fw-bold">73</td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Mariscos Antón Cortegada-->
-                                    <th class="text-white">Mariscos Antón Cortegada</th>
-                                    <td class="jornadas fw-bold">9ª-F</td>
-                                    <td class="jornadas fw-bold">22ª-C</td>
-                                    <td class="id-A fw-bold">63</td>
-                                    <td class="id-V fw-bold">54</td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Segle XXI-->
-                                    <th class="text-white">Segle XXI</th>
-                                    <td class="jornadas fw-bold">10ª-C</td>
-                                    <td class="jornadas fw-bold">23ª-F</td>
-                                    <td class="id-V fw-bold">61</td>
-                                    <td class="id-A fw-bold">69</td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--CB Grup Barna-->
-                                    <th class="text-white">CB Grup Barna</th>
-                                    <td class="jornadas fw-bold">11ª-F</td>
-                                    <td class="jornadas fw-bold">24ª-C</td>
-                                    <td class="id-A fw-bold">76</td>
-                                    <td class="id-V fw-bold">60</td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Homs U.E.Mataró-->
-                                    <th class="text-white">Homs U.E.Mataró</th>
-                                    <td class="jornadas fw-bold">12ª-F</td>
-                                    <td class="jornadas fw-bold">25ª-C</td>
-                                    <td class="id-A fw-bold">67</td>
-                                    <td class="id-V fw-bold">39</td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Geieg-->
-                                    <th class="text-white">Geieg</th>
-                                    <td class="jornadas fw-bold">13ª-C</td>
-                                    <td class="jornadas fw-bold">26ª-F</td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1">-</td>
-                                    <td class="text-success average"></td>
-                                </tr>
+                                  </tr>
+                                {% endfor %}
                               </tbody>
                         </table>
                       </div>
@@ -211,280 +83,46 @@
                   </div>
                 </div>
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item"><!-- Resultados temporada 23/24 -->
                 <div class="d-flex justify-content-center">
                   <div class="card tabla_equipos" style="width: 70rem;">
                     <div class="card-body">
-                      <div class="table-responsive">
-                        <h3 class="text-center text-white fw-bold">Resultados</h3>
-                        <table class="table tabla_resultados"><!--Tabla Resultados-->
-                            <thead>
-                                <h5 class="text-center jornadas">Visitante</h5>
-                              <tr>
-                                <th><h5 class="">Local</h5></th>
-                                <th class="vertical">Ponce Valladolid</th>
-                                <th class="vertical">Miralvalle Plasencia</th>
-                                <th class="vertical">Maristas Coruña</th>
-                                <th class="vertical">Magectias Lanzarote</th>
-                                <th class="vertical">Adba Sanfer</th>
-                                <th class="vertical">Náutico Tenerife Ull</th>
-                                <th class="vertical">C.B.Arxil</th>
-                                <th class="vertical">Tenerife</th>
-                                <th class="vertical">Mipelletymas B.F León</th>
-                                <th class="vertical">Mariscos Antón Cortegada</th>
-                                <th class="vertical">Segle XII</th>
-                                <th class="vertical">CB Grup Barna</th>
-                                <th class="vertical">Homs U.E.Mataró</th>
-                                <th class="vertical">Geieg</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr><!--Ponce Valladolid-->
-                                <th>Ponce Valladolid</th>
-                                <td class="bg-dark"></td>
-                                <td class="text-danger">46-73</td><!--Miralvalle Plasencia-->
-                                <td class="text-white">J-14</td><!--Maristas Coruña-->
-                                <td class="text-danger">55-57</td><!--Magectias Lanzarote-->
-                                <td class="text-white">J-16</td><!--Adba Sanfer-->
-                                <td class="">67-59</td><!--Náutico Tenerife Ull-->
-                                <td class="text-white">J-18</td><!--C.B.Arxil-->
-                                <td class="">69-55</td><!--Tenerife-->
-                                <td class="text-white">J-20</td><!--Mipelletymas B.F León-->
-                                <td class="text-white">J-22</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-danger">61-69</td><!--Segle XII-->
-                                <td class="text-white">J-24</td><!--CB Grup Barna-->
-                                <td class="text-white">J-25</td><!--Homs U.E.Mataró-->
-                                <td class="text-white">J-13</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Miralvalle Plasencia-->
-                                <th>Miralvella Plasencia</th>
-                                <td class="text-white">J-21</td><!--Ponce Valladolid-->
-                                <td class="bg-dark"></td>
-                                <td class="text-white">J-23</td><!--Maristas Coruña-->
-                                <td class="">79-63</td><!--Magectias Lanzarote-->
-                                <td class="text-white">J-25</td><!--Adba Sanfer-->
-                                <td class="text-white">J-13</td><!--Náutico Tenerife Ull-->
-                                <td class="text-white">J-14</td><!--C.B.Arxil-->
-                                <td class="">57-34</td><!--Tenerife-->
-                                <td class="text-white">J-16</td><!--Mipelletymas B.F León-->
-                                <td class="text-danger">61-65</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-white">J-19</td><!--Segle XII-->
-                                <td class="">82-53</td><!--CB Grup Barna-->
-                                <td class="">71-61</td><!--Homs U.E.Mataró-->
-                                <td class="">64-60</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Marsitas Coruña-->
-                                <th>Maristas Coruña</th>
-                                <td class="">83-62</td><!--Ponce Valladolid-->
-                                <td class="text-danger">66-88</td><!--Miralvalle Plasencia-->
-                                <td class="bg-dark"></td>
-                                <td class="">67-61</td><!--Magectias Lanzarote-->
-                                <td class="text-white">J-18</td><!--Adba Sanfer-->
-                                <td class="">74-65</td><!--Náutico Tenerife Ull-->
-                                <td class="text-white">J-20</td><!--C.B.Arxil-->
-                                <td class="">73-46</td><!--Tenerife-->
-                                <td class="text-white">J-22</td><!--Mipelletymas B.F León-->
-                                <td class="text-white">J-24</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-danger">69-77</td><!--Segle XII-->
-                                <td class="text-white">J-26</td><!--CB Grup Barna-->
-                                <td class="text-white">J-16</td><!--Homs U.E.Mataró-->
-                                <td class="text-white">J-15</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Magectias Lanzarote-->
-                                <th>Magectias Lanzarote</th>
-                                <td class="text-white">J-15</td><!--Ponce Valladolid-->
-                                <td class="text-white">J-24</td><!--Miralvalle Plasencia-->
-                                <td class="text-white">J-17</td><!--Maristas Coruña-->
-                                <td class="bg-dark"></td>
-                                <td class="">79-53</td><!--Adba Sanfer-->
-                                <td class="text-white">J-20</td><!--Náutico Tenerife Ull-->
-                                <td class="text-danger">61-70</td><!--C.B.Arxil-->
-                                <td class="text-white">J-22</td><!--Tenerife-->
-                                <td class="text-danger">51-59</td><!--Mipelletymas B.F León-->
-                                <td class="text-danger">50-79</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-white">J-26</td><!--Segle XII-->
-                                <td class="">66-63</td><!--CB Grup Barna-->
-                                <td class="text-white">J-18</td><!--Homs U.E.Mataró-->
-                                <td class="text-danger">68-71</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Adba Sanfer-->
-                                <th>Adba Sanfer</th>
-                                <td class="text-danger">65-67</td><!--Ponce Valladolid-->
-                                <td class="text-danger">69-80</td><!--Miralvalle Plasencia-->
-                                <td class="text-danger">58-74</td><!--Maristas Coruña-->
-                                <td class="text-white">J-19</td><!--Magectias Lanzarote-->
-                                <td class="bg-dark"></td>
-                                <td class="">76-60</td><!--Náutico Tenerife Ull-->
-                                <td class="text-white">J-22</td><!--C.B.Arxil-->
-                                <td class="">59-40</td><!--Tenerife-->
-                                <td class="text-white">J-24</td><!--Mipelletymas B.F León-->
-                                <td class="text-white">J-26</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-danger">53-78</td><!--Segle XII-->
-                                <td class="text-white">J-15</td><!--CB Grup Barna-->
-                                <td class="text-white">J-20</td><!--Homs U.E.Mataró-->
-                                <td class="text-white">J-17</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Náutico Tenerife Ull-->
-                                <th>Náutico Tenerife Ull</th>
-                                <td class="text-white">J-17</td><!--Ponce Valladolid-->
-                                <td class="text-white">J-26</td><!--Miralvalle Plasencia-->
-                                <td class="text-white">J-19</td><!--Maristas Coruña-->
-                                <td class="">49-43</td><!--Magectias Lanzarote-->
-                                <td class="text-white">J-21</td><!--Adba Sanfer-->
-                                <td class="bg-dark"></td>
-                                <td class="text-danger">67-85</td><!--C.B.Arxil-->
-                                <td class="text-white">J-24</td><!--Tenerife-->
-                                <td class="">82-73</td><!--Mipelletymas B.F León-->
-                                <td class="text-danger">46-69</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-white">J-15</td><!--Segle XII-->
-                                <td class="">69-68</td><!--CB Grup Barna-->
-                                <td class="text-white">J-22</td><!--Homs U.E.Mataró-->
-                                <td class="text-danger">60-69</td><!--Geieg-->
-                              </tr>
-                              <tr><!--C.B.Arxil-->
-                                <th>C.B.Arxil</th>
-                                <td class="">68-60</td><!--Ponce Valladolid-->
-                                <td class="text-danger">54-62</td><!--Miralvalle Plasencia-->
-                                <td class="">80-56</td><!--Maristas Coruña-->
-                                <td class="text-white">J-21</td><!--Magectias Lanzarote-->
-                                <td class="">57-50</td><!--Adba Sanfer-->
-                                <td class="text-white">J-23</td><!--Náutico Tenerife Ull-->
-                                <td class="bg-dark"></td>
-                                <td class="">79-46</td><!--Tenerife-->
-                                <td class="text-white">J-26</td><!--Mipelletymas B.F León-->
-                                <td class="text-white">J-15</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-danger">64-77</td><!--Segle XII-->
-                                <td class="text-white">J-17</td><!--CB Grup Barna-->
-                                <td class="text-white">J-24</td><!--Homs U.E.Mataró-->
-                                <td class="text-white">J-19</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Tenerife-->
-                                <th>Tenerife</th>
-                                <td class="text-white">J-19</td><!--Ponce Valladolid-->
-                                <td class="text-white">J-15</td><!--Miralvalle Plasencia-->
-                                <td class="text-white">J-21</td><!--Maristas Coruña-->
-                                <td class="text-danger">49-62</td><!--Magectias Lanzarote-->
-                                <td class="text-white">J-23</td><!--Adba Sanfer-->
-                                <td class="">75-69</td><!--Náutico Tenerife Ull-->
-                                <td class="text-white">J-25</td><!--C.B.Arxil-->
-                                <td class="bg-dark"></td>
-                                <td class="text-danger">59-77</td><!--Mipelletymas B.F León-->
-                                <td class="text-danger">56-74</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-white">J-17</td><!--Segle XII-->
-                                <td class="">53-44</td><!--CB Grup Barna-->
-                                <td class="text-white">J-13</td><!--Homs U.E.Mataró-->
-                                <td class="text-danger">50-75</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Mipelletymas B.F León-->
-                                <th>Mipelletymas B.F León</th>
-                                <td class="">67-43</td><!--Ponce Valladolid-->
-                                <td class="text-danger">76-78</td><!--Miralvalle Plasencia-->
-                                <td class="">67-63</td><!--Maristas Coruña-->
-                                <td class="text-white">J-23</td><!--Magectias Lanzarote-->
-                                <td class="">77-41</td><!--Adba Sanfer-->
-                                <td class="text-white">J-25</td><!--Náutico Tenerife Ull-->
-                                <td class="text-white">J-13</td><!--C.B.Arxil-->
-                                <td class="text-white">J-14</td><!--Tenerife-->
-                                <td class="bg-dark"></td>
-                                <td class="text-white">J-17</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-danger">56-86</td><!--Segle XII-->
-                                <td class="text-white">J-19</td><!--CB Grup Barna-->
-                                <td class="">74-66</td><!--Homs U.E.Mataró-->
-                                <td class="text-white">J-21</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Mariscos Antón Cortegada-->
-                                <th>Marsicos Antón Cortegada</th>
-                                <td class="">63-54</td><!--Ponce Valladolid-->
-                                <td class="text-white">J-18</td><!--Miralvalle Plasencia-->
-                                <td class="text-danger">41-53</td><!--Maristas Coruña-->
-                                <td class="text-white">J-25</td><!--Magectias Lanzarote-->
-                                <td class="text-white">J-13</td><!--Adba Sanfer-->
-                                <td class="text-white">J-14</td><!--Náutico Tenerife Ull-->
-                                <td class="text-danger">51-58</td><!--C.B.Arxil-->
-                                <td class="text-white">J-16</td><!--Tenerife-->
-                                <td class="text-danger">68-70</td><!--Mipelletymas B.F León-->
-                                <td class="bg-dark"></td>
-                                <td class="text-danger">52-89</td><!--Segle XII-->
-                                <td class="text-white">J-21</td><!--CB Grup Barna-->
-                                <td class="">58-53</td><!--Homs U.E.Mataró-->
-                                <td class="text-white">J-23</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Segle XII-->
-                                <th>Segle XII</th>
-                                <td class="text-white">J-23</td><!--Ponce Valladolid-->
-                                <td class="">75-49</td><!--Miralvalle Plasencia-->
-                                <td class="text-white">J-25</td><!--Maristas Coruña-->
-                                <td class="text-white">J-13</td><!--Magectias Lanzarote-->
-                                <td class="text-white">J-14</td><!--Adba Sanfer-->
-                                <td class="">78-52</td><!--Náutico Tenerife Ull-->
-                                <td class="text-white">J-16</td><!--C.B.Arxil-->
-                                <td class="">101-13</td><!--Tenerife-->
-                                <td class="text-white">J-18</td><!--Mipelletymas B.F León-->
-                                <td class="text-white">J-20</td><!--Marsicos Antón Cortegada-->
-                                <td class="bg-dark"></td>
-                                <td class="">81-55</td><!--CB Grup Barna-->
-                                <td class="">61-47</td><!--Homs U.E.Mataró-->
-                                <td class="">68-54</td><!--Geieg-->
-                              </tr>
-                              <tr><!--CB Grup Barna-->
-                                <th>CB Grup Barna</th>
-                                <td class="">76-60</td><!--Ponce Valladolid-->
-                                <td class="text-white">J-20</td><!--Miralvalle Plasencia-->
-                                <td class="text-white">J-13</td><!--Maristas Coruña-->
-                                <td class="text-white">J-14</td><!--Magectias Lanzarote-->
-                                <td class="text-danger">66-71</td><!--Adba Sanfer-->
-                                <td class="text-white">J-16</td><!--Náutico Tenerife Ull-->
-                                <td class="text-danger">58-71</td><!--C.B.Arxil-->
-                                <td class="text-white">J-18</td><!--Tenerife-->
-                                <td class="text-danger">55-60</td><!--Mipelletymas B.F León-->
-                                <td class="">54-51</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-white">J-22</td><!--Segle XII-->
-                                <td class="bg-dark"></td>
-                                <td class="text-danger">41-53</td><!--Homs U.E.Mataró-->
-                                <td class="text-white">J-25</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Homs U.E.Mataró-->
-                                <th>Homs U.E.Mataró</th>
-                                <td class="">67-39</td><!--Ponce Valladolid-->
-                                <td class="text-white">J-17</td><!--Miralvalle Plasencia-->
-                                <td class="text-danger">56-65</td><!--Maristas Coruña-->
-                                <td class="">57-38</td><!--Magectias Lanzarote-->
-                                <td class="">66-62</td><!--Adba Sanfer-->
-                                <td class="">82-60</td><!--Náutico Tenerife Ull-->
-                                <td class="text-danger">54-58</td><!--C.B.Arxil-->
-                                <td class="text-white">J-26</td><!--Tenerife-->
-                                <td class="text-white">J-15</td><!--Mipelletymas B.F León-->
-                                <td class="text-white">J-19</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-white">J-21</td><!--Segle XII-->
-                                <td class="text-white">J-23</td><!--CB Grup Barna-->
-                                <td class="bg-dark"></td>
-                                <td class="text-danger">54-60</td><!--Geieg-->
-                              </tr>
-                              <tr><!--Geieg-->
-                                <th>Geieg</th>
-                                <td class="text-white">J-26</td><!--Ponce Valladolid-->
-                                <td class="text-white">J-22</td><!--Miralvalle Plasencia-->
-                                <td class="text-danger">51-72</td><!--Maristas Coruña-->
-                                <td class="text-white">J-16</td><!--Magectias Lanzarote-->
-                                <td class="">55-45</td><!--Adba Sanfer-->
-                                <td class="text-white">J-18</td><!--Náutico Tenerife Ull-->
-                                <td class="">74-64</td><!--C.B.Arxil-->
-                                <td class="text-white">J-20</td><!--Tenerife-->
-                                <td class="">69-67</td><!--Mipelletymas B.F León-->
-                                <td class="text-white">13/1(J-10)</td><!--Marsicos Antón Cortegada-->
-                                <td class="text-white">J-24</td><!--Segle XII-->
-                                <td class="">61-41</td><!--CB Grup Barna-->
-                                <td class="text-white">J-14</td><!--Homs U.E.Mataró-->
-                                <td class="bg-dark"></td>
-                              </tr>
-                            </tbody>        
-                        </table>
-                          <p><strong class="text-danger">Rojo</strong>-Gana equipo visitante</p>
+                      <div class="container-fluid">
+                        <div class="row">
+                          {% for goles in nuevos_datos_ponce %}
+                          <div class="col-lg-4">
+                            <div class="card card_calendario mb-3">
+                              <div class="table-responsive">
+                                <table class="table table-bordered card_calendario tabla_jornadas">
+                                  <thead class="fondo_jornadas">
+                                    <tr class="text-center">
+                                      <td colspan="5" class="text-center text-white fw-bold">{{ goles.nombre }}</td>
+                                    </tr>
+                                  </thead>
+                                  <tbody style="display:none">
+                                    {% for partido in goles.partidos %}
+                                    <tr class="text-center">
+                                      <td class="text-center fw-bold">{{ partido.local }}</td>
+                                      <td class="text-center text-white">{{ partido.resultadoA }}</td>
+                                      <td class="text-center text-white">{{ partido.resultadoB }}</td>
+                                      <td class="text-center fw-bold">{{ partido.visitante }}</td>
+                                    </tr>
+                                  {% endfor %}
+                                  </tbody>
+                                </table>
+                                <div class="d-flex ms-1 my-1">
+                                  <a href="#" onclick="toggleTabla(this, `{{ goles.nombre }}` ) " class="text-decoration-none ps-3 text-white">Ver</a>
+                                </div>
+                              </div> 
+                            </div>
+                          </div>
+                        {% endfor %}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -505,58 +143,132 @@ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/j
 integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 </script>
 <script src="/static/js/script.js"></script>
-<script>
-// Obtener todas las filas de la tabla
-const rows = document.querySelectorAll('.tabla_equipos tbody tr');
-// Iterar sobre cada fila para realizar los cálculos
-rows.forEach(row => {
-    const idA = parseFloat(row.querySelector('.id-A').textContent);
-    const idV = parseFloat(row.querySelector('.id-V').textContent);
-    const vtA = parseFloat(row.querySelector('.vta-A').textContent);
-    const vtV = parseFloat(row.querySelector('.vta-V').textContent);
-    const gan1 = row.querySelector('.gan-1');
-    const per1 = row.querySelector('.per-1');
-    const average = row.querySelector('.average');
-    if (idA > idV) {
-        gan1.textContent = '-';
-        per1.textContent = '1';
-        gan1.style.color = 'black';
-        per1.style.color = 'red';
-    } else if (idA < idV) {
-        gan1.textContent = '1';
-        per1.textContent = '-';
-        gan1.style.color = 'green';
-        per1.style.color = 'black';
-    } 
-    if (!isNaN(vtA) && !isNaN(vtV)) {
-        if (vtV > vtA) {
-            gan1.textContent = gan1.textContent === '-' ? '1' : (parseInt(gan1.textContent) + 1).toString();
-            gan1.style.color = 'green';
-        } else if (vtA > vtV) {
-            per1.textContent = per1.textContent === '-' ? '1' : (parseInt(per1.textContent) + 1).toString();
-            gan1.style.color = 'red';
+<script src="/static/js/leer_mas.js"></script>
+<script> 
+  document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todas las filas de la tabla
+    var filas = document.querySelectorAll('.tabla_ponce tbody tr');
+    // Iterar sobre cada fila
+    filas.forEach(function(fila) {
+        // Obtener el nombre del equipo de la fila actual
+        var equipo = fila.querySelector('th').textContent.trim();
+        console.log(equipo)
+        // Obtener la jornada y determinar si el UEMC juega en casa o como visitante
+        var jornadaElement = fila.querySelector('.jorn_ida');
+        var esLocal = false; // Por defecto, asumimos que el Ponce juega como visitante
+        if (jornadaElement) {
+            var jornada = jornadaElement.textContent.trim();
+            if (jornada.includes('C')) {
+                esLocal = true;
+            }
         }
-    }
-    // Calcular average
-    const avgIda = idV - idA;
-    const avgVuelta = (isNaN(vtA) || isNaN(vtV)) ? 0 : vtV - vtA;
-    const avgTotal = avgIda + avgVuelta;
-
-    if (!isNaN(avgTotal)) {
-        if (avgTotal > 0) {
-            average.textContent = avgTotal;
-            average.style.color = 'green';
-        } else if (avgTotal < 0) {
-            average.textContent = avgTotal;
-            average.style.color = 'red';
+        // Obtener los valores de los resultados de la fila
+        var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+        console.log(resultadoA)
+        var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+        console.log(resultadoB)
+        var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+        console.log(resultadoAA)
+        var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+        console.log(resultadoBB)
+        // Comparar los resultados y actualizar el estilo de las celdas correspondientes
+        var gan1 = fila.querySelector('.gan-1');
+        var per1 = fila.querySelector('.per-1');
+        var average = fila.querySelector('.average');
+        if (esLocal) {
+            if (resultadoA > resultadoB) {
+                gan1.textContent = '1';
+                gan1.style.color = 'green';
+                per1.textContent = '-';
+            } else if (resultadoA < resultadoB) {
+                per1.textContent = '1';
+                per1.style.color = 'red';
+                gan1.textContent = '-';
+            } else if (resultadoAA > resultadoBB) {
+                gan1.textContent = '1';
+                gan1.style.color = 'green';
+                per1.textContent = '-';
+            } else if (resultadoAA < resultadoBB) {
+                per1.textContent = '1';
+                per1.style.color = 'red';
+                gan1.textContent = '-';
+            }else {
+                gan1.textContent = '-';
+                per1.textContent = '-';
+            }
         } else {
-            average.textContent = avgTotal;
-            average.style.color = 'blue';
-    }
-} else {
-    average.textContent = '';
-}
-});
-</script>
+            if (resultadoB > resultadoA) {
+                gan1.textContent = '1';
+                gan1.style.color = 'green';
+                per1.textContent = '-';
+            } else if (resultadoB < resultadoA) {
+                per1.textContent = '1';
+                per1.style.color = 'red';
+                gan1.textContent = '-';
+            } else if(resultadoBB > resultadoAA) {
+                gan1.textContent = '1';
+                gan1.style.color = 'green';
+                per1.textContent = '-';
+            } else if (resultadoBB < resultadoAA) {
+                per1.textContent = '1';
+                per1.style.color = 'red';
+                gan1.textContent = '-';
+            }else {
+                gan1.textContent = '-';
+                per1.textContent = '-';
+            }
+            // Comparar los resultados y actualizar recuentos del segundo enfrentamiento
+            if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
+              if (resultadoAA > resultadoBB) {
+                gan1.textContent = gan1.textContent === '-' ? '1' : (parseInt(gan1.textContent) + 1).toString();
+                gan1.style.color = 'green';
+                  
+              } else if (resultadoAA < resultadoBB) {
+                per1.textContent = per1.textContent === '-' ? '1' : (parseInt(per1.textContent) + 1).toString();
+                per1.style.color = 'red';
+              }
+          }
+        }
+    });
+    // Calculó de average
+    filas.forEach(function(fila) {
+      var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+      var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+      var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+      var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+      var average = fila.querySelector('.average');
+      let avgTotal;
+      if (isNaN(resultadoAA) || isNaN(resultadoBB)) {
+          // Solo se tiene el resultado de ida
+          if (resultadoA && resultadoB) {
+              avgTotal = resultadoB - resultadoA; // Por defecto, asumiendo que el Ponce juega fuera
+              if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
+                  // Si el Ponce juega en casa, ajustamos la diferencia
+                  avgTotal = resultadoA - resultadoB;
+              }
+          } else {
+              avgTotal = 0;
+          }
+      } else {
+          // Se tienen ambos resultados de ida y vuelta
+          const avgIda = resultadoB - resultadoA;
+          const avgVuelta = resultadoAA - resultadoBB;
+          avgTotal = avgIda + avgVuelta;
+      }
+      if (!isNaN(avgTotal)) {
+          average.textContent = avgTotal;
+          if (avgTotal > 0) {
+              average.style.color = 'green';
+          } else if (avgTotal < 0) {
+              average.style.color = 'red';
+          } else {
+              average.style.color = 'blue';
+          }
+      } else {
+          average.textContent = '';
+      }
+  });
+  });
+  </script>
 </body>
 </html>

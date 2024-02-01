@@ -41,7 +41,7 @@
 const filas = document.querySelectorAll("#tablaAscenso tbody tr");
 const partidosTotales = 34; // Total de partidos en la temporada
 const partidosPorGanar = 1; // Cantidad de puntos por partido ganado
-const puntosAscenso = 30; // Puntos relativos para quedar primero
+const puntosAscenso = 31; // Puntos relativos para quedar primero
 const equipos = [];
 filas.forEach((fila, indice) => {
     const equipo = fila.querySelector(`.fw-bold`).textContent;

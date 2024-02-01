@@ -1,5 +1,5 @@
 // Primera función para calcular la clasificación y oredenar automaticamente
-function calcularEstadisticas2() {
+/*function calcularEstadisticas2() {
     const tablaDatos = document.getElementById('tablaClasificacion2');
     const filasDatos = Array.from(tablaDatos.querySelectorAll('tbody tr'));
     filasDatos.forEach(row => {
@@ -35,11 +35,11 @@ function calcularEstadisticas2() {
   }
   document.addEventListener('DOMContentLoaded', function() {
     calcularEstadisticas2();
-  });
+  });*/
 
 // Segunda función playoff y ordenar automaticamente
 const filas1 = document.querySelectorAll("#tablaPlayPonce tbody tr");
-const partidosTotales1 = 34; // Total de partidos en la temporada
+const partidosTotales1 = 26; // Total de partidos en la temporada
 const partidosPorGanar1 = 1; // Cantidad de puntos por partido ganado
 const partidosPlayOff = 22; // Número de partidos para llegar a los playoffs
 
@@ -94,7 +94,7 @@ equiposPlay.forEach((equipoData) => {
 
 // Tercera función descenso y ordenar automaticamente
 const filas2 = document.querySelectorAll("#tablaDescPonce tbody tr");
-const partidosTotales2 = 34; // Total de partidos en la temporada
+const partidosTotales2 = 26; // Total de partidos en la temporada
 const partidosPorGanar2 = 1; // Cantidad de puntos por partido ganado
 const partidosDescenso = 11;
 

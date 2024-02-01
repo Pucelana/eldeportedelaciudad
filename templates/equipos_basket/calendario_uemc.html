@@ -16,19 +16,19 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ms-1">
           <li class="breadcrumb-item"><a href="/seccion/baloncesto" class="text-white text-decoration-none">Sección</a></li>
-          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario UEMC</li>
+          <li class="breadcrumb-item active text-dark" aria-current="page">Calendarios UEMC</li>
         </ol>
     </nav>
     <section class="container-lg mb-5">
         <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
             <div class="carousel-inner">	
-              <div class="carousel-item active">
+              <div class="carousel-item active"><!-- Tabla calendario UEMC -->
                 <div class="d-flex justify-content-center">
                   <div class="card tabla_equipos" style="width: 70rem;">
                     <div class="card-body">
                       <div class="table-responsive">
                         <h3 class="text-center text-white fw-bold">Calendario</h3>
-                        <table class="table table-bordered tabla_equipos"><!--Tabla Calendario UEMC-->
+                        <table class="table table-bordered tabla_equiposs"><!--Tabla Calendario UEMC-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
@@ -52,24 +52,25 @@
                                   <tr class="text-center">
                                     <th class="text-white">{{ equipo }}</th>
                                     <td class="jorn_ida fw-bold">
-                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
-                                        {% if datos_equipo['jorn_ida'] %}
-                                          J -{{ datos_equipo['jorn_ida']|regex_replace('Jornada','') }} ({{ resultados['rol_uemc'] }})
+                                      {% if datos_equipo.get('primer_enfrentamiento') %}
+                                        J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
+                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_uemc'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_uemc'] }})
                                         {% endif %}
-                                      {% endfor %}
+                                      {% endif %}
                                     </td>
                                     <td class="jorn_vuelta fw-bold">
-                                      {% for jornada, resultados in datos_equipo['jornadas'].items() %}
-                                        {% if datos_equipo['jorn_vuelta'] %}
-                                        J -{{ datos_equipo['jorn_vuelta']|regex_replace('Jornada','') }} ({{ resultados['rol_uemc'] }})
+                                      {% if datos_equipo.get('segundo_enfrentamiento') %}
+                                        J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
+                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_uemc'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_uemc'] }})
                                         {% endif %}
-                                      {% endfor %}
+                                      {% endif %}
                                     </td>
                                     <td class="resultadoA fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoA'] }}</td>
                                     <td class="resultadoB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoB'] }}</td>
                                     <td class="resultadoAA fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoAA'] }}</td>
-                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoBB'] }}
-                                    </td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoBB'] }}</td>
                                     <td class="gan-1"></td>
                                     <td class="per-1"></td>
                                     <td class="average"></td>
@@ -82,47 +83,46 @@
                   </div>
                 </div>
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item"><!-- Resultados temporada 23/24 -->
                 <div class="d-flex justify-content-center">
                   <div class="card tabla_equipos" style="width: 70rem;">
                     <div class="card-body">
-                      <div class="table-responsive">
-                        <h3 class="text-center text-white fw-bold">Resultados</h3>
-                        <table class="table tabla_resultados"><!--Tabla Resultados-->
-                            <thead>
-                                <h5 class="text-center jornadas">Visitante</h5>
-                              <tr>
-                                <th><h5 class="">Local</h5></th>
-                                <th class="vertical">S.Pablo Burgos</th>
-                                <th class="vertical">M.Estudiantes</th>
-                                <th class="vertical">Club Ourense</th>
-                                <th class="vertical">Leyma Coruña</th>
-                                <th class="vertical">Guuk Gipuzkoa</th>
-                                <th class="vertical">HLA Alicante</th>
-                                <th class="vertical">Amics Castelló</th>
-                                <th class="vertical">UEMC Valladolid</th>
-                                <th class="vertical">Alimerka Oviedo</th>
-                                <th class="vertical">Tizona Burgos</th>
-                                <th class="vertical">Fuenlabrada</th>
-                                <th class="vertical">Alega Cantabria</th>
-                                <th class="vertical">Rioverede Clavijo</th>
-                                <th class="vertical">Força Lleida</th>
-                                <th class="vertical">Hestia Menorca</th>
-                                <th class="vertical">Caceres</th>
-                                <th class="vertical">Real Betis</th>
-                                <th class="vertical">Melilla</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              
-                            </tbody>        
-                        </table>
-                          <p><strong class="text-danger">Rojo</strong>-Gana equipo visitante</p>
+                      <div class="container-fluid">
+                        <div class="row">
+                          {% for goles in nuevos_datos %}
+                          <div class="col-lg-4">
+                            <div class="card card_calendario mb-3">
+                              <div class="table-responsive">
+                                <table class="table table-bordered card_calendario tabla_jornadas">
+                                  <thead class="fondo_jornadas">
+                                    <tr class="text-center">
+                                      <td colspan="5" class="text-center text-white fw-bold">{{ goles.nombre }}</td>
+                                    </tr>
+                                  </thead>
+                                  <tbody style="display:none">
+                                    {% for partido in goles.partidos %}
+                                    <tr class="text-center">
+                                      <td class="text-center fw-bold">{{ partido.local }}</td>
+                                      <td class="text-center text-white">{{ partido.resultadoA }}</td>
+                                      <td class="text-center text-white">{{ partido.resultadoB }}</td>
+                                      <td class="text-center fw-bold">{{ partido.visitante }}</td>
+                                    </tr>
+                                  {% endfor %}
+                                  </tbody>
+                                </table>
+                                <div class="d-flex ms-1 my-1">
+                                  <a href="#" onclick="toggleTabla(this, `{{ goles.nombre }}` ) " class="text-decoration-none ps-3 text-white">Ver</a>
+                                </div>
+                              </div> 
+                            </div>
+                          </div>
+                        {% endfor %}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -143,76 +143,131 @@ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/j
 integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 </script>
 <script src="/static/js/script.js"></script>
-<script>
-  // Quinta función calendario individual UEMC
-  document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar todas las filas de la tabla
-    var filas = document.querySelectorAll('.tabla_equipos tbody tr');
-    // Iterar sobre cada fila
-    filas.forEach(function(fila) {
-        // Obtener el nombre del equipo de la fila actual
-        var equipo = fila.querySelector('th').textContent.trim();
-        // Obtener la jornada y determinar si el UEMC juega en casa o como visitante
-        var jornadaElement = fila.querySelector('.jorn_ida');
-        var esLocal = false; // Por defecto, asumimos que el UEMC juega como visitante
-        if (jornadaElement) {
-            var jornada = jornadaElement.textContent.trim();
-            if (jornada.includes('C')) {
-                esLocal = true;
+<script src="/static/js/leer_mas.js"></script>
+<script> 
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleccionar todas las filas de la tabla
+  var filas = document.querySelectorAll('.tabla_equiposs tbody tr');
+  // Iterar sobre cada fila
+  filas.forEach(function(fila) {
+      // Obtener el nombre del equipo de la fila actual
+      var equipo = fila.querySelector('th').textContent.trim();
+      console.log(equipo)
+      // Obtener la jornada y determinar si el UEMC juega en casa o como visitante
+      var jornadaElement = fila.querySelector('.jorn_ida');
+      var esLocal = false; // Por defecto, asumimos que el UEMC juega como visitante
+      if (jornadaElement) {
+          var jornada = jornadaElement.textContent.trim();
+          if (jornada.includes('C')) {
+              esLocal = true;
+          }
+      }
+      // Obtener los valores de los resultados de la fila
+      var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+      console.log(resultadoA)
+      var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+      console.log(resultadoB)
+      var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+      console.log(resultadoAA)
+      var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+      console.log(resultadoBB)
+      // Comparar los resultados y actualizar el estilo de las celdas correspondientes
+      var gan1 = fila.querySelector('.gan-1');
+      var per1 = fila.querySelector('.per-1');
+      var average = fila.querySelector('.average');
+      if (esLocal) {
+          if (resultadoA > resultadoB) {
+              gan1.textContent = '1';
+              gan1.style.color = 'green';
+              per1.textContent = '-';
+          } else if (resultadoA < resultadoB) {
+              per1.textContent = '1';
+              per1.style.color = 'red';
+              gan1.textContent = '-';
+          } else if (resultadoAA > resultadoBB) {
+              gan1.textContent = '1';
+              gan1.style.color = 'green';
+              per1.textContent = '-';
+          } else if (resultadoAA < resultadoBB) {
+              per1.textContent = '1';
+              per1.style.color = 'red';
+              gan1.textContent = '-';
+          }else {
+              gan1.textContent = '-';
+              per1.textContent = '-';
+          }
+      } else {
+          if (resultadoB > resultadoA) {
+              gan1.textContent = '1';
+              gan1.style.color = 'green';
+              per1.textContent = '-';
+          } else if (resultadoB < resultadoA) {
+              per1.textContent = '1';
+              per1.style.color = 'red';
+              gan1.textContent = '-';
+          } else if(resultadoBB > resultadoAA) {
+              gan1.textContent = '1';
+              gan1.style.color = 'green';
+              per1.textContent = '-';
+          } else if (resultadoBB < resultadoAA) {
+              per1.textContent = '1';
+              per1.style.color = 'red';
+              gan1.textContent = '-';
+          }else {
+              gan1.textContent = '-';
+              per1.textContent = '-';
+          }
+          // Comparar los resultados y actualizar recuentos del segundo enfrentamiento
+          if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
+            if (resultadoAA > resultadoBB) {
+              gan1.textContent = gan1.textContent === '-' ? '1' : (parseInt(gan1.textContent) + 1).toString();
+              gan1.style.color = 'green';
+                
+            } else if (resultadoAA < resultadoBB) {
+              per1.textContent = per1.textContent === '-' ? '1' : (parseInt(per1.textContent) + 1).toString();
+              per1.style.color = 'red';
             }
         }
-        // Obtener los valores de los resultados de la fila
-        var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
-        var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
-        var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
-        var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
-        // Comparar los resultados y actualizar el estilo de las celdas correspondientes
-        var gan1 = fila.querySelector('.gan-1');
-        var per1 = fila.querySelector('.per-1');
-        if (esLocal) {
-            if (resultadoA > resultadoB) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
-            } else if (resultadoA < resultadoB) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
-            } else if (resultadoA > resultadoB) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';  
-            }else if (resultadoAA < resultadoBB) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
-            }else {
-                gan1.textContent = '-';
-                per1.textContent = '-';
+      }
+  });
+  // Calculó de average
+  filas.forEach(function(fila) {
+    var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+    var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+    var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+    var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+    var average = fila.querySelector('.average');
+    let avgTotal;
+    if (isNaN(resultadoAA) || isNaN(resultadoBB)) {
+        // Solo se tiene el resultado de ida
+        if (resultadoA && resultadoB) {
+            avgTotal = resultadoB - resultadoA; // Por defecto, asumiendo que el UEMC juega fuera
+            if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
+                // Si el UEMC juega en casa, ajustamos la diferencia
+                avgTotal = resultadoA - resultadoB;
             }
         } else {
-            if (resultadoB > resultadoA) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
-            } else if (resultadoB < resultadoA) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
-            } else if (resultadoBB > resultadoAA) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
-            }else if (resultadoBB < resultadoAA) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
-            }else {
-                gan1.textContent = '-';
-                per1.textContent = '-';
-            }
+            avgTotal = 0;
         }
-    });
+    } else {
+        // Se tienen ambos resultados de ida y vuelta
+        const avgIda = resultadoB - resultadoA;
+        const avgVuelta = resultadoAA - resultadoBB;
+        avgTotal = avgIda + avgVuelta;
+    }
+    if (!isNaN(avgTotal)) {
+        average.textContent = avgTotal;
+        if (avgTotal > 0) {
+            average.style.color = 'green';
+        } else if (avgTotal < 0) {
+            average.style.color = 'red';
+        } else {
+            average.style.color = 'blue';
+        }
+    } else {
+        average.textContent = '';
+    }
+});
 });
 </script>
 </body>

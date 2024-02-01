@@ -5,6 +5,9 @@
     width: 100%;
     border-collapse: collapse;
 }
-#form_partidos{
+#form_partidos_uemc{
+    display: none;
+}
+#form_partidos_ponce{
     display: none;
 }

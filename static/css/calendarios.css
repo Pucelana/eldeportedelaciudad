@@ -11,6 +11,14 @@
     backdrop-filter: blur(12px);
     border: 1px solid #ad6331;
 }
+.card_calendario{
+    background-color: transparent;
+    border: 1px solid #ad6331;
+    font-size: 0.87em;
+}
+.fondo_jornadas{
+    background-color: #ad6331;
+}
 .jorn_ida{
     color: #505050;
 }

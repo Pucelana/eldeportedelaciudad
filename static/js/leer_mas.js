@@ -1,6 +1,5 @@
  /* Para que el texto no aparezca entero y se pueda usar leer mas */
  var comments = document.getElementsByClassName('card_coments');
-
  for (var i = 0; i < comments.length; i++) {
    var comment = comments[i];
    var commentText = comment.getElementsByClassName('coment_text')[0];
@@ -27,5 +26,19 @@
  }
 // Mostrar formulario para crear partidos
  function mostrarFormulario(){
-  document.getElementById('form_partidos').style.display='block';
+  document.getElementById('form_partidos_uemc').style.display='block';
+}
+function mostrarFormularioPonce(){
+  document.getElementById('form_partidos_ponce').style.display='block';
+}
+// Abrir y cerrar las jornadas de calendario_uemc
+function toggleTabla(element, nombre) {
+  var tabla = element.parentNode.parentNode.querySelector('.tabla_jornadas tbody');
+  if (tabla.style.display === 'none') {
+    tabla.style.display = 'table-row-group';
+    element.innerHTML = 'Ocultar';
+  } else {
+    tabla.style.display = 'none';
+    element.innerHTML = 'Ver';
+  }
 }
