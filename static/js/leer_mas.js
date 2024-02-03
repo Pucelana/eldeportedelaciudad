@@ -31,6 +31,9 @@
 function mostrarFormularioPonce(){
   document.getElementById('form_partidos_ponce').style.display='block';
 }
+function mostrarFormularioAliados(){
+  document.getElementById('form_partidos_aliados').style.display='block';
+}
 // Abrir y cerrar las jornadas de calendario_uemc
 function toggleTabla(element, nombre) {
   var tabla = element.parentNode.parentNode.querySelector('.tabla_jornadas tbody');

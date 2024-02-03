@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6b432992-b400-4de2-a0c0-919a9a2fde6a",
+        "nombre": "Jornada 1",
+        "partidos": [
+            {
+                "local": "Ucam Murcia BSR",
+                "resultadoA": "61",
+                "resultadoB": "57",
+                "visitante": "Menarini Joventut"
+            },
+            {
+                "local": "Servigest Burgos BSR",
+                "resultadoA": "69",
+                "resultadoB": "63",
+                "visitante": "IMF Getafe BSR"
+            },
+            {
+                "local": "Bidaideak Bilbao BSR",
+                "resultadoA": "65",
+                "resultadoB": "68",
+                "visitante": "CD Iluni\u00f3n"
+            },
+            {
+                "local": "Amivel Reyes Guti\u00e9rrez",
+                "resultadoA": "75",
+                "resultadoB": "51",
+                "visitante": "Fundaci\u00f3n Aliados"
+            },
+            {
+                "local": "Iberconsa Amfiv",
+                "resultadoA": "54",
+                "resultadoB": "69",
+                "visitante": "BSR Amiab Albacete"
+            },
+            {
+                "local": "Mideba Extremadura",
+                "resultadoA": "64",
+                "resultadoB": "79",
+                "visitante": "Econy Gran Canaria"
+            }
+        ]
+    }
+]

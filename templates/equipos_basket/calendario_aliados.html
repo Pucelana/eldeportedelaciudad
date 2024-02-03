@@ -28,7 +28,7 @@
                     <div class="card-body">
                       <div class="table-responsive">
                         <h3 class="text-center text-white fw-bold">Calendario</h3>
-                        <table class="table table-bordered tabla_equipos"><!--Tabla Calendario F.Aliados-->
+                        <table class="table table-bordered tabla_equipos tabla_aliados"><!--Tabla Calendario F.Aliados-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
@@ -48,150 +48,34 @@
                                 </tr>
                             </thead>
                               <tbody>
-                                <tr class="text-center"><!--CD Ilunión-->
-                                    <th class="text-white">CD Ilunión</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
+                                {% for equipo, datos_equipo in tabla_partidos_aliados.items() %}
+                                  <tr class="text-center">
+                                    <th class="text-white">{{ equipo }}</th>
+                                    <td class="jorn_ida fw-bold">
+                                      {% if datos_equipo.get('primer_enfrentamiento') %}
+                                        J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
+                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_aliados'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_aliados'] }})
+                                        {% endif %}
+                                      {% endif %}
+                                    </td>
+                                    <td class="jorn_vuelta fw-bold">
+                                      {% if datos_equipo.get('segundo_enfrentamiento') %}
+                                        J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
+                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_aliados'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_aliados'] }})
+                                        {% endif %}
+                                      {% endif %}
+                                    </td>
+                                    <td class="resultadoA fw-bold">{{ tabla_partidos_aliados[equipo]['resultadoA'] }}</td>
+                                    <td class="resultadoB fw-bold">{{ tabla_partidos_aliados[equipo]['resultadoB'] }}</td>
+                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_aliados[equipo]['resultadoAA'] }}</td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_aliados[equipo]['resultadoBB'] }}</td>
                                     <td class="gan-1"></td>
                                     <td class="per-1"></td>
                                     <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Bidaideak Bilbao BSR-->
-                                    <th class="text-white">Bidaideak Bilbao BSR</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Ucam Murcia BSR-->
-                                    <th class="text-white">Ucam Murcia BSR</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>                   
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--BSR Amiab Albacete-->
-                                    <th class="text-white">BSR Amiab Albacete</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Econy Gran Canaria-->
-                                    <th class="text-white">Econy Gran Canaria</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Amivel Reyes Gutiérrez-->
-                                    <th class="text-white">Amivel Reyes Gutiérrez</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="id-A fw-bold"></td> 
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Iberconsa Amfiv-->
-                                    <th class="text-white">Iberconsa Amfiv</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Fundación Aliados-->
-                                    <th class="text-white">Fundación Aliados</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Bidaideak Bilbao BSR-->
-                                    <th class="text-white">Bidaideak Bilbao BSR</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Mideba Extremadura-->
-                                    <th class="text-white">Mideba Extremadura</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--IMF Getafe BSR-->
-                                    <th class="text-white">IMF Getafe BSR</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
-                                <tr class="text-center"><!--Menarini Juventut-->
-                                    <th class="text-white">Menarini Juventut</th>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="jornadas fw-bold"></td>
-                                    <td class="id-A fw-bold"></td>
-                                    <td class="id-V fw-bold"></td>
-                                    <td class="vta-V fw-bold"></td>
-                                    <td class="vta-A fw-bold"></td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
-                                    <td class="average"></td>
-                                </tr>
+                                  </tr>
+                                {% endfor %}
                               </tbody>
                         </table>
                       </div>
@@ -199,224 +83,46 @@
                   </div>
                 </div>
               </div>
-              <div class="carousel-item"><!--Tabla Resultados-->
+              <div class="carousel-item"><!-- Resultados temporada 23/24 -->
                 <div class="d-flex justify-content-center">
                   <div class="card tabla_equipos" style="width: 70rem;">
                     <div class="card-body">
-                      <div class="table-responsive">
-                        <h3 class="text-center text-white fw-bold">Resultados</h3>
-                        <table class="table tabla_resultados"><!--Tabla Resultados-->
-                            <thead>
-                                <h5 class="text-center jornadas">Visitante</h5>
-                              <tr>
-                                <th><h5 class="">Local</h5></th>
-                                <th class="vertical">CD Ilunión</th>
-                                <th class="vertical">Bidaideak Bilbao BSR</th>
-                                <th class="vertical">Econy Gran Canaria</th>
-                                <th class="vertical">BSR Amiab Albacete</th>
-                                <th class="vertical">Mideba Extremadura</th>
-                                <th class="vertical">Ucam Murcia BSR</th>
-                                <th class="vertical">IMF Getafe BSR</th>
-                                <th class="vertical">Iberconsa Amfiv</th>
-                                <th class="vertical">Fundación Aliados</th>
-                                <th class="vertical">Servigest Burgos BSR</th>
-                                <th class="vertical">Amivel Reyes Gutiérrez</th>
-                                <th class="vertical">Menarini Juventut</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr><!--CD Ilunion-->
-                                <th>CD Ilunión</th>
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                              </tr>
-                              <tr><!--Bidaideak Bilbao BSR-->
-                                <th>Bidaideak Bilbao BSR</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                              </tr>
-                              <tr><!--Ucam Murcia BSR-->
-                                <th>Ucam Murcia BSR</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                                
-                              </tr>
-                              <tr><!--BSR Amiab Albacete-->
-                                <th>BSR Amiab Albacete</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                                
-                              </tr>
-                              <tr><!--Econy Gran Canaria-->
-                                <th>Econy Gran Canaria</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                              </tr>
-                              <tr><!--Amivel Reyes Gutiérrez-->
-                                <th>Amivel Reyes Gutiérrez</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                                
-                              </tr>
-                              <tr><!--Iberconsa Amfiv-->
-                                <th>Iberconsa Amfiv</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                              </tr>
-                              <tr><!--Fundación Aliados-->
-                                <th>Fundación Aliados</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                              </tr>
-                              <tr><!--Servigest Burgos BSR-->
-                                <th>Servigest Burgos BSR</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                              </tr>
-                              <tr><!--Mideba Extremadura-->
-                                <th>Mideba Extremadura</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class="bg-dark"></td>
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class=""></td><!--Menarini Juventut-->
-                                
-                              </tr>
-                              <tr><!--IMF Getafe BSR-->
-                                <th>IMF Getafe BSR</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class="bg-dark"></td>
-                                <td class="text-danger"></td><!--Menari Juventut-->
-                              </tr>
-                              <tr><!--Menari Juventut-->
-                                <th>Menari Juventut</th>
-                                <td class=""></td><!--CD Ilunión-->
-                                <td class=""></td><!--Bidaideak Bilbao BSR-->
-                                <td class=""></td><!--Ucam Murcia BSR-->
-                                <td class=""></td><!--BSR Amiab Albacete-->
-                                <td class=""></td><!--Econy Gran Canaria-->
-                                <td class=""></td><!--Amivel Reyes Gutiérrez-->
-                                <td class=""></td><!--Iberconsa Amfiv-->
-                                <td class=""></td><!--Fundación Aliados-->
-                                <td class=""></td><!--Servigest Burgos BSR-->
-                                <td class=""></td><!--Mideba Extremadura-->
-                                <td class=""></td><!--IMF Getafe BSR-->
-                                <td class="bg-dark"></td>
-                              </tr>
-                            </tbody>        
-                        </table>
-                          <p><strong class="text-danger">Rojo</strong>-Gana equipo visitante</p>
+                      <div class="container-fluid">
+                        <div class="row">
+                          {% for goles in nuevos_datos_aliados %}
+                          <div class="col-lg-4">
+                            <div class="card card_calendario mb-3">
+                              <div class="table-responsive">
+                                <table class="table table-bordered card_calendario tabla_jornadas">
+                                  <thead class="fondo_jornadas">
+                                    <tr class="text-center">
+                                      <td colspan="5" class="text-center text-white fw-bold">{{ goles.nombre }}</td>
+                                    </tr>
+                                  </thead>
+                                  <tbody style="display:none">
+                                    {% for partido in goles.partidos %}
+                                    <tr class="text-center">
+                                      <td class="text-center fw-bold">{{ partido.local }}</td>
+                                      <td class="text-center text-white">{{ partido.resultadoA }}</td>
+                                      <td class="text-center text-white">{{ partido.resultadoB }}</td>
+                                      <td class="text-center fw-bold">{{ partido.visitante }}</td>
+                                    </tr>
+                                  {% endfor %}
+                                  </tbody>
+                                </table>
+                                <div class="d-flex ms-1 my-1">
+                                  <a href="#" onclick="toggleTabla(this, `{{ goles.nombre }}` ) " class="text-decoration-none ps-3 text-white">Ver</a>
+                                </div>
+                              </div> 
+                            </div>
+                          </div>
+                        {% endfor %}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -437,58 +143,132 @@ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/j
 integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 </script>
 <script src="/static/js/script.js"></script>
-<script>
-// Obtener todas las filas de la tabla
-const rows = document.querySelectorAll('.tabla_equipos tbody tr');
-// Iterar sobre cada fila para realizar los cálculos
-rows.forEach(row => {
-    const idA = parseFloat(row.querySelector('.id-A').textContent);
-    const idV = parseFloat(row.querySelector('.id-V').textContent);
-    const vtA = parseFloat(row.querySelector('.vta-A').textContent);
-    const vtV = parseFloat(row.querySelector('.vta-V').textContent);
-    const gan1 = row.querySelector('.gan-1');
-    const per1 = row.querySelector('.per-1');
-    const average = row.querySelector('.average');
-    if (idA > idV) {
-        gan1.textContent = '-';
-        per1.textContent = '1';
-        gan1.style.color = 'black';
-        per1.style.color = 'red';
-    } else if (idA < idV) {
-        gan1.textContent = '1';
-        per1.textContent = '-';
-        gan1.style.color = 'green';
-        per1.style.color = 'black';
-    } 
-    if (!isNaN(vtA) && !isNaN(vtV)) {
-        if (vtV > vtA) {
-            gan1.textContent = gan1.textContent === '-' ? '1' : (parseInt(gan1.textContent) + 1).toString();
-            gan1.style.color = 'green';
-        } else if (vtA > vtV) {
-            per1.textContent = per1.textContent === '-' ? '1' : (parseInt(per1.textContent) + 1).toString();
-            gan1.style.color = 'red';
+<script src="/static/js/leer_mas.js"></script>
+<script> 
+  document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todas las filas de la tabla
+    var filas = document.querySelectorAll('.tabla_aliados tbody tr');
+    // Iterar sobre cada fila
+    filas.forEach(function(fila) {
+        // Obtener el nombre del equipo de la fila actual
+        var equipo = fila.querySelector('th').textContent.trim();
+        console.log(equipo)
+        // Obtener la jornada y determinar si el UEMC juega en casa o como visitante
+        var jornadaElement = fila.querySelector('.jorn_ida');
+        var esLocal = false; // Por defecto, asumimos que el Ponce juega como visitante
+        if (jornadaElement) {
+            var jornada = jornadaElement.textContent.trim();
+            if (jornada.includes('C')) {
+                esLocal = true;
+            }
         }
-    }
-    // Calcular average
-    const avgIda = idV - idA;
-    const avgVuelta = (isNaN(vtA) || isNaN(vtV)) ? 0 : vtV - vtA;
-    const avgTotal = avgIda + avgVuelta;
-
-    if (!isNaN(avgTotal)) {
-        if (avgTotal > 0) {
-            average.textContent = avgTotal;
-            average.style.color = 'green';
-        } else if (avgTotal < 0) {
-            average.textContent = avgTotal;
-            average.style.color = 'red';
+        // Obtener los valores de los resultados de la fila
+        var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+        console.log(resultadoA)
+        var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+        console.log(resultadoB)
+        var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+        console.log(resultadoAA)
+        var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+        console.log(resultadoBB)
+        // Comparar los resultados y actualizar el estilo de las celdas correspondientes
+        var gan1 = fila.querySelector('.gan-1');
+        var per1 = fila.querySelector('.per-1');
+        var average = fila.querySelector('.average');
+        if (esLocal) {
+            if (resultadoA > resultadoB) {
+                gan1.textContent = '1';
+                gan1.style.color = 'green';
+                per1.textContent = '-';
+            } else if (resultadoA < resultadoB) {
+                per1.textContent = '1';
+                per1.style.color = 'red';
+                gan1.textContent = '-';
+            } else if (resultadoAA > resultadoBB) {
+                gan1.textContent = '1';
+                gan1.style.color = 'green';
+                per1.textContent = '-';
+            } else if (resultadoAA < resultadoBB) {
+                per1.textContent = '1';
+                per1.style.color = 'red';
+                gan1.textContent = '-';
+            }else {
+                gan1.textContent = '-';
+                per1.textContent = '-';
+            }
         } else {
-            average.textContent = avgTotal;
-            average.style.color = 'blue';
-    }
-} else {
-    average.textContent = '';
-}
-});
-</script>
+            if (resultadoB > resultadoA) {
+                gan1.textContent = '1';
+                gan1.style.color = 'green';
+                per1.textContent = '-';
+            } else if (resultadoB < resultadoA) {
+                per1.textContent = '1';
+                per1.style.color = 'red';
+                gan1.textContent = '-';
+            } else if(resultadoBB > resultadoAA) {
+                gan1.textContent = '1';
+                gan1.style.color = 'green';
+                per1.textContent = '-';
+            } else if (resultadoBB < resultadoAA) {
+                per1.textContent = '1';
+                per1.style.color = 'red';
+                gan1.textContent = '-';
+            }else {
+                gan1.textContent = '-';
+                per1.textContent = '-';
+            }
+            // Comparar los resultados y actualizar recuentos del segundo enfrentamiento
+            if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
+              if (resultadoAA > resultadoBB) {
+                gan1.textContent = gan1.textContent === '-' ? '1' : (parseInt(gan1.textContent) + 1).toString();
+                gan1.style.color = 'green';
+                  
+              } else if (resultadoAA < resultadoBB) {
+                per1.textContent = per1.textContent === '-' ? '1' : (parseInt(per1.textContent) + 1).toString();
+                per1.style.color = 'red';
+              }
+          }
+        }
+    });
+    // Calculó de average
+    filas.forEach(function(fila) {
+      var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+      var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+      var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+      var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+      var average = fila.querySelector('.average');
+      let avgTotal;
+      if (isNaN(resultadoAA) || isNaN(resultadoBB)) {
+          // Solo se tiene el resultado de ida
+          if (resultadoA && resultadoB) {
+              avgTotal = resultadoB - resultadoA; // Por defecto, asumiendo que el Ponce juega fuera
+              if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
+                  // Si el Ponce juega en casa, ajustamos la diferencia
+                  avgTotal = resultadoA - resultadoB;
+              }
+          } else {
+              avgTotal = 0;
+          }
+      } else {
+          // Se tienen ambos resultados de ida y vuelta
+          const avgIda = resultadoB - resultadoA;
+          const avgVuelta = resultadoAA - resultadoBB;
+          avgTotal = avgIda + avgVuelta;
+      }
+      if (!isNaN(avgTotal)) {
+          average.textContent = avgTotal;
+          if (avgTotal > 0) {
+              average.style.color = 'green';
+          } else if (avgTotal < 0) {
+              average.style.color = 'red';
+          } else {
+              average.style.color = 'blue';
+          }
+      } else {
+          average.textContent = '';
+      }
+  });
+  });
+  </script>
 </body>
 </html>

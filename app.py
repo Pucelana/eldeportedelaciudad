@@ -106,7 +106,7 @@ def admin_home():
         return render_template('admin/home.html')
 
 # Página de Noticias
-@app.route('/noticias/', methods=['GET','POST'])
+"""@app.route('/noticias/', methods=['GET','POST'])
 def noticias():
     nuevas_noticias = [noticia for noticia in noticias if noticia['publicacion']]
     return render_template('sitio/noticias.html', nuevas_noticias=nuevas_noticias)
@@ -118,7 +118,7 @@ noticias = []
 @app.route('/admin/publi_noticia')
 def publi_noticia():
     noticias_publicadas = noticias[:]  
-    return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)
+    return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)"""
 
 # Ruta para crear la noticia
 @app.route('/admin/crear_noticia', methods=['GET','POST'])
@@ -146,7 +146,7 @@ def crear_noticia():
     return redirect(url_for('publi_noticia'))
 
 # Ruta para la publicación de la noticia
-@app.route('/publicar_noticia/<string:id>', methods=['POST'])
+"""@app.route('/publicar_noticia/<string:id>', methods=['POST'])
 def publicar_noticia(id):
         texto = next((item for item in noticias if item['id'] == id), None)
         if texto:
@@ -175,7 +175,7 @@ def modificar_noticia(id):
             noticia_a_modificar['contenido'] = contenido
             noticia_a_modificar['categoria'] = categoria
             noticia_a_modificar['fecha_publi'] = fecha_publi
-    return redirect(url_for('publi_noticia')) 
+    return redirect(url_for('publi_noticia')) """
 
 # Página inicio y resultados
 @app.route('/')
@@ -285,42 +285,26 @@ def eliminar_resultado(id):
 @app.route('/seccion/baloncesto')
 def seccion_baloncesto():
     return render_template('secciones/baloncesto.html')
-
 # Ruta sección de balonmano
 @app.route('/seccion/balonmano')
 def seccion_balonmano():
     return render_template('secciones/balonmano.html')
-
 # Ruta sección de fútbol
 @app.route('/seccion/futbol')
 def seccion_futbol():
     return render_template('secciones/futbol.html')
-
 # Ruta sección de hockey línea
 @app.route('/seccion/hockey')
 def seccion_hockey():
     return render_template('secciones/hockey.html')
-
 # Ruta sección de rugby
 @app.route('/seccion/rugby')
 def seccion_rugby():
     return render_template('secciones/rugby.html')
-
-# Ruta sección de clasificación y ánalisis del Fundaión Aliados 
-@app.route('/equipos_basket/clasif_analisis_aliados')
-def clasif_analisis_aliados():
-    return render_template('equipos_basket/clasif_analisis_aliados.html')
-
-# Ruta calendario Fundación Aliados
-@app.route('/equipos_basket/calendario_aliados')
-def calendario_aliados():
-    return render_template('equipos_basket/calendario_aliados.html')  
-
 # Ruta calendario y resultados R.Valladolid
 @app.route('/equipos_futbol/calend_resul_vallad')
 def calend_resul_vallad():
     return render_template('equipos_futbol/calend_resul_vallad.html')
-
 # Ruta clasificación y analisis R.Valladolid
 @app.route('/equipos_futbol/clasi_analis_vallad')
 def clasi_analis_vallad():
@@ -506,7 +490,7 @@ def clasif_analisis_uemc():
 def calendario_uemc():
     datos = obtener_datos()
     nuevos_datos = [dato for dato in datos if dato]
-    equipo_uemc = 'UEMC Real Valladolid'
+    equipo_uemc = 'UEMC Valladolid'
     tabla_partidos_uemc = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos:
@@ -667,7 +651,6 @@ def eliminar_jorn_ponce(id):
     guardar_partidos_en_archivo_ponce(jornada_a_eliminar)
     # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
     return redirect(url_for('calend_ponce'))
-
 # Crear la clasificación Ponce
 def generar_clasificacion_analisis_baloncesto_ponce(data1, total_partidos_temporada_ponce):
     default_dict = defaultdict(lambda: {})
@@ -710,7 +693,6 @@ def generar_clasificacion_analisis_baloncesto_ponce(data1, total_partidos_tempor
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_canastas']), reverse=True)]
     print(generar_clasificacion_analisis_baloncesto_ponce)
     return clasificacion_ordenada
-
 # Ruta para mostrar la clasificación y análisis del Ponce
 @app.route('/equipos_basket/clasif_analisis_ponce/')
 def clasif_analisis_ponce():
@@ -723,7 +705,6 @@ def clasif_analisis_ponce():
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_ponce.html', clasificacion_analisis_ponce=clasificacion_analisis_ponce)
-
 # Ruta y creación del calendario individual del Ponce
 @app.route('/equipos_basket/calendario_ponce')
 def calendarios_ponce():
@@ -791,6 +772,224 @@ def calendarios_ponce():
                     tabla_partidos_ponce[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_ponce
     return render_template('equipos_basket/calendario_ponce.html', tabla_partidos_ponce=tabla_partidos_ponce, nuevos_datos_ponce=nuevos_datos_ponce) 
 # Fin proceso Ponce Valladolid
+
+#Todo el proceso de calendario y clasificación de Fundación Aliados
+# Ruta de partidos Fundación Aliados
+part_aliados = 'json/partidos_aliados.json'
+def guardar_datos_aliados(data2):
+    # Guardar los datos en el archivo JSON
+    with open(part_aliados, 'w', encoding='utf-8') as file:
+        json.dump(data2, file, indent=4)
+def obtener_datos_aliados():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_aliados, 'r', encoding='utf-8') as file:
+        data2 = json.load(file)
+      return data2
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos Fundación Aliados
+@app.route('/admin/calendario_aliados')
+def calend_aliados():
+    data2 = obtener_datos_aliados()
+    print(data2)
+    return render_template('admin/calend_aliados.html', data2=data2)
+# Ingresar los resultados de los partidos Ponce
+@app.route('/admin/crear_calendario_aliados', methods=['POST'])
+def ingresar_resul_aliados():
+    data2 = obtener_datos_aliados()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data2 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data2.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_aliados(data2)
+    return redirect(url_for('calend_aliados'))    
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_aliados(data2):
+    arch_guardar_aliados = 'json/partidos_aliados.json'
+    # Guardar en el archivo
+    with open(arch_guardar_aliados, 'w', encoding='UTF-8') as archivo:
+        json.dump(data2, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_aliados/<string:id>', methods=['POST'])
+def modificar_jorn_aliados(id):
+    data2 = obtener_datos_aliados()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data2 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(6):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'visitante': equipoVisitante
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_ponce(data1)            
+            return redirect(url_for('calend_ponce'))
+    return redirect(url_for('calend_ponce'))
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_aliados/<string:id>', methods=['POST'])
+def eliminar_jorn_aliados(id):
+    data2 = obtener_datos_aliados()
+    jornada_a_eliminar = [j for j in data2 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_aliados(jornada_a_eliminar)
+    # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
+    return redirect(url_for('calend_aliados'))
+# Crear la clasificación Ponce
+def generar_clasificacion_analisis_baloncesto_aliados(data2, total_partidos_temporada_aliados):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_canastas': 0, 'puntos': 0})
+    print(clasificacion)
+    for jornada in data2:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                result_local = int(partido['resultadoA'])
+                result_visitante = int(partido['resultadoB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if result_local > result_visitante:
+                clasificacion[equipo_local]['puntos'] += 2
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 1
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 2
+                clasificacion[equipo_visitante]['ganados'] += 1
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += result_local
+            clasificacion[equipo_local]['contra'] += result_visitante
+            clasificacion[equipo_visitante]['favor'] += result_visitante
+            clasificacion[equipo_visitante]['contra'] += result_local
+            clasificacion[equipo_local]['diferencia_canastas'] += result_local - result_visitante
+            clasificacion[equipo_visitante]['diferencia_canastas'] += result_visitante - result_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_canastas']), reverse=True)]
+    print(generar_clasificacion_analisis_baloncesto_aliados)
+    return clasificacion_ordenada
+# Ruta para mostrar la clasificación y análisis del Ponce
+@app.route('/equipos_basket/clasif_analisis_aliados/')
+def clasif_analisis_aliados():
+    data2 = obtener_datos_aliados()
+    total_partidos_temporada_aliados = 34
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_aliados = generar_clasificacion_analisis_baloncesto_aliados(data2, total_partidos_temporada_aliados)
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_analisis_aliados = sorted(clasificacion_analisis_aliados, key=lambda x: (x['datos']['ganados'], x['datos']['diferencia_canastas']), reverse=True)
+    # Calcular la proximidad
+    #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
+    return render_template('equipos_basket/clasif_analisis_aliados.html', clasificacion_analisis_aliados=clasificacion_analisis_aliados)
+# Ruta y creación del calendario individual del Ponce
+@app.route('/equipos_basket/calendario_aliados')
+def calendarios_aliados():
+    datos2 = obtener_datos_aliados()
+    nuevos_datos_aliados = [dato for dato in datos2 if dato]
+    equipo_aliados = 'Fundación Aliados'
+    tabla_partidos_aliados = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos2:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si el UEMC está jugando
+            if equipo_local == equipo_aliados or equipo_visitante == equipo_aliados:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_aliados:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_aliados = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_aliados = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_aliados:
+                    tabla_partidos_aliados[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_aliados[equipo_contrario]:
+                    tabla_partidos_aliados[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_aliados[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_aliados[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_ponce[equipo_contrario]:
+                    tabla_partidos_aliados[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_aliados[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_aliados[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_aliados[equipo_contrario]['jornadas']:
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_aliados': rol_aliados
+                    }
+                # Asignamos los resultados según el rol del UEMC
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_aliados
+                  else:
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_aliados
+                else:
+                  if not tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_aliados
+                  else:
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_aliados
+    return render_template('equipos_basket/calendario_aliados.html', tabla_partidos_aliados=tabla_partidos_aliados, nuevos_datos_aliados=nuevos_datos_aliados) 
+# Fin proceso Fundación Aliados
+
+
 
 
 
