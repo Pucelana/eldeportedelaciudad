@@ -160,6 +160,7 @@
     <script src="/static/js/leer_mas.js"></script>
     <script>
         function toggleTabla(element, nombreTabla) {
+          event.preventDefault();
         // Encuentra el contenedor padre de la tabla
         var container = element.closest('.card');
           if (container) {

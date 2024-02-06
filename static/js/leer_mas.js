@@ -34,8 +34,12 @@ function mostrarFormularioPonce(){
 function mostrarFormularioAliados(){
   document.getElementById('form_partidos_aliados').style.display='block';
 }
+function mostrarFormularioValladolid(){
+  document.getElementById('form_partidos_valladolid').style.display='block';
+}
 // Abrir y cerrar las jornadas de calendario_uemc
 function toggleTabla(element, nombre) {
+  event.preventDefault();
   var tabla = element.parentNode.parentNode.querySelector('.tabla_jornadas tbody');
   if (tabla.style.display === 'none') {
     tabla.style.display = 'table-row-group';

@@ -47,7 +47,7 @@
 /*Seccion del futbol*/
 .calend_futbol{
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/camp_futbolpng.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/campo_futbol.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -55,7 +55,7 @@
 .tabla_equ_futb{
     background-color: transparent;
     backdrop-filter: blur(12px);
-    border: 1px solid #1b8f1f;
+    border: 1px solid #5eda62;
 }
 .jor-futb{
     color: #3d3a3a;

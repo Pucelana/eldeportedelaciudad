@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Calendario-Fundación Aliados</title>
+  <title>Calendarios - Real Valladolid</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,29 +12,29 @@
   <!-- Favicon -->  
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
-<body class="bg-white calend_basket">
+<body class="bg-white calend_futbol">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ms-1">
-          <li class="breadcrumb-item"><a href="/seccion/baloncesto" class="text-white text-decoration-none">Sección</a></li>
-          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Fundación Aliados</li>
+          <li class="breadcrumb-item"><a href="/seccion/futbol" class="text-white text-decoration-none">Sección</a></li>
+          <li class="breadcrumb-item active text-secondary" aria-current="page">Calendario Real Valladolid</li>
         </ol>
     </nav>
-    <section class="container-lg mb-5">
-      <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+      <section class="container-lg mb-5">
+        <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
             <div class="carousel-inner">	
-              <div class="carousel-item active"><!--Tabla Calendario-->
+              <div class="carousel-item active">
                 <div class="d-flex justify-content-center">
                   <div class="card tabla_equipos" style="width: 70rem;">
                     <div class="card-body">
                       <div class="table-responsive">
                         <h3 class="text-center text-white fw-bold">Calendario</h3>
-                        <table class="table table-bordered tabla_equipos tabla_aliados"><!--Tabla Calendario F.Aliados-->
+                        <table class="table table-bordered tabla_equipos tabla_valladolid"><!--Tabla Calendario Valladolid-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
                                   <th colspan="2">Jornadas</th>
                                   <th colspan="4">Resultados</th>
-                                  <th colspan="2">Partidos</th>
+                                  <th colspan="2">Puntos</th>
                                 </tr>
                                 <tr class="text-center text-white">
                                   <th scope="col">Equipos</th>
@@ -42,37 +42,37 @@
                                   <th>Vlt</th>
                                   <th colspan="2">Ida</th>
                                   <th colspan="2">Vlt</th>
-                                  <th>PG</th>
-                                  <th>PP</th>
-                                  <th>Average</th>
+                                  <th>Ida</th>
+                                  <th>Vlt</th>
+                                  <th>Golaverage</th>
                                 </tr>
                             </thead>
                               <tbody>
-                                {% for equipo, datos_equipo in tabla_partidos_aliados.items() %}
+                                {% for equipo, datos_equipo in tabla_partidos_valladolid.items() %}
                                   <tr class="text-center">
                                     <th class="text-white">{{ equipo }}</th>
                                     <td class="jorn_ida fw-bold">
                                       {% if datos_equipo.get('primer_enfrentamiento') %}
                                         J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_aliados'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_aliados'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_valladolid'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_valladolid'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
                                     <td class="jorn_vuelta fw-bold">
                                       {% if datos_equipo.get('segundo_enfrentamiento') %}
                                         J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_aliados'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_aliados'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_ponce'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_ponce'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
-                                    <td class="resultadoA fw-bold">{{ tabla_partidos_aliados[equipo]['resultadoA'] }}</td>
-                                    <td class="resultadoB fw-bold">{{ tabla_partidos_aliados[equipo]['resultadoB'] }}</td>
-                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_aliados[equipo]['resultadoAA'] }}</td>
-                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_aliados[equipo]['resultadoBB'] }}</td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
+                                    <td class="resultadoA fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoA'] }}</td>
+                                    <td class="resultadoB fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoB'] }}</td>
+                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoAA'] }}</td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoBB'] }}</td>
+                                    <td class="part-1"></td>
+                                    <td class="part-2"></td>
                                     <td class="average"></td>
                                   </tr>
                                 {% endfor %}
@@ -89,7 +89,7 @@
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
-                          {% for goles in nuevos_datos_aliados %}
+                          {% for goles in nuevos_datos_valladolid %}
                           <div class="col-lg-4">
                             <div class="card card_calendario mb-3">
                               <div class="table-responsive">
@@ -132,8 +132,8 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-      </div>
-    </section>
+        </div>
+      </section>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <!-- Bootstrap JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -147,7 +147,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 <script> 
   document.addEventListener('DOMContentLoaded', function() {
     // Seleccionar todas las filas de la tabla
-    var filas = document.querySelectorAll('.tabla_aliados tbody tr');
+    var filas = document.querySelectorAll('.tabla_valladolid tbody tr');
     // Iterar sobre cada fila
     filas.forEach(function(fila) {
         // Obtener el nombre del equipo de la fila actual
@@ -155,7 +155,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
         console.log(equipo)
         // Obtener la jornada y determinar si el UEMC juega en casa o como visitante
         var jornadaElement = fila.querySelector('.jorn_ida');
-        var esLocal = false; // Por defecto, asumimos que el Ponce juega como visitante
+        var esLocal = false; // Por defecto, asumimos que el UEMC juega como visitante
         if (jornadaElement) {
             var jornada = jornadaElement.textContent.trim();
             if (jornada.includes('C')) {
@@ -172,102 +172,104 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
         var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
         console.log(resultadoBB)
         // Comparar los resultados y actualizar el estilo de las celdas correspondientes
-        var gan1 = fila.querySelector('.gan-1');
-        var per1 = fila.querySelector('.per-1');
-        var average = fila.querySelector('.average');
+        var part1 = fila.querySelector('.part-1');
+        var part2 = fila.querySelector('.part-2');
         if (esLocal) {
             if (resultadoA > resultadoB) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
-            } else if (resultadoA < resultadoB) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
+                part1.textContent = '3';
+                part1.style.color = 'lime';
+                //per1.textContent = '-';
+            }else if (resultadoA === resultadoB) {
+                part1.textContent = '1';
+                part1.style.color = 'blue';
+            }else if (resultadoA < resultadoB) {
+                part1.textContent = '0';
+                part1.style.color = 'red';
+                //gan1.textContent = '-';
             } else if (resultadoAA > resultadoBB) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
+                part2.textContent = '3';
+                part2.style.color = 'lime';
+                //per1.textContent = '-';
+            } else if (resultadoAA === resultadoBB){
+                part2.textContent = '1';
+                part2.style.color = 'blue';
             } else if (resultadoAA < resultadoBB) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
+                part2.textContent = '0';
+                part2.style.color = 'red';
+                //gan1.textContent = '-';
             }else {
-                gan1.textContent = '-';
-                per1.textContent = '-';
+                part1.textContent = '-';
+                part2.textContent = '-';
             }
         } else {
             if (resultadoB > resultadoA) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
+                part1.textContent = '3';
+                part1.style.color = 'lime';
+                //per1.textContent = '-';
+            } else if (resultadoB === resultadoA){
+                part1.textContent = '1';
+                part1.style.color = 'blue';
             } else if (resultadoB < resultadoA) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
+                part1.textContent = '0';
+                part1.style.color = 'red';
+                //gan1.textContent = '-';
             } else if(resultadoBB > resultadoAA) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
+                part2.textContent = '3';
+                part2.style.color = 'lime';
+                //per1.textContent = '-';
+            } else if (resultadoBB === resultadoAA){
+                part2.textContent = '1';
+                part2.style.color = 'blue';
+
             } else if (resultadoBB < resultadoAA) {
-                per1.textContent = '1';
+                per1.textContent = '0';
                 per1.style.color = 'red';
-                gan1.textContent = '-';
+                //gan1.textContent = '-';
             }else {
-                gan1.textContent = '-';
-                per1.textContent = '-';
+                part1.textContent = '-';
+                part2.textContent = '-';
             }
-            // Comparar los resultados y actualizar recuentos del segundo enfrentamiento
-            if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
-              if (resultadoAA > resultadoBB) {
-                gan1.textContent = gan1.textContent === '-' ? '1' : (parseInt(gan1.textContent) + 1).toString();
-                gan1.style.color = 'green';
-                  
-              } else if (resultadoAA < resultadoBB) {
-                per1.textContent = per1.textContent === '-' ? '1' : (parseInt(per1.textContent) + 1).toString();
-                per1.style.color = 'red';
-              }
-          }
         }
     });
-    // Calculó de average
+    // Cálculo de average
     filas.forEach(function(fila) {
-      var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
-      var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
-      var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
-      var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
-      var average = fila.querySelector('.average');
-      let avgTotal;
-      if (isNaN(resultadoAA) || isNaN(resultadoBB)) {
-          // Solo se tiene el resultado de ida
-          if (resultadoA && resultadoB) {
-              avgTotal = resultadoB - resultadoA; // Por defecto, asumiendo que el Ponce juega fuera
-              if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
-                  // Si el Ponce juega en casa, ajustamos la diferencia
-                  avgTotal = resultadoA - resultadoB;
-              }
-          } else {
-              avgTotal = 0;
-          }
-      } else {
-          // Se tienen ambos resultados de ida y vuelta
-          const avgIda = resultadoB - resultadoA;
-          const avgVuelta = resultadoAA - resultadoBB;
-          avgTotal = avgIda + avgVuelta;
-      }
-      if (!isNaN(avgTotal)) {
-          average.textContent = avgTotal;
-          if (avgTotal > 0) {
-              average.style.color = 'green';
-          } else if (avgTotal < 0) {
-              average.style.color = 'red';
-          } else {
-              average.style.color = 'blue';
-          }
-      } else {
-          average.textContent = '';
-      }
-  });
+        // Obtener los valores de los resultados de la fila
+        var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+        var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+        var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+        var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+        var average = fila.querySelector('.average');
+        let avgTotal;
+        if (isNaN(resultadoAA) || isNaN(resultadoBB)) {
+            // Solo se tiene el resultado de ida
+            if (resultadoA && resultadoB) {
+                avgTotal = resultadoB - resultadoA; // Por defecto, asumiendo que el Real Valladolid juega fuera
+                if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
+                    // Si el Real Valladolid juega en casa, ajustamos la diferencia
+                    avgTotal = resultadoA - resultadoB;
+                }
+            } else {
+                avgTotal = 0;
+            }
+        } else {
+            // Se tienen ambos resultados de ida y vuelta
+            const avgIda = resultadoB - resultadoA;
+            const avgVuelta = resultadoAA - resultadoBB;
+            avgTotal = avgIda + avgVuelta;
+        }
+        if (!isNaN(avgTotal)) {
+            average.textContent = avgTotal;
+            if (avgTotal > 0) {
+                average.style.color = 'green';
+            } else if (avgTotal < 0) {
+                average.style.color = 'red';
+            } else {
+                average.style.color = 'blue';
+            }
+        } else {
+            average.textContent = '';
+        }
+    });
   });
   </script>
 </body>
