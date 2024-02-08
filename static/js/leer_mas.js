@@ -37,6 +37,12 @@ function mostrarFormularioAliados(){
 function mostrarFormularioValladolid(){
   document.getElementById('form_partidos_valladolid').style.display='block';
 }
+function mostrarFormularioPromesas(){
+  document.getElementById('form_partidos_promesas').style.display='block';
+}
+function mostrarFormularioSimancas(){
+  document.getElementById('form_partidos_promesas').style.display='block';
+}
 // Abrir y cerrar las jornadas de calendario_uemc
 function toggleTabla(element, nombre) {
   event.preventDefault();

@@ -1,5 +1,5 @@
 // Primera función para calcular la clasificación y oredenar automáticamente
-function calcularEstadisticas() {
+/*function calcularEstadisticas() {
     const tablaDatos = document.getElementById('tablaClasifSiman');
     const filasDatos = Array.from(tablaDatos.querySelectorAll('tbody tr'));
     filasDatos.forEach(row => {
@@ -41,11 +41,11 @@ function calcularEstadisticas() {
 
 document.addEventListener('DOMContentLoaded', function() {
     calcularEstadisticas();
-});
+});*/
 
 // Segunda función para calcular el porcentaje al ascenso
-const filas = document.querySelectorAll("#tablaAscensoSiman tbody tr");
-const partidosTotales = 42; // Cambiado a 42 partidos en la temporada
+const filas = document.querySelectorAll("#tablaAscensoSimancas tbody tr");
+const partidosTotales = 30; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija = 63; // Ajusta este valor según tus necesidades
 const equipos = [];
@@ -76,7 +76,7 @@ filas.forEach((fila, indice) => {
 // Ordenar los equipos por proximidad descendente
 equipos.sort((a, b) => b.proximidadDeAscenso - a.proximidadDeAscenso);
 // Actualizar la tabla con los datos ordenados
-const tabla = document.querySelector("#tablaAscensoSiman tbody");
+const tabla = document.querySelector("#tablaAscensoSimancas tbody");
 tabla.innerHTML = ""; // Limpiar la tabla antes de actualizar
 equipos.forEach((equipoData) => {
     const nuevaFila = document.createElement("tr");
@@ -146,7 +146,7 @@ equipo1s1.forEach((equipo1Data) => {
 });*/
 
 // Cuarta función para calcular la permanencia
-const filas2 = document.querySelectorAll("#tablaDescSiman tbody tr");
+const filas2 = document.querySelectorAll("#tablaDescSimancas tbody tr");
 const partidosTotales2 = 42; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar2 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFijar2 = 38; // Ajusta este valor según tus necesidades

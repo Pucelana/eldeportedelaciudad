@@ -221,8 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
             if (resultadoAA > resultadoBB) {
               gan1.textContent = gan1.textContent === '-' ? '1' : (parseInt(gan1.textContent) + 1).toString();
-              gan1.style.color = 'green';
-                
+              gan1.style.color = 'green';   
             } else if (resultadoAA < resultadoBB) {
               per1.textContent = per1.textContent === '-' ? '1' : (parseInt(per1.textContent) + 1).toString();
               per1.style.color = 'red';

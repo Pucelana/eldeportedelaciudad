@@ -16,7 +16,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb ms-1">
       <li class="breadcrumb-item"><a href="/seccion/futbol" class="text-white text-decoration-none">Sección</a></li>
-      <li class="breadcrumb-item active text-secondary" aria-current="page">Clasificación y Ánalisis</li>
+      <li class="breadcrumb-item active text-dark" aria-current="page">Clasificación y Ánalisis</li>
     </ol>
   </nav>
 <h2 class="text-white text-center">Real Valladolid</h2>
@@ -357,204 +357,17 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="text-center"> <!--Leganes-->
-                        <td class="fw-bold play-equipo">Leganes</td>
-                        <td class="play-jug fw-bold">22</td>
-                        <td class="play-act fw-bold">42</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="plya-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Racing Ferrol-->
-                        <td class="fw-bold play-equipo">Racing Ferrol</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">38</td>
-                        <td class="play-prox fw-bold"></td>
+                      {% for equipo_info in clasificacion_analisis_valladolid %}
+                      <tr class="text-center">
+                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="play-proxi fw-bold"></td>
                         <td class="play-mate fw-bold"></td>
                         <td class="play-opti fw-bold"></td>
                         <td class="play-pesi fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Sporting-->
-                        <td class="fw-bold">Sporting</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">36</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Espanyol-->
-                        <td class="fw-bold play-equipo">Espanyol</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">35</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Eibar-->
-                        <td class="fw-bold play-equipo">Eibar</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">35</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Levante-->
-                        <td class="fw-bold play-equipo">Levante</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">35</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Valladolid-->
-                        <td class="fw-bold play-equipo">Valladolid</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">35</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Racing-->
-                        <td class="fw-bold play-equipo">Racing</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">33</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Burgos-->
-                        <td class="fw-bold play-equipo">Burgos</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">33</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Elche-->
-                        <td class="fw-bold play-equipo">Elche</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">33</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Tenerife-->
-                        <td class="fw-bold play-equipo">Tenerife</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">31</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Oviedo-->
-                        <td class="fw-bold play-equipo">Oviedo</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">31</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Mirandés-->
-                        <td class="fw-bold play-equipo">Mirandés</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">29</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Zaragoza-->
-                        <td class="fw-bold play-equipo">Zaragoza</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">29</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Eldense-->
-                        <td class="fw-bold play-equipo">Eldense</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">27</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Albacete-->
-                        <td class="fw-bold play-equipo">Albacete</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">25</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Villarreal B-->
-                        <td class="fw-bold play-equipo">Villarreal B</td>
-                        <td class="play-jug fw-bold">22</td>
-                        <td class="play-act fw-bold">23</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Andorra-->
-                        <td class="fw-bold play-equipo">Andorra</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">23</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Huesca-->
-                        <td class="fw-bold play-equipo">Huesca</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">23</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Alcorcón-->
-                        <td class="fw-bold play-equipo">Alcorcón</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">21</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Cartagena-->
-                        <td class="fw-bold play-equipo">Cartagena</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">18</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Amorebieta-->
-                        <td class="fw-bold play-equipo">Amorebieta</td>
-                        <td class="play-jug fw-bold ">22</td>
-                        <td class="play-act fw-bold">16</td>
-                        <td class="play-prox fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                   </div>   
@@ -660,204 +473,17 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="text-center"> <!--Leganes-->
-                        <td class="fw-bold">Leganes</td>
-                        <td class="desc-jug fw-bold">22</td>
-                        <td class="desc-act fw-bold">42</td>
+                      {% for equipo_info in clasificacion_analisis_valladolid %}
+                      <tr class="text-center">
+                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="desc-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="desc-prox fw-bold"></td>
                         <td class="desc-mate fw-bold"></td>
                         <td class="desc-opti fw-bold"></td>
                         <td class="desc-pesi fw-bold"></td>
                       </tr>
-                      <tr class="text-center"> <!--Racing Ferrol-->
-                        <td class="fw-bold">Racing Ferrol</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">38</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Sporting-->
-                        <td class="fw-bold">Sporting</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">36</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Espanyol-->
-                        <td class="fw-bold">Espanyol</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">35</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Eibar-->
-                        <td class="fw-bold">Eibar</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">35</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Levante-->
-                        <td class="fw-bold">Levante</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">35</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Valladolid-->
-                        <td class="fw-bold">Valladolid</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">35</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Racing-->
-                        <td class="fw-bold">Racing</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">33</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Burgos-->
-                        <td class="fw-bold">Burgos</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">33</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Elche-->
-                        <td class="fw-bold">Elche</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">33</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Tenerife-->
-                        <td class="fw-bold">Tenerife</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">31</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Oviedo-->
-                        <td class="fw-bold">Oviedo</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">31</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Mirandés-->
-                        <td class="fw-bold">Mirandés</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">29</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Zaragoza-->
-                        <td class="fw-bold">Zaragoza</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">29</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Eldense-->
-                        <td class="fw-bold">Eldense</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">27</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Albacete-->
-                        <td class="fw-bold">Albacete</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">25</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Villarreal B-->
-                        <td class="fw-bold">Villarreal B</td>
-                        <td class="desc-jug fw-bold">22</td>
-                        <td class="desc-act fw-bold">23</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Andorra-->
-                        <td class="fw-bold">Andorra</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">23</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Huesca-->
-                        <td class="fw-bold">Huesca</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">23</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Alcorcón-->
-                        <td class="fw-bold">Alcorcón</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">21</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Cartagena-->
-                        <td class="fw-bold">Cartagena</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">18</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
-                      <tr class="text-center"> <!--Amorebieta-->
-                        <td class="fw-bold">Amorebieta</td>
-                        <td class="desc-jug fw-bold ">22</td>
-                        <td class="desc-act fw-bold">16</td>
-                        <td class="desc-prox fw-bold"></td>
-                        <td class="desc-mate fw-bold"></td>
-                        <td class="desc-opti fw-bold"></td>
-                        <td class="desc-pesi fw-bold"></td>
-                      </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                   </div>

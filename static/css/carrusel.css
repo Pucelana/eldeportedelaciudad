@@ -69,17 +69,17 @@
 .carousel-control-prev{
     width: 4vh;
     height: 4vh;
-    background-color: rgb(224, 224, 224);
+    background-color: transparent;
     border-radius: 50%;
-    top: 50%;
+    top: 3.5%;
     transform: translateY(-50%);
 }
 .carousel-control-next{
     width: 4vh;
     height: 4vh;
-    background-color: rgb(224, 224, 224);
+    background-color: transparent;
     border-radius: 50%;
-    top: 50%;
+    top: 3.5%;
     transform: translateY(-50%);
 }
 .deporte{

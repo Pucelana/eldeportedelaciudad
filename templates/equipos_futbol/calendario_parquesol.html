@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Calendarios - Real Valladolid</title>
+  <title>Calendarios - Real Valladolid B</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ms-1">
           <li class="breadcrumb-item"><a href="/seccion/futbol" class="text-white text-decoration-none">Sección</a></li>
-          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Real Valladolid</li>
+          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Real Valladolid B</li>
         </ol>
     </nav>
       <section class="container-lg mb-5">
@@ -28,7 +28,7 @@
                     <div class="card-body">
                       <div class="table-responsive">
                         <h3 class="text-center text-white fw-bold">Calendario</h3>
-                        <table class="table table-bordered tabla_equipos tabla_valladolid"><!--Tabla Calendario Valladolid-->
+                        <table class="table table-bordered tabla_equipos tabla_parquesol"><!--Tabla Calendario Valladolid-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
@@ -48,29 +48,29 @@
                                 </tr>
                             </thead>
                               <tbody>
-                                {% for equipo, datos_equipo in tabla_partidos_valladolid.items() %}
+                                {% for equipo, datos_equipo in tabla_partidos_promesas.items() %}
                                   <tr class="text-center">
                                     <th class="text-white">{{ equipo }}</th>
                                     <td class="jorn_ida fw-bold">
                                       {% if datos_equipo.get('primer_enfrentamiento') %}
                                         J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_valladolid'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_valladolid'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_promesas'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_promesas'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
                                     <td class="jorn_vuelta fw-bold">
                                       {% if datos_equipo.get('segundo_enfrentamiento') %}
                                         J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_valladolid'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_valladolid'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_promesas'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_promesas'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
-                                    <td class="resultadoA fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoA'] }}</td>
-                                    <td class="resultadoB fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoB'] }}</td>
-                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoAA'] }}</td>
-                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoBB'] }}</td>
+                                    <td class="resultadoA fw-bold">{{ tabla_partidos_promesas[equipo]['resultadoA'] }}</td>
+                                    <td class="resultadoB fw-bold">{{ tabla_partidos_promesas[equipo]['resultadoB'] }}</td>
+                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_promesas[equipo]['resultadoAA'] }}</td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_promesas[equipo]['resultadoBB'] }}</td>
                                     <td class="part1"></td>
                                     <td class="average"></td>
                                   </tr>
@@ -88,7 +88,7 @@
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
-                          {% for goles in nuevos_datos_valladolid %}
+                          {% for goles in nuevos_datos_promesas %}
                           <div class="col-lg-4">
                             <div class="card card_calendario mb-3">
                               <div class="table-responsive">
@@ -146,15 +146,15 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 <script> 
   document.addEventListener('DOMContentLoaded', function() {
     // Seleccionar todas las filas de la tabla
-    var filas = document.querySelectorAll('.tabla_valladolid tbody tr');
+    var filas = document.querySelectorAll('.tabla_parquesol tbody tr');
     // Iterar sobre cada fila
     filas.forEach(function(fila) {
         // Obtener el nombre del equipo de la fila actual
         var equipo = fila.querySelector('th').textContent.trim();
         console.log(equipo)
-        // Obtener la jornada y determinar si el Real Valladolid juega en casa o como visitante
+        // Obtener la jornada y determinar si el Promesas juega en casa o como visitante
         var jornadaElement = fila.querySelector('.jorn_ida');
-        var esLocal = false; // Por defecto, asumimos que el Real Valladolid juega como visitante
+        var esLocal = false; // Por defecto, asumimos que el Promesas juega como visitante
         if (jornadaElement) {
             var jornada = jornadaElement.textContent.trim();
             if (jornada.includes('C')) {

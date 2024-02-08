@@ -1,5 +1,4 @@
 const multipleItemCarousel=document.querySelector('#carouselExampleControls')
-console.log(multipleItemCarousel);
 if(window.matchMedia("(min-width:320px)").matches){
     const carousel = new bootstrap.Carousel(multipleItemCarousel,
     {

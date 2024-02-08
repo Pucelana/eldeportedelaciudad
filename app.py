@@ -258,22 +258,26 @@ def seccion_hockey():
 @app.route('/seccion/rugby')
 def seccion_rugby():
     return render_template('secciones/rugby.html')
-# Ruta calendario y resultados V Simancas
-@app.route('/equipos_futbol/calend_resul_siman')
-def calend_resul_siman():
-    return render_template('equipos_futbol/calend_resul_siman.html')
-# Ruta clasificación y analisis V Simancas
-@app.route('/equipos_futbol/clasi_analis_siman')
-def clasi_analis_siman():
-    return render_template('equipos_futbol/clasi_analis_siman.html')
-# Ruta calendario y resultados Promesas
-@app.route('/equipos_futbol/calend_resul_prome')
-def calend_resul_prome():
-    return render_template('equipos_futbol/calend_resul_prome.html')
-# Ruta clasificación y analisis Promesas
-@app.route('/equipos_futbol/clasi_analis_prome')
-def clasi_analis_prome():
-    return render_template('equipos_futbol/clasi_analis_prome.html')
+# Ruta sistema ligas futbol
+@app.route('/sistema_ligas/futbol')
+def sistema_ligas_futbol():
+    return render_template('sistema_ligas/sistema_futbol.html')
+# Ruta sistema ligas baloncesto
+@app.route('/sistema_ligas/baloncesto')
+def sistema_ligas_baloncesto():
+    return render_template('sistema_ligas/sistema_baloncesto.html')
+# Ruta sistema ligas balonmano
+@app.route('/sistema_ligas/balonmano')
+def sistema_ligas_balonmano():
+    return render_template('sistema_ligas/sistema_balonmano.html')
+# Ruta sistema ligas rugby
+@app.route('/sistema_ligas/rugby')
+def sistema_ligas_rugby():
+    return render_template('sistema_ligas/sistema_rugby.html')
+# Ruta sistema ligas hockey
+@app.route('/sistema_ligas/hockey')
+def sistema_ligas_hockey():
+    return render_template('sistema_ligas/sistema_hockey.html')
 #Todo el proceso de calendario y clasificación del UEMC
 # Rutas de partidos UEMC
 part_uemc = 'json/partidos_uemc.json'
@@ -1020,15 +1024,15 @@ def eliminar_jorn_valladolid(id):
 # Crear la clasificación del Real Valladolid
 def generar_clasificacion_analisis_futbol_valladolid(data3, total_partidos_temporada_valladolid):
     default_dict = defaultdict(lambda: {})
-    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados':0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, })
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0})
     print(clasificacion)
     for jornada in data3:
         for partido in jornada['partidos']:
             equipo_local = partido['local']
             equipo_visitante = partido['visitante']
             try:
-                result_local = int(partido['resultadoA'])
-                result_visitante = int(partido['resultadoB'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
             except ValueError:
                 print(f"Error al convertir resultados a enteros en el partido {partido}")
                 continue
@@ -1037,51 +1041,31 @@ def generar_clasificacion_analisis_futbol_valladolid(data3, total_partidos_tempo
             else:
                 promedio_favor_local = 0
             # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
-            if result_local > result_visitante:
+            if resultado_local > resultado_visitante:
                 clasificacion[equipo_local]['puntos'] += 3
                 clasificacion[equipo_local]['ganados'] += 1
                 clasificacion[equipo_visitante]['perdidos'] += 1
-            elif result_local < result_visitante :
+            elif resultado_local < resultado_visitante:
                 clasificacion[equipo_local]['puntos'] += 0
                 clasificacion[equipo_local]['perdidos'] += 1
                 clasificacion[equipo_visitante]['puntos'] += 3
                 clasificacion[equipo_visitante]['ganados'] += 1
-            else:    
+            else:
                 clasificacion[equipo_local]['puntos'] += 1
-                clasificacion[equipo_visitante]['puntos'] += 1
-                clasificacion[equipo_local]['empatados'] += 1
-                clasificacion[equipo_visitante]['empatados'] += 1    
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
             clasificacion[equipo_local]['jugados'] += 1
             clasificacion[equipo_visitante]['jugados'] += 1
-            clasificacion[equipo_local]['favor'] += result_local
-            clasificacion[equipo_local]['contra'] += result_visitante
-            clasificacion[equipo_visitante]['favor'] += result_visitante
-            clasificacion[equipo_visitante]['contra'] += result_local
-            clasificacion[equipo_local]['diferencia_goles'] += result_local - result_visitante
-            clasificacion[equipo_visitante]['diferencia_goles'] += result_visitante - result_local
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
     # Ordena la clasificación por puntos y diferencia de canastas
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
-    # Implementación del desempate por resultados directos
-    for i in range(len(clasificacion_ordenada)):
-      for j in range(i+1, len(clasificacion_ordenada)):
-        equipo_i = clasificacion_ordenada[i]['equipo']
-        equipo_j = clasificacion_ordenada[j]['equipo']
-        # Verifica si los equipos han jugado entre sí y determina los resultados directos
-        for jornada in data3:
-            for partido in jornada['partidos']:
-                if (partido['local'] == equipo_i and partido['visitante'] == equipo_j) or (partido['local'] == equipo_j and partido['visitante'] == equipo_i):
-                    resultado_i = int(partido['resultadoA'])
-                    resultado_j = int(partido['resultadoB'])
-                    if resultado_i > resultado_j:
-                        # Si el equipo_i ganó contra el equipo_j, intercambia posiciones
-                        clasificacion_ordenada[i], clasificacion_ordenada[j] = clasificacion_ordenada[j], clasificacion_ordenada[i]
-                    elif resultado_i < resultado_j:
-                        # Si el equipo_j ganó contra el equipo_i, no es necesario cambiar nada
-                        pass
-                    else:
-                        # Si hubo empate en el enfrentamiento directo, no hagas ningún cambio
-                        pass
-    
+    print(generar_clasificacion_analisis_futbol_valladolid)
     return clasificacion_ordenada
 # Ruta para mostrar la clasificación y análisis del Real Valladolid
 @app.route('/equipos_futbol/clasi_analis_vallad/')
@@ -1090,7 +1074,7 @@ def clasif_analisis_valladolid():
     total_partidos_temporada_valladolid = 42
     # Llama a la función para generar la clasificación y análisis
     clasificacion_analisis_valladolid = generar_clasificacion_analisis_futbol_valladolid(data3, total_partidos_temporada_valladolid)
-    # Ordena la clasificación por puntos y diferencia de canastas
+    # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_valladolid = sorted(clasificacion_analisis_valladolid, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
@@ -1131,7 +1115,7 @@ def calendarios_valladolid():
                     tabla_partidos_valladolid[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
                     tabla_partidos_valladolid[equipo_contrario]['resultadoA'] = resultado_a
                     tabla_partidos_valladolid[equipo_contrario]['resultadoB'] = resultado_b
-                elif 'segundo_enfrentamiento' not in tabla_partidos_ponce[equipo_contrario]:
+                elif 'segundo_enfrentamiento' not in tabla_partidos_valladolid[equipo_contrario]:
                     tabla_partidos_valladolid[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
                     tabla_partidos_valladolid[equipo_contrario]['resultadoAA'] = resultado_a
                     tabla_partidos_valladolid[equipo_contrario]['resultadoBB'] = resultado_b  
@@ -1147,26 +1131,463 @@ def calendarios_valladolid():
                   if not tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
-                    tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_valladolid
+                    tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_valladolid
                   else:
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
-                    tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_valladolid
+                    tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_valladolid
                 else:
                   if not tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
-                    tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_valladolid
+                    tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_valladolid
                   else:
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
-                    tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_valladolid
+                    tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_valladolid
     return render_template('equipos_futbol/calendario_vallad.html', tabla_partidos_valladolid=tabla_partidos_valladolid, nuevos_datos_valladolid=nuevos_datos_valladolid)
-
-
-
-
-
+# Fin proceso Real Valladolid
+#Todo el proceso de calendario y clasificación del Promesas
+# Ruta de partidos Promesas
+part_promesas = 'json/partidos_promesas.json'
+def guardar_datos_promesas(data4):
+    # Guardar los datos en el archivo JSON
+    with open(part_promesas, 'w', encoding='utf-8') as file:
+        json.dump(data4, file, indent=4)
+def obtener_datos_promesas():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_promesas, 'r', encoding='utf-8') as file:
+        data4 = json.load(file)
+      return data4
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos Promesas
+@app.route('/admin/calend_promesas')
+def calend_promesas():
+    data4 = obtener_datos_promesas()
+    print(data4)
+    return render_template('admin/calend_promesas.html', data4=data4)
+# Ingresar los resultados de los partidos del Promesas
+@app.route('/admin/crear_calendario_promesas', methods=['POST'])
+def ingresar_resul_promesas():
+    data4 = obtener_datos_promesas()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data4 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data4.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_promesas(data4)
+    return redirect(url_for('calend_promesas')) 
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_promesas(data4):
+    arch_guardar_promesas = 'json/partidos_promesas.json'
+    # Guardar en el archivo
+    with open(arch_guardar_promesas, 'w', encoding='UTF-8') as archivo:
+        json.dump(data4, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_promesas/<string:id>', methods=['POST'])
+def modificar_jorn_promesas(id):
+    data4 = obtener_datos_promesas()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data4 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(9):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'visitante': equipoVisitante
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_promesas(data4)            
+            return redirect(url_for('calend_promesas'))
+    return redirect(url_for('calend_promesas'))        
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_promesas/<string:id>', methods=['POST'])
+def eliminar_jorn_promesas(id):
+    data4 = obtener_datos_promesas()
+    jornada_a_eliminar = [j for j in data4 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_promesas(jornada_a_eliminar)
+    # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
+    return redirect(url_for('calend_promesas'))        
+# Crear la clasificación del Promesas
+def generar_clasificacion_analisis_futbol_promesas(data4, total_partidos_temporada_promesas):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0})
+    print(clasificacion)
+    for jornada in data4:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_futbol_promesas)
+    return clasificacion_ordenada        
+# Ruta para mostrar la clasificación y análisis del Promesas
+@app.route('/equipos_futbol/clasi_analis_prome/')
+def clasif_analisis_promesas():
+    data4 = obtener_datos_promesas()
+    total_partidos_temporada_promesas = 34
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_promesas = generar_clasificacion_analisis_futbol_promesas(data4, total_partidos_temporada_promesas)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_promesas = sorted(clasificacion_analisis_promesas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Calcular la proximidad
+    #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
+    return render_template('equipos_futbol/clasi_analis_prome.html', clasificacion_analisis_promesas=clasificacion_analisis_promesas)        
+# Ruta y creación del calendario individual del Promesas
+@app.route('/equipos_futbol/calendario_promesas')
+def calendarios_promesas():
+    print("Se llamo a la ruta/'equipo_futbol/calendario_promesas")
+    datos4 = obtener_datos_promesas()
+    nuevos_datos_promesas = [dato for dato in datos4 if dato]
+    equipo_promesas = 'Real Valladolid B'
+    tabla_partidos_promesas = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos4:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si el Promesas está jugando
+            if equipo_local == equipo_promesas or equipo_visitante == equipo_promesas:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_promesas:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_promesas = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_promesas = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_promesas:
+                    tabla_partidos_promesas[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_promesas[equipo_contrario]:
+                    tabla_partidos_promesas[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_promesas[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_promesas[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_promesas[equipo_contrario]:
+                    tabla_partidos_promesas[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_promesas[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_promesas[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_promesas[equipo_contrario]['jornadas']:
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_promesas': rol_promesas
+                    }
+                # Asignamos los resultados según el rol del Real Valladolid
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_promesas
+                  else:
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_promesas
+                else:
+                  if not tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_promesas
+                  else:
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_promesas
+    return render_template('equipos_futbol/calendario_promesas.html', tabla_partidos_promesas=tabla_partidos_promesas, nuevos_datos_promesas=nuevos_datos_promesas)        
+# Fin proceso Promesas
+#Todo el proceso de calendario y clasificación del V Simancas
+# Ruta de partidos V Simancas       
+part_simancas = 'json/partidos_simancas.json'
+def guardar_datos_simancas(data5):
+    # Guardar los datos en el archivo JSON
+    with open(part_simancas, 'w', encoding='utf-8') as file:
+        json.dump(data5, file, indent=4)
+def obtener_datos_simancas():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_simancas, 'r', encoding='utf-8') as file:
+        data5 = json.load(file)
+      return data5
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []       
+# Partidos V Simancas
+@app.route('/admin/calend_simancas')
+def calend_simancas():
+    data5 = obtener_datos_simancas()
+    print(data5)
+    return render_template('admin/calend_simancas.html', data5=data5)       
+# Ingresar los resultados de los partidos del V Simancas
+@app.route('/admin/crear_calendario_simancas', methods=['POST'])
+def ingresar_resul_simancas():
+    data5 = obtener_datos_simancas()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data5 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data5.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_simancas(data5)
+    return redirect(url_for('calend_simancas'))         
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_simancas(data5):
+    arch_guardar_simancas = 'json/partidos_simancas.json'
+    # Guardar en el archivo
+    with open(arch_guardar_simancas, 'w', encoding='UTF-8') as archivo:
+        json.dump(data5, archivo)        
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_simancas/<string:id>', methods=['POST'])
+def modificar_jorn_simancas(id):
+    data5 = obtener_datos_simancas()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data5 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(8):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'visitante': equipoVisitante
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_simancas(data5)            
+            return redirect(url_for('calend_simancas'))
+    return redirect(url_for('calend_simancas'))        
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_simancas/<string:id>', methods=['POST'])
+def eliminar_jorn_simancas(id):
+    data5 = obtener_datos_simancas()
+    jornada_a_eliminar = [j for j in data5 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_simancas(jornada_a_eliminar)
+    # Redirigir a la página de encuentros_simancas (o a donde desees después de eliminar)
+    return redirect(url_for('calend_simancas'))         
+# Crear la clasificación del V Simancas
+def generar_clasificacion_analisis_futbol_simancas(data5, total_partidos_temporada_simancas):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0})
+    print(clasificacion)
+    for jornada in data5:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_futbol_simancas)
+    return clasificacion_ordenada         
+# Ruta para mostrar la clasificación y análisis del V Simancas
+@app.route('/equipos_futbol/clasi_analis_siman/')
+def clasif_analisis_simancas():
+    data5 = obtener_datos_simancas()
+    total_partidos_temporada_simancas = 30
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_simancas = generar_clasificacion_analisis_futbol_simancas(data5, total_partidos_temporada_simancas)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_simancas = sorted(clasificacion_analisis_simancas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Calcular la proximidad
+    #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
+    return render_template('equipos_futbol/clasi_analis_siman.html', clasificacion_analisis_simancas=clasificacion_analisis_simancas)         
+# Ruta y creación del calendario individual del V Simancas
+@app.route('/equipos_futbol/calendario_simancas')
+def calendarios_simancas():
+    datos5 = obtener_datos_simancas()
+    nuevos_datos_simancas = [dato for dato in datos5 if dato]
+    equipo_simancas = 'V Simancas'
+    tabla_partidos_simancas = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos5:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si el Simancas está jugando
+            if equipo_local == equipo_simancas or equipo_visitante == equipo_simancas:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_simancas:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_simancas = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_simancas = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_simancas:
+                    tabla_partidos_simancas[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_simancas[equipo_contrario]:
+                    tabla_partidos_simancas[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_simancas[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_simancas[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_simancas[equipo_contrario]:
+                    tabla_partidos_simancas[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_simancas[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_simancas[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_simancas[equipo_contrario]['jornadas']:
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_simancas': rol_simancas
+                    }
+                # Asignamos los resultados según el rol del Real Valladolid
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_simancas
+                  else:
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_simancas
+                else:
+                  if not tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_simancas
+                  else:
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_simancas
+    return render_template('equipos_futbol/calendario_simancas.html', tabla_partidos_simancas=tabla_partidos_simancas, nuevos_datos_simancas=nuevos_datos_simancas)         
+        
+        
+        
 if __name__ == '__main__':
     app.secret_key = 'pinchellave'
     app.run(debug=True)
