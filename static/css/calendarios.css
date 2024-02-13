@@ -1,4 +1,4 @@
-/*Seccion del basket*/
+/*Seccion de Baloncesto */
 .calend_basket{
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/static/img/cancha_basket.jpg');
@@ -44,7 +44,7 @@
     transform: rotate(180deg); /* Ajustar la orientación del texto */
     white-space: nowrap; /* Evita que el texto se ajuste automáticamente */
 }
-/*Seccion del futbol*/
+/*Seccion del Fútbol*/
 .calend_futbol{
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/campo_futbol.webp');
@@ -75,7 +75,14 @@
     font-weight: bold;
 
 }
-
+/* Sección de Balonmano */
+.calend_balonmano{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/cancha_balonmano2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 
 
 

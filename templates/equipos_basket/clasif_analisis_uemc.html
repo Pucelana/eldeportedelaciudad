@@ -19,7 +19,7 @@
       <li class="breadcrumb-item active text-dark" aria-current="page">Clasificación y Ánalisis</li>
     </ol>
   </nav>
-<h2 class="text-white text-center">UEMC Valladolid</h2>
+<h2 class="text-white text-center">Aula Valladolid</h2>
 <section class="container-lg mb-5">
   <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -109,7 +109,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo in clasificacion_analisis %}
+                      {% for equipo in clasificacion_analisis_uemc %}
                       <tr class="text-center">
                         <td class="fw-bold">{{ equipo['equipo'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
@@ -214,7 +214,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis %}
+                      {% for equipo_info in clasificacion_analisis_uemc %}
                       <tr class="text-center">
                         <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
                         <td class="jugados1 fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
@@ -318,7 +318,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis %}
+                      {% for equipo_info in clasificacion_analisis_uemc %}
                       <tr class="text-center">
                         <td class="fw-bold play-equipo">{{ equipo_info['equipo'] }}</td>
                         <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
@@ -422,7 +422,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis %}
+                      {% for equipo_info in clasificacion_analisis_uemc %}
                       <tr class="text-center">
                         <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
                         <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>

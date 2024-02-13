@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Calendarios - Real Valladolid B</title>
+  <title>Calendarios - CD Parquesol</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ms-1">
           <li class="breadcrumb-item"><a href="/seccion/futbol" class="text-white text-decoration-none">Sección</a></li>
-          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Real Valladolid B</li>
+          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario CD Parquesol</li>
         </ol>
     </nav>
       <section class="container-lg mb-5">
@@ -28,7 +28,7 @@
                     <div class="card-body">
                       <div class="table-responsive">
                         <h3 class="text-center text-white fw-bold">Calendario</h3>
-                        <table class="table table-bordered tabla_equipos tabla_parquesol"><!--Tabla Calendario Valladolid-->
+                        <table class="table table-bordered tabla_equipos tabla_parquesol"><!--Tabla Calendario Parquesol-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
@@ -48,29 +48,29 @@
                                 </tr>
                             </thead>
                               <tbody>
-                                {% for equipo, datos_equipo in tabla_partidos_promesas.items() %}
+                                {% for equipo, datos_equipo in tabla_partidos_parquesol.items() %}
                                   <tr class="text-center">
                                     <th class="text-white">{{ equipo }}</th>
                                     <td class="jorn_ida fw-bold">
                                       {% if datos_equipo.get('primer_enfrentamiento') %}
                                         J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_promesas'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_promesas'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_parquesol'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_parquesol'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
                                     <td class="jorn_vuelta fw-bold">
                                       {% if datos_equipo.get('segundo_enfrentamiento') %}
                                         J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_promesas'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_promesas'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_parquesol'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_parquesol'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
-                                    <td class="resultadoA fw-bold">{{ tabla_partidos_promesas[equipo]['resultadoA'] }}</td>
-                                    <td class="resultadoB fw-bold">{{ tabla_partidos_promesas[equipo]['resultadoB'] }}</td>
-                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_promesas[equipo]['resultadoAA'] }}</td>
-                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_promesas[equipo]['resultadoBB'] }}</td>
+                                    <td class="resultadoA fw-bold">{{ tabla_partidos_parquesol[equipo]['resultadoA'] }}</td>
+                                    <td class="resultadoB fw-bold">{{ tabla_partidos_parquesol[equipo]['resultadoB'] }}</td>
+                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_parquesol[equipo]['resultadoAA'] }}</td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_parquesol[equipo]['resultadoBB'] }}</td>
                                     <td class="part1"></td>
                                     <td class="average"></td>
                                   </tr>
@@ -88,7 +88,7 @@
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
-                          {% for goles in nuevos_datos_promesas %}
+                          {% for goles in nuevos_datos_parquesol %}
                           <div class="col-lg-4">
                             <div class="card card_calendario mb-3">
                               <div class="table-responsive">
@@ -176,42 +176,42 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
         if (esLocal) {
             if (resultadoA > resultadoB) {
                 part1.textContent = '3';
-                part1.style.color = 'lime';
+                part1.style.color = 'deepskyblue';
             }else if (resultadoA === resultadoB) {
                 part1.textContent = '1';
                 part1.style.color = 'deepskyblue';
             }else if (resultadoA < resultadoB) {
                 part1.textContent = '0';
-                part1.style.color = 'darkred';
+                part1.style.color = 'deepskyblue';
             } else if (resultadoAA > resultadoBB) {
                 part1.textContent = '3';
-                part1.style.color = 'lime';
+                part1.style.color = 'deepskyblue';
             } else if (resultadoAA === resultadoBB){
                 part1.textContent = '1';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoAA < resultadoBB) {
                 part1.textContent = '0';
-                part1.style.color = 'darkred';
+                part1.style.color = 'deepskyblue';
             }
         } else {
             if (resultadoB > resultadoA) {
                 part1.textContent = '3';
-                part1.style.color = 'lime';
+                part1.style.color = 'deepskyblue';
             } else if (resultadoB === resultadoA){
                 part1.textContent = '1';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoB < resultadoA) {
                 part1.textContent = '0';
-                part1.style.color = 'darkred';
+                part1.style.color = 'deepskyblue';
             } else if(resultadoBB > resultadoAA) {
                 part1.textContent = '3';
-                part1.style.color = 'lime';
+                part1.style.color = 'deepskyblue';
             } else if (resultadoBB === resultadoAA){
                 part1.textContent = '1';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoBB < resultadoAA) {
                 part1.textContent = '0';
-                part1.style.color = 'darkred';
+                part1.style.color = 'deepskyblue';
             }
           }
           // Verificar si se tienen los resultados del segundo enfrentamiento

@@ -176,42 +176,42 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
         if (esLocal) {
             if (resultadoA > resultadoB) {
                 part1.textContent = '3';
-                part1.style.color = 'lime';
+                part1.style.color = 'deepskyblue';
             }else if (resultadoA === resultadoB) {
                 part1.textContent = '1';
                 part1.style.color = 'deepskyblue';
             }else if (resultadoA < resultadoB) {
                 part1.textContent = '0';
-                part1.style.color = 'darkred';
+                part1.style.color = 'deepskyblue';
             } else if (resultadoAA > resultadoBB) {
                 part1.textContent = '3';
-                part1.style.color = 'lime';
+                part1.style.color = 'deepskyblue';
             } else if (resultadoAA === resultadoBB){
                 part1.textContent = '1';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoAA < resultadoBB) {
                 part1.textContent = '0';
-                part1.style.color = 'darkred';
+                part1.style.color = 'deepskyblue';
             }
         } else {
             if (resultadoB > resultadoA) {
                 part1.textContent = '3';
-                part1.style.color = 'lime';
+                part1.style.color = 'deepskyblue';
             } else if (resultadoB === resultadoA){
                 part1.textContent = '1';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoB < resultadoA) {
                 part1.textContent = '0';
-                part1.style.color = 'darkred';
+                part1.style.color = 'deepskyblue';
             } else if(resultadoBB > resultadoAA) {
                 part1.textContent = '3';
-                part1.style.color = 'lime';
+                part1.style.color = 'deepskyblue';
             } else if (resultadoBB === resultadoAA){
                 part1.textContent = '1';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoBB < resultadoAA) {
                 part1.textContent = '0';
-                part1.style.color = 'darkred';
+                part1.style.color = 'deepskyblue';
             }
           }
           // Verificar si se tienen los resultados del segundo enfrentamiento
@@ -241,8 +241,8 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
         }
       }
     });
- // Iterar sobre cada fila
-filas.forEach(function(fila) {
+  // Iterar sobre cada fila
+  filas.forEach(function(fila) {
     // Obtener los valores de resultadoA y resultadoB de la fila actual
     var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
     var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
@@ -285,7 +285,7 @@ filas.forEach(function(fila) {
     } else {
         average.style.color = 'deepskyblue'; // Empate
     }
-});
+  });
 });
   </script>
 </body>

@@ -1,168 +1,132 @@
 [
     {
-        "id": "b6cb0a6d-d69a-4bfb-b255-b02888230139",
+        "id": "96fd8860-2daa-4e5c-b0ed-c30e839febf0",
         "nombre": "Jornada 1",
         "partidos": [
             {
-                "local": "CD Navega",
-                "resultadoA": "1",
-                "resultadoB": "4",
-                "visitante": "CD Milagrosa"
-            },
-            {
-                "local": "Olimpico B",
-                "resultadoA": "0",
-                "resultadoB": "4",
-                "visitante": "V Simancas"
-            },
-            {
-                "local": "Capiscol CF",
-                "resultadoA": "3",
-                "resultadoB": "2",
-                "visitante": "Salamanca FF B"
-            },
-            {
-                "local": "San Pio X",
-                "resultadoA": "1",
-                "resultadoB": "8",
-                "visitante": "C Leonesa"
-            },
-            {
-                "local": "CD Palencia FF",
-                "resultadoA": "0",
-                "resultadoB": "4",
-                "visitante": "CD Fem Ponfe"
-            },
-            {
-                "local": "CD San Jos\u00e9",
-                "resultadoA": "4",
-                "resultadoB": "0",
-                "visitante": "Burgos CF B"
-            },
-            {
-                "local": "CD Parquesol B",
-                "resultadoA": "0",
-                "resultadoB": "5",
-                "visitante": "Amigos Duero"
-            },
-            {
-                "local": "Descansa:",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Atl\u00e9tico Lince"
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
             }
         ]
     },
     {
-        "id": "babf9e00-06ab-435e-a4ec-7c7c3920f0de",
+        "id": "b094acee-b87c-4005-a8da-dc0035eaae10",
         "nombre": "Jornada 2",
         "partidos": [
             {
-                "local": "Salamanca FF B",
-                "resultadoA": "0",
-                "resultadoB": "2",
-                "visitante": "CD Navega"
-            },
-            {
-                "local": "CD Fem Ponfe",
-                "resultadoA": "5",
-                "resultadoB": "0",
-                "visitante": "CD Parquesol B"
-            },
-            {
-                "local": "Amigos Duero",
-                "resultadoA": "2",
-                "resultadoB": "0",
-                "visitante": "Olimpico B"
-            },
-            {
-                "local": "V Simancas",
-                "resultadoA": "3",
-                "resultadoB": "0",
-                "visitante": "Capiscol CF"
-            },
-            {
-                "local": "Burgos CF B",
-                "resultadoA": "11",
-                "resultadoB": "0",
-                "visitante": "San Pio X"
-            },
-            {
-                "local": "Atl\u00e9tico Lince",
-                "resultadoA": "2",
-                "resultadoB": "2",
-                "visitante": "CD Palencia FF"
-            },
-            {
-                "local": "CD Milagrosa",
-                "resultadoA": "3",
-                "resultadoB": "5",
-                "visitante": "CD San Jos\u00e9"
-            },
-            {
-                "local": "Descansa:",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "C Leonesa"
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
             }
         ]
     },
     {
-        "id": "cd96ef46-3fbc-418e-939d-39f9b1919492",
+        "id": "71861204-e490-4e55-b1e1-ae0758aea3aa",
         "nombre": "Jornada 3",
         "partidos": [
             {
-                "local": "San Pio X",
-                "resultadoA": "2",
-                "resultadoB": "12",
-                "visitante": "CD Milagrosa"
-            },
-            {
-                "local": "CD Navega",
-                "resultadoA": "0",
-                "resultadoB": "3",
-                "visitante": "V Simancas"
-            },
-            {
-                "local": "Capiscol CF",
-                "resultadoA": "1",
-                "resultadoB": "4",
-                "visitante": "Amigos Duero"
-            },
-            {
-                "local": "Olimpico B",
-                "resultadoA": "1",
-                "resultadoB": "1",
-                "visitante": "CD Fem Ponfe"
-            },
-            {
-                "local": "Atl\u00e9tico Lince",
-                "resultadoA": "3",
-                "resultadoB": "2",
-                "visitante": "C Leonesa"
-            },
-            {
-                "local": "CD Palencia FF",
-                "resultadoA": "3",
-                "resultadoB": "3",
-                "visitante": "CD Parquesol B"
-            },
-            {
-                "local": "CD San Jos\u00e9",
-                "resultadoA": "5",
-                "resultadoB": "1",
-                "visitante": "Salamanca FF B"
-            },
-            {
-                "local": "Descansa:",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Burgos CF B"
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
             }
         ]
     },
     {
-        "id": "97ea0861-2f48-4d0b-b832-df642a51a8b0",
+        "id": "03508251-9cb2-415e-97bc-c4b174b0e95f",
         "nombre": "Jornada 4",
         "partidos": [
             {
@@ -200,23 +164,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "f51a0b21-6a37-4684-bc46-3da7aa33fc0a",
+        "id": "5e60832c-b328-45ae-9caa-120c171ce3a4",
         "nombre": "Jornada 5",
         "partidos": [
             {
@@ -254,23 +206,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "754a1ed5-d1a6-472d-ab69-0b461c4d3939",
+        "id": "b3609e84-3a30-48e9-ba89-67f9418fb1df",
         "nombre": "Jornada 6",
         "partidos": [
             {
@@ -308,23 +248,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "756b530f-00f5-4456-963e-69fcdbd56b15",
+        "id": "a96dce09-fd59-40d4-a50b-a62668a08976",
         "nombre": "Jornada 7",
         "partidos": [
             {
@@ -362,23 +290,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "a90e0047-aa15-471d-9aec-fb902435ae1f",
+        "id": "06209eff-e90e-4dff-b394-2b76ea36caae",
         "nombre": "Jornada 8",
         "partidos": [
             {
@@ -416,23 +332,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "fa4318c9-7b6c-4b4b-a4e5-3035ae124857",
+        "id": "3b178480-c6ed-45bc-bb90-0d807abc6729",
         "nombre": "Jornada 9",
         "partidos": [
             {
@@ -470,23 +374,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "609ab79d-56bb-4013-a52d-b207331b564d",
+        "id": "f4497dda-b2ca-4a34-a8e1-a96fc628fc3a",
         "nombre": "Jornada 10",
         "partidos": [
             {
@@ -524,23 +416,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "0281d60d-dc6d-49e9-a248-1989b65a003d",
+        "id": "a4219188-80ce-497c-8427-931eed8016b1",
         "nombre": "Jornada 11",
         "partidos": [
             {
@@ -578,23 +458,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "2d648f96-d8d3-4f43-a90e-4717e99c0c8e",
+        "id": "d937f97a-9141-41ea-8a46-bf189a6dd3da",
         "nombre": "Jornada 12",
         "partidos": [
             {
@@ -632,23 +500,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "ec9dcbe8-cd72-4289-affe-37fb0b5900af",
+        "id": "fe98f3e9-565c-4574-b9d2-42602985a266",
         "nombre": "Jornada 13",
         "partidos": [
             {
@@ -686,23 +542,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "4dd08e3f-1651-4f8d-89c9-c2dd9f5d7bc3",
+        "id": "e7fceb7a-5496-436e-b958-647cf850a2f5",
         "nombre": "Jornada 14",
         "partidos": [
             {
@@ -740,23 +584,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "7d751ad9-a0d3-4ff5-8a09-fe5599d2a105",
+        "id": "f1f29a06-4340-410f-a65e-8d558e034a03",
         "nombre": "Jornada 15",
         "partidos": [
             {
@@ -794,23 +626,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "81e38651-e5cb-4e13-b0cd-9036923cb578",
+        "id": "78f16f84-94b6-4325-bb1e-4efb6af6029b",
         "nombre": "Jornada 16",
         "partidos": [
             {
@@ -848,23 +668,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "cf64a3e4-21a7-4fe0-9729-c98c984bb079",
+        "id": "eaee1312-3244-4c79-9a0b-aeab5d57755d",
         "nombre": "Jornada 17",
         "partidos": [
             {
@@ -902,23 +710,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "934a8606-4f5e-47e8-8901-f4121fbf2e26",
+        "id": "e2410e9f-79fe-4168-80cb-16039111762c",
         "nombre": "Jornada 18",
         "partidos": [
             {
@@ -956,23 +752,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "eadb9b51-dfbf-4242-8111-a90e54b1469a",
+        "id": "556533b8-90b6-411c-a4e1-1b18435530ae",
         "nombre": "Jornada 19",
         "partidos": [
             {
@@ -1010,23 +794,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "d621247b-3449-461c-8bd0-08a55eae80ac",
+        "id": "55346b0a-75a0-4da2-a514-116edc613c00",
         "nombre": "Jornada 20",
         "partidos": [
             {
@@ -1064,23 +836,11 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "c240620f-ace4-48d7-a60d-e45c42030bbc",
+        "id": "ec82af75-4d1e-4b48-bd44-c71e52aeabc8",
         "nombre": "Jornada 21",
         "partidos": [
             {
@@ -1118,469 +878,13 @@
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
             }
         ]
     },
     {
-        "id": "49f0369b-d37b-4cd5-ac1a-3e4861ba0491",
+        "id": "b1f58eae-79ec-4456-81b6-7a4d33e51bc6",
         "nombre": "Jornada 22",
         "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            }
-        ]
-    },
-    {
-        "id": "4d6e1ed6-b983-4094-9953-96e05d9778e9",
-        "nombre": "Jornada 23",
-        "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            }
-        ]
-    },
-    {
-        "id": "6f36b6ee-003b-40a7-924c-74d99f077084",
-        "nombre": "Jornada 24",
-        "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            }
-        ]
-    },
-    {
-        "id": "7d5a4048-d92a-4a54-bb97-7204c435238a",
-        "nombre": "Jornada 25",
-        "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            }
-        ]
-    },
-    {
-        "id": "bbd3bf92-c390-4408-a8da-c08302380c3b",
-        "nombre": "Jornada 26",
-        "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            }
-        ]
-    },
-    {
-        "id": "266a2cd4-3bf8-4c22-bfcf-bbf0461d1747",
-        "nombre": "Jornada 27",
-        "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            }
-        ]
-    },
-    {
-        "id": "73737e1c-975e-4e0e-9230-34c622be74db",
-        "nombre": "Jornada 28",
-        "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            }
-        ]
-    },
-    {
-        "id": "64bbb03c-0aa2-4c18-97f0-54f399893562",
-        "nombre": "Jornada 29",
-        "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            }
-        ]
-    },
-    {
-        "id": "ddf51eaa-7373-4855-bda6-67c54c0a2dce",
-        "nombre": "Jornada 30",
-        "partidos": [
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
             {
                 "local": "",
                 "resultadoA": "",

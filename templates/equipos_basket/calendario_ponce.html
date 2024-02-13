@@ -144,131 +144,192 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 </script> 
 <script src="/static/js/script.js"></script>
 <script src="/static/js/leer_mas.js"></script>
-<script> 
-  document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar todas las filas de la tabla
-    var filas = document.querySelectorAll('.tabla_ponce tbody tr');
-    // Iterar sobre cada fila
-    filas.forEach(function(fila) {
-        // Obtener el nombre del equipo de la fila actual
-        var equipo = fila.querySelector('th').textContent.trim();
-        console.log(equipo)
-        // Obtener la jornada y determinar si el UEMC juega en casa o como visitante
-        var jornadaElement = fila.querySelector('.jorn_ida');
-        var esLocal = false; // Por defecto, asumimos que el Ponce juega como visitante
-        if (jornadaElement) {
-            var jornada = jornadaElement.textContent.trim();
-            if (jornada.includes('C')) {
-                esLocal = true;
-            }
-        }
-        // Obtener los valores de los resultados de la fila
-        var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
-        console.log(resultadoA)
-        var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
-        console.log(resultadoB)
-        var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
-        console.log(resultadoAA)
-        var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
-        console.log(resultadoBB)
-        // Comparar los resultados y actualizar el estilo de las celdas correspondientes
-        var gan1 = fila.querySelector('.gan-1');
-        var per1 = fila.querySelector('.per-1');
-        var average = fila.querySelector('.average');
-        if (esLocal) {
-            if (resultadoA > resultadoB) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
-            } else if (resultadoA < resultadoB) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
-            } else if (resultadoAA > resultadoBB) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
-            } else if (resultadoAA < resultadoBB) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
-            }else {
-                gan1.textContent = '-';
-                per1.textContent = '-';
-            }
-        } else {
-            if (resultadoB > resultadoA) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
-            } else if (resultadoB < resultadoA) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
-            } else if(resultadoBB > resultadoAA) {
-                gan1.textContent = '1';
-                gan1.style.color = 'green';
-                per1.textContent = '-';
-            } else if (resultadoBB < resultadoAA) {
-                per1.textContent = '1';
-                per1.style.color = 'red';
-                gan1.textContent = '-';
-            }else {
-                gan1.textContent = '-';
-                per1.textContent = '-';
-            }
-            // Comparar los resultados y actualizar recuentos del segundo enfrentamiento
-            if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
-              if (resultadoAA > resultadoBB) {
-                gan1.textContent = gan1.textContent === '-' ? '1' : (parseInt(gan1.textContent) + 1).toString();
-                gan1.style.color = 'green';
-                  
-              } else if (resultadoAA < resultadoBB) {
-                per1.textContent = per1.textContent === '-' ? '1' : (parseInt(per1.textContent) + 1).toString();
-                per1.style.color = 'red';
-              }
-          }
-        }
-    });
-    // Calculó de average
-    filas.forEach(function(fila) {
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleccionar todas las filas de la tabla
+  var filas = document.querySelectorAll('.tabla_ponce tbody tr');
+  // Iterar sobre cada fila
+  filas.forEach(function(fila) {
+      // Obtener el nombre del equipo de la fila actual
+      var equipo = fila.querySelector('th').textContent.trim();
+      console.log(equipo)
+      // Obtener la jornada y determinar si el UEMC juega en casa o como visitante
+      var jornadaElement = fila.querySelector('.jorn_ida');
+      var esLocal = false; // Por defecto, asumimos que el UEMC juega como visitante
+      if (jornadaElement) {
+          var jornada = jornadaElement.textContent.trim();
+          if (jornada.includes('C')) {
+              esLocal = true;
+          } 
+      }
+      // Obtener los valores de los resultados de la fila
       var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+      console.log(resultadoA)
       var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+      console.log(resultadoB)
       var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+      console.log(resultadoAA)
       var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
-      var average = fila.querySelector('.average');
-      let avgTotal;
-      if (isNaN(resultadoAA) || isNaN(resultadoBB)) {
-          // Solo se tiene el resultado de ida
-          if (resultadoA && resultadoB) {
-              avgTotal = resultadoB - resultadoA; // Por defecto, asumiendo que el Ponce juega fuera
-              if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
-                  // Si el Ponce juega en casa, ajustamos la diferencia
-                  avgTotal = resultadoA - resultadoB;
-              }
-          } else {
-              avgTotal = 0;
+      console.log(resultadoBB)
+      // Comparar los resultados y actualizar el estilo de las celdas correspondientes
+      var gan1 = fila.querySelector('.gan-1');
+      var per1 = fila.querySelector('.per-1');
+      var ganados1 = 0;
+      var perdidos1 = 0;
+      if (esLocal) {
+        if (resultadoA > resultadoB) {
+            ganados1 = 1;
+            gan1.textContent = '1';
+            gan1.style.color = 'green';
+            per1.textContent = '-';
+        } else if (resultadoA < resultadoB) {
+            perdidos1 = 1;
+            per1.textContent = '1';
+            per1.style.color = 'red';
+            gan1.textContent = '-';
+        }
+    } else {
+        if (resultadoB > resultadoA) {
+            ganados1 = 1;
+            gan1.textContent = '1';
+            gan1.style.color = 'green';
+            per1.textContent = '-';
+        } else if (resultadoB < resultadoA) {
+            perdidos1 = 1;
+            per1.textContent = '1';
+            per1.style.color = 'red';
+            gan1.textContent = '-';
+        }
+    }
+          // Actualizar recuentos del primer enfrentamiento según los resultados del segundo enfrentamiento
+          var jornadaElement2 = fila.querySelector('.jorn_vuelta');
+          var esLocalSegundo = false; // Por defecto, asumimos que el UEMC juega como visitante
+          if (jornadaElement2) {
+            var jornada2 = jornadaElement2.textContent.trim();
+            if (jornada2.includes('C')) {
+              esLocalSegundo = true;
+            } 
           }
-      } else {
-          // Se tienen ambos resultados de ida y vuelta
-          const avgIda = resultadoB - resultadoA;
-          const avgVuelta = resultadoAA - resultadoBB;
-          avgTotal = avgIda + avgVuelta;
-      }
-      if (!isNaN(avgTotal)) {
-          average.textContent = avgTotal;
-          if (avgTotal > 0) {
-              average.style.color = 'green';
-          } else if (avgTotal < 0) {
-              average.style.color = 'red';
-          } else {
-              average.style.color = 'blue';
+        if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
+          if (esLocalSegundo) {
+            if (resultadoAA > resultadoBB) {
+              ganados1++;
+              gan1.textContent = ganados1.toString();
+              gan1.style.color = 'green';
+          } else if (resultadoAA < resultadoBB) {
+              perdidos1++;
+              per1.textContent = perdidos1.toString();
+              per1.style.color = 'red';
           }
+        } else { // Si UEMC jugó como visitante en el segundo enfrentamiento
+          if (resultadoBB > resultadoAA) {
+              ganados1++;
+              gan1.textContent = ganados1.toString();
+              gan1.style.color = 'green';
+          } else if (resultadoBB < resultadoAA) {
+              perdidos1++;
+              per1.textContent = perdidos1.toString();
+              per1.style.color = 'red';
+          }
+        }
+      }  
+  });
+  // Cálculo del average del primer enfrentamiento
+  filas.forEach(function(fila) {
+    var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+    var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+    var average = fila.querySelector('.average');
+    var avgIda; // Average del primer enfrentamiento
+    if (resultadoA && resultadoB) {
+      if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
+        // UEMC juega como local
+        avgIda = resultadoA - resultadoB; // Calcula la diferencia de puntos
       } else {
-          average.textContent = '';
+        // UEMC juega como visitante
+        avgIda = resultadoB - resultadoA; // Calcula la diferencia de puntos
       }
+    } else {
+        avgIda = 0; // Si no hay resultados, el average es 0
+    }
+    if (!isNaN(avgIda)) {
+        average.textContent = avgIda;
+      // Colorea el average según su valor
+      if (avgIda > 0) {
+        average.style.color = 'green';
+      } else if (avgIda < 0) {
+        average.style.color = 'red';
+      } else {
+        average.style.color = 'blue';
+      }
+    } else {
+        average.textContent = '';
+    }
   });
-  });
-  </script>
+  // Cálculo del average del primer enfrentamiento
+filas.forEach(function(fila) {
+    var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+    var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+    var average = fila.querySelector('.average');
+    var avgIda; // Average del primer enfrentamiento
+    if (resultadoA && resultadoB) {
+        if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
+            // UEMC juega como local
+            avgIda = resultadoA - resultadoB; // Calcula la diferencia de puntos
+        } else {
+            // UEMC juega como visitante
+            avgIda = resultadoB - resultadoA; // Calcula la diferencia de puntos
+        }
+    } else {
+        avgIda = 0; // Si no hay resultados, el average es 0
+    }
+    if (!isNaN(avgIda)) {
+        average.textContent = avgIda;
+        // Colorea el average según su valor
+        if (avgIda > 0) {
+            average.style.color = 'green';
+        } else if (avgIda < 0) {
+            average.style.color = 'red';
+        } else {
+            average.style.color = 'blue';
+        }
+    } else {
+        average.textContent = '';
+    }
+});
+// Cálculo del average del segundo enfrentamiento
+filas.forEach(function(fila) {
+    var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+    var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+    var average = fila.querySelector('.average');
+    var avgVuelta; // Average del segundo enfrentamiento
+    if (resultadoAA && resultadoBB) {
+        if (fila.querySelector('.jorn_vuelta').textContent.trim().includes('C')) {
+            // UEMC juega como local en el segundo enfrentamiento
+            avgVuelta = resultadoAA - resultadoBB; // Calcula la diferencia de puntos
+        } else {
+            // UEMC juega como visitante en el segundo enfrentamiento
+            avgVuelta = resultadoBB - resultadoAA; // Calcula la diferencia de puntos
+        }
+    } else {
+        avgVuelta = 0; // Si no hay resultados, el average es 0
+    }
+    if (!isNaN(avgVuelta)) {
+        // Actualiza el average total sumando o restando el average del segundo enfrentamiento
+        var avgTotal = parseInt(average.textContent) + avgVuelta;
+        average.textContent = avgTotal;
+        // Colorea el average según su valor
+        if (avgTotal > 0) {
+            average.style.color = 'green';
+        } else if (avgTotal < 0) {
+            average.style.color = 'red';
+        } else {
+            average.style.color = 'blue';
+        }
+    } else {
+        average.textContent = '';
+    }
+});
+});
+</script>
 </body>
 </html>

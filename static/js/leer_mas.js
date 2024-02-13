@@ -25,6 +25,7 @@
    }
  }
 // Mostrar formulario para crear partidos
+// BALONCESTO
  function mostrarFormulario(){
   document.getElementById('form_partidos_uemc').style.display='block';
 }
@@ -34,6 +35,7 @@ function mostrarFormularioPonce(){
 function mostrarFormularioAliados(){
   document.getElementById('form_partidos_aliados').style.display='block';
 }
+// FÚTBOL
 function mostrarFormularioValladolid(){
   document.getElementById('form_partidos_valladolid').style.display='block';
 }
@@ -42,6 +44,13 @@ function mostrarFormularioPromesas(){
 }
 function mostrarFormularioSimancas(){
   document.getElementById('form_partidos_promesas').style.display='block';
+}
+function mostrarFormularioParquesol(){
+  document.getElementById('form_partidos_parquesol').style.display='block';
+}
+// BALONMANO
+function mostrarFormularioAula(){
+  document.getElementById('form_partidos_aula').style.display='block';
 }
 // Abrir y cerrar las jornadas de calendario_uemc
 function toggleTabla(element, nombre) {

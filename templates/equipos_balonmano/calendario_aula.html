@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>{% block titulo %} Sección de los deportes {% endblock %}</title>
+  <title>Calendario-Aula Valladolid</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,23 +12,23 @@
   <!-- Favicon -->  
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
-<body class="bg-white calend_basket">
+<body class="bg-white calend_balonmano">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ms-1">
           <li class="breadcrumb-item"><a href="/seccion/baloncesto" class="text-white text-decoration-none">Sección</a></li>
-          <li class="breadcrumb-item active text-dark" aria-current="page">Calendarios UEMC</li>
+          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Aula Valladolid</li>
         </ol>
     </nav>
     <section class="container-lg mb-5">
-        <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+      <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
             <div class="carousel-inner">	
-              <div class="carousel-item active"><!-- Tabla calendario UEMC -->
+              <div class="carousel-item active"><!--Tabla Calendario-->
                 <div class="d-flex justify-content-center">
                   <div class="card tabla_equipos" style="width: 70rem;">
                     <div class="card-body">
                       <div class="table-responsive">
                         <h3 class="text-center text-white fw-bold">Calendario</h3>
-                        <table class="table table-bordered tabla_equiposs tabla_uemc"><!--Tabla Calendario UEMC-->
+                        <table class="table table-bordered tabla_equipos tabla_aula"><!--Tabla Calendario Aula-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
@@ -38,39 +38,39 @@
                                 </tr>
                                 <tr class="text-center text-white">
                                   <th scope="col">Equipos</th>
-                                  <th >Ida</th>
-                                  <th>Vta</th>
+                                  <th>Ida</th>
+                                  <th>Vlt</th>
                                   <th colspan="2">Ida</th>
-                                  <th colspan="2">Vta</th>
+                                  <th colspan="2">Vlt</th>
                                   <th>PG</th>
                                   <th>PP</th>
                                   <th>Average</th>
                                 </tr>
                             </thead>
                               <tbody>
-                                {% for equipo, datos_equipo in tabla_partidos_uemc.items() %}
+                                {% for equipo, datos_equipo in tabla_partidos_aula.items() %}
                                   <tr class="text-center">
                                     <th class="text-white">{{ equipo }}</th>
                                     <td class="jorn_ida fw-bold">
                                       {% if datos_equipo.get('primer_enfrentamiento') %}
                                         J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_uemc'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_uemc'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_aula'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_aula'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
                                     <td class="jorn_vuelta fw-bold">
                                       {% if datos_equipo.get('segundo_enfrentamiento') %}
                                         J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_uemc'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_uemc'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_aula'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_aula'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
-                                    <td class="resultadoA fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoA'] }}</td>
-                                    <td class="resultadoB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoB'] }}</td>
-                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoAA'] }}</td>
-                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoBB'] }}</td>
+                                    <td class="resultadoA fw-bold">{{ tabla_partidos_aula[equipo]['resultadoA'] }}</td>
+                                    <td class="resultadoB fw-bold">{{ tabla_partidos_aula[equipo]['resultadoB'] }}</td>
+                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_aula[equipo]['resultadoAA'] }}</td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_aula[equipo]['resultadoBB'] }}</td>
                                     <td class="gan-1"></td>
                                     <td class="per-1"></td>
                                     <td class="average"></td>
@@ -89,7 +89,7 @@
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
-                          {% for goles in nuevos_datos_uemc %}
+                          {% for goles in nuevos_datos_aula %}
                           <div class="col-lg-4">
                             <div class="card card_calendario mb-3">
                               <div class="table-responsive">
@@ -132,8 +132,8 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-        </div>
-        </section>
+      </div>
+    </section>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <!-- Bootstrap JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -145,9 +145,9 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 <script src="/static/js/script.js"></script>
 <script src="/static/js/leer_mas.js"></script>
 <script> 
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
   // Seleccionar todas las filas de la tabla
-  var filas = document.querySelectorAll('.tabla_uemc tbody tr');
+  var filas = document.querySelectorAll('.tabla_aula tbody tr');
   // Iterar sobre cada fila
   filas.forEach(function(fila) {
       // Obtener el nombre del equipo de la fila actual
