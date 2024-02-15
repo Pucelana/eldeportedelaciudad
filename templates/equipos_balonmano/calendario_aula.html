@@ -15,7 +15,7 @@
 <body class="bg-white calend_balonmano">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ms-1">
-          <li class="breadcrumb-item"><a href="/seccion/baloncesto" class="text-white text-decoration-none">Sección</a></li>
+          <li class="breadcrumb-item"><a href="/seccion/balonmano" class="text-white text-decoration-none">Sección</a></li>
           <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Aula Valladolid</li>
         </ol>
     </nav>
@@ -24,17 +24,17 @@
             <div class="carousel-inner">	
               <div class="carousel-item active"><!--Tabla Calendario-->
                 <div class="d-flex justify-content-center">
-                  <div class="card tabla_equipos" style="width: 70rem;">
+                  <div class="card tabla_equipos_aula" style="width: 70rem;">
                     <div class="card-body">
                       <div class="table-responsive">
-                        <h3 class="text-center text-white fw-bold">Calendario</h3>
+                        <h3 class="text-center text-white fw-bold my-3">Calendario</h3>
                         <table class="table table-bordered tabla_equipos tabla_aula"><!--Tabla Calendario Aula-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
                                   <th colspan="2">Jornadas</th>
                                   <th colspan="4">Resultados</th>
-                                  <th colspan="2">Partidos</th>
+                                  <!--<th colspan="2">Partidos</th>-->
                                 </tr>
                                 <tr class="text-center text-white">
                                   <th scope="col">Equipos</th>
@@ -42,8 +42,8 @@
                                   <th>Vlt</th>
                                   <th colspan="2">Ida</th>
                                   <th colspan="2">Vlt</th>
-                                  <th>PG</th>
-                                  <th>PP</th>
+                                  <th>Puntos</th>
+                                  <!--<th>PP</th>-->
                                   <th>Average</th>
                                 </tr>
                             </thead>
@@ -71,8 +71,7 @@
                                     <td class="resultadoB fw-bold">{{ tabla_partidos_aula[equipo]['resultadoB'] }}</td>
                                     <td class="resultadoAA fw-bold">{{ tabla_partidos_aula[equipo]['resultadoAA'] }}</td>
                                     <td class="resultadoBB fw-bold">{{ tabla_partidos_aula[equipo]['resultadoBB'] }}</td>
-                                    <td class="gan-1"></td>
-                                    <td class="per-1"></td>
+                                    <td class="part1"></td>
                                     <td class="average"></td>
                                   </tr>
                                 {% endfor %}
@@ -85,7 +84,7 @@
               </div>
               <div class="carousel-item"><!-- Resultados temporada 23/24 -->
                 <div class="d-flex justify-content-center">
-                  <div class="card tabla_equipos" style="width: 70rem;">
+                  <div class="card tabla_equipos_aula" style="width: 70rem;">
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
@@ -146,190 +145,148 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 <script src="/static/js/leer_mas.js"></script>
 <script> 
   document.addEventListener('DOMContentLoaded', function() {
-  // Seleccionar todas las filas de la tabla
-  var filas = document.querySelectorAll('.tabla_aula tbody tr');
+    // Seleccionar todas las filas de la tabla
+    var filas = document.querySelectorAll('.tabla_aula tbody tr');
+    // Iterar sobre cada fila
+    filas.forEach(function(fila) {
+        // Obtener el nombre del equipo de la fila actual
+        var equipo = fila.querySelector('th').textContent.trim();
+        console.log(equipo)
+        // Obtener la jornada y determinar si el Promesas juega en casa o como visitante
+        var jornadaElement = fila.querySelector('.jorn_ida');
+        var esLocal = false; // Por defecto, asumimos que el Promesas juega como visitante
+        if (jornadaElement) {
+            var jornada = jornadaElement.textContent.trim();
+            if (jornada.includes('C')) {
+                esLocal = true;
+            }
+        }
+        // Obtener los valores de los resultados de la fila
+        var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
+        console.log(resultadoA)
+        var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
+        console.log(resultadoB)
+        var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
+        console.log(resultadoAA)
+        var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
+        console.log(resultadoBB)
+        // Comparar los resultados y actualizar el estilo de las celdas correspondientes
+        var part1 = fila.querySelector('.part1');
+        var average = fila.querySelector('.average');        
+        if (esLocal) {
+            if (resultadoA > resultadoB) {
+                part1.textContent = '2';
+                part1.style.color = 'deepskyblue';
+            }else if (resultadoA === resultadoB) {
+                part1.textContent = '1';
+                part1.style.color = 'deepskyblue';
+            }else if (resultadoA < resultadoB) {
+                part1.textContent = '0';
+                part1.style.color = 'deepskyblue';
+            } else if (resultadoAA > resultadoBB) {
+                part1.textContent = '2';
+                part1.style.color = 'deepskyblue';
+            } else if (resultadoAA === resultadoBB){
+                part1.textContent = '1';
+                part1.style.color = 'deepskyblue';
+            } else if (resultadoAA < resultadoBB) {
+                part1.textContent = '0';
+                part1.style.color = 'deepskyblue';
+            }
+        } else {
+            if (resultadoB > resultadoA) {
+                part1.textContent = '2';
+                part1.style.color = 'deepskyblue';
+            } else if (resultadoB === resultadoA){
+                part1.textContent = '1';
+                part1.style.color = 'deepskyblue';
+            } else if (resultadoB < resultadoA) {
+                part1.textContent = '0';
+                part1.style.color = 'deepskyblue';
+            } else if(resultadoBB > resultadoAA) {
+                part1.textContent = '2';
+                part1.style.color = 'deepskyblue';
+            } else if (resultadoBB === resultadoAA){
+                part1.textContent = '1';
+                part1.style.color = 'deepskyblue';
+            } else if (resultadoBB < resultadoAA) {
+                part1.textContent = '0';
+                part1.style.color = 'deepskyblue';
+            }
+          }
+          // Verificar si se tienen los resultados del segundo enfrentamiento
+          if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
+          // Calcular el puntaje del segundo enfrentamiento
+            var puntajeSegundoEnfrentamiento = 0;
+          // Determinar si el equipo juega como local o visitante en el segundo enfrentamiento
+            if (resultadoAA > resultadoBB) {
+          // "AA" gana como local
+              if (!esLocal) {
+                puntajeSegundoEnfrentamiento = 2;
+              }
+            } else if (resultadoAA < resultadoBB) {
+          // "AA" gana como visitante
+              if (esLocal) {
+                puntajeSegundoEnfrentamiento = 2;
+              }
+          } else {
+          // Empate en el segundo enfrentamiento
+            puntajeSegundoEnfrentamiento = 1;
+          }
+          // Actualizar el puntaje total sumando el del segundo enfrentamiento
+        if (part1.textContent === '-') {
+        part1.textContent = puntajeSegundoEnfrentamiento.toString();
+        } else {
+        part1.textContent = (parseInt(part1.textContent) + puntajeSegundoEnfrentamiento).toString();
+        }
+      }
+    });
   // Iterar sobre cada fila
   filas.forEach(function(fila) {
-      // Obtener el nombre del equipo de la fila actual
-      var equipo = fila.querySelector('th').textContent.trim();
-      console.log(equipo)
-      // Obtener la jornada y determinar si el UEMC juega en casa o como visitante
-      var jornadaElement = fila.querySelector('.jorn_ida');
-      var esLocal = false; // Por defecto, asumimos que el UEMC juega como visitante
-      if (jornadaElement) {
-          var jornada = jornadaElement.textContent.trim();
-          if (jornada.includes('C')) {
-              esLocal = true;
-          } 
-      }
-      // Obtener los valores de los resultados de la fila
-      var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
-      console.log(resultadoA)
-      var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
-      console.log(resultadoB)
-      var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
-      console.log(resultadoAA)
-      var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
-      console.log(resultadoBB)
-      // Comparar los resultados y actualizar el estilo de las celdas correspondientes
-      var gan1 = fila.querySelector('.gan-1');
-      var per1 = fila.querySelector('.per-1');
-      var ganados1 = 0;
-      var perdidos1 = 0;
-      if (esLocal) {
-        if (resultadoA > resultadoB) {
-            ganados1 = 1;
-            gan1.textContent = '1';
-            gan1.style.color = 'green';
-            per1.textContent = '-';
-        } else if (resultadoA < resultadoB) {
-            perdidos1 = 1;
-            per1.textContent = '1';
-            per1.style.color = 'red';
-            gan1.textContent = '-';
-        }
-    } else {
-        if (resultadoB > resultadoA) {
-            ganados1 = 1;
-            gan1.textContent = '1';
-            gan1.style.color = 'green';
-            per1.textContent = '-';
-        } else if (resultadoB < resultadoA) {
-            perdidos1 = 1;
-            per1.textContent = '1';
-            per1.style.color = 'red';
-            gan1.textContent = '-';
-        }
-    }
-          // Actualizar recuentos del primer enfrentamiento según los resultados del segundo enfrentamiento
-          var jornadaElement2 = fila.querySelector('.jorn_vuelta');
-          var esLocalSegundo = false; // Por defecto, asumimos que el UEMC juega como visitante
-          if (jornadaElement2) {
-            var jornada2 = jornadaElement2.textContent.trim();
-            if (jornada2.includes('C')) {
-              esLocalSegundo = true;
-            } 
-          }
-        if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
-          if (esLocalSegundo) {
-            if (resultadoAA > resultadoBB) {
-              ganados1++;
-              gan1.textContent = ganados1.toString();
-              gan1.style.color = 'green';
-          } else if (resultadoAA < resultadoBB) {
-              perdidos1++;
-              per1.textContent = perdidos1.toString();
-              per1.style.color = 'red';
-          }
-        } else { // Si UEMC jugó como visitante en el segundo enfrentamiento
-          if (resultadoBB > resultadoAA) {
-              ganados1++;
-              gan1.textContent = ganados1.toString();
-              gan1.style.color = 'green';
-          } else if (resultadoBB < resultadoAA) {
-              perdidos1++;
-              per1.textContent = perdidos1.toString();
-              per1.style.color = 'red';
-          }
-        }
-      }  
-  });
-  // Cálculo del average del primer enfrentamiento
-  filas.forEach(function(fila) {
+    // Obtener los valores de resultadoA y resultadoB de la fila actual
     var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
     var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
-    var average = fila.querySelector('.average');
-    var avgIda; // Average del primer enfrentamiento
-    if (resultadoA && resultadoB) {
-      if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
-        // UEMC juega como local
-        avgIda = resultadoA - resultadoB; // Calcula la diferencia de puntos
-      } else {
-        // UEMC juega como visitante
-        avgIda = resultadoB - resultadoA; // Calcula la diferencia de puntos
-      }
-    } else {
-        avgIda = 0; // Si no hay resultados, el average es 0
-    }
-    if (!isNaN(avgIda)) {
-        average.textContent = avgIda;
-      // Colorea el average según su valor
-      if (avgIda > 0) {
-        average.style.color = 'green';
-      } else if (avgIda < 0) {
-        average.style.color = 'red';
-      } else {
-        average.style.color = 'blue';
-      }
-    } else {
-        average.textContent = '';
-    }
-  });
-  // Cálculo del average del primer enfrentamiento
-filas.forEach(function(fila) {
-    var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
-    var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
-    var average = fila.querySelector('.average');
-    var avgIda; // Average del primer enfrentamiento
-    if (resultadoA && resultadoB) {
-        if (fila.querySelector('.jorn_ida').textContent.trim().includes('C')) {
-            // UEMC juega como local
-            avgIda = resultadoA - resultadoB; // Calcula la diferencia de puntos
-        } else {
-            // UEMC juega como visitante
-            avgIda = resultadoB - resultadoA; // Calcula la diferencia de puntos
-        }
-    } else {
-        avgIda = 0; // Si no hay resultados, el average es 0
-    }
-    if (!isNaN(avgIda)) {
-        average.textContent = avgIda;
-        // Colorea el average según su valor
-        if (avgIda > 0) {
-            average.style.color = 'green';
-        } else if (avgIda < 0) {
-            average.style.color = 'red';
-        } else {
-            average.style.color = 'blue';
-        }
-    } else {
-        average.textContent = '';
-    }
-});
-// Cálculo del average del segundo enfrentamiento
-filas.forEach(function(fila) {
+    // Obtener los valores de resultadoAA y resultadoBB de la fila actual para la jornada de vuelta
     var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
     var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
-    var average = fila.querySelector('.average');
-    var avgVuelta; // Average del segundo enfrentamiento
-    if (resultadoAA && resultadoBB) {
-        if (fila.querySelector('.jorn_vuelta').textContent.trim().includes('C')) {
-            // UEMC juega como local en el segundo enfrentamiento
-            avgVuelta = resultadoAA - resultadoBB; // Calcula la diferencia de puntos
+    // Obtener la celda 'average'
+    var average = fila.querySelector('.average');        
+    // Calcular la diferencia de goles dependiendo si resultadoA juega como local o visitante
+    var diferenciaGolesIda;
+    if (fila.querySelector('.jorn_ida').textContent.includes('C')) {
+        // resultadoA juega en casa
+        diferenciaGolesIda = resultadoA - resultadoB;
+    } else {
+        // resultadoA juega como visitante
+        diferenciaGolesIda = resultadoB - resultadoA;
+    }
+    // Calcular la diferencia de goles para la jornada de vuelta
+    var diferenciaGolesVuelta;
+    if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
+        if (fila.querySelector('.jorn_ida').textContent.includes('C')) {
+            // resultadoAA juega como visitante en la jornada de vuelta
+            diferenciaGolesVuelta = resultadoBB - resultadoAA;
         } else {
-            // UEMC juega como visitante en el segundo enfrentamiento
-            avgVuelta = resultadoBB - resultadoAA; // Calcula la diferencia de puntos
+            // resultadoAA juega en casa en la jornada de vuelta
+            diferenciaGolesVuelta = resultadoAA - resultadoBB;
         }
     } else {
-        avgVuelta = 0; // Si no hay resultados, el average es 0
+        diferenciaGolesVuelta = 0;
     }
-    if (!isNaN(avgVuelta)) {
-        // Actualiza el average total sumando o restando el average del segundo enfrentamiento
-        var avgTotal = parseInt(average.textContent) + avgVuelta;
-        average.textContent = avgTotal;
-        // Colorea el average según su valor
-        if (avgTotal > 0) {
-            average.style.color = 'green';
-        } else if (avgTotal < 0) {
-            average.style.color = 'red';
-        } else {
-            average.style.color = 'blue';
-        }
+    // Calcular el average total sumando las diferencias de goles de ambas jornadas
+    var averageTotal = diferenciaGolesIda + diferenciaGolesVuelta;
+    // Asignar el valor del average total a la celda 'average'
+    average.textContent = averageTotal;
+    // Determinar el color de la celda 'average' según la diferencia de goles
+    if (averageTotal > 0) {
+        average.style.color = 'lime'; // Equipo A ganó
+    } else if (averageTotal < 0) {
+        average.style.color = 'darkred'; // Equipo A perdió
     } else {
-        average.textContent = '';
+        average.style.color = 'deepskyblue'; // Empate
     }
+  });
 });
-});
-</script>
+  </script>
 </body>
 </html>

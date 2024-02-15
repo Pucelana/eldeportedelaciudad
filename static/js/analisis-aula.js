@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });*/
 
 // Segunda función para calcular el porcentaje al ascenso
-const filas = document.querySelectorAll("#tablaAscensoAula tbody tr");
+/*const filas = document.querySelectorAll("#tablaAscensoAula tbody tr");
 const partidosTotales = 22; // Cambiado a 30 partidos en la temporada
 const puntosPorGanar = 2; // Cambiado a 3 puntos por partido ganado
 const proximidadFija = 44; // Ajusta este valor según tus necesidades
@@ -90,10 +90,10 @@ equipos.forEach((equipoData) => {
     <td class="pts-pesi1 fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
     `;
     tabla.appendChild(nuevaFila);
-});
+});*/
 
-/*// Tercera función para calcular el porcentaje a los PlayOff
-const filas1 = document.querySelectorAll("#tablaPlaySiman tbody tr");
+// Tercera función para calcular el porcentaje a los PlayOff
+const filas1 = document.querySelectorAll("#tablaPlayAula tbody tr");
 const partidosTotales1 = 42; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar1 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija1 = 70; // Ajusta este valor según tus necesidades
@@ -129,7 +129,7 @@ filas1.forEach((fila, indice) => {
 // Ordenar los equipo1s1 por proximidad descendente
 equipo1s1.sort((a, b) => b.proximidadDePlayOff - a.proximidadDePlayOff);
 // Actualizar la tabla1 con los datos ordenados
-const tabla1 = document.querySelector("#tablaPlaySiman tbody");
+const tabla1 = document.querySelector("#tablaPlayAula tbody");
 tabla1.innerHTML = ""; // Limpiar la tabla1 antes de actualizar
 equipo1s1.forEach((equipo1Data) => {
     const nuevaFila1 = document.createElement("tr");
@@ -143,7 +143,7 @@ equipo1s1.forEach((equipo1Data) => {
     <td class="play-pesi fw-bold text-center">${equipo1Data.partidosGanadosPesimistas1}</td>
     `;
     tabla1.appendChild(nuevaFila1);
-});*/
+});
 
 // Cuarta función para calcular la permanencia
 const filas2 = document.querySelectorAll("#tablaDescAula tbody tr");

@@ -71,7 +71,7 @@
     height: 4vh;
     background-color: transparent;
     border-radius: 50%;
-    top: 3.5%;
+    top: 5.5%;
     transform: translateY(-50%);
 }
 .carousel-control-next{
@@ -79,7 +79,7 @@
     height: 4vh;
     background-color: transparent;
     border-radius: 50%;
-    top: 3.5%;
+    top: 5.5%;
     transform: translateY(-50%);
 }
 .deporte{

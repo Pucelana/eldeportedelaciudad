@@ -1827,7 +1827,7 @@ def obtener_datos_aula():
 def calend_aula():
     data7 = obtener_datos_aula()
     return render_template('admin/calend_aula.html', data7=data7)
-# Ingresar los resultados de los partidos del CD Parquesol
+# Ingresar los resultados de los partidos del Aula Valladolid
 @app.route('/admin/crear_calendario_aula', methods=['POST'])
 def ingresar_resul_aula():
     data7 = obtener_datos_aula()
@@ -1871,7 +1871,7 @@ def modificar_jorn_aula(id):
     data7 = obtener_datos_aula()
     if request.method == 'POST':
         jornada_nombre = request.form.get('nombre')
-        resultados_a_modificar = next((result for result in data6 if result['id'] == id), None)
+        resultados_a_modificar = next((result for result in data7 if result['id'] == id), None)
         if resultados_a_modificar:
             resultados_a_modificar['nombre'] = jornada_nombre
             resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
@@ -1958,7 +1958,7 @@ def clasif_analisis_aula():
 def calendarios_aula():
     datos7 = obtener_datos_aula()
     nuevos_datos_aula = [dato for dato in datos7 if dato]
-    equipo_aula = 'Aula Valladolid'
+    equipo_aula = 'Aula Valladolid F'
     tabla_partidos_aula = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos7:
@@ -2019,13 +2019,220 @@ def calendarios_aula():
                     tabla_partidos_aula[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_aula[equipo_contrario]['jornadas'][jornada['nombre']]['rol_aula'] = rol_aula
     return render_template('equipos_balonmano/calendario_aula.html', tabla_partidos_aula=tabla_partidos_aula, nuevos_datos_aula=nuevos_datos_aula)
-
-
-
-
-
-
-
+#Fin proceso Aula Valladolid
+#Todo el proceso de calendario y clasificación del Atlético Valladolid
+# Ruta de partidos Atlético Valladolid
+part_recoletas = 'json/partidos_recoletas.json'
+def guardar_datos_recoletas(data8):
+    # Guardar los datos en el archivo JSON
+    with open(part_recoletas, 'w', encoding='utf-8') as file:
+        json.dump(data8, file, indent=4)
+def obtener_datos_recoletas():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_recoletas, 'r', encoding='utf-8') as file:
+        data8 = json.load(file)
+      return data8
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos Atlético Valladolid
+@app.route('/admin/calend_recoletas')
+def calend_recoletas():
+    data8 = obtener_datos_recoletas()
+    return render_template('admin/calend_recoletas.html', data8=data8)
+# Ingresar los resultados de los partidos del Atlético Valladolid
+@app.route('/admin/crear_calendario_recoletas', methods=['POST'])
+def ingresar_resul_recoletas():
+    data8 = obtener_datos_recoletas()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data8 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data8.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_recoletas(data8)
+    return redirect(url_for('calend_recoletas')) 
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_recoletas(data8):
+    arch_guardar_recoletas = 'json/partidos_recoletas.json'
+    # Guardar en el archivo
+    with open(arch_guardar_recoletas, 'w', encoding='UTF-8') as archivo:
+        json.dump(data8, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_recoletas/<string:id>', methods=['POST'])
+def modificar_jorn_recoletas(id):
+    data8 = obtener_datos_recoletas()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data8 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(8):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'visitante': equipoVisitante
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_recoletas(data8)            
+            return redirect(url_for('calend_recoletas'))
+    return redirect(url_for('calend_recoletas'))
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_recoletas/<string:id>', methods=['POST'])
+def eliminar_jorn_recoletas(id):
+    data8 = obtener_datos_recoletas()
+    jornada_a_eliminar = [j for j in data8 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_recoletas(jornada_a_eliminar)
+    return redirect(url_for('calend_recoletas'))
+# Crear la clasificación del Atlético Valladolid
+def generar_clasificacion_analisis_balonmano_recoletas(data8, total_partidos_temporada_recoletas):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0})
+    for jornada in data8:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 2
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 2
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_balonmano_recoletas)
+    return clasificacion_ordenada 
+# Ruta para mostrar la clasificación y análisis del Aula Valladolid
+@app.route('/equipos_balonmano/clasi_analis_recoletas/')
+def clasif_analisis_recoletas():
+    data8 = obtener_datos_recoletas()
+    total_partidos_temporada_recoletas = 30
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_recoletas = generar_clasificacion_analisis_balonmano_recoletas(data8, total_partidos_temporada_recoletas)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_recoletas = sorted(clasificacion_analisis_recoletas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    return render_template('equipos_balonmano/clasi_analis_recoletas.html', clasificacion_analisis_recoletas=clasificacion_analisis_recoletas)
+# Ruta y creación del calendario individual del Aula Valladolid
+@app.route('/equipos_balonmano/calendario_recoletas')
+def calendarios_recoletas():
+    datos8 = obtener_datos_recoletas()
+    nuevos_datos_recoletas = [dato for dato in datos8 if dato]
+    equipo_recoletas = 'Atl. Valladolid'
+    tabla_partidos_recoletas = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos8:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si el Simancas está jugando
+            if equipo_local == equipo_recoletas or equipo_visitante == equipo_recoletas:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_recoletas:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_recoletas = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_recoletas = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_recoletas:
+                    tabla_partidos_recoletas[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_recoletas[equipo_contrario]:
+                    tabla_partidos_recoletas[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_recoletas[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_recoletas[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_recoletas[equipo_contrario]:
+                    tabla_partidos_recoletas[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_recoletas[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_recoletas[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_recoletas[equipo_contrario]['jornadas']:
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_recoletas': rol_recoletas
+                    }
+                # Asignamos los resultados según el rol del Real Valladolid
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_recoletas'] = rol_recoletas
+                  else:
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_recoletas'] = rol_recoletas
+                else:
+                  if not tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_recoletas'] = rol_recoletas
+                  else:
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_recoletas'] = rol_recoletas
+    return render_template('equipos_balonmano/calendario_recoletas.html', tabla_partidos_recoletas=tabla_partidos_recoletas, nuevos_datos_recoletas=nuevos_datos_recoletas)
 
         
 if __name__ == '__main__':

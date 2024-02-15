@@ -52,6 +52,9 @@ function mostrarFormularioParquesol(){
 function mostrarFormularioAula(){
   document.getElementById('form_partidos_aula').style.display='block';
 }
+function mostrarFormularioRecoletas(){
+  document.getElementById('form_partidos_recoletas').style.display='block';
+}
 // Abrir y cerrar las jornadas de calendario_uemc
 function toggleTabla(element, nombre) {
   event.preventDefault();
