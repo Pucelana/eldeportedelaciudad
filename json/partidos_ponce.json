@@ -19,16 +19,16 @@
                 "local": "Magectias Lanz.",
                 "resultadoA": "66",
                 "resultadoB": "63",
-                "visitante": "CB Grup Barna"
+                "visitante": "CB Grup Barn"
             },
             {
                 "local": "Adba Sanfer",
                 "resultadoA": "53",
                 "resultadoB": "78",
-                "visitante": "Segle XII"
+                "visitante": "Segle XXI"
             },
             {
-                "local": "N\u00e1utico Tenerife",
+                "local": "Nautico Tenerife",
                 "resultadoA": "46",
                 "resultadoB": "69",
                 "visitante": "Mariscos Ant\u00f3n"
@@ -44,6 +44,1206 @@
                 "resultadoA": "59",
                 "resultadoB": "77",
                 "visitante": "Mipelletymas"
+            }
+        ]
+    },
+    {
+        "id": "481a2a49-8526-477c-b47b-1bd1a0b3dc86",
+        "nombre": "Jornada 2",
+        "partidos": [
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "74",
+                "resultadoB": "66",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "57",
+                "resultadoB": "34",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "51",
+                "resultadoB": "58",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "78",
+                "resultadoB": "52",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "66",
+                "resultadoB": "71",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "55",
+                "resultadoB": "57",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "51",
+                "resultadoB": "72",
+                "visitante": "Maristas Coru\u00f1a"
+            }
+        ]
+    },
+    {
+        "id": "e30cbdaf-0f57-4a31-ab96-6b7b64345632",
+        "nombre": "Jornada 3",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "56",
+                "resultadoB": "65",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "68",
+                "resultadoB": "71",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "65",
+                "resultadoB": "67",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "69",
+                "resultadoB": "68",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "64",
+                "resultadoB": "77",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "56",
+                "resultadoB": "74",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "76",
+                "resultadoB": "78",
+                "visitante": "Miralvalle Plasen."
+            }
+        ]
+    },
+    {
+        "id": "e9692dae-e38a-4a4a-93d2-5ef6fba461fa",
+        "nombre": "Jornada 4",
+        "partidos": [
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "71",
+                "resultadoB": "61",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "68",
+                "resultadoB": "70",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "101",
+                "resultadoB": "13",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "58",
+                "resultadoB": "71",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "67",
+                "resultadoB": "59",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "55",
+                "resultadoB": "45",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "67",
+                "resultadoB": "61",
+                "visitante": "Magectias Lanz."
+            }
+        ]
+    },
+    {
+        "id": "437b4658-a19b-455a-841a-458b1897b978",
+        "nombre": "Jornada 5",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "57",
+                "resultadoB": "38",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "58",
+                "resultadoB": "74",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "60",
+                "resultadoB": "69",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "68",
+                "resultadoB": "60",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "53",
+                "resultadoB": "44",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "56",
+                "resultadoB": "86",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "61",
+                "resultadoB": "65",
+                "visitante": "Mariscos Ant\u00f3n"
+            }
+        ]
+    },
+    {
+        "id": "42fdb624-06a8-48d8-857d-2260530ad637",
+        "nombre": "Jornada 6",
+        "partidos": [
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "58",
+                "resultadoB": "53",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "75",
+                "resultadoB": "49",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "55",
+                "resultadoB": "60",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "69",
+                "resultadoB": "55",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "74",
+                "resultadoB": "64",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "74",
+                "resultadoB": "65",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "79",
+                "resultadoB": "53",
+                "visitante": "Adba Sanfer"
+            }
+        ]
+    },
+    {
+        "id": "3a29589b-d69d-4f27-982c-d7c364eab8a6",
+        "nombre": "Jornada 7",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "66",
+                "resultadoB": "62",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "49",
+                "resultadoB": "43",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "80",
+                "resultadoB": "56",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "50",
+                "resultadoB": "75",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "67",
+                "resultadoB": "43",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "82",
+                "resultadoB": "53",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "52",
+                "resultadoB": "89",
+                "visitante": "Segle XXI"
+            }
+        ]
+    },
+    {
+        "id": "b91c1bb2-d88e-4679-9653-af21b56b96ef",
+        "nombre": "Jornada 8",
+        "partidos": [
+            {
+                "local": "Segle XXI",
+                "resultadoA": "61",
+                "resultadoB": "47",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "54",
+                "resultadoB": "51",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "46",
+                "resultadoB": "73",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "69",
+                "resultadoB": "67",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "73",
+                "resultadoB": "46",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "61",
+                "resultadoB": "70",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "76",
+                "resultadoB": "60",
+                "visitante": "Nautico Tenerife"
+            }
+        ]
+    },
+    {
+        "id": "f54e56aa-7e16-41c9-8753-3827c54f302f",
+        "nombre": "Jornada 9",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "82",
+                "resultadoB": "60",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "57",
+                "resultadoB": "50",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "49",
+                "resultadoB": "62",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "67",
+                "resultadoB": "63",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "64",
+                "resultadoB": "60",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "63",
+                "resultadoB": "54",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "81",
+                "resultadoB": "55",
+                "visitante": "CB Grup Barn"
+            }
+        ]
+    },
+    {
+        "id": "d59d92c4-1402-454c-8a70-55e6e64585bc",
+        "nombre": "Jornada 10",
+        "partidos": [
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "41",
+                "resultadoB": "53",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "61",
+                "resultadoB": "69",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "56",
+                "resultadoB": "64",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "66",
+                "resultadoB": "88",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "51",
+                "resultadoB": "59",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "59",
+                "resultadoB": "40",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "67",
+                "resultadoB": "85",
+                "visitante": "C.B.Arxil"
+            }
+        ]
+    },
+    {
+        "id": "bb56b998-be43-4517-a326-9ceb6bda6beb",
+        "nombre": "Jornada 11",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "54",
+                "resultadoB": "58",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "75",
+                "resultadoB": "69",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "77",
+                "resultadoB": "41",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "79",
+                "resultadoB": "63",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "41",
+                "resultadoB": "53",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "68",
+                "resultadoB": "54",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "76",
+                "resultadoB": "60",
+                "visitante": "Ponce Valladolid"
+            }
+        ]
+    },
+    {
+        "id": "7b134b7a-0301-44c9-9ed4-1d4dc19be28b",
+        "nombre": "Jornada 12",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "67",
+                "resultadoB": "39",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "61",
+                "resultadoB": "41",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "69",
+                "resultadoB": "77",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "50",
+                "resultadoB": "79",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "69",
+                "resultadoB": "80",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "82",
+                "resultadoB": "73",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "79",
+                "resultadoB": "46",
+                "visitante": "Tenerife"
+            }
+        ]
+    },
+    {
+        "id": "f71b8d11-4540-493e-90cc-7476a0f1e490",
+        "nombre": "Jornada 13",
+        "partidos": [
+            {
+                "local": "Tenerife",
+                "resultadoA": "48",
+                "resultadoB": "61",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "86",
+                "resultadoB": "79",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "90",
+                "resultadoB": "52",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "73",
+                "resultadoB": "42",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "82",
+                "resultadoB": "51",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "61",
+                "resultadoB": "63",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "64",
+                "resultadoB": "61",
+                "visitante": "Geieg"
+            }
+        ]
+    },
+    {
+        "id": "ba69467e-2184-424c-8a24-2ece03cf4b44",
+        "nombre": "Jornada 14",
+        "partidos": [
+            {
+                "local": "Geieg",
+                "resultadoA": "49",
+                "resultadoB": "53",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "63",
+                "resultadoB": "73",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "62",
+                "resultadoB": "66",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "79",
+                "resultadoB": "52",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "50",
+                "resultadoB": "65",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "73",
+                "resultadoB": "47",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "59",
+                "resultadoB": "44",
+                "visitante": "Tenerife"
+            }
+        ]
+    },
+    {
+        "id": "64c0740d-032d-444b-8ed0-bfd12ebc87bd",
+        "nombre": "Jornada 15",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "67",
+                "resultadoB": "55",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "57",
+                "resultadoB": "69",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "52",
+                "resultadoB": "48",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "58",
+                "resultadoB": "70",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "63",
+                "resultadoB": "51",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "67",
+                "resultadoB": "54",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "75",
+                "resultadoB": "68",
+                "visitante": "Geieg"
+            }
+        ]
+    },
+    {
+        "id": "3ce02465-bf9d-488f-971b-5c79a0c54251",
+        "nombre": "Jornada 16",
+        "partidos": [
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "65",
+                "resultadoB": "55",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "67",
+                "resultadoB": "58",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "67",
+                "resultadoB": "46",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "58",
+                "resultadoB": "53",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "61",
+                "resultadoB": "70",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "71",
+                "resultadoB": "64",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "82",
+                "resultadoB": "79",
+                "visitante": "Mipelletymas"
+            }
+        ]
+    },
+    {
+        "id": "ceda962c-a3fe-480b-a9a9-779c097a3a6a",
+        "nombre": "Jornada 17",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "46",
+                "resultadoB": "60",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "48",
+                "resultadoB": "52",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "53",
+                "resultadoB": "84",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "78",
+                "resultadoB": "45",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "64",
+                "resultadoB": "47",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "58",
+                "resultadoB": "44",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Maristas Coru\u00f1a"
+            }
+        ]
+    },
+    {
+        "id": "485cca78-03c8-4acd-9052-91f8473a671b",
+        "nombre": "Jornada 18",
+        "partidos": [
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Miralvalle Plasen."
+            }
+        ]
+    },
+    {
+        "id": "94891147-c30e-4c82-829c-bdae6071302b",
+        "nombre": "Jornada 19",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Magectias Lanz."
+            }
+        ]
+    },
+    {
+        "id": "426e1da6-fca2-41b8-b87e-fe2a9584dce6",
+        "nombre": "Jornada 20",
+        "partidos": [
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mariscos Ant\u00f3n"
+            }
+        ]
+    },
+    {
+        "id": "586707fd-a4ff-4d57-8330-f7acbcc0a8ea",
+        "nombre": "Jornada 21",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Adba Sanfer"
+            }
+        ]
+    },
+    {
+        "id": "f53325ab-171b-473a-b7de-a2adc8bf20c9",
+        "nombre": "Jornada 22",
+        "partidos": [
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "C.B.Arxil"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Segle XXI"
+            }
+        ]
+    },
+    {
+        "id": "f55c6620-34b2-44ca-b826-9d21aaacae7d",
+        "nombre": "Jornada 23",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Ponce Valladolid"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Nautico Tenerife"
+            }
+        ]
+    },
+    {
+        "id": "7c84e040-75ae-4bcd-bea7-4fc9b62f9360",
+        "nombre": "Jornada 24",
+        "partidos": [
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "CB Grup Barn"
+            }
+        ]
+    },
+    {
+        "id": "209163fc-1a99-442e-a271-def2b0b50463",
+        "nombre": "Jornada 25",
+        "partidos": [
+            {
+                "local": "Ponce Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Homs U.E.Matar\u00f3"
+            },
+            {
+                "local": "CB Grup Barn",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Geieg"
+            },
+            {
+                "local": "Segle XXI",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Maristas Coru\u00f1a"
+            },
+            {
+                "local": "Mariscos Ant\u00f3n",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Magectias Lanz."
+            },
+            {
+                "local": "Miralvalle Plasen.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Adba Sanfer"
+            },
+            {
+                "local": "Mipelletymas",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Nautico Tenerife"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "C.B.Arxil"
+            }
+        ]
+    },
+    {
+        "id": "5a5b4ba3-47af-4f43-a7fa-c9dd667b8812",
+        "nombre": "Jornada 26",
+        "partidos": [
+            {
+                "local": "Homs U.E.Matar\u00f3",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "C.B.Arxil",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mipelletymas"
+            },
+            {
+                "local": "Nautico Tenerife",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Miralvalle Plasen."
+            },
+            {
+                "local": "Adba Sanfer",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mariscos Ant\u00f3n"
+            },
+            {
+                "local": "Magectias Lanz.",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Segle XXI"
+            },
+            {
+                "local": "Maristas Coru\u00f1a",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "CB Grup Barn"
+            },
+            {
+                "local": "Geieg",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Ponce Valladolid"
             }
         ]
     }

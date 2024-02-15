@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const filas = document.querySelectorAll("#tablaChampionRecoletas tbody tr");
 const partidosTotales = 30; // Cambiado a 30 partidos en la temporada
 const puntosPorGanar = 2; // Cambiado a 3 puntos por partido ganado
-const proximidadFija = 60; // Ajusta este valor según tus necesidades
+const proximidadFija = 99; // Ajusta este valor según tus necesidades
 const equipos = [];
 filas.forEach((fila, indice) => {
     const equipo = fila.querySelector(`.fw-bold`).textContent;
@@ -61,8 +61,8 @@ filas.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesAscenso = partidosTotales - partidosJugados;
     const partidosGanadosMatematicos = Math.min(puntosActuales + partidosRestantesAscenso * puntosPorGanar, puntosParaAscenso);
-    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 5, puntosParaAscenso);
-    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -8, puntosParaAscenso);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 4, puntosParaAscenso);
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -6, puntosParaAscenso);
     equipos.push({
         equipo,
         partidosJugados,
@@ -96,7 +96,7 @@ equipos.forEach((equipoData) => {
 const filas3 = document.querySelectorAll("#tablaEuropaRecoletas tbody tr");
 const partidosTotales3 = 30; // Cambiado a 30 partidos en la temporada
 const puntosPorGanar3 = 2; // Cambiado a 3 puntos por partido ganado
-const proximidadFija3 = 60; // Ajusta este valor según tus necesidades
+const proximidadFija3 = 75; // Ajusta este valor según tus necesidades
 const equipos3 = [];
 filas3.forEach((fila, indice) => {
     const equipo3 = fila.querySelector(`.fw-bold`).textContent;
@@ -110,8 +110,8 @@ filas3.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesAscenso3 = partidosTotales3 - partidosJugados3;
     const partidosGanadosMatematicos3 = Math.min(puntosActuales3 + partidosRestantesAscenso3 * puntosPorGanar3, puntosParaAscenso3);
-    const partidosGanadosPesimistas3 = Math.min(partidosGanadosMatematicos3 - 5, puntosParaAscenso3);
-    const partidosGanadosOptimistas3 = Math.min(partidosGanadosMatematicos3 -8, puntosParaAscenso3);
+    const partidosGanadosPesimistas3 = Math.min(partidosGanadosMatematicos3 - 3, puntosParaAscenso3);
+    const partidosGanadosOptimistas3 = Math.min(partidosGanadosMatematicos3 -5, puntosParaAscenso3);
     equipos3.push({
         equipo3,
         partidosJugados3,
@@ -145,7 +145,7 @@ equipos3.forEach((equipo3Data) => {
 const filas1 = document.querySelectorAll("#tablaPromoRecoletas tbody tr");
 const partidosTotales1 = 30; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar1 = 2; // Cambiado a 3 puntos por partido ganado
-const proximidadFija1 = 35; // Ajusta este valor según tus necesidades
+const proximidadFija1 = 56; // Ajusta este valor según tus necesidades
 const equipo1s1 = [];
 filas1.forEach((fila, indice) => {
     const equipo1 = fila.querySelector(`.fw-bold`).textContent;
@@ -162,8 +162,8 @@ filas1.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesAscenso1 = partidosTotales1 - partidosJugados1;
     const partidosGanadosMatematicos1 = Math.min(puntosActuales1 + partidosRestantesAscenso1 * puntosPorGanar1, puntosParaAscenso1);
-    const partidosGanadosPesimistas1 = Math.min(partidosGanadosMatematicos1 - 21, puntosParaAscenso1);
-    const partidosGanadosOptimistas1 = Math.min(partidosGanadosMatematicos1 -24, puntosParaAscenso1);
+    const partidosGanadosPesimistas1 = Math.min(partidosGanadosMatematicos1 - 10, puntosParaAscenso1);
+    const partidosGanadosOptimistas1 = Math.min(partidosGanadosMatematicos1 -12, puntosParaAscenso1);
 
     equipo1s1.push({
         equipo1,
@@ -198,7 +198,7 @@ equipo1s1.forEach((equipo1Data) => {
 const filas2 = document.querySelectorAll("#tablaDescRecoletas tbody tr");
 const partidosTotales2 = 30; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar2 = 2; // Cambiado a 3 puntos por partido ganado
-const proximidadFijar2 = 30; // Ajusta este valor según tus necesidades
+const proximidadFijar2 = 55; // Ajusta este valor según tus necesidades
 const equipos2 = [];
 filas2.forEach((fila, indice) => {
     const equipo2 = fila.querySelector(`.fw-bold`).textContent;
@@ -215,8 +215,8 @@ filas2.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesPermanencia = partidosTotales2 - partidosJugados2;
     const partidosGanadosMatematicos2 = Math.min(puntosActuales2 + partidosRestantesPermanencia * puntosPorGanar2, puntosPermanencia2);
-    const partidosGanadosPesimistas2 = Math.min(partidosGanadosMatematicos2 - 13, puntosPermanencia2);
-    const partidosGanadosOptimistas2 = Math.min(partidosGanadosMatematicos2 -20, puntosPermanencia2);
+    const partidosGanadosPesimistas2 = Math.min(partidosGanadosMatematicos2 - 10, puntosPermanencia2);
+    const partidosGanadosOptimistas2 = Math.min(partidosGanadosMatematicos2 -12, puntosPermanencia2);
 
     equipos2.push({
         equipo2,

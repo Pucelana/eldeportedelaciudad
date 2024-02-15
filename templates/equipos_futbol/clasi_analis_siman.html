@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Clasificación y Ánalisis Real Valladolid</title>
+  <title>Clasificación y Ánalisis V Simancas</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
       <li class="breadcrumb-item active text-dark" aria-current="page">Clasificación y Ánalisis</li>
     </ol>
   </nav>
-<h2 class="text-white text-center">Real Valladolid Promesas</h2>
+<h2 class="text-white text-center">V Simancas</h2>
 <section class="container-lg mb-5">
   <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -28,7 +28,7 @@
             <div class="card tabla_equ_futb" style="width: 70rem;">
               <div class="card-body"> <!--Tabla Clasificación-->
                 <div class="row table-responsive">
-                  <h3 class="text-center">Clasificación - Liga Gonalpi - Grp-1</h3>
+                  <h3 class="text-center">Clasificación - Liga Gonalpi</h3>
                   <div class="col-1">
                     <table class="table"> <!--Posiciones-->
                       <thead>
@@ -77,7 +77,7 @@
                           <td class="bg-secondary text-white">13</td>
                         </tr>
                         <tr>
-                          <td class="bg-danger text-white">14</td>
+                          <td class="bg-secondary text-white">14</td>
                         </tr>
                         <tr>
                           <td class="bg-danger text-white">15</td>
@@ -127,7 +127,7 @@
             <div class="card tabla_equ_futb" style="width: 70rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                  <h3 class="text-center">Ascenso - Liga 1ª Nacional</h3>
+                  <h3 class="text-center">Ascenso - Liga Fem. 3ª Federación</h3>
                   <div class="col-1">
                     <table class="table"> <!--Posiciones-->
                       <thead>
@@ -217,14 +217,14 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item"><!--Tabla PlayOff-->
+        <!--<div class="carousel-item"><--Tabla PlayOff->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 70rem;">
               <div class="card-body">
                 <div class="row table-responsive">
                    <h3 class="text-center mb-4">PlayOff - Liga 1ª RFEF</h3>
                    <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
+                    <table class="table"> <--Posiciones->
                       <thead>
                         <tr>
                           <th>Posición</th>
@@ -268,7 +268,7 @@
                           <td class="bg-secondary text-white">12</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">13</td>
+                          <td class="text-white" style="background-color: #e98181;">13</td>
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">14</td>
@@ -280,7 +280,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaPlaySimancas" class="table"><!--Tabla PlayOff-->
+                  <table id="tablaPlayParquesol" class="table"><--Tabla PlayOff->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -293,7 +293,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_simancas %}
+                      {% for equipo_info in clasificacion_analisis_parquesol %}
                       <tr class="text-center">
                         <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
                         <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
@@ -311,7 +311,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <div class="carousel-item"><!--Tabla Permanencia-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 70rem;">
@@ -366,7 +366,7 @@
                           <td class="bg-secondary text-white">13</td>
                         </tr>
                         <tr>
-                          <td class="bg-danger text-white">14</td>
+                          <td class="bg-secondary text-white">14</td>
                         </tr>
                         <tr>
                           <td class="bg-danger text-white">15</td>

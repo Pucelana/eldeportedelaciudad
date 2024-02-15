@@ -12,14 +12,14 @@ if(window.matchMedia("(min-width:320px)").matches){
         if(scrollPosition < (carouselWidth - (cardWidth*2))){
             console.log('next');
             scrollPosition=scrollPosition+cardWidth;
-            $('.carousel-inner').animate({scrollLeft: scrollPosition},600);
+            $('.carousel-inner').animate({scrollLeft: scrollPosition},300);
         }
     });
     $('.carousel-control-prev').on('click',function(){
         if(scrollPosition > 0){
             console.log('prev');
             scrollPosition=scrollPosition - cardWidth;
-            $('.carousel-inner').animate({scrollLeft: scrollPosition},600);
+            $('.carousel-inner').animate({scrollLeft: scrollPosition},300);
         }
     });
 }else{

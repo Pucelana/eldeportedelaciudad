@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const filas = document.querySelectorAll("#tablaAscensoSimancas tbody tr");
 const partidosTotales = 30; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar = 3; // Cambiado a 3 puntos por partido ganado
-const proximidadFija = 63; // Ajusta este valor según tus necesidades
+const proximidadFija = 88; // Ajusta este valor según tus necesidades
 const equipos = [];
 filas.forEach((fila, indice) => {
     const equipo = fila.querySelector(`.fw-bold`).textContent;
@@ -61,8 +61,8 @@ filas.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesAscenso = partidosTotales - partidosJugados;
     const partidosGanadosMatematicos = Math.min(puntosActuales + partidosRestantesAscenso * puntosPorGanar, puntosParaAscenso);
-    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 9, puntosParaAscenso);
-    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -14, puntosParaAscenso);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 4, puntosParaAscenso);
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -8, puntosParaAscenso);
     equipos.push({
         equipo,
         partidosJugados,
@@ -149,7 +149,7 @@ equipo1s1.forEach((equipo1Data) => {
 const filas2 = document.querySelectorAll("#tablaDescSimancas tbody tr");
 const partidosTotales2 = 42; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar2 = 3; // Cambiado a 3 puntos por partido ganado
-const proximidadFijar2 = 38; // Ajusta este valor según tus necesidades
+const proximidadFijar2 = 32; // Ajusta este valor según tus necesidades
 const equipos2 = [];
 filas2.forEach((fila, indice) => {
     const equipo2 = fila.querySelector(`.fw-bold`).textContent;
@@ -182,7 +182,7 @@ filas2.forEach((fila, indice) => {
 // Ordenar los equipos2 por proximidad descendente
 equipos2.sort((a, b) => b.proxiPermanencia - a.proxiPermanencia);
 // Actualizar la tabla2 con los datos ordenados
-const tabla2 = document.querySelector("#tablaDescSiman tbody");
+const tabla2 = document.querySelector("#tablaDescSimancas tbody");
 tabla2.innerHTML = ""; // Limpiar la tabla2 antes de actualizar
 equipos2.forEach((equipo2Data) => {
     const nuevaFila2 = document.createElement("tr");

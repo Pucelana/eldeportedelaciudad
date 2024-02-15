@@ -2233,6 +2233,18 @@ def calendarios_recoletas():
                     tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_recoletas'] = rol_recoletas
     return render_template('equipos_balonmano/calendario_recoletas.html', tabla_partidos_recoletas=tabla_partidos_recoletas, nuevos_datos_recoletas=nuevos_datos_recoletas)
+#Fin proceso Atlético Valladolid
+#EQUIPOS HOCKEY
+#Todo el proceso de calendario y clasificación del Caja Rural CPLV
+# Ruta de partidos Caja Rural CPLV
+
+
+
+
+
+
+
+
 
         
 if __name__ == '__main__':
