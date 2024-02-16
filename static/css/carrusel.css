@@ -57,9 +57,9 @@
         flex: 0 0 calc(100%/7)
     }
 }
+
 .carousel-inner{
-    padding-top: 0.5rem;
-    
+    padding: 0.4rem;
 }
 .card{
     background-color: #e9f2ff;
