@@ -1,7 +1,7 @@
 /*Seccion de Baloncesto */
 .calend_basket{
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/static/img/cancha_basket.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/static/img/cancha_basket.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

@@ -13,13 +13,13 @@
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
 <body id="body_secciones">
-    <header class="container-fluid d-none d-lg-block">
-      <section id="cabecera1" class="align-items-center">
-          <div class="d-flex justify-content-center">
+      <section id="cabecera1" class="align-items-center sticky-top">
+        <header class="container-fluid d-none d-lg-block"><!-- Cabecera Principal -->
+          <!--<div class="d-flex justify-content-center">
             <img src="/static/img/logo_3_bis.png" class="img-fluid" alt="eldeportedelaciudad">
-          </div>
-          <div class="row bg-menu-sistema shadow sticky-top">
-          <div class="col-lg-12 col-md-12">
+          </div>-->
+          <div class="row bg-menu-sistema shadow">
+          <div class="col-lg-9 col-md-9">
             <nav class="navbar navbar-expand navbar-light ">
               <div class="container-fluid">
                 <a class="navbar-brand" href="#"></a>
@@ -33,29 +33,32 @@
                     <a class="nav-link active fs-5 text-white fw-bold" href="/" aria-current="page">Página Principal</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active fs-5 text-white" href="/sistema_ligas/baloncesto" aria-current="page">Baloncesto</a>
+                    <a class="nav-link active text-white fs-5" href="/sistema_ligas/baloncesto" aria-current="page">Baloncesto</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active fs-5 text-white" href="/sistema_ligas/balonmano" aria-current="page">Balonmano</a>
+                    <a class="nav-link active text-white fs-5" href="/sistema_ligas/balonmano" aria-current="page">Balonmano</a>
+                  </li>
+                  <li class="nav-item"> 
+                    <a class="nav-link active text-white fs-5" href="/sistema_ligas/futbol" aria-current="page">Fútbol</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active fs-5 text-white" href="/sistema_ligas/futbol" aria-current="page">Fútbol</a>
+                    <a class="nav-link active text-white fs-5" href="/sistema_ligas/hockey" aria-current="page">Hockey Línea</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active fs-5 text-white" href="/sistema_ligas/hockey" aria-current="page">Hockey Línea</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active fs-5 text-white" href="/sistema_ligas/rugby" aria-current="page">Rugby</a>
+                    <a class="nav-link active text-white fs-5" href="/sistema_ligas/rugby" aria-current="page">Rugby</a>
                   </li>
                 </ul>
               </div>
               </div>
             </nav>
           </div>
+          <div class="col-lg-3 col-md-3">
+            <img src="/static/img/logo_3_blanco.png" class="img-fluid" alt="eldeportedelaciudad">
+          </div>
           </div>
       </section>
     </header><!--Fin header1-->
-    <header class="container-fluid d-lg-none d-md-block bg_menu_seccion">
+    <header class="container-fluid d-lg-none d-md-block bg-menu-sistema">
         <section id="cabecera1" class="d-flex justify-content-around align-items-center">
           <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container-fluid">
@@ -91,7 +94,7 @@
             <img src="/static/img/logo_3_blanco.png" class="img-fluid" alt="eldeportedelaciudad">
           </div>
         </section>
-      </header>
+    </header>
     {% block contenido %}
 
     {% endblock %}
@@ -103,6 +106,22 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
-  <!--<script src="/static/js/script.js"></script>-->
+  <script src="/static/js/script.js"></script>
+  <script>
+    function mostrarTexto(enlace) {
+    var elementoPadre = enlace.parentNode.parentNode; // Obtenemos el elemento <li> padre
+    var textoAdicional = elementoPadre.querySelector(".texto-adicional"); // Obtenemos el texto adicional
+
+    if (textoAdicional.classList.contains("mostrado")) {
+        textoAdicional.classList.remove("mostrado"); // Ocultamos el texto adicional
+        elementoPadre.classList.remove("oculto"); // Mostramos el <li> nuevamente
+        enlace.textContent = "Leer más"; // Cambiamos el texto del enlace
+    } else {
+        textoAdicional.classList.add("mostrado"); // Mostramos el texto adicional
+        elementoPadre.classList.add("oculto"); // Ocultamos el <li>
+        enlace.textContent = "Ocultar"; // Cambiamos el texto del enlace
+    }
+}
+  </script>
 </body>
 </html>
