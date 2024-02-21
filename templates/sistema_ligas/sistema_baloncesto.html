@@ -206,8 +206,6 @@
                                 <p>Al finalizar la primera vuelta los ocho primeros clasificados disputan la Copa del Rey aunque puede dar el caso que el octavo clasificado no la dispute, eso es que una de las plazas es para un equipo anfitrión de la ciudad que organiza el torneo. Se disputa a partido único</p>
                                 <strong>Título de la ACB</strong>
                                 <p>Al final de la fase regular, los ocho primeros clasificados se enfrentan en los play–offs, se emparejan esos ocho equipos de acuerdo con su clasificación en la fase regular y disputan unas eliminatorias al mejor de tres partidos (cinco en la final). Los primeros clasificados tienen ventaja de campo y los emparejamientos se hacen favoreciendo la clasificación previa, el primero juega con el octavo, el segundo con el séptimo, el tercero con el sexto, y el cuarto con el quinto. El ganador de estas eliminatorias es proclamado campeón de la Liga ACB.</p>
-                                <strong>Descenso</strong>
-                                <p>Los equipos clasificados en las dos últimas plazas al finalizar la fase regular descienden a la categoría inmediatamente inferior, denominada Liga LEB Oro.</p>
                                 <strong>Euroliga</strong>
                                 <p>Por primera vez en esta liga, todos los participantes se enfrentarán entre sí en una liga a ida y vuelta que consta de 30 jornadas. Los mejores ocho al final de la fase regular, jugarán un playoff de cuartos de final que decidirá los cuatro participantes de la Final Four. Ese playoff será al mejor de cinco encuentros, con ventaja de campo para los que hubieran quedado mejor clasificados en la liga regular.</p>
                                 <p>Acceso a la competición.
@@ -233,6 +231,8 @@
                                 4 tarjetas de invitación.
                                 Al ganador de la Eurocup, si cumplen los requisitos, se les invita a competir en la Euroliga la próxima temporada.    
                                 </p>
+                                <strong>Descenso</strong>
+                                <p>Los equipos clasificados en las dos últimas plazas al finalizar la fase regular descienden a la categoría inmediatamente inferior, denominada Liga LEB Oro.</p>
                             </div>
                               <a href="#" class="mostrar-enlace text-decoration-none" onclick="mostrarTexto(this); return false;">Leer más</a>
                           </div>
@@ -371,8 +371,6 @@
         </button>
       </div>
     </section><!--Fin Carrusel-->
-
-
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -386,10 +384,8 @@
       function mostrarTexto(enlace) {
     // Obtener el elemento <li> padre del enlace
     var liElement = enlace.parentNode;
-
     // Encontrar el elemento de texto adicional dentro del <li> padre
     var textoAdicional = liElement.querySelector('.texto-adicional');
-
     // Toggle para mostrar u ocultar el texto adicional
     if (textoAdicional.style.display === 'none' || textoAdicional.style.display === '') {
         textoAdicional.style.display = 'block'; // Mostrar el texto adicional
