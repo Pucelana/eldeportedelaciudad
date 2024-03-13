@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.eliminatorias {
+    text-align: center;
+    margin-top: 1.5%;
+}
+.cuadro {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #109744;
+    padding: 10px;
+    overflow-x: auto; /* Permitir desplazamiento horizontal si el cuadro es demasiado ancho */
+}
+.ronda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.semi-1{
+    margin-top: 50px;
+}
+.semi-2{
+    margin-top: 90px;
+}
+.final{
+    margin-top: 140px;
+}
+.partido {
+    width: 350px; /* Ancho de cada partido */
+    border: 1px solid #333;
+    padding: 5px;
+    margin: 5px;
+}
+.equipo {
+    display: flex;  
+    align-items: start;
+    font-size: 0.95em;
+}
+.resultado {
+    /*width: 40px;
+    height: 30px;
+    
+    border: 1px solid #000000;
+    border-radius: 5px;*/
+    display: flex;
+    align-items: end;
+    text-align: end;
+    line-height: 30px;
+    margin-left: 20%;
+}
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.tournament {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ebebeb;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.tournament_playoff {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+
+

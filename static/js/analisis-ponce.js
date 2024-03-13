@@ -41,7 +41,7 @@
 const filas1 = document.querySelectorAll("#tablaPlayPonce tbody tr");
 const partidosTotales1 = 26; // Total de partidos en la temporada
 const partidosPorGanar1 = 1; // Cantidad de puntos por partido ganado
-const partidosPlayOff = 22; // Número de partidos para llegar a los playoffs
+const partidosPlayOff = 25; // Número de partidos para llegar a los playoffs
 
 const equiposPlay = [];
 

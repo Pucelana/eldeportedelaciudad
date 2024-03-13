@@ -55,6 +55,12 @@ function mostrarFormularioAula(){
 function mostrarFormularioRecoletas(){
   document.getElementById('form_partidos_recoletas').style.display='block';
 }
+// HOCKEY LÍNEA
+// RUGBY
+function mostrarFormularioSalvador(){
+  document.getElementById('form_partidos_salvador').style.display='block';
+}
+
 // Abrir y cerrar las jornadas de calendario_uemc
 function toggleTabla(element, nombre) {
   event.preventDefault();

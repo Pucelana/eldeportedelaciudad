@@ -1,0 +1,59 @@
+{
+    "cuartos": {
+        "id": "ce6e5b63-b34e-4573-9373-41d7648a841b",
+        "partidos": [
+            {
+                "local": "VRAC",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "AMPO Ordizia"
+            },
+            {
+                "local": "UE Santboiana",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Alcobendas"
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    "semifinales": {
+        "id": "904259b2-7d9a-438e-8010-7d3784b8ae09",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    "final": {
+        "id": "8cab2d27-072e-4e87-aff2-390f4a5a3c59",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    }
+}

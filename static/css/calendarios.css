@@ -94,7 +94,15 @@
     backdrop-filter: blur(12px);
     border: 1px solid #ad6331;
 }
-
+/* Sección Rugby */
+.calend_balonmano{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/camp_rugby.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
 
 
 
