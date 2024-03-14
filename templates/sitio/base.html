@@ -14,12 +14,12 @@
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
 <body>
-  <header class="container-fluid d-none d-lg-block">
+  <header class="container-fluid d-none d-lg-block  sticky-top">
     <section id="cabecera1" class="align-items-center">
         <!--<div class="d-flex justify-content-center">
             <img src="/static/img/logo_3_bis.png" class="img-fluid" alt="eldeportedelaciudad">
         </div>-->
-        <div class="row bg-menu shadow sticky-top">
+        <div class="row bg-menu shadow">
         <div class="col-lg-8 col-md-8">
         <nav class="navbar navbar-expand navbar-light ">
             <div class="container-fluid">
@@ -31,13 +31,13 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                   <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                      <a class="nav-link active fs-5 text-white fw-bold" href="/" aria-current="page">Inicio</a>
+                      <a class="nav-link active text-white fw-bold text-menu-nav" href="/" aria-current="page">Inicio</a>
                     </li>
                     <!--<li class="nav-item">
                         <a class="nav-link active fs-5 text-white" href="/noticias/" aria-current="page">Noticias</a>
                     </li>-->
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle fs-5 text-white" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secciones</a>
+                      <a class="nav-link dropdown-toggle fw-bold text-white text-menu-nav" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secciones</a>
                         <div class="dropdown-menu menu-desple" aria-labelledby="dropdownId">
                           <a class="dropdown-item" href="/seccion/baloncesto">Baloncesto</a>
                           <a class="dropdown-item" href="/seccion/balonmano">Balonmano</a>
@@ -47,7 +47,30 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle fs-5 text-white" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistema de Ligas</a>
+                      <a class="nav-link dropdown-toggle fw-bold text-white text-menu-nav" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PlayOffs</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                          <a class="dropdown-item" href="#">Real Valladolid</a>
+                          <a class="dropdown-item" href="#">Promesas</a>
+                          <a class="dropdown-item" href="#">UEMC Valladolid</a>
+                          <a class="dropdown-item" href="#">Ponce Valladolid</a>                         
+                          <a class="dropdown-item" href="#">Fundación Aliados</a>
+                          <a class="dropdown-item" href="#">Aula Valladolid</a>
+                          <a class="dropdown-item" href="#">El Salvador</a>
+                          <a class="dropdown-item" href="#">VRAC</a>                        
+                          <a class="dropdown-item" href="#">Caja Rural CPLV</a>
+                          <a class="dropdown-item" href="#">CPLV Munia Panteras</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle fw-bold text-white text-menu-nav" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Copa Rey / Reina</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                          <a class="dropdown-item" href="#">Real Valladolid</a>
+                          <a class="dropdown-item" href="#">El Salvador</a>
+                          <a class="dropdown-item" href="#">VRAC</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle fw-bold text-white text-menu-nav" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistema de Ligas</a>
                         <div class="dropdown-menu menu-desple2" aria-labelledby="dropdownId">
                           <a class="dropdown-item" href="/sistema_ligas/baloncesto">Baloncesto</a>
                           <a class="dropdown-item" href="/sistema_ligas/balonmano">Balonmano</a>
@@ -59,14 +82,7 @@
                     <!--<li class="nav-item">
                         <a class="nav-link fs-5 text-white" href="#"></a>
                     </li>-->
-                    <!--<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle fs-5 text-white" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Participa</a>
-                          <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="#">¿Qué hacer?</a>
-                            <a class="dropdown-item" href="#">Comparteló</a>
-                            <a class="dropdown-item" href="#">Escribé tu noticia</a>
-                          </div>
-                      </li>-->
+                    
                     <!--<li class="nav-item">
                         <a class="nav-link fs-5 text-white" href="#">Suscripción</a>
                     </li>-->
@@ -104,7 +120,7 @@
                   <a class="nav-link active fs-5 text-white" href="/noticias/" aria-current="page">Noticias</a>
               </li>-->
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle fs-5 text-white" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secciones</a>
+                <a class="nav-link dropdown-toggle fs-5 text-white fw-bold" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secciones</a>
                   <div class="dropdown-menu menu-desple3" aria-labelledby="dropdownId">
                     <a class="dropdown-item" href="/seccion/baloncesto">Baloncesto</a>
                     <a class="dropdown-item" href="/seccion/balonmano">Balonmano</a>
@@ -114,7 +130,30 @@
                   </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle fs-5 text-white" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistema de Ligas</a>
+                <a class="nav-link dropdown-toggle fs-5 text-white fw-bold" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PlayOffs</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <a class="dropdown-item" href="#">Real Valladolid</a>
+                    <a class="dropdown-item" href="#">Promesas</a>
+                    <a class="dropdown-item" href="#">UEMC Valladolid</a>
+                    <a class="dropdown-item" href="#">Ponce Valladolid</a>                         
+                    <a class="dropdown-item" href="#">Fundación Aliados</a>
+                    <a class="dropdown-item" href="#">Aula Valladolid</a>
+                    <a class="dropdown-item" href="#">El Salvador</a>
+                    <a class="dropdown-item" href="#">VRAC</a>                        
+                    <a class="dropdown-item" href="#">Caja Rural CPLV</a>
+                    <a class="dropdown-item" href="#">CPLV Munia Panteras</a>
+                  </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle fs-5 text-white fw-bold" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Copa Rey / Reina</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <a class="dropdown-item" href="#">Real Valladolid</a>
+                    <a class="dropdown-item" href="#">El Salvador</a>
+                    <a class="dropdown-item" href="#">VRAC</a>
+                  </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle fs-5 text-white fw-bold" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistema de Ligas</a>
                   <div class="dropdown-menu menu-desple4" aria-labelledby="dropdownId">
                     <a class="dropdown-item" href="/sistema_ligas/baloncesto">Baloncesto</a>
                     <a class="dropdown-item" href="/sistema_ligas/balonmano">Balonmano</a>
@@ -167,6 +206,44 @@
   {% block contenido %}   
 
   {% endblock %}
+  <footer>
+    <section class="container-fluid footer">
+      <h4 class="text-center text-white fw-bold pt-3 pb-3">eldeportedelaciudad.onrender.com</h4>
+      <div class="row">
+        <div class="col-lg-3 text-white text-center">
+          <h6>Secciones</6>
+          <h6></h6>
+          <h6></h6>
+          <h6></h6>
+        </div>
+        <div class="col-lg-3 text-white text-center">
+          <h6>PlayOffs</6>
+          <h6></h6>
+          <h6></h6>
+          <h6></h6>
+        </div>
+        <div class="col-lg-3 text-white text-center">
+          <h6>Copa Rey / Reina</6>
+          <h6></h6>
+          <h6></h6>
+          <h6></h6>
+        </div>
+        <div class="col-lg-3 text-white text-center">
+          <h6>Sistema de ligas</6>
+          <h6></h6>
+          <h6></h6>
+          <h6></h6>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center pt-5 pb-3">
+        <a><img src="/static/img/facebook.png" class="iconos me-5" alt="facebook"></a>
+        <a><img src="/static/img/instagram.png" class="iconos me-5" alt="instagram"></a>
+        <a><img src="/static/img/twitter.png" class="iconos" alt="twitter"></a>
+        <!--<a><img src="/static/img/usuario.png" class="usuario" alt="usuario"></a>--->
+    </div>
+
+    </section>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

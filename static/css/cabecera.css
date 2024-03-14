@@ -5,6 +5,14 @@
 .logo_principal{
     width: 100%;
 }
+.text-menu-nav {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+}
+.text-menu-seccion{
+    font-family: 'Caveat', cursive;
+    font-size: 1.6em;
+}
 .iconos{
     width: 30px;
     height: 30px;
