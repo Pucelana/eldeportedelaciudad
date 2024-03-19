@@ -1,6 +1,8 @@
 .footer{
     font-family: 'Dancing Script', cursive;
-    box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
     font-size: 2em;
-
+    /*background-color: #adbcd3;*/
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+    box-shadow: 1px 3px 4px rgba(22, 22, 26, .18);
 }

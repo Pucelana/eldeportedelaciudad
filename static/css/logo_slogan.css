@@ -4,7 +4,8 @@
     font-weight: 700;
     text-align: center;
     margin-top: 2%;
-    color: red;
+    /*color: red;*/
+    color: white;
 }
 .logo_principal{
     margin: 0;
@@ -22,7 +23,8 @@
     font-family: 'Dancing Script', cursive;
     font-weight: 400;
     font-size: 3em;
-    color: #0379ff;
+    /*color: #004ec4;*/
+    color: white;
 }
 .img_principal{
     max-width: 100%;

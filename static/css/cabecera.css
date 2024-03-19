@@ -30,7 +30,9 @@
     filter: invert(0%);
 }
 .bg-menu{
-    background-color: #0d6efd;
+    /*background-color: #6a9be4;*/
+    background-color: transparent;
+    backdrop-filter: blur(12px);
     content: 100%;
 }
 .bg_menu_seccion{

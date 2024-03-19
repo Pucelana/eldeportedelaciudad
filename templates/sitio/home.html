@@ -2,8 +2,8 @@
 {% block titulo %} Eldeportedelaciudad-Inicio {% endblock %}
 {% block contenido %}
 <!--Carrusel-->
-<section>
-<div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+<section id="valladolid" class="container-fluid">
+<div id="carouselExampleControls" class="carousel mt-3" data-bs-ride="carousel">
 	<div class="carousel-inner">
 	  {% for date in nuevos_resultados %}
 	  <div class="d-flex">
@@ -16,8 +16,8 @@
 		  <div class="card-body">
 		    <h6 class="text-center text-secondary"></h6>
 			<h6 class="text-center fw-bold text-primary">{{ date.liga }}</h6>
-			<h6>{{ date.equipoA }}<strong> {{ date.resultado1 }}</strong></h6>
-			<h6>{{ date.equipoB }}<strong> {{ date.resultado2 }}</strong></h6>
+			<h6 class="fw-bold">{{ date.equipoA }}<strong class="fw-bold text-white"> {{ date.resultado1 }}</strong></h6>
+			<h6 class="fw-bold">{{ date.equipoB }}<strong class="fw-bold text-white"> {{ date.resultado2 }}</strong></h6>
 			<h6 class="text-center text-secondary">{{ date.fecha_parti }}</h6>
 		  </div>
 		</div>
@@ -40,7 +40,7 @@
 			<h2 class="slogan">Deporte local, Corazón urbano</h2>
 		</div>
 		<div class="col-lg-2 col-md-2 col-sm-2 d-flex justify-content-center">
-			<img src="/static/img/logo_sinfondo.png" class="img-fluid img_principal" alt="eldeportedelaciudad">
+			<img src="/static/img/logo_sinfondo4.png" class="img-fluid img_principal" alt="eldeportedelaciudad">
 		</div>
 		
         <!-- Agrega más bloques .equipo según sea necesario para otros equipos -->
@@ -62,5 +62,4 @@
   </div>
   <a href="#" class="leer_mas text-decoration-none text-primary">Leer más</a>
 </section>-->
-
 {% endblock %}

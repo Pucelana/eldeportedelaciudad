@@ -59,10 +59,12 @@
 }
 
 .carousel-inner{
-    padding: 0.4rem;
+    padding: 0.3rem;
 }
 .card{
-    background-color: #e9f2ff;
+    /*background-color: #e9f2ff;*/
+    background-color: transparent;
+    backdrop-filter: blur(24px);
     margin: 0 .1em;
     border-radius: 0;
     box-shadow: 1px 3px 4px rgba(22, 22, 26, .18);

@@ -1,8 +1,25 @@
 body{
     /*background: linear-gradient(top left, #ff7878, #3a71d8);*/
-    background: -webkit-linear-gradient(180deg, #ffa3a3, #89a8e2);
+    /*background: -webkit-linear-gradient(180deg, #ffa3a3, #89a8e2);*/
+    /*position: relative;*/
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/valladolid3bis.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    background-attachment: fixed;
+
 }
 #body_secciones{
     /*background-color: #ffefef;*/
     background: -webkit-linear-gradient(180deg, #ffc3c3, #a4bae2);
 }
+/*#valladolid{
+    position: relative;
+    width: 100%;
+    max-height: 50vh;
+    background-image: url('/static/img/valladolid3bis.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}*/
