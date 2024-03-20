@@ -9,7 +9,7 @@
     padding: 0.5%; 
 }
 .seccion_deportes{
-    margin-top: 7%;
+    margin-top: 5%;
     font-family: 'Caveat', cursive;
     text-align: start;
     background-color: white;
@@ -49,7 +49,7 @@
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     overflow: hidden;
     box-shadow: 10px 5px 5px gray;
@@ -76,7 +76,7 @@
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/balonmano.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     overflow: hidden;
     box-shadow: 10px 5px 5px gray;
 }
@@ -84,16 +84,16 @@
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/img/futbol.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     overflow: hidden;
     box-shadow: 10px 5px 5px gray;
 }
 .fondo_hockey{
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/img/hockey3.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/hockey2.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     overflow: hidden;
     box-shadow: 10px 5px 5px gray;
@@ -102,7 +102,7 @@
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/rugby2.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     overflow: hidden;
     box-shadow: 10px 5px 5px gray;
 }

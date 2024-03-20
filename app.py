@@ -258,6 +258,26 @@ def seccion_hockey():
 @app.route('/seccion/rugby')
 def seccion_rugby():
     return render_template('secciones/rugby.html')
+# Ruta playoff de baloncesto
+@app.route('/playoff/baloncesto')
+def playoff_baloncesto():
+    return render_template('playoffs/baloncesto.html')
+# Ruta playoff de fútbol
+@app.route('/playoff/futbol')
+def playoff_futbol():
+    return render_template('playoffs/futbol.html')
+# Ruta playoff de balonmano
+@app.route('/playoff/balonmano')
+def playoff_balonmano():
+    return render_template('playoffs/balonmano.html')
+# Ruta playoff de hockey
+@app.route('/playoff/hockey')
+def playoff_hockey():
+    return render_template('playoffs/hockey.html')
+# Ruta playoff de rugby
+@app.route('/playoff/rugby')
+def playoff_rugby():
+    return render_template('playoffs/rugby.html')
 # Ruta sistema ligas futbol
 @app.route('/sistema_ligas/futbol')
 def sistema_ligas_futbol():
@@ -2454,9 +2474,6 @@ def modificar_playoff_salvador(id):
         guardar_playoff_salvador(datas1)       
         # Redireccionar a la página de visualización del playoff
         return redirect(url_for('ver_playoff_salvador'))   
-
-
-
 # Crear la clasificación de El Salvador
 def generar_clasificacion_analisis_rugby_salvador(data11, total_partidos_temporada_salvador):
     default_dict = defaultdict(lambda: {})
@@ -2554,7 +2571,7 @@ def generar_clasificacion_grupoA_grupoB(data11, total_partidos_temporada_grupos_
     grupoA = clasificacion_ordenada[:6]
     grupoB = clasificacion_ordenada[6:12]
     return grupoA, grupoB
-# Ruta para mostrar la clasificación y playoff de El Salvador
+# Ruta para mostrar la clasificación de El Salvador
 @app.route('/equipos_rugby/clasi_analis_salvador/')
 def clasif_analisis_salvador():
     data11 = obtener_datos_salvador()
@@ -2566,10 +2583,15 @@ def clasif_analisis_salvador():
     clasificacion_analisis_salvador = sorted(clasificacion_analisis_salvador, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
     # Genera los grupos A y B
     grupoA, grupoB = generar_clasificacion_grupoA_grupoB(data11, total_partidos_temporada_grupos_salvador)
+    
+    return render_template('equipos_rugby/clasi_analis_salvador.html', clasificacion_analisis_salvador=clasificacion_analisis_salvador, grupoA=grupoA, grupoB=grupoB)
+# Ruta para mostrar los playoffs de El Salvador
+@app.route('/playoffs_salvador/')
+def playoffs_salvador():
     # Obtener datos de las eliminatorias
     datas1 = obtener_playoff_salvador()
-    return render_template('equipos_rugby/clasi_analis_salvador.html', clasificacion_analisis_salvador=clasificacion_analisis_salvador, grupoA=grupoA, grupoB=grupoB, datas1=datas1)
-# Ruta y creación del calendario individual del Aula Valladolid
+    return render_template('playoffs/salvador_playoff.html', datas1=datas1)
+# Ruta y creación del calendario individual de El Salvador
 @app.route('/equipos_rugby/calendario_salvador')
 def calendarios_salvador():
     datos11 = obtener_datos_salvador()
@@ -2636,6 +2658,231 @@ def calendarios_salvador():
                     tabla_partidos_salvador[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador'] = rol_salvador
     return render_template('equipos_rugby/calendario_salvador.html', tabla_partidos_salvador=tabla_partidos_salvador, nuevos_datos_salvador=nuevos_datos_salvador)
 #Fin proceso El Salvador
+#Todo el proceso de calendario y clasificación del VRAC
+# Ruta de partidos VRAC
+part_vrac = 'json/partidos_vrac.json'
+def guardar_datos_vrac(data12):
+    # Guardar los datos en el archivo JSON
+    with open(part_vrac, 'w', encoding='utf-8') as file:
+        json.dump(data12, file, indent=4)
+def obtener_datos_vrac():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_vrac, 'r', encoding='utf-8') as file:
+        data12 = json.load(file)
+      return data12
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos El Salvador
+@app.route('/admin/calend_vrac')
+def calend_vrac():
+    data12 = obtener_datos_vrac()
+    return render_template('admin/calend_vrac.html', data12=data12)
+# Ingresar los resultados de los partidos del VRAC
+@app.route('/admin/crear_calendario_vrac', methods=['POST'])
+def ingresar_resul_vrac():
+    data12 = obtener_datos_vrac()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data12 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data11.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        bonusA = request.form.get(f'bonusA{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        bonusB = request.form.get(f'bonusB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'bonusA': bonusA,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'bonusB': bonusB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_vrac(data12)
+    return redirect(url_for('calend_vrac'))
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_vrac(data12):
+    arch_guardar_vrac = 'json/partidos_vrac.json'
+    # Guardar en el archivo
+    with open(arch_guardar_vrac, 'w', encoding='UTF-8') as archivo:
+        json.dump(data12, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_vrac/<string:id>', methods=['POST'])
+def modificar_jorn_vrac(id):
+    data12 = obtener_datos_vrac()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data12 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(6):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                bonusA = request.form.get(f'bonusA{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                bonusB = request.form.get(f'bonusB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'bonusA': bonusA,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'bonusB': bonusB,
+                    'visitante': equipoVisitante
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_vrac(data12)            
+            return redirect(url_for('calend_vrac'))
+    return redirect(url_for('calend_vrac'))
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_vrac/<string:id>', methods=['POST'])
+def eliminar_jorn_vrac(id):
+    data12 = obtener_datos_vrac()
+    jornada_a_eliminar = [j for j in data12 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_vrac(jornada_a_eliminar)
+    return redirect(url_for('calend_vrac'))
+# PlayOff El Salvador
+playoff_vrac = 'json_playoff/playoff_vrac.json'
+def guardar_playoff_vrac(datas2):
+    with open(playoff_vrac, 'w', encoding='utf-8') as file:
+        json.dump(datas2, file, indent=4)
+def obtener_playoff_vrac():
+    try:
+        with open(playoff_vrac, 'r', encoding='utf-8') as file:
+            datas2 = json.load(file)
+        return datas2
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [], 'final': []}
+nuevos_enfrentamientos_vrac = []
+partido_vrac = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_vrac/')
+def ver_playoff_vrac():
+    datas2 = obtener_playoff_vrac()
+    return render_template('admin/playoff_vrac.html', datas2=datas2)
+# Crear la clasificación del VRAC
+def generar_clasificacion_analisis_rugby_vrac(data12, total_partidos_temporada_vrac):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data12[:total_partidos_temporada_vrac]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 4 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 4 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 2 + bonus_local
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 2 + bonus_visitante
+                clasificacion[equipo_visitante]['empatados'] += 1                    
+            # Calcula los bonus
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante    
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_rugby_vrac)
+    return clasificacion_ordenada
+# Crear la clasificación para el GrupoA y GrupoB de El Salvador
+def generar_clasificacion_grupoA_grupoB(data12, total_partidos_temporada_grupos_vrac):
+    clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data12[:total_partidos_temporada_grupos_vrac]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 4 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 4 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 2 + bonus_local
+                clasificacion[equipo_visitante]['puntos'] += 2 + bonus_visitante
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    # Divide la clasificación en Grupo A y Grupo B
+    grupoA = clasificacion_ordenada[:6]
+    grupoB = clasificacion_ordenada[6:12]
+    return grupoA, grupoB
+
+
+
+
+
+
+
+
+
 
         
 if __name__ == '__main__':

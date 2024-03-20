@@ -60,6 +60,9 @@ function mostrarFormularioRecoletas(){
 function mostrarFormularioSalvador(){
   document.getElementById('form_partidos_salvador').style.display='block';
 }
+function mostrarFormularioVrac(){
+  document.getElementById('form_partidos_vrac').style.display='block';
+}
 
 // Abrir y cerrar las jornadas de calendario_uemc
 function toggleTabla(element, nombre) {

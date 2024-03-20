@@ -7,19 +7,12 @@ body{
     background-size: 100% 100%;
     background-position: center;
     background-attachment: fixed;
-
 }
 #body_secciones{
     /*background-color: #ffefef;*/
-    background: -webkit-linear-gradient(180deg, #ffc3c3, #a4bae2);
+    background: -webkit-linear-gradient(180deg, #ffc3c3, #91abdb);
 }
-/*#valladolid{
-    position: relative;
-    width: 100%;
-    max-height: 50vh;
-    background-image: url('/static/img/valladolid3bis.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
-}*/
+.body_admin{
+    /*background-color: #ffefef;*/
+    background: -webkit-linear-gradient(180deg, #ffc3c3, #91abdb);
+}

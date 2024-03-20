@@ -6,3 +6,11 @@
     backdrop-filter: blur(8px);
     box-shadow: 1px 3px 4px rgba(22, 22, 26, .18);
 }
+.footer_secciones{
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    background-color: transparent;
+    box-shadow: 1px 3px 4px rgba(22, 22, 26, .18);
+   
+    
+}

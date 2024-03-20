@@ -3,9 +3,9 @@
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/static/img/cancha_basket.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     
 }
 .tabla_equipos{
@@ -51,9 +51,9 @@
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/campo_futbol.webp');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
 }
 .tabla_equ_futb{
     margin-top: 2%;
@@ -84,7 +84,7 @@
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/cancha_balonmano2.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     min-height: 100vh;
 }
@@ -95,13 +95,12 @@
     border: 1px solid #ad6331;
 }
 /* Sección Rugby */
-.calend_balonmano{
+.calend_rugby{
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/camp_rugby.png');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
+    background-size: 100% 100%;
+    background-position: center;  
 }
 
 
