@@ -258,7 +258,7 @@ def seccion_hockey():
 @app.route('/seccion/rugby')
 def seccion_rugby():
     return render_template('secciones/rugby.html')
-# Ruta playoff de baloncesto
+"""# Ruta playoff de baloncesto
 @app.route('/playoff/baloncesto')
 def playoff_baloncesto():
     return render_template('playoffs/baloncesto.html')
@@ -277,7 +277,7 @@ def playoff_hockey():
 # Ruta playoff de rugby
 @app.route('/playoff/rugby')
 def playoff_rugby():
-    return render_template('playoffs/rugby.html')
+    return render_template('playoffs/rugby.html')"""
 # Ruta sistema ligas futbol
 @app.route('/sistema_ligas/futbol')
 def sistema_ligas_futbol():
@@ -395,6 +395,121 @@ def eliminar_jornada_uemc(id):
     guardar_partidos_en_archivo_uemc(jornada_a_eliminar)
     # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
     return redirect(url_for('calendarios_uemc'))
+# PlayOff UEMC Valladolid
+playoff_uemc = 'json_playoff/playoff_uemc.json'
+def guardar_playoff_uemc(datas4):
+    with open(playoff_uemc, 'w', encoding='utf-8') as file:
+        json.dump(datas4, file, indent=4)
+def obtener_playoff_uemc():
+    try:
+        with open(playoff_uemc, 'r', encoding='utf-8') as file:
+            datas4 = json.load(file)
+        return datas4
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [], 'final': []}
+nuevos_enfrentamientos_uemc = []
+partido_uemc = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_uemc/')
+def ver_playoff_uemc():
+    datas4 = obtener_playoff_uemc()
+    return render_template('admin/playoff_uemc.html', datas4=datas4)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_uemc', methods=['GET', 'POST'])
+def crear_playoff_uemc():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas4 = obtener_playoff_uemc()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 12
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas4[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_uemc(datas4)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_uemc'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_uemc.html', datas4=datas4)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_uemc(datas4):
+    arch_guardar_playoff_uemc = 'json_playoff/playoff_uemc.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_uemc, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas4, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_uemc/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_uemc(id):
+    datas4 = obtener_playoff_uemc()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas4.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_uemc(datas4)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_uemc')) 
 # Crear la clasificación UEMC
 def generar_clasificacion_analisis_baloncesto_uemc(data, total_partidos_temporada_uemc):
     default_dict = defaultdict(lambda: {})
@@ -449,6 +564,12 @@ def clasif_analisis_uemc():
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_uemc.html', clasificacion_analisis_uemc=clasificacion_analisis_uemc)
+# Ruta para mostrar los playoffs del UEMC Valladolid
+@app.route('/playoffs_uemc/')
+def playoffs_uemc():
+    # Obtener datos de las eliminatorias
+    datas4 = obtener_playoff_uemc()
+    return render_template('playoffs/uemc_playoff.html', datas4=datas4)
 # Ruta y creación del calendario individual del UEMC
 @app.route('/equipos_basket/calendario_uemc')
 def calendario_uemc():
@@ -2694,7 +2815,7 @@ def ingresar_resul_vrac():
         # Si la jornada no existe, crea un nuevo identificador
         jornada_id = str(uuid.uuid4())
         jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
-        data11.append(jornada)
+        data12.append(jornada)
     for i in range(nums_partidos):
         #id_nuevo = str(uuid.uuid4())
         equipoLocal = request.form.get(f'local{i}')
@@ -2777,6 +2898,102 @@ partido_vrac = None
 def ver_playoff_vrac():
     datas2 = obtener_playoff_vrac()
     return render_template('admin/playoff_vrac.html', datas2=datas2)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_vrac', methods=['GET', 'POST'])
+def crear_playoff_vrac():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas2 = obtener_playoff_vrac()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 4
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas2[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_vrac(datas2)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_vrac'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_vrac.html', datas2=datas2)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_vrac(datas2):
+    arch_guardar_playoff_vrac = 'json_playoff/playoff_vrac.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_vrac, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas2, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_vrac/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_vrac(id):
+    datas2 = obtener_playoff_vrac()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas2.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_vrac(datas2)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_vrac')) 
 # Crear la clasificación del VRAC
 def generar_clasificacion_analisis_rugby_vrac(data12, total_partidos_temporada_vrac):
     default_dict = defaultdict(lambda: {})
@@ -2828,7 +3045,7 @@ def generar_clasificacion_analisis_rugby_vrac(data12, total_partidos_temporada_v
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
     print(generar_clasificacion_analisis_rugby_vrac)
     return clasificacion_ordenada
-# Crear la clasificación para el GrupoA y GrupoB de El Salvador
+# Crear la clasificación para el GrupoA y GrupoB del VRAC
 def generar_clasificacion_grupoA_grupoB(data12, total_partidos_temporada_grupos_vrac):
     clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
     for jornada in data12[:total_partidos_temporada_grupos_vrac]:
@@ -2874,19 +3091,491 @@ def generar_clasificacion_grupoA_grupoB(data12, total_partidos_temporada_grupos_
     grupoA = clasificacion_ordenada[:6]
     grupoB = clasificacion_ordenada[6:12]
     return grupoA, grupoB
-
-
-
-
-
-
-
-
-
-
-        
+# Ruta para mostrar la clasificación del VRAC
+@app.route('/equipos_rugby/clasi_analis_vrac/')
+def clasif_analisis_vrac():
+    data12 = obtener_datos_vrac()
+    total_partidos_temporada_vrac = 11
+    total_partidos_temporada_grupos_vrac = 16
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_vrac = generar_clasificacion_analisis_rugby_vrac(data12, total_partidos_temporada_vrac)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_vrac = sorted(clasificacion_analisis_vrac, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Genera los grupos A y B
+    grupoA, grupoB = generar_clasificacion_grupoA_grupoB(data12, total_partidos_temporada_grupos_vrac)
+    return render_template('equipos_rugby/clasi_analis_vrac.html', clasificacion_analisis_vrac=clasificacion_analisis_vrac, grupoA=grupoA, grupoB=grupoB)
+# Ruta para mostrar los playoffs del VRAC
+@app.route('/playoffs_vrac/')
+def playoffs_vrac():
+    # Obtener datos de las eliminatorias
+    datas2 = obtener_playoff_vrac()
+    return render_template('playoffs/vrac_playoff.html', datas2=datas2)
+# Ruta y creación del calendario individual de El Salvador
+@app.route('/equipos_rugby/calendario_vrac')
+def calendarios_vrac():
+    datos12 = obtener_datos_vrac()
+    nuevos_datos_vrac = [dato for dato in datos12 if dato]
+    equipo_vrac = 'VRAC'
+    tabla_partidos_vrac = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos12:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si El Salvador está jugando
+            if equipo_local == equipo_vrac or equipo_visitante == equipo_vrac:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_vrac:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_vrac = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_vrac = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_vrac:
+                    tabla_partidos_vrac[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_vrac[equipo_contrario]:
+                    tabla_partidos_vrac[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_vrac[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_vrac[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_vrac[equipo_contrario]:
+                    tabla_partidos_vrac[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_vrac[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_vrac[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_vrac[equipo_contrario]['jornadas']:
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_vrac': rol_vrac
+                    }
+                # Asignamos los resultados según el rol del Real Valladolid
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vrac'] = rol_vrac
+                  else:
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vrac'] = rol_vrac
+                else:
+                  if not tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vrac'] = rol_vrac
+                  else:
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vrac'] = rol_vrac
+    return render_template('equipos_rugby/calendario_vrac.html', tabla_partidos_vrac=tabla_partidos_vrac, nuevos_datos_vrac=nuevos_datos_vrac)
+#Fin proceso del VRAC
+#Todo el proceso de calendario y clasificación del El Salvador Fem.
+# Ruta de partidos El Salvador Fem.
+part_salvador_fem = 'json/partidos_salvador_fem.json'
+def guardar_datos_salvador_fem(data13):
+    # Guardar los datos en el archivo JSON
+    with open(part_salvador_fem, 'w', encoding='utf-8') as file:
+        json.dump(data13, file, indent=4)
+def obtener_datos_salvador_fem():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_salvador_fem, 'r', encoding='utf-8') as file:
+        data13 = json.load(file)
+      return data13
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos El Salvador
+@app.route('/admin/calend_salvador_fem')
+def calend_salvador_fem():
+    data13 = obtener_datos_salvador_fem()
+    return render_template('admin/calend_salvador_fem.html', data13=data13)
+# Ingresar los resultados de los partidos de El Salvador Fem.
+@app.route('/admin/crear_calendario_salvador_fem', methods=['POST'])
+def ingresar_resul_salvador_fem():
+    data13 = obtener_datos_salvador_fem()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data13 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data13.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        bonusA = request.form.get(f'bonusA{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        bonusB = request.form.get(f'bonusB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'bonusA': bonusA,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'bonusB': bonusB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_salvador_fem(data13)
+    return redirect(url_for('calend_salvador_fem'))
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_salvador_fem(data13):
+    arch_guardar_salvador_fem = 'json/partidos_salvador_fem.json'
+    # Guardar en el archivo
+    with open(arch_guardar_salvador_fem, 'w', encoding='UTF-8') as archivo:
+        json.dump(data13, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_salvador_fem/<string:id>', methods=['POST'])
+def modificar_jorn_salvador_fem(id):
+    data13 = obtener_datos_salvador_fem()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data13 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(4):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                bonusA = request.form.get(f'bonusA{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                bonusB = request.form.get(f'bonusB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'bonusA': bonusA,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'bonusB': bonusB,
+                    'visitante': equipoVisitante
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_salvador_fem(data13)            
+            return redirect(url_for('calend_salvador_fem'))
+    return redirect(url_for('calend_salvador_fem'))
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_salvador_fem/<string:id>', methods=['POST'])
+def eliminar_jorn_salvador_fem(id):
+    data13 = obtener_datos_salvador_fem()
+    jornada_a_eliminar = [j for j in data13 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_salvador_fem(jornada_a_eliminar)
+    return redirect(url_for('calend_salvador_fem'))
+# PlayOff El Salvador Fem.
+playoff_salvador_fem = 'json_playoff/playoff_salvador_fem.json'
+def guardar_playoff_salvador_fem(datas3):
+    with open(playoff_salvador_fem, 'w', encoding='utf-8') as file:
+        json.dump(datas3, file, indent=4)
+def obtener_playoff_salvador_fem():
+    try:
+        with open(playoff_salvador_fem, 'r', encoding='utf-8') as file:
+            datas3 = json.load(file)
+        return datas3
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [], 'final': []}
+nuevos_enfrentamientos = []
+partido = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_salvador_fem/')
+def ver_playoff_salvador_fem():
+    datas3 = obtener_playoff_salvador_fem()
+    return render_template('admin/playoff_salvador_fem.html', datas3=datas3)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_salvador_fem', methods=['GET', 'POST'])
+def crear_playoff_salvador_fem():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas3 = obtener_playoff_salvador_fem()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 4
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas3[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_salvador_fem(datas3)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_salvador_fem'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_salvador_fem.html', datas3=datas3)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_salvador_fem(datas3):
+    arch_guardar_playoff_salvador_fem = 'json_playoff/partidos_salvador_fem.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_salvador_fem, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas3, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_salvador_fem/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_salvador_fem(id):
+    datas3 = obtener_playoff_salvador_fem()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas1.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_salvador_fem(datas3)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_salvador_fem'))   
+# Crear la clasificación de El Salvador
+def generar_clasificacion_analisis_rugby_salvador_fem(data13, total_partidos_temporada_salvador_fem):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data13[:total_partidos_temporada_salvador_fem]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 4 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 4 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 2 + bonus_local
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 2 + bonus_visitante
+                clasificacion[equipo_visitante]['empatados'] += 1                    
+            # Calcula los bonus
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante    
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_rugby_salvador_fem)
+    return clasificacion_ordenada
+# Crear la clasificación para el GrupoA y GrupoB de El Salvador Fem.
+def generar_clasificacion_grupoA_grupoB(data13, total_partidos_temporada_grupos_salvador_fem):
+    clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data13[:total_partidos_temporada_grupos_salvador_fem]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 4 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 4 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 2 + bonus_local
+                clasificacion[equipo_visitante]['puntos'] += 2 + bonus_visitante
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    # Divide la clasificación en Grupo A y Grupo B
+    grupoA = clasificacion_ordenada[:4]
+    grupoB = clasificacion_ordenada[4:8]
+    return grupoA, grupoB
+# Ruta para mostrar la clasificación de El Salvador Fem.
+@app.route('/equipos_rugby/clasi_analis_salvador_fem/')
+def clasif_analisis_salvador_fem():
+    data13 = obtener_datos_salvador_fem()
+    total_partidos_temporada_salvador_fem = 7
+    total_partidos_temporada_grupos_salvador_fem = 10
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_salvador_fem = generar_clasificacion_analisis_rugby_salvador_fem(data13, total_partidos_temporada_salvador_fem)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_salvador_fem = sorted(clasificacion_analisis_salvador_fem, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Genera los grupos A y B
+    grupoA, grupoB = generar_clasificacion_grupoA_grupoB(data13, total_partidos_temporada_grupos_salvador_fem)
+    return render_template('equipos_rugby/clasi_analis_salvador_fem.html', clasificacion_analisis_salvador_fem=clasificacion_analisis_salvador_fem, grupoA=grupoA, grupoB=grupoB)
+# Ruta para mostrar los playoffs de El Salvador Fem.
+@app.route('/playoffs_salvador_fem/')
+def playoffs_salvador_fem():
+    # Obtener datos de las eliminatorias
+    datas3 = obtener_playoff_salvador_fem()
+    return render_template('playoffs/salvador_fem_playoff.html', datas3=datas3)
+# Ruta y creación del calendario individual de El Salvador Fem.
+@app.route('/equipos_rugby/calendario_salvador_fem')
+def calendarios_salvador_fem():
+    datos13 = obtener_datos_salvador_fem()
+    nuevos_datos_salvador_fem = [dato for dato in datos13 if dato]
+    equipo_salvador_fem = 'El Salvador Fem.'
+    tabla_partidos_salvador_fem = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos13:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si El Salvador está jugando
+            if equipo_local == equipo_salvador_fem or equipo_visitante == equipo_salvador_fem:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_salvador_fem:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_salvador = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_salvador = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_salvador_fem:
+                    tabla_partidos_salvador_fem[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_salvador_fem[equipo_contrario]:
+                    tabla_partidos_salvador_fem[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_salvador_fem[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_salvador_fem[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_salvador_fem[equipo_contrario]:
+                    tabla_partidos_salvador_fem[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_salvador_fem[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_salvador_fem[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_salvador_fem[equipo_contrario]['jornadas']:
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_salvador_fem': rol_salvador_fem
+                    }
+                # Asignamos los resultados según el rol del Real Valladolid
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador_fem'] = rol_salvador_fem
+                  else:
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador_fem'] = rol_salvador_fem
+                else:
+                  if not tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador_fem'] = rol_salvador_fem
+                  else:
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador_fem'] = rol_salvador_fem
+    return render_template('equipos_rugby/calendario_salvador_fem.html', tabla_partidos_salvador_fem=tabla_partidos_salvador_fem, nuevos_datos_salvador_fem=nuevos_datos_salvador_fem)
+#Fin proceso El Salvador
+    
 if __name__ == '__main__':
     app.secret_key = 'pinchellave'
     app.run(debug=True)
- 
- 

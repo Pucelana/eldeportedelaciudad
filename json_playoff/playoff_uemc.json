@@ -1,0 +1,81 @@
+{
+    "cuartos": {
+        "id": "addb7fc1-545a-4a9b-ab6c-53bd9a31285e",
+        "partidos": [
+            {
+                "local": "San Pablo Burgos ",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Betis"
+            },
+            {
+                "local": "Movistar Estudiantes",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "UEMC Valladolid"
+            },
+            {
+                "local": "Tizona Burgos",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "HLA Alicante"
+            },
+            {
+                "local": "Guuk Gipuzkoa Basket",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "ICG For\u00e7a Lleida"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "San Pablo Burgos"
+            },
+            {
+                "local": "UEMC Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Movistar Estudiantes"
+            },
+            {
+                "local": "HLA Alicante",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Tizona Burgos"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Guuk Gipuzkoa Basket"
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    "semifinales": [],
+    "final": []
+}

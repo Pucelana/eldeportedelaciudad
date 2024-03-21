@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Clasificación y Ánalisis - El Salvador</title>
+  <title>Clasificación y Ánalisis - El Salvador Fem.</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
       <li class="breadcrumb-item active text-dark" aria-current="page">Clasificación y Ánalisis</li>
     </ol>
   </nav>
-<h2 class="text-white text-center">El Salvador</h2>
+<h2 class="text-white text-center">El Salvador Fem.</h2>
 <section class="container-lg mb-5">
   <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -28,7 +28,7 @@
             <div class="card tabla_equipos" style="width: 70rem;">
               <div class="card-body"> <!--Tabla Clasificación-->
                 <div class="row table-responsive">
-                  <h3 class="text-center">Clasificación - División de Honor Rugby</h3>
+                  <h3 class="text-center">Clasificación - Liga Iberdrola Rugby</h3>
                   <div class="col-1">
                     <table class="table"> <!--Posiciones-->
                       <thead>
@@ -50,28 +50,16 @@
                           <td class="bg-success text-white">4</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">5</td>
+                          <td class="bg-secondary text-white">5</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">6</td>
+                          <td class="bg-secondary text-white">6</td>
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">7</td>
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
                         </tr>
                       </tbody>
                     </table>
@@ -93,7 +81,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo in clasificacion_analisis_salvador %}
+                      {% for equipo in clasificacion_analisis_salvador_fem %}
                       <tr class="text-center">
                         <td class="fw-bold">{{ equipo['equipo'] }}</td>
                         <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
@@ -140,12 +128,6 @@
                         </tr>
                         <tr>
                           <td class="bg-success text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">6</td>
                         </tr>
                       </tbody>
                     </table>
@@ -204,22 +186,16 @@
                       </thead>
                       <tbody class="text-center">
                         <tr>
-                          <td class="bg-success text-white">7</td>
+                          <td class="bg-secondary text-white">5</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">8</td>
+                          <td class="bg-secondary text-white">6</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">9</td>
+                          <td class="bg-secondary text-white">7</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="text-white" style="background-color: #d86f6f;">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">12</td>
+                          <td class="bg-secondary text-white">8</td>
                         </tr>
                       </tbody>
                     </table>
@@ -260,9 +236,6 @@
                   </div>   
                 </div>
               </div>
-              <p class="ms-4">PlayOff (Cuartos de final)<span class="badge bg-success ms-2">7-8</span></p>
-              <p class="ms-4">Promoción Descenso<span class="badge ms-2" style="background-color: #d86f6f;">11</span></p>
-              <p class="ms-4">Descenso<span class="badge bg-danger ms-2">12</span></p>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Calendario-Aula Valladolid</title>
+  <title>Calendario-VRAC</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,11 +12,11 @@
   <!-- Favicon -->  
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
-<body class="bg-white calend_balonmano">
+<body class="bg-white calend_rugby">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ms-1">
-          <li class="breadcrumb-item"><a href="/seccion/balonmano" class="text-white text-decoration-none">Sección</a></li>
-          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Aula Valladolid</li>
+          <li class="breadcrumb-item"><a href="/seccion/rugby" class="text-white text-decoration-none">Sección</a></li>
+          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario VRAC</li>
         </ol>
     </nav>
     <section class="container-lg mb-5">
@@ -24,11 +24,11 @@
             <div class="carousel-inner">	
               <div class="carousel-item active"><!--Tabla Calendario-->
                 <div class="d-flex justify-content-center">
-                  <div class="card tabla_equipos_aula" style="width: 70rem;">
+                  <div class="card tabla_equipos_rugby" style="width: 70rem;">
                     <div class="card-body">
                       <div class="table-responsive">
                         <h3 class="text-center text-white fw-bold my-3">Calendario</h3>
-                        <table class="table table-bordered tabla_equipos tabla_aula"><!--Tabla Calendario Aula-->
+                        <table class="table table-bordered tabla_equipos tabla_vrac"><!--Tabla Calendario VRAC-->
                             <thead>
                                 <tr class="text-center text-white">
                                   <th></th>
@@ -48,29 +48,29 @@
                                 </tr>
                             </thead>
                               <tbody>
-                                {% for equipo, datos_equipo in tabla_partidos_aula.items() %}
+                                {% for equipo, datos_equipo in tabla_partidos_vrac.items() %}
                                   <tr class="text-center">
                                     <th class="text-white">{{ equipo }}</th>
                                     <td class="jorn_ida fw-bold">
                                       {% if datos_equipo.get('primer_enfrentamiento') %}
                                         J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_aula'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_aula'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_vrac'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_vrac'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
                                     <td class="jorn_vuelta fw-bold">
                                       {% if datos_equipo.get('segundo_enfrentamiento') %}
                                         J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_aula'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_aula'] }})
+                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_vrac'] %}
+                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_vrac'] }})
                                         {% endif %}
                                       {% endif %}
                                     </td>
-                                    <td class="resultadoA fw-bold">{{ tabla_partidos_aula[equipo]['resultadoA'] }}</td>
-                                    <td class="resultadoB fw-bold">{{ tabla_partidos_aula[equipo]['resultadoB'] }}</td>
-                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_aula[equipo]['resultadoAA'] }}</td>
-                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_aula[equipo]['resultadoBB'] }}</td>
+                                    <td class="resultadoA fw-bold">{{ tabla_partidos_vrac[equipo]['resultadoA'] }}</td>
+                                    <td class="resultadoB fw-bold">{{ tabla_partidos_vrac[equipo]['resultadoB'] }}</td>
+                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_vrac[equipo]['resultadoAA'] }}</td>
+                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_vrac[equipo]['resultadoBB'] }}</td>
                                     <td class="part1"></td>
                                     <td class="average"></td>
                                   </tr>
@@ -84,11 +84,11 @@
               </div>
               <div class="carousel-item"><!-- Resultados temporada 23/24 -->
                 <div class="d-flex justify-content-center">
-                  <div class="card tabla_equipos_aula" style="width: 70rem;">
+                  <div class="card tabla_equipos_vrac" style="width: 70rem;">
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
-                          {% for goles in nuevos_datos_aula %}
+                          {% for goles in nuevos_datos_vrac %}
                           <div class="col-lg-4">
                             <div class="card card_calendario mb-3">
                               <div class="table-responsive">
@@ -146,7 +146,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 <script> 
   document.addEventListener('DOMContentLoaded', function() {
     // Seleccionar todas las filas de la tabla
-    var filas = document.querySelectorAll('.tabla_aula tbody tr');
+    var filas = document.querySelectorAll('.tabla_vrac tbody tr');
     // Iterar sobre cada fila
     filas.forEach(function(fila) {
         // Obtener el nombre del equipo de la fila actual

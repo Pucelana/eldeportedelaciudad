@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>PlayOffs Título - El Salvador</title>
+  <title>PlayOffs Título - El Salvador Fem.</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb ms-1">
       <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Inicio</a></li>
-      <li class="breadcrumb-item active text-dark" aria-current="page">PlayOffs El Salvador</li>
+      <li class="breadcrumb-item active text-dark" aria-current="page">PlayOffs El Salvador Fem.</li>
     </ol>
   </nav>
 <h1 class="text-playoff">Fase Final Al Título</h1>
@@ -29,7 +29,7 @@
             <div class="">
             <p class="text-center fw-bold text-white fs-3">Cuartos de Final</p>
             <table class="table border-secondary">
-            {% for partido in datas1.cuartos.partidos %}
+            {% for partido in datas3.cuartos.partidos %}
               <tr class="text-center">
                 <td class="text-center fw-bold fs-5">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>
@@ -40,7 +40,7 @@
             </table>           
             <p class="text-center fw-bold text-white fs-3">Semifinales</p>
             <table class="table border-secondary">
-            {% for partido in datas1.semifinales.partidos %}
+            {% for partido in datas3.semifinales.partidos %}
               <tr>
                 <td class="text-center fw-bold fs-2">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>
@@ -51,7 +51,7 @@
             </table>
             <p class="text-center fw-bold text-white fs-3">Final</p>
             <table class="table border-secondary">
-            {% for partido in datas1.final.partidos %}
+            {% for partido in datas3.final.partidos %}
               <tr>
                 <td>{{ partido.local }}</td>
                 <td>{{ partido.resultadoA }}</td>
@@ -66,7 +66,6 @@
       </div>
     </div>
 </section>
-
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

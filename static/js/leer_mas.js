@@ -63,6 +63,9 @@ function mostrarFormularioSalvador(){
 function mostrarFormularioVrac(){
   document.getElementById('form_partidos_vrac').style.display='block';
 }
+function mostrarFormularioSalvadorFem(){
+  document.getElementById('form_partidos_salvador_fem').style.display='block';
+}
 
 // Abrir y cerrar las jornadas de calendario_uemc
 function toggleTabla(element, nombre) {
