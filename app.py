@@ -3765,7 +3765,7 @@ def crear_playoff_caja():
     # Si no es una solicitud POST, renderizar el formulario
     return render_template('admin/playoff_caja.html', datas4=datas4)
 # Toma la lista de los playoff y los guarda
-def guardar_playoff_en_archivo_caja(datas4):
+def guardar_playoff_en_archivo_caja(datas5):
     arch_guardar_playoff_caja = 'json_playoff/partidos_caja.json'
     # Guardar en el archivo
     with open(arch_guardar_playoff_caja, 'w', encoding='UTF-8') as archivo:
@@ -3801,7 +3801,7 @@ def modificar_playoff_caja(id):
         # Redireccionar a la página de visualización del playoff
         return redirect(url_for('ver_playoff_caja'))   
 # Crear la clasificación de El Salvador
-def generar_clasificacion_analisis_balonmano_caja(data14, total_partidos_temporada_caja):
+def generar_clasificacion_analisis_hockey_caja(data14, total_partidos_temporada_caja):
     default_dict = defaultdict(lambda: {})
     clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
     for jornada in data14[:total_partidos_temporada_caja]:
@@ -3849,7 +3849,7 @@ def generar_clasificacion_analisis_balonmano_caja(data14, total_partidos_tempora
             clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
     # Ordena la clasificación por puntos y diferencia de canastas
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
-    print(generar_clasificacion_analisis_balonmano_caja)
+    print(generar_clasificacion_analisis_hockey_caja)
     return clasificacion_ordenada
 """# Crear la clasificación para el GrupoA y GrupoB de Caja Rural CPLV
 def generar_clasificacion_grupoA_grupoB(data14, total_partidos_temporada_grupos_caja):
@@ -3898,15 +3898,15 @@ def generar_clasificacion_grupoA_grupoB(data14, total_partidos_temporada_grupos_
     grupoB = clasificacion_ordenada[4:8]
     return grupoA, grupoB"""
 # Ruta para mostrar la clasificación del Caja Rural CPLV
-@app.route('/equipos_rugby/clasi_analis_caja/')
+@app.route('/equipos_hockey/clasi_analis_caja/')
 def clasif_analisis_caja():
     data14 = obtener_datos_caja()
-    total_partidos_temporada_salvador_fem = 14
+    total_partidos_temporada_caja = 18
     # Llama a la función para generar la clasificación y análisis
-    clasificacion_analisis_caja = generar_clasificacion_analisis_balonmano_caja(data14, total_partidos_temporada_caja)
+    clasificacion_analisis_caja = generar_clasificacion_analisis_hockey_caja(data14, total_partidos_temporada_caja)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_caja = sorted(clasificacion_analisis_caja, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
-    return render_template('equipos_rugby/clasi_analis_caja.html', clasificacion_analisis_caja=clasificacion_analisis_caja)
+    return render_template('equipos_hockey/clasi_analis_caja.html', clasificacion_analisis_caja=clasificacion_analisis_caja)
 # Ruta para mostrar los playoffs de Caja Rural CPLV
 @app.route('/playoffs_caja/')
 def playoffs_caja():
@@ -3914,7 +3914,7 @@ def playoffs_caja():
     datas5 = obtener_playoff_caja()
     return render_template('playoffs/caja_playoff.html', datas5=datas5)
 # Ruta y creación del calendario individual del Caja Rurak CPLV
-@app.route('/equipos_rugby/calendario_caja')
+@app.route('/equipos_hockey/calendario_caja')
 def calendarios_caja():
     datos14 = obtener_datos_caja()
     nuevos_datos_caja = [dato for dato in datos14 if dato]
@@ -3978,7 +3978,7 @@ def calendarios_caja():
                     tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
                     tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['rol_caja'] = rol_caja
-    return render_template('equipos_rugby/calendario_caja.html', tabla_partidos_caja=tabla_partidos_caja, nuevos_datos_caja=nuevos_datos_caja)
+    return render_template('equipos_hockey/calendario_caja.html', tabla_partidos_caja=tabla_partidos_caja, nuevos_datos_caja=nuevos_datos_caja)
 #Fin proceso Caja Rural CPLV
 
 
