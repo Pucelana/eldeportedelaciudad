@@ -56,6 +56,9 @@ function mostrarFormularioRecoletas(){
   document.getElementById('form_partidos_recoletas').style.display='block';
 }
 // HOCKEY LÍNEA
+function mostrarFormularioCaja(){
+  document.getElementById('form_partidos_caja').style.display='block';
+}
 // RUGBY
 function mostrarFormularioSalvador(){
   document.getElementById('form_partidos_salvador').style.display='block';

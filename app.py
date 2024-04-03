@@ -637,6 +637,7 @@ def calendario_uemc():
                     tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_uemc
     return render_template('equipos_basket/calendario_uemc.html', tabla_partidos_uemc=tabla_partidos_uemc, nuevos_datos_uemc=nuevos_datos_uemc)  
 # Fin proceso del UEMC
+
 #Todo el proceso de calendario y clasificación del Ponce
 # Ruta de partidos Ponce Valladolid
 part_ponce = 'json/partidos_ponce.json'
@@ -854,6 +855,7 @@ def calendarios_ponce():
                     tabla_partidos_ponce[equipo_contrario]['jornadas'][jornada['nombre']]['rol_ponce'] = rol_ponce
     return render_template('equipos_basket/calendario_ponce.html', tabla_partidos_ponce=tabla_partidos_ponce, nuevos_datos_ponce=nuevos_datos_ponce) 
 # Fin proceso Ponce Valladolid
+
 #Todo el proceso de calendario y clasificación de Fundación Aliados
 # Ruta de partidos Fundación Aliados
 part_aliados = 'json/partidos_aliados.json'
@@ -1069,6 +1071,7 @@ def calendarios_aliados():
                     tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['rol_aliados'] = rol_aliados
     return render_template('equipos_basket/calendario_aliados.html', tabla_partidos_aliados=tabla_partidos_aliados, nuevos_datos_aliados=nuevos_datos_aliados) 
 # Fin proceso Fundación Aliados
+
 # EQUIPOS FÚTBOL
 #Todo el proceso de calendario y clasificación del Real Valladolid
 # Ruta de partidos Real Valladolid
@@ -1290,6 +1293,7 @@ def calendarios_valladolid():
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_valladolid
     return render_template('equipos_futbol/calendario_vallad.html', tabla_partidos_valladolid=tabla_partidos_valladolid, nuevos_datos_valladolid=nuevos_datos_valladolid)
 # Fin proceso Real Valladolid
+
 #Todo el proceso de calendario y clasificación del Promesas
 # Ruta de partidos Promesas
 part_promesas = 'json/partidos_promesas.json'
@@ -1510,6 +1514,7 @@ def calendarios_promesas():
                     tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_promesas'] = rol_promesas
     return render_template('equipos_futbol/calendario_promesas.html', tabla_partidos_promesas=tabla_partidos_promesas, nuevos_datos_promesas=nuevos_datos_promesas)        
 # Fin proceso Promesas
+
 #Todo el proceso de calendario y clasificación del V Simancas
 # Ruta de partidos V Simancas       
 part_simancas = 'json/partidos_simancas.json'
@@ -1729,6 +1734,7 @@ def calendarios_simancas():
                     tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_simancas'] = rol_simancas
     return render_template('equipos_futbol/calendario_simancas.html', tabla_partidos_simancas=tabla_partidos_simancas, nuevos_datos_simancas=nuevos_datos_simancas)         
 # Fin proceso V Simancas
+
 #Todo el proceso de calendario y clasificación del CD Parquesol
 # Ruta de partidos CD Parquesol        
 part_parquesol = 'json/partidos_parquesol.json'
@@ -1946,6 +1952,8 @@ def calendarios_parquesol():
                     tabla_partidos_parquesol[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_parquesol[equipo_contrario]['jornadas'][jornada['nombre']]['rol_parquesol'] = rol_parquesol
     return render_template('equipos_futbol/calendario_parquesol.html', tabla_partidos_parquesol=tabla_partidos_parquesol, nuevos_datos_parquesol=nuevos_datos_parquesol) 
+# Fin proceso CD Parquesol
+
 # EQUIPOS BALONMANO
 #Todo el proceso de calendario y clasificación del Aula Valladolid
 # Ruta de partidos Aula Valladolid
@@ -2161,6 +2169,7 @@ def calendarios_aula():
                     tabla_partidos_aula[equipo_contrario]['jornadas'][jornada['nombre']]['rol_aula'] = rol_aula
     return render_template('equipos_balonmano/calendario_aula.html', tabla_partidos_aula=tabla_partidos_aula, nuevos_datos_aula=nuevos_datos_aula)
 #Fin proceso Aula Valladolid
+
 #Todo el proceso de calendario y clasificación del Atlético Valladolid
 # Ruta de partidos Atlético Valladolid
 part_recoletas = 'json/partidos_recoletas.json'
@@ -2375,9 +2384,6 @@ def calendarios_recoletas():
                     tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_recoletas'] = rol_recoletas
     return render_template('equipos_balonmano/calendario_recoletas.html', tabla_partidos_recoletas=tabla_partidos_recoletas, nuevos_datos_recoletas=nuevos_datos_recoletas)
 #Fin proceso Atlético Valladolid
-#EQUIPOS HOCKEY
-#Todo el proceso de calendario y clasificación del Caja Rural CPLV
-# Ruta de partidos Caja Rural CPLV
 
 #EQUIPOS RUGBY
 #Todo el proceso de calendario y clasificación del El Salvador
@@ -2779,6 +2785,7 @@ def calendarios_salvador():
                     tabla_partidos_salvador[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador'] = rol_salvador
     return render_template('equipos_rugby/calendario_salvador.html', tabla_partidos_salvador=tabla_partidos_salvador, nuevos_datos_salvador=nuevos_datos_salvador)
 #Fin proceso El Salvador
+
 #Todo el proceso de calendario y clasificación del VRAC
 # Ruta de partidos VRAC
 part_vrac = 'json/partidos_vrac.json'
@@ -3177,6 +3184,7 @@ def calendarios_vrac():
                     tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vrac'] = rol_vrac
     return render_template('equipos_rugby/calendario_vrac.html', tabla_partidos_vrac=tabla_partidos_vrac, nuevos_datos_vrac=nuevos_datos_vrac)
 #Fin proceso del VRAC
+
 #Todo el proceso de calendario y clasificación del El Salvador Fem.
 # Ruta de partidos El Salvador Fem.
 part_salvador_fem = 'json/partidos_salvador_fem.json'
@@ -3575,6 +3583,418 @@ def calendarios_salvador_fem():
                     tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador_fem'] = rol_salvador_fem
     return render_template('equipos_rugby/calendario_salvador_fem.html', tabla_partidos_salvador_fem=tabla_partidos_salvador_fem, nuevos_datos_salvador_fem=nuevos_datos_salvador_fem)
 #Fin proceso El Salvador
+
+#EQUIPOS HOCKEY
+#Todo el proceso de calendario y clasificación del Caja Rural CPLV
+# Ruta de partidos Caja Rural CPLV
+part_caja = 'json/partidos_caja.json'
+def guardar_datos_caja(data14):
+    # Guardar los datos en el archivo JSON
+    with open(part_caja, 'w', encoding='utf-8') as file:
+        json.dump(data14, file, indent=4)
+def obtener_datos_caja():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_caja, 'r', encoding='utf-8') as file:
+        data14 = json.load(file)
+      return data14
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos Caja Rural CPLV
+@app.route('/admin/calend_caja')
+def calend_caja():
+    data14 = obtener_datos_caja()
+    return render_template('admin/calend_caja.html', data14=data14)
+# Ingresar los resultados de los partidos de Caja Rural CPLV
+@app.route('/admin/crear_calendario_caja', methods=['POST'])
+def ingresar_resul_caja():
+    data14 = obtener_datos_caja()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data14 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data14.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        bonusA = request.form.get(f'bonusA{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        bonusB = request.form.get(f'bonusB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'bonusA': bonusA,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'bonusB': bonusB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_caja(data14)
+    return redirect(url_for('calend_caja'))
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_caja(data14):
+    arch_guardar_caja = 'json/partidos_caja.json'
+    # Guardar en el archivo
+    with open(arch_guardar_caja, 'w', encoding='UTF-8') as archivo:
+        json.dump(data14, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_caja/<string:id>', methods=['POST'])
+def modificar_jorn_caja(id):
+    data14 = obtener_datos_caja()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data14 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(5):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                bonusA = request.form.get(f'bonusA{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                bonusB = request.form.get(f'bonusB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'bonusA': bonusA,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'bonusB': bonusB,
+                    'visitante': equipoVisitante
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_caja(data14)            
+            return redirect(url_for('calend_caja'))
+    return redirect(url_for('calend_caja'))
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_caja/<string:id>', methods=['POST'])
+def eliminar_jorn_caja(id):
+    data14 = obtener_datos_caja()
+    jornada_a_eliminar = [j for j in data14 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_caja(jornada_a_eliminar)
+    return redirect(url_for('calend_caja'))
+# PlayOff Caja Rural CPLV
+playoff_caja = 'json_playoff/playoff_caja.json'
+def guardar_playoff_caja(datas5):
+    with open(playoff_caja, 'w', encoding='utf-8') as file:
+        json.dump(datas5, file, indent=4)
+def obtener_playoff_caja():
+    try:
+        with open(playoff_caja, 'r', encoding='utf-8') as file:
+            datas5 = json.load(file)
+        return datas4
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [], 'final': []}
+nuevos_enfrentamientos_caja = []
+partido_caja = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_caja/')
+def ver_playoff_caja():
+    datas5 = obtener_playoff_caja()
+    return render_template('admin/playoff_caja.html', datas5=datas5)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_caja', methods=['GET', 'POST'])
+def crear_playoff_caja():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas5 = obtener_playoff_caja()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 4
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas4[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_caja(datas4)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_caja'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_caja.html', datas4=datas4)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_caja(datas4):
+    arch_guardar_playoff_caja = 'json_playoff/partidos_caja.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_caja, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas5, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_caja/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_caja(id):
+    datas5 = obtener_playoff_caja()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas4.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_caja(datas4)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_caja'))   
+# Crear la clasificación de El Salvador
+def generar_clasificacion_analisis_balonmano_caja(data14, total_partidos_temporada_caja):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data14[:total_partidos_temporada_caja]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1 + bonus_local
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 1 + bonus_visitante
+                clasificacion[equipo_visitante]['empatados'] += 1                    
+            # Calcula los bonus
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante    
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_balonmano_caja)
+    return clasificacion_ordenada
+"""# Crear la clasificación para el GrupoA y GrupoB de Caja Rural CPLV
+def generar_clasificacion_grupoA_grupoB(data14, total_partidos_temporada_grupos_caja):
+    clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data14[:total_partidos_temporada_grupos_caja]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1 + bonus_local
+                clasificacion[equipo_visitante]['puntos'] += 1 + bonus_visitante
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    # Divide la clasificación en Grupo A y Grupo B
+    grupoA = clasificacion_ordenada[:4]
+    grupoB = clasificacion_ordenada[4:8]
+    return grupoA, grupoB"""
+# Ruta para mostrar la clasificación del Caja Rural CPLV
+@app.route('/equipos_rugby/clasi_analis_caja/')
+def clasif_analisis_caja():
+    data14 = obtener_datos_caja()
+    total_partidos_temporada_salvador_fem = 14
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_caja = generar_clasificacion_analisis_balonmano_caja(data14, total_partidos_temporada_caja)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_caja = sorted(clasificacion_analisis_caja, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    return render_template('equipos_rugby/clasi_analis_caja.html', clasificacion_analisis_caja=clasificacion_analisis_caja)
+# Ruta para mostrar los playoffs de Caja Rural CPLV
+@app.route('/playoffs_caja/')
+def playoffs_caja():
+    # Obtener datos de las eliminatorias
+    datas5 = obtener_playoff_caja()
+    return render_template('playoffs/caja_playoff.html', datas5=datas5)
+# Ruta y creación del calendario individual del Caja Rurak CPLV
+@app.route('/equipos_rugby/calendario_caja')
+def calendarios_caja():
+    datos14 = obtener_datos_caja()
+    nuevos_datos_caja = [dato for dato in datos14 if dato]
+    equipo_caja = 'CPLV Caja Rural'
+    tabla_partidos_caja = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos14:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si El Salvador está jugando
+            if equipo_local == equipo_caja or equipo_visitante == equipo_caja:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_caja:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_caja = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_caja = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_caja:
+                    tabla_partidos_caja[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_caja[equipo_contrario]:
+                    tabla_partidos_caja[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_caja[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_caja[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_caja[equipo_contrario]:
+                    tabla_partidos_caja[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_caja[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_caja[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_caja[equipo_contrario]['jornadas']:
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_caja': rol_caja
+                    }
+                # Asignamos los resultados según el rol del Real Valladolid
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['rol_caja'] = rol_caja
+                  else:
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['rol_caja'] = rol_caja
+                else:
+                  if not tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['rol_caja'] = rol_caja
+                  else:
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['rol_caja'] = rol_caja
+    return render_template('equipos_rugby/calendario_caja.html', tabla_partidos_caja=tabla_partidos_caja, nuevos_datos_caja=nuevos_datos_caja)
+#Fin proceso Caja Rural CPLV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 if __name__ == '__main__':
     app.secret_key = 'pinchellave'
