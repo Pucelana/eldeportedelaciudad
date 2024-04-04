@@ -3585,8 +3585,8 @@ def calendarios_salvador_fem():
 #Fin proceso El Salvador
 
 #EQUIPOS HOCKEY
-#Todo el proceso de calendario y clasificación del Caja Rural CPLV
-# Ruta de partidos Caja Rural CPLV
+#Todo el proceso de calendario y clasificación del CPLV Caja Rural
+# Ruta de partidos CPLV Caja Rural
 part_caja = 'json/partidos_caja.json'
 def guardar_datos_caja(data14):
     # Guardar los datos en el archivo JSON
@@ -3606,7 +3606,7 @@ def obtener_datos_caja():
 def calend_caja():
     data14 = obtener_datos_caja()
     return render_template('admin/calend_caja.html', data14=data14)
-# Ingresar los resultados de los partidos de Caja Rural CPLV
+# Ingresar los resultados de los partidos de CPLV Caja Rural
 @app.route('/admin/crear_calendario_caja', methods=['POST'])
 def ingresar_resul_caja():
     data14 = obtener_datos_caja()
@@ -3694,7 +3694,7 @@ def obtener_playoff_caja():
     try:
         with open(playoff_caja, 'r', encoding='utf-8') as file:
             datas5 = json.load(file)
-        return datas4
+        return datas5
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'cuartos': [], 'semifinales': [], 'final': []}
 nuevos_enfrentamientos_caja = []
@@ -3755,15 +3755,15 @@ def crear_playoff_caja():
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
             # Agregar los nuevos enfrentamientos a la lista correspondiente
-        datas4[eliminatoria] = eliminatoria_data
+        datas5[eliminatoria] = eliminatoria_data
          # Agregar los nuevos enfrentamientos a la lista correspondiente
         nuevos_enfrentamientos.clear()  
         # Guardar la lista de partidos en el archivo JSON
-        guardar_playoff_caja(datas4)
+        guardar_playoff_caja(datas5)
         # Redireccionar a la página de visualización del playoff
         return redirect(url_for('ver_playoff_caja'))
     # Si no es una solicitud POST, renderizar el formulario
-    return render_template('admin/playoff_caja.html', datas4=datas4)
+    return render_template('admin/playoff_caja.html', datas5=datas5)
 # Toma la lista de los playoff y los guarda
 def guardar_playoff_en_archivo_caja(datas5):
     arch_guardar_playoff_caja = 'json_playoff/partidos_caja.json'
@@ -3776,7 +3776,7 @@ def modificar_playoff_caja(id):
     datas5 = obtener_playoff_caja()
     # Buscar la eliminatoria correspondiente al ID proporcionado
     eliminatoria_encontrada = None
-    for eliminatoria, datos_eliminatoria in datas4.items():
+    for eliminatoria, datos_eliminatoria in datas5.items():
         if datos_eliminatoria['id'] == id:
             eliminatoria_encontrada = datos_eliminatoria
             break
@@ -3797,7 +3797,7 @@ def modificar_playoff_caja(id):
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
-        guardar_playoff_caja(datas4)       
+        guardar_playoff_caja(datas5)       
         # Redireccionar a la página de visualización del playoff
         return redirect(url_for('ver_playoff_caja'))   
 # Crear la clasificación de El Salvador
@@ -3897,7 +3897,7 @@ def generar_clasificacion_grupoA_grupoB(data14, total_partidos_temporada_grupos_
     grupoA = clasificacion_ordenada[:4]
     grupoB = clasificacion_ordenada[4:8]
     return grupoA, grupoB"""
-# Ruta para mostrar la clasificación del Caja Rural CPLV
+# Ruta para mostrar la clasificación del CPLV Caja Rural
 @app.route('/equipos_hockey/clasi_analis_caja/')
 def clasif_analisis_caja():
     data14 = obtener_datos_caja()
@@ -3907,13 +3907,13 @@ def clasif_analisis_caja():
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_caja = sorted(clasificacion_analisis_caja, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
     return render_template('equipos_hockey/clasi_analis_caja.html', clasificacion_analisis_caja=clasificacion_analisis_caja)
-# Ruta para mostrar los playoffs de Caja Rural CPLV
+# Ruta para mostrar los playoffs de CPLV Caja Rural
 @app.route('/playoffs_caja/')
 def playoffs_caja():
     # Obtener datos de las eliminatorias
     datas5 = obtener_playoff_caja()
     return render_template('playoffs/caja_playoff.html', datas5=datas5)
-# Ruta y creación del calendario individual del Caja Rurak CPLV
+# Ruta y creación del calendario individual del CPLV Caja Rural
 @app.route('/equipos_hockey/calendario_caja')
 def calendarios_caja():
     datos14 = obtener_datos_caja()
@@ -3979,8 +3979,403 @@ def calendarios_caja():
                     tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['rol_caja'] = rol_caja
     return render_template('equipos_hockey/calendario_caja.html', tabla_partidos_caja=tabla_partidos_caja, nuevos_datos_caja=nuevos_datos_caja)
-#Fin proceso Caja Rural CPLV
+#Fin proceso CPLV Caja Rural
 
+#Todo el proceso de calendario y clasificación del CPLV Munia Panteras
+# Ruta de partidos CPLV Munia Panteras
+part_panteras = 'json/partidos_panteras.json'
+def guardar_datos_panteras(data15):
+    # Guardar los datos en el archivo JSON
+    with open(part_panteras, 'w', encoding='utf-8') as file:
+        json.dump(data15, file, indent=4)
+def obtener_datos_panteras():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_panteras, 'r', encoding='utf-8') as file:
+        data14 = json.load(file)
+      return data15
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos CPLV Munia Panteras
+@app.route('/admin/calend_panteras')
+def calend_panteras():
+    data15 = obtener_datos_panteras()
+    return render_template('admin/calend_panteras.html', data15=data15)
+# Ingresar los resultados de los partidos de CPLV Munia Panteras
+@app.route('/admin/crear_calendario_panteras', methods=['POST'])
+def ingresar_resul_panteras():
+    data15 = obtener_datos_panteras()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data14 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data15.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        bonusA = request.form.get(f'bonusA{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        bonusB = request.form.get(f'bonusB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'bonusA': bonusA,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'bonusB': bonusB,
+            'visitante': equipoVisitante
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_panteras(data15)
+    return redirect(url_for('calend_panteras'))
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_paneras(data15):
+    arch_guardar_panteras = 'json/partidos_panteras.json'
+    # Guardar en el archivo
+    with open(arch_guardar_panteras, 'w', encoding='UTF-8') as archivo:
+        json.dump(data15, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_panteras/<string:id>', methods=['POST'])
+def modificar_jorn_panteras(id):
+    data15 = obtener_datos_panteras()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data15 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(4):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                bonusA = request.form.get(f'bonusA{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                bonusB = request.form.get(f'bonusB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'bonusA': bonusA,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'bonusB': bonusB,
+                    'visitante': equipoVisitante
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_panteras(data15)            
+            return redirect(url_for('calend_panteras'))
+    return redirect(url_for('calend_panteras'))
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_panteras/<string:id>', methods=['POST'])
+def eliminar_jorn_panteras(id):
+    data15 = obtener_datos_panteras()
+    jornada_a_eliminar = [j for j in data15 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_panteras(jornada_a_eliminar)
+    return redirect(url_for('calend_panteras'))
+# PlayOff CPLV Munia Panteras
+playoff_panteras = 'json_playoff/playoff_panteras.json'
+def guardar_playoff_panteras(datas6):
+    with open(playoff_panteras, 'w', encoding='utf-8') as file:
+        json.dump(datas6, file, indent=4)
+def obtener_playoff_panteras():
+    try:
+        with open(playoff_panteras, 'r', encoding='utf-8') as file:
+            datas6 = json.load(file)
+        return datas4
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [], 'final': []}
+nuevos_enfrentamientos_panteras = []
+partido_panteras = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_panteras/')
+def ver_playoff_panteras():
+    datas6 = obtener_playoff_panteras()
+    return render_template('admin/playoff_panteras.html', datas6=datas6)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_panteras', methods=['GET', 'POST'])
+def crear_playoff_panteras():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas6 = obtener_playoff_panteras()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 4
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas6[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_panteras(datas6)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_panteras'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_panteras.html', datas6=datas6)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_panteras(datas6):
+    arch_guardar_playoff_panteras = 'json_playoff/partidos_panteras.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_panteras, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas6, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_panteras/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_panteras(id):
+    datas6 = obtener_playoff_panteras()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas6.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_panteras(datas6)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_panteras'))   
+# Crear la clasificación de CPLV Munia Panteras
+def generar_clasificacion_analisis_hockey_panteras(data15, total_partidos_temporada_panteras):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data15[:total_partidos_temporada_panteras]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1 + bonus_local
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 1 + bonus_visitante
+                clasificacion[equipo_visitante]['empatados'] += 1                    
+            # Calcula los bonus
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante    
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_hockey_panteras)
+    return clasificacion_ordenada
+"""# Crear la clasificación para el GrupoA y GrupoB de CPLV Munia Panteras
+def generar_clasificacion_grupoA_grupoB(data15, total_partidos_temporada_grupos_panteras):
+    clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data15[:total_partidos_temporada_grupos_panteras]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1 + bonus_local
+                clasificacion[equipo_visitante]['puntos'] += 1 + bonus_visitante
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    # Divide la clasificación en Grupo A y Grupo B
+    grupoA = clasificacion_ordenada[:4]
+    grupoB = clasificacion_ordenada[4:8]
+    return grupoA, grupoB"""
+# Ruta para mostrar la clasificación del CPLV Munia Panteras
+@app.route('/equipos_hockey/clasi_analis_panteras/')
+def clasif_analisis_panteras():
+    data15 = obtener_datos_panteras()
+    total_partidos_temporada_panteras = 18
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_panteras = generar_clasificacion_analisis_hockey_panteras(data15, total_partidos_temporada_panteras)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_panteras = sorted(clasificacion_analisis_panteras, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    return render_template('equipos_hockey/clasi_analis_pante.html', clasificacion_analisis_panteras=clasificacion_analisis_panteras)
+# Ruta para mostrar los playoffs de CPLV Munia Panteras
+@app.route('/playoffs_panteras/')
+def playoffs_panteras():
+    # Obtener datos de las eliminatorias
+    datas6 = obtener_playoff_panteras()
+    return render_template('playoffs/panteras_playoff.html', datas6=datas6)
+# Ruta y creación del calendario individual del CPLV Munia Panteras
+@app.route('/equipos_hockey/calendario_panteras')
+def calendarios_panteras():
+    datos15 = obtener_datos_panteras()
+    nuevos_datos_panteras = [dato for dato in datos15 if dato]
+    equipo_panteras = 'CPLV Munia Panteras'
+    tabla_partidos_panteras = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos15:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si El Salvador está jugando
+            if equipo_local == equipo_panteras or equipo_visitante == equipo_panteras:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_panteras:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_panteras = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_panteras = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_panteras:
+                    tabla_partidos_panteras[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_panteras[equipo_contrario]:
+                    tabla_partidos_panteras[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_panteras[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_panteras[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_panteras[equipo_contrario]:
+                    tabla_partidos_panteras[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_panteras[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_panteras[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_panteras[equipo_contrario]['jornadas']:
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_panteras': rol_panteras
+                    }
+                # Asignamos los resultados según el rol del Real Valladolid
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['rol_panteras'] = rol_panteras
+                  else:
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['rol_panteras'] = rol_panteras
+                else:
+                  if not tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['rol_panteras'] = rol_panteras
+                  else:
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['rol_panteras'] = rol_panteras
+    return render_template('equipos_hockey/calendario_panteras.html', tabla_partidos_panteras=tabla_partidos_panteras, nuevos_datos_panteras=nuevos_datos_panteras)
+#Fin proceso CPLV Munia Panteras
 
 
 

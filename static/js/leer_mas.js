@@ -59,6 +59,9 @@ function mostrarFormularioRecoletas(){
 function mostrarFormularioCaja(){
   document.getElementById('form_partidos_caja').style.display='block';
 }
+function mostrarFormularioPanteras(){
+  document.getElementById('form_partidos_panteras').style.display='block';
+}
 // RUGBY
 function mostrarFormularioSalvador(){
   document.getElementById('form_partidos_salvador').style.display='block';
