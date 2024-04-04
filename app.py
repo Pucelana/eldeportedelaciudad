@@ -734,6 +734,121 @@ def eliminar_jorn_ponce(id):
     guardar_partidos_en_archivo_ponce(jornada_a_eliminar)
     # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
     return redirect(url_for('calend_ponce'))
+# PlayOff Ponce Valladolid
+playoff_ponce = 'json_playoff/playoff_ponce.json'
+def guardar_playoff_ponce(datas8):
+    with open(playoff_ponce, 'w', encoding='utf-8') as file:
+        json.dump(datas8, file, indent=4)
+def obtener_playoff_ponce():
+    try:
+        with open(playoff_ponce, 'r', encoding='utf-8') as file:
+            datas8 = json.load(file)
+        return datas8
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [], 'final': []}
+nuevos_enfrentamientos_ponce = []
+partido_ponce = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_ponce/')
+def ver_playoff_ponce():
+    datas8 = obtener_playoff_ponce()
+    return render_template('admin/playoff_ponce.html', datas8=datas8)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_ponce', methods=['GET', 'POST'])
+def crear_playoff_ponce():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas8 = obtener_playoff_ponce()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 12
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas8[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_ponce(datas8)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_ponce'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_ponce.html', datas8=datas8)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_ponce(datas8):
+    arch_guardar_playoff_ponce = 'json_playoff/playoff_ponce.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_ponce, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas8, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_ponce/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_ponce(id):
+    datas8 = obtener_playoff_ponce()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas8.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_ponce(datas8)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_ponce')) 
 # Crear la clasificación Ponce
 def generar_clasificacion_analisis_baloncesto_ponce(data1, total_partidos_temporada_ponce):
     default_dict = defaultdict(lambda: {})
@@ -788,6 +903,12 @@ def clasif_analisis_ponce():
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_ponce.html', clasificacion_analisis_ponce=clasificacion_analisis_ponce)
+# Ruta para mostrar los playoffs del Ponce Valladolid
+@app.route('/playoffs_ponce/')
+def playoffs_ponce():
+    # Obtener datos de las eliminatorias
+    datas8 = obtener_playoff_ponce()
+    return render_template('playoffs/ponce_playoff.html', datas8=datas8)
 # Ruta y creación del calendario individual del Ponce
 @app.route('/equipos_basket/calendario_ponce')
 def calendarios_ponce():
@@ -950,6 +1071,121 @@ def eliminar_jorn_aliados(id):
     guardar_partidos_en_archivo_aliados(jornada_a_eliminar)
     # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
     return redirect(url_for('calend_aliados'))
+# PlayOff Fundación Aliados
+playoff_aliados = 'json_playoff/playoff_aliados.json'
+def guardar_playoff_aliados(datas9):
+    with open(playoff_aliados, 'w', encoding='utf-8') as file:
+        json.dump(datas9, file, indent=4)
+def obtener_playoff_aliados():
+    try:
+        with open(playoff_aliados, 'r', encoding='utf-8') as file:
+            datas9 = json.load(file)
+        return datas9
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [], 'final': []}
+nuevos_enfrentamientos_aliados = []
+partido_aliados = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_aliados/')
+def ver_playoff_aliados():
+    datas9 = obtener_playoff_aliados()
+    return render_template('admin/playoff_aliados.html', datas9=datas9)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_aliados', methods=['GET', 'POST'])
+def crear_playoff_aliados():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas9 = obtener_playoff_aliados()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 12
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas9[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_aliados(datas9)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_aliados'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_aliados.html', datas9=datas9)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_aliados(datas9):
+    arch_guardar_playoff_aliados = 'json_playoff/playoff_aliados.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_aliados, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas9, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_aliados/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_aliados(id):
+    datas9 = obtener_playoff_aliados()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas9.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_aliados(datas9)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_aliados'))
 # Crear la clasificación Ponce
 def generar_clasificacion_analisis_baloncesto_aliados(data2, total_partidos_temporada_aliados):
     default_dict = defaultdict(lambda: {})
@@ -1004,6 +1240,12 @@ def clasif_analisis_aliados():
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_aliados.html', clasificacion_analisis_aliados=clasificacion_analisis_aliados)
+# Ruta para mostrar los playoffs de Fundación Aliados
+@app.route('/playoffs_aliados/')
+def playoffs_aliados():
+    # Obtener datos de las eliminatorias
+    datas9 = obtener_playoff_aliados()
+    return render_template('playoffs/aliados_playoff.html', datas9=datas9)
 # Ruta y creación del calendario individual del Ponce
 @app.route('/equipos_basket/calendario_aliados')
 def calendarios_aliados():
@@ -2047,6 +2289,121 @@ def eliminar_jorn_aula(id):
     jornada_a_eliminar = [j for j in data7 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
     guardar_partidos_en_archivo_aula(jornada_a_eliminar)
     return redirect(url_for('calend_aula')) 
+# PlayOff Aula Valladolid
+playoff_aula = 'json_playoff/playoff_aula.json'
+def guardar_playoff_aula(datas7):
+    with open(playoff_aula, 'w', encoding='utf-8') as file:
+        json.dump(datas7, file, indent=4)
+def obtener_playoff_aula():
+    try:
+        with open(playoff_aula, 'r', encoding='utf-8') as file:
+            datas7 = json.load(file)
+        return datas7
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [], 'final': []}
+nuevos_enfrentamientos_aula = []
+partido_aula = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_aula/')
+def ver_playoff_aula():
+    datas7 = obtener_playoff_aula()
+    return render_template('admin/playoff_aula.html', datas7=datas7)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_aula', methods=['GET', 'POST'])
+def crear_playoff_aula():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas7 = obtener_playoff_aula()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 4
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas7[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_aula(datas7)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_aula'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_aula.html', datas7=datas7)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_aula(datas7):
+    arch_guardar_playoff_aula = 'json_playoff/partidos_aula.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_aula, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas7, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_aula/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_aula(id):
+    datas7 = obtener_playoff_aula()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas7.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_aula(datas7)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_aula'))
 # Crear la clasificación del Aula Valladolid
 def generar_clasificacion_analisis_balonmano_aula(data7, total_partidos_temporada_aula):
     default_dict = defaultdict(lambda: {})
@@ -2092,6 +2449,52 @@ def generar_clasificacion_analisis_balonmano_aula(data7, total_partidos_temporad
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
     print(generar_clasificacion_analisis_balonmano_aula)
     return clasificacion_ordenada 
+"""# Crear la clasificación para el GrupoA y GrupoB de Aula Valladolid
+def generar_clasificacion_grupoA_grupoB(data7, total_partidos_temporada_grupos_aula):
+    clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
+    for jornada in data7[:total_partidos_temporada_grupos_aula]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                bonus_local = int(partido['bonusA'])
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+                bonus_visitante = int(partido['bonusB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3 + bonus_local
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3 + bonus_visitante
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1 + bonus_local
+                clasificacion[equipo_visitante]['puntos'] += 1 + bonus_visitante
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['bonus'] += bonus_local
+            clasificacion[equipo_visitante]['bonus'] += bonus_visitante
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    # Divide la clasificación en Grupo A y Grupo B
+    grupoA = clasificacion_ordenada[:4]
+    grupoB = clasificacion_ordenada[4:8]
+    return grupoA, grupoB"""
 # Ruta para mostrar la clasificación y análisis del Aula Valladolid
 @app.route('/equipos_balonmano/clasi_analis_aula/')
 def clasif_analisis_aula():
@@ -2102,6 +2505,12 @@ def clasif_analisis_aula():
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_aula = sorted(clasificacion_analisis_aula, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
     return render_template('equipos_balonmano/clasi_analis_aula.html', clasificacion_analisis_aula=clasificacion_analisis_aula)
+# Ruta para mostrar los playoffs del Aula Valladolid
+@app.route('/playoffs_aula/')
+def playoffs_aula():
+    # Obtener datos de las eliminatorias
+    datas7 = obtener_playoff_aula()
+    return render_template('playoffs/aula_playoff.html', datas7=datas7)
 # Ruta y creación del calendario individual del Aula Valladolid
 @app.route('/equipos_balonmano/calendario_aula')
 def calendarios_aula():
@@ -4376,6 +4785,8 @@ def calendarios_panteras():
                     tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['rol_panteras'] = rol_panteras
     return render_template('equipos_hockey/calendario_panteras.html', tabla_partidos_panteras=tabla_partidos_panteras, nuevos_datos_panteras=nuevos_datos_panteras)
 #Fin proceso CPLV Munia Panteras
+
+# COPA DEL REY Y COPA DE LA REINA
 
 
 
