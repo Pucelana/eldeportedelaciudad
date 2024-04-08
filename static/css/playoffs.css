@@ -19,6 +19,22 @@
     border: 1px solid #ddba49;
     box-shadow: 10px 5px 5px 7px gray;
 }
+.fondos_copa{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/copa.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+.tabla_copa{
+    background-color: transparent;
+    backdrop-filter: blur(4px);
+    border: 1px solid #ddba49;
+    box-shadow: 6px 5px 5px 5px rgb(255, 223, 81);
+}
+.text-copa{
+    color: #000000;
+}
 .text-playoff{
     text-align: center;
     color: #ddba49;

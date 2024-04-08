@@ -31,10 +31,10 @@
             <table class="table border-secondary">
             {% for partido in datas5.cuartos.partidos %}
               <tr class="text-center">
-                <td class="text-center fw-bold fs-5">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold">{{ partido.resultadoB }}</td>
-                <td class="text-center fw-bold fs-5">{{ partido.visitante }}</td>
+                <td class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>           
@@ -42,10 +42,10 @@
             <table class="table border-secondary">
             {% for partido in datas5.semifinales.partidos %}
               <tr>
-                <td class="text-center fw-bold fs-2">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold">{{ partido.resultadoB }}</td>
-                <td class="text-center fw-bold fs-2">{{ partido.visitante }}</td>
+                <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center fw-bold fs-2 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
@@ -53,10 +53,10 @@
             <table class="table border-secondary">
             {% for partido in datas5.final.partidos %}
               <tr>
-                <td>{{ partido.local }}</td>
-                <td>{{ partido.resultadoA }}</td>
-                <td>{{ partido.resultadoB }}</td>
-                <td>{{ partido.visitante }}</td>
+                <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center fw-bold fs-2 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
