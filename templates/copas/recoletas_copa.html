@@ -15,7 +15,7 @@
 <body class="fondos_copa">
   <div class="sticky-top">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb ms-1">
+    <ol class="breadcrumb ps-2 pt-2">
       <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Inicio</a></li>
       <li class="breadcrumb-item active text-dark" aria-current="page">Copa Atl. Valladolid</li>
     </ol>
@@ -31,7 +31,7 @@
             <div class="">
             <p class="text-center fw-bold text-white fs-3">1ª Ronda</p>
             <div class="texto-adicional text-center" data-ronda="1">
-            <table class="table border-secondary">
+            <table class="table border-dark">
             {% for partido in dats3.ronda1.partidos %}
               <tr class="text-center">
                 <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
@@ -42,10 +42,10 @@
             {% endfor %}
             </table>
             </div>
-            <a href="#" class="mostrar-enlace text-decoration-none text-secondary fw-bold" onclick="mostrarTexto(this, 1); return false;">Ver Partidos</a>           
+            <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 1); return false;">Ver Partidos</a>           
             <p class="text-center fw-bold text-white fs-3">2ª Fase</p>
             <div class="texto-adicional text-center" data-ronda="2">
-            <table class="table border-secondary">
+            <table class="table border-dark">
             {% for partido in dats3.ronda2.partidos %}
               <tr>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
@@ -56,10 +56,10 @@
             {% endfor %}
             </table>
             </div>
-            <a href="#" class="mostrar-enlace text-decoration-none text-secondary fw-bold" onclick="mostrarTexto(this, 2); return false;">Ver Partidos</a>
+            <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 2); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Octavos de Final</p>
             <div class="texto-adicional text-center" data-ronda="3">
-            <table class="table border-secondary">
+            <table class="table border-dark">
             {% for partido in dats3.octavos.partidos %}
               <tr>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
@@ -70,10 +70,10 @@
             {% endfor %}
             </table>
             </div>
-            <a href="#" class="mostrar-enlace text-decoration-none text-secondary fw-bold" onclick="mostrarTexto(this, 3); return false;">Ver Partidos</a>
+            <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 3); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Cuartos de Final</p>
             <div class="texto-adicional text-center" data-ronda="4">
-            <table class="table border-secondary">
+            <table class="table border-dark">
             {% for partido in dats3.cuartos.partidos %}
               <tr>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
@@ -84,10 +84,10 @@
             {% endfor %}
             </table>
             </div>
-            <a href="#" class="mostrar-enlace text-decoration-none text-secondary fw-bold" onclick="mostrarTexto(this, 4); return false;">Ver Partidos</a>
+            <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 4); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Semifinales</p>
             <div class="texto-adicional text-center" data-ronda="5">
-            <table class="table border-secondary">
+            <table class="table border-dark">
             {% for partido in dats3.semifinales.partidos %}
               <tr>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
@@ -98,10 +98,10 @@
             {% endfor %}
             </table>
             </div>
-            <a href="#" class="mostrar-enlace text-decoration-none text-secondary fw-bold" onclick="mostrarTexto(this, 5); return false;">Ver Partidos</a>
+            <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 5); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Final</p>
             <div class="texto-adicional text-center" data-ronda="6">
-            <table class="table border-secondary">
+            <table class="table border-dark">
             {% for partido in dats3.final.partidos %}
               <tr>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
@@ -112,7 +112,7 @@
             {% endfor %}
             </table>
             </div>
-            <a href="#" class="mostrar-enlace text-decoration-none text-secondary fw-bold" onclick="mostrarTexto(this, 6); return false;">Ver Partidos</a>
+            <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 6); return false;">Ver Partidos</a>
             </div>
           </div>
         </div>

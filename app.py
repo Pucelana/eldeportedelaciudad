@@ -26,6 +26,7 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)"""
+
 # Creando el registro del usuario
 @app.route('/registro/', methods=['GET', 'POST'])
 def sitio_registro():
@@ -5176,11 +5177,624 @@ def copas_recoletas():
     return render_template('copas/recoletas_copa.html', dats3=dats3)
 # Fin copa Recoletas Atl. Valladolid
 
+# Copa Fundación Aliados
+copa_aliados = 'json_copa/copa_aliados.json'
+def guardar_copa_aliados(dats4):
+    with open(copa_aliados, 'w', encoding='utf-8') as file:
+        json.dump(dats4, file, indent=4)
+def obtener_copa_aliados():
+    try:
+        with open(copa_aliados, 'r', encoding='utf-8') as file:
+            dats4 = json.load(file)
+        return dats4
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [],'final': []}
+nuevas_eliminatorias_aliados = []
+duelos_aliados = None
+# Crear formulario para los playoff
+@app.route('/admin/copa_aliados/')
+def ver_copa_aliados():
+    dats4 = obtener_copa_aliados()
+    return render_template('admin/copa_aliados.html', dats4=dats4)
+# Crear formulario para los playoff
+@app.route('/admin/crear_copa_aliados', methods=['GET', 'POST'])
+def crear_copa_aliados():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dats4 = obtener_copa_aliados()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 4
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1               
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dats4[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_copa_aliados(dats4)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_aliados'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_aliados.html', dats4=dats4)
+# Toma la lista de los playoff y los guarda
+def guardar_copa_en_archivo_aliados(dats4):
+    arch_guardar_copa_aliados = 'json_playoff/copa_aliados.json'
+    # Guardar en el archivo
+    with open(arch_guardar_copa_aliados, 'w', encoding='UTF-8') as archivo:
+        json.dump(dats4, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_copa_aliados/<string:id>', methods=['GET', 'POST'])
+def modificar_copa_aliados(id):
+    dats4 = obtener_copa_aliados()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats4.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_aliados(dats4)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_aliados')) 
+# Ruta para mostrar la copa Fundación Aliados
+@app.route('/copa_aliados/')
+def copas_aliados():
+    # Obtener datos de las eliminatorias
+    dats4 = obtener_copa_aliados()
+    return render_template('copas/aliados_copa.html', dats4=dats4)
+# Fin copa Fundación Aliados
 
+# Copa UEMC Valladolid
+copa_uemc = 'json_copa/copa_uemc.json'
+def guardar_copa_uemc(dats5):
+    with open(copa_uemc, 'w', encoding='utf-8') as file:
+        json.dump(dats5, file, indent=4)
+def obtener_copa_uemc():
+    try:
+        with open(copa_uemc, 'r', encoding='utf-8') as file:
+            dats5 = json.load(file)
+        return dats5
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'final': []}
+nuevas_eliminatorias_uemc = []
+duelos_uemc = None
+# Crear formulario para los playoff
+@app.route('/admin/copa_uemc/')
+def ver_copa_uemc():
+    dats5 = obtener_copa_uemc()
+    return render_template('admin/copa_uemc.html', dats5=dats5)
+# Crear formulario para los playoff
+@app.route('/admin/crear_copa_uemc', methods=['GET', 'POST'])
+def crear_copa_uemc():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dats5 = obtener_copa_uemc()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'final':
+            max_partidos = 1              
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dats5[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_copa_uemc(dats5)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_uemc'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_uemc.html', dats5=dats5)
+# Toma la lista de los playoff y los guarda
+def guardar_copa_en_archivo_uemc(dats5):
+    arch_guardar_copa_uemc = 'json_playoff/copa_uemc.json'
+    # Guardar en el archivo
+    with open(arch_guardar_copa_uemc, 'w', encoding='UTF-8') as archivo:
+        json.dump(dats5, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_copa_uemc/<string:id>', methods=['GET', 'POST'])
+def modificar_copa_uemc(id):
+    dats5 = obtener_copa_uemc()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats5.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_uemc(dats5)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_uemc')) 
+# Ruta para mostrar la copa Fundación Aliados
+@app.route('/copa_uemc/')
+def copas_uemc():
+    # Obtener datos de las eliminatorias
+    dats5 = obtener_copa_uemc()
+    return render_template('copas/uemc_copa.html', dats5=dats5)
+# Fin copa UEMC Valladolid
 
+# Copa CD Parquesol
+copa_parquesol = 'json_copa/copa_parquesol.json'
+def guardar_copa_parquesol(dats6):
+    with open(copa_parquesol, 'w', encoding='utf-8') as file:
+        json.dump(dats6, file, indent=4)
+def obtener_copa_parquesol():
+    try:
+        with open(copa_parquesol, 'r', encoding='utf-8') as file:
+            dats6 = json.load(file)
+        return dats6
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'ronda1': [],'ronda2': [],'ronda3': [],'octavos': [],'cuartos': [],'semifinales': [],'final': []}
+nuevas_eliminatorias_parquesol = []
+duelos_parquesol = None
+# Crear formulario para los playoff
+@app.route('/admin/copa_parquesol/')
+def ver_copa_parquesol():
+    dats6 = obtener_copa_parquesol()
+    return render_template('admin/copa_parquesol.html', dats6=dats6)
+# Crear formulario para los playoff
+@app.route('/admin/crear_copa_parquesol', methods=['GET', 'POST'])
+def crear_copa_parquesol():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dats6 = obtener_copa_parquesol()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'ronda1':
+            max_partidos = 16
+        elif eliminatoria == 'ronda2':
+            max_partidos = 8
+        elif eliminatoria == 'ronda3':
+            max_partidos = 8 
+        elif eliminatoria == 'octavos':
+            max_partidos = 8 
+        elif eliminatoria == 'cuartos':
+            max_partidos = 4 
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1                                        
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dats6[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_copa_parquesol(dats5)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_parquesol'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_parquesol.html', dats6=dats6)
+# Toma la lista de los playoff y los guarda
+def guardar_copa_en_archivo_parquesol(dats6):
+    arch_guardar_copa_parquesol = 'json_playoff/copa_parquesol.json'
+    # Guardar en el archivo
+    with open(arch_guardar_copa_parquesol, 'w', encoding='UTF-8') as archivo:
+        json.dump(dats6, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_copa_parquesol/<string:id>', methods=['GET', 'POST'])
+def modificar_copa_parquesol(id):
+    dats6 = obtener_copa_parquesol()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats6.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_parquesol(dats6)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_parquesol')) 
+# Ruta para mostrar la copa CD Parquesol
+@app.route('/copa_parquesol/')
+def copas_parquesol():
+    # Obtener datos de las eliminatorias
+    dats6 = obtener_copa_parquesol()
+    return render_template('copas/parquesol_copa.html', dats6=dats6)
+# Fin copa CD Parquesol
 
+# Copa CPLV Munia Panteras
+copa_panteras = 'json_copa/copa_panteras.json'
+def guardar_copa_panteras(dats7):
+    with open(copa_panteras, 'w', encoding='utf-8') as file:
+        json.dump(dats7, file, indent=4)
+def obtener_copa_panteras():
+    try:
+        with open(copa_panteras, 'r', encoding='utf-8') as file:
+            dats7 = json.load(file)
+        return dats7
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [],'final': []}
+nuevas_eliminatorias_panteras = []
+duelos_panteras = None
+# Crear formulario para los playoff
+@app.route('/admin/copa_panteras/')
+def ver_copa_panteras():
+    dats7 = obtener_copa_panteras()
+    return render_template('admin/copa_panteras.html', dats7=dats7)
+# Crear formulario para los playoff
+@app.route('/admin/crear_copa_panteras', methods=['GET', 'POST'])
+def crear_copa_panteras():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dats7 = obtener_copa_panteras()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 3
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1               
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dats7[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_copa_panteras(dats7)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_panteras'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_panteras.html', dats7=dats7)
+# Toma la lista de los playoff y los guarda
+def guardar_copa_en_archivo_panteras(dats7):
+    arch_guardar_copa_panteras = 'json_playoff/copa_panteras.json'
+    # Guardar en el archivo
+    with open(arch_guardar_copa_panteras, 'w', encoding='UTF-8') as archivo:
+        json.dump(dats7, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_copa_panteras/<string:id>', methods=['GET', 'POST'])
+def modificar_copa_panteras(id):
+    dats7 = obtener_copa_panteras()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats7.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_panteras(dats7)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_panteras')) 
+# Ruta para mostrar la copa CPLV Munia Panteras
+@app.route('/copa_panteras/')
+def copas_panteras():
+    # Obtener datos de las eliminatorias
+    dats7 = obtener_copa_panteras()
+    return render_template('copas/panteras_copa.html', dats7=dats7)
+# Fin copa CPLV Munia Panteras
 
-
+# Copa CPLV Caja Rural
+copa_caja = 'json_copa/copa_caja.json'
+def guardar_copa_caja(dats8):
+    with open(copa_caja, 'w', encoding='utf-8') as file:
+        json.dump(dats8, file, indent=4)
+def obtener_copa_caja():
+    try:
+        with open(copa_caja, 'r', encoding='utf-8') as file:
+            dats8 = json.load(file)
+        return dats8
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'cuartos': [], 'semifinales': [],'final': []}
+nuevas_eliminatorias_caja = []
+duelos_caja = None
+# Crear formulario para los playoff
+@app.route('/admin/copa_caja/')
+def ver_copa_caja():
+    dats8 = obtener_copa_caja()
+    return render_template('admin/copa_caja.html', dats7=dats7)
+# Crear formulario para los playoff
+@app.route('/admin/crear_copa_caja', methods=['GET', 'POST'])
+def crear_copa_caja():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dats8 = obtener_copa_caja()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'cuartos':
+            max_partidos = 3
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1               
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dats8[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_copa_caja(dats8)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_caja'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_caja.html', dats8=dats8)
+# Toma la lista de los playoff y los guarda
+def guardar_copa_en_archivo_caja(dats8):
+    arch_guardar_copa_caja = 'json_playoff/copa_caja.json'
+    # Guardar en el archivo
+    with open(arch_guardar_copa_caja, 'w', encoding='UTF-8') as archivo:
+        json.dump(dats8, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_copa_caja/<string:id>', methods=['GET', 'POST'])
+def modificar_copa_caja(id):
+    dats8 = obtener_copa_caja()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats8.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_caja(dats8)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_caja')) 
+# Ruta para mostrar la copa CPLV Caja Rural
+@app.route('/copa_caja/')
+def copas_caja():
+    # Obtener datos de las eliminatorias
+    dats8 = obtener_copa_caja()
+    return render_template('copas/caja_copa.html', dats8=dats8)
+# Fin copa CPLV Caja Rural
 
 
 

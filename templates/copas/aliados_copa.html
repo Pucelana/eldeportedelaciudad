@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Copa de El Rey - CPLV Munia Panteras</title>
+  <title>Copa de El Rey - Fundación Aliados</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,11 +17,11 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb ps-2 pt-2">
       <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Inicio</a></li>
-      <li class="breadcrumb-item active text-dark" aria-current="page">Copa CPLV Munia Panteras</li>
+      <li class="breadcrumb-item active text-dark" aria-current="page">Copa Fundación Aliados</li>
     </ol>
   </nav>
   </div>
-<h1 class="text-playoff pb-2">Copa de El Rey CPLV Munia Panteras</h1>
+<h1 class="text-playoff pb-2">Copa de El Rey Fundación Aliado</h1>
 <section class="container-lg"><!-- Eliminatorias -->
   <div class="d-flex justify-content-center">
     <div class="card tabla_copa mb-5" style="width: 70rem;">
@@ -32,7 +32,7 @@
             <p class="text-center fw-bold text-white fs-3">Cuartos de Final</p>
             <div class="texto-adicional text-center" data-ronda="1">
             <table class="table border-dark">
-            {% for partido in dats7.cuartos.partidos %}
+            {% for partido in dats4.cuartos.partidos %}
               <tr class="text-center">
                 <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
@@ -46,7 +46,7 @@
             <p class="text-center fw-bold text-white fs-3">Semifinales</p>
             <div class="texto-adicional text-center" data-ronda="2">
             <table class="table border-dark">
-            {% for partido in dats7.semifinales.partidos %}
+            {% for partido in dats4.semifinales.partidos %}
               <tr>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>
@@ -60,7 +60,7 @@
             <p class="text-center fw-bold text-white fs-3">Final</p>
             <div class="texto-adicional text-center" data-ronda="3">
             <table class="table border-dark">
-            {% for partido in dats7.final.partidos %}
+            {% for partido in dats4.final.partidos %}
               <tr>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>

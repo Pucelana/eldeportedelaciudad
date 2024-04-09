@@ -21,16 +21,16 @@
 }
 .fondos_copa{
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/copa.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/img/copa_rey3.jpeg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
 }
 .tabla_copa{
     background-color: transparent;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
     border: 1px solid #ddba49;
-    box-shadow: 6px 5px 5px 5px rgb(255, 223, 81);
+    box-shadow: 6px 5px 5px 5px rgb(255, 245, 205);
 }
 .text-copa{
     color: #000000;

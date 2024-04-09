@@ -1,0 +1,33 @@
+{
+    "cuartos": {
+        "id": "56ca2e99-6e1d-40ae-ad99-b0525325d67e",
+        "partidos": [
+            {
+                "local": "CD Ilunion",
+                "resultadoA": "92",
+                "resultadoB": "57",
+                "visitante": "Amivel Reyes Guti\u00e9rrez"
+            },
+            {
+                "local": "BSR Amiab Albacete",
+                "resultadoA": "86",
+                "resultadoB": "49",
+                "visitante": "Iberconsa Amfiv"
+            },
+            {
+                "local": "Ucam Murcia BSR\t",
+                "resultadoA": "75",
+                "resultadoB": "65",
+                "visitante": "Fundaci\u00f3n Aliados"
+            },
+            {
+                "local": "Econy Gran Canaria",
+                "resultadoA": "62",
+                "resultadoB": "78",
+                "visitante": "Bidaideak Bilbao BSR"
+            }
+        ]
+    },
+    "semifinales": [],
+    "final": []
+}
