@@ -3062,8 +3062,8 @@ def generar_clasificacion_analisis_rugby_salvador(data11, total_partidos_tempora
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
     print(generar_clasificacion_analisis_rugby_salvador)
     return clasificacion_ordenada
-# Crear la clasificación para el GrupoA y GrupoB de El Salvador
-def generar_clasificacion_grupoA_grupoB(data11, total_partidos_temporada_grupos_salvador):
+# Crear la clasificación para el GrupoA1 y GrupoB1 de El Salvador
+def generar_clasificacion_grupoA1_grupoB1(data11, total_partidos_temporada_grupos_salvador):
     clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
     for jornada in data11[:total_partidos_temporada_grupos_salvador]:
         for partido in jornada['partidos']:
@@ -3105,9 +3105,9 @@ def generar_clasificacion_grupoA_grupoB(data11, total_partidos_temporada_grupos_
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
     # Divide la clasificación en Grupo A y Grupo B
-    grupoA = clasificacion_ordenada[:6]
-    grupoB = clasificacion_ordenada[6:12]
-    return grupoA, grupoB
+    grupoA1 = clasificacion_ordenada[:6]
+    grupoB1 = clasificacion_ordenada[6:12]
+    return grupoA1, grupoB1
 # Ruta para mostrar la clasificación de El Salvador
 @app.route('/equipos_rugby/clasi_analis_salvador/')
 def clasif_analisis_salvador():
@@ -3119,9 +3119,9 @@ def clasif_analisis_salvador():
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_salvador = sorted(clasificacion_analisis_salvador, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
     # Genera los grupos A y B
-    grupoA, grupoB = generar_clasificacion_grupoA_grupoB(data11, total_partidos_temporada_grupos_salvador)
+    grupoA1, grupoB1 = generar_clasificacion_grupoA1_grupoB1(data11, total_partidos_temporada_grupos_salvador)
     
-    return render_template('equipos_rugby/clasi_analis_salvador.html', clasificacion_analisis_salvador=clasificacion_analisis_salvador, grupoA=grupoA, grupoB=grupoB)
+    return render_template('equipos_rugby/clasi_analis_salvador.html', clasificacion_analisis_salvador=clasificacion_analisis_salvador, grupoA1=grupoA1, grupoB1=grupoB1)
 # Ruta para mostrar los playoffs de El Salvador
 @app.route('/playoffs_salvador/')
 def playoffs_salvador():
@@ -3462,8 +3462,8 @@ def generar_clasificacion_analisis_rugby_vrac(data12, total_partidos_temporada_v
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
     print(generar_clasificacion_analisis_rugby_vrac)
     return clasificacion_ordenada
-# Crear la clasificación para el GrupoA y GrupoB del VRAC
-def generar_clasificacion_grupoA_grupoB(data12, total_partidos_temporada_grupos_vrac):
+# Crear la clasificación para el GrupoA2 y GrupoB2 del VRAC
+def generar_clasificacion_grupoA2_grupoB2(data12, total_partidos_temporada_grupos_vrac):
     clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
     for jornada in data12[:total_partidos_temporada_grupos_vrac]:
         for partido in jornada['partidos']:
@@ -3505,9 +3505,9 @@ def generar_clasificacion_grupoA_grupoB(data12, total_partidos_temporada_grupos_
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
     # Divide la clasificación en Grupo A y Grupo B
-    grupoA = clasificacion_ordenada[:6]
-    grupoB = clasificacion_ordenada[6:12]
-    return grupoA, grupoB
+    grupoA2 = clasificacion_ordenada[:6]
+    grupoB2 = clasificacion_ordenada[6:12]
+    return grupoA2, grupoB2
 # Ruta para mostrar la clasificación del VRAC
 @app.route('/equipos_rugby/clasi_analis_vrac/')
 def clasif_analisis_vrac():
@@ -3519,8 +3519,8 @@ def clasif_analisis_vrac():
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_vrac = sorted(clasificacion_analisis_vrac, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
     # Genera los grupos A y B
-    grupoA, grupoB = generar_clasificacion_grupoA_grupoB(data12, total_partidos_temporada_grupos_vrac)
-    return render_template('equipos_rugby/clasi_analis_vrac.html', clasificacion_analisis_vrac=clasificacion_analisis_vrac, grupoA=grupoA, grupoB=grupoB)
+    grupoA2, grupoB2 = generar_clasificacion_grupoA2_grupoB2(data12, total_partidos_temporada_grupos_vrac)
+    return render_template('equipos_rugby/clasi_analis_vrac.html', clasificacion_analisis_vrac=clasificacion_analisis_vrac, grupoA2=grupoA2, grupoB2=grupoB2)
 # Ruta para mostrar los playoffs del VRAC
 @app.route('/playoffs_vrac/')
 def playoffs_vrac():
