@@ -13,126 +13,128 @@
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
 <body class="bg-white calend_futbol">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb ms-1">
-          <li class="breadcrumb-item"><a href="/seccion/futbol" class="text-white text-decoration-none">Sección</a></li>
-          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Real Valladolid</li>
-        </ol>
-    </nav>
-      <section class="container-lg mb-5">
-        <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
-            <div class="carousel-inner">	
-              <div class="carousel-item active">
-                <div class="d-flex justify-content-center">
-                  <div class="card tabla_equipos" style="width: 70rem;">
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <h3 class="text-center text-white fw-bold">Calendario</h3>
-                        <table class="table table-bordered tabla_equipos tabla_valladolid"><!--Tabla Calendario Valladolid-->
-                            <thead>
-                                <tr class="text-center text-white">
-                                  <th></th>
-                                  <th colspan="2">Jornadas</th>
-                                  <th colspan="4">Resultados</th>
-                                  <!--<th colspan=""></th>-->
-                                </tr>
-                                <tr class="text-center text-white">
-                                  <th scope="col">Equipos</th>
-                                  <th>Ida</th>
-                                  <th>Vlt</th>
-                                  <th colspan="2">Ida</th>
-                                  <th colspan="2">Vlt</th>
-                                  <th>Puntos</th>
-                                  <!--<th>Vlt</th>-->
-                                  <th>Golaverage</th>
-                                </tr>
-                            </thead>
-                              <tbody>
-                                {% for equipo, datos_equipo in tabla_partidos_valladolid.items() %}
-                                  <tr class="text-center">
-                                    <th class="text-white">{{ equipo }}</th>
-                                    <td class="jorn_ida fw-bold">
-                                      {% if datos_equipo.get('primer_enfrentamiento') %}
-                                        J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_valladolid'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_valladolid'] }})
-                                        {% endif %}
-                                      {% endif %}
-                                    </td>
-                                    <td class="jorn_vuelta fw-bold">
-                                      {% if datos_equipo.get('segundo_enfrentamiento') %}
-                                        J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
-                                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_valladolid'] %}
-                                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_valladolid'] }})
-                                        {% endif %}
-                                      {% endif %}
-                                    </td>
-                                    <td class="resultadoA fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoA'] }}</td>
-                                    <td class="resultadoB fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoB'] }}</td>
-                                    <td class="resultadoAA fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoAA'] }}</td>
-                                    <td class="resultadoBB fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoBB'] }}</td>
-                                    <td class="part1"></td>
-                                    <td class="average"></td>
-                                  </tr>
-                                {% endfor %}
-                              </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+<div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb ms-1">
+      <li class="breadcrumb-item"><a href="/seccion/futbol" class="text-white text-decoration-none">Sección</a></li>
+      <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Real Valladolid</li>
+    </ol>
+  </nav>
+</div>
+<section class="container-lg mb-5">
+  <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+    <div class="carousel-inner">	
+      <div class="carousel-item active"><!--Tabla Calendario Real Valladolid-->
+        <div class="d-flex justify-content-center">
+          <div class="card tabla_equipos" style="width: 80rem;">
+            <div class="card-body">
+              <div class="table-responsive">
+                <h3 class="text-center text-white fw-bold">Calendario</h3>
+                <table class="table table-bordered tabla_equipos tabla_valladolid">
+                  <thead>
+                    <tr class="text-center text-white">
+                      <th></th>
+                      <th colspan="2">Jornadas</th>
+                      <th colspan="4">Resultados</th>
+                      <!--<th colspan=""></th>-->
+                    </tr>
+                    <tr class="text-center text-white">
+                      <th scope="col">Equipos</th>
+                      <th>Ida</th>
+                      <th>Vlt</th>
+                      <th colspan="2">Ida</th>
+                      <th colspan="2">Vlt</th>
+                      <th>Puntos</th>
+                      <!--<th>Vlt</th>-->
+                      <th>Golaverage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for equipo, datos_equipo in tabla_partidos_valladolid.items() %}
+                    <tr class="text-center">
+                      <th class="text-white">{{ equipo }}</th>
+                      <td class="jorn_ida fw-bold">
+                      {% if datos_equipo.get('primer_enfrentamiento') %}
+                        J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
+                        {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_valladolid'] %}
+                          ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_valladolid'] }})
+                        {% endif %}
+                      {% endif %}
+                      </td>
+                      <td class="jorn_vuelta fw-bold">
+                      {% if datos_equipo.get('segundo_enfrentamiento') %}
+                        J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
+                        {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_valladolid'] %}
+                          ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_valladolid'] }})
+                        {% endif %}
+                      {% endif %}
+                      </td>
+                      <td class="resultadoA fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoA'] }}</td>
+                      <td class="resultadoB fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoB'] }}</td>
+                      <td class="resultadoAA fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoAA'] }}</td>
+                      <td class="resultadoBB fw-bold">{{ tabla_partidos_valladolid[equipo]['resultadoBB'] }}</td>
+                      <td class="part1"></td>
+                      <td class="average"></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
               </div>
-              <div class="carousel-item"><!-- Resultados temporada 23/24 -->
-                <div class="d-flex justify-content-center">
-                  <div class="card tabla_equipos" style="width: 70rem;">
-                    <div class="card-body">
-                      <div class="container-fluid">
-                        <div class="row">
-                          {% for goles in nuevos_datos_valladolid %}
-                          <div class="col-lg-4">
-                            <div class="card card_calendario mb-3">
-                              <div class="table-responsive">
-                                <table class="table table-bordered card_calendario tabla_jornadas">
-                                  <thead class="fondo_jornadas">
-                                    <tr class="text-center">
-                                      <td colspan="5" class="text-center text-white fw-bold">{{ goles.nombre }}</td>
-                                    </tr>
-                                  </thead>
-                                  <tbody style="display:none">
-                                    {% for partido in goles.partidos %}
-                                    <tr class="text-center">
-                                      <td class="text-center fw-bold">{{ partido.local }}</td>
-                                      <td class="text-center text-white">{{ partido.resultadoA }}</td>
-                                      <td class="text-center text-white">{{ partido.resultadoB }}</td>
-                                      <td class="text-center fw-bold">{{ partido.visitante }}</td>
-                                    </tr>
-                                  {% endfor %}
-                                  </tbody>
-                                </table>
-                                <div class="d-flex ms-1 my-1">
-                                  <a href="#" onclick="toggleTabla(this, `{{ goles.nombre }}` ) " class="text-decoration-none ps-3 text-white">Ver</a>
-                                </div>
-                              </div> 
-                            </div>
-                          </div>
-                        {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item"><!-- Resultados temporada 23/24 -->
+        <div class="d-flex justify-content-center">
+          <div class="card tabla_equipos" style="width: 80rem;">
+            <div class="card-body">
+              <div class="container-fluid">
+                <div class="row">
+                {% for goles in nuevos_datos_valladolid %}
+                  <div class="col-lg-4">
+                    <div class="card card_calendario mb-3">
+                      <div class="table-responsive">
+                        <table class="table table-bordered card_calendario tabla_jornadas">
+                          <thead class="fondo_jornadas">
+                            <tr class="text-center">
+                              <td colspan="5" class="text-center text-white fw-bold">{{ goles.nombre }}</td>
+                            </tr>
+                          </thead>
+                          <tbody style="display:none">
+                          {% for partido in goles.partidos %}
+                            <tr class="text-center">
+                              <td class="text-center fw-bold">{{ partido.local }}</td>
+                              <td class="text-center text-white">{{ partido.resultadoA }}</td>
+                              <td class="text-center text-white">{{ partido.resultadoB }}</td>
+                              <td class="text-center fw-bold">{{ partido.visitante }}</td>
+                            </tr>
+                          {% endfor %}
+                          </tbody>
+                        </table>
+                        <div class="d-flex ms-1 my-1">
+                          <a href="#" onclick="toggleTabla(this, `{{ goles.nombre }}` ) " class="text-decoration-none ps-3 text-white">Ver</a>
                         </div>
-                      </div>
+                      </div> 
                     </div>
                   </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+          </div>
         </div>
-      </section>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <!-- Bootstrap JavaScript Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
