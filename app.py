@@ -1410,6 +1410,119 @@ def eliminar_jorn_valladolid(id):
     guardar_partidos_en_archivo_valladolid(jornada_a_eliminar)
     # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
     return redirect(url_for('calend_valladolid'))
+# PlayOff Valladolid
+playoff_valladolid = 'json_playoff/playoff_valladolid.json'
+def guardar_playoff_valladolid(datas10):
+    with open(playoff_valladolid, 'w', encoding='utf-8') as file:
+        json.dump(datas10, file, indent=4)
+def obtener_playoff_valladolid():
+    try:
+        with open(playoff_valladolid, 'r', encoding='utf-8') as file:
+            datas10 = json.load(file)
+        return datas10
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'semifinales': [], 'final': []}
+nuevos_enfrentamientos_valladolid = []
+partido_valladolid = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_valladolid/')
+def ver_playoff_valladolid():
+    datas10 = obtener_playoff_valladolid()
+    return render_template('admin/playoff_valladolid.html', datas10=datas10)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_valladolid', methods=['GET', 'POST'])
+def crear_playoff_valladolid():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas10 = obtener_playoff_valladolid()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'semifinales':
+            max_partidos = 4
+        elif eliminatoria == 'final':
+            max_partidos = 2
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas10[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_valladolid(datas10)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_valladolid'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_valladolid.html', datas10=datas10)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_valladolid(datas10):
+    arch_guardar_playoff_valladolid = 'json_playoff/partidos_valladolid.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_valladolid, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas10, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_valladolid/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_valladolid(id):
+    datas10 = obtener_playoff_valladolid()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas10.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_valladolid(datas10)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_valladolid'))
 # Crear la clasificación del Real Valladolid
 def generar_clasificacion_analisis_futbol_valladolid(data3, total_partidos_temporada_valladolid):
     default_dict = defaultdict(lambda: {})
@@ -1468,6 +1581,12 @@ def clasif_analisis_valladolid():
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol/clasi_analis_vallad.html', clasificacion_analisis_valladolid=clasificacion_analisis_valladolid)
+# Ruta para mostrar los playoffs del Real Valladolid
+@app.route('/playoffs_valladolid/')
+def playoffs_valladolid():
+    # Obtener datos de las eliminatorias
+    datas10 = obtener_playoff_valladolid()
+    return render_template('playoffs/valladolid_playoff.html', datas10=datas10)
 # Ruta y creación del calendario individual del Real Valladolid
 @app.route('/equipos_futbol/calendario_vallad')
 def calendarios_valladolid():
@@ -1631,6 +1750,121 @@ def eliminar_jorn_promesas(id):
     guardar_partidos_en_archivo_promesas(jornada_a_eliminar)
     # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
     return redirect(url_for('calend_promesas'))        
+# PlayOff Real Valladolid Promesas
+playoff_promesas = 'json_playoff/playoff_promesas.json'
+def guardar_playoff_promesas(datas11):
+    with open(playoff_promesas, 'w', encoding='utf-8') as file:
+        json.dump(datas11, file, indent=4)
+def obtener_playoff_promesas():
+    try:
+        with open(playoff_promesas, 'r', encoding='utf-8') as file:
+            datas11 = json.load(file)
+        return datas11
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'semifinales': [], 'final': [], 'promocion': []}
+nuevos_enfrentamientos_promesas = []
+partido_promesas = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_promesas/')
+def ver_playoff_promesas():
+    datas11 = obtener_playoff_promesas()
+    return render_template('admin/playoff_promesas.html', datas11=datas11)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_promesas', methods=['GET', 'POST'])
+def crear_playoff_promesas():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas11 = obtener_playoff_promesas()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'semifinales':
+            max_partidos = 10
+        elif eliminatoria == 'final':
+            max_partidos = 5
+        elif eliminatoria == 'promocion':
+            max_partidos = 2
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas11[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_promesas(datas11)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_promesas'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_promesas.html', datas11=datas11)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_promesas(datas11):
+    arch_guardar_playoff_promesas = 'json_playoff/partidos_promesas.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_promesas, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas11, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_promesas/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_promesas(id):
+    datas11 = obtener_playoff_promesas()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas11.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_promesas(datas11)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_promesas'))
 # Crear la clasificación del Promesas
 def generar_clasificacion_analisis_futbol_promesas(data4, total_partidos_temporada_promesas):
     default_dict = defaultdict(lambda: {})
@@ -1689,6 +1923,12 @@ def clasif_analisis_promesas():
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol/clasi_analis_prome.html', clasificacion_analisis_promesas=clasificacion_analisis_promesas)        
+# Ruta para mostrar los playoffs del Real Valladolid Promesas
+@app.route('/playoffs_promesas/')
+def playoffs_promesas():
+    # Obtener datos de las eliminatorias
+    datas11 = obtener_playoff_promesas()
+    return render_template('playoffs/promesas_playoff.html', datas11=datas11)
 # Ruta y creación del calendario individual del Promesas
 @app.route('/equipos_futbol/calendario_promesas')
 def calendarios_promesas():
@@ -5796,6 +6036,392 @@ def copas_caja():
     return render_template('copas/caja_copa.html', dats8=dats8)
 # Fin copa CPLV Caja Rural
 
+# Copa CR El Salvador Fem
+copa_salvador_fem = 'json_copa/copa_salvador_fem.json'
+def guardar_copa_salvador_fem(dats9):
+    with open(copa_salvador_fem, 'w', encoding='utf-8') as file:
+        json.dump(dats9, file, indent=4)
+def obtener_copa_salvador_fem():
+    try:
+        with open(copa_salvador_fem, 'r', encoding='utf-8') as file:
+            dats9 = json.load(file)
+        return dats9
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'grupo1': [],'grupo2': [],'grupo3': [],'grupo4': [], 'semifinales': [],'final': []}
+nuevas_eliminatorias_salvador_fem = []
+duelos_salvador_fem = None
+# Crear formulario para los playoff
+@app.route('/admin/copa_salvador_fem/')
+def ver_copa_salvador_fem():
+    dats9 = obtener_copa_salvador_fem()
+    return render_template('admin/copa_salvador_fem.html', dats9=dats9)
+# Crear formulario para los playoff
+@app.route('/admin/crear_copa_salvador_fem', methods=['GET', 'POST'])
+def crear_copa_salvador_fem():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dats9 = obtener_copa_salvador_fem()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'grupo1':
+            max_partidos = 12
+        elif eliminatoria == 'grupo2':
+            max_partidos = 12
+        elif eliminatoria == 'grupo3':
+            max_partidos = 12
+        elif eliminatoria == 'grupo4':
+            max_partidos = 12            
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1               
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dats9[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_copa_salvador_fem(dats9)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_salvador_fem'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_salvador_fem.html', dats9=dats9)
+# Toma la lista de los playoff y los guarda
+def guardar_copa_en_archivo_salvador_fem(dats9):
+    arch_guardar_copa_salvador_fem = 'json_playoff/copa_salvador_fem.json'
+    # Guardar en el archivo
+    with open(arch_guardar_copa_salvador_fem, 'w', encoding='UTF-8') as archivo:
+        json.dump(dats9, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_copa_salvador_fem/<string:id>', methods=['GET', 'POST'])
+def modificar_copa_salvador_fem(id):
+    dats9 = obtener_copa_salvador_fem()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats9.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_salvador_fem(dats9)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_salvador_fem')) 
+# Ruta para mostrar la copa CPLV Caja Rural
+@app.route('/copa_salvador_fem/')
+def copas_salvador_fem():
+    # Obtener datos de las eliminatorias
+    dats9 = obtener_copa_salvador_fem()
+    return render_template('copas/salvador_fem_copa.html', dats9=dats9)
+# Fin copa CR El Salvador Fem
+
+# Copa CR El Salvador
+copa_salvador = 'json_copa/copa_salvador.json'
+def guardar_copa_salvador(dats10):
+    with open(copa_salvador, 'w', encoding='utf-8') as file:
+        json.dump(dats10, file, indent=4)
+def obtener_copa_salvador():
+    try:
+        with open(copa_salvador, 'r', encoding='utf-8') as file:
+            dats10 = json.load(file)
+        return dats10
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'grupo1': [],'grupo2': [],'grupo3': [],'grupo4': [], 'semifinales': [],'final': []}
+nuevas_eliminatorias_salvador = []
+duelos_salvador = None
+# Crear formulario para los playoff
+@app.route('/admin/copa_salvador/')
+def ver_copa_salvador():
+    dats10 = obtener_copa_salvador()
+    return render_template('admin/copa_salvador.html', dats10=dats10)
+# Crear formulario para los playoff
+@app.route('/admin/crear_copa_salvador', methods=['GET', 'POST'])
+def crear_copa_salvador():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dats10 = obtener_copa_salvador()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'grupo1':
+            max_partidos = 9
+        elif eliminatoria == 'grupo2':
+            max_partidos = 9
+        elif eliminatoria == 'grupo3':
+            max_partidos = 9
+        elif eliminatoria == 'grupo4':
+            max_partidos = 9            
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1               
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dats10[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_copa_salvador(dats10)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_salvador'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_salvador.html', dats10=dats10)
+# Toma la lista de los playoff y los guarda
+def guardar_copa_en_archivo_salvador(dats10):
+    arch_guardar_copa_salvador = 'json_playoff/copa_salvador.json'
+    # Guardar en el archivo
+    with open(arch_guardar_copa_salvador, 'w', encoding='UTF-8') as archivo:
+        json.dump(dats10, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_copa_salvador/<string:id>', methods=['GET', 'POST'])
+def modificar_copa_salvador(id):
+    dats10 = obtener_copa_salvador()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats9.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_salvador(dats10)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_salvador')) 
+# Ruta para mostrar la copa CPLV Caja Rural
+@app.route('/copa_salvador/')
+def copas_salvador():
+    # Obtener datos de las eliminatorias
+    dats10 = obtener_copa_salvador()
+    return render_template('copas/salvador_copa.html', dats10=dats10)
+# Fin copa CR El Salvador
+
+# Copa VRAC
+copa_vrac = 'json_copa/copa_vrac.json'
+def guardar_copa_vrac(dats11):
+    with open(copa_vrac, 'w', encoding='utf-8') as file:
+        json.dump(dats11, file, indent=4)
+def obtener_copa_vrac():
+    try:
+        with open(copa_vrac, 'r', encoding='utf-8') as file:
+            dats11 = json.load(file)
+        return dats11
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'grupo1': [],'grupo2': [],'grupo3': [],'grupo4': [], 'semifinales': [],'final': []}
+nuevas_eliminatorias_vrac = []
+duelos_vrac = None
+# Crear formulario para los playoff
+@app.route('/admin/copa_vrac/')
+def ver_copa_vrac():
+    dats11 = obtener_copa_vrac()
+    return render_template('admin/copa_vrac.html', dats11=dats11)
+# Crear formulario para los playoff
+@app.route('/admin/crear_copa_vrac', methods=['GET', 'POST'])
+def crear_copa_vrac():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dats11 = obtener_copa_vrac()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'grupo1':
+            max_partidos = 9
+        elif eliminatoria == 'grupo2':
+            max_partidos = 9
+        elif eliminatoria == 'grupo3':
+            max_partidos = 9
+        elif eliminatoria == 'grupo4':
+            max_partidos = 9            
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1               
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dats11[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_copa_vrac(dats11)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_vrac'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_vrac.html', dats11=dats11)
+# Toma la lista de los playoff y los guarda
+def guardar_copa_en_archivo_vrac(dats11):
+    arch_guardar_copa_vrac = 'json_playoff/copa_vrac.json'
+    # Guardar en el archivo
+    with open(arch_guardar_copa_vrac, 'w', encoding='UTF-8') as archivo:
+        json.dump(dats11, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_copa_vrac/<string:id>', methods=['GET', 'POST'])
+def modificar_copa_vrac(id):
+    dats11 = obtener_copa_vrac()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats11.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_vrac(dats11)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_vrac')) 
+# Ruta para mostrar la copa CPLV Caja Rural
+@app.route('/copa_vrac/')
+def copas_vrac():
+    # Obtener datos de las eliminatorias
+    dats11 = obtener_copa_vrac()
+    return render_template('copas/vrac_copa.html', dats11=dats11)
+# Fin copa VRAC
 
 
 

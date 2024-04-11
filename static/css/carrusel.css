@@ -54,12 +54,12 @@
     .carousel-item{
         display: block;
         margin-right: 0;
-        flex: 0 0 calc(100%/7)
+        flex: 0 0 calc(100%/6.5)
     }
 }
 
 .carousel-inner{
-    padding: 0.3rem;
+    padding: 0.1rem;
 }
 .card{
     /*background-color: #e9f2ff;*/
