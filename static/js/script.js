@@ -1,4 +1,4 @@
-/*const multipleItemCarousel=document.querySelector('#carouselExampleControls')
+const multipleItemCarousel=document.querySelector('#carouselExampleControls')
 if(window.matchMedia("(min-width:320px)").matches){
     const carousel = new bootstrap.Carousel(multipleItemCarousel,
     {
@@ -25,7 +25,7 @@ if(window.matchMedia("(min-width:320px)").matches){
 }else{
     console.error('Elemento no encontrado con el ID carouselExampleControls');
     $(multipleItemCarousel).addClass('slide');
-}*/
+}
 document.addEventListener("DOMContentLoaded", function() {
 const multipleItemCarousel = document.querySelector('#carouselExampleControls');
 
