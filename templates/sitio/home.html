@@ -329,23 +329,8 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-  <!--<script src="/static/js/script.js"></script>-->
+  <script src="/static/js/script.js"></script>
   <script src="/static/js/leer_mas.js"></script>
-  <script>
-    // Detecta gestos táctiles y mueve el carrusel
-    $(document).ready(function() {
-      var carousel = document.getElementById('carouselExampleControls');
-      var hammer = new Hammer(carousel);
-  
-      hammer.on('swipeleft', function() {
-        $('#carouselExampleControls').carousel('next');
-      });
-  
-      hammer.on('swiperight', function() {
-        $('#carouselExampleControls').carousel('prev');
-      });
-    });
-  </script>
   
   
 </body>
