@@ -35,8 +35,8 @@
             {% for partido in dats5.final.partidos %}
               <tr>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold">{{ partido.resultadoB }}</td>
+                <td class="text-center text-white fw-bold fs-2">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-2">{{ partido.resultadoB }}</td>
                 <td class="text-center text-copa fw-bold fs-2 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}

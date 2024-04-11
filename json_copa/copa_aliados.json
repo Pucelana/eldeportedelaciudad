@@ -28,6 +28,32 @@
             }
         ]
     },
-    "semifinales": [],
-    "final": []
+    "semifinales": {
+        "id": "54cae3ad-baab-4a83-96c7-01a2fc020157",
+        "partidos": [
+            {
+                "local": "CD Ilunion",
+                "resultadoA": "94",
+                "resultadoB": "73",
+                "visitante": "Ucam Murcia BSR"
+            },
+            {
+                "local": "Bidaideak Bilbao BSR",
+                "resultadoA": "69",
+                "resultadoB": "88",
+                "visitante": "BSR Amiab Albacete"
+            }
+        ]
+    },
+    "final": {
+        "id": "ab71826d-5090-431b-82fc-18f3daf8fb53",
+        "partidos": [
+            {
+                "local": "CD Ilunion",
+                "resultadoA": "77",
+                "resultadoB": "71",
+                "visitante": "BSR Amiab Albacete"
+            }
+        ]
+    }
 }

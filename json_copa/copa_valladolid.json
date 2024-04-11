@@ -1,6 +1,6 @@
 {
     "ronda1": {
-        "id": "1a4e4f0e-4b47-4afc-9025-102e94af0970",
+        "id": "842f3289-a72a-46d5-aee3-c780a965e258",
         "partidos": [
             {
                 "local": "Mensajero",
@@ -21,10 +21,70 @@
                 "visitante": "Castell\u00f3n"
             },
             {
+                "local": "Lorca Deportiva",
+                "resultadoA": "0",
+                "resultadoB": "4",
+                "visitante": "Eibar"
+            },
+            {
+                "local": "Manacor",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "visitante": "Las Palmas"
+            },
+            {
+                "local": "Talavera",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Almer\u00eda"
+            },
+            {
+                "local": "Atl\u00e9tico Lugones",
+                "resultadoA": "0",
+                "resultadoB": "6",
+                "visitante": "Rayo Vallecano"
+            },
+            {
                 "local": "Azuaga",
                 "resultadoA": "0 (2)",
                 "resultadoB": "0 (3)",
-                "visitante": "FC Cartagena"
+                "visitante": "Cartagena"
+            },
+            {
+                "local": "Badalona",
+                "resultadoA": "0 (2)",
+                "resultadoB": "0 (4)",
+                "visitante": "C\u00e1diz"
+            },
+            {
+                "local": "Barbastro",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Ponferradina"
+            },
+            {
+                "local": "Compostela",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Tenerife"
+            },
+            {
+                "local": "Llerenense",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Legan\u00e9s"
+            },
+            {
+                "local": "Navalcarnero",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Alcorc\u00f3n"
+            },
+            {
+                "local": "N\u00e1xara",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "UD Melilla"
             },
             {
                 "local": "SCR Pe\u00f1a Deportiva",
@@ -33,483 +93,641 @@
                 "visitante": "Real Valladolid"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "San Roque de Lepe",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Girona"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "UCAM",
+                "resultadoA": "0 (6)",
+                "resultadoB": "0 (7)",
+                "visitante": "Linares Deportivo"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Quintanar",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "visitante": "Sevilla"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Tur\u00e9gano",
+                "resultadoA": "0",
+                "resultadoB": "4",
+                "visitante": "Celta"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Atl\u00e9tico Astorga",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "FC Andorra"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Club Atl\u00e9tico Antoniano",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Lugo"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Valle Eg\u00fc\u00e9s",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Teruel"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Real Avil\u00e9s",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Arenteiro"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Real J\u00e1en",
+                "resultadoA": "2",
+                "resultadoB": "3",
+                "visitante": "Eldense"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Covadonga",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Deportivo de la Coru\u00f1a"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Ursaria",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Cay\u00f3n"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Arandina",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Murcia"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Guijuelo",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "visitante": "Sporting"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Manchego",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Antequera"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Zamora FC",
+                "resultadoA": "2 (4)",
+                "resultadoB": "2 (3)",
+                "visitante": "Racing"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Barakaldo",
+                "resultadoA": "0 (2)",
+                "resultadoB": "0 (4)",
+                "visitante": "M\u00e1laga"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "CE Europa de Barcelona",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Elche"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Gernika",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Unionistas"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Orihuela",
+                "resultadoA": "0 (6)",
+                "resultadoB": "0 (5)",
+                "visitante": "Gimn\u00e1stic"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Terrassa",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Albacete"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Tudelano",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Recreativo de Huelva"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Utebo",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Mirand\u00e9s"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Yeclano Deportivo",
+                "resultadoA": "2",
+                "resultadoB": "0",
+                "visitante": "Atl\u00e9tico Sanluque\u00f1o"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Boiro",
+                "resultadoA": "0",
+                "resultadoB": "4",
+                "visitante": "Mallorca"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Bu\u00f1ol",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "R.Sociedad"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Tardienta",
+                "resultadoA": "0",
+                "resultadoB": "12",
+                "visitante": "Getafe"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "\u00c1guilas",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Huesca"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Andratx",
+                "resultadoA": "3",
+                "resultadoB": "2",
+                "visitante": "Tarazona"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Manresa",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Oviedo"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Marbella",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Racing Ferrol"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Hern\u00e1n Cort\u00e9s",
+                "resultadoA": "1",
+                "resultadoB": "12",
+                "visitante": "Betis"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Rub\u00ed",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Athletic de Bilbao"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Arosa",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "visitante": "Granada"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Chiclana",
+                "resultadoA": "0",
+                "resultadoB": "5",
+                "visitante": "Villarreal"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "UD Logro\u00f1es",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Valencia"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "H\u00e9rcules",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Burgos"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Villanovense",
+                "resultadoA": "2",
+                "resultadoB": "1",
+                "visitante": "Ibiza"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Deportivo Murcia",
+                "resultadoA": "0",
+                "resultadoB": "10",
+                "visitante": "Alav\u00e9s"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Segoviana",
+                "resultadoA": "3",
+                "resultadoB": "4",
+                "visitante": "Sestao"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Atzeneta",
+                "resultadoA": "2",
+                "resultadoB": "1",
+                "visitante": "Zaragoza"
             }
         ]
     },
     "ronda2": {
-        "id": "80aff660-6779-4f6c-a3f0-fee126e653a1",
+        "id": "a3ec989d-86ba-43d7-871a-5f50becdd8df",
         "partidos": [
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Zamora FC",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Villarreal"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Atzeneta",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Getafe"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Arosa",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Valencia"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Castell\u00f3n",
+                "resultadoA": "2",
+                "resultadoB": "1",
+                "visitante": "Oviedo"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Espanyol",
+                "resultadoA": "3",
+                "resultadoB": "1",
+                "visitante": "Real Valladolid"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Alcorc\u00f3n",
+                "resultadoA": "0 (4)",
+                "resultadoB": "0 (5)",
+                "visitante": "FC Cartagena"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Antequera",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Huesca"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Barbastro",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Almer\u00eda"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Deportivo de la Coru\u00f1a",
+                "resultadoA": "2",
+                "resultadoB": "3",
+                "visitante": "Tenerife"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Yeclano Deportivo",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Rayo Vallecano"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Andratx",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "R.Sociedad"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Arenteiro",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Burgos"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Terrassa",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Alav\u00e9s"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Unionistas",
+                "resultadoA": "2",
+                "resultadoB": "0",
+                "visitante": "Sporting"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "M\u00e1laga",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Eldense"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Levante",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Amorebieta"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Lugo",
+                "resultadoA": "2",
+                "resultadoB": "0",
+                "visitante": "Mirand\u00e9s"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Valle Eg\u00fc\u00e9s",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "visitante": "Mallorca"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Villanovense",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Betis"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Atl\u00e9tico Astorga",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Sevilla"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Tudelano",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Las Palmas"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Arandina",
+                "resultadoA": "2",
+                "resultadoB": "1",
+                "visitante": "C\u00e1diz"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Linares Deportivo",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Elche"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Racing Ferrol",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Legan\u00e9s"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "UD Melilla",
+                "resultadoA": "1 (1)",
+                "resultadoB": "1 (4)",
+                "visitante": "Eibar"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Cay\u00f3n",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "visitante": "Athletic de Bilbao"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Orihuela",
+                "resultadoA": "2",
+                "resultadoB": "5",
+                "visitante": "Girona"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Sestao",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Celta"
             }
         ]
     },
-    "ronda3": [],
-    "octavos": [],
-    "cuartos": [],
-    "semifinales": [],
-    "final": []
+    "ronda3": {
+        "id": "c56139ea-dc8b-4e07-8c26-57f1355025b9",
+        "partidos": [
+            {
+                "local": "Lugo",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Atl\u00e9tico de Madrid"
+            },
+            {
+                "local": "Espanyol",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Getafe"
+            },
+            {
+                "local": "Elche",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Girona"
+            },
+            {
+                "local": "Huesca",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "Rayo Vallecano"
+            },
+            {
+                "local": "Alav\u00e9s",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Betis"
+            },
+            {
+                "local": "Arandina",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Real Madrid"
+            },
+            {
+                "local": "Amorebieta",
+                "resultadoA": "2",
+                "resultadoB": "4",
+                "visitante": "Celta"
+            },
+            {
+                "local": "Burgos",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "visitante": "Mallorca"
+            },
+            {
+                "local": "Castell\u00f3n",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Osasuna"
+            },
+            {
+                "local": "Racing Ferrol",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Sevilla"
+            },
+            {
+                "local": "Eibar",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "visitante": "Athletic de Bilbao"
+            },
+            {
+                "local": "FC Cartagena",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "Valencia"
+            },
+            {
+                "local": "Barbastro",
+                "resultadoA": "2",
+                "resultadoB": "3",
+                "visitante": "Barcelona"
+            },
+            {
+                "local": "M\u00e1laga",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "R.Sociedad"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "2",
+                "resultadoB": "0",
+                "visitante": "Las Palmas"
+            },
+            {
+                "local": "Unionistas",
+                "resultadoA": "1 (7)",
+                "resultadoB": "1 (6)",
+                "visitante": "Villarreal"
+            }
+        ]
+    },
+    "octavos": {
+        "id": "553eb046-ac4b-4f7f-9bd4-77b7afff004a",
+        "partidos": [
+            {
+                "local": "Getafe",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Sevilla"
+            },
+            {
+                "local": "Athletic de Bilbao",
+                "resultadoA": "2",
+                "resultadoB": "0",
+                "visitante": "Alav\u00e9s"
+            },
+            {
+                "local": "Tenerife",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Mallorca"
+            },
+            {
+                "local": "Valencia",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Celta"
+            },
+            {
+                "local": "Osasuna",
+                "resultadoA": "0",
+                "resultadoB": "2",
+                "visitante": "R.Sociedad"
+            },
+            {
+                "local": "Girona",
+                "resultadoA": "3",
+                "resultadoB": "1",
+                "visitante": "Rayo Vallecano"
+            },
+            {
+                "local": "Unionistas",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "visitante": "Barcelona"
+            },
+            {
+                "local": "Atl\u00e9tico de Madrid",
+                "resultadoA": "4",
+                "resultadoB": "2",
+                "visitante": "Real Madrid"
+            }
+        ]
+    },
+    "cuartos": {
+        "id": "44398e0b-e71e-4f7e-a73d-166e726eb826",
+        "partidos": [
+            {
+                "local": "Celta",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "visitante": "R.Sociedad"
+            },
+            {
+                "local": "Mallorca",
+                "resultadoA": "3",
+                "resultadoB": "2",
+                "visitante": "Girona"
+            },
+            {
+                "local": "Athletic de Bilbao",
+                "resultadoA": "4",
+                "resultadoB": "2",
+                "visitante": "Barcelona"
+            },
+            {
+                "local": "Atl\u00e9tico de Madrid",
+                "resultadoA": "1",
+                "resultadoB": "0",
+                "visitante": "Sevilla"
+            }
+        ]
+    },
+    "semis": {
+        "id": "cb240ae6-d678-4241-9da2-a54a5a21de5c",
+        "partidos": [
+            {
+                "local": "Mallorca",
+                "resultadoA": "0",
+                "resultadoB": "0",
+                "visitante": "R.Sociedad"
+            },
+            {
+                "local": "Atl\u00e9tico Madrid",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Athletic de Bilbao"
+            },
+            {
+                "local": "R.Sociedad",
+                "resultadoA": "1 (4)",
+                "resultadoB": "1 (5)",
+                "visitante": "Mallorca"
+            },
+            {
+                "local": "Athletic de Bilbao",
+                "resultadoA": "3",
+                "resultadoB": "0",
+                "visitante": "Atl\u00e9tico de Madrid"
+            }
+        ]
+    },
+    "final": {
+        "id": "beb3d204-1cfb-42f4-8fff-47bea61b8e58",
+        "partidos": [
+            {
+                "local": "Athletic de Bilbao",
+                "resultadoA": "1 (4)",
+                "resultadoB": "1 (2)",
+                "visitante": "Mallorca"
+            }
+        ]
+    }
 }

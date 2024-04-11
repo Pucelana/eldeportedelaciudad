@@ -1,12 +1,12 @@
 {
     "final": {
-        "id": "9279d2a9-278f-4e05-b2c2-faccb5a87d77",
+        "id": "61bde958-2179-49ac-a6d2-0ecef062e3e5",
         "partidos": [
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": "Movistar Estudiantes",
+                "resultadoA": "80",
+                "resultadoB": "72",
+                "visitante": "Leyma Coru\u00f1a"
             }
         ]
     }

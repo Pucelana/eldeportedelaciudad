@@ -2912,6 +2912,117 @@ def eliminar_jorn_recoletas(id):
     jornada_a_eliminar = [j for j in data8 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
     guardar_partidos_en_archivo_recoletas(jornada_a_eliminar)
     return redirect(url_for('calend_recoletas'))
+# PlayOff Atlético Valladolid
+playoff_recoletas = 'json_playoff/playoff_recoletas.json'
+def guardar_playoff_recoletas(datas12):
+    with open(playoff_recoletas, 'w', encoding='utf-8') as file:
+        json.dump(datas12, file, indent=4)
+def obtener_playoff_recoletas():
+    try:
+        with open(playoff_recoletas, 'r', encoding='utf-8') as file:
+            datas12 = json.load(file)
+        return datas12
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'promocion': []}
+nuevos_enfrentamientos_recoletas = []
+partido_recoletas = None
+# Crear formulario para los playoff
+@app.route('/admin/playoff_recoletas/')
+def ver_playoff_recoletas():
+    datas12 = obtener_playoff_recoletas()
+    return render_template('admin/playoff_recoletas.html', datas12=datas12)
+# Crear formulario para los playoff
+@app.route('/admin/crear_playoff_recoletas', methods=['GET', 'POST'])
+def crear_playoff_recoletas():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    datas12 = obtener_playoff_recoletas()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'promocion':
+            max_partidos = 1
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        datas12[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_playoff_recoletas(datas12)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_recoletas'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/playoff_recoletas.html', datas12=datas12)
+# Toma la lista de los playoff y los guarda
+def guardar_playoff_en_archivo_recoletas(datas12):
+    arch_guardar_playoff_recoletas = 'json_playoff/partidos_recoletas.json'
+    # Guardar en el archivo
+    with open(arch_guardar_playoff_recoletas, 'w', encoding='UTF-8') as archivo:
+        json.dump(datas12, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_recoletas/<string:id>', methods=['GET', 'POST'])
+def modificar_playoff_recoletas(id):
+    datas12 = obtener_playoff_recoletas()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in datas12.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_playoff_recoletas(datas12)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_playoff_recoletas'))
 # Crear la clasificación del Atlético Valladolid
 def generar_clasificacion_analisis_balonmano_recoletas(data8, total_partidos_temporada_recoletas):
     default_dict = defaultdict(lambda: {})
@@ -2967,6 +3078,12 @@ def clasif_analisis_recoletas():
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_recoletas = sorted(clasificacion_analisis_recoletas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
     return render_template('equipos_balonmano/clasi_analis_recoletas.html', clasificacion_analisis_recoletas=clasificacion_analisis_recoletas)
+# Ruta para mostrar los playoffs del Atlético Valladolid
+@app.route('/playoffs_recoletas/')
+def playoffs_recoletas():
+    # Obtener datos de las eliminatorias
+    datas12 = obtener_playoff_recoletas()
+    return render_template('playoffs/recoletas_playoff.html', datas12=datas12)
 # Ruta y creación del calendario individual del Aula Valladolid
 @app.route('/equipos_balonmano/calendario_recoletas')
 def calendarios_recoletas():
@@ -5039,7 +5156,7 @@ def obtener_copa_valladolid():
             dats1 = json.load(file)
         return dats1
     except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return {'ronda1': [], 'ronda2': [],'ronda3': [], 'octavos': [],'cuartos': [], 'semifinales': [], 'final': []}
+        return {'ronda1': [], 'ronda2': [],'ronda3': [], 'octavos': [],'cuartos': [], 'semis': [], 'final': []}
 nuevas_eliminatorias_valladolid = []
 duelos_valladolid = None
 # Crear formulario para los playoff
@@ -5066,8 +5183,8 @@ def crear_copa_valladolid():
             max_partidos = 8
         elif eliminatoria == 'cuartos':
             max_partidos = 4
-        elif eliminatoria == 'semifinal':
-            max_partidos = 2
+        elif eliminatoria == 'semis':
+            max_partidos = 4
         elif eliminatoria == 'final':
             max_partidos = 1                
         else:
@@ -5673,12 +5790,12 @@ def obtener_copa_parquesol():
         return {'ronda1': [],'ronda2': [],'ronda3': [],'octavos': [],'cuartos': [],'semifinales': [],'final': []}
 nuevas_eliminatorias_parquesol = []
 duelos_parquesol = None
-# Crear formulario para los playoff
+# Crear formulario para la copa
 @app.route('/admin/copa_parquesol/')
 def ver_copa_parquesol():
     dats6 = obtener_copa_parquesol()
     return render_template('admin/copa_parquesol.html', dats6=dats6)
-# Crear formulario para los playoff
+# Crear formulario para la copa
 @app.route('/admin/crear_copa_parquesol', methods=['GET', 'POST'])
 def crear_copa_parquesol():
     # Obtener los enfrentamientos actuales del archivo JSON
@@ -5698,7 +5815,7 @@ def crear_copa_parquesol():
         elif eliminatoria == 'cuartos':
             max_partidos = 4 
         elif eliminatoria == 'semifinales':
-            max_partidos = 2
+            max_partidos = 4
         elif eliminatoria == 'final':
             max_partidos = 1                                        
         else:
@@ -5741,12 +5858,12 @@ def crear_copa_parquesol():
          # Agregar los nuevos enfrentamientos a la lista correspondiente
         nuevos_enfrentamientos.clear()  
         # Guardar la lista de partidos en el archivo JSON
-        guardar_copa_parquesol(dats5)
+        guardar_copa_parquesol(dats6)
         # Redireccionar a la página de visualización del playoff
         return redirect(url_for('ver_copa_parquesol'))
     # Si no es una solicitud POST, renderizar el formulario
     return render_template('admin/copa_parquesol.html', dats6=dats6)
-# Toma la lista de los playoff y los guarda
+# Toma la lista de la copa y los guarda
 def guardar_copa_en_archivo_parquesol(dats6):
     arch_guardar_copa_parquesol = 'json_playoff/copa_parquesol.json'
     # Guardar en el archivo
@@ -5780,7 +5897,7 @@ def modificar_copa_parquesol(id):
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
         guardar_copa_parquesol(dats6)       
-        # Redireccionar a la página de visualización del playoff
+        # Redireccionar a la página de visualización de copa
         return redirect(url_for('ver_copa_parquesol')) 
 # Ruta para mostrar la copa CD Parquesol
 @app.route('/copa_parquesol/')
@@ -5931,7 +6048,7 @@ duelos_caja = None
 @app.route('/admin/copa_caja/')
 def ver_copa_caja():
     dats8 = obtener_copa_caja()
-    return render_template('admin/copa_caja.html', dats7=dats7)
+    return render_template('admin/copa_caja.html', dats8=dats8)
 # Crear formulario para los playoff
 @app.route('/admin/crear_copa_caja', methods=['GET', 'POST'])
 def crear_copa_caja():

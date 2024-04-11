@@ -35,7 +35,7 @@
               <option value="ronda3">3ª Ronda</option>
               <option value="octavos">Octavos de Final</option>
               <option value="cuartos">Cuartos de Final</option>
-              <option value="semifinales">Semifinales</option>
+              <option value="semis">Semifinales</option>
               <option value="final">Final</option>
             </select>
             <div id="partidosContainer" class="container-lg col-lg-12"></div>
@@ -125,7 +125,7 @@
       <h4 class="text-center">Semifinales</h4>
       <table class="table border-secondary">
         <tbody>
-          {% for enfrentamiento in dats1.semifinales.partidos %}
+          {% for enfrentamiento in dats1.semis.partidos %}
           <tr>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
@@ -135,7 +135,7 @@
           {% endfor %}
         </tbody>
       </table>
-      <button type="submit" id="btn-modificar{{ dats1.semifinales.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ dats1.semifinales.id }}">Modificar</button>
+      <button type="submit" id="btn-modificar{{ dats1.semis.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ dats1.semis.id }}">Modificar</button>
       <h4 class="text-center">Final</h4>
       <table class="table border-secondary">
         <tbody>
@@ -328,7 +328,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal{{ dats1.semifinales.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Semifinales -->
+    <div class="modal fade" id="modal{{ dats1.semis.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Semifinales -->
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -336,8 +336,8 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                {% for partido in dats1.semifinales.partidos %}
-                  <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats1.semifinales.id }}">
+                {% for partido in dats1.semis.partidos %}
+                  <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats1.semis.id }}">
                       <!-- Campos de entrada para editar el partido -->
                       <div class="mb-3">
                           <label for="local{{ loop.index0 }}">Local:</label>
@@ -431,8 +431,8 @@
                 numPartidos = 8;
             } else if (selectedOption === "cuartos") {
                 numPartidos = 4;
-            } else if (selectedOption === "semifinal") {
-                numPartidos = 2;
+            } else if (selectedOption === "semis") {
+                numPartidos = 4;
             } else if (selectedOption === "final") {
                 numPartidos = 1;
             }

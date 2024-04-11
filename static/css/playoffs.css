@@ -28,7 +28,7 @@
 }
 .tabla_copa{
     background-color: transparent;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
     border: 1px solid #ddba49;
     box-shadow: 6px 5px 5px 5px rgb(255, 245, 205);
 }
