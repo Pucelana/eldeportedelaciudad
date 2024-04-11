@@ -87,7 +87,7 @@
                 "visitante": "UD Melilla"
             },
             {
-                "local": "SCR Pe\u00f1a Deportiva",
+                "local": "SRC Pe\u00f1a Deportiva",
                 "resultadoA": "1",
                 "resultadoB": "5",
                 "visitante": "Real Valladolid"
@@ -123,12 +123,6 @@
                 "visitante": "FC Andorra"
             },
             {
-                "local": "Club Atl\u00e9tico Antoniano",
-                "resultadoA": "0",
-                "resultadoB": "1",
-                "visitante": "Lugo"
-            },
-            {
                 "local": "Valle Eg\u00fc\u00e9s",
                 "resultadoA": "1",
                 "resultadoB": "0",
@@ -141,7 +135,7 @@
                 "visitante": "Arenteiro"
             },
             {
-                "local": "Real J\u00e1en",
+                "local": "Real Ja\u00e9n",
                 "resultadoA": "2",
                 "resultadoB": "3",
                 "visitante": "Eldense"
@@ -282,7 +276,7 @@
                 "local": "Rub\u00ed",
                 "resultadoA": "1",
                 "resultadoB": "2",
-                "visitante": "Athletic de Bilbao"
+                "visitante": "Athletic Club"
             },
             {
                 "local": "Arosa",
@@ -331,6 +325,12 @@
                 "resultadoA": "2",
                 "resultadoB": "1",
                 "visitante": "Zaragoza"
+            },
+            {
+                "local": "Club Atl\u00e9tico Antoniano",
+                "resultadoA": "0",
+                "resultadoB": "1",
+                "visitante": "Lugo"
             }
         ]
     },
