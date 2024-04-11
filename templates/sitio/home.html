@@ -333,27 +333,28 @@
   <script>
     // Detecta gestos táctiles y mueve el carrusel
     $(document).ready(function() {
-      var initialX = null;
+      var touchStartX = null;
   
       $('#carouselExampleControls').on('touchstart', function(event) {
-        initialX = event.touches[0].clientX;
+        var touch = event.touches[0];
+        touchStartX = touch.clientX;
       });
   
       $('#carouselExampleControls').on('touchmove', function(event) {
-        if (!initialX) {
+        if (!touchStartX) {
           return;
         }
   
-        var currentX = event.touches[0].clientX;
-        var diffX = initialX - currentX;
+        var touch = event.touches[0];
+        var touchEndX = touch.clientX;
   
-        if (diffX > 0) {
+        if (touchEndX < touchStartX) {
           $(this).carousel('next');
-        } else {
+        } else if (touchEndX > touchStartX) {
           $(this).carousel('prev');
         }
   
-        initialX = null;
+        touchStartX = null;
       });
     });
   </script>
