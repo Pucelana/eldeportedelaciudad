@@ -243,7 +243,7 @@
   </header>
   <!--Carrusel-->
 <section id="valladolid" class="container-fluid">
-  <div id="carouselExampleControls" class="carousel mt-3" data-bs-ride="carousel" data-bs-touch="true">
+  <div id="carouselExampleControls" class="carousel mt-3" data-bs-ride="carousel">
     <div class="carousel-inner">
       {% for date in nuevos_resultados %}
       <div class="d-flex">
@@ -331,9 +331,32 @@
   <script src="/static/js/script.js"></script>
   <script src="/static/js/leer_mas.js"></script>
   <script>
-     $('#carouselExampleControls').carousel({
-    touch: true
+    // Detecta gestos táctiles y mueve el carrusel
+    $(document).ready(function() {
+      var initialX = null;
+  
+      $('#carouselExampleControls').on('touchstart', function(event) {
+        initialX = event.touches[0].clientX;
+      });
+  
+      $('#carouselExampleControls').on('touchmove', function(event) {
+        if (!initialX) {
+          return;
+        }
+  
+        var currentX = event.touches[0].clientX;
+        var diffX = initialX - currentX;
+  
+        if (diffX > 0) {
+          $(this).carousel('next');
+        } else {
+          $(this).carousel('prev');
+        }
+  
+        initialX = null;
+      });
     });
-</script>
+  </script>
+  
 </body>
 </html>
