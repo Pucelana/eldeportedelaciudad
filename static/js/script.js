@@ -26,6 +26,7 @@ if(window.matchMedia("(min-width:320px)").matches){
     console.error('Elemento no encontrado con el ID carouselExampleControls');
     $(multipleItemCarousel).addClass('slide');
 }*/
+document.addEventListener("DOMContentLoaded", function() {
 const multipleItemCarousel = document.querySelector('#carouselExampleControls');
 
 if (window.matchMedia("(min-width:320px)").matches) {
@@ -56,4 +57,5 @@ if (window.matchMedia("(min-width:320px)").matches) {
         carousel.prev(); // Retroceder al elemento anterior del carrusel
     });
 }
+});
 
