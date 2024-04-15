@@ -1,12 +1,14 @@
 {
     "final": {
-        "id": "61bde958-2179-49ac-a6d2-0ecef062e3e5",
+        "id": "15508516-f5b4-4563-81c8-98d0ab3c1c1a",
         "partidos": [
             {
                 "local": "Movistar Estudiantes",
                 "resultadoA": "80",
                 "resultadoB": "72",
-                "visitante": "Leyma Coru\u00f1a"
+                "visitante": "Leyma Coru\u00f1a",
+                "fecha": "28 Ene.",
+                "hora": ""
             }
         ]
     }

@@ -1,105 +1,107 @@
 {
     "cuartos": {
-        "id": "4ac7b316-ffb1-4a98-a7f8-f2bb060e4f23",
+        "id": "c00ea710-d824-4e75-babf-8a531ecd5f81",
         "partidos": [
             {
-                "local": "UEMC Real Valladolid",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Tizona Burgos",
-                "fecha": "01 Jun.",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": ""
             }
         ]
     },
-    "semifinales": [],
-    "final": []
+    "semifinales": {
+        "id": "0323ad32-e126-4793-ac77-c197812f09b4",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    "final": {
+        "id": "199f02b8-1775-47fe-9e18-89921d60e854",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    }
 }

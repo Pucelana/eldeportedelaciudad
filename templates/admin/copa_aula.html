@@ -32,7 +32,6 @@
             <select id="eliminatoria" name="eliminatoria">
               <option value="fase1">1ª Fase</option>
               <option value="fase2">2ª Fase</option>
-              <option value="octavos">Octavos de Final</option>
               <option value="cuartos">Cuartos de Final</option>
               <option value="semifinales">Semifinales</option>
               <option value="final">Final</option>
@@ -56,6 +55,8 @@
         <tbody>
           {% for enfrentamiento in dats2.fase1.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -70,6 +71,8 @@
         <tbody>
           {% for enfrentamiento in dats2.fase2.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -79,25 +82,13 @@
         </tbody>
       </table>
       <button type="submit" id="btn-modificar{{ dats2.fase2.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ dats2.fase2.id }}">Modificar</button>
-      <h4 class="text-center">Octavos de Final</h4>
-      <table class="table border-secondary">
-        <tbody>
-          {% for enfrentamiento in dats2.octavos.partidos %}
-          <tr>
-            <td>{{ enfrentamiento.local }}</td>
-            <td>{{ enfrentamiento.resultadoA }}</td>
-            <td>{{ enfrentamiento.resultadoB }}</td>
-            <td>{{ enfrentamiento.visitante }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      <button type="submit" id="btn-modificar{{ dats2.octavos.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ dats2.octavos.id }}">Modificar</button>
       <h4 class="text-center">Cuartos de Final</h4>
       <table class="table border-secondary">
         <tbody>
           {% for enfrentamiento in dats2.cuartos.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -112,6 +103,8 @@
         <tbody>
           {% for enfrentamiento in dats2.semifinales.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -126,6 +119,8 @@
         <tbody>
           {% for enfrentamiento in dats2.final.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -149,6 +144,14 @@
                     <form method="POST" action="/modificar_eliminatoria_copa_aula/{{ dats2.fase1.id }}">
                       {% for partido in dats2.fase1.partidos %}
                         <!-- Campos de entrada para editar el partido -->
+                        <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
                         <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
@@ -185,40 +188,13 @@
                       {% for partido in dats2.fase2.partidos %}
                         <!-- Campos de entrada para editar el partido -->
                         <div class="mb-3">
-                            <label for="local{{ loop.index0 }}">Local:</label>
-                            <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
                         </div>
                         <div class="mb-3">
-                            <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
-                            <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
                         </div>
-                        <div class="mb-3">
-                            <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
-                            <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="visitante{{ loop.index0 }}">Visitante:</label>
-                            <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
-                        </div> 
-                        {% endfor %}
-                        <!-- Botón de enviar para enviar los datos modificados -->
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="modal{{ dats2.octavos.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Cuartos -->
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar 1ª Ronda</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="/modificar_eliminatoria_copa_aula/{{ dats2.octavos.id }}">
-                      {% for partido in dats2.octavos.partidos %}
-                        <!-- Campos de entrada para editar el partido -->
                         <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
@@ -251,9 +227,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats2.fase1.id }}">
+                    <form method="POST" action="/modificar_eliminatoria_copa_aula/{{ dats2.fase1.id }}">
                       {% for partido in dats2.cuartos.partidos %}
                         <!-- Campos de entrada para editar el partido -->
+                        <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
                         <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
@@ -278,76 +262,92 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal{{ dats2.semifinales.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Semifinales -->
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Editar Semifinales</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                {% for partido in dats2.semifinales.partidos %}
-                  <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats2.semifinales.id }}">
-                      <!-- Campos de entrada para editar el partido -->
-                      <div class="mb-3">
-                          <label for="local{{ loop.index0 }}">Local:</label>
-                          <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
-                      </div>
-                      <div class="mb-3">
-                          <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
-                          <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
-                      </div>
-                      <div class="mb-3">
-                          <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
-                          <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
-                      </div>
-                      <div class="mb-3">
-                          <label for="visitante{{ loop.index0 }}">Visitante:</label>
-                          <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
-                      </div>
-                  </form>
-                  {% endfor %}
-                  <!-- Botón de enviar para enviar los datos modificados -->
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="modal fade" id="modal{{ dats2.final.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para la Final -->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Final</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              {% for partido in dats2.final.partidos %}
-                <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats2.final.id }}">
-                    <!-- Campos de entrada para editar el partido -->
-                    <div class="mb-3">
-                        <label for="local{{ loop.index0 }}">Local:</label>
-                        <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
-                        <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
-                        <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="visitante{{ loop.index0 }}">Visitante:</label>
-                        <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
-                    </div>
-                </form>
-                {% endfor %}
-                <!-- Botón de enviar para enviar los datos modificados -->
-                <button type="submit" class="btn btn-primary">Guardar</button>
+    <div class="modal fade" id="modal{{ dats2.semifinales.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Cuartos -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar 1ª Ronda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="/modificar_eliminatoria_copa_aula/{{ dats2.semifinales.id }}">
+                      {% for partido in dats2.semifinales.partidos %}
+                        <!-- Campos de entrada para editar el partido -->
+                        <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="local{{ loop.index0 }}">Local:</label>
+                            <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
+                            <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
+                            <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="visitante{{ loop.index0 }}">Visitante:</label>
+                            <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
+                        </div> 
+                        {% endfor %}
+                        <!-- Botón de enviar para enviar los datos modificados -->
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="modal fade" id="modal{{ dats2.final.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Cuartos -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar 1ª Ronda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="/modificar_eliminatoria_copa_aula/{{ dats2.final.id }}">
+                      {% for partido in dats2.final.partidos %}
+                        <!-- Campos de entrada para editar el partido -->
+                        <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="local{{ loop.index0 }}">Local:</label>
+                            <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
+                            <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
+                            <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="visitante{{ loop.index0 }}">Visitante:</label>
+                            <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
+                        </div> 
+                        {% endfor %}
+                        <!-- Botón de enviar para enviar los datos modificados -->
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -375,11 +375,9 @@
                 numPartidos = 6;
             } else if (selectedOption === "fase2") {
                 numPartidos = 6;
-            } else if (selectedOption === "octavos") {
-                numPartidos = 8;
             } else if (selectedOption === "cuartos") {
                 numPartidos = 4;
-            } else if (selectedOption === "semifinal") {
+            } else if (selectedOption === "semifinales") {
                 numPartidos = 2;
             } else if (selectedOption === "final") {
                 numPartidos = 1;
@@ -392,6 +390,14 @@
                 partidoDiv.className = "row partido";
                 // Crear los campos de entrada para el partido
                 var html = `
+                    <div class="col-md-5">
+                        <label for="fecha${i}">Fecha</label>
+                        <input type="text" class="form-control" id="fecha${i}" name="fecha${i}">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="hora${i}">Hora</label>
+                        <input type="time" class="form-control" id="hora${i}" name="hora${i}">
+                    </div>
                     <div class="col-md-4">
                         <label for="local${i}">Local</label>
                         <input type="text" class="form-control" id="local${i}" name="local${i}">

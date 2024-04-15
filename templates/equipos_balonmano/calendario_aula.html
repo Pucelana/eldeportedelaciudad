@@ -29,7 +29,7 @@
                   <div class="card tabla_equipos_aula" style="width: 80rem;">
                     <div class="card-body">
                       <div class="table-responsive">
-                        <h3 class="text-center text-white fw-bold my-3">Calendario</h3>
+                        <h3 class="text-center text-white fw-bold my-3">Calendario Individual</h3>
                         <table class="table table-bordered tabla_equipos tabla_aula"><!--Tabla Calendario Aula-->
                             <thead>
                                 <tr class="text-center text-white">
@@ -87,6 +87,7 @@
               <div class="carousel-item"><!-- Resultados temporada 23/24 -->
                 <div class="d-flex justify-content-center">
                   <div class="card tabla_equipos_aula" style="width: 80rem;">
+                    <h3 class="text-center text-white fw-bold my-3">Resultados</h3>
                     <div class="card-body">
                       <div class="container-fluid">
                         <div class="row">
@@ -97,12 +98,14 @@
                                 <table class="table table-bordered card_calendario tabla_jornadas">
                                   <thead class="fondo_jornadas">
                                     <tr class="text-center">
-                                      <td colspan="5" class="text-center text-white fw-bold">{{ goles.nombre }}</td>
+                                      <td colspan="6" class="text-center text-white fw-bold">{{ goles.nombre }}</td>
                                     </tr>
                                   </thead>
                                   <tbody style="display:none">
                                     {% for partido in goles.partidos %}
                                     <tr class="text-center">
+                                      <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
+                                      <!--<td class="text-center text-white"></td>-->
                                       <td class="text-center fw-bold">{{ partido.local }}</td>
                                       <td class="text-center text-white">{{ partido.resultadoA }}</td>
                                       <td class="text-center text-white">{{ partido.resultadoB }}</td>

@@ -299,6 +299,7 @@ def sistema_ligas_rugby():
 @app.route('/sistema_ligas/hockey')
 def sistema_ligas_hockey():
     return render_template('sistema_ligas/sistema_hockey.html')
+
 # EQUIPOS BALONCESTO
 #Todo el proceso de calendario y clasificación del UEMC
 # Rutas de partidos UEMC
@@ -344,13 +345,17 @@ def ingresar_resultado_uemc():
         resultadoA = request.form.get(f'resultadoA{i}')
         resultadoB = request.form.get(f'resultadoB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         
         nuevo_partido = {
             #'id': id_nuevo,
             'local': equipoLocal,
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
-            'visitante': equipoVisitante
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' :hora
         }
         jornada["partidos"].append(nuevo_partido)
         
@@ -377,11 +382,15 @@ def modificar_jornada_uemc(id):
                 resultadoA = request.form.get(f'resultadoA{i}')
                 resultadoB = request.form.get(f'resultadoB{i}')
                 equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
                 nuevo_partido = {
                     'local': equipoLocal,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
-                    'visitante': equipoVisitante
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
                 }
                 resultados_a_modificar['partidos'].append(nuevo_partido)
             # Guardar los cambios en el archivo JSON
@@ -456,12 +465,16 @@ def crear_playoff_uemc():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora  
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -500,11 +513,15 @@ def modificar_playoff_uemc(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -2481,12 +2498,17 @@ def ingresar_resul_aula():
         resultadoA = request.form.get(f'resultadoA{i}')
         resultadoB = request.form.get(f'resultadoB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
+        
         nuevo_partido = {
             #'id': id_nuevo,
             'local': equipoLocal,
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
-            'visitante': equipoVisitante
+            'visitante': equipoVisitante,
+            'fecha': fecha,
+            'hora': hora
         }
         jornada["partidos"].append(nuevo_partido)
     guardar_datos_aula(data7)
@@ -2512,11 +2534,15 @@ def modificar_jorn_aula(id):
                 resultadoA = request.form.get(f'resultadoA{i}')
                 resultadoB = request.form.get(f'resultadoB{i}')
                 equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
                 nuevo_partido = {
                     'local': equipoLocal,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
-                    'visitante': equipoVisitante
+                    'visitante': equipoVisitante,
+                    'fecha': fecha,
+                    'hora': hora
                 }
                 resultados_a_modificar['partidos'].append(nuevo_partido)
             # Guardar los cambios en el archivo JSON
@@ -2559,11 +2585,11 @@ def crear_playoff_aula():
         eliminatoria = request.form.get('eliminatoria')
         # Verificar el número máximo de partidos permitidos según la etapa del torneo
         if eliminatoria == 'cuartos':
-            max_partidos = 4
+            max_partidos = 6
         elif eliminatoria == 'semifinales':
-            max_partidos = 2
+            max_partidos = 4
         elif eliminatoria == 'final':
-            max_partidos = 1
+            max_partidos = 2
         else:
             # Manejar caso no válido
             return "Etapa de torneo no válida"
@@ -2590,12 +2616,16 @@ def crear_playoff_aula():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha': fecha,
+                'hora': hora
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -2634,11 +2664,15 @@ def modificar_playoff_aula(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -2765,7 +2799,7 @@ def calendarios_aula():
             equipo_local = partido['local']
             equipo_visitante = partido['visitante']
             resultado_local = partido['resultadoA']
-            resultado_visitante = partido['resultadoB']           
+            resultado_visitante = partido['resultadoB']          
             # Verificamos si el Simancas está jugando
             if equipo_local == equipo_aula or equipo_visitante == equipo_aula:
                 # Determinamos el equipo contrario y los resultados
@@ -5308,11 +5342,9 @@ def crear_copa_aula():
             max_partidos = 6
         elif eliminatoria == 'fase2':
             max_partidos = 6
-        elif eliminatoria == 'octavos':
-            max_partidos = 8
         elif eliminatoria == 'cuartos':
             max_partidos = 4
-        elif eliminatoria == 'semifinal':
+        elif eliminatoria == 'semifinales':
             max_partidos = 2
         elif eliminatoria == 'final':
             max_partidos = 1                
@@ -5342,12 +5374,16 @@ def crear_copa_aula():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha': fecha,
+                'hora': hora
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -5386,11 +5422,15 @@ def modificar_copa_aula(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -5713,12 +5753,16 @@ def crear_copa_uemc():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -5757,18 +5801,22 @@ def modificar_copa_uemc(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
         guardar_copa_uemc(dats5)       
         # Redireccionar a la página de visualización del playoff
         return redirect(url_for('ver_copa_uemc')) 
-# Ruta para mostrar la copa Fundación Aliados
+# Ruta para mostrar la copa UEMC Valladolid
 @app.route('/copa_uemc/')
 def copas_uemc():
     # Obtener datos de las eliminatorias
@@ -6539,6 +6587,8 @@ def copas_vrac():
     dats11 = obtener_copa_vrac()
     return render_template('copas/vrac_copa.html', dats11=dats11)
 # Fin copa VRAC
+
+
 
 
 

@@ -31,6 +31,7 @@
             <table class="table border-secondary">
             {% for partido in datas4.cuartos.partidos %}
               <tr class="text-center">
+                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
@@ -42,6 +43,7 @@
             <table class="table border-secondary">
             {% for partido in datas4.semifinales.partidos %}
               <tr>
+                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
@@ -53,6 +55,7 @@
             <table class="table border-secondary">
             {% for partido in datas4.final.partidos %}
               <tr>
+                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text text-white fw-bold fs-5">{{ partido.resultadoB }}</td>

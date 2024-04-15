@@ -3,46 +3,178 @@
         "id": "ea01eaa4-ec39-4212-91d8-d99bedc6e560",
         "partidos": [
             {
-                "local": "",
+                "local": "BM Granollers",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": ""
+                "visitante": "Elda Prestigio",
+                "fecha": "10 May.",
+                "hora": ""
             },
             {
-                "local": "",
+                "local": "ORBE Rubensa Porri\u00f1o",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": ""
+                "visitante": "Aula Valladolid F",
+                "fecha": "10 May.",
+                "hora": ""
             },
             {
-                "local": "",
+                "local": "atticgo Elche",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": ""
+                "visitante": "Costa del Sol M\u00e1laga",
+                "fecha": "10 May.",
+                "hora": ""
             },
             {
-                "local": "",
+                "local": "Bera Bera F",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": ""
+                "visitante": "Mecalia Atl\u00e9tico Guard\u00e9s",
+                "fecha": "10 May.",
+                "hora": ""
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": null,
+                "resultadoA": null,
+                "resultadoB": null,
+                "visitante": null,
+                "fecha": null,
+                "hora": null
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": ""
+                "local": null,
+                "resultadoA": null,
+                "resultadoB": null,
+                "visitante": null,
+                "fecha": null,
+                "hora": null
             }
         ]
     },
-    "fase2": [],
+    "fase2": {
+        "id": "f0fd840e-5024-4987-9c43-fae3cf6173a2",
+        "partidos": [
+            {
+                "local": "Elda Prestigio",
+                "resultadoA": "25",
+                "resultadoB": "20",
+                "visitante": "Rocasa Gran Canaria",
+                "fecha": "24 Ene.",
+                "hora": ""
+            },
+            {
+                "local": "Club Balonmano Zuazo",
+                "resultadoA": "19",
+                "resultadoB": "33",
+                "visitante": "Costa del Sol M\u00e1laga",
+                "fecha": "20 Ene.",
+                "hora": ""
+            },
+            {
+                "local": "Lobos Global Atac Oviedo",
+                "resultadoA": "17",
+                "resultadoB": "33",
+                "visitante": "atticgo Balonmano Elche",
+                "fecha": "23 Ene.",
+                "hora": ""
+            },
+            {
+                "local": "Replase Beti-Onak",
+                "resultadoA": "22",
+                "resultadoB": "24",
+                "visitante": "ORBE Rubensa Porri\u00f1o",
+                "fecha": "20 Ene.",
+                "hora": ""
+            },
+            {
+                "local": "Cicar Lanzarote Ciudad de Arrecife",
+                "resultadoA": "28",
+                "resultadoB": "34",
+                "visitante": "Aula Valladolid",
+                "fecha": "20 Ene.",
+                "hora": ""
+            },
+            {
+                "local": "Gij\u00f3n Bm.La Calzada",
+                "resultadoA": "27",
+                "resultadoB": "29",
+                "visitante": "Mecalia Atl\u00e9tico Guard\u00e9s",
+                "fecha": "20 Ene.",
+                "hora": ""
+            }
+        ]
+    },
     "octavos": [],
-    "cuartos": [],
-    "semifinales": [],
-    "final": []
+    "cuartos": {
+        "id": "60b795fd-63cf-4959-a4fe-ae6f5d2ce20b",
+        "partidos": [
+            {
+                "local": "BM Granollers",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elda Prestigio",
+                "fecha": "10 May.",
+                "hora": ""
+            },
+            {
+                "local": "ORBE Rubensa Porri\u00f1o",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Aula Valladolid F",
+                "fecha": "10 May.",
+                "hora": ""
+            },
+            {
+                "local": "atticgo Elche",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Costa del Sol M\u00e1laga",
+                "fecha": "10 May.",
+                "hora": ""
+            },
+            {
+                "local": "Bera Bera F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mecalia Atl\u00e9tico Guard\u00e9s",
+                "fecha": "10 May.",
+                "hora": ""
+            }
+        ]
+    },
+    "semifinales": {
+        "id": "e8be26ea-9c52-4cbe-8a3f-cf6f28a41c73",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "11 May.",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "11 May.",
+                "hora": ""
+            }
+        ]
+    },
+    "final": {
+        "id": "a54d79da-2135-42d1-b811-4c695df93cd0",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "12 May.",
+                "hora": ""
+            }
+        ]
+    }
 }

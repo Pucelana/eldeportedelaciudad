@@ -1,0 +1,73 @@
+{
+    "cuartos": {
+        "id": "70dcac67-c4da-464f-afd9-fdae0a9ecc97",
+        "partidos": [
+            {
+                "local": "Beti-Onak F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elche F",
+                "fecha": "18.04",
+                "hora": "21:00"
+            },
+            {
+                "local": "Aula Valladolid F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Bera Bera F",
+                "fecha": "19.04",
+                "hora": ""
+            },
+            {
+                "local": "BM Granollers F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "M\u00e1laga F",
+                "fecha": "20.04",
+                "hora": ""
+            },
+            {
+                "local": "Guardes F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Porri\u00f1o F",
+                "fecha": "21.04",
+                "hora": ""
+            },
+            {
+                "local": "Bera Bera F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Aula Valladolid F",
+                "fecha": "27.04",
+                "hora": ""
+            },
+            {
+                "local": "M\u00e1laga F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Granollers F",
+                "fecha": "27.04",
+                "hora": ""
+            },
+            {
+                "local": "BM Porri\u00f1o F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Guardes F",
+                "fecha": "28.04",
+                "hora": ""
+            },
+            {
+                "local": "Elche F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Beti-Onak F",
+                "fecha": "30.04",
+                "hora": ""
+            }
+        ]
+    },
+    "semifinales": [],
+    "final": []
+}

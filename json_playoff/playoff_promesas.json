@@ -1,0 +1,65 @@
+{
+    "semifinales": {
+        "id": "8ae76607-1ffe-4f85-ac46-6e5670685304",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    "final": {
+        "id": "cb21afd3-be79-41b5-95c4-d29cd7e583ed",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    "promocion": {
+        "id": "e2bc47a7-f8f0-40ab-9a04-215c4524c5db",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    }
+}
