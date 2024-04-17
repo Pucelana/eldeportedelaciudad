@@ -31,6 +31,7 @@
             <table class="table border-secondary">
             {% for partido in datas9.cuartos.partidos %}
               <tr class="text-center">
+                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td class="text-center fw-bold fs-5">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold">{{ partido.resultadoB }}</td>
@@ -42,6 +43,7 @@
             <table class="table border-secondary">
             {% for partido in datas9.semifinales.partidos %}
               <tr>
+                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td class="text-center fw-bold fs-2">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold">{{ partido.resultadoB }}</td>
@@ -53,6 +55,7 @@
             <table class="table border-secondary">
             {% for partido in datas9.final.partidos %}
               <tr>
+                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td>{{ partido.local }}</td>
                 <td>{{ partido.resultadoA }}</td>
                 <td>{{ partido.resultadoB }}</td>

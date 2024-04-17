@@ -30,6 +30,7 @@
             <p class="text-center fw-bold text-white fs-3">Semifinales</p>
             <table class="table border-secondary">
             {% for partido in datas11.semifinales.partidos %}
+            <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
               <tr>
                 <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
@@ -41,6 +42,7 @@
             <p class="text-center fw-bold text-white fs-3">Final</p>
             <table class="table border-secondary">
             {% for partido in datas11.final.partidos %}
+            <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
               <tr>
                 <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
@@ -51,8 +53,9 @@
             </table>
             <p class="text-center fw-bold text-white fs-3">Promoción Descenso</p>
             <table class="table border-secondary">
-            {% for partido in datas11.semifinales.partidos %}
+            {% for partido in datas11.promocion.partidos %}
               <tr>
+                <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>

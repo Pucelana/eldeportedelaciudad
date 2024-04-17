@@ -57,6 +57,8 @@
         <tbody>
           {% for enfrentamiento in dats1.ronda1.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -71,6 +73,8 @@
         <tbody>
           {% for enfrentamiento in dats1.ronda2.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -85,6 +89,8 @@
         <tbody>
           {% for enfrentamiento in dats1.ronda3.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -99,6 +105,8 @@
         <tbody>
           {% for enfrentamiento in dats1.octavos.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -113,6 +121,8 @@
         <tbody>
           {% for enfrentamiento in dats1.cuartos.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -127,6 +137,8 @@
         <tbody>
           {% for enfrentamiento in dats1.semis.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -141,6 +153,8 @@
         <tbody>
           {% for enfrentamiento in dats1.final.partidos %}
           <tr>
+            <td>{{ enfrentamiento.fecha }}</td>
+            <td>{{ enfrentamiento.hora }}</td>
             <td>{{ enfrentamiento.local }}</td>
             <td>{{ enfrentamiento.resultadoA }}</td>
             <td>{{ enfrentamiento.resultadoB }}</td>
@@ -164,6 +178,14 @@
                     <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats1.ronda1.id }}">
                       {% for partido in dats1.ronda1.partidos %}
                         <!-- Campos de entrada para editar el partido -->
+                        <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
                         <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
@@ -200,6 +222,14 @@
                       {% for partido in dats1.ronda2.partidos %}
                         <!-- Campos de entrada para editar el partido -->
                         <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
+                        <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
                         </div>
@@ -234,6 +264,14 @@
                     <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats1.ronda3.id }}">
                       {% for partido in dats1.ronda3.partidos %}
                         <!-- Campos de entrada para editar el partido -->
+                        <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
                         <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
@@ -270,6 +308,14 @@
                       {% for partido in dats1.octavos.partidos %}
                         <!-- Campos de entrada para editar el partido -->
                         <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
+                        <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
                         </div>
@@ -304,6 +350,14 @@
                     <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats1.cuartos.id }}">
                       {% for partido in dats1.cuartos.partidos %}
                         <!-- Campos de entrada para editar el partido -->
+                        <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
                         <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
@@ -340,6 +394,14 @@
                       {% for partido in dats1.semis.partidos %}
                         <!-- Campos de entrada para editar el partido -->
                         <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
+                        <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
                         </div>
@@ -374,6 +436,14 @@
                     <form method="POST" action="/modificar_eliminatoria_copa_valladolid/{{ dats1.final.id }}">
                       {% for partido in dats1.final.partidos %}
                         <!-- Campos de entrada para editar el partido -->
+                        <div class="mb-3">
+                            <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                            <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora{{ loop.index0 }}">Hora:</label>
+                            <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                        </div>
                         <div class="mb-3">
                             <label for="local{{ loop.index0 }}">Local:</label>
                             <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
@@ -444,6 +514,14 @@
                 partidoDiv.className = "row partido";
                 // Crear los campos de entrada para el partido
                 var html = `
+                    <div class="col-md-5">
+                        <label for="fecha${i}">Fecha</label>
+                        <input type="text" class="form-control" id="fecha${i}" name="fecha${i}">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="hora${i}">Hora</label>
+                        <input type="time" class="form-control" id="hora${i}" name="hora${i}">
+                    </div>
                     <div class="col-md-4">
                         <label for="local${i}">Local</label>
                         <input type="text" class="form-control" id="local${i}" name="local${i}">
