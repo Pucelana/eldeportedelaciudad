@@ -5,6 +5,3 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-json/
-json_copa/
-json_playoff/
