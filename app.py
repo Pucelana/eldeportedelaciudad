@@ -3310,6 +3310,8 @@ def ingresar_resul_salvador():
         resultadoB = request.form.get(f'resultadoB{i}')
         bonusB = request.form.get(f'bonusB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         nuevo_partido = {
             #'id': id_nuevo,
             'local': equipoLocal,
@@ -3317,7 +3319,9 @@ def ingresar_resul_salvador():
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
             'bonusB': bonusB,
-            'visitante': equipoVisitante
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' : hora
         }
         jornada["partidos"].append(nuevo_partido)
     guardar_datos_salvador(data11)
@@ -3345,13 +3349,17 @@ def modificar_jorn_salvador(id):
                 resultadoB = request.form.get(f'resultadoB{i}')
                 bonusB = request.form.get(f'bonusB{i}')
                 equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
                 nuevo_partido = {
                     'local': equipoLocal,
                     'bonusA': bonusA,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
                     'bonusB': bonusB,
-                    'visitante': equipoVisitante
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
                 }
                 resultados_a_modificar['partidos'].append(nuevo_partido)
             # Guardar los cambios en el archivo JSON
@@ -3425,12 +3433,16 @@ def crear_playoff_salvador():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -3469,11 +3481,15 @@ def modificar_playoff_salvador(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -3710,6 +3726,8 @@ def ingresar_resul_vrac():
         resultadoB = request.form.get(f'resultadoB{i}')
         bonusB = request.form.get(f'bonusB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         nuevo_partido = {
             #'id': id_nuevo,
             'local': equipoLocal,
@@ -3717,7 +3735,9 @@ def ingresar_resul_vrac():
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
             'bonusB': bonusB,
-            'visitante': equipoVisitante
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' : hora
         }
         jornada["partidos"].append(nuevo_partido)
     guardar_datos_vrac(data12)
@@ -3745,13 +3765,17 @@ def modificar_jorn_vrac(id):
                 resultadoB = request.form.get(f'resultadoB{i}')
                 bonusB = request.form.get(f'bonusB{i}')
                 equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
                 nuevo_partido = {
                     'local': equipoLocal,
                     'bonusA': bonusA,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
                     'bonusB': bonusB,
-                    'visitante': equipoVisitante
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
                 }
                 resultados_a_modificar['partidos'].append(nuevo_partido)
             # Guardar los cambios en el archivo JSON
@@ -3825,12 +3849,16 @@ def crear_playoff_vrac():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -3869,11 +3897,15 @@ def modificar_playoff_vrac(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -4109,6 +4141,8 @@ def ingresar_resul_salvador_fem():
         resultadoB = request.form.get(f'resultadoB{i}')
         bonusB = request.form.get(f'bonusB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         nuevo_partido = {
             #'id': id_nuevo,
             'local': equipoLocal,
@@ -4116,7 +4150,9 @@ def ingresar_resul_salvador_fem():
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
             'bonusB': bonusB,
-            'visitante': equipoVisitante
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' : hora
         }
         jornada["partidos"].append(nuevo_partido)
     guardar_datos_salvador_fem(data13)
@@ -4144,13 +4180,17 @@ def modificar_jorn_salvador_fem(id):
                 resultadoB = request.form.get(f'resultadoB{i}')
                 bonusB = request.form.get(f'bonusB{i}')
                 equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
                 nuevo_partido = {
                     'local': equipoLocal,
                     'bonusA': bonusA,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
                     'bonusB': bonusB,
-                    'visitante': equipoVisitante
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
                 }
                 resultados_a_modificar['partidos'].append(nuevo_partido)
             # Guardar los cambios en el archivo JSON
@@ -4224,12 +4264,16 @@ def crear_playoff_salvador_fem():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -4268,11 +4312,15 @@ def modificar_playoff_salvador_fem(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -4509,6 +4557,8 @@ def ingresar_resul_caja():
         resultadoB = request.form.get(f'resultadoB{i}')
         bonusB = request.form.get(f'bonusB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         nuevo_partido = {
             #'id': id_nuevo,
             'local': equipoLocal,
@@ -4516,7 +4566,9 @@ def ingresar_resul_caja():
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
             'bonusB': bonusB,
-            'visitante': equipoVisitante
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' : hora
         }
         jornada["partidos"].append(nuevo_partido)
     guardar_datos_caja(data14)
@@ -4544,13 +4596,17 @@ def modificar_jorn_caja(id):
                 resultadoB = request.form.get(f'resultadoB{i}')
                 bonusB = request.form.get(f'bonusB{i}')
                 equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
                 nuevo_partido = {
                     'local': equipoLocal,
                     'bonusA': bonusA,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
                     'bonusB': bonusB,
-                    'visitante': equipoVisitante
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
                 }
                 resultados_a_modificar['partidos'].append(nuevo_partido)
             # Guardar los cambios en el archivo JSON
@@ -4624,12 +4680,16 @@ def crear_playoff_caja():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -4668,11 +4728,15 @@ def modificar_playoff_caja(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha']= fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -4905,6 +4969,8 @@ def ingresar_resul_panteras():
         resultadoB = request.form.get(f'resultadoB{i}')
         bonusB = request.form.get(f'bonusB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         nuevo_partido = {
             #'id': id_nuevo,
             'local': equipoLocal,
@@ -4912,7 +4978,9 @@ def ingresar_resul_panteras():
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
             'bonusB': bonusB,
-            'visitante': equipoVisitante
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' : hora
         }
         jornada["partidos"].append(nuevo_partido)
     guardar_datos_panteras(data15)
@@ -4940,13 +5008,17 @@ def modificar_jorn_panteras(id):
                 resultadoB = request.form.get(f'resultadoB{i}')
                 bonusB = request.form.get(f'bonusB{i}')
                 equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
                 nuevo_partido = {
                     'local': equipoLocal,
                     'bonusA': bonusA,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
                     'bonusB': bonusB,
-                    'visitante': equipoVisitante
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
                 }
                 resultados_a_modificar['partidos'].append(nuevo_partido)
             # Guardar los cambios en el archivo JSON
@@ -5020,12 +5092,16 @@ def crear_playoff_panteras():
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -5064,11 +5140,15 @@ def modificar_playoff_panteras(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
             partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
