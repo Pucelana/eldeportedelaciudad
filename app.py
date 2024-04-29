@@ -1,9 +1,10 @@
 from flask import Flask
-from flask import render_template, request, redirect,url_for, session, render_template_string
+from flask import render_template, request, redirect,url_for, session, render_template_string, jsonify
 from flask_mysqldb import MySQL
 from werkzeug.utils import secure_filename
 from flask_caching import Cache
 from collections import defaultdict
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import uuid
 import json
@@ -11,6 +12,7 @@ import json
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
+
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
     import re
@@ -27,72 +29,84 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)"""
 
-# Creando el registro del usuario
-@app.route('/registro/', methods=['GET', 'POST'])
-def sitio_registro():
-    cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM tipo_acceso")
-    tipo = cursor.fetchall()
-    cursor.close()
-    notificacion = Notify()
-    if request.method == "GET":
-        return render_template('sitio/registro.html', tipo = tipo)
-    else:
-        nombre = request.form['nombre']
-        email = request.form['email']
-        password = request.form['password']
-        tip = request.form['tipo']
-        cursor = mysql.connection.cursor()
-        cursor.execute("INSERT INTO usuarios(nombre,email,password,id_acceso) VALUES(%s,%s,%s,%s)",(nombre,email,password,tip))
-        mysql.connection.commit()
-        notificacion.title = "Registro exitoso"
-        notificacion.message = "Ya te encuentras registrado en Cactus & Suculentas, ya puedes Iniciar sesión"
-        notificacion.send()
-        return render_template('sitio/login.html') 
-# Creando el login del usuario        
-@app.route('/login/', methods=['GET','POST'])
-def sitio_login():
-    notificacion = Notify()
+# Función para cargar las credenciales desde el archivo JSON
+# Función para verificar si el usuario está autenticado
+credenciales = {}
+json_path = 'json/acceso.json'
+def esta_autenticado():
+    return 'usuario' in session
+def cargar_credenciales():
+    global credenciales
+    try:
+        with open('json/acceso.json', 'r') as file:
+            credenciales = json.load(file)
+    except (json.JSONDecodeError, FileNotFoundError):
+        # Manejar el caso en el que el archivo JSON esté vacío o no exista
+        pass
+    return credenciales
+
+# Función para guardar las credenciales en el archivo JSON
+def guardar_credenciales(credenciales):
+    with open('json/acceso.json', 'w') as file:
+        json.dump(credenciales, file)
+
+# Función para verificar las credenciales de inicio de sesión
+def verificar_credenciales(email, password):
+    credenciales = cargar_credenciales()
+    if email in credenciales:
+        stored_password = credenciales[email]['password']
+        if check_password_hash(stored_password, password):
+            return True
+    return False
+# Variable global para verificar si hay un administrador registrado
+administrador_registrado = False
+@app.route('/registro', methods=['GET', 'POST'])
+def registro_admin():
+    global administrador_registrado, credenciales
+    if administrador_registrado:
+        return redirect(url_for('news'))
+    
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        cursor = mysql.connection.cursor()
-        cursor.execute("SELECT * FROM usuarios WHERE email=%s",(email,))
-        user = cursor.fetchone()
-        cursor.close()
-        if len(user)>0:
-            if password == user["password"]:
-                session['nombre'] = user['nombre']
-                session['email'] = user['email']
-                session['tipo'] = user['id_acceso']
-                if session['tipo'] == 1:
-                    return redirect(url_for('/usuarios/home'))
-                elif session['tipo'] == 2:
-                    return redirect(url_for('/creadores/home'))
-            else:
-                notificacion.title = "Error de acceso"
-                notificacion.message = "Correo o contraseña no valida"
-                notificacion.send()
-                return render_template('sitio/login.html')
-        else:
-            notificacion.title = "Error de acceso"
-            notificacion.message = "Este usuario no existe"
-            notificacion.send()
-            return render_template('sitio/registro.html')
-    else:
-        return render_template('sitio/login.html') 
-usuarios = {
-    'acebesvanesa@gmail.com': 'Pucela83@'
-}      
-# Página del admin    
-@app.route('/news', methods=['GET','POST'])
-def admin_home():
-    usuario = request.form.get('usuario')
-    password = request.form.get('password')
-    if usuario in usuarios and usuarios[usuario] == password:
-        return redirect(url_for('crear_noticia'))
-    else:
-        return render_template('admin/home.html')
+        
+        # Verificar si el email ya está registrado
+        if email in credenciales:
+            return redirect(url_for('registro_admin'))
+        
+        # Encriptar la contraseña antes de guardarla
+        hashed_password = generate_password_hash(password)
+        # Guardar las credenciales en el archivo JSON
+        credenciales[email] = {'password': hashed_password}
+        with open(json_path, 'w') as file:
+            json.dump(credenciales, file)
+        
+        administrador_registrado = True
+        session['usuario'] = email  # Autenticar al administrador
+        return redirect(url_for('news'))
+    
+    return render_template('admin/registro.html')
+
+@app.route('/news', methods=['GET', 'POST'])
+def news():
+    # Verificar si el usuario está autenticado
+    if not esta_autenticado():
+        return redirect(url_for('registro_admin'))
+
+    # Si la solicitud es POST, verificar las credenciales antes de mostrar el formulario de creación de noticias
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        if not verificar_credenciales(email, password):
+            return redirect(url_for('news'))
+
+        return render_template('admin/crear_noticia.html')
+
+    # Si la solicitud es GET, renderizar la plantilla normalmente
+    return render_template('admin/home.html')
+
+     
+
 # Página de Noticias
 """@app.route('/noticias/', methods=['GET','POST'])
 def noticias():
