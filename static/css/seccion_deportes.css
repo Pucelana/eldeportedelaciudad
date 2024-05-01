@@ -89,6 +89,15 @@
     overflow: hidden;
     box-shadow: 10px 5px 5px gray;
 }
+.fondo_futbol_sala{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/img/futsal.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    overflow: hidden;
+    box-shadow: 10px 5px 5px gray;
+}
 .fondo_hockey{
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/hockey2.png');

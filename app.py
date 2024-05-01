@@ -105,8 +105,6 @@ def news():
     # Si la solicitud es GET, renderizar la plantilla normalmente
     return render_template('admin/home.html')
 
-     
-
 # Página de Noticias
 """@app.route('/noticias/', methods=['GET','POST'])
 def noticias():
@@ -265,6 +263,10 @@ def seccion_balonmano():
 @app.route('/seccion/futbol')
 def seccion_futbol():
     return render_template('secciones/futbol.html')
+# Ruta sección de fútbol sala
+@app.route('/seccion/futbol_sala')
+def seccion_futbol_sala():
+    return render_template('secciones/futbol_sala.html')
 # Ruta sección de hockey línea
 @app.route('/seccion/hockey')
 def seccion_hockey():
@@ -313,6 +315,10 @@ def sistema_ligas_rugby():
 @app.route('/sistema_ligas/hockey')
 def sistema_ligas_hockey():
     return render_template('sistema_ligas/sistema_hockey.html')
+# Ruta sistema ligas futbol_sala
+@app.route('/sistema_ligas/futbol_sala')
+def sistema_ligas_futbol_sala():
+    return render_template('sistema_ligas/sistema_futbol_sala.html')
 
 # EQUIPOS BALONCESTO
 #Todo el proceso de calendario y clasificación del UEMC
@@ -2529,6 +2535,461 @@ def calendarios_parquesol():
                     tabla_partidos_parquesol[equipo_contrario]['jornadas'][jornada['nombre']]['rol_parquesol'] = rol_parquesol
     return render_template('equipos_futbol/calendario_parquesol.html', tabla_partidos_parquesol=tabla_partidos_parquesol, nuevos_datos_parquesol=nuevos_datos_parquesol) 
 # Fin proceso CD Parquesol
+
+# EQUIPOS FÚTBOL SALA
+#Todo el proceso de calendario y clasificación del Valladolid FS
+# Ruta de partidos Valladolid FS
+part_valladolid_fs = 'json/partidos_valladolid_fs.json'
+def guardar_datos_valladolid_fs(data16):
+    # Guardar los datos en el archivo JSON
+    with open(part_valladolid_fs, 'w', encoding='utf-8') as file:
+        json.dump(data16, file, indent=4)
+def obtener_datos_valladolid_fs():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_valladolid_fs, 'r', encoding='utf-8') as file:
+        data16 = json.load(file)
+      return data16
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return [] 
+# Partidos Valladolid FS
+@app.route('/admin/calend_valladolid_fs')
+def calend_valladolid_fs():
+    data16 = obtener_datos_valladolid_fs()
+    print(data16)
+    return render_template('admin/calend_vallad_fs.html', data16=data16)
+# Ingresar los resultados de los partidos del Valladolid FS
+@app.route('/admin/crear_calendario_valladolid_fs', methods=['POST'])
+def ingresar_resul_valladolid_fs():
+    data16 = obtener_datos_valladolid_fs()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data16 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data16.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' : hora
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_valladolid_fs(data16)
+    return redirect(url_for('calend_valladolid_fs')) 
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_valladolid_fs(data16):
+    arch_guardar_valladolid_fs = 'json/partidos_valladolid_fs.json'
+    # Guardar en el archivo
+    with open(arch_guardar_valladolid_fs, 'w', encoding='UTF-8') as archivo:
+        json.dump(data16, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_valladolid_fs/<string:id>', methods=['POST'])
+def modificar_jorn_valladolid_fs(id):
+    data16 = obtener_datos_valladolid_fs()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data16 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(8):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_valladolid_fs(data16)            
+            return redirect(url_for('calend_valladolid_fs'))
+    return redirect(url_for('calend_valladolid_fs'))
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_valladolid_fs/<string:id>', methods=['POST'])
+def eliminar_jorn_valladolid_fs(id):
+    data16 = obtener_datos_valladolid_fs()
+    jornada_a_eliminar = [j for j in data16 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_valladolid_fs(jornada_a_eliminar)
+    # Redirigir a la página de encuentros_simancas (o a donde desees después de eliminar)
+    return redirect(url_for('calend_valladolid_fs')) 
+# Crear la clasificación del Valladolid FS
+def generar_clasificacion_analisis_futsal_valladolid_fs(data16, total_partidos_temporada_valladolid_fs):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0})
+    for jornada in data16:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_futsal_valladolid_fs)
+    return clasificacion_ordenada 
+# Ruta para mostrar la clasificación y análisis del Valladolid FS
+@app.route('/equipos_futbol_sala/clasi_analis_vallad_fs/')
+def clasif_analisis_valladolid_fs():
+    data16 = obtener_datos_valladolid_fs()
+    total_partidos_temporada_valladolid_fs = 30
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_valladolid_fs = generar_clasificacion_analisis_futsal_valladolid_fs(data16, total_partidos_temporada_valladolid_fs)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_valladolid_fs = sorted(clasificacion_analisis_valladolid_fs, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Calcular la proximidad
+    #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
+    return render_template('equipos_futbol_sala/clasi_analis_vallad_fs.html', clasificacion_analisis_valladolid_fs=clasificacion_analisis_valladolid_fs) 
+# Ruta y creación del calendario individual del Valladolid FS
+@app.route('/equipos_futbol_sala/calendario_vallad_fs')
+def calendarios_valladolid_fs():
+    datos16 = obtener_datos_valladolid_fs()
+    nuevos_datos_valladolid_fs = [dato for dato in datos16 if dato]
+    equipo_valladolid_fs = 'Valladolid FS'
+    tabla_partidos_valladolid_fs = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos16:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si el Simancas está jugando
+            if equipo_local == equipo_parquesol or equipo_visitante == equipo_parquesol:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_parquesol:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_valladolid_fs = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_valladolid_fs = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_valladolid_fs:
+                    tabla_partidos_valladolid_fs[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_valladolid_fs[equipo_contrario]:
+                    tabla_partidos_valladolid_fs[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_valladolid_fs[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_valladolid_fs[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_valladolid_fs[equipo_contrario]:
+                    tabla_partidos_valladolid_fs[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_valladolid_fs[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_valladolid_fs[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_valladolid_fs[equipo_contrario]['jornadas']:
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_valladolid_fs': rol_valladolid_fs
+                    }
+                # Asignamos los resultados según el rol del Valladolid FS
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid_fs'] = rol_valladolid_fs
+                  else:
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid_fs'] = rol_valladolid_fs
+                else:
+                  if not tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid_fs'] = rol_valladolid_fs
+                  else:
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid_fs'] = rol_valladolid_fs
+    return render_template('equipos_futbol_sala/calendario_vallad_fs.html', tabla_partidos_valladolid_fs=tabla_partidos_valladolid_fs, nuevos_datos_valladolid_fs=nuevos_datos_valladolid_fs) 
+# Fin proceso Valladolid FS
+
+#Todo el proceso de calendario y clasificación del Universidad Valladolid
+# Ruta de partidos Universidad Valladolid
+part_universidad = 'json/partidos_universidad.json'
+def guardar_datos_universidad(data17):
+    # Guardar los datos en el archivo JSON
+    with open(part_universidad, 'w', encoding='utf-8') as file:
+        json.dump(data17, file, indent=4)
+def obtener_datos_universidad():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_universidad, 'r', encoding='utf-8') as file:
+        data17 = json.load(file)
+      return data17
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return [] 
+# Partidos Universidad Valladolid
+@app.route('/admin/calend_universidad')
+def calend_universidad():
+    data17 = obtener_datos_universidad()
+    print(data17)
+    return render_template('admin/calend_universidad.html', data17=data17)
+# Ingresar los resultados de los partidos del Universidad Valladolid
+@app.route('/admin/crear_calendario_universidad', methods=['POST'])
+def ingresar_resul_universidad():
+    data17 = obtener_datos_universidad()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data17 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data17.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' : hora
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_universidad(data17)
+    return redirect(url_for('calend_universidad')) 
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_universidad(data17):
+    arch_guardar_universidad = 'json/partidos_universidad.json'
+    # Guardar en el archivo
+    with open(arch_guardar_universidad, 'w', encoding='UTF-8') as archivo:
+        json.dump(data17, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_universidad/<string:id>', methods=['POST'])
+def modificar_jorn_universidad(id):
+    data17 = obtener_datos_universidad()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data17 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(8):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_universidad(data17)            
+            return redirect(url_for('calend_universidad'))
+    return redirect(url_for('calend_universidad'))
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_universidad/<string:id>', methods=['POST'])
+def eliminar_jorn_universidad(id):
+    data17 = obtener_datos_universidad()
+    jornada_a_eliminar = [j for j in data17 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_universidad(jornada_a_eliminar)
+    # Redirigir a la página de encuentros_universidad (o a donde desees después de eliminar)
+    return redirect(url_for('calend_universidad')) 
+# Crear la clasificación del Universidad Valladolid
+def generar_clasificacion_analisis_futsal_universidad(data17, total_partidos_temporada_universidad):
+    default_dict = defaultdict(lambda: {})
+    clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0})
+    for jornada in data17:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+            if clasificacion[equipo_local]['jugados'] > 0:
+                promedio_favor_local = clasificacion[equipo_local]['favor'] / clasificacion[equipo_local]['jugados']
+            else:
+                promedio_favor_local = 0
+            # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
+            if resultado_local > resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 3
+                clasificacion[equipo_local]['ganados'] += 1
+                clasificacion[equipo_visitante]['perdidos'] += 1
+            elif resultado_local < resultado_visitante:
+                clasificacion[equipo_local]['puntos'] += 0
+                clasificacion[equipo_local]['perdidos'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 3
+                clasificacion[equipo_visitante]['ganados'] += 1
+            else:
+                clasificacion[equipo_local]['puntos'] += 1
+                clasificacion[equipo_local]['empatados'] += 1
+                clasificacion[equipo_visitante]['puntos'] += 1
+                clasificacion[equipo_visitante]['empatados'] += 1
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            clasificacion[equipo_local]['diferencia_goles'] += resultado_local - resultado_visitante
+            clasificacion[equipo_visitante]['diferencia_goles'] += resultado_visitante - resultado_local
+    # Ordena la clasificación por puntos y diferencia de canastas
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['diferencia_goles']), reverse=True)]
+    print(generar_clasificacion_analisis_futsal_universidad)
+    return clasificacion_ordenada 
+# Ruta para mostrar la clasificación y análisis del Universidad Valladolid
+@app.route('/equipos_futbol_sala/clasi_analis_universidad/')
+def clasif_analisis_universidad():
+    data17 = obtener_datos_universidad()
+    total_partidos_temporada_universidad = 30
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_universidad = generar_clasificacion_analisis_futsal_universidad(data17, total_partidos_temporada_universidad)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_universidad = sorted(clasificacion_analisis_universidad, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Calcular la proximidad
+    #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
+    return render_template('equipos_futbol_sala/clasi_analis_universidad.html', clasificacion_analisis_universidad=clasificacion_analisis_universidad) 
+# Ruta y creación del calendario individual del Universidad Valladolid
+@app.route('/equipos_futbol_sala/calendario_universidad')
+def calendarios_universidad():
+    datos17 = obtener_datos_universidad()
+    nuevos_datos_universidad = [dato for dato in datos17 if dato]
+    equipo_universidad = 'Univ. Valladolid'
+    tabla_partidos_universidad = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos17:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si el Simancas está jugando
+            if equipo_local == equipo_universidad or equipo_visitante == equipo_universidad:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_parquesol:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_universidad = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_universidad = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_universidad:
+                    tabla_partidos_universidad[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_universidad[equipo_contrario]:
+                    tabla_partidos_universidad[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_universidad[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_universidad[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_universidad[equipo_contrario]:
+                    tabla_partidos_universidad[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_universidad[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_universidad[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_universidad[equipo_contrario]['jornadas']:
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_universidad': rol_universidad
+                    }
+                # Asignamos los resultados según el rol del Universidad Valladolid
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['rol_universidad'] = rol_universidad
+                  else:
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['rol_universidad'] = rol_universidad
+                else:
+                  if not tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['rol_universidad'] = rol_universidad
+                  else:
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['rol_universidad'] = rol_universidad
+    return render_template('equipos_futbol_sala/calendario_universidad.html', tabla_partidos_universidad=tabla_partidos_universidad, nuevos_datos_universidad=nuevos_datos_universidad) 
+# Fin proceso Universidad Valladolid
 
 # EQUIPOS BALONMANO
 #Todo el proceso de calendario y clasificación del Aula Valladolid

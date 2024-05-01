@@ -28,6 +28,13 @@
 #form_partidos_parquesol{
     display: none;
 }
+/* FÚTBOL SALA */
+#form_partidos_valladolid_fs{
+    display: none;
+}
+#form_partidos_universidad{
+    display: none;
+}
 /* BALONMANO */
 #form_partidos_aula{
     display: none;

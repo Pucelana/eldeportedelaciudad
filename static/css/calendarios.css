@@ -110,6 +110,14 @@
     background-size: 100% 100%;
     background-position: center;  
 }
+/* Sección Fútbol Sala */
+.calend_futbol_sala{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/futbol_sala.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;  
+}
 
 
 

@@ -48,6 +48,13 @@ function mostrarFormularioSimancas(){
 function mostrarFormularioParquesol(){
   document.getElementById('form_partidos_parquesol').style.display='block';
 }
+// FÚTBOL SALA
+function mostrarFormularioValladolidFs(){
+  document.getElementById('form_partidos_valladolid_fs').style.display='block';
+}
+function mostrarFormularioUniversidad(){
+  document.getElementById('form_partidos_universidad').style.display='block';
+}
 // BALONMANO
 function mostrarFormularioAula(){
   document.getElementById('form_partidos_aula').style.display='block';
