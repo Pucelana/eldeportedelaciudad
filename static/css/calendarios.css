@@ -121,7 +121,7 @@
 /* Sección Voleibol */
 .calend_voley{
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/img/pista_voley.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/cancha_voley.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;  
