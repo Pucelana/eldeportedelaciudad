@@ -44,12 +44,10 @@ def cargar_credenciales():
         # Manejar el caso en el que el archivo JSON esté vacío o no exista
         pass
     return credenciales
-
 # Función para guardar las credenciales en el archivo JSON
 def guardar_credenciales(credenciales):
     with open('json/acceso.json', 'w') as file:
         json.dump(credenciales, file)
-
 # Función para verificar las credenciales de inicio de sesión
 def verificar_credenciales(email, password):
     credenciales = cargar_credenciales()
@@ -64,29 +62,23 @@ administrador_registrado = False
 def registro_admin():
     global administrador_registrado, credenciales
     if administrador_registrado:
-        return redirect(url_for('news'))
-    
+        return redirect(url_for('news'))  
     if request.method == 'POST':
         email = request.form['email']
-        password = request.form['password']
-        
+        password = request.form['password']       
         # Verificar si el email ya está registrado
         if email in credenciales:
-            return redirect(url_for('registro_admin'))
-        
+            return redirect(url_for('news'))
         # Encriptar la contraseña antes de guardarla
         hashed_password = generate_password_hash(password)
         # Guardar las credenciales en el archivo JSON
         credenciales[email] = {'password': hashed_password}
         with open(json_path, 'w') as file:
-            json.dump(credenciales, file)
-        
+            json.dump(credenciales, file)       
         administrador_registrado = True
         session['usuario'] = email  # Autenticar al administrador
-        return redirect(url_for('news'))
-    
+        return redirect(url_for('news'))   
     return render_template('admin/registro.html')
-
 @app.route('/news', methods=['GET', 'POST'])
 def news():
     # Verificar si el usuario está autenticado
@@ -275,6 +267,10 @@ def seccion_hockey():
 @app.route('/seccion/rugby')
 def seccion_rugby():
     return render_template('secciones/rugby.html')
+# Ruta sección de voleibol
+@app.route('/seccion/voleibol')
+def seccion_voleibol():
+    return render_template('secciones/voleibol.html')
 """# Ruta playoff de baloncesto
 @app.route('/playoff/baloncesto')
 def playoff_baloncesto():
@@ -319,6 +315,10 @@ def sistema_ligas_hockey():
 @app.route('/sistema_ligas/futbol_sala')
 def sistema_ligas_futbol_sala():
     return render_template('sistema_ligas/sistema_futbol_sala.html')
+# Ruta sistema ligas voleibol
+@app.route('/sistema_ligas/voleibol')
+def sistema_ligas_voleibol():
+    return render_template('sistema_ligas/sistema_voleibol.html')
 
 # EQUIPOS BALONCESTO
 #Todo el proceso de calendario y clasificación del UEMC
@@ -5810,6 +5810,237 @@ def calendarios_panteras():
                     tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['rol_panteras'] = rol_panteras
     return render_template('equipos_hockey/calendario_panteras.html', tabla_partidos_panteras=tabla_partidos_panteras, nuevos_datos_panteras=nuevos_datos_panteras)
 #Fin proceso CPLV Munia Panteras
+
+#EQUIPOS VOLEIBOL
+#Todo el proceso de calendario y clasificación del Univ. Valladolid VCV
+# Ruta de partidos Univ. Valladolid VCV
+part_vcv = 'json/partidos_vcv.json'
+def guardar_datos_vcv(data18):
+    # Guardar los datos en el archivo JSON
+    with open(part_vcv, 'w', encoding='utf-8') as file:
+        json.dump(data18, file, indent=4)
+def obtener_datos_vcv():
+    try:
+    # Leer los datos desde el archivo JSON
+      with open(part_vcv, 'r', encoding='utf-8') as file:
+        data18 = json.load(file)
+      return data18
+    except json.decoder.JSONDecodeError:
+        # Manejar archivo vacío, inicializar con una estructura JSON válida
+        return []
+# Partidos Univ. Valladolid VCV
+@app.route('/admin/calend_vcv')
+def calend_vcv():
+    data18 = obtener_datos_vcv()
+    return render_template('admin/calend_vcv.html', data18=data18)
+# Ingresar los resultados de los partidos de Univ. Valladolid VCV
+@app.route('/admin/crear_calendario_vcv', methods=['POST'])
+def ingresar_resul_vcv():
+    data18 = obtener_datos_vcv()
+    nums_partidos = int(request.form.get('num_partidos', 0))
+    jornada_nombre = request.form.get('nombre')
+    jornada_existente = next((j for j in data18 if j["nombre"] == jornada_nombre), None)
+    if jornada_existente:
+        # Si la jornada ya existe, utiliza su identificador existente
+        jornada_id = jornada_existente["id"]
+        jornada = jornada_existente
+    else:
+        # Si la jornada no existe, crea un nuevo identificador
+        jornada_id = str(uuid.uuid4())
+        jornada = {"id": jornada_id, "nombre": jornada_nombre, "partidos": []}
+        data18.append(jornada)
+    for i in range(nums_partidos):
+        #id_nuevo = str(uuid.uuid4())
+        equipoLocal = request.form.get(f'local{i}')
+        resultadoA = request.form.get(f'resultadoA{i}')
+        resultadoB = request.form.get(f'resultadoB{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
+        nuevo_partido = {
+            #'id': id_nuevo,
+            'local': equipoLocal,
+            'resultadoA': resultadoA,
+            'resultadoB': resultadoB,
+            'visitante': equipoVisitante,
+            'fecha' : fecha,
+            'hora' : hora
+        }
+        jornada["partidos"].append(nuevo_partido)
+    guardar_datos_vcv(data18)
+    return redirect(url_for('calend_vcv'))
+# Toma la lista de los resultados y los guarda
+def guardar_partidos_en_archivo_vcv(data18):
+    arch_guardar_vcv = 'json/partidos_vcv.json'
+    # Guardar en el archivo
+    with open(arch_guardar_vcv, 'w', encoding='UTF-8') as archivo:
+        json.dump(data18, archivo)
+# Modificar los partidos de cada jornada
+@app.route('/modificar_jornada_vcv/<string:id>', methods=['POST'])
+def modificar_jorn_vcv(id):
+    data18 = obtener_datos_vcv()
+    if request.method == 'POST':
+        jornada_nombre = request.form.get('nombre')
+        resultados_a_modificar = next((result for result in data18 if result['id'] == id), None)
+        if resultados_a_modificar:
+            resultados_a_modificar['nombre'] = jornada_nombre
+            resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
+            for i in range(6):  # Ajusta según la cantidad máxima de partidos
+                equipoLocal = request.form.get(f'local{i}')
+                resultadoA = request.form.get(f'resultadoA{i}')
+                resultadoB = request.form.get(f'resultadoB{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')
+                nuevo_partido = {
+                    'local': equipoLocal,
+                    'resultadoA': resultadoA,
+                    'resultadoB': resultadoB,
+                    'visitante': equipoVisitante,
+                    'fecha' : fecha,
+                    'hora' : hora
+                }
+                resultados_a_modificar['partidos'].append(nuevo_partido)
+            # Guardar los cambios en el archivo JSON
+            guardar_partidos_en_archivo_vcv(data18)            
+            return redirect(url_for('calend_vcv'))
+    return redirect(url_for('calend_vcv'))
+from collections import defaultdict
+# Ruta para borrar jornadas
+@app.route('/eliminar_jorn_vcv/<string:id>', methods=['POST'])
+def eliminar_jorn_vcv(id):
+    data18 = obtener_datos_vcv()
+    jornada_a_eliminar = [j for j in data18 if j['id'] != id]  # Filtrar las jornadas diferentes de la que se va a eliminar
+    guardar_partidos_en_archivo_vcv(jornada_a_eliminar)
+    return redirect(url_for('calend_vcv'))
+# Crear la clasificación de Univ. Valladolid VCV
+def generar_clasificacion_analisis_voley_vcv(data18, total_partidos_temporada_vcv):
+    clasificacion = defaultdict(lambda: {'puntos': 0, 'jugados': 0, 'ganados3': 0, 'ganados2': 0, 'perdidos1': 0, 'perdidos0': 0, 'favor': 0, 'contra': 0, 'diferencia_sets': 0})
+    for jornada in data18[:total_partidos_temporada_vcv]:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            try:
+                resultado_local = int(partido['resultadoA'])
+                resultado_visitante = int(partido['resultadoB'])
+            except ValueError:
+                print(f"Error al convertir resultados a enteros en el partido {partido}")
+                continue
+
+            clasificacion[equipo_local]['jugados'] += 1
+            clasificacion[equipo_visitante]['jugados'] += 1
+            
+            clasificacion[equipo_local]['favor'] += resultado_local
+            clasificacion[equipo_local]['contra'] += resultado_visitante
+            clasificacion[equipo_visitante]['favor'] += resultado_visitante
+            clasificacion[equipo_visitante]['contra'] += resultado_local
+            
+            if resultado_local > resultado_visitante:  # Equipo local gana
+                if resultado_local == 3 and resultado_visitante <= 1:  # 3-0 ó 3-1
+                    clasificacion[equipo_local]['puntos'] += 3
+                    clasificacion[equipo_local]['ganados3'] += 1
+                    clasificacion[equipo_visitante]['puntos'] += 0
+                    clasificacion[equipo_visitante]['perdidos0'] += 1
+                else:
+                    clasificacion[equipo_local]['puntos'] += 2  # 3-2
+                    clasificacion[equipo_local]['ganados2'] += 1
+                    clasificacion[equipo_visitante]['puntos'] += 1
+                    clasificacion[equipo_visitante]['perdidos1'] += 1
+            elif resultado_local < resultado_visitante:  # Equipo visitante gana
+                if resultado_visitante == 3 and resultado_local <= 1:  # 3-0 ó 3-1
+                    clasificacion[equipo_visitante]['puntos'] += 3
+                    clasificacion[equipo_visitante]['ganados3'] += 1
+                    clasificacion[equipo_local]['puntos'] += 0
+                    clasificacion[equipo_local]['perdidos0'] += 1
+                else:
+                    clasificacion[equipo_visitante]['puntos'] += 2  # 3-2
+                    clasificacion[equipo_visitante]['ganados2'] += 1
+                    clasificacion[equipo_local]['puntos'] += 1
+                    clasificacion[equipo_local]['perdidos1'] += 1
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['favor'] - x[1]['contra']), reverse=True)]
+    return clasificacion_ordenada
+# Ruta para mostrar la clasificación del Univ. Valladolid VCV
+@app.route('/equipos_voleibol/clasi_analis_vcv/')
+def clasif_analisis_vcv():
+    data18 = obtener_datos_vcv()
+    total_partidos_temporada_vcv = 22
+    # Llama a la función para generar la clasificación y análisis
+    clasificacion_analisis_vcv = generar_clasificacion_analisis_voley_vcv(data18, total_partidos_temporada_vcv)
+    # Ordena la clasificación por puntos y diferencia de goles
+    clasificacion_analisis_vcv = sorted(clasificacion_analisis_vcv, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_sets']), reverse=True)
+    return render_template('equipos_voleibol/clasi_analis_vcv.html', clasificacion_analisis_vcv=clasificacion_analisis_vcv)
+# Ruta y creación del calendario individual del Univ. Valladolid VCV
+@app.route('/equipos_voleibol/calendario_vcv')
+def calendarios_vcv():
+    datos18 = obtener_datos_vcv()
+    nuevos_datos_vcv = [dato for dato in datos18 if dato]
+    equipo_vcv = 'Univ.Valladolid VCV'
+    tabla_partidos_vcv = {}
+    # Iteramos sobre cada jornada y partido
+    for jornada in datos18:
+        for partido in jornada['partidos']:
+            equipo_local = partido['local']
+            equipo_visitante = partido['visitante']
+            resultado_local = partido['resultadoA']
+            resultado_visitante = partido['resultadoB']           
+            # Verificamos si El Salvador está jugando
+            if equipo_local == equipo_vcv or equipo_visitante == equipo_vcv:
+                # Determinamos el equipo contrario y los resultados
+                if equipo_local == equipo_vcv:
+                    equipo_contrario = equipo_visitante
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_vcv = 'C'
+                else:
+                    equipo_contrario = equipo_local
+                    resultado_a = resultado_local
+                    resultado_b = resultado_visitante
+                    rol_vcv = 'F'
+                # Verificamos si el equipo contrario no está en la tabla
+                if equipo_contrario not in tabla_partidos_vcv:
+                    tabla_partidos_vcv[equipo_contrario] = {'jornadas': {}}                       
+                # Verificamos si es el primer o segundo enfrentamiento
+                if 'primer_enfrentamiento' not in tabla_partidos_vcv[equipo_contrario]:
+                    tabla_partidos_vcv[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_vcv[equipo_contrario]['resultadoA'] = resultado_a
+                    tabla_partidos_vcv[equipo_contrario]['resultadoB'] = resultado_b
+                elif 'segundo_enfrentamiento' not in tabla_partidos_vcv[equipo_contrario]:
+                    tabla_partidos_vcv[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
+                    tabla_partidos_vcv[equipo_contrario]['resultadoAA'] = resultado_a
+                    tabla_partidos_vcv[equipo_contrario]['resultadoBB'] = resultado_b  
+                # Agregamos la jornada y resultados
+                if jornada['nombre'] not in tabla_partidos_vcv[equipo_contrario]['jornadas']:
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']] = {
+                        'resultadoA': resultado_a,
+                        'resultadoB': resultado_b,
+                        'rol_vcv': rol_vcv
+                    }
+                # Asignamos los resultados según el rol del Univ. Valladolid VCV
+                if equipo_local == equipo_contrario or equipo_visitante == equipo_contrario:
+                  if not tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA']:
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoA'] = resultado_a
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoB'] = resultado_b
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vcv'] = rol_vcv
+                  else:
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vcv'] = rol_vcv
+                else:
+                  if not tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA']:
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vcv'] = rol_vcv
+                  else:
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoAA'] = resultado_a
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
+                    tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vcv'] = rol_vcv
+    return render_template('equipos_voleibol/calendario_vcv.html', tabla_partidos_vcv=tabla_partidos_vcv, nuevos_datos_vcv=nuevos_datos_vcv)
+#Fin proceso Univ. Valladolid VCV
+
+
+
+
 
 # COPA DEL REY Y COPA DE LA REINA
 # Copa  Real Valladolid

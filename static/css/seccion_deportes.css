@@ -115,3 +115,11 @@
     overflow: hidden;
     box-shadow: 10px 5px 5px gray;
 }
+.fondo_voley{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/voley.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    box-shadow: 10px 5px 5px gray;
+}
