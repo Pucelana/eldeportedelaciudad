@@ -41,8 +41,8 @@
             <label for="fecha{{i}}">Fecha</label>
             <input type="text" class="form-control" id="fecha{{i}}" name="fecha{{i}}">
           </div>
-          <div class="col-md-1">
-            <label for="hora{{i}}"></label>
+          <div class="col-md-5">
+            <label for="hora{{i}}">Hora</label>
             <input type="time" class="form-control" id="hora{{i}}" name="hora{{i}}">
           </div>
           <div class="col-md-5">
@@ -87,8 +87,7 @@
                   <tbody style="display:none">
                   {% for partido in calendario.partidos %}
                     <tr class="text-center">
-                      <td class="text-center fw-bold">{{ partido.fecha }}</td>
-                      <td class="text-center">{{ partido.hora }}</td>
+                      <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
                       <td class="text-center fw-bold">{{ partido.local }}</td>
                       <td class="text-center">{{ partido.resultadoA }}</td>
                       <td class="text-center">{{ partido.resultadoB }}</td>

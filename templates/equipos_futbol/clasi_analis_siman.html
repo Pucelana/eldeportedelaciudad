@@ -124,6 +124,206 @@
             </div>
           </div>
         </div>
+        <!--<div class="carousel-item active"><--Tabla Clasificación Liga Fem 3ª Fed.->	
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equ_futb" style="width: 80rem;">
+              <div class="card-body"> <--Tabla Clasificación->
+                <div class="row table-responsive">
+                  <h3 class="text-center">Clasificación - Liga Fem. 3ª Federación Grp-2</h3>
+                  <div class="col-1">
+                    <table class="table"> <--Posiciones->
+                      <thead>
+                        <tr>
+                          <th>Pos.</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-success text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                        <tr>
+                          <td class="text-white" style="background-color: #e98181;">13</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">14</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">15</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">16</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaClasifSimancas2" class="table">
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PTOS</th>
+                        <th>PJ</th>
+                        <th>PG</th>
+                        <th>PE</th>
+                        <th>PP</th>
+                        <th>GF</th>
+                        <th>GC</th>
+                        <th>DG</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for equipo in clasificacion_analisis_simancas %}
+                      <tr class="text-center">
+                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
+                        <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
+                        <td class="empatados fw-bold">{{ equipo['datos']['empatados'] }}</td>
+                        <td class="perdidos fw-bold">{{ equipo['datos']['perdidos'] }}</td>
+                        <td class="favor fw-bold">{{ equipo['datos']['favor'] }}</td>
+                        <td class="contra fw-bold">{{ equipo['datos']['contra']}}</td>
+                        <td class="diferencia_goles fw-bold">{{ equipo['datos']['diferencia_goles'] }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <!--<div class="carousel-item"><--Tabla Ascenso 2ª Federación->
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equ_futb" style="width: 80rem;">
+              <div class="card-body">
+                <div class="row table-responsive">
+                  <h3 class="text-center">Ascenso - Liga Fem. 2ª Federación</h3>
+                  <div class="col-1">
+                    <table class="table"> <--Posiciones->
+                      <thead>
+                        <tr>
+                          <th>Pos.</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-success text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">13</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">14</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">15</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">16</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaAsceSimancas" class="table">
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>Ptos.Actuales</th>
+                        <th>Proximidad</th>
+                        <th>Ptos.Matem</th>
+                        <th>Ptos.Optim</th>
+                        <th>Ptos.Pesim</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for equipo_info in clasificacion_analisis_simancas %}
+                      <tr class="text-center">
+                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="asce-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="asce-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="asce-proxi fw-bold"></td>
+                        <td class="asce-mate fw-bold"></td>
+                        <td class="asce-opti fw-bold"></td>
+                        <td class="asce-pesi fw-bold"></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
         <div class="carousel-item"><!--Tabla Ascenso-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
@@ -409,6 +609,104 @@
             </div>
           </div>
         </div>
+        <!--<div class="carousel-item"><--Tabla Permanencia y Descenso Liga Gonalpi->
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equ_futb" style="width: 80rem;">
+              <div class="card-body">
+                <div class="row table-responsive">
+                  <h3 class="text-center mb-4">Permanencia - Descenso Liga Gonalpi</h3>
+                  <div class="col-1">
+                    <table class="table"> <--Posiciones->
+                      <thead>
+                        <tr>
+                          <th>Pos.</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-secondary text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                        <tr>
+                          <td class="text-white" style="background-color: #e98181;">13</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">14</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">15</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">16</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaDesceSimancas" class="table"><--Tabla Permanencia->
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>Ptos.Actuales</th>
+                        <th>Proximidad</th>
+                        <th>Ptos.Matem</th>
+                        <th>Ptos.Optim</th>
+                        <th>Ptos.Pesim</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for equipo_info in clasificacion_analisis_simancas %}
+                      <tr class="text-center">
+                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="desce-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="desce-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="desce-prox fw-bold"></td>
+                        <td class="desce-mate fw-bold"></td>
+                        <td class="desce-opti fw-bold"></td>
+                        <td class="desce-pesi fw-bold"></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -361,21 +361,20 @@ def ingresar_resultado_uemc():
         data.append(jornada)
     for i in range(num_partidos):
         #id_nuevo = str(uuid.uuid4())
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         equipoLocal = request.form.get(f'local{i}')
         resultadoA = request.form.get(f'resultadoA{i}')
         resultadoB = request.form.get(f'resultadoB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
-        fecha = request.form.get(f'fecha{i}')
-        hora = request.form.get(f'hora{i}')
-        
         nuevo_partido = {
             #'id': id_nuevo,
+            'fecha' : fecha,
+            'hora' :hora,
             'local': equipoLocal,
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
-            'visitante': equipoVisitante,
-            'fecha' : fecha,
-            'hora' :hora
+            'visitante': equipoVisitante
         }
         jornada["partidos"].append(nuevo_partido)
         
@@ -716,20 +715,20 @@ def ingresar_resul_ponce():
         data1.append(jornada)
     for i in range(nums_partidos):
         #id_nuevo = str(uuid.uuid4())
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         equipoLocal = request.form.get(f'local{i}')
         resultadoA = request.form.get(f'resultadoA{i}')
         resultadoB = request.form.get(f'resultadoB{i}')
         equipoVisitante = request.form.get(f'visitante{i}')
-        fecha = request.form.get(f'fecha{i}')
-        hora = request.form.get(f'hora{i}')
         nuevo_partido = {
             #'id': id_nuevo,
+            'fecha' : fecha,
+            'hora' : hora,
             'local': equipoLocal,
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
-            'visitante': equipoVisitante,
-            'fecha' : fecha,
-            'hora' : hora
+            'visitante': equipoVisitante            
         }
         jornada["partidos"].append(nuevo_partido)
     guardar_datos_ponce(data1)
@@ -1069,16 +1068,20 @@ def ingresar_resul_aliados():
         data2.append(jornada)
     for i in range(nums_partidos):
         #id_nuevo = str(uuid.uuid4())
+        fecha = request.form.get(f'fecha{i}')
+        hora = request.form.get(f'hora{i}')
         equipoLocal = request.form.get(f'local{i}')
         resultadoA = request.form.get(f'resultadoA{i}')
         resultadoB = request.form.get(f'resultadoB{i}')
-        equipoVisitante = request.form.get(f'visitante{i}')
+        equipoVisitante = request.form.get(f'visitante{i}')       
         nuevo_partido = {
             #'id': id_nuevo,
+            'fecha': fecha,
+            'hora': hora,
             'local': equipoLocal,
             'resultadoA': resultadoA,
             'resultadoB': resultadoB,
-            'visitante': equipoVisitante
+            'visitante': equipoVisitante           
         }
         jornada["partidos"].append(nuevo_partido)
     guardar_datos_aliados(data2)
@@ -1100,11 +1103,15 @@ def modificar_jorn_aliados(id):
             resultados_a_modificar['nombre'] = jornada_nombre
             resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
             for i in range(6):  # Ajusta según la cantidad máxima de partidos
+                fecha = request.form.get(f'fecha{i}')
+                hora = request.form.get(f'hora{i}')   
                 equipoLocal = request.form.get(f'local{i}')
                 resultadoA = request.form.get(f'resultadoA{i}')
                 resultadoB = request.form.get(f'resultadoB{i}')
-                equipoVisitante = request.form.get(f'visitante{i}')
+                equipoVisitante = request.form.get(f'visitante{i}')                          
                 nuevo_partido = {
+                    'fecha': fecha,
+                    'hora': hora,
                     'local': equipoLocal,
                     'resultadoA': resultadoA,
                     'resultadoB': resultadoB,
@@ -1112,9 +1119,9 @@ def modificar_jorn_aliados(id):
                 }
                 resultados_a_modificar['partidos'].append(nuevo_partido)
             # Guardar los cambios en el archivo JSON
-            guardar_partidos_en_archivo_ponce(data2)            
-            return redirect(url_for('calend_ponce'))
-    return redirect(url_for('calend_ponce'))
+            guardar_partidos_en_archivo_aliados(data2)            
+            return redirect(url_for('calend_aliados'))
+    return redirect(url_for('calend_aliados'))
 # Ruta para borrar jornadas
 @app.route('/eliminar_jorn_aliados/<string:id>', methods=['POST'])
 def eliminar_jorn_aliados(id):
@@ -1333,7 +1340,7 @@ def calendarios_aliados():
                     tabla_partidos_aliados[equipo_contrario]['primer_enfrentamiento'] = jornada['nombre']
                     tabla_partidos_aliados[equipo_contrario]['resultadoA'] = resultado_a
                     tabla_partidos_aliados[equipo_contrario]['resultadoB'] = resultado_b
-                elif 'segundo_enfrentamiento' not in tabla_partidos_ponce[equipo_contrario]:
+                elif 'segundo_enfrentamiento' not in tabla_partidos_aliados[equipo_contrario]:
                     tabla_partidos_aliados[equipo_contrario]['segundo_enfrentamiento'] = jornada['nombre']
                     tabla_partidos_aliados[equipo_contrario]['resultadoAA'] = resultado_a
                     tabla_partidos_aliados[equipo_contrario]['resultadoBB'] = resultado_b  

@@ -28,7 +28,7 @@
         <div class="carousel-item active"><!--Tabla Clasificación-->	
           <div class="d-flex justify-content-center">
             <div class="card tabla_equipos" style="width: 80rem;">
-              <div class="card-body"> <!--Tabla Clasificación-->
+              <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Clasificación - División de Honor BSR</h3>
                   <div class="col-1">
@@ -70,10 +70,10 @@
                           <td class="bg-secondary text-white">10</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">11</td>
+                          <td class="text-white" style="background-color: #ff7171;">11</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">12</td>
+                          <td class="bg-danger text-white">12</td>
                         </tr>
                       </tbody>
                     </table>
@@ -204,31 +204,31 @@
                       </thead>
                       <tbody class="text-center">
                         <tr>
-                          <td class="bg-secondary text-white">1</td>
+                          <td class="bg-success text-white">1</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">2</td>
+                          <td class="bg-success text-white">2</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">3</td>
+                          <td class="bg-success text-white">3</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">4</td>
+                          <td class="bg-success text-white">4</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">5</td>
+                          <td class="bg-secondary text-white">5</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">6</td>
+                          <td class="bg-secondary text-white">6</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">7</td>
+                          <td class="bg-secondary text-white">7</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">8</td>
+                          <td class="bg-secondary text-white">8</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">9</td>
+                          <td class="bg-secondary text-white">9</td>
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">10</td>
@@ -264,7 +264,93 @@
                         <td class="play-prox fw-bold"></td>
                         <td class="play-mate fw-bold"></td>
                         <td class="play-opti fw-bold"></td>
-                        <td class="plya-pesi fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item"><!--Tabla Europa-->
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equipos" style="width: 80rem;">
+              <div class="card-body">
+                <div class="row table-responsive">
+                   <h3 class="text-center mb-4">Europa</h3>
+                   <div class="col-1">
+                    <table class="table"> <!--Posiciones-->
+                      <thead>
+                        <tr>
+                          <th>Pos.</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-success text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaEuroAliados" class="table"><!--Tabla Europa-->
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>Gan.Actuales</th>
+                        <th>Proximidad</th>
+                        <th>P.Matem</th>
+                        <th>P.Optim</th>
+                        <th>P.Pesim</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for equipo_info in clasificacion_analisis_aliados %}
+                      <tr class="text-center">
+                        <td class="fw-bold euro-equipo">{{ equipo_info['equipo'] }}</td>
+                        <td class="euro-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="euro-act fw-bold">{{ equipo_info['datos']['ganados'] }}</td>
+                        <td class="euro-prox fw-bold"></td>
+                        <td class="euro-mate fw-bold"></td>
+                        <td class="euro-opti fw-bold"></td>
+                        <td class="euro-pesi fw-bold"></td>
                       </tr>
                       {% endfor %}
                     </tbody>
@@ -280,7 +366,7 @@
             <div class="card tabla_equipos" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                  <h3 class="text-center mb-4">Salvación - Descenso  1ª División</h3>
+                  <h3 class="text-center mb-4">Promoción - Descenso  Liga BSR 1ª División</h3>
                   <div class="col-1">
                     <table class="table"> <!--Posiciones-->
                       <thead>
@@ -320,10 +406,10 @@
                           <td class="bg-secondary text-white">10</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">11</td>
+                          <td class="text-white" style="background-color: #ff7171;">11</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">12</td>
+                          <td class="bg-danger text-white">12</td>
                         </tr>
                       </tbody>
                     </table>

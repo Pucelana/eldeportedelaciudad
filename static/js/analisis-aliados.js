@@ -90,7 +90,7 @@ equipos.forEach((equipoData) => {
 const filas1 = document.querySelectorAll("#tablaPlayAliados tbody tr");
 const partidosTotales1 = 22; // Total de partidos en la temporada
 const partidosPorGanar1 = 1; // Cantidad de puntos por partido ganado
-const partidosPlayOff = 20; // Número de partidos para llegar a los playoffs
+const partidosPlayOff = 15; // Número de partidos para llegar a los playoffs
 const equiposPlay = [];
 filas1.forEach((fila, indice) => {
     const equipo = fila.querySelector(`.fw-bold`).textContent;
@@ -136,11 +136,12 @@ equiposPlay.forEach((equipoData) => {
     `;
     tabla1.appendChild(nuevaFila);
 });
+
 // Cuarta función descenso y ordenar automaticamente
 const filas2 = document.querySelectorAll("#tablaDescAliados tbody tr");
 const partidosTotales2 = 22; // Total de partidos en la temporada
 const partidosPorGanar2 = 1; // Cantidad de puntos por partido ganado
-const partidosDescenso = 10;
+const partidosDescenso = 5;
 const equiposDesc = [];
 filas2.forEach((fila, indice) => {
     const equipo = fila.querySelector(`.fw-bold`).textContent;
@@ -154,8 +155,8 @@ filas2.forEach((fila, indice) => {
 
     const partidosRestantesSalvacion = partidosDescenso;
     const partidosGanadosMatematicos = Math.min(puntosActuales + partidosRestantesSalvacion * partidosPorGanar2,puntosParaSalvar);
-    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos -2, puntosParaSalvar);
-    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -3, puntosParaSalvar);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos -1, puntosParaSalvar);
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -2, puntosParaSalvar);
 
     equiposDesc.push({
         equipo,
@@ -184,4 +185,50 @@ equiposDesc.forEach((equipoData) => {
     <td class="desc-pesi fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
     `;
     tabla2.appendChild(nuevaFila);
+});
+
+// Quinta función Euro y ordenar automaticamente
+const filas3 = document.querySelectorAll("#tablaEuroAliados tbody tr");
+const partidosTotales3 = 22; // Total de partidos en la temporada
+const partidosPorGanar3 = 1; // Cantidad de puntos por partido ganado
+const partidosEuro = 22;
+const equiposEuro = [];
+filas3.forEach((fila, indice) => {
+    const equipo3 = fila.querySelector(`.fw-bold`).textContent;
+    const partidosJugados3 = parseInt(fila.querySelector(`.euro-jug`).textContent);
+    const puntosActuales3 = parseInt(fila.querySelector(`.euro-act`).textContent);
+    const puntosParaEuro = partidosEuro * partidosPorGanar2;
+    const puntosFaltan3 = Math.max((0, puntosParaEuro - puntosActuales3));
+    const proxiEuro = Math.min(((puntosParaEuro - puntosFaltan3) / puntosParaEuro) * 100, 100);
+    const partidosRestantesEuro = partidosEuro;
+    const partidosGanadosMatematicos3 = Math.min(puntosActuales3 + partidosRestantesEuro * partidosPorGanar3,puntosParaEuro);
+    const partidosGanadosPesimistas3 = Math.min(partidosGanadosMatematicos3 -2, puntosParaEuro);
+    const partidosGanadosOptimistas3 = Math.min(partidosGanadosMatematicos3 -3, puntosParaEuro);
+    equiposEuro.push({
+        equipo3,
+        partidosJugados3,
+        puntosActuales3,
+        proxiEuro,
+        partidosGanadosMatematicos3,
+        partidosGanadosOptimistas3,
+        partidosGanadosPesimistas3
+    });
+});
+// Ordenar los equiposEuro por proximidad Euroendente
+equiposEuro.sort((a, b) => b.proxiEuro - a.proxiEuro);
+// Actualizar la tabla con los datos ordenados
+const tabla3 = document.querySelector("#tablaEuroAliados tbody");
+tabla3.innerHTML = ""; // Limpiar la tabla antes de actualizar
+equiposEuro.forEach((equipo3Data) => {
+    const nuevaFila3 = document.createElement("tr");
+    nuevaFila3.innerHTML = `
+    <td class="fw-bold text-center">${equipo3Data.equipo3}</td>
+    <td class="euro-jug fw-bold text-center">${equipo3Data.partidosJugados3}</td>
+    <td class="euro-act fw-bold text-center">${equipo3Data.puntosActuales3}</td>
+    <td class="euro-prox fw-bold text-center">${equipo3Data.proxiEuro.toFixed(2)}%</td>
+    <td class="euro-mate fw-bold text-center">${equipo3Data.partidosGanadosMatematicos3}</td>
+    <td class="euro-opti fw-bold text-center">${equipo3Data.partidosGanadosOptimistas3}</td>
+    <td class="euro-pesi fw-bold text-center">${equipo3Data.partidosGanadosPesimistas3}</td>
+    `;
+    tabla3.appendChild(nuevaFila3);
 });
