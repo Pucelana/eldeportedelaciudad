@@ -103,7 +103,7 @@
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Editar Semifinales</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">3º y 4º Puesto</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -252,12 +252,12 @@
             // Determinar el número de partidos según la etapa seleccionada
             var numPartidos;
             if (selectedOption === "semifinales") {
-                numPartidos = 4;
+                numPartidos = 20;
             } else if (selectedOption === "final") {
-                numPartidos = 2;
+                numPartidos = 10;
             }
             else if (selectedOption === "promocion") {
-                numPartidos = 2;
+                numPartidos = 4;
             }
             document.getElementById("num_partidos").value = numPartidos;
             // Crear los campos de entrada para cada partido

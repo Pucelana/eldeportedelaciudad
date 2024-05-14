@@ -453,7 +453,7 @@ def crear_playoff_uemc():
         eliminatoria = request.form.get('eliminatoria')
         # Verificar el número máximo de partidos permitidos según la etapa del torneo
         if eliminatoria == 'cuartos':
-            max_partidos = 12
+            max_partidos = 20
         elif eliminatoria == 'semifinales':
             max_partidos = 2
         elif eliminatoria == 'final':
@@ -1861,11 +1861,11 @@ def crear_playoff_promesas():
         eliminatoria = request.form.get('eliminatoria')
         # Verificar el número máximo de partidos permitidos según la etapa del torneo
         if eliminatoria == 'semifinales':
-            max_partidos = 10
+            max_partidos = 20
         elif eliminatoria == 'final':
-            max_partidos = 5
+            max_partidos = 10
         elif eliminatoria == 'promocion':
-            max_partidos = 2
+            max_partidos = 4
         else:
             # Manejar caso no válido
             return "Etapa de torneo no válida"
@@ -2088,7 +2088,7 @@ def calendarios_promesas():
     return render_template('equipos_futbol/calendario_promesas.html', tabla_partidos_promesas=tabla_partidos_promesas, nuevos_datos_promesas=nuevos_datos_promesas)        
 # Fin proceso Promesas
 
-#Todo el proceso de calendario y clasificación del V Simancas
+#Todo el proceso de calendario y clasificación del RV Simancas
 # Ruta de partidos V Simancas       
 part_simancas = 'json/partidos_simancas.json'
 def guardar_datos_simancas(data5):
@@ -2253,7 +2253,7 @@ def clasif_analisis_simancas():
 def calendarios_simancas():
     datos5 = obtener_datos_simancas()
     nuevos_datos_simancas = [dato for dato in datos5 if dato]
-    equipo_simancas = 'V Simancas'
+    equipo_simancas = 'RV Simancas'
     tabla_partidos_simancas = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos5:
@@ -3111,7 +3111,7 @@ def obtener_playoff_aula():
             datas7 = json.load(file)
         return datas7
     except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return {'cuartos': [], 'semifinales': [], 'final': []}
+        return {'cuartos': [], 'septimo': [], 'sexto': [], 'quinto': [], 'semifinales': [], 'tercero': [], 'final': []}
 nuevos_enfrentamientos_aula = []
 partido_aula = None
 # Crear formulario para los playoff
@@ -3130,8 +3130,16 @@ def crear_playoff_aula():
         # Verificar el número máximo de partidos permitidos según la etapa del torneo
         if eliminatoria == 'cuartos':
             max_partidos = 6
+        elif eliminatoria == 'septimo':
+            max_partidos = 4
+        elif eliminatoria == 'sexto':
+            max_partidos = 2
+        elif eliminatoria == 'quinto':
+            max_partidos = 2        
         elif eliminatoria == 'semifinales':
             max_partidos = 4
+        elif eliminatoria == 'tercero':
+            max_partidos = 2
         elif eliminatoria == 'final':
             max_partidos = 2
         else:
@@ -3156,20 +3164,20 @@ def crear_playoff_aula():
         }
         # Recuperar los datos de cada partido del formulario
         for i in range(num_partidos):
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             local = request.form.get(f'local{i}')
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
             visitante = request.form.get(f'visitante{i}')
-            fecha = request.form.get(f'fecha{i}')
-            hora = request.form.get(f'hora{i}')
             # Crear un nuevo diccionario con los datos del partido
             partido = {
+                'fecha': fecha,
+                'hora': hora,
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante,
-                'fecha': fecha,
-                'hora': hora
+                'visitante': visitante               
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -6045,10 +6053,6 @@ def calendarios_vcv():
     return render_template('equipos_voleibol/calendario_vcv.html', tabla_partidos_vcv=tabla_partidos_vcv, nuevos_datos_vcv=nuevos_datos_vcv)
 #Fin proceso Univ. Valladolid VCV
 
-
-
-
-
 # COPA DEL REY Y COPA DE LA REINA
 # Copa  Real Valladolid
 copa_valladolid = 'json_copa/copa_valladolid.json'
@@ -6200,7 +6204,7 @@ def obtener_copa_aula():
             dats2 = json.load(file)
         return dats2
     except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return {'fase1': [], 'fase2': [],'octavos': [],'cuartos': [], 'semifinales': [], 'final': []}
+        return {'fase1': [], 'fase2': [], 'cuartos': [], 'semifinales': [], 'final': []}
 nuevas_eliminatorias_aula = []
 duelos_aula = None
 # Crear formulario para los playoff
@@ -6249,20 +6253,20 @@ def crear_copa_aula():
         }
         # Recuperar los datos de cada partido del formulario
         for i in range(num_partidos):
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             local = request.form.get(f'local{i}')
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
-            visitante = request.form.get(f'visitante{i}')
-            fecha = request.form.get(f'fecha{i}')
-            hora = request.form.get(f'hora{i}')
+            visitante = request.form.get(f'visitante{i}')           
             # Crear un nuevo diccionario con los datos del partido
             partido = {
+                'fecha': fecha,
+                'hora': hora,
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante,
-                'fecha': fecha,
-                'hora': hora
+                'visitante': visitante
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -6297,19 +6301,19 @@ def modificar_copa_aula(id):
     if request.method == 'POST':
         nuevos_partidos = []
         for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             local = request.form.get(f'local{index}')
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
-            visitante = request.form.get(f'visitante{index}')
-            fecha = request.form.get(f'fecha{index}')
-            hora = request.form.get(f'hora{index}')
+            visitante = request.form.get(f'visitante{index}')            
             # Actualizar los datos del partido
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
-            partido['visitante'] = visitante
-            partido['fecha'] = fecha
-            partido['hora'] = hora
+            partido['visitante'] = visitante   
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -6357,7 +6361,7 @@ def crear_copa_recoletas():
         elif eliminatoria == 'ronda2':
             max_partidos = 6
         elif eliminatoria == 'octavos':
-            max_partidos = 8
+            max_partidos = 6
         elif eliminatoria == 'cuartos':
             max_partidos = 4
         elif eliminatoria == 'semifinal':
@@ -6386,20 +6390,20 @@ def crear_copa_recoletas():
         }
         # Recuperar los datos de cada partido del formulario
         for i in range(num_partidos):
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             local = request.form.get(f'local{i}')
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
-            visitante = request.form.get(f'visitante{i}')
-            fecha = request.form.get(f'fecha{i}')
-            hora = request.form.get(f'hora{i}')
+            visitante = request.form.get(f'visitante{i}')           
             # Crear un nuevo diccionario con los datos del partido
             partido = {
+                'fecha' : fecha,
+                'hora' : hora,
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante,
-                'fecha' : fecha,
-                'hora' : hora
+                'visitante': visitante
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -6434,19 +6438,19 @@ def modificar_copa_recoletas(id):
     if request.method == 'POST':
         nuevos_partidos = []
         for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             local = request.form.get(f'local{index}')
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
-            visitante = request.form.get(f'visitante{index}')
-            fecha = request.form.get(f'fecha{index}')
-            hora = request.form.get(f'hora{index}')
+            visitante = request.form.get(f'visitante{index}')           
             # Actualizar los datos del partido
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
-            partido['visitante'] = visitante
-            partido['fecha'] = fecha
-            partido['hora'] = hora
+            partido['visitante'] = visitante            
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON
@@ -6472,7 +6476,7 @@ def obtener_copa_aliados():
             dats4 = json.load(file)
         return dats4
     except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return {'cuartos': [], 'semifinales': [],'final': []}
+        return {'cuartos': [], 'semifinales': [], 'eliminados': [], 'final': []}
 nuevas_eliminatorias_aliados = []
 duelos_aliados = None
 # Crear formulario para los playoff
@@ -6492,6 +6496,8 @@ def crear_copa_aliados():
         if eliminatoria == 'cuartos':
             max_partidos = 4
         elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'eliminados':
             max_partidos = 2
         elif eliminatoria == 'final':
             max_partidos = 1               
@@ -6517,20 +6523,20 @@ def crear_copa_aliados():
         }
         # Recuperar los datos de cada partido del formulario
         for i in range(num_partidos):
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
             local = request.form.get(f'local{i}')
             resultadoA = request.form.get(f'resultadoA{i}')
             resultadoB = request.form.get(f'resultadoB{i}')
-            visitante = request.form.get(f'visitante{i}')
-            fecha = request.form.get(f'fecha{i}')
-            hora = request.form.get(f'hora{i}')
+            visitante = request.form.get(f'visitante{i}')            
             # Crear un nuevo diccionario con los datos del partido
             partido = {
+                'fecha' : fecha,
+                'hora' : hora,
                 'local': local,
                 'resultadoA': resultadoA,
                 'resultadoB': resultadoB,
-                'visitante': visitante,
-                'fecha' : fecha,
-                'hora' : hora
+                'visitante': visitante
             }
             # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
@@ -6565,19 +6571,19 @@ def modificar_copa_aliados(id):
     if request.method == 'POST':
         nuevos_partidos = []
         for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             local = request.form.get(f'local{index}')
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
-            visitante = request.form.get(f'visitante{index}')
-            fecha = request.form.get(f'fecha{i}')
-            hora = request.form.get(f'hora{i}')
+            visitante = request.form.get(f'visitante{index}')           
             # Actualizar los datos del partido
+            partido['fecha'] = fecha
+            partido['hora'] = hora
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
-            partido['visitante'] = visitante
-            partido['fecha'] = fecha
-            partido['hora'] = hora
+            partido['visitante'] = visitante 
             nuevos_partidos.append(partido)   
         eliminatoria_encontrada['partidos'] = nuevos_partidos       
         # Guardar los cambios en el archivo JSON

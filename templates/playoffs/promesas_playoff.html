@@ -27,42 +27,54 @@
         <div class="row table-responsive">
           <div class="col-12">
             <div class="">          
-            <p class="text-center fw-bold text-white fs-3">Semifinales</p>
-            <table class="table border-secondary">
-            {% for partido in datas11.semifinales.partidos %}
-            <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-              <tr>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
-              </tr>
-            {% endfor %}
-            </table>
+              <p class="text-center fw-bold text-white fs-3">Semifinales </p>
+              <div class="texto-adicional text-center" data-ronda="1">
+              <table class="table border-secondary">
+              {% for partido in datas11.semifinales.partidos %} 
+                <tr class="text-center">
+                  <td class="text-center text-white fs-6">{{ partido.fecha }}</td>
+                  <td class="text-center text-white fs-6">{{ partido.hora }}</td>
+                  <td class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                  <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                  <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                  <td class="text-center fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                </tr>
+              {% endfor %}
+              </table>
+              </div>
+              <a href="#" class="mostrar-enlace text-decoration-none text-primary fw-bold" onclick="mostrarTexto(this, 1); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Final</p>
+            <div class="texto-adicional text-center" data-ronda="2">
             <table class="table border-secondary">
             {% for partido in datas11.final.partidos %}
-            <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
               <tr>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center fw-bold">{{ partido.fecha }}</td>
+                <td class="text-center fw-bold">{{ partido.hora }}</td>
+                <td class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
+            </div>
+            <a href="#" class="mostrar-enlace text-decoration-none text-primary fw-bold" onclick="mostrarTexto(this, 2); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Promoción Descenso</p>
+            <div class="texto-adicional text-center" data-ronda="3">
             <table class="table border-secondary">
             {% for partido in datas11.promocion.partidos %}
               <tr>
-                <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center fw-bold">{{ partido.fecha }}</td>
+                <td class="text-center fw-bold">{{ partido.hora }}</td>
+                <td class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
+            </div>
+            <a href="#" class="mostrar-enlace text-decoration-none text-primary fw-bold" onclick="mostrarTexto(this, 3); return false;">Ver Partidos</a>
             </div>
           </div>
         </div>
@@ -78,5 +90,23 @@ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/j
 integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 </script> 
 <!--<script src="/static/js/script.js"></script>-->
+<script>
+  function mostrarTexto(enlace, ronda) {
+      // Encontrar el elemento de texto adicional correspondiente a la ronda
+      var textoAdicional = $(enlace).siblings('.texto-adicional[data-ronda="' + ronda + '"]');
+      // Ocultar todos los demás divs de texto adicional
+      $('.texto-adicional').not(textoAdicional).hide();  
+      // Toggle para mostrar u ocultar el texto adicional de la ronda específica
+      textoAdicional.toggle();  
+      // Cambiar el texto de todos los enlaces "Ver Partidos" excepto el actual
+      $('.mostrar-enlace').not(enlace).text('Ver Partidos');  
+      // Cambiar el texto del enlace actual
+      if (textoAdicional.is(':visible')) {
+          enlace.textContent = 'Ocultar';
+      } else {
+          enlace.textContent = 'Ver Partidos';
+      }
+  }
+  </script> 
 </body>
 </html>

@@ -1,179 +1,178 @@
 {
     "fase1": {
-        "id": "ea01eaa4-ec39-4212-91d8-d99bedc6e560",
+        "id": "9ca2422c-208f-4deb-98b5-3bea056b4794",
         "partidos": [
             {
-                "local": "BM Granollers",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Elda Prestigio",
-                "fecha": "10 May.",
-                "hora": ""
+                "fecha": "18.11",
+                "hora": "",
+                "local": "Soliss Pozuelo de Calatrava",
+                "resultadoA": "18",
+                "resultadoB": "27",
+                "visitante": "Gij\u00f3n Bm.La Calzada"
             },
             {
-                "local": "ORBE Rubensa Porri\u00f1o",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Aula Valladolid F",
-                "fecha": "10 May.",
-                "hora": ""
+                "fecha": "18.11",
+                "hora": "",
+                "local": "Cicar Lanzarote",
+                "resultadoA": "24",
+                "resultadoB": "23",
+                "visitante": "Grafometal La Rioja"
             },
             {
-                "local": "atticgo Elche",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Costa del Sol M\u00e1laga",
-                "fecha": "10 May.",
-                "hora": ""
+                "fecha": "18.11",
+                "hora": "",
+                "local": "Balonmano Morverdre",
+                "resultadoA": "19",
+                "resultadoB": "25",
+                "visitante": "Beti-Onak F"
             },
             {
-                "local": "Bera Bera F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Mecalia Atl\u00e9tico Guard\u00e9s",
-                "fecha": "10 May.",
-                "hora": ""
+                "fecha": "18.11",
+                "hora": "",
+                "local": "Berenguer Bola\u00f1os",
+                "resultadoA": "27",
+                "resultadoB": "28",
+                "visitante": "Lobas Global Atac Oviedo"
             },
             {
-                "local": null,
-                "resultadoA": null,
-                "resultadoB": null,
-                "visitante": null,
-                "fecha": null,
-                "hora": null
+                "fecha": "18.11",
+                "hora": "",
+                "local": "Pluscar Lanzarote",
+                "resultadoA": "28",
+                "resultadoB": "29",
+                "visitante": "Club Balonmano Zuazo"
             },
             {
-                "local": null,
-                "resultadoA": null,
-                "resultadoB": null,
-                "visitante": null,
-                "fecha": null,
-                "hora": null
+                "fecha": "18.11",
+                "hora": "",
+                "local": "Almassora BM",
+                "resultadoA": "22",
+                "resultadoB": "25",
+                "visitante": "Elda Prestigio"
             }
         ]
     },
     "fase2": {
-        "id": "f0fd840e-5024-4987-9c43-fae3cf6173a2",
+        "id": "3c6dc450-3959-42f9-809f-e4c7ec860073",
         "partidos": [
             {
+                "fecha": "24.01",
+                "hora": "",
                 "local": "Elda Prestigio",
                 "resultadoA": "25",
                 "resultadoB": "20",
-                "visitante": "Rocasa Gran Canaria",
-                "fecha": "24 Ene.",
-                "hora": ""
+                "visitante": "Rocasa Gran Canaria"
             },
             {
+                "fecha": "20.01",
+                "hora": "",
                 "local": "Club Balonmano Zuazo",
                 "resultadoA": "19",
                 "resultadoB": "33",
-                "visitante": "Costa del Sol M\u00e1laga",
-                "fecha": "20 Ene.",
-                "hora": ""
+                "visitante": "Costa del Sol M\u00e1laga"
             },
             {
-                "local": "Lobos Global Atac Oviedo",
+                "fecha": "23.01",
+                "hora": "",
+                "local": "Lobas Global Atac Oviedo",
                 "resultadoA": "17",
                 "resultadoB": "33",
-                "visitante": "atticgo Balonmano Elche",
-                "fecha": "23 Ene.",
-                "hora": ""
+                "visitante": "ATTICGO BM Elche"
             },
             {
-                "local": "Replase Beti-Onak",
+                "fecha": "20.01",
+                "hora": "",
+                "local": "Beti-Onak F",
                 "resultadoA": "22",
                 "resultadoB": "24",
-                "visitante": "ORBE Rubensa Porri\u00f1o",
-                "fecha": "20 Ene.",
-                "hora": ""
+                "visitante": "BM Porri\u00f1o F"
             },
             {
+                "fecha": "20.01",
+                "hora": "",
                 "local": "Cicar Lanzarote Ciudad de Arrecife",
                 "resultadoA": "28",
                 "resultadoB": "34",
-                "visitante": "Aula Valladolid",
-                "fecha": "20 Ene.",
-                "hora": ""
+                "visitante": "Aula Valladolid F"
             },
             {
-                "local": "Gij\u00f3n Bm.La Calzada",
+                "fecha": "20.01",
+                "hora": "",
+                "local": "Gij\u00f3n BM La Calzada",
                 "resultadoA": "27",
                 "resultadoB": "29",
-                "visitante": "Mecalia Atl\u00e9tico Guard\u00e9s",
-                "fecha": "20 Ene.",
-                "hora": ""
+                "visitante": "Atl\u00e9tico Guard\u00e9s"
             }
         ]
     },
-    "octavos": [],
     "cuartos": {
-        "id": "60b795fd-63cf-4959-a4fe-ae6f5d2ce20b",
+        "id": "69e6c2af-d2a7-48bf-a66e-005dd236c7a8",
         "partidos": [
             {
+                "fecha": "10.05",
+                "hora": "",
                 "local": "BM Granollers",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Elda Prestigio",
-                "fecha": "10 May.",
-                "hora": ""
+                "resultadoA": "31",
+                "resultadoB": "27",
+                "visitante": "Elda Prestigio"
             },
             {
-                "local": "ORBE Rubensa Porri\u00f1o",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Aula Valladolid F",
-                "fecha": "10 May.",
-                "hora": ""
+                "fecha": "10.05",
+                "hora": "",
+                "local": "BM Porri\u00f1o F",
+                "resultadoA": "24",
+                "resultadoB": "26",
+                "visitante": "Aula Valladolid F"
             },
             {
-                "local": "atticgo Elche",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Costa del Sol M\u00e1laga",
-                "fecha": "10 May.",
-                "hora": ""
+                "fecha": "10.05",
+                "hora": "",
+                "local": "ATTICGO BM Elche",
+                "resultadoA": "33",
+                "resultadoB": "34",
+                "visitante": "Costa del Sol M\u00e1laga"
             },
             {
+                "fecha": "10.05",
+                "hora": "",
                 "local": "Bera Bera F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Mecalia Atl\u00e9tico Guard\u00e9s",
-                "fecha": "10 May.",
-                "hora": ""
+                "resultadoA": "35",
+                "resultadoB": "23",
+                "visitante": "Atl\u00e9tico Guard\u00e9s"
             }
         ]
     },
     "semifinales": {
-        "id": "e8be26ea-9c52-4cbe-8a3f-cf6f28a41c73",
+        "id": "09aaf14c-6a4e-4798-aad3-6ab0f85f6157",
         "partidos": [
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "",
-                "fecha": "11 May.",
-                "hora": ""
+                "fecha": "11.05",
+                "hora": "",
+                "local": "BM Granollers",
+                "resultadoA": "33",
+                "resultadoB": "41",
+                "visitante": "Aula Valladolid F"
             },
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "",
-                "fecha": "11 May.",
-                "hora": ""
+                "fecha": "11.05",
+                "hora": "",
+                "local": "Costa del Sol M\u00e1laga",
+                "resultadoA": "25",
+                "resultadoB": "30",
+                "visitante": "Bera Bera F"
             }
         ]
     },
     "final": {
-        "id": "a54d79da-2135-42d1-b811-4c695df93cd0",
+        "id": "96313ae8-710d-4448-8174-ec7d535d508b",
         "partidos": [
             {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "",
-                "fecha": "12 May.",
-                "hora": ""
+                "fecha": "12.05",
+                "hora": "",
+                "local": "Aula Valladolid F",
+                "resultadoA": "24",
+                "resultadoB": "32",
+                "visitante": "Bera Bera F"
             }
         ]
     }

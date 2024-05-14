@@ -1,0 +1,248 @@
+{
+    "ronda1": {
+        "id": "6a744b5f-d16c-439d-9bcc-f341728e9369",
+        "partidos": [
+            {
+                "local": "BM Alcobendas",
+                "resultadoA": "25",
+                "resultadoB": "29",
+                "visitante": "Club Cisne Colegio Los Cisnes",
+                "fecha": "11.10",
+                "hora": ""
+            },
+            {
+                "local": "Tubos Aranda",
+                "resultadoA": "24",
+                "resultadoB": "28",
+                "visitante": "TM Benidorm",
+                "fecha": "11.10",
+                "hora": ""
+            },
+            {
+                "local": "EON Horneo Alicante",
+                "resultadoA": "35",
+                "resultadoB": "25",
+                "visitante": "Trops M\u00e1laga",
+                "fecha": "11.10",
+                "hora": ""
+            },
+            {
+                "local": "Valinox Nov\u00e1s",
+                "resultadoA": "33",
+                "resultadoB": "29",
+                "visitante": "Puerto Sagunto",
+                "fecha": "10.10",
+                "hora": ""
+            },
+            {
+                "local": "D\u00f3lmenes Antequera",
+                "resultadoA": "31",
+                "resultadoB": "22",
+                "visitante": "Helvetia Anaitasuna",
+                "fecha": "11.10",
+                "hora": ""
+            },
+            {
+                "local": "San Pablo Burgos",
+                "resultadoA": "25",
+                "resultadoB": "30",
+                "visitante": "BM Guadalajara",
+                "fecha": "11.10",
+                "hora": ""
+            },
+            {
+                "local": "Caserio de Ciudad Real",
+                "resultadoA": "31",
+                "resultadoB": "26",
+                "visitante": "Blendio Sinfin",
+                "fecha": "11.10",
+                "hora": ""
+            },
+            {
+                "local": "BM Zamora",
+                "resultadoA": "26",
+                "resultadoB": "41",
+                "visitante": "BM Nava",
+                "fecha": "11.10",
+                "hora": ""
+            },
+            {
+                "local": "Fun. Agustinos Alicante",
+                "resultadoA": "29",
+                "resultadoB": "27",
+                "visitante": "Bada Huesca",
+                "fecha": "11.10",
+                "hora": ""
+            },
+            {
+                "local": "Handbol Mallorca",
+                "resultadoA": "30",
+                "resultadoB": "33",
+                "visitante": "Frigor\u00edficos del Morrazo",
+                "fecha": "12.10",
+                "hora": ""
+            },
+            {
+                "local": "Uni\u00f3n Financiera",
+                "resultadoA": "28",
+                "resultadoB": "33",
+                "visitante": "Atl. Valladolid",
+                "fecha": "10.10",
+                "hora": ""
+            },
+            {
+                "local": "Club Eivissa",
+                "resultadoA": "29",
+                "resultadoB": "26",
+                "visitante": "Bar\u00e7a Atl\u00e9tic",
+                "fecha": "11.10",
+                "hora": ""
+            }
+        ]
+    },
+    "ronda2": {
+        "id": "12cbce83-2e1e-4db4-981b-7b32e70636ae",
+        "partidos": [
+            {
+                "fecha": "19.03",
+                "hora": "",
+                "local": "D\u00f3lmenes Antequera",
+                "resultadoA": "39",
+                "resultadoB": "43",
+                "visitante": "BM Nava"
+            },
+            {
+                "fecha": "20.03",
+                "hora": "",
+                "local": "Agustinos Alicante",
+                "resultadoA": "20",
+                "resultadoB": "19",
+                "visitante": "BM Guadalajara"
+            },
+            {
+                "fecha": "19.03",
+                "hora": "",
+                "local": "EON Horneo Alicante",
+                "resultadoA": "34",
+                "resultadoB": "36",
+                "visitante": "Frigor\u00edficos Morrazo"
+            },
+            {
+                "fecha": "20.03",
+                "hora": "",
+                "local": "Club Eivissa",
+                "resultadoA": "26",
+                "resultadoB": "29",
+                "visitante": "TM Benidorm"
+            },
+            {
+                "fecha": "19.03",
+                "hora": "",
+                "local": "Valinox Nov\u00e1s",
+                "resultadoA": "27",
+                "resultadoB": "22",
+                "visitante": "Colegio Los Sauces"
+            },
+            {
+                "fecha": "19.03",
+                "hora": "",
+                "local": "Caserio de Ciudad Real",
+                "resultadoA": "43",
+                "resultadoB": "41",
+                "visitante": "Atl. Valladolid"
+            }
+        ]
+    },
+    "octavos": {
+        "id": "f61d49e1-36d3-4841-87e9-c3fb5f565417",
+        "partidos": [
+            {
+                "fecha": "10.04",
+                "hora": "",
+                "local": "Frigor\u00edficos Morrazo",
+                "resultadoA": "29",
+                "resultadoB": "26",
+                "visitante": "Ademar Le\u00f3n"
+            },
+            {
+                "fecha": "10.04",
+                "hora": "",
+                "local": "Valinox Nov\u00e1s",
+                "resultadoA": "27",
+                "resultadoB": "35",
+                "visitante": "BM Granollers"
+            },
+            {
+                "fecha": "10.04",
+                "hora": "",
+                "local": "Caserio de Ciudad Real",
+                "resultadoA": "28",
+                "resultadoB": "23",
+                "visitante": "Puente Genil"
+            },
+            {
+                "fecha": "10.04",
+                "hora": "",
+                "local": "BM Nava",
+                "resultadoA": "36",
+                "resultadoB": "41",
+                "visitante": "BM Torrelavega"
+            },
+            {
+                "fecha": "10.04",
+                "hora": "",
+                "local": "TM Benidorm",
+                "resultadoA": "30",
+                "resultadoB": "32",
+                "visitante": "Rebi BM Cuenca"
+            },
+            {
+                "fecha": "09.04",
+                "hora": "",
+                "local": "Fun. Agustinos Alicante",
+                "resultadoA": "28",
+                "resultadoB": "32",
+                "visitante": "Bidasoa Irun"
+            }
+        ]
+    },
+    "cuartos": {
+        "id": "e6017034-7101-4c1e-9886-8d19b114098c",
+        "partidos": [
+            {
+                "fecha": "31.05",
+                "hora": "",
+                "local": "Logro\u00f1o La Rioja",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Frankin Granollers"
+            },
+            {
+                "fecha": "31.05",
+                "hora": "",
+                "local": "Rebi Cuenca",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Bathco Torrelavega"
+            },
+            {
+                "fecha": "31.05",
+                "hora": "",
+                "local": "Bidasoa-Irun",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "ID Energy Caser\u00edo C.Real"
+            },
+            {
+                "fecha": "31.05",
+                "hora": "",
+                "local": "Barcelona",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Frigor\u00edficos Morrazo"
+            }
+        ]
+    },
+    "semifinales": [],
+    "final": []
+}

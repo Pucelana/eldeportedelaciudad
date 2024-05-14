@@ -13,7 +13,7 @@
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
 <body class="fondos_copa">
-  <div class="sticky-top">
+  <div class="">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb ps-2 pt-2">
       <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Inicio</a></li>
@@ -31,14 +31,14 @@
             <div class="">
             <p class="text-center fw-bold text-white fs-3">1ª Ronda</p>
             <div class="texto-adicional text-center" data-ronda="1">
-            <table class="table border-dark d-flex justify-content-center">
+            <table class="table border-secondary d-flex justify-content-center">
             {% for partido in dats1.ronda1.partidos %}
               <tr class="text-center">
                 <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoB }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
@@ -46,14 +46,14 @@
             <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 1); return false;">Ver Partidos</a>           
             <p class="text-center fw-bold text-white fs-3">2ª Ronda</p>
             <div class="texto-adicional text-center" data-ronda="2">
-            <table class="table border-dark d-flex justify-content-center">
+            <table class="table border-secondary d-flex justify-content-center">
             {% for partido in dats1.ronda2.partidos %}
               <tr>
                 <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoB }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
@@ -61,14 +61,14 @@
             <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 2); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">3ª Ronda</p>
             <div class="texto-adicional text-center" data-ronda="3">
-            <table class="table border-dark d-flex justify-content-center">
+            <table class="table border-secondary d-flex justify-content-center">
             {% for partido in dats1.ronda3.partidos %}
               <tr>
                 <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoB }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
@@ -76,14 +76,14 @@
             <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 3); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Octavos de Final</p>
             <div class="texto-adicional text-center" data-ronda="4">
-            <table class="table border-dark d-flex justify-content-center">
+            <table class="table border-secondary d-flex justify-content-center">
             {% for partido in dats1.octavos.partidos %}
               <tr>
                 <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoB }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
@@ -91,14 +91,14 @@
             <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 4); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Cuartos de Final</p>
             <div class="texto-adicional text-center" data-ronda="5">
-            <table class="table border-dark d-flex justify-content-center">
+            <table class="table border-secondary d-flex justify-content-center">
             {% for partido in dats1.cuartos.partidos %}
               <tr>
                 <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoB }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
@@ -106,14 +106,14 @@
             <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 5); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Semifinales</p>
             <div class="texto-adicional text-center" data-ronda="6">
-            <table class="table border-dark d-flex justify-content-center">
+            <table class="table border-secondary d-flex justify-content-center">
             {% for partido in dats1.semis.partidos %}
               <tr>
                 <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoB }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>
@@ -121,14 +121,14 @@
             <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 6); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Final</p>
             <div class="texto-adicional text-center" data-ronda="7">
-            <table class="table border-dark d-flex justify-content-center">
+            <table class="table border-secondary d-flex justify-content-center">
             {% for partido in dats1.final.partidos %}
               <tr class="">
                 <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoB }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>

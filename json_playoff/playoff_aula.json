@@ -1,73 +1,149 @@
 {
     "cuartos": {
-        "id": "70dcac67-c4da-464f-afd9-fdae0a9ecc97",
+        "id": "4b04f668-c07b-46b0-8ce6-34391e7ddcf2",
         "partidos": [
             {
-                "local": "Beti-Onak F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Elche F",
                 "fecha": "18.04",
-                "hora": "21:00"
+                "hora": "",
+                "local": "Beti-Onak F",
+                "resultadoA": "26",
+                "resultadoB": "33",
+                "visitante": "Elche F"
             },
             {
-                "local": "Aula Valladolid F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Bera Bera F",
-                "fecha": "19.04",
-                "hora": ""
-            },
-            {
-                "local": "BM Granollers F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "M\u00e1laga F",
-                "fecha": "20.04",
-                "hora": ""
-            },
-            {
-                "local": "Guardes F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "BM Porri\u00f1o F",
                 "fecha": "21.04",
-                "hora": ""
+                "hora": "",
+                "local": "Guardes F",
+                "resultadoA": "29",
+                "resultadoB": "30",
+                "visitante": "BM Porri\u00f1o F"
             },
             {
-                "local": "Bera Bera F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Aula Valladolid F",
+                "fecha": "20.04",
+                "hora": "",
+                "local": "BM Granollers F",
+                "resultadoA": "25",
+                "resultadoB": "25",
+                "visitante": "M\u00e1laga F"
+            },
+            {
+                "fecha": "19.04",
+                "hora": "",
+                "local": "Aula Valladolid F",
+                "resultadoA": "27",
+                "resultadoB": "34",
+                "visitante": "Bera Bera F"
+            },
+            {
                 "fecha": "27.04",
-                "hora": ""
-            },
-            {
+                "hora": "",
                 "local": "M\u00e1laga F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "BM Granollers F",
+                "resultadoA": "27",
+                "resultadoB": "19",
+                "visitante": "BM Granollers F"
+            },
+            {
                 "fecha": "27.04",
-                "hora": ""
+                "hora": "",
+                "local": "Bera Bera F",
+                "resultadoA": "27",
+                "resultadoB": "23",
+                "visitante": "Aula Valladolid F"
             },
             {
-                "local": "BM Porri\u00f1o F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Guardes F",
                 "fecha": "28.04",
-                "hora": ""
+                "hora": "",
+                "local": "BM Porri\u00f1o F",
+                "resultadoA": "29",
+                "resultadoB": "29",
+                "visitante": "Guardes F"
             },
             {
-                "local": "Elche F",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "Beti-Onak F",
                 "fecha": "30.04",
-                "hora": ""
+                "hora": "",
+                "local": "Elche F",
+                "resultadoA": "25",
+                "resultadoB": "22",
+                "visitante": "Beti-Onak F"
             }
         ]
     },
-    "semifinales": [],
+    "septimo": {
+        "id": "5073dc21-3174-4f2d-a57f-0c8f9271caa8",
+        "partidos": [
+            {
+                "fecha": "04.05",
+                "hora": "",
+                "local": "BM Granollers",
+                "resultadoA": "27",
+                "resultadoB": "34",
+                "visitante": "Aula Valladolid F"
+            },
+            {
+                "fecha": "04.05",
+                "hora": "",
+                "local": "Beti-Onak F",
+                "resultadoA": "27",
+                "resultadoB": "25",
+                "visitante": "Guardes F"
+            },
+            {
+                "fecha": "18.05",
+                "hora": "12:00",
+                "local": "Aula Valladolid F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Granollers F"
+            },
+            {
+                "fecha": "18.05",
+                "hora": "20:30",
+                "local": "Guardes F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Beti-Onak F"
+            }
+        ]
+    },
+    "sexto": [],
+    "quinto": [],
+    "semifinales": {
+        "id": "ec4d1201-eaa6-4568-886c-4ee967c8452e",
+        "partidos": [
+            {
+                "fecha": "04.05",
+                "hora": "",
+                "local": "BM Porri\u00f1o F",
+                "resultadoA": "27",
+                "resultadoB": "26",
+                "visitante": "Elche F"
+            },
+            {
+                "fecha": "04.05",
+                "hora": "",
+                "local": "Bera Bera F",
+                "resultadoA": "22",
+                "resultadoB": "21",
+                "visitante": "M\u00e1laga F"
+            },
+            {
+                "fecha": "15.05",
+                "hora": "20:00",
+                "local": "Elche F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Porri\u00f1o F"
+            },
+            {
+                "fecha": "19.05",
+                "hora": "18:00",
+                "local": "M\u00e1laga F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Bera Bera F"
+            }
+        ]
+    },
+    "tercero": [],
     "final": []
 }

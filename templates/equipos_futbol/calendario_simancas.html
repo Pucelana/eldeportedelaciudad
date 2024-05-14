@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Calendarios - V Simancas</title>
+  <title>Calendarios - RV Simancas</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,18 +13,18 @@
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
 <body class="bg-white calend_futbol">
-<div class="sticky-top">
+<div class="">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb ms-1">
       <li class="breadcrumb-item"><a href="/seccion/futbol" class="text-white text-decoration-none">Sección</a></li>
-      <li class="breadcrumb-item active text-dark" aria-current="page">Calendario V Simancas</li>
+      <li class="breadcrumb-item active text-dark" aria-current="page">Calendario RV Simancas</li>
     </ol>
   </nav>
 </div>
 <section class="container-lg mb-5">
   <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
     <div class="carousel-inner">	
-      <div class="carousel-item active"><!--Tabla Calendario V Simancas-->
+      <div class="carousel-item active"><!--Tabla Calendario RV Simancas-->
         <div class="d-flex justify-content-center">
           <div class="card tabla_equipos" style="width: 80rem;">
             <div class="card-body">
@@ -103,7 +103,7 @@
                           <tbody style="display:none">
                           {% for partido in goles.partidos %}
                             <tr class="text-center">
-                              <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
+                              <td class="text-white text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
                               <td class="text-center fw-bold">{{ partido.local }}</td>
                               <td class="text-center text-white">{{ partido.resultadoA }}</td>
                               <td class="text-center text-white">{{ partido.resultadoB }}</td>

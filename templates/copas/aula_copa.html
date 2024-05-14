@@ -34,8 +34,9 @@
             <table class="table border-dark">
             {% for partido in dats2.fase1.partidos %}
               <tr class="text-center">
-                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white">{{ partido.fecha }}</td>
+                <td class="text-center text-white">{{ partido.hora }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
                 <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
@@ -49,7 +50,8 @@
             <table class="table border-dark">
             {% for partido in dats2.fase2.partidos %}
               <tr>
-                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
+                <td class="text-center text-white">{{ partido.fecha }}</td>
+                <td class="text-center text-white">{{ partido.hora }}</td>
                 <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
@@ -64,7 +66,8 @@
             <table class="table border-dark">
             {% for partido in dats2.cuartos.partidos %}
               <tr>
-                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
+                <td class="text-center text-white">{{ partido.fecha }}</td>
+                <td class="text-center text-white">{{ partido.hora }}</td>
                 <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
@@ -79,7 +82,8 @@
             <table class="table border-dark">
             {% for partido in dats2.semifinales.partidos %}
               <tr>
-                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
+                <td class="text-center text-white">{{ partido.fecha }}</td>
+                <td class="text-center text-white">{{ partido.hora }}</td>
                 <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
@@ -94,11 +98,12 @@
             <table class="table border-dark">
             {% for partido in dats2.final.partidos %}
               <tr>
-                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
-                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center text-white">{{ partido.fecha }}</td>
+                <td class="text-center text-white">{{ partido.hora }}</td>
+                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-4">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-4 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>

@@ -158,7 +158,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/modificar_eliminatoria_copa_aula/{{ dats3.ronda1.id }}">
+                    <form method="POST" action="/modificar_eliminatoria_copa_recoletas/{{ dats3.ronda1.id }}">
                       {% for partido in dats3.ronda1.partidos %}
                         <!-- Campos de entrada para editar el partido -->
                         <div class="mb-3">
@@ -201,7 +201,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/modificar_eliminatoria_copa_aula/{{ dats3.ronda2.id }}">
+                    <form method="POST" action="/modificar_eliminatoria_copa_recoletas/{{ dats3.ronda2.id }}">
                       {% for partido in dats3.ronda2.partidos %}
                         <!-- Campos de entrada para editar el partido -->
                         <div class="mb-3">
@@ -244,7 +244,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/modificar_eliminatoria_copa_aula/{{ dats3.octavos.id }}">
+                    <form method="POST" action="/modificar_eliminatoria_copa_recoletas/{{ dats3.octavos.id }}">
                       {% for partido in dats3.octavos.partidos %}
                         <!-- Campos de entrada para editar el partido -->
                         <div class="mb-3">
@@ -436,7 +436,7 @@
             } else if (selectedOption === "ronda2") {
                 numPartidos = 6;
             } else if (selectedOption === "octavos") {
-                numPartidos = 8;
+                numPartidos = 6;
             } else if (selectedOption === "cuartos") {
                 numPartidos = 4;
             } else if (selectedOption === "semifinal") {
@@ -452,11 +452,11 @@
                 partidoDiv.className = "row partido";
                 // Crear los campos de entrada para el partido
                 var html = `
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <label for="fecha${i}">Fecha</label>
                         <input type="text" class="form-control" id="fecha${i}" name="fecha${i}">
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-5">
                         <label for="hora${i}">Hora</label>
                         <input type="time" class="form-control" id="hora${i}" name="hora${i}">
                     </div>

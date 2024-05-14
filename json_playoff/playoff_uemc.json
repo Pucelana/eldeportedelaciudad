@@ -1,101 +1,165 @@
 {
     "cuartos": {
-        "id": "4ac7b316-ffb1-4a98-a7f8-f2bb060e4f23",
+        "id": "8fdfac77-1104-4421-a696-13f1894b85d7",
         "partidos": [
             {
-                "local": "UEMC Real Valladolid",
+                "local": "Movistar Estudiantes",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Betis",
+                "fecha": "17.05",
+                "hora": "20:00"
+            },
+            {
+                "local": "San Pablo Burgos",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "UEMC Valladolid",
+                "fecha": "17.05",
+                "hora": "21:00"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "HLA Alicante",
+                "fecha": "17.05",
+                "hora": "21:00"
+            },
+            {
+                "local": "Tizona Burgos",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Guuk Gipuzkoa Basket",
+                "fecha": "17.05",
+                "hora": "20:45"
+            },
+            {
+                "local": "Movistar Estudiantes",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Betis ",
+                "fecha": "19.05",
+                "hora": "12:00"
+            },
+            {
+                "local": "San Pablo Burgos",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "UEMC Valladolid",
+                "fecha": "19.05",
+                "hora": "19:00"
+            },
+            {
+                "local": "ICG For\u00e7a Lleida",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "HLA Alicante",
+                "fecha": "19.05",
+                "hora": "17:00"
+            },
+            {
+                "local": "Tizona Burgos",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Guuk Gipuzkoa Basket",
+                "fecha": "19.05",
+                "hora": "17:15"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Movistar Estudiantes",
+                "fecha": "24.05",
+                "hora": "20:00"
+            },
+            {
+                "local": "UEMC Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "San Pablo Burgos",
+                "fecha": "24.05",
+                "hora": "23:45"
+            },
+            {
+                "local": "HLA Alicante",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "ICG For\u00e7a Lleida",
+                "fecha": "24.05",
+                "hora": "20:45"
+            },
+            {
+                "local": "Guuk Gipuzkoa Basket",
                 "resultadoA": "",
                 "resultadoB": "",
                 "visitante": "Tizona Burgos",
-                "fecha": "01 Jun.",
+                "fecha": "24.05",
+                "hora": "20:30"
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Movistar EStudiantes",
+                "fecha": "26.05",
                 "hora": ""
             },
             {
-                "local": "",
+                "local": "UEMC Valladolid",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
+                "visitante": "San Pablo Burgos",
+                "fecha": "26.05",
                 "hora": ""
             },
             {
-                "local": "",
+                "local": "HLA Alicante",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
+                "visitante": "ICG For\u00e7a Lleida",
+                "fecha": "26.05",
                 "hora": ""
             },
             {
-                "local": "",
+                "local": "Guuk Gipuzkoa Basket",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
+                "visitante": "Tizona Burgos",
+                "fecha": "26.05",
                 "hora": ""
             },
             {
-                "local": "",
+                "local": "Movistar Estudianes",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
+                "visitante": "Real Betis",
+                "fecha": "31.05",
                 "hora": ""
             },
             {
-                "local": "",
+                "local": "San Pablo Burgos",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
+                "visitante": "UEMC Valladolid",
+                "fecha": "31.05",
                 "hora": ""
             },
             {
-                "local": "",
+                "local": "ICG For\u00e7a Lleida",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
+                "visitante": "HLA Alicante",
+                "fecha": "31.05",
                 "hora": ""
             },
             {
-                "local": "",
+                "local": "Guuk Gipuzkoa Basket",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
-            },
-            {
-                "local": "",
-                "resultadoA": "",
-                "resultadoB": "",
-                "visitante": "",
-                "fecha": "",
+                "visitante": "Tizona Burgos",
+                "fecha": "31.05",
                 "hora": ""
             }
         ]
