@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Calendarios - Valladolid FS</title>
+  <title>Calendarios - Valladolid Sport Sala</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ms-1">
           <li class="breadcrumb-item"><a href="/seccion/futbol_sala" class="text-white text-decoration-none">Sección</a></li>
-          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Valladolid FS</li>
+          <li class="breadcrumb-item active text-dark" aria-current="page">Calendario Valladolid Sport Sala</li>
         </ol>
     </nav>
   </div>
@@ -74,7 +74,7 @@
                                     <td class="resultadoAA fw-bold">{{ tabla_partidos_valladolid_fs[equipo]['resultadoAA'] }}</td>
                                     <td class="resultadoBB fw-bold">{{ tabla_partidos_valladolid_fs[equipo]['resultadoBB'] }}</td>
                                     <td class="part1"></td>
-                                    <td class="average"></td>
+                                    <td class="average fw-bold"></td>
                                   </tr>
                                 {% endfor %}
                               </tbody>
@@ -284,7 +284,7 @@ filas.forEach(function(fila) {
     if (averageTotal > 0) {
         average.style.color = 'lime'; // Equipo A ganó
     } else if (averageTotal < 0) {
-        average.style.color = 'darkred'; // Equipo A perdió
+        average.style.color = 'red'; // Equipo A perdió
     } else {
         average.style.color = 'deepskyblue'; // Empate
     }

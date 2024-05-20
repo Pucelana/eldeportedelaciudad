@@ -61,8 +61,8 @@ filas.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesAscenso = partidosTotales - partidosJugados;
     const partidosGanadosMatematicos = Math.min(puntosActuales + partidosRestantesAscenso * puntosPorGanar, puntosParaAscenso);
-    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 7, puntosParaAscenso);
-    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -11, puntosParaAscenso);
+    const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos - 5, puntosParaAscenso);
+    const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos - 9, puntosParaAscenso);
     equipos.push({
         equipo,
         partidosJugados,
@@ -166,8 +166,8 @@ filas2.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesPermanencia = partidosTotales2 - partidosJugados2;
     const partidosGanadosMatematicos2 = Math.min(puntosActuales2 + partidosRestantesPermanencia * puntosPorGanar2, puntosPermanencia2);
-    const partidosGanadosPesimistas2 = Math.min(partidosGanadosMatematicos2 - 13, puntosPermanencia2);
-    const partidosGanadosOptimistas2 = Math.min(partidosGanadosMatematicos2 -20, puntosPermanencia2);
+    const partidosGanadosPesimistas2 = Math.min(partidosGanadosMatematicos2 - 1, puntosPermanencia2);
+    const partidosGanadosOptimistas2 = Math.min(partidosGanadosMatematicos2 - 3, puntosPermanencia2);
 
     equipos2.push({
         equipo2,

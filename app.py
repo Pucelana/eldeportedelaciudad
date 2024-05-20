@@ -2708,7 +2708,7 @@ def clasif_analisis_valladolid_fs():
 def calendarios_valladolid_fs():
     datos16 = obtener_datos_valladolid_fs()
     nuevos_datos_valladolid_fs = [dato for dato in datos16 if dato]
-    equipo_valladolid_fs = 'Valladolid FS'
+    equipo_valladolid_fs = 'Valladolid Sport Sala'
     tabla_partidos_valladolid_fs = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos16:
@@ -2718,9 +2718,9 @@ def calendarios_valladolid_fs():
             resultado_local = partido['resultadoA']
             resultado_visitante = partido['resultadoB']           
             # Verificamos si el Simancas está jugando
-            if equipo_local == equipo_parquesol or equipo_visitante == equipo_parquesol:
+            if equipo_local == equipo_valladolid_fs or equipo_visitante == equipo_valladolid_fs:
                 # Determinamos el equipo contrario y los resultados
-                if equipo_local == equipo_parquesol:
+                if equipo_local == equipo_valladolid_fs:
                     equipo_contrario = equipo_visitante
                     resultado_a = resultado_local
                     resultado_b = resultado_visitante
@@ -2935,7 +2935,7 @@ def clasif_analisis_universidad():
 def calendarios_universidad():
     datos17 = obtener_datos_universidad()
     nuevos_datos_universidad = [dato for dato in datos17 if dato]
-    equipo_universidad = 'Univ. Valladolid'
+    equipo_universidad = 'C.D.Univ. Valladolid'
     tabla_partidos_universidad = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos17:
@@ -2947,7 +2947,7 @@ def calendarios_universidad():
             # Verificamos si el Simancas está jugando
             if equipo_local == equipo_universidad or equipo_visitante == equipo_universidad:
                 # Determinamos el equipo contrario y los resultados
-                if equipo_local == equipo_parquesol:
+                if equipo_local == equipo_universidad:
                     equipo_contrario = equipo_visitante
                     resultado_a = resultado_local
                     resultado_b = resultado_visitante
