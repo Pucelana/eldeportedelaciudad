@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Copa de la Reina - Aula Valladolid</title>
+  <title>EHF European Cup - Aula Valladolid</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,27 +12,27 @@
   <!-- Favicon -->  
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
-<body class="fondos_copa">
-  <div class="sticky-top">
+<body class="fondos_europa">
+  <div class="">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb ps-2 pt-2">
       <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Inicio</a></li>
-      <li class="breadcrumb-item active text-dark" aria-current="page">Copa Aula Valladolid</li>
+      <li class="breadcrumb-item active text-secondary" aria-current="page">EHF European Cup Aula Valladolid</li>
     </ol>
   </nav>
   </div>
-<h1 class="text-playoff pb-2">Copa de La Reina Aula Valladolid</h1>
+<h1 class="text-playoff pb-2">EHF European Cup Aula Valladolid</h1>
 <section class="container-lg"><!-- Eliminatorias -->
   <div class="d-flex justify-content-center">
-    <div class="card tabla_copa mb-5" style="width: 70rem;">
+    <div class="card tabla_europa mb-5" style="width: 70rem;">
       <div class="card-body">
         <div class="row table-responsive">
           <div class="col-12">
             <div class="">
-            <p class="text-center fw-bold text-white fs-3">1ª Fase</p>
+            <p class="text-center fw-bold text-white fs-3">Ronda 2</p>
             <div class="texto-adicional text-center" data-ronda="1">
-            <table class="table border-dark">
-            {% for partido in dats2.fase1.partidos %}
+            <table class="table border-secondary">
+            {% for partido in dataa1.ronda2.partidos %}
               <tr class="text-center">
                 <td class="text-center text-white">{{ partido.fecha }}</td>
                 <td class="text-center text-white">{{ partido.hora }}</td>
@@ -45,10 +45,10 @@
             </table>
             </div>
             <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 1); return false;">Ver Partidos</a>           
-            <p class="text-center fw-bold text-white fs-3">2ª Fase</p>
+            <p class="text-center fw-bold text-white fs-3">Ronda 3</p>
             <div class="texto-adicional text-center" data-ronda="2">
             <table class="table border-dark">
-            {% for partido in dats2.fase2.partidos %}
+            {% for partido in dataa1.ronda3.partidos %}
               <tr>
                 <td class="text-center text-white">{{ partido.fecha }}</td>
                 <td class="text-center text-white">{{ partido.hora }}</td>
@@ -61,10 +61,26 @@
             </table>
             </div>
             <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 2); return false;">Ver Partidos</a>
+            <p class="text-center fw-bold text-white fs-3">Octavos de Final</p>
+            <div class="texto-adicional text-center" data-ronda="3">
+            <table class="table border-dark">
+            {% for partido in dataa1.octavos.partidos %}
+              <tr>
+                <td class="text-center text-white">{{ partido.fecha }}</td>
+                <td class="text-center text-white">{{ partido.hora }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+              </tr>
+            {% endfor %}
+            </table>
+            </div>
+            <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold" onclick="mostrarTexto(this, 3); return false;">Ver Partidos</a>
             <p class="text-center fw-bold text-white fs-3">Cuartos de Final</p>
             <div class="texto-adicional text-center" data-ronda="4">
             <table class="table border-dark">
-            {% for partido in dats2.cuartos.partidos %}
+            {% for partido in dataa1.cuartos.partidos %}
               <tr>
                 <td class="text-center text-white">{{ partido.fecha }}</td>
                 <td class="text-center text-white">{{ partido.hora }}</td>
@@ -80,7 +96,7 @@
             <p class="text-center fw-bold text-white fs-3">Semifinales</p>
             <div class="texto-adicional text-center" data-ronda="5">
             <table class="table border-dark">
-            {% for partido in dats2.semifinales.partidos %}
+            {% for partido in dataa1.semifinales.partidos %}
               <tr>
                 <td class="text-center text-white">{{ partido.fecha }}</td>
                 <td class="text-center text-white">{{ partido.hora }}</td>
@@ -96,7 +112,7 @@
             <p class="text-center fw-bold text-white fs-3">Final</p>
             <div class="texto-adicional text-center" data-ronda="6">
             <table class="table border-dark">
-            {% for partido in dats2.final.partidos %}
+            {% for partido in dataa1.final.partidos %}
               <tr>
                 <td class="text-center text-white">{{ partido.fecha }}</td>
                 <td class="text-center text-white">{{ partido.hora }}</td>

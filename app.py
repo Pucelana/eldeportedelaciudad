@@ -7537,13 +7537,144 @@ def copas_vrac():
     return render_template('copas/vrac_copa.html', dats11=dats11)
 # Fin copa VRAC
 
-
-
-
-
-
-
-
+# PARTICIPACIÓN EUROPEA MASCULINO Y FEMENINO
+# Europa Aula Valladolid
+europa_aula = 'json_europa/europa_aula.json'
+# Fin Europa Aula Valladolid
+def guardar_europa_aula(dataa1):
+    with open(europa_aula, 'w', encoding='utf-8') as file:
+        json.dump(dataa1, file, indent=4)
+def obtener_europa_aula():
+    try:
+        with open(europa_aula, 'r', encoding='utf-8') as file:
+            dataa1 = json.load(file)
+        return dataa1
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'ronda2': [],'ronda3': [],'octavos': [],'cuartos': [], 'semifinales': [],'final': []}
+nuevas_eliminatorias_aula = []
+duelos_aula = None
+# Crear formulario para EHF Aula Valladolid
+@app.route('/admin/europa_aula/')
+def ver_europa_aula():
+    dataa1 = obtener_europa_aula()
+    return render_template('admin/europa_aula.html', dataa1=dataa1)
+# Crear formulario para EHF Aula Valladolid
+@app.route('/admin/crear_europa_aula', methods=['GET', 'POST'])
+def crear_europa_aula():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dataa1 = obtener_europa_aula()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'ronda2':
+            max_partidos = 64
+        elif eliminatoria == 'ronda3':
+            max_partidos = 32
+        elif eliminatoria == 'octavos':
+            max_partidos = 16
+        elif eliminatoria == 'cuartos':
+            max_partidos = 8            
+        elif eliminatoria == 'semifinales':
+            max_partidos = 4
+        elif eliminatoria == 'final':
+            max_partidos = 2               
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dataa1[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_europa_aula(dataa1)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_aula'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/europa_aula.html', dataa1=dataa1)
+# Toma la lista de EHF Aula Valladolid y los guarda
+def guardar_europa_en_archivo_aula(dataa1):
+    arch_guardar_europa_aula = 'json_europa/europa_aula.json'
+    # Guardar en el archivo
+    with open(arch_guardar_europa_aula, 'w', encoding='UTF-8') as archivo:
+        json.dump(dataa1, archivo)
+# Modificar los partidos de EHF Aula Valladolid
+@app.route('/modificar_eliminatoria_europa_aula/<string:id>', methods=['GET', 'POST'])
+def modificar_europa_aula(id):
+    dataa1 = obtener_europa_aula()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dataa1.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_europa_aula(dataa1)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_aula')) 
+# Ruta para mostrar la copa CPLV Caja Rural
+@app.route('/euro_aula/')
+def euro_aula():
+    # Obtener datos de las eliminatorias
+    dataa1 = obtener_europa_aula()
+    return render_template('europa/aula_europa.html', dataa1=dataa1)
+# Fin Europa Aula Valladolid
 
 
 
