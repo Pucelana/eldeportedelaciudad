@@ -30,7 +30,6 @@
             <label for="eliminatoria">Etapa del Torneo:</label>
             <input type="hidden" class="form-control" id="num_partidos" name="num_partidos" value="0">
             <select id="eliminatoria" name="eliminatoria">
-              <option value="cuartos">Cuartos de Final</option>
               <option value="semifinales">Semifinales</option>
               <option value="final">Final</option>
             </select>
@@ -48,22 +47,6 @@
     </div>
     </section>  
     <div class="tournament">
-      <h4 class="text-center">Cuartos de Final</h4>
-      <table class="table border-secondary">
-        <tbody>
-          {% for enfrentamiento in datas6.cuartos.partidos %}
-          <tr>
-            <td>{{ enfrentamiento.fecha }}</td>
-            <td>{{ enfrentamiento.hora }}</td>
-            <td>{{ enfrentamiento.local }}</td>
-            <td>{{ enfrentamiento.resultadoA }}</td>
-            <td>{{ enfrentamiento.resultadoB }}</td>
-            <td>{{ enfrentamiento.visitante }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      <button type="submit" id="btn-modificar{{ datas6.cuartos.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ datas6.cuartos.id }}">Modificar</button>
       <h4 class="text-center">Semifinales</h4>
       <table class="table border-secondary">
         <tbody>
@@ -99,49 +82,6 @@
     </div>
     <!--Fin Carrusel-->
     <!-- Creación del Modal -->
-    <div class="modal fade" id="modal{{ datas6.cuartos.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Cuartos -->
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Cuartos</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="/modificar_eliminatoria_panteras/{{ datas6.cuartos.id }}">
-                      {% for partido in datas6.cuartos.partidos %}
-                        <!-- Campos de entrada para editar el partido -->
-                        <div class="mb-3">
-                          <label for="fecha{{ loop.index0 }}">Fecha:</label>
-                          <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
-                      </div>
-                      <div class="mb-3">
-                          <label for="hora{{ loop.index0 }}">Hora:</label>
-                          <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
-                      </div>
-                        <div class="mb-3">
-                            <label for="local{{ loop.index0 }}">Local:</label>
-                            <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
-                            <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
-                            <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="visitante{{ loop.index0 }}">Visitante:</label>
-                            <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
-                        </div> 
-                        {% endfor %}
-                        <!-- Botón de enviar para enviar los datos modificados -->
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="modal{{ datas6.semifinales.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Semifinales -->
       <div class="modal-dialog">
           <div class="modal-content">
@@ -251,12 +191,10 @@
             var selectedOption = selectEliminatoria.value;
             // Determinar el número de partidos según la etapa seleccionada
             var numPartidos;
-            if (selectedOption === "cuartos") {
-                numPartidos = 12;
-            } else if (selectedOption === "semifinales") {
-                numPartidos = 2;
+            if (selectedOption === "semifinales") {
+                numPartidos = 6;
             } else if (selectedOption === "final") {
-                numPartidos = 1;
+                numPartidos = 3;
             }
             document.getElementById("num_partidos").value = numPartidos;
             // Crear los campos de entrada para cada partido

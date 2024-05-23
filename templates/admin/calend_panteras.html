@@ -45,9 +45,13 @@
             <label for="hora{{i}}">Hora</label>
             <input type="time" class="form-control" id="hora{{i}}" name="hora{{i}}">
           </div>
-          <div class="col-md-5">
+          <div class="col-md-4">
             <label for="local{{i}}">Equipo Local</label>
             <input type="text" class="form-control" id="local{{i}}" name="local{{i}}">
+          </div>
+          <div class="col-md-1">
+            <label for="bonusA{{i}}">Bonus</label>
+            <input type="text" class="form-control" id="bonusA{{i}}" name="bonusA{{i}}">
           </div>
           <div class="col-md-1">
             <label for="resultadoA{{i}}"></label>
@@ -57,7 +61,11 @@
             <label for="resultadoB{{i}}"></label>
             <input type="text" class="form-control" id="resultadoB{{i}}" name="resultadoB{{i}}">
           </div>
-          <div class="col-md-5">
+          <div class="col-md-1">
+            <label for="bonusB{{i}}">Bonus</label>
+            <input type="text" class="form-control" id="bonusB{{i}}" name="bonusB{{i}}">
+          </div>
+          <div class="col-md-4">
             <label for="visitante{{i}}">Equipo Visitante</label>
             <input type="text" class="form-control" id="visitante{{i}}" name="visitante{{i}}">
           </div>
@@ -140,9 +148,13 @@
               <label for="hora{{ loop.index0 }}">Hora</label>
               <input type="time" name="hora{{ loop.index0 }}" id="hora{{ loop.index0 }}" class="form-control" value="{{ partido.hora }}">
             </div>
-            <div class="col-md-4 mb-2">
+            <div class="col-md-3 mb-2">
               <label for="local{{ loop.index0 }}">Equipo Local</label>
               <input name="local{{ loop.index0 }}" id="local{{ loop.index0 }}" class="form-control" value="{{ partido.local }}">
+            </div>
+            <div class="col-md-1 mb-2">
+              <label for="bonusA{{ loop.index0 }}">Bon.</label>
+              <input type="text" name="bonusA{{ loop.index0 }}" id="bonusA{{ loop.index0 }}" class="form-control" value="{{ partido.bonusA }}">
             </div>
             <div class="col-md-2 mb-2">
               <label for="resultadoA{{ loop.index0 }}"></label>
@@ -152,7 +164,11 @@
               <label for="resultadoB{{ loop.index0 }}"></label>
               <input type="text" name="resultadoB{{ loop.index0 }}" id="resultadoB{{ loop.index0 }}" class="form-control" value="{{ partido.resultadoB }}">
             </div>
-            <div class="col-md-4 mb-2">
+            <div class="col-md-1 mb-2">
+              <label for="bonusB{{ loop.index0 }}">Bon.</label>
+              <input type="text" name="bonusB{{ loop.index0 }}" id="bonusB{{ loop.index0 }}" class="form-control" value="{{ partido.bonusB }}">
+            </div>
+            <div class="col-md-3 mb-2">
               <label for="visitante{{ loop.index0 }}">Equipo B</label>
               <input type="text" name="visitante{{ loop.index0 }}" id="visitante{{ loop.index0 }}" class="form-control" value="{{ partido.visitante }}">
             </div>

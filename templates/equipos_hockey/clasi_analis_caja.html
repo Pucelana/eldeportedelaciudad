@@ -52,16 +52,16 @@
                           <td class="bg-success text-white">4</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">5</td>
+                          <td class="bg-secondary text-white">5</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">6</td>
+                          <td class="bg-secondary text-white">6</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">7</td>
+                          <td class="bg-secondary text-white">7</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">8</td>
+                          <td class="bg-secondary text-white">8</td>
                         </tr>
                         <tr>
                           <td class="bg-danger text-white">9</td>
@@ -73,37 +73,38 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaClasificacion" class="table">
-                    <thead>
-                      <tr class="text-center">
-                        <th>Equipos</th>
-                        <th>PTS</th>
-                        <th>PJ</th>
-                        <th>PG</th>
-                        <th>PE</th>
-                        <th>PP</th>
-                        <th>GF</th>
-                        <th>GC</th>
-                        <th>DG</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for equipo in clasificacion_analisis_caja %}
-                      <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
-                        <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
-                        <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
-                        <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
-                        <td class="empatados fw-bold">{{ equipo['datos']['empatados'] }}</td>
-                        <td class="perdidos fw-bold">{{ equipo['datos']['perdidos'] }}</td>
-                        <td class="favor fw-bold">{{ equipo['datos']['favor'] }}</td>
-                        <td class="contra fw-bold">{{ equipo['datos']['contra']}}</td>
-                        <td class="diferencia_goles fw-bold">{{ equipo['datos']['diferencia_goles'] }}</td>
-                        
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
+                    <table id="tablaClasificacion" class="table">
+                      <thead>
+                        <tr class="text-center">
+                          <th>Equipos</th>
+                          <th>PTS</th>
+                          <th>PJ</th>
+                          <th>PG</th>
+                          <th>PE</th>
+                          <th>PP</th>
+                          <th>GF</th>
+                          <th>GC</th>
+                          <th>DG</th>
+                          <th>BONUS</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for equipo in clasificacion_analisis_caja %}
+                        <tr class="text-center">
+                          <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                          <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
+                          <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
+                          <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
+                          <td class="empatados fw-bold">{{ equipo['datos']['empatados'] }}</td>
+                          <td class="perdidos fw-bold">{{ equipo['datos']['perdidos'] }}</td>
+                          <td class="favor fw-bold">{{ equipo['datos']['favor'] }}</td>
+                          <td class="contra fw-bold">{{ equipo['datos']['contra']}}</td>
+                          <td class="diferencia_goles fw-bold">{{ equipo['datos']['diferencia_goles'] }}</td>
+                          <td class="bonus fw-bold">{{ equipo['datos']['bonus'] }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -213,16 +214,16 @@
                           <td class="bg-success text-white">4</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">5</td>
+                          <td class="bg-secondary text-white">5</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">6</td>
+                          <td class="bg-secondary text-white">6</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">7</td>
+                          <td class="bg-secondary text-white">7</td>
                         </tr>
                         <tr>
-                          <td class="bg-success text-white">8</td>
+                          <td class="bg-secondary text-white">8</td>
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">9</td>

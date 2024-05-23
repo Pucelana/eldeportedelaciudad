@@ -1,0 +1,1010 @@
+[
+    {
+        "id": "0e4faf8d-8d82-4eb3-b31c-77bc9dc3b4a2",
+        "nombre": "Jornada 1",
+        "partidos": [
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "23.09",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "23.09",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "3",
+                "bonusB": "1",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "23.09",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "11",
+                "bonusB": "0",
+                "visitante": "Club Molina Sport",
+                "fecha": "23.09",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "24.09",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "39913f14-802b-41dc-95fd-14e1cb89b53a",
+        "nombre": "Jornada 2",
+        "partidos": [
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "30.09",
+                "hora": ""
+            },
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "3",
+                "bonusB": "1",
+                "visitante": "HCR Cent Patins",
+                "fecha": "30.09",
+                "hora": ""
+            },
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "8",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "30.09",
+                "hora": ""
+            },
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "11",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "30.09",
+                "hora": ""
+            },
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Joker Floors",
+                "fecha": "30.09",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "4593ebf4-741f-410a-bad0-8e6208830800",
+        "nombre": "Jornada 3",
+        "partidos": [
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Joker Floors",
+                "fecha": "07.10",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "6",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "07.10",
+                "hora": ""
+            },
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "8",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "07.10",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "07.10",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "07.10",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "23dd5ab8-922e-4ca9-b1d2-779f86eb2947",
+        "nombre": "Jornada 4",
+        "partidos": [
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "21.10",
+                "hora": ""
+            },
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Club Molina Sport",
+                "fecha": "21.10",
+                "hora": ""
+            },
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "21.10",
+                "hora": ""
+            },
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "11",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "21.10",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "6",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "22.10",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "71830712-818d-4215-9ed0-67a24c90299e",
+        "nombre": "Jornada 5",
+        "partidos": [
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "28.10",
+                "hora": ""
+            },
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "28.10",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "8",
+                "bonusB": "0",
+                "visitante": "Joker Floors",
+                "fecha": "28.10",
+                "hora": ""
+            },
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "12",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "28.10",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "28.10",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "2fe57988-2b1b-42eb-a27d-c8490ef773a3",
+        "nombre": "Jornada 6",
+        "partidos": [
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "04.11",
+                "hora": ""
+            },
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "04.11",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "1",
+                "resultadoA": "4",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "04.11",
+                "hora": ""
+            },
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "12",
+                "bonusB": "0",
+                "visitante": "Club Molina Sport",
+                "fecha": "04.11",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "05.11",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "69bd0f71-1188-4134-9e2c-8eb00e5ff6da",
+        "nombre": "Jornada 7",
+        "partidos": [
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "18.11",
+                "hora": ""
+            },
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "0",
+                "resultadoA": "9",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "18.11",
+                "hora": ""
+            },
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "0",
+                "resultadoA": "8",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "18.11",
+                "hora": ""
+            },
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "8",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Joker Floors",
+                "fecha": "18.11",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "8",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "18.11",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "adf995e1-b45e-4db1-99ad-148abcbd6c8b",
+        "nombre": "Jornada 8",
+        "partidos": [
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "3",
+                "bonusB": "1",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "25.11",
+                "hora": ""
+            },
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "25.11",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "25.11",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "11",
+                "bonusB": "0",
+                "visitante": "Club Molina Sport",
+                "fecha": "25.11",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "26.11",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "8e7d6ac6-b260-4c9a-b978-8954f2cc4c4f",
+        "nombre": "Jornada 9",
+        "partidos": [
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "10",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "Joker Floors",
+                "fecha": "02.12",
+                "hora": ""
+            },
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "1",
+                "resultadoA": "1",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "02.12",
+                "hora": ""
+            },
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "1",
+                "resultadoA": "1",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "02.12",
+                "hora": ""
+            },
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "10",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "02.12",
+                "hora": ""
+            },
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "21.01",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "4488283b-36a4-4473-8fb7-6749db72d5d0",
+        "nombre": "Jornada 10",
+        "partidos": [
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "13.01",
+                "hora": ""
+            },
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Joker Floors",
+                "fecha": "13.01",
+                "hora": ""
+            },
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "13.01",
+                "hora": ""
+            },
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "13.01",
+                "hora": ""
+            },
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "18",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "13.01",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "7e912c0c-11f9-4594-8c22-b8d7ec91fea2",
+        "nombre": "Jornada 11",
+        "partidos": [
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "3",
+                "bonusB": "1",
+                "visitante": "Club Molina Sport",
+                "fecha": "20.01",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "20.01",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "20.01",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "1",
+                "resultadoA": "3",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "21.01",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "25.02",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "e93c13ff-76df-4a7b-85ff-c51ddb132d29",
+        "nombre": "Jornada 12",
+        "partidos": [
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "11",
+                "bonusB": "0",
+                "visitante": "Club Molina Sport",
+                "fecha": "17.02",
+                "hora": ""
+            },
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "17.02",
+                "hora": ""
+            },
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "11",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "17.02",
+                "hora": ""
+            },
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "8",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "17.02",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "1",
+                "resultadoA": "1",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "18.02",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "b7d76b27-d58c-436e-9b71-760dceb5d55b",
+        "nombre": "Jornada 13",
+        "partidos": [
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "24.02",
+                "hora": ""
+            },
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "24.02",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "Joker Floors",
+                "fecha": "24.02",
+                "hora": ""
+            },
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "24.02",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "1",
+                "resultadoA": "7",
+                "resultadoB": "7",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "24.02",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "47986997-2431-47c9-90ef-4766b501b257",
+        "nombre": "Jornada 14",
+        "partidos": [
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "02.03",
+                "hora": ""
+            },
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "8",
+                "bonusB": "0",
+                "visitante": "Club Molina Sport",
+                "fecha": "02.03",
+                "hora": ""
+            },
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "02.03",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "02.03",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "03.03",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "41054094-33a2-4c33-964e-02d2fff16b22",
+        "nombre": "Jornada 15",
+        "partidos": [
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "7",
+                "bonusB": "0",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "16.03",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "16.03",
+                "hora": ""
+            },
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "12",
+                "resultadoB": "6",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "16.03",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "3",
+                "bonusB": "1",
+                "visitante": "Joker Floors",
+                "fecha": "16.03",
+                "hora": ""
+            },
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "1",
+                "resultadoA": "5",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "11.04",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "3afe5540-facd-422b-ae3e-6e718255b64a",
+        "nombre": "Jornada 16",
+        "partidos": [
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "7",
+                "bonusB": "0",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "23.03",
+                "hora": ""
+            },
+            {
+                "local": "Playas Oropesa",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "7",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "23.03",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "6",
+                "bonusB": "0",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "23.03",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "23.03",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "6",
+                "bonusB": "0",
+                "visitante": "Club Molina Sport",
+                "fecha": "24.03",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "4e2e26da-343f-4020-804d-4771bd0ae7fc",
+        "nombre": "Jornada 17",
+        "partidos": [
+            {
+                "local": "Club Molina Sport",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "06.04",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "06.04",
+                "hora": ""
+            },
+            {
+                "local": "CPLV Caja Rural",
+                "bonusA": "0",
+                "resultadoA": "12",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "06.04",
+                "hora": ""
+            },
+            {
+                "local": "Arona Tenerife",
+                "bonusA": "0",
+                "resultadoA": "8",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Joker Floors",
+                "fecha": "06.04",
+                "hora": ""
+            },
+            {
+                "local": "Club Castell\u00f3n",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Espanya Hoquei",
+                "fecha": "06.04",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "70280e02-4617-4bd9-9cd4-67faf4fed457",
+        "nombre": "Jornada 18",
+        "partidos": [
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "9",
+                "bonusB": "0",
+                "visitante": "Club Castell\u00f3n",
+                "fecha": "13.04",
+                "hora": ""
+            },
+            {
+                "local": "Espanya Hoquei",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Playas Oropesa",
+                "fecha": "13.04",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "1",
+                "resultadoA": "4",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "Club Molina Sport",
+                "fecha": "13.04",
+                "hora": ""
+            },
+            {
+                "local": "Joker Floors",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "CPLV Caja Rural",
+                "fecha": "13.04",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "8",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Arona Tenerife",
+                "fecha": "13.04",
+                "hora": ""
+            }
+        ]
+    }
+]

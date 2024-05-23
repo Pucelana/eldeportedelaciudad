@@ -4,67 +4,67 @@
         "partidos": [
             {
                 "local": "Movistar Estudiantes",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "86 (1)",
+                "resultadoB": "77 (0)",
                 "visitante": "Real Betis",
                 "fecha": "17.05",
-                "hora": "20:00"
+                "hora": ""
             },
             {
                 "local": "San Pablo Burgos",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "81 (1)",
+                "resultadoB": "59 (0)",
                 "visitante": "UEMC Valladolid",
                 "fecha": "17.05",
-                "hora": "21:00"
+                "hora": ""
             },
             {
                 "local": "ICG For\u00e7a Lleida",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "84 (1)",
+                "resultadoB": "73 (0)",
                 "visitante": "HLA Alicante",
                 "fecha": "17.05",
-                "hora": "21:00"
+                "hora": ""
             },
             {
                 "local": "Tizona Burgos",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "108 (1)",
+                "resultadoB": "90 (0)",
                 "visitante": "Guuk Gipuzkoa Basket",
                 "fecha": "17.05",
-                "hora": "20:45"
+                "hora": ""
             },
             {
                 "local": "Movistar Estudiantes",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "98 (2)",
+                "resultadoB": "73 (0)",
                 "visitante": "Real Betis ",
                 "fecha": "19.05",
-                "hora": "12:00"
+                "hora": ""
             },
             {
                 "local": "San Pablo Burgos",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "91 (2)",
+                "resultadoB": "61 (0)",
                 "visitante": "UEMC Valladolid",
                 "fecha": "19.05",
-                "hora": "19:00"
+                "hora": ""
             },
             {
                 "local": "ICG For\u00e7a Lleida",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "88 (2)",
+                "resultadoB": "68 (0)",
                 "visitante": "HLA Alicante",
                 "fecha": "19.05",
-                "hora": "17:00"
+                "hora": ""
             },
             {
                 "local": "Tizona Burgos",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "90 (1)",
+                "resultadoB": "92 (1)",
                 "visitante": "Guuk Gipuzkoa Basket",
                 "fecha": "19.05",
-                "hora": "17:15"
+                "hora": ""
             },
             {
                 "local": "Real Betis",
@@ -80,7 +80,7 @@
                 "resultadoB": "",
                 "visitante": "San Pablo Burgos",
                 "fecha": "24.05",
-                "hora": "23:45"
+                "hora": "20:45"
             },
             {
                 "local": "HLA Alicante",

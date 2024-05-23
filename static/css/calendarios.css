@@ -105,7 +105,7 @@
 /* Sección Hockey */
 .calend_hockey{
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/campo_hockey.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/pista_hockey.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;  

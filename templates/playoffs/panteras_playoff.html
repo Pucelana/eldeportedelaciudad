@@ -19,7 +19,7 @@
       <li class="breadcrumb-item active text-dark" aria-current="page">PlayOffs CPLV Munia Panteras</li>
     </ol>
   </nav>
-<h1 class="text-playoff">Fase Final Al  Ascenso</h1>
+<h1 class="text-playoff">PlayOff Al Título</h1>
 <section class="container-lg">
   <div class="d-flex justify-content-center">
     <div class="card tabla_playoff mb-5" style="width: 70rem;">
@@ -27,10 +27,10 @@
         <div class="row table-responsive">
           <div class="col-12">
             <div class="">
-            <p class="text-center fw-bold text-white fs-3">PlayOff A La FinalFour</p>
+            <p class="text-center fw-bold text-white fs-3">Semifinales</p>
             <table class="table border-secondary">
-            {% for partido in datas6.cuartos.partidos %}
-              <tr class="text-center">
+            {% for partido in datas6.semifinales.partidos %}
+              <tr>
                 <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
@@ -38,28 +38,16 @@
                 <td class="text-center fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
-            </table>           
-            <p class="text-center fw-bold text-white fs-3">Semifinales FinalFour</p>
-            <table class="table border-secondary">
-            {% for partido in datas6.semifinales.partidos %}
-              <tr>
-                <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
-              </tr>
-            {% endfor %}
             </table>
-            <p class="text-center fw-bold text-white fs-3">Final FinalFour</p>
+            <p class="text-center fw-bold text-white fs-3">Final</p>
             <table class="table border-secondary">
             {% for partido in datas6.final.partidos %}
               <tr>
                 <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
+                <td class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
                 <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
-                <td class="text-center fw-bold fs-2 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
+                <td class="text-center fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}
             </table>

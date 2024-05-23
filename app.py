@@ -4954,12 +4954,12 @@ def calendarios_salvador_fem():
                     equipo_contrario = equipo_visitante
                     resultado_a = resultado_local
                     resultado_b = resultado_visitante
-                    rol_salvador = 'C'
+                    rol_salvador_fem = 'C'
                 else:
                     equipo_contrario = equipo_local
                     resultado_a = resultado_local
                     resultado_b = resultado_visitante
-                    rol_salvador = 'F'
+                    rol_salvador_fem = 'F'
                 # Verificamos si el equipo contrario no está en la tabla
                 if equipo_contrario not in tabla_partidos_salvador_fem:
                     tabla_partidos_salvador_fem[equipo_contrario] = {'jornadas': {}}                       
@@ -5121,7 +5121,7 @@ def obtener_playoff_caja():
             datas5 = json.load(file)
         return datas5
     except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return {'cuartos': [], 'semifinales': [], 'final': []}
+        return {'semifinales': [], 'final': []}
 nuevos_enfrentamientos_caja = []
 partido_caja = None
 # Crear formulario para los playoff
@@ -5138,12 +5138,10 @@ def crear_playoff_caja():
         # Obtener la etapa del torneo seleccionada por el usuario
         eliminatoria = request.form.get('eliminatoria')
         # Verificar el número máximo de partidos permitidos según la etapa del torneo
-        if eliminatoria == 'cuartos':
-            max_partidos = 4
-        elif eliminatoria == 'semifinales':
-            max_partidos = 2
+        if eliminatoria == 'semifinales':
+            max_partidos = 6
         elif eliminatoria == 'final':
-            max_partidos = 1
+            max_partidos = 3
         else:
             # Manejar caso no válido
             return "Etapa de torneo no válida"
@@ -5233,7 +5231,7 @@ def modificar_playoff_caja(id):
         guardar_playoff_caja(datas5)       
         # Redireccionar a la página de visualización del playoff
         return redirect(url_for('ver_playoff_caja'))   
-# Crear la clasificación de El Salvador
+# Crear la clasificación de CPLV Caja Rural
 def generar_clasificacion_analisis_hockey_caja(data14, total_partidos_temporada_caja):
     default_dict = defaultdict(lambda: {})
     clasificacion = defaultdict(lambda: {'puntos': 0,'jugados': 0, 'ganados': 0, 'empatados': 0, 'perdidos': 0, 'favor': 0, 'contra': 0, 'diferencia_goles': 0, 'bonus': 0})
@@ -5255,14 +5253,14 @@ def generar_clasificacion_analisis_hockey_caja(data14, total_partidos_temporada_
                 promedio_favor_local = 0
             # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
             if resultado_local > resultado_visitante:
-                clasificacion[equipo_local]['puntos'] += 3 + bonus_local
+                clasificacion[equipo_local]['puntos'] += 3
                 clasificacion[equipo_local]['ganados'] += 1
-                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['puntos'] += 0
                 clasificacion[equipo_visitante]['perdidos'] += 1
             elif resultado_local < resultado_visitante:
-                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['puntos'] += 0
                 clasificacion[equipo_local]['perdidos'] += 1
-                clasificacion[equipo_visitante]['puntos'] += 3 + bonus_visitante
+                clasificacion[equipo_visitante]['puntos'] += 3
                 clasificacion[equipo_visitante]['ganados'] += 1
             else:
                 clasificacion[equipo_local]['puntos'] += 1 + bonus_local
@@ -5425,7 +5423,7 @@ def obtener_datos_panteras():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_panteras, 'r', encoding='utf-8') as file:
-        data14 = json.load(file)
+        data15 = json.load(file)
       return data15
     except json.decoder.JSONDecodeError:
         # Manejar archivo vacío, inicializar con una estructura JSON válida
@@ -5441,7 +5439,7 @@ def ingresar_resul_panteras():
     data15 = obtener_datos_panteras()
     nums_partidos = int(request.form.get('num_partidos', 0))
     jornada_nombre = request.form.get('nombre')
-    jornada_existente = next((j for j in data14 if j["nombre"] == jornada_nombre), None)
+    jornada_existente = next((j for j in data15 if j["nombre"] == jornada_nombre), None)
     if jornada_existente:
         # Si la jornada ya existe, utiliza su identificador existente
         jornada_id = jornada_existente["id"]
@@ -5476,7 +5474,7 @@ def ingresar_resul_panteras():
     guardar_datos_panteras(data15)
     return redirect(url_for('calend_panteras'))
 # Toma la lista de los resultados y los guarda
-def guardar_partidos_en_archivo_paneras(data15):
+def guardar_partidos_en_archivo_panteras(data15):
     arch_guardar_panteras = 'json/partidos_panteras.json'
     # Guardar en el archivo
     with open(arch_guardar_panteras, 'w', encoding='UTF-8') as archivo:
@@ -5531,9 +5529,9 @@ def obtener_playoff_panteras():
     try:
         with open(playoff_panteras, 'r', encoding='utf-8') as file:
             datas6 = json.load(file)
-        return datas4
+        return datas6
     except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return {'cuartos': [], 'semifinales': [], 'final': []}
+        return {'semifinales': [], 'final': []}
 nuevos_enfrentamientos_panteras = []
 partido_panteras = None
 # Crear formulario para los playoff
@@ -5550,12 +5548,10 @@ def crear_playoff_panteras():
         # Obtener la etapa del torneo seleccionada por el usuario
         eliminatoria = request.form.get('eliminatoria')
         # Verificar el número máximo de partidos permitidos según la etapa del torneo
-        if eliminatoria == 'cuartos':
-            max_partidos = 4
-        elif eliminatoria == 'semifinales':
-            max_partidos = 2
+        if eliminatoria == 'semifinales':
+            max_partidos = 6
         elif eliminatoria == 'final':
-            max_partidos = 1
+            max_partidos = 3
         else:
             # Manejar caso no válido
             return "Etapa de torneo no válida"
@@ -5667,14 +5663,14 @@ def generar_clasificacion_analisis_hockey_panteras(data15, total_partidos_tempor
                 promedio_favor_local = 0
             # Ajusta la lógica según tus reglas para asignar puntos y calcular estadísticas en baloncesto
             if resultado_local > resultado_visitante:
-                clasificacion[equipo_local]['puntos'] += 3 + bonus_local
+                clasificacion[equipo_local]['puntos'] += 3
                 clasificacion[equipo_local]['ganados'] += 1
-                clasificacion[equipo_visitante]['puntos'] += 0 + bonus_visitante
+                clasificacion[equipo_visitante]['puntos'] += 0
                 clasificacion[equipo_visitante]['perdidos'] += 1
             elif resultado_local < resultado_visitante:
-                clasificacion[equipo_local]['puntos'] += 0 + bonus_local
+                clasificacion[equipo_local]['puntos'] += 0
                 clasificacion[equipo_local]['perdidos'] += 1
-                clasificacion[equipo_visitante]['puntos'] += 3 + bonus_visitante
+                clasificacion[equipo_visitante]['puntos'] += 3
                 clasificacion[equipo_visitante]['ganados'] += 1
             else:
                 clasificacion[equipo_local]['puntos'] += 1 + bonus_local

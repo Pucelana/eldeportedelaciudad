@@ -1,0 +1,830 @@
+[
+    {
+        "id": "a5de78d0-751a-4cd3-8a49-1826ebcea1e0",
+        "nombre": "Jornada 1",
+        "partidos": [
+            {
+                "local": "L\u00ednea Madrid",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "23.09",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "CPLV Munia Panteras",
+                "fecha": "23.09",
+                "hora": ""
+            },
+            {
+                "local": "CP Vila-Real",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CPH Skulls Alm\u00e0ssera",
+                "fecha": "23.09",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "8c5eb641-692c-4045-8cd6-9b0ab409932e",
+        "nombre": "Jornada 2",
+        "partidos": [
+            {
+                "local": "CPLV Munia Panteras",
+                "bonusA": "0",
+                "resultadoA": "10",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "30.09",
+                "hora": ""
+            },
+            {
+                "local": "SAB Tucans Asme",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "7",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "30.09",
+                "hora": ""
+            },
+            {
+                "local": "CPH Skulls Alm\u00e0ssera",
+                "bonusA": "1",
+                "resultadoA": "4",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "L\u00ednea Madrid",
+                "fecha": "01.10",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "ac7d0943-1316-408f-9f86-e2b52dd2a2f8",
+        "nombre": "Jornada 3",
+        "partidos": [
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "CPH Skulls Alm\u00e0ssera",
+                "fecha": "07.10",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CPLV Munia Panteras",
+                "fecha": "07.10",
+                "hora": ""
+            },
+            {
+                "local": "CP Vila-Real",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "L\u00ednea Madrid",
+                "fecha": "07.10",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "08.10",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "f533e00f-ebf3-4104-b6a4-f9777388c191",
+        "nombre": "Jornada 4",
+        "partidos": [
+            {
+                "local": "L\u00ednea Madrid",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "21.10",
+                "hora": ""
+            },
+            {
+                "local": "SAB Tucans Asme",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "22.10",
+                "hora": ""
+            },
+            {
+                "local": "CPH Skulls Alm\u00e0ssera",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "22.10",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "45640651-1612-4332-a325-ae8724ecc363",
+        "nombre": "Jornada 5",
+        "partidos": [
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "6",
+                "bonusB": "0",
+                "visitante": "CPH Skulls Alm\u00e0ssera",
+                "fecha": "28.10",
+                "hora": ""
+            },
+            {
+                "local": "CP Vila-Real",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "28.10",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "L\u00ednea Madrid",
+                "fecha": "29.10",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "0d61f36a-90b1-48db-950d-69b0a16e010a",
+        "nombre": "Jornada 6",
+        "partidos": [
+            {
+                "local": "CPLV Munia Panteras",
+                "bonusA": "0",
+                "resultadoA": "9",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "CP Vila-Real",
+                "fecha": "04.11",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "04.11",
+                "hora": ""
+            },
+            {
+                "local": "L\u00ednea Madrid",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "04.11",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "1ff0b5b2-48ea-4c53-bc0f-96ea151d30b4",
+        "nombre": "Jornada 7",
+        "partidos": [
+            {
+                "local": "CPLV Munia Panteras",
+                "bonusA": "1",
+                "resultadoA": "1",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "18.11",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "18.11",
+                "hora": ""
+            },
+            {
+                "local": "CP Vila-Real",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "19.11",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "e215fffe-7f5f-4f01-9fd0-0c1649956dbd",
+        "nombre": "Jornada 8",
+        "partidos": [
+            {
+                "local": "SAB Tucans Asme",
+                "bonusA": "0",
+                "resultadoA": "10",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CP Vila-Real",
+                "fecha": "25.11",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "26.11",
+                "hora": ""
+            },
+            {
+                "local": "CPH Skulls Alm\u00e0ssera",
+                "bonusA": "0",
+                "resultadoA": "0",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "CPLV Munia Panteras",
+                "fecha": "26.11",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "25ea4b0d-dd9a-4667-9545-34540ef9906b",
+        "nombre": "Jornada 9",
+        "partidos": [
+            {
+                "local": "CPLV Munia Panteras",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "L\u00ednea Madrid",
+                "fecha": "02.12",
+                "hora": ""
+            },
+            {
+                "local": "CP Vila-Real",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "02.12",
+                "hora": ""
+            },
+            {
+                "local": "CPH Skulls Alm\u00e0ssera",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "8",
+                "bonusB": "0",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "03.12",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "52d2547a-6188-4882-8833-be44b9916a33",
+        "nombre": "Jornada 10",
+        "partidos": [
+            {
+                "local": "SAB Tucans Asme",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "L\u00ednea Madrid",
+                "fecha": "13.01",
+                "hora": ""
+            },
+            {
+                "local": "CPLV Munia Panteras",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "13.01",
+                "hora": ""
+            },
+            {
+                "local": "CPH Skulls Alm\u00e0ssera",
+                "bonusA": "0",
+                "resultadoA": "7",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "CP Vila-Real",
+                "fecha": "14.01",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "27ccccd8-9f01-41b1-962b-9436afc7f683",
+        "nombre": "Jornada 11",
+        "partidos": [
+            {
+                "local": "L\u00ednea Madrid",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CPH Skulls Alm\u00e0ssera",
+                "fecha": "20.01",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "1",
+                "resultadoA": "5",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "20.01",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CPLV Munia Panteras",
+                "fecha": "21.01",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "2d454d64-8d5f-4385-a153-c2712185f023",
+        "nombre": "Jornada 12",
+        "partidos": [
+            {
+                "local": "L\u00ednea Madrid",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CP Vila-Real",
+                "fecha": "17.02",
+                "hora": ""
+            },
+            {
+                "local": "CPLV Munia Panteras",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "17.02",
+                "hora": ""
+            },
+            {
+                "local": "SAB Tucans Asme",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "17.02",
+                "hora": ""
+            },
+            {
+                "local": "CPH Skulls Alm\u00e0ssera",
+                "bonusA": "0",
+                "resultadoA": "2",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "18.02",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "f56d4c3b-ee1c-4b9d-b7f6-109ae09bdd55",
+        "nombre": "Jornada 13",
+        "partidos": [
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "10",
+                "resultadoB": "0",
+                "bonusB": "0",
+                "visitante": "L\u00ednea Madrid",
+                "fecha": "24.02",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "7",
+                "bonusB": "0",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "24.02",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "0",
+                "resultadoB": "5",
+                "bonusB": "0",
+                "visitante": "CPH Skulls Alm\u00e0ssera",
+                "fecha": "25.02",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "d49ce859-ec12-4ae1-b855-66aeca12b66d",
+        "nombre": "Jornada 14",
+        "partidos": [
+            {
+                "local": "CPH Skulls Alm\u00e0ssera",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "4",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "03.03",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "1",
+                "bonusB": "1",
+                "visitante": "CP Vila-Real",
+                "fecha": "09.03",
+                "hora": ""
+            },
+            {
+                "local": "L\u00ednea Madrid",
+                "bonusA": "1",
+                "resultadoA": "3",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "10.03",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "12bd51f2-56c9-4281-84c3-b8769117510e",
+        "nombre": "Jornada 15",
+        "partidos": [
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "HCR Cent Patins",
+                "fecha": "16.03",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "L\u00ednea Madrid",
+                "fecha": "16.03",
+                "hora": ""
+            },
+            {
+                "local": "CP Vila-Real",
+                "bonusA": "0",
+                "resultadoA": "0",
+                "resultadoB": "6",
+                "bonusB": "0",
+                "visitante": "CPLV Munia Panteras",
+                "fecha": "16.03",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "666e2d65-218c-4ce9-8038-e998bf52bfa3",
+        "nombre": "Jornada 16",
+        "partidos": [
+            {
+                "local": "SAB Tucans Asme",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CPLV Munia Panteras",
+                "fecha": "23.03",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "bonusA": "0",
+                "resultadoA": "10",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "CE Barcelona",
+                "fecha": "23.03",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC",
+                "bonusA": "0",
+                "resultadoA": "3",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "CP Vila-Real",
+                "fecha": "24.03",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "7f333094-63c8-46dd-99c4-dace3f8a6547",
+        "nombre": "Jornada 17",
+        "partidos": [
+            {
+                "local": "CPLV Munia Panteras",
+                "bonusA": "0",
+                "resultadoA": "5",
+                "resultadoB": "2",
+                "bonusB": "0",
+                "visitante": "CPH Skulls Alm\u00e0ssera",
+                "fecha": "06.04",
+                "hora": ""
+            },
+            {
+                "local": "CP Vila-Real",
+                "bonusA": "0",
+                "resultadoA": "1",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "06.04",
+                "hora": ""
+            },
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "0",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "Tres Cantos PC",
+                "fecha": "06.04",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "2648c923-a377-4a5d-8747-76177af026b9",
+        "nombre": "Jornada 18",
+        "partidos": [
+            {
+                "local": "CE Barcelona",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "1",
+                "bonusB": "0",
+                "visitante": "CP Vila-Real",
+                "fecha": "13.04",
+                "hora": ""
+            },
+            {
+                "local": "SAB Tucans Asme",
+                "bonusA": "0",
+                "resultadoA": "6",
+                "resultadoB": "3",
+                "bonusB": "0",
+                "visitante": "CPH Skulls Alm\u00e0ssera",
+                "fecha": "13.04",
+                "hora": ""
+            },
+            {
+                "local": "L\u00ednea Madrid",
+                "bonusA": "0",
+                "resultadoA": "4",
+                "resultadoB": "8",
+                "bonusB": "0",
+                "visitante": "CPLV Munia Panteras",
+                "fecha": "13.04",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "bonusA": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "bonusB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    }
+]

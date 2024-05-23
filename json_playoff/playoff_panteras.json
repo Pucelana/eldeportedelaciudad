@@ -1,0 +1,85 @@
+{
+    "cuartos": [],
+    "semifinales": {
+        "id": "89d96658-e9a1-48d5-8e72-689951335610",
+        "partidos": [
+            {
+                "local": "CPLV Munia Panteras (0)",
+                "resultadoA": "3",
+                "resultadoB": "4",
+                "visitante": "SAB Tucans Asme (1)",
+                "fecha": "20.04",
+                "hora": ""
+            },
+            {
+                "local": "Tres Cantos PC (0)",
+                "resultadoA": "3",
+                "resultadoB": "3 (B)",
+                "visitante": "HCR Cent Patins (1)",
+                "fecha": "20.04",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins (2)",
+                "resultadoA": "6",
+                "resultadoB": "2",
+                "visitante": "Tres Cantos PC (0)",
+                "fecha": "27.04",
+                "hora": ""
+            },
+            {
+                "local": "SAB Tucans Asme (1)",
+                "resultadoA": "1",
+                "resultadoB": "5",
+                "visitante": "CPLV Munia Panteras (1)",
+                "fecha": "27.04",
+                "hora": ""
+            },
+            {
+                "local": "SAB Tucans Asme (2)",
+                "resultadoA": "6",
+                "resultadoB": "1",
+                "visitante": "CPLV Munia Panteras (1)",
+                "fecha": "28.04",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    "final": {
+        "id": "b172b336-2606-498e-98a7-35ae52e11779",
+        "partidos": [
+            {
+                "local": "SAB Tucans Asme (0)",
+                "resultadoA": "2",
+                "resultadoB": "3",
+                "visitante": "HCR Cent Patins (1)",
+                "fecha": "18.05",
+                "hora": ""
+            },
+            {
+                "local": "HCR Cent Patins",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "25.05",
+                "hora": "20:30"
+            },
+            {
+                "local": "HCR Cent Patins",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "SAB Tucans Asme",
+                "fecha": "26.05",
+                "hora": "12:00"
+            }
+        ]
+    }
+}

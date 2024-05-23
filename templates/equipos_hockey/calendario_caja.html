@@ -178,7 +178,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
         var average = fila.querySelector('.average');        
         if (esLocal) {
             if (resultadoA > resultadoB) {
-                part1.textContent = '2';
+                part1.textContent = '3';
                 part1.style.color = 'deepskyblue';
             }else if (resultadoA === resultadoB) {
                 part1.textContent = '1';
@@ -187,7 +187,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
                 part1.textContent = '0';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoAA > resultadoBB) {
-                part1.textContent = '2';
+                part1.textContent = '3';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoAA === resultadoBB){
                 part1.textContent = '1';
@@ -198,7 +198,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
             }
         } else {
             if (resultadoB > resultadoA) {
-                part1.textContent = '2';
+                part1.textContent = '3';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoB === resultadoA){
                 part1.textContent = '1';
@@ -207,7 +207,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
                 part1.textContent = '0';
                 part1.style.color = 'deepskyblue';
             } else if(resultadoBB > resultadoAA) {
-                part1.textContent = '2';
+                part1.textContent = '3';
                 part1.style.color = 'deepskyblue';
             } else if (resultadoBB === resultadoAA){
                 part1.textContent = '1';
@@ -225,12 +225,12 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
             if (resultadoAA > resultadoBB) {
           // "AA" gana como local
               if (!esLocal) {
-                puntajeSegundoEnfrentamiento = 2;
+                puntajeSegundoEnfrentamiento = 3;
               }
             } else if (resultadoAA < resultadoBB) {
           // "AA" gana como visitante
               if (esLocal) {
-                puntajeSegundoEnfrentamiento = 2;
+                puntajeSegundoEnfrentamiento = 3;
               }
           } else {
           // Empate en el segundo enfrentamiento
