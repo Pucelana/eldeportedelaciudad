@@ -12,7 +12,7 @@ import json
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
-app.secret_key = 'Pucela83@'
+
 
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
@@ -30,86 +30,10 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)"""
 
-# Función para cargar las credenciales desde el archivo JSON
-credenciales = {}
-json_path = 'json/acceso.json'
-
-def cargar_credenciales():
-    global credenciales
-    if os.path.exists(json_path):
-        with open(json_path, 'r') as file:
-            try:
-                credenciales = json.load(file)
-            except json.JSONDecodeError:
-                credenciales = {}
-    else:
-        credenciales = {}
-    return credenciales
-
-# Función para guardar las credenciales en el archivo JSON
-def guardar_credenciales(credenciales):
-    with open(json_path, 'w') as file:
-        json.dump(credenciales, file)
-
-# Función para verificar si el usuario está autenticado
-def esta_autenticado():
-    return 'usuario' in session
-
-# Función para verificar las credenciales de inicio de sesión
-def verificar_credenciales(email, password):
-    credenciales = cargar_credenciales()
-    if email in credenciales:
-        stored_password = credenciales[email]['password']
-        if check_password_hash(stored_password, password):
-            return True
-    return False
-
-# Función para verificar si hay un administrador registrado
-def administrador_registrado():
-    credenciales = cargar_credenciales()
-    return bool(credenciales)
-
-@app.route('/registro', methods=['GET', 'POST'])
-def registro_admin():
-    if administrador_registrado():
-        return redirect(url_for('news'))  
-    
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']       
-        # Verificar si el email ya está registrado
-        if email in credenciales:
-            return redirect(url_for('news'))
-        
-        # Encriptar la contraseña antes de guardarla
-        hashed_password = generate_password_hash(password)
-        
-        # Guardar las credenciales en el archivo JSON
-        credenciales[email] = {'password': hashed_password}
-        guardar_credenciales(credenciales)
-        
-        # Autenticar al administrador
-        session['usuario'] = email
-        return redirect(url_for('news'))   
-    return render_template('admin/registro.html')
-
-@app.route('/news', methods=['GET', 'POST'])
+# Admin
+@app.route('/news/admin/acceso')
 def news():
-    # Verificar si el usuario está autenticado
-    if not esta_autenticado():
-        return redirect(url_for('registro_admin'))
-
-    # Si la solicitud es POST, verificar las credenciales antes de mostrar el formulario de creación de noticias
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        if not verificar_credenciales(email, password):
-            return redirect(url_for('news'))
-
-        return render_template('admin/crear_noticia.html')
-
-    # Si la solicitud es GET, renderizar la plantilla normalmente
-    return render_template('admin/home.html')
+    return render_template('admin/crear_resultados.html')
 
 # Página de Noticias
 """@app.route('/noticias/', methods=['GET','POST'])
@@ -123,7 +47,7 @@ noticias = []
 def publi_noticia():
     noticias_publicadas = noticias[:]  
     return render_template('admin/publi_noticia.html', noticias_publicadas=noticias_publicadas)"""
-# Ruta para crear la noticia
+"""# Ruta para crear la noticia
 @app.route('/admin/crear_noticia', methods=['GET','POST'])
 def crear_noticia():
     if request.method == 'GET':
@@ -144,9 +68,9 @@ def crear_noticia():
         filename = None        
     nueva_noticia = {'id': id_noticia,'titulo': titulo, 'contenido': contenido, 'categoria': categoria, 'fecha_publi': fecha_publi, 'imagen': filename, 'publicacion': False}
     noticias.append(nueva_noticia)
-    return redirect(url_for('publi_noticia'))
-# Ruta para la publicación de la noticia
-"""@app.route('/publicar_noticia/<string:id>', methods=['POST'])
+    return redirect(url_for('publi_noticia'))"""
+"""# Ruta para la publicación de la noticia
+@app.route('/publicar_noticia/<string:id>', methods=['POST'])
 def publicar_noticia(id):
         texto = next((item for item in noticias if item['id'] == id), None)
         if texto:
