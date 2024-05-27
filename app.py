@@ -30,24 +30,30 @@ app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)"""
 
 # Función para cargar las credenciales desde el archivo JSON
-# Función para verificar si el usuario está autenticado
 credenciales = {}
 json_path = 'json/acceso.json'
-def esta_autenticado():
-    return 'usuario' in session
+
 def cargar_credenciales():
     global credenciales
-    try:
-        with open('json/acceso.json', 'r') as file:
-            credenciales = json.load(file)
-    except (json.JSONDecodeError, FileNotFoundError):
-        # Manejar el caso en el que el archivo JSON esté vacío o no exista
-        pass
+    if os.path.exists(json_path):
+        with open(json_path, 'r') as file:
+            try:
+                credenciales = json.load(file)
+            except json.JSONDecodeError:
+                credenciales = {}
+    else:
+        credenciales = {}
     return credenciales
+
 # Función para guardar las credenciales en el archivo JSON
 def guardar_credenciales(credenciales):
-    with open('json/acceso.json', 'w') as file:
+    with open(json_path, 'w') as file:
         json.dump(credenciales, file)
+
+# Función para verificar si el usuario está autenticado
+def esta_autenticado():
+    return 'usuario' in session
+
 # Función para verificar las credenciales de inicio de sesión
 def verificar_credenciales(email, password):
     credenciales = cargar_credenciales()
@@ -56,29 +62,36 @@ def verificar_credenciales(email, password):
         if check_password_hash(stored_password, password):
             return True
     return False
+
 # Variable global para verificar si hay un administrador registrado
-administrador_registrado = False
+def administrador_registrado():
+    credenciales = cargar_credenciales()
+    return bool(credenciales)
+
 @app.route('/registro', methods=['GET', 'POST'])
 def registro_admin():
-    global administrador_registrado, credenciales
-    if administrador_registrado:
+    if administrador_registrado():
         return redirect(url_for('news'))  
+    
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']       
         # Verificar si el email ya está registrado
         if email in credenciales:
             return redirect(url_for('news'))
+        
         # Encriptar la contraseña antes de guardarla
         hashed_password = generate_password_hash(password)
+        
         # Guardar las credenciales en el archivo JSON
         credenciales[email] = {'password': hashed_password}
-        with open(json_path, 'w') as file:
-            json.dump(credenciales, file)       
-        administrador_registrado = True
-        session['usuario'] = email  # Autenticar al administrador
+        guardar_credenciales(credenciales)
+        
+        # Autenticar al administrador
+        session['usuario'] = email
         return redirect(url_for('news'))   
     return render_template('admin/registro.html')
+
 @app.route('/news', methods=['GET', 'POST'])
 def news():
     # Verificar si el usuario está autenticado
