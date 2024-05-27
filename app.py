@@ -33,7 +33,7 @@ mysql = MySQL(app)"""
 # Admin
 @app.route('/news/admin/acceso')
 def news():
-    return render_template('admin/crear_resultados.html')
+    return render_template('admin/pub_marcadores.html')
 
 # Página de Noticias
 """@app.route('/noticias/', methods=['GET','POST'])
