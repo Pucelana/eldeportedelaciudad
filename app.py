@@ -12,6 +12,7 @@ import json
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
+app.secret_key = 'Pucela83@'
 
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
@@ -63,7 +64,7 @@ def verificar_credenciales(email, password):
             return True
     return False
 
-# Variable global para verificar si hay un administrador registrado
+# Función para verificar si hay un administrador registrado
 def administrador_registrado():
     credenciales = cargar_credenciales()
     return bool(credenciales)
