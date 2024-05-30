@@ -279,17 +279,21 @@ filas.forEach(function(fila) {
     } else {
         diferenciaGolesVuelta = 0;
     }
-    // Calcular el average total sumando las diferencias de goles de ambas jornadas
     var averageTotal = diferenciaGolesIda + diferenciaGolesVuelta;
-    // Asignar el valor del average total a la celda 'average'
-    average.textContent = averageTotal;
-    // Determinar el color de la celda 'average' según la diferencia de goles
-    if (averageTotal > 0) {
-        average.style.color = 'lime'; // Equipo A ganó
-    } else if (averageTotal < 0) {
-        average.style.color = 'red'; // Equipo A perdió
+    if (!isNaN(averageTotal)) {
+        // Asignar el valor del average total a la celda 'average'
+        average.textContent = averageTotal;
+        // Determinar el color de la celda 'average' según la diferencia de goles
+        if (averageTotal > 0) {
+          average.style.color = 'lime'; // Equipo A ganó
+        } else if (averageTotal < 0) {
+          average.style.color = 'darkred'; // Equipo A perdió
+        } else {
+          average.style.color = 'deepskyblue'; // Empate
+        }
     } else {
-        average.style.color = 'deepskyblue'; // Empate
+    // Si averageTotal es NaN, dejar la celda vacía
+    average.textContent = '';
     }
 });
 });

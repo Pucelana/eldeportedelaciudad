@@ -33,8 +33,8 @@
               <tr class="text-center">
                 <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
                 <td class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">{{ partido.local }}</td>
-                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
-                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }} ({{ partido.victoriasA }})</td>
+                <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }} ({{ partido.victoriasB }})</td>
                 <td class="text-center fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">{{ partido.visitante }}</td>
               </tr>
             {% endfor %}

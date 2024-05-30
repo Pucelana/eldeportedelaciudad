@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import uuid
 import json
+import re
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
@@ -422,16 +423,28 @@ def crear_playoff_uemc():
         # Recuperar los datos de cada partido del formulario
         for i in range(num_partidos):
             local = request.form.get(f'local{i}')
-            resultadoA = request.form.get(f'resultadoA{i}')
-            resultadoB = request.form.get(f'resultadoB{i}')
+            resultadoA = request.form.get(f'resultadoA{i}', '0')
+            resultadoB = request.form.get(f'resultadoB{i}', '0')
             visitante = request.form.get(f'visitante{i}')
             fecha = request.form.get(f'fecha{i}')
             hora = request.form.get(f'hora{i}')
+             # Limpiar los resultados para extraer solo los números
+            resultadoA_match = re.search(r'(\d+)', resultadoA)
+            resultadoB_match = re.search(r'(\d+)', resultadoB)
+            victoriasA_match = re.search(r'\((\d+)\)', resultadoA)
+            victoriasB_match = re.search(r'\((\d+)\)', resultadoB)
+
+            resultadoA = int(resultadoA_match.group(1)) if resultadoA_match else 0
+            resultadoB = int(resultadoB_match.group(1)) if resultadoB_match else 0
+            victoriasA = int(victoriasA_match.group(1)) if victoriasA_match else 0
+            victoriasB = int(victoriasB_match.group(1)) if victoriasB_match else 0
             # Crear un nuevo diccionario con los datos del partido
             partido = {
                 'local': local,
                 'resultadoA': resultadoA,
+                'victoriasA': victoriasA,
                 'resultadoB': resultadoB,
+                'victoriasB': victoriasB,
                 'visitante': visitante,
                 'fecha' : fecha,
                 'hora' : hora  
@@ -475,10 +488,22 @@ def modificar_playoff_uemc(id):
             visitante = request.form.get(f'visitante{index}')
             fecha = request.form.get(f'fecha{index}')
             hora = request.form.get(f'hora{index}')
+             # Limpiar los resultados para extraer solo los números
+            resultadoA_match = re.search(r'(\d+)', resultadoA)
+            resultadoB_match = re.search(r'(\d+)', resultadoB)
+            victoriasA_match = re.search(r'\((\d+)\)', resultadoA)
+            victoriasB_match = re.search(r'\((\d+)\)', resultadoB)
+
+            resultadoA = int(resultadoA_match.group(1)) if resultadoA_match else 0
+            resultadoB = int(resultadoB_match.group(1)) if resultadoB_match else 0
+            victoriasA = int(victoriasA_match.group(1)) if victoriasA_match else 0
+            victoriasB = int(victoriasB_match.group(1)) if victoriasB_match else 0
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
             partido['resultadoB'] = resultadoB
+            partido['victoriasA'] = victoriasA
+            partido['victoriasB'] = victoriasB
             partido['visitante'] = visitante
             partido['fecha'] = fecha
             partido['hora'] = hora
@@ -539,6 +564,22 @@ def clasif_analisis_uemc():
     clasificacion_analisis_uemc = generar_clasificacion_analisis_baloncesto_uemc(data, total_partidos_temporada_uemc)
     # Ordena la clasificación por puntos y diferencia de canastas
     clasificacion_analisis_uemc = sorted(clasificacion_analisis_uemc, key=lambda x: (x['datos']['ganados'], x['datos']['diferencia_canastas']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_uemc}
+    for club in clubs5:
+        if club not in clubs_set:
+            clasificacion_analisis_uemc.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_canastas': 0
+                }
+            })
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_uemc.html', clasificacion_analisis_uemc=clasificacion_analisis_uemc)
@@ -614,6 +655,45 @@ def calendario_uemc():
                     tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_uemc[equipo_contrario]['jornadas'][jornada['nombre']]['rol_uemc'] = rol_uemc
     return render_template('equipos_basket/calendario_uemc.html', tabla_partidos_uemc=tabla_partidos_uemc, nuevos_datos_uemc=nuevos_datos_uemc)  
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_uemc = 'json_clubs/clubs_uemc.json'
+def escribir_clubs_uemc(clubs5):
+    with open(clubs_uemc, 'w') as file:
+        json.dump(clubs5, file, indent=4)
+def leer_clubs_uemc():
+    if os.path.exists(clubs_uemc):
+        with open(clubs_uemc, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs5 = leer_clubs_uemc()
+@app.route('/admin/jornada0_uemc', methods=['GET', 'POST'])
+def jornada0_uemc():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs5.append(club)
+            escribir_clubs_uemc(clubs5)
+            return redirect(url_for('jornada0_uemc'))
+        else:
+            index = int(request.form['index'])
+            del clubs5[index]  # Eliminar el club de la lista
+            escribir_clubs_uemc(clubs5)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_ponce'))
+    return render_template('admin/clubs_uemc.html', clubs5=clubs5, indices=range(len(clubs5)))
+@app.route('/admin/eliminar_club_uemc/<string:club>', methods=['POST'])
+def eliminar_club_uemc(club):
+    global clubs5 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs5:
+        # Eliminar el club de la lista
+        clubs5.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_uemc(clubs5)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_uemc'))
 # Fin proceso del UEMC
 
 #Todo el proceso de calendario y clasificación del Ponce
@@ -892,6 +972,22 @@ def clasif_analisis_ponce():
     clasificacion_analisis_ponce = generar_clasificacion_analisis_baloncesto_ponce(data1, total_partidos_temporada_ponce)
     # Ordena la clasificación por puntos y diferencia de canastas
     clasificacion_analisis_ponce = sorted(clasificacion_analisis_ponce, key=lambda x: (x['datos']['ganados'], x['datos']['diferencia_canastas']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_ponce}
+    for club in clubs6:
+        if club not in clubs_set:
+            clasificacion_analisis_ponce.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_canastas': 0
+                }
+            })
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_ponce.html', clasificacion_analisis_ponce=clasificacion_analisis_ponce)
@@ -967,6 +1063,45 @@ def calendarios_ponce():
                     tabla_partidos_ponce[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_ponce[equipo_contrario]['jornadas'][jornada['nombre']]['rol_ponce'] = rol_ponce
     return render_template('equipos_basket/calendario_ponce.html', tabla_partidos_ponce=tabla_partidos_ponce, nuevos_datos_ponce=nuevos_datos_ponce) 
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_ponce = 'json_clubs/clubs_ponce.json'
+def escribir_clubs_ponce(clubs6):
+    with open(clubs_ponce, 'w') as file:
+        json.dump(clubs6, file, indent=4)
+def leer_clubs_ponce():
+    if os.path.exists(clubs_ponce):
+        with open(clubs_ponce, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs6 = leer_clubs_ponce()
+@app.route('/admin/jornada0_ponce', methods=['GET', 'POST'])
+def jornada0_ponce():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs6.append(club)
+            escribir_clubs_ponce(clubs6)
+            return redirect(url_for('jornada0_ponce'))
+        else:
+            index = int(request.form['index'])
+            del clubs6[index]  # Eliminar el club de la lista
+            escribir_clubs_ponce(clubs6)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_ponce'))
+    return render_template('admin/clubs_ponce.html', clubs6=clubs6, indices=range(len(clubs6)))
+@app.route('/admin/eliminar_club_ponce/<string:club>', methods=['POST'])
+def eliminar_club_ponce(club):
+    global clubs6 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs6:
+        # Eliminar el club de la lista
+        clubs6.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_ponce(clubs6)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_ponce'))
 # Fin proceso Ponce Valladolid
 
 #Todo el proceso de calendario y clasificación de Fundación Aliados
@@ -1237,6 +1372,22 @@ def clasif_analisis_aliados():
     clasificacion_analisis_aliados = generar_clasificacion_analisis_baloncesto_aliados(data2, total_partidos_temporada_aliados)
     # Ordena la clasificación por puntos y diferencia de canastas
     clasificacion_analisis_aliados = sorted(clasificacion_analisis_aliados, key=lambda x: (x['datos']['ganados'], x['datos']['diferencia_canastas']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_aliados}
+    for club in clubs7:
+        if club not in clubs_set:
+            clasificacion_analisis_aliados.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_canastas': 0
+                }
+            })
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_basket/clasif_analisis_aliados.html', clasificacion_analisis_aliados=clasificacion_analisis_aliados)
@@ -1312,6 +1463,45 @@ def calendarios_aliados():
                     tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_aliados[equipo_contrario]['jornadas'][jornada['nombre']]['rol_aliados'] = rol_aliados
     return render_template('equipos_basket/calendario_aliados.html', tabla_partidos_aliados=tabla_partidos_aliados, nuevos_datos_aliados=nuevos_datos_aliados) 
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_aliados = 'json_clubs/clubs_aliados.json'
+def escribir_clubs_aliados(clubs7):
+    with open(clubs_aliados, 'w') as file:
+        json.dump(clubs7, file, indent=4)
+def leer_clubs_aliados():
+    if os.path.exists(clubs_aliados):
+        with open(clubs_aliados, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs7 = leer_clubs_aliados()
+@app.route('/admin/jornada0_aliados', methods=['GET', 'POST'])
+def jornada0_aliados():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs7.append(club)
+            escribir_clubs_aliados(clubs7)
+            return redirect(url_for('jornada0_aliados'))
+        else:
+            index = int(request.form['index'])
+            del clubs7[index]  # Eliminar el club de la lista
+            escribir_clubs_aliados(clubs7)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_aliados'))
+    return render_template('admin/clubs_aliados.html', clubs7=clubs7, indices=range(len(clubs7)))
+@app.route('/admin/eliminar_club_aliado/<string:club>', methods=['POST'])
+def eliminar_club_aliado(club):
+    global clubs7 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs7:
+        # Eliminar el club de la lista
+        clubs7.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_aliados(clubs7)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_aliados'))
 # Fin proceso Fundación Aliados
 
 # EQUIPOS FÚTBOL
@@ -1341,8 +1531,8 @@ def calend_valladolid():
 @app.route('/admin/crear_calendario_valladolid', methods=['POST'])
 def ingresar_resul_valladolid():
     data3 = obtener_datos_valladolid()
-    nums_partidos = int(request.form.get('num_partidos', 0))
     jornada_nombre = request.form.get('nombre')
+    nums_partidos = int(request.form.get('num_partidos', 0))
     jornada_existente = next((j for j in data3 if j["nombre"] == jornada_nombre), None)
     if jornada_existente:
         # Si la jornada ya existe, utiliza su identificador existente
@@ -1593,6 +1783,25 @@ def clasif_analisis_valladolid():
     clasificacion_analisis_valladolid = generar_clasificacion_analisis_futbol_valladolid(data3, total_partidos_temporada_valladolid)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_valladolid = sorted(clasificacion_analisis_valladolid, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_valladolid}
+    for club in clubs1:
+        if club not in clubs_set:
+            clasificacion_analisis_valladolid.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0
+                }
+            })
+    
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol/clasi_analis_vallad.html', clasificacion_analisis_valladolid=clasificacion_analisis_valladolid)
@@ -1669,6 +1878,45 @@ def calendarios_valladolid():
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_valladolid[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid'] = rol_valladolid
     return render_template('equipos_futbol/calendario_vallad.html', tabla_partidos_valladolid=tabla_partidos_valladolid, nuevos_datos_valladolid=nuevos_datos_valladolid)
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_valladolid = 'json_clubs/clubs_valladolid.json'
+def escribir_clubs(clubs1):
+    with open(clubs_valladolid, 'w') as file:
+        json.dump(clubs1, file, indent=4)
+def leer_clubs():
+    if os.path.exists(clubs_valladolid):
+        with open(clubs_valladolid, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs1 = leer_clubs()
+@app.route('/admin/jornada0_valladolid', methods=['GET', 'POST'])
+def jornada0_valladolid():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs1.append(club)
+            escribir_clubs(clubs1)
+            return redirect(url_for('jornada0_valladolid'))
+        else:
+            index = int(request.form['index'])
+            del clubs1[index]  # Eliminar el club de la lista
+            escribir_clubs(clubs1)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_valladolid'))
+    return render_template('admin/clubs_valladolid.html', clubs1=clubs1, indices=range(len(clubs1)))
+@app.route('/admin/eliminar_club_valladolid/<string:club>', methods=['POST'])
+def eliminar_club_valladolid(club):
+    global clubs1 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs1:
+        # Eliminar el club de la lista
+        clubs1.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs(clubs1)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_valladolid'))
 # Fin proceso Real Valladolid
 
 #Todo el proceso de calendario y clasificación del Promesas
@@ -1951,6 +2199,25 @@ def clasif_analisis_promesas():
     clasificacion_analisis_promesas = generar_clasificacion_analisis_futbol_promesas(data4, total_partidos_temporada_promesas)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_promesas = sorted(clasificacion_analisis_promesas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_promesas}
+    for club in clubs2:
+        if club not in clubs_set:
+            clasificacion_analisis_promesas.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0
+                }
+            })
+    
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol/clasi_analis_prome.html', clasificacion_analisis_promesas=clasificacion_analisis_promesas)        
@@ -2027,10 +2294,49 @@ def calendarios_promesas():
                     tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_promesas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_promesas'] = rol_promesas
     return render_template('equipos_futbol/calendario_promesas.html', tabla_partidos_promesas=tabla_partidos_promesas, nuevos_datos_promesas=nuevos_datos_promesas)        
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_promesas = 'json_clubs/clubs_promesas.json'
+def escribir_clubs_promesas(clubs2):
+    with open(clubs_promesas, 'w') as file:
+        json.dump(clubs2, file, indent=4)
+def leer_clubs_promesas():
+    if os.path.exists(clubs_promesas):
+        with open(clubs_promesas, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs2 = leer_clubs_promesas()
+@app.route('/admin/jornada0_promesas', methods=['GET', 'POST'])
+def jornada0_promesas():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs2.append(club)
+            escribir_clubs_promesas(clubs2)
+            return redirect(url_for('jornada0_promesas'))
+        else:
+            index = int(request.form['index'])
+            del clubs2[index]  # Eliminar el club de la lista
+            escribir_clubs_promesas(clubs2)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_promesas'))
+    return render_template('admin/clubs_promesas.html', clubs2=clubs2, indices=range(len(clubs2)))
+@app.route('/admin/eliminar_club_promesas/<string:club>', methods=['POST'])
+def eliminar_club_promesas(club):
+    global clubs2 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs2:
+        # Eliminar el club de la lista
+        clubs2.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_promesas(clubs2)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_promesas'))
 # Fin proceso Promesas
 
 #Todo el proceso de calendario y clasificación del RV Simancas
-# Ruta de partidos V Simancas       
+# Ruta de partidos RV Simancas       
 part_simancas = 'json/partidos_simancas.json'
 def guardar_datos_simancas(data5):
     # Guardar los datos en el archivo JSON
@@ -2186,6 +2492,23 @@ def clasif_analisis_simancas():
     clasificacion_analisis_simancas = generar_clasificacion_analisis_futbol_simancas(data5, total_partidos_temporada_simancas)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_simancas = sorted(clasificacion_analisis_simancas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_simancas}
+    for club in clubs3:
+        if club not in clubs_set:
+            clasificacion_analisis_simancas.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0
+                }
+            })
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol/clasi_analis_siman.html', clasificacion_analisis_simancas=clasificacion_analisis_simancas)         
@@ -2255,7 +2578,46 @@ def calendarios_simancas():
                     tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_simancas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_simancas'] = rol_simancas
     return render_template('equipos_futbol/calendario_simancas.html', tabla_partidos_simancas=tabla_partidos_simancas, nuevos_datos_simancas=nuevos_datos_simancas)         
-# Fin proceso V Simancas
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_simancas = 'json_clubs/clubs_simancas.json'
+def escribir_clubs_simancas(clubs3):
+    with open(clubs_simancas, 'w') as file:
+        json.dump(clubs3, file, indent=4)
+def leer_clubs_simancas():
+    if os.path.exists(clubs_simancas):
+        with open(clubs_simancas, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs3 = leer_clubs_simancas()
+@app.route('/admin/jornada0_simancas', methods=['GET', 'POST'])
+def jornada0_simancas():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs3.append(club)
+            escribir_clubs_simancas(clubs3)
+            return redirect(url_for('jornada0_simancas'))
+        else:
+            index = int(request.form['index'])
+            del clubs3[index]  # Eliminar el club de la lista
+            escribir_clubs_simancas(clubs3)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_simancas'))
+    return render_template('admin/clubs_simancas.html', clubs3=clubs3, indices=range(len(clubs3)))
+@app.route('/admin/eliminar_club_simancas/<string:club>', methods=['POST'])
+def eliminar_club_simancas(club):
+    global clubs3 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs3:
+        # Eliminar el club de la lista
+        clubs3.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_simancas(clubs3)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_simancas'))
+# Fin proceso RV Simancas
 
 #Todo el proceso de calendario y clasificación del CD Parquesol
 # Ruta de partidos CD Parquesol        
@@ -2413,6 +2775,23 @@ def clasif_analisis_parquesol():
     clasificacion_analisis_parquesol = generar_clasificacion_analisis_futbol_parquesol(data6, total_partidos_temporada_parquesol)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_parquesol = sorted(clasificacion_analisis_parquesol, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+     # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_parquesol}
+    for club in clubs4:
+        if club not in clubs_set:
+            clasificacion_analisis_parquesol.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0
+                }
+            })
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol/clasi_analis_parque.html', clasificacion_analisis_parquesol=clasificacion_analisis_parquesol) 
@@ -2482,6 +2861,45 @@ def calendarios_parquesol():
                     tabla_partidos_parquesol[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_parquesol[equipo_contrario]['jornadas'][jornada['nombre']]['rol_parquesol'] = rol_parquesol
     return render_template('equipos_futbol/calendario_parquesol.html', tabla_partidos_parquesol=tabla_partidos_parquesol, nuevos_datos_parquesol=nuevos_datos_parquesol) 
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_parquesol = 'json_clubs/clubs_parquesol.json'
+def escribir_clubs_parquesol(clubs4):
+    with open(clubs_parquesol, 'w') as file:
+        json.dump(clubs4, file, indent=4)
+def leer_clubs_parquesol():
+    if os.path.exists(clubs_parquesol):
+        with open(clubs_parquesol, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs4 = leer_clubs_parquesol()
+@app.route('/admin/jornada0_parquesol', methods=['GET', 'POST'])
+def jornada0_parquesol():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs4.append(club)
+            escribir_clubs_parquesol(clubs4)
+            return redirect(url_for('jornada0_parquesol'))
+        else:
+            index = int(request.form['index'])
+            del clubs4[index]  # Eliminar el club de la lista
+            escribir_clubs_parquesol(clubs4)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_parquesol'))
+    return render_template('admin/clubs_parquesol.html', clubs4=clubs4, indices=range(len(clubs4)))
+@app.route('/admin/eliminar_club_parquesol/<string:club>', methods=['POST'])
+def eliminar_club_parquesol(club):
+    global clubs4 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs4:
+        # Eliminar el club de la lista
+        clubs4.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_parquesol(clubs4)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_parquesol'))
 # Fin proceso CD Parquesol
 
 # EQUIPOS FÚTBOL SALA

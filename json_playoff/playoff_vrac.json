@@ -62,8 +62,8 @@
         "partidos": [
             {
                 "local": "Burgos",
-                "resultadoA": "",
-                "resultadoB": "",
+                "resultadoA": "19",
+                "resultadoB": "20",
                 "visitante": "VRAC",
                 "fecha": "26.05",
                 "hora": ""
