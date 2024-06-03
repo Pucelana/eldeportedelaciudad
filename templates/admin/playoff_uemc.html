@@ -142,16 +142,16 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal{{ datas4.semifinales.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Semifinales -->
+    <div class="modal fade" id="modal{{ datas4.semifinales.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Cuartos -->
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Editar Semifinales</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                {% for partido in datas4.semifinales.partidos %}
+              <div class="modal-body">                  
                   <form method="POST" action="/modificar_eliminatoria_uemc/{{ datas4.semifinales.id }}">
+                    {% for partido in datas4.semifinales.partidos %}
                       <!-- Campos de entrada para editar el partido -->
                       <div class="mb-3">
                         <label for="fecha{{ loop.index0 }}">Fecha:</label>
@@ -176,25 +176,25 @@
                       <div class="mb-3">
                           <label for="visitante{{ loop.index0 }}">Visitante:</label>
                           <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
-                      </div>
-                  </form>
-                  {% endfor %}
-                  <!-- Botón de enviar para enviar los datos modificados -->
+                      </div> 
+                      {% endfor %}
+                      <!-- Botón de enviar para enviar los datos modificados -->
                   <button type="submit" class="btn btn-primary">Guardar</button>
+                  </form>
               </div>
           </div>
       </div>
   </div>
-  <div class="modal fade" id="modal{{ datas4.final.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para la Final -->
+  <div class="modal fade" id="modal{{ datas4.final.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Cuartos -->
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Editar Final</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              {% for partido in datas4.final.partidos %}
+            <div class="modal-body">                  
                 <form method="POST" action="/modificar_eliminatoria_uemc/{{ datas4.final.id }}">
+                  {% for partido in datas4.final.partidos %}
                     <!-- Campos de entrada para editar el partido -->
                     <div class="mb-3">
                       <label for="fecha{{ loop.index0 }}">Fecha:</label>
@@ -219,15 +219,15 @@
                     <div class="mb-3">
                         <label for="visitante{{ loop.index0 }}">Visitante:</label>
                         <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
-                    </div>
-                </form>
-                {% endfor %}
-                <!-- Botón de enviar para enviar los datos modificados -->
+                    </div> 
+                    {% endfor %}
+                    <!-- Botón de enviar para enviar los datos modificados -->
                 <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
     </div>
-</div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

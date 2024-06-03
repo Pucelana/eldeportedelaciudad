@@ -22,18 +22,18 @@
       <li class="breadcrumb-item active text-dark" aria-current="page">Clasificación y Ánalisis</li>
     </ol>
   </nav>
-<h2 class="text-white text-center">Real Valladolid</h2>
+<h2 class="text-white text-center">Real Valladolid 24/25</h2>
 <section class="container-lg mb-5">
   <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active"><!--Tabla Clasificación 2ª Div.-->	
+        <!--<div class="carousel-item active">!--Tabla Clasificación 2ª Div.->	
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
-              <div class="card-body"> <!--Tabla Clasificación-->
+              <div class="card-body"> <!-Tabla Clasificación->
                 <div class="row table-responsive">
                   <h3 class="text-center">Clasificación - Liga Hypermotion</h3>
                   <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
+                    <table class="table"> <--Posiciones->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -106,7 +106,6 @@
                         <tr>
                           <td class="bg-danger text-white">22</td>
                         </tr>
-
                       </tbody>
                     </table>
                   </div>
@@ -146,15 +145,15 @@
               </div>
             </div>
           </div>
-        </div>
-        <!--<div class="carousel-item"><--Tabla Clasificación 1ª Div.->
+        </div>-->
+        <div class="carousel-item"><!--Tabla Clasificación 1ª Div.-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                   <h3 class="text-center mb-4">Clasificación- Liga BBVA</h3>
+                   <h3 class="text-center mb-4">Clasificación- Liga EA Sports</h3>
                    <div class="col-1">
-                    <table class="table"> <--Posiciones->
+                    <table class="table"> <!--Posiciones-->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -225,7 +224,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaClasifVallad2" class="table"><--Tabla Clasificación 1ª BBVA->
+                  <table id="tablaClasifVallad2" class="table"><!--Tabla Clasificación 1ª BBVA-->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -260,15 +259,125 @@
               </div>
             </div>
           </div>
-        </div>-->
-        <!--<div class="carousel-item"><--Tabla Champions League->
+        </div>
+        <div class="carousel-item"><!--Tabla Campeón de Liga-->
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equ_futb" style="width: 80rem;">
+              <div class="card-body">
+                <div class="row table-responsive">
+                   <h3 class="text-center mb-4">Campeón de Liga - Liga EA Sports</h3>
+                   <div class="col-1">
+                    <table class="table"> <!--Posiciones-->
+                      <thead>
+                        <tr>
+                          <th>Pos.</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-success text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">13</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">14</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">15</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">16</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">17</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">18</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">19</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">20</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaCampeonVallad" class="table"><!--Tabla Campeón Liga-->
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>Ptos.Actuales</th>
+                        <th>Proximidad</th>
+                        <th>Ptos.Matem</th>
+                        <th>Ptos.Optim</th>
+                        <th>Ptos.Pesim</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for equipo_info in clasificacion_analisis_valladolid %}
+                      <tr class="text-center">
+                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="camp-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="camp-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="camp-proxi fw-bold"></td>
+                        <td class="camp-mate fw-bold"></td>
+                        <td class="camp-opti fw-bold"></td>
+                        <td class="camp-pesi fw-bold"></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item"><!--Tabla Champions League-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
                    <h3 class="text-center mb-4">Champions League - Liga BBVA</h3>
                    <div class="col-1">
-                    <table class="table"> <--Posiciones->
+                    <table class="table"> <!--Posiciones-->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -339,7 +448,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaChampionsVallad" class="table"><--Tabla Champions->
+                  <table id="tablaChampionsVallad" class="table"><!--Tabla Champions-->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -370,15 +479,15 @@
               </div>
             </div>
           </div>
-        </div>-->
-        <!--<div class="carousel-item"><--Tabla Europa League->
+        </div>
+        <div class="carousel-item"><!--Tabla Europa League-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Europa League - Liga BBVA</h3>
                   <div class="col-1">
-                    <table class="table"> <--Posiciones->
+                    <table class="table"> <!--Posiciones-->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -449,7 +558,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaEuropaVallad" class="table"><--Tabla Europa League->
+                  <table id="tablaEuropaVallad" class="table"><!--Tabla Europa League-->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -480,15 +589,15 @@
               </div>
             </div>
           </div>
-        </div>-->
-        <!--<div class="carousel-item"><--Tabla Conference League->
+        </div>
+        <div class="carousel-item"><!--Tabla Conference League-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Conference League - Liga BBVA</h3>
                   <div class="col-1">
-                    <table class="table"> <--Posiciones->
+                    <table class="table"> <!--Posiciones-->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -559,7 +668,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaConfeVallad" class="table"><--Tabla Conference League->
+                  <table id="tablaConfeVallad" class="table"><!--Tabla Conference League-->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -590,15 +699,15 @@
               </div>
             </div>
           </div>
-        </div>-->
-        <div class="carousel-item"><!--Tabla Ascenso-->
+        </div>
+        <!--<div class="carousel-item"><!-Tabla Ascenso->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Ascenso - Liga EA Sports</h3>
                   <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
+                    <table class="table"> <!-Posiciones->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -675,7 +784,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaAscensoVallad" class="table"><!--Tabla Ascenso-->
+                  <table id="tablaAscensoVallad" class="table"><!-Tabla Ascenso->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -706,15 +815,15 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="carousel-item"><!--Tabla PlayOff-->
+        </div>-->
+        <!--<div class="carousel-item"><!-Tabla PlayOff->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
                    <h3 class="text-center mb-4">PlayOff - Liga EA Sport</h3>
                    <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
+                    <table class="table"> <!-Posiciones->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -791,7 +900,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaPlayVallad" class="table"><!--Tabla PlayOff-->
+                  <table id="tablaPlayVallad" class="table"><!-Tabla PlayOff->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -822,15 +931,15 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="carousel-item"><!--Tabla Descenso Liga Hypermotion-->
+        </div>-->
+        <!--<div class="carousel-item"><!-Tabla Descenso Liga Hypermotion->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center mb-4">Descenso Liga 1ª RFEF</h3>
                   <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
+                    <table class="table"> <!-Posiciones->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -907,7 +1016,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaDescVallad" class="table"><!--Tabla Permanencia-->
+                  <table id="tablaDescVallad" class="table"><!-Tabla Permanencia->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -938,15 +1047,15 @@
               </div>
             </div>
           </div>
-        </div>
-        <!--<div class="carousel-item"><--Tabla Descenso Liga BBVA->
+        </div>-->
+        <div class="carousel-item"><!--Tabla Descenso Liga BBVA-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center mb-4">Descenso Liga Hypermotion</h3>
                   <div class="col-1">
-                    <table class="table"> <--Posiciones->
+                    <table class="table"> <!--Posiciones-->
                       <thead>
                         <tr>
                           <th>Pos.</th>
@@ -1017,7 +1126,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaDescVallad2" class="table"><--Tabla Descenso Liga BBVA->
+                  <table id="tablaDescVallad2" class="table"><!--Tabla Descenso Liga BBVA-->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -1048,7 +1157,7 @@
               </div>
             </div>
           </div>
-        </div>-->
+        </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

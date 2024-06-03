@@ -1579,7 +1579,7 @@ def modificar_jorn_valladolid(id):
         if resultados_a_modificar:
             resultados_a_modificar['nombre'] = jornada_nombre
             resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
-            for i in range(11):  # Ajusta según la cantidad máxima de partidos
+            for i in range(10):  # Ajusta según la cantidad máxima de partidos
                 equipoLocal = request.form.get(f'local{i}')
                 resultadoA = request.form.get(f'resultadoA{i}')
                 resultadoB = request.form.get(f'resultadoB{i}')
@@ -1607,7 +1607,7 @@ def eliminar_jorn_valladolid(id):
     guardar_partidos_en_archivo_valladolid(jornada_a_eliminar)
     # Redirigir a la página de encuentros_uemc (o a donde desees después de eliminar)
     return redirect(url_for('calend_valladolid'))
-# PlayOff Valladolid
+"""# PlayOff Valladolid
 playoff_valladolid = 'json_playoff/playoff_valladolid.json'
 def guardar_playoff_valladolid(datas10):
     with open(playoff_valladolid, 'w', encoding='utf-8') as file:
@@ -1713,8 +1713,8 @@ def modificar_playoff_valladolid(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
-            fecha = request.form.get(f'fecha{i}')
-            hora = request.form.get(f'hora{i}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
@@ -1727,7 +1727,7 @@ def modificar_playoff_valladolid(id):
         # Guardar los cambios en el archivo JSON
         guardar_playoff_valladolid(datas10)       
         # Redireccionar a la página de visualización del playoff
-        return redirect(url_for('ver_playoff_valladolid'))
+        return redirect(url_for('ver_playoff_valladolid'))"""
 # Crear la clasificación del Real Valladolid
 def generar_clasificacion_analisis_futbol_valladolid(data3, total_partidos_temporada_valladolid):
     default_dict = defaultdict(lambda: {})
@@ -1778,12 +1778,11 @@ def generar_clasificacion_analisis_futbol_valladolid(data3, total_partidos_tempo
 @app.route('/equipos_futbol/clasi_analis_vallad/')
 def clasif_analisis_valladolid():
     data3 = obtener_datos_valladolid()
-    total_partidos_temporada_valladolid = 42
+    total_partidos_temporada_valladolid = 38
     # Llama a la función para generar la clasificación y análisis
     clasificacion_analisis_valladolid = generar_clasificacion_analisis_futbol_valladolid(data3, total_partidos_temporada_valladolid)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_valladolid = sorted(clasificacion_analisis_valladolid, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
-    
     # Agregar equipos nuevos a la clasificación si no están ya en ella
     clubs_set = {club['equipo'] for club in clasificacion_analisis_valladolid}
     for club in clubs1:
@@ -1805,12 +1804,12 @@ def clasif_analisis_valladolid():
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol/clasi_analis_vallad.html', clasificacion_analisis_valladolid=clasificacion_analisis_valladolid)
-# Ruta para mostrar los playoffs del Real Valladolid
+"""# Ruta para mostrar los playoffs del Real Valladolid
 @app.route('/playoffs_valladolid/')
 def playoffs_valladolid():
     # Obtener datos de las eliminatorias
     datas10 = obtener_playoff_valladolid()
-    return render_template('playoffs/valladolid_playoff.html', datas10=datas10)
+    return render_template('playoffs/valladolid_playoff.html', datas10=datas10)"""
 # Ruta y creación del calendario individual del Real Valladolid
 @app.route('/equipos_futbol/calendario_vallad')
 def calendarios_valladolid():
@@ -3059,6 +3058,23 @@ def clasif_analisis_valladolid_fs():
     clasificacion_analisis_valladolid_fs = generar_clasificacion_analisis_futsal_valladolid_fs(data16, total_partidos_temporada_valladolid_fs)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_valladolid_fs = sorted(clasificacion_analisis_valladolid_fs, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_valladolid_fs}
+    for club in clubs8:
+        if club not in clubs_set:
+            clasificacion_analisis_valladolid_fs.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0
+                }
+            })
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol_sala/clasi_analis_vallad_fs.html', clasificacion_analisis_valladolid_fs=clasificacion_analisis_valladolid_fs) 
@@ -3128,6 +3144,45 @@ def calendarios_valladolid_fs():
                     tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_valladolid_fs[equipo_contrario]['jornadas'][jornada['nombre']]['rol_valladolid_fs'] = rol_valladolid_fs
     return render_template('equipos_futbol_sala/calendario_vallad_fs.html', tabla_partidos_valladolid_fs=tabla_partidos_valladolid_fs, nuevos_datos_valladolid_fs=nuevos_datos_valladolid_fs) 
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_valladolid_fs = 'json_clubs/clubs_valladolid_fs.json'
+def escribir_clubs_valladolid_fs(clubs8):
+    with open(clubs_valladolid_fs, 'w') as file:
+        json.dump(clubs8, file, indent=4)
+def leer_clubs_valladolid_fs():
+    if os.path.exists(clubs_valladolid_fs):
+        with open(clubs_valladolid_fs, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs8 = leer_clubs_valladolid_fs()
+@app.route('/admin/jornada0_valladolid_fs', methods=['GET', 'POST'])
+def jornada0_valladolid_fs():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs8.append(club)
+            escribir_clubs_valladolid_fs(clubs8)
+            return redirect(url_for('jornada0_valladolid_fs'))
+        else:
+            index = int(request.form['index'])
+            del clubs8[index]  # Eliminar el club de la lista
+            escribir_clubs_valladolid_fs(clubs8)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_valladolid_fs'))
+    return render_template('admin/clubs_valladolid_fs.html', clubs8=clubs8, indices=range(len(clubs8)))
+@app.route('/admin/eliminar_club_valladolid_fs/<string:club>', methods=['POST'])
+def eliminar_club_valladolid_fs(club):
+    global clubs8 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs8:
+        # Eliminar el club de la lista
+        clubs8.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_valladolid_fs(clubs8)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_valladolid_fs'))
 # Fin proceso Valladolid FS
 
 #Todo el proceso de calendario y clasificación del Universidad Valladolid
@@ -3286,6 +3341,23 @@ def clasif_analisis_universidad():
     clasificacion_analisis_universidad = generar_clasificacion_analisis_futsal_universidad(data17, total_partidos_temporada_universidad)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_universidad = sorted(clasificacion_analisis_universidad, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_universidad}
+    for club in clubs9:
+        if club not in clubs_set:
+            clasificacion_analisis_universidad.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0
+                }
+            })
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
     return render_template('equipos_futbol_sala/clasi_analis_universidad.html', clasificacion_analisis_universidad=clasificacion_analisis_universidad) 
@@ -3355,6 +3427,45 @@ def calendarios_universidad():
                     tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_universidad[equipo_contrario]['jornadas'][jornada['nombre']]['rol_universidad'] = rol_universidad
     return render_template('equipos_futbol_sala/calendario_universidad.html', tabla_partidos_universidad=tabla_partidos_universidad, nuevos_datos_universidad=nuevos_datos_universidad) 
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_universidad = 'json_clubs/clubs_universidad.json'
+def escribir_clubs_universidad(clubs9):
+    with open(clubs_universidad, 'w') as file:
+        json.dump(clubs9, file, indent=4)
+def leer_clubs_universidad():
+    if os.path.exists(clubs_universidad):
+        with open(clubs_universidad, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs9 = leer_clubs_universidad()
+@app.route('/admin/jornada0_universidad', methods=['GET', 'POST'])
+def jornada0_universidad():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs9.append(club)
+            escribir_clubs_universidad(clubs9)
+            return redirect(url_for('jornada0_universidad'))
+        else:
+            index = int(request.form['index'])
+            del clubs9[index]  # Eliminar el club de la lista
+            escribir_clubs_universidad(clubs9)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_universidad'))
+    return render_template('admin/clubs_universidad.html', clubs9=clubs9, indices=range(len(clubs9)))
+@app.route('/admin/eliminar_club_universidad/<string:club>', methods=['POST'])
+def eliminar_club_universidad(club):
+    global clubs9 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs9:
+        # Eliminar el club de la lista
+        clubs9.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_universidad(clubs9)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_universidad'))
 # Fin proceso Universidad Valladolid
 
 # EQUIPOS BALONMANO
@@ -3432,7 +3543,7 @@ def modificar_jorn_aula(id):
         if resultados_a_modificar:
             resultados_a_modificar['nombre'] = jornada_nombre
             resultados_a_modificar['partidos'] = []  # Reiniciar la lista de partidos
-            for i in range(6):  # Ajusta según la cantidad máxima de partidos
+            for i in range(7):  # Ajusta según la cantidad máxima de partidos
                 equipoLocal = request.form.get(f'local{i}')
                 resultadoA = request.form.get(f'resultadoA{i}')
                 resultadoB = request.form.get(f'resultadoB{i}')
@@ -3690,6 +3801,23 @@ def clasif_analisis_aula():
     clasificacion_analisis_aula = generar_clasificacion_analisis_balonmano_aula(data7, total_partidos_temporada_aula)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_aula = sorted(clasificacion_analisis_aula, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_aula}
+    for club in clubs10:
+        if club not in clubs_set:
+            clasificacion_analisis_aula.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0
+                }
+            })
     return render_template('equipos_balonmano/clasi_analis_aula.html', clasificacion_analisis_aula=clasificacion_analisis_aula)
 # Ruta para mostrar los playoffs del Aula Valladolid
 @app.route('/playoffs_aula/')
@@ -3763,6 +3891,45 @@ def calendarios_aula():
                     tabla_partidos_aula[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_aula[equipo_contrario]['jornadas'][jornada['nombre']]['rol_aula'] = rol_aula
     return render_template('equipos_balonmano/calendario_aula.html', tabla_partidos_aula=tabla_partidos_aula, nuevos_datos_aula=nuevos_datos_aula)
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_aula = 'json_clubs/clubs_aula.json'
+def escribir_clubs_aula(clubs10):
+    with open(clubs_aula, 'w') as file:
+        json.dump(clubs10, file, indent=4)
+def leer_clubs_aula():
+    if os.path.exists(clubs_aula):
+        with open(clubs_aula, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs10 = leer_clubs_aula()
+@app.route('/admin/jornada0_aula', methods=['GET', 'POST'])
+def jornada0_aula():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs10.append(club)
+            escribir_clubs_aula(clubs10)
+            return redirect(url_for('jornada0_aula'))
+        else:
+            index = int(request.form['index'])
+            del clubs10[index]  # Eliminar el club de la lista
+            escribir_clubs_aula(clubs10)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_aula'))
+    return render_template('admin/clubs_aula.html', clubs10=clubs10, indices=range(len(clubs10)))
+@app.route('/admin/eliminar_club_aula/<string:club>', methods=['POST'])
+def eliminar_club_aula(club):
+    global clubs10 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs10:
+        # Eliminar el club de la lista
+        clubs10.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_aula(clubs10)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_aula'))
 #Fin proceso Aula Valladolid
 
 #Todo el proceso de calendario y clasificación del Atlético Valladolid
@@ -4038,6 +4205,23 @@ def clasif_analisis_recoletas():
     clasificacion_analisis_recoletas = generar_clasificacion_analisis_balonmano_recoletas(data8, total_partidos_temporada_recoletas)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_recoletas = sorted(clasificacion_analisis_recoletas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_recoletas}
+    for club in clubs11:
+        if club not in clubs_set:
+            clasificacion_analisis_recoletas.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0
+                }
+            })
     return render_template('equipos_balonmano/clasi_analis_recoletas.html', clasificacion_analisis_recoletas=clasificacion_analisis_recoletas)
 # Ruta para mostrar los playoffs del Atlético Valladolid
 @app.route('/playoffs_recoletas/')
@@ -4050,7 +4234,7 @@ def playoffs_recoletas():
 def calendarios_recoletas():
     datos8 = obtener_datos_recoletas()
     nuevos_datos_recoletas = [dato for dato in datos8 if dato]
-    equipo_recoletas = 'Atl. Valladolid'
+    equipo_recoletas = 'Atl.Valladolid'
     tabla_partidos_recoletas = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos8:
@@ -4111,6 +4295,45 @@ def calendarios_recoletas():
                     tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_recoletas[equipo_contrario]['jornadas'][jornada['nombre']]['rol_recoletas'] = rol_recoletas
     return render_template('equipos_balonmano/calendario_recoletas.html', tabla_partidos_recoletas=tabla_partidos_recoletas, nuevos_datos_recoletas=nuevos_datos_recoletas)
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_recoletas = 'json_clubs/clubs_recoletas.json'
+def escribir_clubs_recoletas(clubs11):
+    with open(clubs_recoletas, 'w') as file:
+        json.dump(clubs11, file, indent=4)
+def leer_clubs_recoletas():
+    if os.path.exists(clubs_recoletas):
+        with open(clubs_recoletas, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs11 = leer_clubs_recoletas()
+@app.route('/admin/jornada0_recoletas', methods=['GET', 'POST'])
+def jornada0_recoletas():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs11.append(club)
+            escribir_clubs_recoletas(clubs11)
+            return redirect(url_for('jornada0_recoletas'))
+        else:
+            index = int(request.form['index'])
+            del clubs11[index]  # Eliminar el club de la lista
+            escribir_clubs_recoletas(clubs11)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_recoletas'))
+    return render_template('admin/clubs_recoletas.html', clubs11=clubs11, indices=range(len(clubs11)))
+@app.route('/admin/eliminar_club_recoletas/<string:club>', methods=['POST'])
+def eliminar_club_recoletas(club):
+    global clubs11 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs11:
+        # Eliminar el club de la lista
+        clubs11.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_recoletas(clubs11)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_recoletas'))
 #Fin proceso Atlético Valladolid
 
 #EQUIPOS RUGBY

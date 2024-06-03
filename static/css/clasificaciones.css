@@ -1,0 +1,15 @@
+
+@media (max-width:576px){
+    .table-responsive {
+        font-size: 0.8rem;
+      }
+      .size_equipos {
+        font-size: 0.8rem;
+      }
+      .fw-bold {
+        font-size: 0.8rem;
+      }
+      .table th, .table td {
+        padding: 0.33rem;
+      }
+}

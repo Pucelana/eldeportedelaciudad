@@ -21,7 +21,7 @@
 }
 .fondos_copa{
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/img/copa_rey3.jpeg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/img/copa_del_rey3.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;

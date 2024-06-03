@@ -65,7 +65,7 @@
             {
                 "local": "ICG For\u00e7a Lleida",
                 "resultadoA": 88,
-                "victoriasA": 2,
+                "victoriasA": 0,
                 "resultadoB": 68,
                 "victoriasB": 0,
                 "visitante": "HLA Alicante",
@@ -75,9 +75,9 @@
             {
                 "local": "Tizona Burgos",
                 "resultadoA": 90,
-                "victoriasA": 1,
+                "victoriasA": 0,
                 "resultadoB": 92,
-                "victoriasB": 1,
+                "victoriasB": 0,
                 "visitante": "Guuk Gipuzkoa Basket",
                 "fecha": "19.05",
                 "hora": ""
@@ -85,9 +85,9 @@
             {
                 "local": "Real Betis",
                 "resultadoA": 90,
-                "victoriasA": 1,
+                "victoriasA": 0,
                 "resultadoB": 84,
-                "victoriasB": 2,
+                "victoriasB": 0,
                 "visitante": "Movistar Estudiantes",
                 "fecha": "24.05",
                 "hora": ""
@@ -107,7 +107,7 @@
                 "resultadoA": 58,
                 "victoriasA": 0,
                 "resultadoB": 73,
-                "victoriasB": 3,
+                "victoriasB": 0,
                 "visitante": "ICG For\u00e7a Lleida",
                 "fecha": "24.05",
                 "hora": ""
@@ -115,9 +115,9 @@
             {
                 "local": "Guuk Gipuzkoa Basket",
                 "resultadoA": 77,
-                "victoriasA": 1,
+                "victoriasA": 0,
                 "resultadoB": 87,
-                "victoriasB": 2,
+                "victoriasB": 0,
                 "visitante": "Tizona Burgos",
                 "fecha": "24.05",
                 "hora": ""
@@ -125,9 +125,9 @@
             {
                 "local": "Real Betis",
                 "resultadoA": 77,
-                "victoriasA": 2,
+                "victoriasA": 0,
                 "resultadoB": 65,
-                "victoriasB": 2,
+                "victoriasB": 0,
                 "visitante": "Movistar EStudiantes",
                 "fecha": "26.05",
                 "hora": ""
@@ -135,32 +135,32 @@
             {
                 "local": "GuuK Gipuzkoa Basket",
                 "resultadoA": 82,
-                "victoriasA": 2,
+                "victoriasA": 0,
                 "resultadoB": 79,
-                "victoriasB": 2,
+                "victoriasB": 0,
                 "visitante": "Tizona Burgos",
                 "fecha": "26.05",
                 "hora": ""
             },
             {
                 "local": "Movistar Estudiantes",
-                "resultadoA": 0,
-                "victoriasA": 0,
-                "resultadoB": 0,
-                "victoriasB": 0,
+                "resultadoA": 65,
+                "victoriasA": 3,
+                "resultadoB": 54,
+                "victoriasB": 2,
                 "visitante": "Real Beis",
                 "fecha": "30.05",
-                "hora": "20:00"
+                "hora": ""
             },
             {
                 "local": "Tizona Burgos",
-                "resultadoA": 0,
-                "victoriasA": 0,
-                "resultadoB": 0,
-                "victoriasB": 0,
+                "resultadoA": 76,
+                "victoriasA": 3,
+                "resultadoB": 73,
+                "victoriasB": 2,
                 "visitante": "Guuk Gipuzkoa Basket",
                 "fecha": "31.05",
-                "hora": "20:45"
+                "hora": ""
             },
             {
                 "local": "",
@@ -208,15 +208,30 @@
         "id": "82c9d016-467e-4a6b-b013-ebaa7825807c",
         "partidos": [
             {
-                "local": "",
+                "local": "Movistar Estudiantes",
                 "resultadoA": 0,
                 "victoriasA": 0,
                 "resultadoB": 0,
                 "victoriasB": 0,
-                "visitante": "",
-                "fecha": "",
-                "hora": ""
+                "visitante": "Tizona Burgos",
+                "fecha": "08.06",
+                "hora": "17:30"
             },
+            {
+                "local": "San Pablo Burgos",
+                "resultadoA": 0,
+                "victoriasA": 0,
+                "resultadoB": 0,
+                "victoriasB": 0,
+                "visitante": "ICG Fo\u00e7a Lleida",
+                "fecha": "08.06",
+                "hora": "20:30"
+            }
+        ]
+    },
+    "final": {
+        "id": "14632a9b-1343-4eda-9e35-a4d47ea35b39",
+        "partidos": [
             {
                 "local": "",
                 "resultadoA": 0,
@@ -228,6 +243,5 @@
                 "hora": ""
             }
         ]
-    },
-    "final": []
+    }
 }

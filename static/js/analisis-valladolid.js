@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });*/
 
 // Segunda función para calcular el porcentaje al ascenso
-const filas = document.querySelectorAll("#tablaAscensoVallad tbody tr");
+/*const filas = document.querySelectorAll("#tablaAscensoVallad tbody tr");
 const partidosTotales = 42; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija = 63; // Ajusta este valor según tus necesidades
@@ -90,10 +90,10 @@ equipos.forEach((equipoData) => {
     <td class="pts-pesi1 fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
     `;
     tabla.appendChild(nuevaFila);
-});
+});*/
 
 // Tercera función para calcular el porcentaje a los PlayOff
-const filas1 = document.querySelectorAll("#tablaPlayVallad tbody tr");
+/*const filas1 = document.querySelectorAll("#tablaPlayVallad tbody tr");
 const partidosTotales1 = 42; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar1 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija1 = 55.5; // Ajusta este valor según tus necesidades
@@ -143,10 +143,10 @@ equipo1s1.forEach((equipo1Data) => {
     <td class="play-pesi fw-bold text-center">${equipo1Data.partidosGanadosPesimistas1}</td>
     `;
     tabla1.appendChild(nuevaFila1);
-});
+});*/
 
 // Cuarta función para calcular el descenso en la Liga Hypermotion
-const filas2 = document.querySelectorAll("#tablaDescVallad tbody tr");
+/*const filas2 = document.querySelectorAll("#tablaDescVallad tbody tr");
 const partidosTotales2 = 42; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar2 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFijar2 = 46.5; // Ajusta este valor según tus necesidades
@@ -196,17 +196,17 @@ equipos2.forEach((equipo2Data) => {
     <td class="desc-pesi fw-bold text-center">${equipo2Data.partidosGanadosPesimistas2}</td>
     `;
     tabla2.appendChild(nuevaFila2);
-});
+});*/
 
 // Quinta función para calcular el porcentaje a la Champions League
-/*const filas3 = document.querySelectorAll("#tablaChampionsVallad tbody tr");
+const filas3 = document.querySelectorAll("#tablaChampionsVallad tbody tr");
 const partidosTotales3 = 38; // Cambiado a 38 partidos en la temporada
 const puntosPorGanar3 = 3; // Cambiado a 3 puntos por partido ganado
-const proximidadFija3 = 63; // Ajusta este valor según tus necesidades
+const proximidadFija3 = 67; // Ajusta este valor según tus necesidades
 const equipos3 = [];
 filas3.forEach((fila, indice) => {
     const equipo3 = fila.querySelector(`.fw-bold`).textContent;
-    const partidosJugados3 = parseInt(fila.querySelector(`.champ-jug`).textContent);
+    const partidosJugados3 = parseInt(fila.querySelector(`.cham-jug`).textContent);
     const puntosActuales3 = parseInt(fila.querySelector(`.cham-act`).textContent);
     // Calcular puntos necesarios para alcanzar la proximidad fija
     const puntosParaChampions = Math.round((proximidadFija3 / 100) * partidosTotales3 * puntosPorGanar3);
@@ -216,8 +216,8 @@ filas3.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesChampions = partidosTotales3 - partidosJugados3;
     const partidosGanadosMatematicos3 = Math.min(puntosActuales3 + partidosRestantesChampions * puntosPorGanar3, puntosParaChampions);
-    const partidosGanadosPesimistas3 = Math.min(partidosGanadosMatematicos3 - 3, puntosParaChampions);
-    const partidosGanadosOptimistas3 = Math.min(partidosGanadosMatematicos3 -5, puntosParaChampions);
+    const partidosGanadosPesimistas3 = Math.min(partidosGanadosMatematicos3 - 2, puntosParaChampions);
+    const partidosGanadosOptimistas3 = Math.min(partidosGanadosMatematicos3 -3, puntosParaChampions);
     equipos3.push({
         equipo3,
         partidosJugados3,
@@ -245,10 +245,10 @@ equipos3.forEach((equipo3Data) => {
     <td class="cham-pesi fw-bold text-center">${equipo3Data.partidosGanadosPesimistas3}</td>
     `;
     tabla3.appendChild(nuevaFila3);
-});*/
+});
 
 // Sexta función para calcular el porcentaje a la Europa League
-/*const filas4 = document.querySelectorAll("#tablaEuropaVallad tbody tr");
+const filas4 = document.querySelectorAll("#tablaEuropaVallad tbody tr");
 const partidosTotales4 = 38; // Cambiado a 38 partidos en la temporada
 const puntosPorGanar4 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija4 = 63; // Ajusta este valor según tus necesidades
@@ -265,8 +265,8 @@ filas4.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesEuropa = partidosTotales4 - partidosJugados4;
     const partidosGanadosMatematicos4 = Math.min(puntosActuales4 + partidosRestantesEuropa * puntosPorGanar4, puntosParaEuropa);
-    const partidosGanadosPesimistas4 = Math.min(partidosGanadosMatematicos4 - 3, puntosParaEuropa);
-    const partidosGanadosOptimistas4 = Math.min(partidosGanadosMatematicos4 -5, puntosParaEuropa);
+    const partidosGanadosPesimistas4 = Math.min(partidosGanadosMatematicos4 - 2, puntosParaEuropa);
+    const partidosGanadosOptimistas4 = Math.min(partidosGanadosMatematicos4 -4, puntosParaEuropa);
     equipos4.push({
         equipo4,
         partidosJugados4,
@@ -294,13 +294,13 @@ equipos4.forEach((equipo4Data) => {
     <td class="euro-pesi fw-bold text-center">${equipo4Data.partidosGanadosPesimistas4}</td>
     `;
     tabla4.appendChild(nuevaFila4);
-});*/
+});
 
 // Septima función para calcular el porcentaje a la Conference League
-/*const filas5 = document.querySelectorAll("#tablaConfeVallad tbody tr");
+const filas5 = document.querySelectorAll("#tablaConfeVallad tbody tr");
 const partidosTotales5 = 38; // Cambiado a 38 partidos en la temporada
 const puntosPorGanar5 = 3; // Cambiado a 3 puntos por partido ganado
-const proximidadFija5 = 63; // Ajusta este valor según tus necesidades
+const proximidadFija5 = 60; // Ajusta este valor según tus necesidades
 const equipos5 = [];
 filas5.forEach((fila, indice) => {
     const equipo5 = fila.querySelector(`.fw-bold`).textContent;
@@ -314,8 +314,8 @@ filas5.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesConfe = partidosTotales5 - partidosJugados5;
     const partidosGanadosMatematicos5 = Math.min(puntosActuales5 + partidosRestantesConfe * puntosPorGanar5, puntosParaConfe);
-    const partidosGanadosPesimistas5 = Math.min(partidosGanadosMatematicos5 - 3, puntosParaConfe);
-    const partidosGanadosOptimistas5 = Math.min(partidosGanadosMatematicos5 -5, puntosParaConfe);
+    const partidosGanadosPesimistas5 = Math.min(partidosGanadosMatematicos5 - 2, puntosParaConfe);
+    const partidosGanadosOptimistas5 = Math.min(partidosGanadosMatematicos5 -4, puntosParaConfe);
     equipos5.push({
         equipo5,
         partidosJugados5,
@@ -334,7 +334,7 @@ tabla5.innerHTML = ""; // Limpiar la tabla5 antes de actualizar
 equipos5.forEach((equipo5Data) => {
     const nuevaFila5 = document.createElement("tr");
     nuevaFila5.innerHTML = `
-    <td class="fw-bold text-center">${equipo4Data.equipo5}</td>
+    <td class="fw-bold text-center">${equipo5Data.equipo5}</td>
     <td class="confe-jug fw-bold text-center">${equipo5Data.partidosJugados5}</td>
     <td class="confe-act fw-bold text-center">${equipo5Data.puntosActuales5}</td>
     <td class="confe-proxi fw-bold text-center">${equipo5Data.proximidadDeConfe.toFixed(2)}%</td>
@@ -343,13 +343,13 @@ equipos5.forEach((equipo5Data) => {
     <td class="confe-pesi fw-bold text-center">${equipo5Data.partidosGanadosPesimistas5}</td>
     `;
     tabla5.appendChild(nuevaFila5);
-});*/
+});
 
-// Ocava función para calcular el desceenso en la Liga BBVA
-/*const filas6 = document.querySelectorAll("#tablaDescVallad2 tbody tr");
+// Ocava función para calcular el descenso en la Liga BBVA
+const filas6 = document.querySelectorAll("#tablaDescVallad2 tbody tr");
 const partidosTotales6 = 38; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar6 = 3; // Cambiado a 3 puntos por partido ganado
-const proximidadFijar6 = 46.5; // Ajusta este valor según tus necesidades
+const proximidadFijar6 = 36.5; // Ajusta este valor según tus necesidades
 const equipos6 = [];
 filas6.forEach((fila, indice) => {
     const equipo6 = fila.querySelector(`.fw-bold`).textContent;
@@ -366,8 +366,8 @@ filas6.forEach((fila, indice) => {
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesPermanencia6 = partidosTotales6 - partidosJugados6;
     const partidosGanadosMatematicos6 = Math.min(puntosActuales6 + partidosRestantesPermanencia6 * puntosPorGanar6, puntosPermanencia6);
-    const partidosGanadosPesimistas6 = Math.min(partidosGanadosMatematicos6 -3, puntosPermanencia6);
-    const partidosGanadosOptimistas6 = Math.min(partidosGanadosMatematicos6 -5, puntosPermanencia6);
+    const partidosGanadosPesimistas6 = Math.min(partidosGanadosMatematicos6 -0, puntosPermanencia6);
+    const partidosGanadosOptimistas6 = Math.min(partidosGanadosMatematicos6 -2, puntosPermanencia6);
 
     equipos6.push({
         equipo6,
@@ -390,10 +390,59 @@ equipos6.forEach((equipo6Data) => {
     <td class="fw-bold text-center">${equipo6Data.equipo6}</td>
     <td class="desce-jug fw-bold text-center">${equipo6Data.partidosJugados6}</td>
     <td class="desce-act fw-bold text-center">${equipo6Data.puntosActuales6}</td>
-    <td class="desce-prox fw-bold text-center">${equipo6Data.proxiPermanencia.toFixed(2)}%</td>
+    <td class="desce-prox fw-bold text-center">${equipo6Data.proxiPermanencia6.toFixed(2)}%</td>
     <td class="desce-mate fw-bold text-center">${equipo6Data.partidosGanadosMatematicos6}</td>
     <td class="desce-opti fw-bold text-center">${equipo6Data.partidosGanadosOptimistas6}</td>
     <td class="desce-pesi fw-bold text-center">${equipo6Data.partidosGanadosPesimistas6}</td>
     `;
     tabla6.appendChild(nuevaFila6);
-});*/
+});
+
+// Novena función para calcular el porcentaje a la Champions League
+const filas7 = document.querySelectorAll("#tablaCampeonVallad tbody tr");
+const partidosTotales7 = 38; // Cambiado a 38 partidos en la temporada
+const puntosPorGanar7 = 3; // Cambiado a 3 puntos por partido ganado
+const proximidadFija7 = 101; // Ajusta este valor según tus necesidades
+const equipos7 = [];
+filas7.forEach((fila, indice) => {
+    const equipo7 = fila.querySelector(`.fw-bold`).textContent;
+    const partidosJugados7 = parseInt(fila.querySelector(`.camp-jug`).textContent);
+    const puntosActuales7 = parseInt(fila.querySelector(`.camp-act`).textContent);
+    // Calcular puntos necesarios para alcanzar la proximidad fija
+    const puntosParaChampions = Math.round((proximidadFija7 / 100) * partidosTotales7 * puntosPorGanar7);
+    // Calcular la proximidad de ascenso
+    const puntosQueFaltan7 = Math.max(0, puntosParaChampions - puntosActuales7);
+    const proximidadDeChampions = Math.min(((puntosParaChampions - puntosQueFaltan7) / puntosParaChampions) * 100, 100);
+    // Calcular los partidos ganados matemáticos, optimistas y pesimistas
+    const partidosRestantesChampions = partidosTotales7 - partidosJugados7;
+    const partidosGanadosMatematicos7 = Math.min(puntosActuales7 + partidosRestantesChampions * puntosPorGanar7, puntosParaChampions);
+    const partidosGanadosPesimistas7 = Math.min(partidosGanadosMatematicos7 - 19, puntosParaChampions);
+    const partidosGanadosOptimistas7 = Math.min(partidosGanadosMatematicos7 -21, puntosParaChampions);
+    equipos7.push({
+        equipo7,
+        partidosJugados7,
+        puntosActuales7,
+        proximidadDeChampions,
+        partidosGanadosMatematicos7,
+        partidosGanadosOptimistas7,
+        partidosGanadosPesimistas7
+    });
+});
+// Ordenar los equipo7s7 por proximidad descendente
+equipos7.sort((a, b) => b.proximidadDeChampions - a.proximidadDeChampions);
+// Actualizar la tabla7 con los datos ordenados
+const tabla7 = document.querySelector("#tablaCampeonVallad tbody");
+tabla7.innerHTML = ""; // Limpiar la tabla7 antes de actualizar
+equipos7.forEach((equipo7Data) => {
+    const nuevaFila7 = document.createElement("tr");
+    nuevaFila7.innerHTML = `
+    <td class="fw-bold text-center">${equipo7Data.equipo7}</td>
+    <td class="camp-jug fw-bold text-center">${equipo7Data.partidosJugados7}</td>
+    <td class="camp-act fw-bold text-center">${equipo7Data.puntosActuales7}</td>
+    <td class="camp-proxi fw-bold text-center">${equipo7Data.proximidadDeChampions.toFixed(2)}%</td>
+    <td class="camp-mate fw-bold text-center">${equipo7Data.partidosGanadosMatematicos7}</td>
+    <td class="camp-opti fw-bold text-center">${equipo7Data.partidosGanadosOptimistas7}</td>
+    <td class="camp-pesi fw-bold text-center">${equipo7Data.partidosGanadosPesimistas7}</td>
+    `;
+    tabla7.appendChild(nuevaFila7);
+});

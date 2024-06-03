@@ -16,7 +16,7 @@
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
 <body class="calend_balonmano">
-  <div class="sticky-top">
+  <div class="">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb ms-1">
       <li class="breadcrumb-item"><a href="/seccion/balonmano" class="text-white text-decoration-none">Sección</a></li>
@@ -24,7 +24,7 @@
     </ol>
   </nav>
   </div>
-<h2 class="text-white text-center">Aula Valladolid</h2>
+<h2 class="text-white text-center">Aula Valladolid 24/25</h2>
 <section class="container-lg mb-5">
   <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -67,16 +67,22 @@
                           <td class="bg-success text-white">8</td>
                         </tr>
                         <tr>
-                          <td class="bg-danger text-white">9</td>
+                          <td class="bg-secondary text-white">9</td>
                         </tr>
                         <tr>
-                          <td class="bg-danger text-white">10</td>
+                          <td class="bg-secondary text-white">10</td>
                         </tr>
                         <tr>
                           <td class="bg-danger text-white">11</td>
                         </tr>
                         <tr>
                           <td class="bg-danger text-white">12</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">13</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">14</td>
                         </tr>
                       </tbody>
                     </table>
@@ -195,6 +201,98 @@
             </div>
           </div>
         </div>-->
+        <!--<div class="carousel-item"><--Tabla Europa->
+          <div class="d-flex justify-content-center">
+            <div class="card tabla_equipos" style="width: 80rem;">
+              <div class="card-body">
+                <div class="row table-responsive">
+                   <h3 class="text-center mb-4">Competiciones Europeas</h3>
+                   <div class="col-1">
+                    <table class="table"> <--Posiciones->
+                      <thead>
+                        <tr>
+                          <th>Pos.</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td class="bg-success text-white">1</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-success text-white">2</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">3</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">4</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-warning text-white">5</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">6</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">7</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">8</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">9</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">12</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">13</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">14</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-11">
+                  <table id="tablaEuroAula" class="table"><--Tabla PlayOff->
+                    <thead>
+                      <tr class="text-center">
+                        <th>Equipos</th>
+                        <th>PJ</th>
+                        <th>Ptos.Actuales</th>
+                        <th>Proximidad</th>
+                        <th>Ptos.Matem</th>
+                        <th>Ptos.Optim</th>
+                        <th>Ptos.Pesim</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for equipo_info in clasificacion_analisis_aula %}
+                      <tr class="text-center">
+                        <td class="fw-bold play-equipo">{{ equipo_info['equipo'] }}</td>
+                        <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="play-prox fw-bold"></td>
+                        <td class="play-mate fw-bold"></td>
+                        <td class="play-opti fw-bold"></td>
+                        <td class="play-pesi fw-bold"></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
         <div class="carousel-item"><!--Tabla PlayOff-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equipos" style="width: 80rem;">
@@ -244,6 +342,12 @@
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">12</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">13</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">14</td>
                         </tr>
                       </tbody>
                     </table>
@@ -320,10 +424,16 @@
                           <td class="bg-secondary text-white">8</td>
                         </tr>
                         <tr>
-                          <td class="bg-danger text-white">9</td>
+                          <td class="bg-secondary text-white">9</td>
                         </tr>
                         <tr>
-                          <td class="bg-danger text-white">10</td>
+                          <td class="bg-secondary text-white">10</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">11</td>
+                        </tr>
+                        <tr>
+                          <td class="bg-danger text-white">12</td>
                         </tr>
                         <tr>
                           <td class="bg-danger text-white">11</td>

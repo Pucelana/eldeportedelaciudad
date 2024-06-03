@@ -24,7 +24,7 @@
     </ol>
   </nav>
   </div>
-<h2 class="text-white text-center">UEMC Valladolid</h2>
+<h2 class="text-white text-center">UEMC Valladolid 24/25</h2>
 <section class="container-lg mb-5">
   <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -88,7 +88,7 @@
                           <td class="bg-secondary text-white">15</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">16</td>
+                          <td class="bg-danger text-white">16</td>
                         </tr>
                         <tr>
                           <td class="bg-danger text-white">17</td>
@@ -116,7 +116,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_uemc %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
                         <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
                         <td class="perdidos fw-bold">{{ equipo['datos']['perdidos'] }}</td>
@@ -221,7 +221,7 @@
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_uemc %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="jugados1 fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="pts-act1 fw-bold">{{ equipo_info['datos']['ganados'] }}</td>
                         <td class="proxi1 fw-bold"></td>
@@ -325,7 +325,7 @@
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_uemc %}
                       <tr class="text-center">
-                        <td class="fw-bold play-equipo">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold play-equipo size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="play-act fw-bold">{{ equipo_info['datos']['ganados'] }}</td>
                         <td class="play-prox fw-bold"></td>
@@ -402,7 +402,7 @@
                           <td class="bg-secondary text-white">15</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">16</td>
+                          <td class="bg-danger text-white">16</td>
                         </tr>
                         <tr>
                           <td class="bg-danger text-white">17</td>
@@ -429,7 +429,7 @@
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_uemc %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="desc-act fw-bold">{{ equipo_info['datos']['ganados'] }}</td>
                         <td class="desc-prox fw-bold"></td>

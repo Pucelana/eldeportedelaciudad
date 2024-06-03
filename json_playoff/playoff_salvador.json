@@ -6,25 +6,33 @@
                 "local": "VRAC",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "AMPO Ordizia"
+                "visitante": "AMPO Ordizia",
+                "fecha": "",
+                "hora": ""
             },
             {
                 "local": "UE Santboiana",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "BM Alcobendas"
+                "visitante": "BM Alcobendas",
+                "fecha": "",
+                "hora": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": ""
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
             },
             {
                 "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": ""
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
             }
         ]
     },
