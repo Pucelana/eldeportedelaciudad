@@ -30,7 +30,7 @@
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                  <h3 class="text-center">Clasificación - SuperLiga Masculina 2 Grp-A</h3>
+                  <h3 class="text-center">Clasificación - 1ª División Grp-A</h3>
                   <div class="col-1">
                     <table class="table"> <!--Posiciones-->
                       <thead>
@@ -83,7 +83,7 @@
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
-                        <th>PTOS</th>
+                        <th>PTS</th>
                         <th>PJ</th>
                         <th>G3</th>
                         <th>G2</th>
@@ -96,7 +96,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_vcv %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
                         <td class="ganados3 fw-bold">{{ equipo['datos']['ganados3'] }}</td>
@@ -112,6 +112,8 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PTS (Puntos);PJ (Partidos Jugados); G3 (Ganados +3); G2 (Ganados +2); P1 (Perdidos +1); P0 (Perdidos +0); SF (Set Facor); SC (Set Contra)</p>
+              <p class="ms-4">PlayOffs (Ascenso)<span class="badge bg-success ms-2">1-2</span> ; Descenso<span class="badge bg-danger ms-2">11-12</span></p>
             </div>
           </div>
         </div>
@@ -120,7 +122,7 @@
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                  <h3 class="text-center">PlayOff Ascenso - SuperLiga</h3>
+                  <h3 class="text-center">PlayOff Ascenso - Superliga 2</h3>
                   <div class="col-1">
                     <table class="table"> <!--Posiciones-->
                       <thead>
@@ -169,22 +171,22 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaAscensoVcv" class="table"><!--Tabla Ascenso-->
+                  <table id="tablaAscensoVcv" class="table">
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_vcv %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="jugados1 fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="pts-act1 fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="proxi1 fw-bold"></td>
@@ -198,6 +200,7 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
@@ -279,7 +282,7 @@
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_vcv %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="play-proxi fw-bold"></td>
@@ -301,7 +304,7 @@
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                  <h3 class="text-center mb-4">Descenso 1ª División Masculina</h3>
+                  <h3 class="text-center mb-4">Descenso</h3>
                   <div class="col-1">
                     <table class="table"> <!--Posiciones-->
                       <thead>
@@ -355,17 +358,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_vcv %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="desc-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="desc-prox fw-bold"></td>
@@ -379,6 +382,7 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>

@@ -127,7 +127,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
                         <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
@@ -228,7 +228,7 @@
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
-                        <th>PTOS</th>
+                        <th>PTS</th>
                         <th>PJ</th>
                         <th>PG</th>
                         <th>PE</th>
@@ -241,7 +241,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
                         <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
@@ -257,6 +257,8 @@
                   </div>   
                 </div>
               </div>
+              <p class="ms-4"> PTS (Puntos); PJ (Partidos Jugados); PG (Partidos Ganados); PE (Partidos Empatados); PP (Partidos Perdidos); GF (Goles Favor); GC(Goles Contra); DG (Diferencia Goles)</p>
+              <p class="ms-4">Campeón (Liga)<span class="badge bg-success ms-2">1</span>; Champions League<span class="badge bg-success ms-2">1-4</span> ; Europe League<span class="badge bg-warning ms-2">5</span> ; Conference League<span class="badge ms-2" style="background-color: #fffc5f;">6</span>; Descenso<span class="badge bg-danger ms-2">18-20</span></p>
             </div>
           </div>
         </div>
@@ -343,17 +345,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="camp-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="camp-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="camp-proxi fw-bold"></td>
@@ -367,6 +369,7 @@
                   </div>   
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
@@ -453,17 +456,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="cham-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="cham-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="cham-proxi fw-bold"></td>
@@ -477,6 +480,7 @@
                   </div>   
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
@@ -563,17 +567,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="euro-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="euro-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="euro-proxi fw-bold"></td>
@@ -587,6 +591,7 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
@@ -673,17 +678,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="confe-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="confe-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="confe-proxi fw-bold"></td>
@@ -697,6 +702,7 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
@@ -799,7 +805,7 @@
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="jugados1 fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="pts-act1 fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="proxi1 fw-bold"></td>
@@ -915,7 +921,7 @@
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="play-proxi fw-bold"></td>
@@ -1031,7 +1037,7 @@
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="desc-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="desc-prox fw-bold"></td>
@@ -1131,17 +1137,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="desce-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="desce-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="desce-prox fw-bold"></td>
@@ -1155,6 +1161,7 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>

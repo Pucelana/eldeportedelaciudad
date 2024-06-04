@@ -31,7 +31,7 @@
         <div class="carousel-item active"><!--Tabla Clasificación-->	
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
-              <div class="card-body"> <!--Tabla Clasificación-->
+              <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Clasificación - 3ª División - Grp-9</h3>
                   <div class="col-1">
@@ -46,7 +46,7 @@
                           <td class="bg-success text-white">1</td>
                         </tr>
                         <tr>
-                          <td class="bg-secondary text-white">2</td>
+                          <td class="bg-warning text-white">2</td>
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">3</td>
@@ -111,7 +111,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_valladolid_fs %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
                         <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
@@ -127,6 +127,8 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4"> PTS (Puntos); PJ (Partidos Jugados); PG (Partidos Ganados); PE (Partidos Empatados); PP (Partidos Perdidos); GF (Goles Favor); GC(Goles Contra); DG (Diferencia Goles)</p>
+              <p class="ms-4">Campeón (Ascenso Directo)<span class="badge bg-success ms-2">1</span> ; Copa del Rey (25/26)<span class="badge bg-warning ms-2">2</span> ; Descenso<span class="badge bg-danger ms-2">14-16</span></p>
             </div>
           </div>
         </div>
@@ -196,22 +198,22 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaAscensoValladolidFs" class="table"><!--Tabla Ascenso-->
+                  <table id="tablaAscensoValladFs" class="table">
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid_fs %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="jugados1 fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="pts-act1 fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="proxi1 fw-bold"></td>
@@ -225,17 +227,18 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
-        <!--<div class="carousel-item"><--Tabla PlayOff->
+        <div class="carousel-item"><!--Tabla Copa-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                   <h3 class="text-center mb-4">PlayOff - Liga 1ª RFEF</h3>
+                   <h3 class="text-center mb-4">Copa del rey (25/26)</h3>
                    <div class="col-1">
-                    <table class="table"> <--Posiciones->
+                    <table class="table"> <!--Posiciones-->
                       <thead>
                         <tr>
                           <th>Posición</th>
@@ -249,13 +252,13 @@
                           <td class="bg-warning text-white">2</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">3</td>
+                          <td class="bg-secondary text-white">3</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">4</td>
+                          <td class="bg-secondary text-white">4</td>
                         </tr>
                         <tr>
-                          <td class="bg-warning text-white">5</td>
+                          <td class="bg-secondary text-white">5</td>
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">6</td>
@@ -279,7 +282,7 @@
                           <td class="bg-secondary text-white">12</td>
                         </tr>
                         <tr>
-                          <td class="text-white" style="background-color: #e98181;">13</td>
+                          <td class="text-white bg-secondary">13</td>
                         </tr>
                         <tr>
                           <td class="bg-secondary text-white">14</td>
@@ -287,32 +290,35 @@
                         <tr>
                           <td class="bg-secondary text-white">15</td>
                         </tr>
+                        <tr>
+                          <td class="bg-secondary text-white">16</td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaPlayValladolidFs" class="table"><--Tabla PlayOff->
+                  <table id="tablaCopaValladFs" class="table"><!--Tabla Copa-->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid_fs %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
-                        <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
-                        <td class="play-proxi fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
+                        <td class="copa-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
+                        <td class="copa-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="copa-proxi fw-bold"></td>
+                        <td class="copa-mate fw-bold"></td>
+                        <td class="copa-opti fw-bold"></td>
+                        <td class="copa-pesi fw-bold"></td>
                       </tr>
                       {% endfor %}
                     </tbody>
@@ -320,9 +326,10 @@
                   </div>   
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
-        </div>-->
+        </div>
         <div class="carousel-item"><!--Tabla Permanencia-->
           <div class="d-flex justify-content-center">
             <div class="card tabla_equ_futb" style="width: 80rem;">
@@ -389,22 +396,22 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaDescValladolidFs" class="table"><!--Tabla Permanencia-->
+                  <table id="tablaDescValladFs" class="table"><!--Tabla Permanencia-->
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_valladolid_fs %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
                         <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="desc-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="desc-prox fw-bold"></td>
@@ -418,6 +425,7 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
@@ -442,6 +450,6 @@ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/j
 integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 </script> 
   <script src="/static/js/script.js"></script>
-  <script src="/static/js/analisis-valladolid_fs.js"></script>
+  <script src="/static/js/analisis-vallad-fs.js"></script>
 </body>
 </html>

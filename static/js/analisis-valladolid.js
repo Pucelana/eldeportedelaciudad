@@ -345,7 +345,7 @@ equipos5.forEach((equipo5Data) => {
     tabla5.appendChild(nuevaFila5);
 });
 
-// Ocava función para calcular el descenso en la Liga BBVA
+// Octava función para calcular el descenso en la Liga BBVA
 const filas6 = document.querySelectorAll("#tablaDescVallad2 tbody tr");
 const partidosTotales6 = 38; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar6 = 3; // Cambiado a 3 puntos por partido ganado

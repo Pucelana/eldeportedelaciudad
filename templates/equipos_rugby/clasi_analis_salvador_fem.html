@@ -28,7 +28,7 @@
         <div class="carousel-item active"><!--Tabla Clasificación-->	
           <div class="d-flex justify-content-center">
             <div class="card tabla_equipos" style="width: 80rem;">
-              <div class="card-body"> <!--Tabla Clasificación-->
+              <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Clasificación - Liga Iberdrola Rugby</h3>
                   <div class="col-1">
@@ -79,13 +79,13 @@
                         <th>GF</th>
                         <th>GC</th>
                         <th>DG</th>
-                        <th>BONUS</th>
+                        <th>BNS</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo in clasificacion_analisis_salvador_fem %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
                         <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
@@ -102,6 +102,8 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PT (Puntos);PJ (Partidos Jugados); PG (Partidos Ganados); PE (Partidos Empatados); PP (Partidos Perdidos); GF(Goles Favor); GC (Goles Contra); DG (Diferencia Goles); BNS (Bonus)</p>
+              <p class="ms-4">Grupo A<span class="badge bg-success ms-2">1-4</span> ; Grupo B<span class="badge bg-secondary ms-2">5-8</span></p>
             </div>
           </div>
         </div>
@@ -135,7 +137,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaAscensoAliados" class="table"><!--Tabla Ascenso-->
+                  <table id="tablaAscensoAliados" class="table">
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -147,13 +149,13 @@
                         <th>GF</th>
                         <th>GC</th>
                         <th>DG</th>
-                        <th>BONUS</th>
+                        <th>BNS</th>
                       </tr>
                     </thead>
                     <tbody>
                     {% for equipo in grupoA %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo.equipo }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo.equipo }}</td>
                         <td class="puntos fw-bold">{{ equipo.datos.puntos }}</td>
                         <td class="jugados fw-bold ">{{ equipo.datos.jugados }}</td>
                         <td class="ganados fw-bold">{{ equipo.datos.ganados }}</td>
@@ -170,6 +172,8 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PT (Puntos);PJ (Partidos Jugados); PG (Partidos Ganados); PE (Partidos Empatados); PP (Partidos Perdidos); GF(Goles Favor); GC (Goles Contra); DG (Diferencia Goles); BNS (Bonus)</p>
+              <p class="ms-4">PlayOff (Cuartos de final)<span class="badge bg-success ms-2">1-4</span></p>
             </div>
           </div>
         </div>
@@ -203,7 +207,7 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaPlayAula" class="table"><!--Tabla PlayOff-->
+                  <table id="tablaPlayAula" class="table">
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
@@ -221,7 +225,7 @@
                     <tbody>
                       {% for equipo in grupoB %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo.equipo }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo.equipo }}</td>
                         <td class="puntos fw-bold">{{ equipo.datos.puntos }}</td>
                         <td class="jugados fw-bold ">{{ equipo.datos.jugados }}</td>
                         <td class="ganados fw-bold">{{ equipo.datos.ganados }}</td>
@@ -238,6 +242,8 @@
                   </div>   
                 </div>
               </div>
+              <p class="ms-4">PT (Puntos);PJ (Partidos Jugados); PG (Partidos Ganados); PE (Partidos Empatados); PP (Partidos Perdidos); GF(Goles Favor); GC (Goles Contra); DG (Diferencia Goles); BNS (Bonus)</p>
+              <p class="ms-4">PlayOff (Cuartos de final)<span class="badge bg-success ms-2">5-6</span> ; Promoción Descenso<span class="badge ms-2" style="background-color: #d86f6f;">7</span> ; Descenso<span class="badge bg-danger ms-2">8</span></p>
             </div>
           </div>
         </div>

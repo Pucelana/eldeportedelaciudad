@@ -28,7 +28,7 @@
         <div class="carousel-item active"><!--Tabla Clasificación-->	
           <div class="d-flex justify-content-center">
             <div class="card tabla_equipos" style="width: 80rem;">
-              <div class="card-body"> <!--Tabla Clasificación-->
+              <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Clasificación - Liga Élite Masculina</h3>
                   <div class="col-1">
@@ -91,7 +91,7 @@
                       <tbody>
                         {% for equipo in clasificacion_analisis_caja %}
                         <tr class="text-center">
-                          <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                          <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                           <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                           <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
                           <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
@@ -108,6 +108,8 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4"> PTS (Puntos); PJ (Partidos Jugados); PG (Partidos Ganados); PE (Partidos Empatados); PP (Partidos Perdidos); GF (Goles Favor); GC(Goles Contra); DG (Diferencia Goles)</p>
+              <p class="ms-4">PlayOffs (Título)<span class="badge bg-success ms-2">1-4</span> ; PlayOut (Descenso)<span class="badge bg-danger ms-2">9-10</span></p>
             </div>
           </div>
         </div>
@@ -235,22 +237,22 @@
                     </table>
                   </div>
                   <div class="col-11">
-                  <table id="tablaPlayCaja" class="table"><!--Tabla PlayOff-->
+                  <table id="tablaPlayCaja" class="table">
                     <thead>
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_caja %}
                       <tr class="text-center">
-                        <td class="fw-bold play-equipo">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos play-equipo">{{ equipo_info['equipo'] }}</td>
                         <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="play-prox fw-bold"></td>
@@ -264,6 +266,7 @@
                   </div>   
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
@@ -272,7 +275,7 @@
             <div class="card tabla_equipos" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                  <h3 class="text-center mb-4">Salvación - Descenso  1ª División</h3>
+                  <h3 class="text-center mb-4">PlayOut (Descenso)  1ª División</h3>
                   <div class="col-1">
                     <table class="table"> <!--Posiciones-->
                       <thead>
@@ -320,17 +323,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Ptos.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>Ptos.Matem</th>
-                        <th>Ptos.Optim</th>
-                        <th>Ptos.Pesim</th>
+                        <th>PA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_caja %}
                       <tr class="text-center">
-                        <td class="fw-bold play-equipo">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos play-equipo">{{ equipo_info['equipo'] }}</td>
                         <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="desc-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
                         <td class="desc-prox fw-bold"></td>
@@ -344,6 +347,7 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>

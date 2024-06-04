@@ -31,7 +31,7 @@
         <div class="carousel-item active"><!--Tabla Clasificación-->	
           <div class="d-flex justify-content-center">
             <div class="card tabla_equipos" style="width: 80rem;">
-              <div class="card-body"> <!--Tabla Clasificación-->
+              <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Clasificación - Liga Femenina 2</h3>
                   <div class="col-1">
@@ -104,7 +104,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_ponce %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
                         <td class="ganados fw-bold">{{ equipo['datos']['ganados'] }}</td>
                         <td class="perdidos fw-bold">{{ equipo['datos']['perdidos'] }}</td>
@@ -119,6 +119,8 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); PG (Partidos Ganados); PP (Partidos Perdidos); PF (Puntos Favor); PC(Puntos Contra); DP (Diferencia Puntos) PTS (Puntos)</p>
+              <p class="ms-4">PlayOffs<span class="badge bg-success ms-2">1-4</span> ; Descenso<span class="badge bg-danger ms-2">12-14</span></p>
             </div>
           </div>
         </div>
@@ -406,17 +408,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Gan.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>P.Matem</th>
-                        <th>P.Optim</th>
-                        <th>P.Pesim</th>
+                        <th>GA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_ponce %}
                       <tr class="text-center">
-                        <td class="fw-bold play-equipo">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos play-equipo">{{ equipo_info['equipo'] }}</td>
                         <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="play-act fw-bold">{{ equipo_info['datos']['ganados'] }}</td>
                         <td class="play-prox fw-bold"></td>
@@ -430,6 +432,7 @@
                   </div>   
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); GA (Ganados Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>
@@ -498,17 +501,17 @@
                       <tr class="text-center">
                         <th>Equipos</th>
                         <th>PJ</th>
-                        <th>Gan.Actuales</th>
-                        <th>Proximidad</th>
-                        <th>P.Matem</th>
-                        <th>P.Optim</th>
-                        <th>P.Pesim</th>
+                        <th>GA</th>
+                        <th>Prox</th>
+                        <th>PM</th>
+                        <th>PO</th>
+                        <th>PPes</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for equipo_info in clasificacion_analisis_ponce %}
                       <tr class="text-center">
-                        <td class="fw-bold play-equipo">{{ equipo_info['equipo'] }}</td>
+                        <td class="fw-bold size_equipos play-equipo">{{ equipo_info['equipo'] }}</td>
                         <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
                         <td class="desc-act fw-bold">{{ equipo_info['datos']['ganados'] }}</td>
                         <td class="desc-prox fw-bold"></td>
@@ -522,6 +525,7 @@
                   </div>
                 </div>
               </div>
+              <p class="ms-4">PJ (Partidos Jugados); GA (Ganados Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
             </div>
           </div>
         </div>

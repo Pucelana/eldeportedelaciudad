@@ -92,16 +92,16 @@ equipos.forEach((equipoData) => {
     tabla.appendChild(nuevaFila);
 });
 
-/*// Tercera función para calcular el porcentaje a los PlayOff
-const filas1 = document.querySelectorAll("#tablaPlayValladFs tbody tr");
-const partidosTotales1 = 42; // Cambiado a 42 partidos en la temporada
+// Tercera función para calcular el porcentaje a la Copa
+const filas1 = document.querySelectorAll("#tablaCopaValladFs tbody tr");
+const partidosTotales1 = 30; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar1 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija1 = 70; // Ajusta este valor según tus necesidades
-const equipo1s1 = [];
+const equipos1 = [];
 filas1.forEach((fila, indice) => {
     const equipo1 = fila.querySelector(`.fw-bold`).textContent;
-    const partidosJugados1 = parseInt(fila.querySelector(`.play-jug`).textContent);
-    const puntosActuales1 = parseInt(fila.querySelector(`.play-act`).textContent);
+    const partidosJugados1 = parseInt(fila.querySelector(`.copa-jug`).textContent);
+    const puntosActuales1 = parseInt(fila.querySelector(`.copa-act`).textContent);
 
     // Calcular puntos necesarios para alcanzar la proximidad fija
     const puntosParaAscenso1 = Math.round((proximidadFija1 / 100) * partidosTotales1 * puntosPorGanar1);
@@ -116,7 +116,7 @@ filas1.forEach((fila, indice) => {
     const partidosGanadosPesimistas1 = Math.min(partidosGanadosMatematicos1 - 21, puntosParaAscenso1);
     const partidosGanadosOptimistas1 = Math.min(partidosGanadosMatematicos1 -24, puntosParaAscenso1);
 
-    equipo1s1.push({
+    equipos1.push({
         equipo1,
         partidosJugados1,
         puntosActuales1,
@@ -127,23 +127,23 @@ filas1.forEach((fila, indice) => {
     });
 });
 // Ordenar los equipo1s1 por proximidad descendente
-equipo1s1.sort((a, b) => b.proximidadDePlayOff - a.proximidadDePlayOff);
+equipos1.sort((a, b) => b.proximidadDePlayOff - a.proximidadDePlayOff);
 // Actualizar la tabla1 con los datos ordenados
-const tabla1 = document.querySelector("#tablaPlayValladFs tbody");
+const tabla1 = document.querySelector("#tablaCopaValladFs tbody");
 tabla1.innerHTML = ""; // Limpiar la tabla1 antes de actualizar
-equipo1s1.forEach((equipo1Data) => {
+equipos1.forEach((equipo1Data) => {
     const nuevaFila1 = document.createElement("tr");
     nuevaFila1.innerHTML = `
     <td class="fw-bold text-center">${equipo1Data.equipo1}</td>
-    <td class="play-jug fw-bold text-center">${equipo1Data.partidosJugados1}</td>
-    <td class="play-act fw-bold text-center">${equipo1Data.puntosActuales1}</td>
-    <td class="play-prox fw-bold text-center">${equipo1Data.proximidadDePlayOff.toFixed(2)}%</td>
-    <td class="play-mate fw-bold text-center">${equipo1Data.partidosGanadosMatematicos1}</td>
-    <td class="play-opti fw-bold text-center">${equipo1Data.partidosGanadosOptimistas1}</td>
-    <td class="play-pesi fw-bold text-center">${equipo1Data.partidosGanadosPesimistas1}</td>
+    <td class="copa-jug fw-bold text-center">${equipo1Data.partidosJugados1}</td>
+    <td class="copa-act fw-bold text-center">${equipo1Data.puntosActuales1}</td>
+    <td class="copa-prox fw-bold text-center">${equipo1Data.proximidadDePlayOff.toFixed(2)}%</td>
+    <td class="copa-mate fw-bold text-center">${equipo1Data.partidosGanadosMatematicos1}</td>
+    <td class="copa-opti fw-bold text-center">${equipo1Data.partidosGanadosOptimistas1}</td>
+    <td class="copa-pesi fw-bold text-center">${equipo1Data.partidosGanadosPesimistas1}</td>
     `;
     tabla1.appendChild(nuevaFila1);
-});*/
+});
 
 // Cuarta función para calcular la permanencia
 const filas2 = document.querySelectorAll("#tablaDescValladFs tbody tr");
