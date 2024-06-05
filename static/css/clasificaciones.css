@@ -4,12 +4,26 @@
         font-size: 0.8rem;
       }
       .size_equipos {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .fw-bold {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
       }
       .table th, .table td {
-        padding: 0.15rem;
+        padding: 0.3rem;
+        text-align: start;
       }
+}
+.size_equipos {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fw-bold {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
