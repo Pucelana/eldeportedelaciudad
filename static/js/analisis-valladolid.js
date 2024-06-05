@@ -67,7 +67,7 @@ filas.forEach((fila, indice) => {
         equipo,
         partidosJugados,
         puntosActuales,
-        proximidadDeAscenso,
+        proximidadDeAscenso:Math.round(proximidadDeAscenso),
         partidosGanadosMatematicos,
         partidosGanadosOptimistas,
         partidosGanadosPesimistas
@@ -84,7 +84,7 @@ equipos.forEach((equipoData) => {
     <td class="fw-bold text-center">${equipoData.equipo}</td>
     <td class="jugados1 fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="pts-act1 fw-bold text-center">${equipoData.puntosActuales}</td>
-    <td class="proxi1 fw-bold text-center">${equipoData.proximidadDeAscenso.toFixed(2)}%</td>
+    <td class="proxi1 fw-bold text-center">${equipoData.proximidadDeAscenso}%</td>
     <td class="pts-mate1 fw-bold text-center">${equipoData.partidosGanadosMatematicos}</td>
     <td class="pts-opti1 fw-bold text-center">${equipoData.partidosGanadosOptimistas}</td>
     <td class="pts-pesi1 fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>
@@ -120,7 +120,7 @@ filas1.forEach((fila, indice) => {
         equipo1,
         partidosJugados1,
         puntosActuales1,
-        proximidadDePlayOff,
+        proximidadDePlayOff:Math.round(proximidadDePlayOff),
         partidosGanadosMatematicos1,
         partidosGanadosOptimistas1,
         partidosGanadosPesimistas1
@@ -137,7 +137,7 @@ equipo1s1.forEach((equipo1Data) => {
     <td class="fw-bold text-center">${equipo1Data.equipo1}</td>
     <td class="play-jug fw-bold text-center">${equipo1Data.partidosJugados1}</td>
     <td class="play-act fw-bold text-center">${equipo1Data.puntosActuales1}</td>
-    <td class="play-prox fw-bold text-center">${equipo1Data.proximidadDePlayOff.toFixed(2)}%</td>
+    <td class="play-prox fw-bold text-center">${equipo1Data.proximidadDePlayOff}%</td>
     <td class="play-mate fw-bold text-center">${equipo1Data.partidosGanadosMatematicos1}</td>
     <td class="play-opti fw-bold text-center">${equipo1Data.partidosGanadosOptimistas1}</td>
     <td class="play-pesi fw-bold text-center">${equipo1Data.partidosGanadosPesimistas1}</td>
@@ -173,7 +173,7 @@ filas2.forEach((fila, indice) => {
         equipo2,
         partidosJugados2,
         puntosActuales2,
-        proxiPermanencia,
+        proxiPermanencia:Math.round(proxiPermanencia),
         partidosGanadosMatematicos2,
         partidosGanadosOptimistas2,
         partidosGanadosPesimistas2
@@ -190,7 +190,7 @@ equipos2.forEach((equipo2Data) => {
     <td class="fw-bold text-center">${equipo2Data.equipo2}</td>
     <td class="desc-jug fw-bold text-center">${equipo2Data.partidosJugados2}</td>
     <td class="desc-act fw-bold text-center">${equipo2Data.puntosActuales2}</td>
-    <td class="desc-prox fw-bold text-center">${equipo2Data.proxiPermanencia.toFixed(2)}%</td>
+    <td class="desc-prox fw-bold text-center">${equipo2Data.proxiPermanencia}%</td>
     <td class="desc-mate fw-bold text-center">${equipo2Data.partidosGanadosMatematicos2}</td>
     <td class="desc-opti fw-bold text-center">${equipo2Data.partidosGanadosOptimistas2}</td>
     <td class="desc-pesi fw-bold text-center">${equipo2Data.partidosGanadosPesimistas2}</td>
@@ -222,7 +222,7 @@ filas3.forEach((fila, indice) => {
         equipo3,
         partidosJugados3,
         puntosActuales3,
-        proximidadDeChampions,
+        proximidadDeChampions:Math.round(proximidadDeChampions),
         partidosGanadosMatematicos3,
         partidosGanadosOptimistas3,
         partidosGanadosPesimistas3
@@ -239,7 +239,7 @@ equipos3.forEach((equipo3Data) => {
     <td class="fw-bold text-center">${equipo3Data.equipo3}</td>
     <td class="cham-jug fw-bold text-center">${equipo3Data.partidosJugados3}</td>
     <td class="cham-act fw-bold text-center">${equipo3Data.puntosActuales3}</td>
-    <td class="cham-proxi fw-bold text-center">${equipo3Data.proximidadDeChampions.toFixed(2)}%</td>
+    <td class="cham-proxi fw-bold text-center">${equipo3Data.proximidadDeChampions}%</td>
     <td class="cham-mate fw-bold text-center">${equipo3Data.partidosGanadosMatematicos3}</td>
     <td class="cham-opti fw-bold text-center">${equipo3Data.partidosGanadosOptimistas3}</td>
     <td class="cham-pesi fw-bold text-center">${equipo3Data.partidosGanadosPesimistas3}</td>
@@ -271,7 +271,7 @@ filas4.forEach((fila, indice) => {
         equipo4,
         partidosJugados4,
         puntosActuales4,
-        proximidadDeEuropa,
+        proximidadDeEuropa:Math.round(proximidadDeEuropa),
         partidosGanadosMatematicos4,
         partidosGanadosOptimistas4,
         partidosGanadosPesimistas4
@@ -288,7 +288,7 @@ equipos4.forEach((equipo4Data) => {
     <td class="fw-bold text-center">${equipo4Data.equipo4}</td>
     <td class="euro-jug fw-bold text-center">${equipo4Data.partidosJugados4}</td>
     <td class="euro-act fw-bold text-center">${equipo4Data.puntosActuales4}</td>
-    <td class="euro-proxi fw-bold text-center">${equipo4Data.proximidadDeEuropa.toFixed(2)}%</td>
+    <td class="euro-proxi fw-bold text-center">${equipo4Data.proximidadDeEuropa}%</td>
     <td class="euro-mate fw-bold text-center">${equipo4Data.partidosGanadosMatematicos4}</td>
     <td class="euro-opti fw-bold text-center">${equipo4Data.partidosGanadosOptimistas4}</td>
     <td class="euro-pesi fw-bold text-center">${equipo4Data.partidosGanadosPesimistas4}</td>
@@ -320,7 +320,7 @@ filas5.forEach((fila, indice) => {
         equipo5,
         partidosJugados5,
         puntosActuales5,
-        proximidadDeConfe,
+        proximidadDeConfe:Math.round(proximidadDeConfe),
         partidosGanadosMatematicos5,
         partidosGanadosOptimistas5,
         partidosGanadosPesimistas5
@@ -337,7 +337,7 @@ equipos5.forEach((equipo5Data) => {
     <td class="fw-bold text-center">${equipo5Data.equipo5}</td>
     <td class="confe-jug fw-bold text-center">${equipo5Data.partidosJugados5}</td>
     <td class="confe-act fw-bold text-center">${equipo5Data.puntosActuales5}</td>
-    <td class="confe-proxi fw-bold text-center">${equipo5Data.proximidadDeConfe.toFixed(2)}%</td>
+    <td class="confe-proxi fw-bold text-center">${equipo5Data.proximidadDeConfe}%</td>
     <td class="confe-mate fw-bold text-center">${equipo5Data.partidosGanadosMatematicos5}</td>
     <td class="confe-opti fw-bold text-center">${equipo5Data.partidosGanadosOptimistas5}</td>
     <td class="confe-pesi fw-bold text-center">${equipo5Data.partidosGanadosPesimistas5}</td>
@@ -373,7 +373,7 @@ filas6.forEach((fila, indice) => {
         equipo6,
         partidosJugados6,
         puntosActuales6,
-        proxiPermanencia6,
+        proxiPermanencia6:Math.round(proxiPermanencia6),
         partidosGanadosMatematicos6,
         partidosGanadosOptimistas6,
         partidosGanadosPesimistas6
@@ -390,7 +390,7 @@ equipos6.forEach((equipo6Data) => {
     <td class="fw-bold text-center">${equipo6Data.equipo6}</td>
     <td class="desce-jug fw-bold text-center">${equipo6Data.partidosJugados6}</td>
     <td class="desce-act fw-bold text-center">${equipo6Data.puntosActuales6}</td>
-    <td class="desce-prox fw-bold text-center">${equipo6Data.proxiPermanencia6.toFixed(2)}%</td>
+    <td class="desce-prox fw-bold text-center">${equipo6Data.proxiPermanencia6}%</td>
     <td class="desce-mate fw-bold text-center">${equipo6Data.partidosGanadosMatematicos6}</td>
     <td class="desce-opti fw-bold text-center">${equipo6Data.partidosGanadosOptimistas6}</td>
     <td class="desce-pesi fw-bold text-center">${equipo6Data.partidosGanadosPesimistas6}</td>
@@ -422,7 +422,7 @@ filas7.forEach((fila, indice) => {
         equipo7,
         partidosJugados7,
         puntosActuales7,
-        proximidadDeChampions,
+        proximidadDeChampions:Math.round(proximidadDeChampions),
         partidosGanadosMatematicos7,
         partidosGanadosOptimistas7,
         partidosGanadosPesimistas7
@@ -439,7 +439,7 @@ equipos7.forEach((equipo7Data) => {
     <td class="fw-bold text-center">${equipo7Data.equipo7}</td>
     <td class="camp-jug fw-bold text-center">${equipo7Data.partidosJugados7}</td>
     <td class="camp-act fw-bold text-center">${equipo7Data.puntosActuales7}</td>
-    <td class="camp-proxi fw-bold text-center">${equipo7Data.proximidadDeChampions.toFixed(2)}%</td>
+    <td class="camp-proxi fw-bold text-center">${equipo7Data.proximidadDeChampions}%</td>
     <td class="camp-mate fw-bold text-center">${equipo7Data.partidosGanadosMatematicos7}</td>
     <td class="camp-opti fw-bold text-center">${equipo7Data.partidosGanadosOptimistas7}</td>
     <td class="camp-pesi fw-bold text-center">${equipo7Data.partidosGanadosPesimistas7}</td>

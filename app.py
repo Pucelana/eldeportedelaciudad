@@ -3358,9 +3358,11 @@ def clasif_analisis_universidad():
                     'diferencia_goles': 0
                 }
             })
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_universidad_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_universidad)]        
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_futbol_sala/clasi_analis_universidad.html', clasificacion_analisis_universidad=clasificacion_analisis_universidad) 
+    return render_template('equipos_futbol_sala/clasi_analis_universidad.html', clasificacion_analisis_universidad=clasificacion_analisis_universidad_indexed) 
 # Ruta y creación del calendario individual del Universidad Valladolid
 @app.route('/equipos_futbol_sala/calendario_universidad')
 def calendarios_universidad():

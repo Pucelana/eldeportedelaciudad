@@ -65,7 +65,7 @@ filas1.forEach((fila, indice) => {
         equipo,
         partidosJugados,
         puntosActuales,
-        proximidadAscenso,
+        proximidadAscenso:Math.round(proximidadAscenso),
         puntosGanadosMatematicos,
         puntosGanadosOptimistas,
         puntosGanadosPesimistas
@@ -84,7 +84,7 @@ equiposPlay.forEach((equipoData) => {
     <td class="fw-bold text-center">${equipoData.equipo}</td>
     <td class="play-jug fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="play-act fw-bold text-center">${equipoData.puntosActuales}</td>
-    <td class="play-prox fw-bold text-center">${equipoData.proximidadAscenso.toFixed(2)}%</td>
+    <td class="play-prox fw-bold text-center">${equipoData.proximidadAscenso}%</td>
     <td class="play-mate fw-bold text-center">${equipoData.puntosGanadosMatematicos}</td>
     <td class="play-opti fw-bold text-center">${equipoData.puntosGanadosOptimistas}</td>
     <td class="play-pesi fw-bold text-center">${equipoData.puntosGanadosPesimistas}</td>
@@ -119,7 +119,7 @@ filas2.forEach((fila, indice) => {
         equipo,
         partidosJugados,
         puntosActuales,
-        proxiSalvacion,
+        proxiSalvacion:Math.round(proxiSalvacion),
         partidosGanadosMatematicos,
         partidosGanadosOptimistas,
         partidosGanadosPesimistas
@@ -137,7 +137,7 @@ equiposDesc.forEach((equipoData) => {
     <td class="fw-bold text-center">${equipoData.equipo}</td>
     <td class="desc-jug fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="desc-act fw-bold text-center">${equipoData.puntosActuales}</td>
-    <td class="desc-prox fw-bold text-center">${equipoData.proxiSalvacion.toFixed(2)}%</td>
+    <td class="desc-prox fw-bold text-center">${equipoData.proxiSalvacion}%</td>
     <td class="desc-mate fw-bold text-center">${equipoData.partidosGanadosMatematicos}</td>
     <td class="desc-opti fw-bold text-center">${equipoData.partidosGanadosOptimistas}</td>
     <td class="desc-pesi fw-bold text-center">${equipoData.partidosGanadosPesimistas}</td>

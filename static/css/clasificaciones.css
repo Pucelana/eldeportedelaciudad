@@ -16,6 +16,9 @@
         padding: 0.3rem;
         text-align: start;
       }
+      .tabla_posiciones th, .tabla_posiciones td {
+        font-size: 0.75rem; /* Ajusta el tamaño del texto según tus necesidades */
+      }
 }
 .size_equipos {
   white-space: nowrap;
@@ -27,3 +30,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.pos-champion { background-color: rgb(0, 153, 0); } /* Ejemplo de color para campeón */
+.pos-uefa { background-color: rgb(226, 226, 0); } /* Ejemplo de color para clasificación a UEFA */
+.pos-confe { background-color: rgb(255, 181, 69); }
+.pos-descenso { background-color: red; color: white; } 
