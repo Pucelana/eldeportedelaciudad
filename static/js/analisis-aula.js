@@ -97,9 +97,10 @@ const filas1 = document.querySelectorAll("#tablaPlayAula tbody tr");
 const partidosTotales1 = 42; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar1 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija1 = 70; // Ajusta este valor según tus necesidades
-const equipo1s1 = [];
+const equipos1 = [];
+let index1 = 1;
 filas1.forEach((fila, indice) => {
-    const equipo1 = fila.querySelector(`.fw-bold`).textContent;
+    const equipo1 = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados1 = parseInt(fila.querySelector(`.play-jug`).textContent);
     const puntosActuales1 = parseInt(fila.querySelector(`.play-act`).textContent);
 
@@ -116,7 +117,8 @@ filas1.forEach((fila, indice) => {
     const partidosGanadosPesimistas1 = Math.min(partidosGanadosMatematicos1 - 21, puntosParaAscenso1);
     const partidosGanadosOptimistas1 = Math.min(partidosGanadosMatematicos1 -24, puntosParaAscenso1);
 
-    equipo1s1.push({
+    equipos1.push({
+        index1:index1,
         equipo1,
         partidosJugados1,
         puntosActuales1,
@@ -125,15 +127,23 @@ filas1.forEach((fila, indice) => {
         partidosGanadosOptimistas1,
         partidosGanadosPesimistas1
     });
+    index1++
 });
 // Ordenar los equipo1s1 por proximidad descendente
-equipo1s1.sort((a, b) => b.proximidadDePlayOff - a.proximidadDePlayOff);
+equipos1.sort((a, b) => b.proximidadDePlayOff - a.proximidadDePlayOff);
 // Actualizar la tabla1 con los datos ordenados
 const tabla1 = document.querySelector("#tablaPlayAula tbody");
 tabla1.innerHTML = ""; // Limpiar la tabla1 antes de actualizar
-equipo1s1.forEach((equipo1Data) => {
+equipos1.forEach((equipo1Data) => {
     const nuevaFila1 = document.createElement("tr");
+    let claseColor1 = '';
+    if (equipo1Data.index1 <= 8) {
+        claseColor1 = 'pos-playoff-titulo';
+    } else if (equipo1Data.index1 <=14) {
+        claseColor1 = 'pos-nada';
+    }
     nuevaFila1.innerHTML = `
+    <td class="fw-bold text-center ${claseColor1}">${equipo1Data.index1}</td>
     <td class="fw-bold text-center">${equipo1Data.equipo1}</td>
     <td class="play-jug fw-bold text-center">${equipo1Data.partidosJugados1}</td>
     <td class="play-act fw-bold text-center">${equipo1Data.puntosActuales1}</td>
@@ -151,8 +161,9 @@ const partidosTotales2 = 30; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar2 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFijar2 = 38; // Ajusta este valor según tus necesidades
 const equipos2 = [];
+let index2 = 1;
 filas2.forEach((fila, indice) => {
-    const equipo2 = fila.querySelector(`.fw-bold`).textContent;
+    const equipo2 = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados2 = parseInt(fila.querySelector(`.desc-jug`).textContent);
     const puntosActuales2 = parseInt(fila.querySelector(`.desc-act`).textContent);
 
@@ -170,6 +181,7 @@ filas2.forEach((fila, indice) => {
     const partidosGanadosOptimistas2 = Math.min(partidosGanadosMatematicos2 -20, puntosPermanencia2);
 
     equipos2.push({
+        index2: index2,
         equipo2,
         partidosJugados2,
         puntosActuales2,
@@ -178,6 +190,7 @@ filas2.forEach((fila, indice) => {
         partidosGanadosOptimistas2,
         partidosGanadosPesimistas2
     });
+    index2++
 });
 // Ordenar los equipos2 por proximidad descendente
 equipos2.sort((a, b) => b.proxiPermanencia - a.proxiPermanencia);
@@ -186,7 +199,14 @@ const tabla2 = document.querySelector("#tablaDescAula tbody");
 tabla2.innerHTML = ""; // Limpiar la tabla2 antes de actualizar
 equipos2.forEach((equipo2Data) => {
     const nuevaFila2 = document.createElement("tr");
+    let claseColor2 = '';
+    if (equipo2Data.index2 <= 10) {
+        claseColor2 = 'pos-nada';
+    } else if (equipo2Data.index2 <= 14) {
+        claseColor2 = 'pos-desc';
+    }
     nuevaFila2.innerHTML = `
+    <td class="fw-bold text-center ${claseColor2}">${equipo2Data.index2}</td>
     <td class="fw-bold text-center">${equipo2Data.equipo2}</td>
     <td class="desc-jug fw-bold text-center">${equipo2Data.partidosJugados2}</td>
     <td class="desc-act fw-bold text-center">${equipo2Data.puntosActuales2}</td>

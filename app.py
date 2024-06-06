@@ -580,9 +580,11 @@ def clasif_analisis_uemc():
                     'diferencia_canastas': 0
                 }
             })
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_uemc_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_uemc)]
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_basket/clasif_analisis_uemc.html', clasificacion_analisis_uemc=clasificacion_analisis_uemc)
+    return render_template('equipos_basket/clasif_analisis_uemc.html', clasificacion_analisis_uemc=clasificacion_analisis_uemc_indexed)
 # Ruta para mostrar los playoffs del UEMC Valladolid
 @app.route('/playoffs_uemc/')
 def playoffs_uemc():
@@ -988,9 +990,11 @@ def clasif_analisis_ponce():
                     'diferencia_canastas': 0
                 }
             })
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_ponce_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_ponce)]
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_basket/clasif_analisis_ponce.html', clasificacion_analisis_ponce=clasificacion_analisis_ponce)
+    return render_template('equipos_basket/clasif_analisis_ponce.html', clasificacion_analisis_ponce=clasificacion_analisis_ponce_indexed)
 # Ruta para mostrar los playoffs del Ponce Valladolid
 @app.route('/playoffs_ponce/')
 def playoffs_ponce():
@@ -1388,9 +1392,11 @@ def clasif_analisis_aliados():
                     'diferencia_canastas': 0
                 }
             })
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_aliados_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_aliados)]
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_basket/clasif_analisis_aliados.html', clasificacion_analisis_aliados=clasificacion_analisis_aliados)
+    return render_template('equipos_basket/clasif_analisis_aliados.html', clasificacion_analisis_aliados=clasificacion_analisis_aliados_indexed)
 # Ruta para mostrar los playoffs de Fundación Aliados
 @app.route('/playoffs_aliados/')
 def playoffs_aliados():
@@ -1800,10 +1806,11 @@ def clasif_analisis_valladolid():
                     'diferencia_goles': 0
                 }
             })
-    
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_valladolid_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_valladolid)]
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_futbol/clasi_analis_vallad.html', clasificacion_analisis_valladolid=clasificacion_analisis_valladolid)
+    return render_template('equipos_futbol/clasi_analis_vallad.html', clasificacion_analisis_valladolid=clasificacion_analisis_valladolid_indexed)
 """# Ruta para mostrar los playoffs del Real Valladolid
 @app.route('/playoffs_valladolid/')
 def playoffs_valladolid():
@@ -2197,8 +2204,7 @@ def clasif_analisis_promesas():
     # Llama a la función para generar la clasificación y análisis
     clasificacion_analisis_promesas = generar_clasificacion_analisis_futbol_promesas(data4, total_partidos_temporada_promesas)
     # Ordena la clasificación por puntos y diferencia de goles
-    clasificacion_analisis_promesas = sorted(clasificacion_analisis_promesas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
-    
+    clasificacion_analisis_promesas = sorted(clasificacion_analisis_promesas, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)  
     # Agregar equipos nuevos a la clasificación si no están ya en ella
     clubs_set = {club['equipo'] for club in clasificacion_analisis_promesas}
     for club in clubs2:
@@ -2216,10 +2222,11 @@ def clasif_analisis_promesas():
                     'diferencia_goles': 0
                 }
             })
-    
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_promesas_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_promesas)]
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_futbol/clasi_analis_prome.html', clasificacion_analisis_promesas=clasificacion_analisis_promesas)        
+    return render_template('equipos_futbol/clasi_analis_prome.html', clasificacion_analisis_promesas=clasificacion_analisis_promesas_indexed)        
 # Ruta para mostrar los playoffs del Real Valladolid Promesas
 @app.route('/playoffs_promesas/')
 def playoffs_promesas():
@@ -2508,9 +2515,11 @@ def clasif_analisis_simancas():
                     'diferencia_goles': 0
                 }
             })
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_simancas_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_simancas)]
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_futbol/clasi_analis_siman.html', clasificacion_analisis_simancas=clasificacion_analisis_simancas)         
+    return render_template('equipos_futbol/clasi_analis_siman.html', clasificacion_analisis_simancas=clasificacion_analisis_simancas_indexed)         
 # Ruta y creación del calendario individual del V Simancas
 @app.route('/equipos_futbol/calendario_simancas')
 def calendarios_simancas():
@@ -2791,9 +2800,11 @@ def clasif_analisis_parquesol():
                     'diferencia_goles': 0
                 }
             })
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_parquesol_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_parquesol)]
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_futbol/clasi_analis_parque.html', clasificacion_analisis_parquesol=clasificacion_analisis_parquesol) 
+    return render_template('equipos_futbol/clasi_analis_parque.html', clasificacion_analisis_parquesol=clasificacion_analisis_parquesol_indexed) 
 # Ruta y creación del calendario individual del CD Parquesol
 @app.route('/equipos_futbol/calendario_parquesol')
 def calendarios_parquesol():
@@ -3075,9 +3086,12 @@ def clasif_analisis_valladolid_fs():
                     'diferencia_goles': 0
                 }
             })
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_valladolid_fs_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_valladolid_fs)]
+    print(clasificacion_analisis_valladolid_fs_indexed)        
     # Calcular la proximidad
     #proximidad = calcular_proximidad(data, clasificacion_analisis, total_partidos_temporada)
-    return render_template('equipos_futbol_sala/clasi_analis_vallad_fs.html', clasificacion_analisis_valladolid_fs=clasificacion_analisis_valladolid_fs) 
+    return render_template('equipos_futbol_sala/clasi_analis_vallad_fs.html', clasificacion_analisis_valladolid_fs=clasificacion_analisis_valladolid_fs_indexed) 
 # Ruta y creación del calendario individual del Valladolid FS
 @app.route('/equipos_futbol_sala/calendario_vallad_fs')
 def calendarios_valladolid_fs():
@@ -3820,7 +3834,9 @@ def clasif_analisis_aula():
                     'diferencia_goles': 0
                 }
             })
-    return render_template('equipos_balonmano/clasi_analis_aula.html', clasificacion_analisis_aula=clasificacion_analisis_aula)
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_aula_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_aula)]        
+    return render_template('equipos_balonmano/clasi_analis_aula.html', clasificacion_analisis_aula=clasificacion_analisis_aula_indexed)
 # Ruta para mostrar los playoffs del Aula Valladolid
 @app.route('/playoffs_aula/')
 def playoffs_aula():
@@ -4224,7 +4240,9 @@ def clasif_analisis_recoletas():
                     'diferencia_goles': 0
                 }
             })
-    return render_template('equipos_balonmano/clasi_analis_recoletas.html', clasificacion_analisis_recoletas=clasificacion_analisis_recoletas)
+    # Añadir un índice a cada equipo
+    clasificacion_analisis_recoletas_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_recoletas)]        
+    return render_template('equipos_balonmano/clasi_analis_recoletas.html', clasificacion_analisis_recoletas=clasificacion_analisis_recoletas_indexed)
 # Ruta para mostrar los playoffs del Atlético Valladolid
 @app.route('/playoffs_recoletas/')
 def playoffs_recoletas():
@@ -4677,10 +4695,32 @@ def clasif_analisis_salvador():
     clasificacion_analisis_salvador = generar_clasificacion_analisis_rugby_salvador(data11, total_partidos_temporada_salvador)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_salvador = sorted(clasificacion_analisis_salvador, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_salvador}
+    for club in clubs12:
+        if club not in clubs_set:
+            clasificacion_analisis_salvador.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0,
+                    'bonus': 0
+                }
+            })
+     # Añadir un índice a cada equipo
+    clasificacion_analisis_salvador_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_salvador)]
     # Genera los grupos A y B
     grupoA1, grupoB1 = generar_clasificacion_grupoA1_grupoB1(data11, total_partidos_temporada_grupos_salvador)
-    
-    return render_template('equipos_rugby/clasi_analis_salvador.html', clasificacion_analisis_salvador=clasificacion_analisis_salvador, grupoA1=grupoA1, grupoB1=grupoB1)
+    grupoA1_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(grupoA1)]
+    # Añadir un índice a cada equipo en el grupo B
+    grupoB1_indexed = [{'index': i + 7, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(grupoB1)]  
+    return render_template('equipos_rugby/clasi_analis_salvador.html', clasificacion_analisis_salvador=clasificacion_analisis_salvador_indexed, grupoA1=grupoA1_indexed, grupoB1=grupoB1_indexed)
 # Ruta para mostrar los playoffs de El Salvador
 @app.route('/playoffs_salvador/')
 def playoffs_salvador():
@@ -4753,6 +4793,45 @@ def calendarios_salvador():
                     tabla_partidos_salvador[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_salvador[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador'] = rol_salvador
     return render_template('equipos_rugby/calendario_salvador.html', tabla_partidos_salvador=tabla_partidos_salvador, nuevos_datos_salvador=nuevos_datos_salvador)
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_salvador = 'json_clubs/clubs_salvador.json'
+def escribir_clubs_salvador(clubs12):
+    with open(clubs_salvador, 'w') as file:
+        json.dump(clubs12, file, indent=4)
+def leer_clubs_salvador():
+    if os.path.exists(clubs_salvador):
+        with open(clubs_salvador, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs12 = leer_clubs_salvador()
+@app.route('/admin/jornada0_salvador', methods=['GET', 'POST'])
+def jornada0_salvador():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs12.append(club)
+            escribir_clubs_salvador(clubs12)
+            return redirect(url_for('jornada0_salvador'))
+        else:
+            index = int(request.form['index'])
+            del clubs12[index]  # Eliminar el club de la lista
+            escribir_clubs_salvador(clubs12)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_salvador'))
+    return render_template('admin/clubs_salvador.html', clubs12=clubs12, indices=range(len(clubs12)))
+@app.route('/admin/eliminar_club_salvador/<string:club>', methods=['POST'])
+def eliminar_club_salvador(club):
+    global clubs12 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs12:
+        # Eliminar el club de la lista
+        clubs12.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_salvador(clubs12)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_salvador'))
 #Fin proceso El Salvador
 
 #Todo el proceso de calendario y clasificación del VRAC
@@ -4771,7 +4850,7 @@ def obtener_datos_vrac():
     except json.decoder.JSONDecodeError:
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
-# Partidos El Salvador
+# Partidos VRAC
 @app.route('/admin/calend_vrac')
 def calend_vrac():
     data12 = obtener_datos_vrac()
@@ -5093,9 +5172,32 @@ def clasif_analisis_vrac():
     clasificacion_analisis_vrac = generar_clasificacion_analisis_rugby_vrac(data12, total_partidos_temporada_vrac)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_vrac = sorted(clasificacion_analisis_vrac, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_vrac}
+    for club in clubs13:
+        if club not in clubs_set:
+            clasificacion_analisis_vrac.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0,
+                    'bonus': 0
+                }
+            })
+     # Añadir un índice a cada equipo
+    clasificacion_analisis_vrac_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_vrac)]
     # Genera los grupos A y B
     grupoA2, grupoB2 = generar_clasificacion_grupoA2_grupoB2(data12, total_partidos_temporada_grupos_vrac)
-    return render_template('equipos_rugby/clasi_analis_vrac.html', clasificacion_analisis_vrac=clasificacion_analisis_vrac, grupoA2=grupoA2, grupoB2=grupoB2)
+    grupoA2_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(grupoA2)]
+    # Añadir un índice a cada equipo en el grupo B
+    grupoB2_indexed = [{'index': i + 7, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(grupoB2)]
+    return render_template('equipos_rugby/clasi_analis_vrac.html', clasificacion_analisis_vrac=clasificacion_analisis_vrac_indexed, grupoA2=grupoA2_indexed, grupoB2=grupoB2_indexed)
 # Ruta para mostrar los playoffs del VRAC
 @app.route('/playoffs_vrac/')
 def playoffs_vrac():
@@ -5168,6 +5270,45 @@ def calendarios_vrac():
                     tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_vrac[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vrac'] = rol_vrac
     return render_template('equipos_rugby/calendario_vrac.html', tabla_partidos_vrac=tabla_partidos_vrac, nuevos_datos_vrac=nuevos_datos_vrac)
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_vrac = 'json_clubs/clubs_vrac.json'
+def escribir_clubs_vrac(clubs13):
+    with open(clubs_vrac, 'w') as file:
+        json.dump(clubs13, file, indent=4)
+def leer_clubs_vrac():
+    if os.path.exists(clubs_vrac):
+        with open(clubs_vrac, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs13 = leer_clubs_vrac()
+@app.route('/admin/jornada0_vrac', methods=['GET', 'POST'])
+def jornada0_vrac():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs13.append(club)
+            escribir_clubs_vrac(clubs13)
+            return redirect(url_for('jornada0_vrac'))
+        else:
+            index = int(request.form['index'])
+            del clubs13[index]  # Eliminar el club de la lista
+            escribir_clubs_vrac(clubs13)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_vrac'))
+    return render_template('admin/clubs_vrac.html', clubs13=clubs13, indices=range(len(clubs13)))
+@app.route('/admin/eliminar_club_vrac/<string:club>', methods=['POST'])
+def eliminar_club_vrac(club):
+    global clubs13 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs13:
+        # Eliminar el club de la lista
+        clubs13.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_vrac(clubs13)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_vrac'))
 #Fin proceso del VRAC
 
 #Todo el proceso de calendario y clasificación del El Salvador Fem.
@@ -5508,9 +5649,33 @@ def clasif_analisis_salvador_fem():
     clasificacion_analisis_salvador_fem = generar_clasificacion_analisis_rugby_salvador_fem(data13, total_partidos_temporada_salvador_fem)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_salvador_fem = sorted(clasificacion_analisis_salvador_fem, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_salvador_fem}
+    for club in clubs14:
+        if club not in clubs_set:
+            clasificacion_analisis_salvador_fem.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0,
+                    'bonus': 0
+                }
+            })
+     # Añadir un índice a cada equipo
+    clasificacion_analisis_salvador_fem_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_salvador_fem)]
     # Genera los grupos A y B
     grupoA, grupoB = generar_clasificacion_grupoA_grupoB(data13, total_partidos_temporada_grupos_salvador_fem)
-    return render_template('equipos_rugby/clasi_analis_salvador_fem.html', clasificacion_analisis_salvador_fem=clasificacion_analisis_salvador_fem, grupoA=grupoA, grupoB=grupoB)
+    # Añadir un índice a cada equipo en el grupo A
+    grupoA_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(grupoA)]
+    # Añadir un índice a cada equipo en el grupo B
+    grupoB_indexed = [{'index': i + 5, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(grupoB)]
+    return render_template('equipos_rugby/clasi_analis_salvador_fem.html', clasificacion_analisis_salvador_fem=clasificacion_analisis_salvador_fem_indexed, grupoA=grupoA_indexed, grupoB=grupoB_indexed)
 # Ruta para mostrar los playoffs de El Salvador Fem.
 @app.route('/playoffs_salvador_fem/')
 def playoffs_salvador_fem():
@@ -5583,7 +5748,46 @@ def calendarios_salvador_fem():
                     tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_salvador_fem[equipo_contrario]['jornadas'][jornada['nombre']]['rol_salvador_fem'] = rol_salvador_fem
     return render_template('equipos_rugby/calendario_salvador_fem.html', tabla_partidos_salvador_fem=tabla_partidos_salvador_fem, nuevos_datos_salvador_fem=nuevos_datos_salvador_fem)
-#Fin proceso El Salvador
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_salvador_fem = 'json_clubs/clubs_salvador_fem.json'
+def escribir_clubs_salvador_fem(clubs14):
+    with open(clubs_salvador_fem, 'w') as file:
+        json.dump(clubs14, file, indent=4)
+def leer_clubs_salvador_fem():
+    if os.path.exists(clubs_salvador_fem):
+        with open(clubs_salvador_fem, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs14 = leer_clubs_salvador_fem()
+@app.route('/admin/jornada0_salvador_fem', methods=['GET', 'POST'])
+def jornada0_salvador_fem():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs14.append(club)
+            escribir_clubs_salvador_fem(clubs14)
+            return redirect(url_for('jornada0_salvador_fem'))
+        else:
+            index = int(request.form['index'])
+            del clubs14[index]  # Eliminar el club de la lista
+            escribir_clubs_salvador_fem(clubs14)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_salvador_fem'))
+    return render_template('admin/clubs_salvador_fem.html', clubs14=clubs14, indices=range(len(clubs14)))
+@app.route('/admin/eliminar_club_salvador_fem/<string:club>', methods=['POST'])
+def eliminar_club_salvador_fem(club):
+    global clubs14 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs14:
+        # Eliminar el club de la lista
+        clubs14.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_salvador_fem(clubs14)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_salvador_fem'))
+#Fin proceso El Salvador Fem.
 
 #EQUIPOS HOCKEY
 #Todo el proceso de calendario y clasificación del CPLV Caja Rural
@@ -5912,7 +6116,7 @@ def generar_clasificacion_grupoA_grupoB(data14, total_partidos_temporada_grupos_
     grupoA = clasificacion_ordenada[:4]
     grupoB = clasificacion_ordenada[4:8]
     return grupoA, grupoB"""
-# Ruta para mostrar la clasificación del CPLV Caja Rural
+# Ruta para mostrar la clasificación y analisis del CPLV Caja Rural
 @app.route('/equipos_hockey/clasi_analis_caja/')
 def clasif_analisis_caja():
     data14 = obtener_datos_caja()
@@ -5921,7 +6125,9 @@ def clasif_analisis_caja():
     clasificacion_analisis_caja = generar_clasificacion_analisis_hockey_caja(data14, total_partidos_temporada_caja)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_caja = sorted(clasificacion_analisis_caja, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
-    return render_template('equipos_hockey/clasi_analis_caja.html', clasificacion_analisis_caja=clasificacion_analisis_caja)
+     # Añadir un índice a cada equipo
+    clasificacion_analisis_caja_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_caja)]
+    return render_template('equipos_hockey/clasi_analis_caja.html', clasificacion_analisis_caja=clasificacion_analisis_caja_indexed)
 # Ruta para mostrar los playoffs de CPLV Caja Rural
 @app.route('/playoffs_caja/')
 def playoffs_caja():
@@ -6322,7 +6528,7 @@ def generar_clasificacion_grupoA_grupoB(data15, total_partidos_temporada_grupos_
     grupoA = clasificacion_ordenada[:4]
     grupoB = clasificacion_ordenada[4:8]
     return grupoA, grupoB"""
-# Ruta para mostrar la clasificación del CPLV Munia Panteras
+# Ruta para mostrar la clasificación y analisis del CPLV Munia Panteras
 @app.route('/equipos_hockey/clasi_analis_panteras/')
 def clasif_analisis_panteras():
     data15 = obtener_datos_panteras()
@@ -6331,7 +6537,9 @@ def clasif_analisis_panteras():
     clasificacion_analisis_panteras = generar_clasificacion_analisis_hockey_panteras(data15, total_partidos_temporada_panteras)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_panteras = sorted(clasificacion_analisis_panteras, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
-    return render_template('equipos_hockey/clasi_analis_pante.html', clasificacion_analisis_panteras=clasificacion_analisis_panteras)
+     # Añadir un índice a cada equipo
+    clasificacion_analisis_panteras_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_panteras)]
+    return render_template('equipos_hockey/clasi_analis_pante.html', clasificacion_analisis_panteras=clasificacion_analisis_panteras_indexed)
 # Ruta para mostrar los playoffs de CPLV Munia Panteras
 @app.route('/playoffs_panteras/')
 def playoffs_panteras():
@@ -6555,7 +6763,7 @@ def generar_clasificacion_analisis_voley_vcv(data18, total_partidos_temporada_vc
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_ordenada = [{'equipo': equipo, 'datos': datos} for equipo, datos in sorted(clasificacion.items(), key=lambda x: (x[1]['puntos'], x[1]['favor'] - x[1]['contra']), reverse=True)]
     return clasificacion_ordenada
-# Ruta para mostrar la clasificación del Univ. Valladolid VCV
+# Ruta para mostrar la clasificación y analisis del Univ. Valladolid VCV
 @app.route('/equipos_voleibol/clasi_analis_vcv/')
 def clasif_analisis_vcv():
     data18 = obtener_datos_vcv()
@@ -6564,7 +6772,9 @@ def clasif_analisis_vcv():
     clasificacion_analisis_vcv = generar_clasificacion_analisis_voley_vcv(data18, total_partidos_temporada_vcv)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_vcv = sorted(clasificacion_analisis_vcv, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_sets']), reverse=True)
-    return render_template('equipos_voleibol/clasi_analis_vcv.html', clasificacion_analisis_vcv=clasificacion_analisis_vcv)
+     # Añadir un índice a cada equipo
+    clasificacion_analisis_vcv_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_vcv)]
+    return render_template('equipos_voleibol/clasi_analis_vcv.html', clasificacion_analisis_vcv=clasificacion_analisis_vcv_indexed)
 # Ruta y creación del calendario individual del Univ. Valladolid VCV
 @app.route('/equipos_voleibol/calendario_vcv')
 def calendarios_vcv():

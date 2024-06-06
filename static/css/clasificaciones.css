@@ -30,7 +30,59 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.pos-champion { background-color: rgb(0, 153, 0); } /* Ejemplo de color para campeón */
-.pos-uefa { background-color: rgb(226, 226, 0); } /* Ejemplo de color para clasificación a UEFA */
-.pos-confe { background-color: rgb(255, 181, 69); }
-.pos-descenso { background-color: red; color: white; } 
+/* Fútbol Sala */
+.table .pos-ascen{
+  background-color: #198754; /* Green background */
+  color: white; /* White text */
+  font-weight: bold; /* Bold text */
+}
+.table .pos-europa{
+  background-color: #198754; /* Green background */
+  color: white; /* White text */
+  font-weight: bold; /* Bold text */
+}
+.table .pos-ehf{
+  background-color: #198754; /* Green background */
+  color: white; /* White text */
+  font-weight: bold; /* Bold text */
+}
+.table .pos-ehfec{
+  background-color: #FFC107 !important; /* Green background */
+  color: white !important; /* White text */
+  font-weight: bold; /* Bold text */
+}
+.table .pos-playoff-titulo{
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+  font-weight: bold; /* Bold text */
+}   
+.table .pos-copa{
+  background-color: #ffc107 !important; /* Green background */
+  color: white !important; /* White text */
+  font-weight: bold; /* Bold text */
+}
+.table .pos-nada{
+  background-color: #6c757d !important; /* Green background */
+  color: white !important; /* White text */
+  font-weight: bold; /* Bold text */
+}
+.table .pos-desc{
+  background-color: #dc3545 !important; /* Green background */
+  color: white !important; /* White text */
+  font-weight: bold; /* Bold text */
+}
+.table .pos-promo{
+  background-color: #ff7171 !important; /* Green background */
+  color: white !important; /* White text */
+  font-weight: bold; /* Bold text */
+}
+.table .pos-playoff{
+  background-color: #ffc107 !important; /* Green background */
+  color: white !important; /* White text */
+  font-weight: bold; /* Bold text */
+} 
+.table .pos-confe{
+  background-color: #fffc5f !important; /* Green background */
+  color: white !important; /* White text */
+  font-weight: bold; /* Bold text */
+}

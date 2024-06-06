@@ -93,8 +93,9 @@ const partidosTotales1 = 22; // Total de partidos en la temporada
 const partidosPorGanar1 = 1; // Cantidad de puntos por partido ganado
 const partidosPlayOff = 15; // Número de partidos para llegar a los playoffs
 const equiposPlay = [];
+let index = 1;
 filas1.forEach((fila, indice) => {
-    const equipo = fila.querySelector(`.fw-bold`).textContent;
+    const equipo = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados = parseInt(fila.querySelector(`.play-jug`).textContent);
     const puntosActuales = parseInt(fila.querySelector(`.play-act`).textContent);
 
@@ -110,6 +111,7 @@ filas1.forEach((fila, indice) => {
     const puntosGanadosOptimistas = Math.min(puntosGanadosMatematicos - 3, puntosParaPlayoffs);
 
     equiposPlay.push({
+        index: index,
         equipo,
         partidosJugados,
         puntosActuales,
@@ -118,6 +120,7 @@ filas1.forEach((fila, indice) => {
         puntosGanadosOptimistas,
         puntosGanadosPesimistas
     });
+    index++
 });
 // Ordenar los equiposPlay por proximidad descendente
 equiposPlay.sort((a, b) => b.proximidadAscenso - a.proximidadAscenso);
@@ -126,7 +129,14 @@ const tabla1 = document.querySelector("#tablaPlayAliados tbody");
 tabla1.innerHTML = ""; // Limpiar la tabla antes de actualizar
 equiposPlay.forEach((equipoData) => {
     const nuevaFila = document.createElement("tr");
+    let claseColor = '';
+    if (equipoData.index <= 4) {
+        claseColor = 'pos-ascen';
+    } else if (equipoData.index <=12) {
+        claseColor = 'pos-nada';
+    }
     nuevaFila.innerHTML = `
+    <td class="fw-bold text-center ${claseColor}">${equipoData.index}</td>
     <td class="fw-bold text-center">${equipoData.equipo}</td>
     <td class="play-jug fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="play-act fw-bold text-center">${equipoData.puntosActuales}</td>
@@ -144,8 +154,9 @@ const partidosTotales2 = 22; // Total de partidos en la temporada
 const partidosPorGanar2 = 1; // Cantidad de puntos por partido ganado
 const partidosDescenso = 5;
 const equiposDesc = [];
+let index2 = 1;
 filas2.forEach((fila, indice) => {
-    const equipo = fila.querySelector(`.fw-bold`).textContent;
+    const equipo = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados = parseInt(fila.querySelector(`.desc-jug`).textContent);
     const puntosActuales = parseInt(fila.querySelector(`.desc-act`).textContent);
 
@@ -160,6 +171,7 @@ filas2.forEach((fila, indice) => {
     const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -2, puntosParaSalvar);
 
     equiposDesc.push({
+        index2: index2,
         equipo,
         partidosJugados,
         puntosActuales,
@@ -168,6 +180,7 @@ filas2.forEach((fila, indice) => {
         partidosGanadosOptimistas,
         partidosGanadosPesimistas
     });
+    index2++
 });
 // Ordenar los equiposDesc por proximidad descendente
 equiposDesc.sort((a, b) => b.proxiSalvacion - a.proxiSalvacion);
@@ -176,7 +189,16 @@ const tabla2 = document.querySelector("#tablaDescAliados tbody");
 tabla2.innerHTML = ""; // Limpiar la tabla antes de actualizar
 equiposDesc.forEach((equipoData) => {
     const nuevaFila = document.createElement("tr");
+    let claseColor2 = '';
+    if (equipoData.index2 <= 10) {
+        claseColor2 = 'pos-nada';
+    } else if (equipoData.index2 <=11) {
+        claseColor2 = 'pos-promo';
+    }  else if (equipoData.index2 <=12) {
+        claseColor2 = 'pos-desc';
+    }
     nuevaFila.innerHTML = `
+    <td class="fw-bold text-center ${claseColor2}">${equipoData.index2}</td>
     <td class="fw-bold text-center">${equipoData.equipo}</td>
     <td class="desc-jug fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="desc-act fw-bold text-center">${equipoData.puntosActuales}</td>
@@ -194,6 +216,7 @@ const partidosTotales3 = 22; // Total de partidos en la temporada
 const partidosPorGanar3 = 1; // Cantidad de puntos por partido ganado
 const partidosEuro = 22;
 const equiposEuro = [];
+let index3 = 1;
 filas3.forEach((fila, indice) => {
     const equipo3 = fila.querySelector(`.fw-bold`).textContent;
     const partidosJugados3 = parseInt(fila.querySelector(`.euro-jug`).textContent);
@@ -206,6 +229,7 @@ filas3.forEach((fila, indice) => {
     const partidosGanadosPesimistas3 = Math.min(partidosGanadosMatematicos3 -2, puntosParaEuro);
     const partidosGanadosOptimistas3 = Math.min(partidosGanadosMatematicos3 -3, puntosParaEuro);
     equiposEuro.push({
+        index3:index3,
         equipo3,
         partidosJugados3,
         puntosActuales3,
@@ -214,6 +238,7 @@ filas3.forEach((fila, indice) => {
         partidosGanadosOptimistas3,
         partidosGanadosPesimistas3
     });
+    index3++
 });
 // Ordenar los equiposEuro por proximidad Euroendente
 equiposEuro.sort((a, b) => b.proxiEuro - a.proxiEuro);
@@ -222,7 +247,14 @@ const tabla3 = document.querySelector("#tablaEuroAliados tbody");
 tabla3.innerHTML = ""; // Limpiar la tabla antes de actualizar
 equiposEuro.forEach((equipo3Data) => {
     const nuevaFila3 = document.createElement("tr");
+    let claseColor3 = '';
+    if (equipo3Data.index3 <= 1) {
+        claseColor3 = 'pos-ascen';
+    } else if (equipo3Data.index3 <=12) {
+        claseColor3 = 'pos-nada';
+    }
     nuevaFila3.innerHTML = `
+    <td class="fw-bold text-center ${claseColor3}">${equipo3Data.index3}</td>
     <td class="fw-bold text-center">${equipo3Data.equipo3}</td>
     <td class="euro-jug fw-bold text-center">${equipo3Data.partidosJugados3}</td>
     <td class="euro-act fw-bold text-center">${equipo3Data.puntosActuales3}</td>

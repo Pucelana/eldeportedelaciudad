@@ -42,11 +42,10 @@ const filas1 = document.querySelectorAll("#tablaPlayPonce tbody tr");
 const partidosTotales1 = 26; // Total de partidos en la temporada
 const partidosPorGanar1 = 1; // Cantidad de puntos por partido ganado
 const partidosPlayOff = 25; // Número de partidos para llegar a los playoffs
-
 const equiposPlay = [];
-
-filas1.forEach((fila, indice) => {
-    const equipo = fila.querySelector(`.fw-bold`).textContent;
+let index1 = 1;
+filas1.forEach((fila) => {
+    const equipo = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados = parseInt(fila.querySelector(`.play-jug`).textContent);
     const puntosActuales = parseInt(fila.querySelector(`.play-act`).textContent);
 
@@ -62,6 +61,7 @@ filas1.forEach((fila, indice) => {
     const puntosGanadosOptimistas = Math.min(puntosGanadosMatematicos - 3, puntosParaPlayoffs);
 
     equiposPlay.push({
+        index1: index1,
         equipo,
         partidosJugados,
         puntosActuales,
@@ -70,17 +70,23 @@ filas1.forEach((fila, indice) => {
         puntosGanadosOptimistas,
         puntosGanadosPesimistas
     });
+    index1++
 });
-
 // Ordenar los equiposPlay por proximidad descendente
 equiposPlay.sort((a, b) => b.proximidadAscenso - a.proximidadAscenso);
-
 // Actualizar la tabla con los datos ordenados
 const tabla1 = document.querySelector("#tablaPlayPonce tbody");
 tabla1.innerHTML = ""; // Limpiar la tabla antes de actualizar
 equiposPlay.forEach((equipoData) => {
     const nuevaFila = document.createElement("tr");
+    let claseColor1 = '';
+    if (equipoData.index1 <= 4) {
+        claseColor1 = 'pos-ascen';
+    } else if (equipoData.index1 <=14) {
+        claseColor1 = 'pos-nada';
+    }
     nuevaFila.innerHTML = `
+    <td class="fw-bold text-center ${claseColor1}">${equipoData.index1}</td>
     <td class="fw-bold text-center">${equipoData.equipo}</td>
     <td class="play-jug fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="play-act fw-bold text-center">${equipoData.puntosActuales}</td>
@@ -97,25 +103,21 @@ const filas2 = document.querySelectorAll("#tablaDescPonce tbody tr");
 const partidosTotales2 = 26; // Total de partidos en la temporada
 const partidosPorGanar2 = 1; // Cantidad de puntos por partido ganado
 const partidosDescenso = 11;
-
 const equiposDesc = [];
-
-filas2.forEach((fila, indice) => {
-    const equipo = fila.querySelector(`.fw-bold`).textContent;
+let index2 = 1;
+filas2.forEach((fila) => {
+    const equipo = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados = parseInt(fila.querySelector(`.desc-jug`).textContent);
     const puntosActuales = parseInt(fila.querySelector(`.desc-act`).textContent);
-
     const puntosParaSalvar = partidosDescenso * partidosPorGanar2;
-
     const puntosFaltan = Math.max((0, puntosParaSalvar - puntosActuales));
     const proxiSalvacion = Math.min(((puntosParaSalvar - puntosFaltan) / puntosParaSalvar) * 100, 100);
-
     const partidosRestantesSalvacion = partidosDescenso;
     const partidosGanadosMatematicos = Math.min(puntosActuales + partidosRestantesSalvacion * partidosPorGanar2,puntosParaSalvar);
     const partidosGanadosPesimistas = Math.min(partidosGanadosMatematicos -2, puntosParaSalvar);
     const partidosGanadosOptimistas = Math.min(partidosGanadosMatematicos -3, puntosParaSalvar);
-
     equiposDesc.push({
+        index2: index2,
         equipo,
         partidosJugados,
         puntosActuales,
@@ -124,8 +126,8 @@ filas2.forEach((fila, indice) => {
         partidosGanadosOptimistas,
         partidosGanadosPesimistas
     });
+    index2++
 });
-
 // Ordenar los equiposDesc por proximidad descendente
 equiposDesc.sort((a, b) => b.proxiSalvacion - a.proxiSalvacion);
 // Actualizar la tabla con los datos ordenados
@@ -133,7 +135,14 @@ const tabla2 = document.querySelector("#tablaDescPonce tbody");
 tabla2.innerHTML = ""; // Limpiar la tabla antes de actualizar
 equiposDesc.forEach((equipoData) => {
     const nuevaFila = document.createElement("tr");
+    let claseColor2 = '';
+    if (equipoData.index2 <= 11) {
+        claseColor2 = 'pos-nada';
+    } else if (equipoData.index2 <=14) {
+        claseColor2 = 'pos-desc';
+    }
     nuevaFila.innerHTML = `
+    <td class="fw-bold text-center ${claseColor2}">${equipoData.index2}</td>
     <td class="fw-bold text-center">${equipoData.equipo}</td>
     <td class="desc-jug fw-bold text-center">${equipoData.partidosJugados}</td>
     <td class="desc-act fw-bold text-center">${equipoData.puntosActuales}</td>

@@ -152,81 +152,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                    <h3 class="text-center mb-4">Clasificación- Liga EA Sports</h3>
-                   <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-success text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="text-white" style="background-color: #fffc5f;">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">16</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">17</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">18</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">19</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">20</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
-                  <table id="tablaClasifVallad2" class="table"><!--Tabla Clasificación 1ª BBVA-->
+                  <div class="col-12">
+                  <table id="tablaClasifVallad2" class="table">
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PTS</th>
                         <th>PJ</th>
@@ -241,6 +171,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
+                        <td class="fw-bold {% if equipo.index <= 4 %}pos-ascen{% elif equipo.index <= 5 %}pos-playoff{% elif equipo.index <= 6 %}pos-confe{% elif equipo.index <= 17 %}pos-nada{% elif equipo.index <= 20 %}pos-desc{% endif %}">{{ equipo.index }}</td>
                         <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
@@ -267,82 +198,12 @@
             <div class="card tabla_equ_futb" style="width: 80rem;">
               <div class="card-body">
                 <div class="row table-responsive">
-                   <h3 class="text-center mb-4">Campeón de Liga - Liga EA Sports</h3>
-                   <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-success text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">16</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">17</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">18</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">19</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">20</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
-                  <table id="tablaCampeonVallad" class="table"><!--Tabla Campeón Liga-->
+                  <h3 class="text-center mb-4">Campeón de Liga - Liga EA Sports</h3>
+                  <div class="col-12">
+                  <table id="tablaCampeonVallad" class="table">
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -353,11 +214,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_valladolid %}
+                      {% for equipo in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="camp-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="camp-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="camp-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="camp-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="camp-proxi fw-bold"></td>
                         <td class="camp-mate fw-bold"></td>
                         <td class="camp-opti fw-bold"></td>
@@ -379,81 +241,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                    <h3 class="text-center mb-4">Champions League - Liga BBVA</h3>
-                   <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-success text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">16</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">17</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">18</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">19</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">20</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
-                  <table id="tablaChampionsVallad" class="table"><!--Tabla Champions-->
+                  <div class="col-12">
+                  <table id="tablaChampionsVallad" class="table">
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -464,11 +256,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_valladolid %}
+                      {% for equipo in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="cham-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="cham-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="cham-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="cham-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="cham-proxi fw-bold"></td>
                         <td class="cham-mate fw-bold"></td>
                         <td class="cham-opti fw-bold"></td>
@@ -490,81 +283,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Europa League - Liga BBVA</h3>
-                  <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-secondary text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">16</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">17</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">18</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">19</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">20</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
+                  <div class="col-12">
                   <table id="tablaEuropaVallad" class="table"><!--Tabla Europa League-->
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -575,11 +298,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_valladolid %}
+                      {% for equipo in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="euro-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="euro-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="euro-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="euro-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="euro-proxi fw-bold"></td>
                         <td class="euro-mate fw-bold"></td>
                         <td class="euro-opti fw-bold"></td>
@@ -601,81 +325,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Conference League - Liga BBVA</h3>
-                  <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-secondary text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="text-white" style="background-color: #fffc5f;">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">16</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">17</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">18</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">19</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">20</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
+                  <div class="col-12">
                   <table id="tablaConfeVallad" class="table"><!--Tabla Conference League-->
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -686,11 +340,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_valladolid %}
+                      {% for equipo in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="confe-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="confe-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="confe-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="confe-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="confe-proxi fw-bold"></td>
                         <td class="confe-mate fw-bold"></td>
                         <td class="confe-opti fw-bold"></td>
@@ -1060,81 +715,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center mb-4">Descenso Liga Hypermotion</h3>
-                  <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-secondary text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">16</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">17</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">18</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">19</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">20</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
-                  <table id="tablaDescVallad2" class="table"><!--Tabla Descenso Liga BBVA-->
+                  <div class="col-12">
+                  <table id="tablaDescVallad2" class="table">
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -1145,11 +730,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_valladolid %}
+                      {% for equipo in clasificacion_analisis_valladolid %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="desce-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="desce-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="desce-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="desce-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="desce-prox fw-bold"></td>
                         <td class="desce-mate fw-bold"></td>
                         <td class="desce-opti fw-bold"></td>

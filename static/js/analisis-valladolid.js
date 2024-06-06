@@ -204,8 +204,9 @@ const partidosTotales3 = 38; // Cambiado a 38 partidos en la temporada
 const puntosPorGanar3 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija3 = 67; // Ajusta este valor según tus necesidades
 const equipos3 = [];
-filas3.forEach((fila, indice) => {
-    const equipo3 = fila.querySelector(`.fw-bold`).textContent;
+let index3 = 1;
+filas3.forEach((fila) => {
+    const equipo3 = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados3 = parseInt(fila.querySelector(`.cham-jug`).textContent);
     const puntosActuales3 = parseInt(fila.querySelector(`.cham-act`).textContent);
     // Calcular puntos necesarios para alcanzar la proximidad fija
@@ -219,6 +220,7 @@ filas3.forEach((fila, indice) => {
     const partidosGanadosPesimistas3 = Math.min(partidosGanadosMatematicos3 - 2, puntosParaChampions);
     const partidosGanadosOptimistas3 = Math.min(partidosGanadosMatematicos3 -3, puntosParaChampions);
     equipos3.push({
+        index3: index3,
         equipo3,
         partidosJugados3,
         puntosActuales3,
@@ -227,6 +229,7 @@ filas3.forEach((fila, indice) => {
         partidosGanadosOptimistas3,
         partidosGanadosPesimistas3
     });
+    index3++
 });
 // Ordenar los equipo3s3 por proximidad descendente
 equipos3.sort((a, b) => b.proximidadDeChampions - a.proximidadDeChampions);
@@ -235,7 +238,14 @@ const tabla3 = document.querySelector("#tablaChampionsVallad tbody");
 tabla3.innerHTML = ""; // Limpiar la tabla3 antes de actualizar
 equipos3.forEach((equipo3Data) => {
     const nuevaFila3 = document.createElement("tr");
+    let claseColor3 = '';
+    if (equipo3Data.index3 <= 4) {
+        claseColor3 = 'pos-ascen';
+    } else if (equipo3Data.index3 <=20) {
+        claseColor3 = 'pos-nada';
+    }
     nuevaFila3.innerHTML = `
+    <td class="fw-bold text-center ${claseColor3}">${equipo3Data.index3}</td>
     <td class="fw-bold text-center">${equipo3Data.equipo3}</td>
     <td class="cham-jug fw-bold text-center">${equipo3Data.partidosJugados3}</td>
     <td class="cham-act fw-bold text-center">${equipo3Data.puntosActuales3}</td>
@@ -253,8 +263,9 @@ const partidosTotales4 = 38; // Cambiado a 38 partidos en la temporada
 const puntosPorGanar4 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija4 = 63; // Ajusta este valor según tus necesidades
 const equipos4 = [];
-filas4.forEach((fila, indice) => {
-    const equipo4 = fila.querySelector(`.fw-bold`).textContent;
+let index4 = 1;
+filas4.forEach((fila) => {
+    const equipo4 = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados4 = parseInt(fila.querySelector(`.euro-jug`).textContent);
     const puntosActuales4 = parseInt(fila.querySelector(`.euro-act`).textContent);
     // Calcular puntos necesarios para alcanzar la proximidad fija
@@ -268,6 +279,7 @@ filas4.forEach((fila, indice) => {
     const partidosGanadosPesimistas4 = Math.min(partidosGanadosMatematicos4 - 2, puntosParaEuropa);
     const partidosGanadosOptimistas4 = Math.min(partidosGanadosMatematicos4 -4, puntosParaEuropa);
     equipos4.push({
+        index4: index4,
         equipo4,
         partidosJugados4,
         puntosActuales4,
@@ -276,6 +288,7 @@ filas4.forEach((fila, indice) => {
         partidosGanadosOptimistas4,
         partidosGanadosPesimistas4
     });
+    index4++
 });
 // Ordenar los equipo3s3 por proximidad descendente
 equipos4.sort((a, b) => b.proximidadDeEuropa - a.proximidadDeEuropa);
@@ -284,7 +297,16 @@ const tabla4 = document.querySelector("#tablaEuropaVallad tbody");
 tabla4.innerHTML = ""; // Limpiar la tabla3 antes de actualizar
 equipos4.forEach((equipo4Data) => {
     const nuevaFila4 = document.createElement("tr");
+    let claseColor4 = '';
+    if (equipo4Data.index4 <= 4) {
+        claseColor4 = 'pos-nada';
+    } else if (equipo4Data.index4 <= 5) {
+        claseColor4 = 'pos-playoff';
+    }else if (equipo4Data.index4 <= 20) {
+        claseColor4 = 'pos-nada';
+    }
     nuevaFila4.innerHTML = `
+    <td class="fw-bold text-center ${claseColor4}">${equipo4Data.index4}</td>
     <td class="fw-bold text-center">${equipo4Data.equipo4}</td>
     <td class="euro-jug fw-bold text-center">${equipo4Data.partidosJugados4}</td>
     <td class="euro-act fw-bold text-center">${equipo4Data.puntosActuales4}</td>
@@ -302,8 +324,9 @@ const partidosTotales5 = 38; // Cambiado a 38 partidos en la temporada
 const puntosPorGanar5 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija5 = 60; // Ajusta este valor según tus necesidades
 const equipos5 = [];
-filas5.forEach((fila, indice) => {
-    const equipo5 = fila.querySelector(`.fw-bold`).textContent;
+let index5 = 1;
+filas5.forEach((fila) => {
+    const equipo5 = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados5 = parseInt(fila.querySelector(`.confe-jug`).textContent);
     const puntosActuales5 = parseInt(fila.querySelector(`.confe-act`).textContent);
     // Calcular puntos necesarios para alcanzar la proximidad fija
@@ -317,6 +340,7 @@ filas5.forEach((fila, indice) => {
     const partidosGanadosPesimistas5 = Math.min(partidosGanadosMatematicos5 - 2, puntosParaConfe);
     const partidosGanadosOptimistas5 = Math.min(partidosGanadosMatematicos5 -4, puntosParaConfe);
     equipos5.push({
+        index5: index5,
         equipo5,
         partidosJugados5,
         puntosActuales5,
@@ -325,6 +349,7 @@ filas5.forEach((fila, indice) => {
         partidosGanadosOptimistas5,
         partidosGanadosPesimistas5
     });
+    index5++
 });
 // Ordenar los equipos3 por proximidad descendente
 equipos5.sort((a, b) => b.proximidadDeConfe - a.proximidadDeConfe);
@@ -333,7 +358,16 @@ const tabla5 = document.querySelector("#tablaConfeVallad tbody");
 tabla5.innerHTML = ""; // Limpiar la tabla5 antes de actualizar
 equipos5.forEach((equipo5Data) => {
     const nuevaFila5 = document.createElement("tr");
+    let claseColor5 = '';
+    if (equipo5Data.index5 <= 5) {
+        claseColor5 = 'pos-nada';
+    } else if (equipo5Data.index5 <= 6) {
+        claseColor5 = 'pos-confe';
+    }else if (equipo5Data.index5 <= 20) {
+        claseColor5 = 'pos-nada';
+    }
     nuevaFila5.innerHTML = `
+    <td class="fw-bold text-center ${claseColor5}">${equipo5Data.index5}</td>
     <td class="fw-bold text-center">${equipo5Data.equipo5}</td>
     <td class="confe-jug fw-bold text-center">${equipo5Data.partidosJugados5}</td>
     <td class="confe-act fw-bold text-center">${equipo5Data.puntosActuales5}</td>
@@ -351,25 +385,23 @@ const partidosTotales6 = 38; // Cambiado a 42 partidos en la temporada
 const puntosPorGanar6 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFijar6 = 36.5; // Ajusta este valor según tus necesidades
 const equipos6 = [];
-filas6.forEach((fila, indice) => {
-    const equipo6 = fila.querySelector(`.fw-bold`).textContent;
+let index6 = 1;
+filas6.forEach((fila) => {
+    const equipo6 = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados6 = parseInt(fila.querySelector(`.desce-jug`).textContent);
     const puntosActuales6 = parseInt(fila.querySelector(`.desce-act`).textContent);
-
     // Calcular puntos necesarios para alcanzar la proximidad fija
     const puntosPermanencia6 = Math.round((proximidadFijar6 / 100) * partidosTotales6 * puntosPorGanar6);
-
     // Calcular la proximidad de ascenso
     const puntosQueFaltan6 = Math.max(0, puntosPermanencia6 - puntosActuales6);
     const proxiPermanencia6 = Math.min(((puntosPermanencia6 - puntosQueFaltan6) / puntosPermanencia6) * 100, 100);
-
     // Calcular los partidos ganados matemáticos, optimistas y pesimistas
     const partidosRestantesPermanencia6 = partidosTotales6 - partidosJugados6;
     const partidosGanadosMatematicos6 = Math.min(puntosActuales6 + partidosRestantesPermanencia6 * puntosPorGanar6, puntosPermanencia6);
     const partidosGanadosPesimistas6 = Math.min(partidosGanadosMatematicos6 -0, puntosPermanencia6);
     const partidosGanadosOptimistas6 = Math.min(partidosGanadosMatematicos6 -2, puntosPermanencia6);
-
     equipos6.push({
+        index6: index6,
         equipo6,
         partidosJugados6,
         puntosActuales6,
@@ -378,6 +410,7 @@ filas6.forEach((fila, indice) => {
         partidosGanadosOptimistas6,
         partidosGanadosPesimistas6
     });
+    index6++
 });
 // Ordenar los equipos6 por proximidad desceendente
 equipos6.sort((a, b) => b.proxiPermanencia6 - a.proxiPermanencia6);
@@ -386,7 +419,14 @@ const tabla6 = document.querySelector("#tablaDescVallad2 tbody");
 tabla6.innerHTML = ""; // Limpiar la tabla2 antes de actualizar
 equipos6.forEach((equipo6Data) => {
     const nuevaFila6 = document.createElement("tr");
+    let claseColor6 = '';
+    if (equipo6Data.index6 <= 17) {
+        claseColor6 = 'pos-nada';
+    } else if (equipo6Data.index6 <= 20) {
+        claseColor6 = 'pos-desc';
+    }
     nuevaFila6.innerHTML = `
+    <td class="fw-bold text-center ${claseColor6}">${equipo6Data.index6}</td>
     <td class="fw-bold text-center">${equipo6Data.equipo6}</td>
     <td class="desce-jug fw-bold text-center">${equipo6Data.partidosJugados6}</td>
     <td class="desce-act fw-bold text-center">${equipo6Data.puntosActuales6}</td>
@@ -404,8 +444,9 @@ const partidosTotales7 = 38; // Cambiado a 38 partidos en la temporada
 const puntosPorGanar7 = 3; // Cambiado a 3 puntos por partido ganado
 const proximidadFija7 = 101; // Ajusta este valor según tus necesidades
 const equipos7 = [];
-filas7.forEach((fila, indice) => {
-    const equipo7 = fila.querySelector(`.fw-bold`).textContent;
+let index7 = 1;
+filas7.forEach((fila) => {
+    const equipo7 = fila.querySelector(`.size_equipos`).textContent;
     const partidosJugados7 = parseInt(fila.querySelector(`.camp-jug`).textContent);
     const puntosActuales7 = parseInt(fila.querySelector(`.camp-act`).textContent);
     // Calcular puntos necesarios para alcanzar la proximidad fija
@@ -419,6 +460,7 @@ filas7.forEach((fila, indice) => {
     const partidosGanadosPesimistas7 = Math.min(partidosGanadosMatematicos7 - 19, puntosParaChampions);
     const partidosGanadosOptimistas7 = Math.min(partidosGanadosMatematicos7 -21, puntosParaChampions);
     equipos7.push({
+        index7: index7,
         equipo7,
         partidosJugados7,
         puntosActuales7,
@@ -427,6 +469,7 @@ filas7.forEach((fila, indice) => {
         partidosGanadosOptimistas7,
         partidosGanadosPesimistas7
     });
+    index7++
 });
 // Ordenar los equipo7s7 por proximidad descendente
 equipos7.sort((a, b) => b.proximidadDeChampions - a.proximidadDeChampions);
@@ -435,7 +478,14 @@ const tabla7 = document.querySelector("#tablaCampeonVallad tbody");
 tabla7.innerHTML = ""; // Limpiar la tabla7 antes de actualizar
 equipos7.forEach((equipo7Data) => {
     const nuevaFila7 = document.createElement("tr");
+    let claseColor7 = '';
+    if (equipo7Data.index7 <= 1) {
+        claseColor7 = 'pos-ascen';
+    } else if (equipo7Data.index7 <=20) {
+        claseColor7 = 'pos-nada';
+    }
     nuevaFila7.innerHTML = `
+    <td class="fw-bold text-center ${claseColor7}">${equipo7Data.index7}</td>
     <td class="fw-bold text-center">${equipo7Data.equipo7}</td>
     <td class="camp-jug fw-bold text-center">${equipo7Data.partidosJugados7}</td>
     <td class="camp-act fw-bold text-center">${equipo7Data.puntosActuales7}</td>

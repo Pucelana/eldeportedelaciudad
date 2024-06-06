@@ -34,70 +34,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Clasificación - Liga 3ª División - Grp-9</h3>
-                  <div class="col-1">
-                    <!--<table class="table"> <--Posiciones->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-success text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">16</td>
-                        </tr>
-                      </tbody>
-                    </table>-->
-                  </div>
                   <div class="col-12">
                   <table id="tablaClasifUniversidad" class="table tablaClasificacion">
                     <thead>
                       <tr class="text-center">
-                        <th>Pos.</th>
+                        <th></th>
                         <th>Equipos</th>
                         <th>PTS</th>
                         <th>PJ</th>
@@ -112,7 +53,7 @@
                     <tbody class="tablaCuerpo">
                       {% for equipo in clasificacion_analisis_universidad %}
                       <tr class="text-center">
-                        <td class="fw-bold {% if equipo.index <= 1 %}pos-champion{% elif equipo.index <= 2 %}pos-uefa{% elif equipo.index <= 3 %}pos-confe{% elif equipo.index >= clasificacion_analisis_universidad|length - 2 %}pos-descenso{% endif %}">
+                        <td class="fw-bold {% if equipo.index <= 1 %}pos-ascen{% elif equipo.index <= 2 %}pos-copa{% elif equipo.index <= 13 %}pos-nada{% elif equipo.index >= clasificacion_analisis_universidad|length - 2 %}pos-desc{% endif %}">
                           {{ equipo.index }}
                         </td>
                         <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
@@ -142,69 +83,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Ascenso - Liga Fem. 2ª Federación</h3>
-                  <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-success text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">16</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
+                  <div class="col-12">
                   <table id="tablaAscensoUniversidad" class="table"><!--Tabla Ascenso-->
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -215,11 +98,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_universidad %}
+                      {% for equipo in clasificacion_analisis_universidad %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="jugados1 fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="pts-act1 fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="jugados1 fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="pts-act1 fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="proxi1 fw-bold"></td>
                         <td class="pts-mate1 fw-bold"></td>
                         <td class="pts-opti1 fw-bold"></td>
@@ -336,69 +220,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center mb-4">Descenso 1ª Div. Prov. Aficionados</h3>
-                  <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-secondary text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">16</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
                   <div class="col-12">
                   <table id="tablaDescUniversidad" class="table"><!--Tabla Permanencia-->
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -409,12 +235,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_universidad %}
+                      {% for equipo in clasificacion_analisis_universidad %}
                       <tr class="text-center">
-                        <td class="fw-bold posClass">${index + 1}</td>
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="desc-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="desc-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="desc-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="desc-prox fw-bold"></td>
                         <td class="desc-mate fw-bold"></td>
                         <td class="desc-opti fw-bold"></td>
@@ -453,5 +279,6 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 </script> 
   <script src="/static/js/script.js"></script>
   <script src="/static/js/analisis-universidad.js"></script>
+  <script src="/static/js/num_caracteres.js"></script>
 </body>
 </html>

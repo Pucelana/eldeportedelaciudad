@@ -34,63 +34,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center">Clasificación - Liga Guerreras Iberdrola</h3>
-                  <div class="col-1">
-                    <table class="table tabla_posiciones"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-success text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">14</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
+                  <div class="col-12">
                   <table id="tablaClasificacion" class="table">
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PTS</th>
                         <th>PJ</th>
@@ -105,6 +53,9 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_aula %}
                       <tr class="text-center">
+                        <td class="fw-bold {% if equipo.index <= 8 %}pos-playoff-titulo{% elif equipo.index <= 10 %}pos-nada{% elif equipo.index >= clasificacion_analisis_universidad|length - 3 %}pos-desc{% endif %}">
+                          {{ equipo.index }}
+                        </td>
                         <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>
@@ -208,63 +159,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                    <h3 class="text-center mb-4">PlayOff al Título</h3>
-                   <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-success text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
+                  <div class="col-12">
                   <table id="tablaPlayAula" class="table"><!--Tabla PlayOff-->
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -275,11 +174,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_aula %}
+                      {% for equipo in clasificacion_analisis_aula %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos play-equipo">{{ equipo_info['equipo'] }}</td>
-                        <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="play-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="play-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="play-prox fw-bold"></td>
                         <td class="play-mate fw-bold"></td>
                         <td class="play-opti fw-bold"></td>
@@ -301,63 +201,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                   <h3 class="text-center mb-4">Salvación - Descenso  1ª División</h3>
-                  <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-secondary text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">12</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
+                  <div class="col-12">
                   <table id="tablaDescAula" class="table"><!--Tabla Descenso-->
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -368,11 +216,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_aula %}
+                      {% for equipo in clasificacion_analisis_aula %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos play-equipo">{{ equipo_info['equipo'] }}</td>
-                        <td class="desc-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="desc-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="desc-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="desc-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="desc-prox fw-bold"></td>
                         <td class="desc-mate fw-bold"></td>
                         <td class="desc-opti fw-bold"></td>
@@ -394,63 +243,11 @@
               <div class="card-body">
                 <div class="row table-responsive">
                    <h3 class="text-center mb-4">Competiciones Europeas (Clasificación final)</h3>
-                   <div class="col-1">
-                    <table class="table"> <!--Posiciones-->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-success text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-success text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
+                  <div class="col-12">
                   <table id="tablaEuroAula" class="table"><!--Tabla PlayOff-->
                     <thead>
                       <tr class="text-center">
+                        <th></th>
                         <th>Equipos</th>
                         <th>PJ</th>
                         <th>PA</th>
@@ -461,11 +258,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for equipo_info in clasificacion_analisis_aula %}
+                      {% for equipo in clasificacion_analisis_aula %}
                       <tr class="text-center">
-                        <td class="fw-bold size_equipos play-equipo">{{ equipo_info['equipo'] }}</td>
-                        <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
+                        <td class="fw-bold {% if equipo.index <= 2 %}pos-ehf{% elif equipo.index <= 5 %}pos-ehfec{% elif equipo.index <=14 %}pos-nada{% endif %}">{{ equipo.index }}</td>
+                        <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
+                        <td class="play-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                        <td class="play-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                         <td class="play-prox fw-bold"></td>
                         <td class="play-mate fw-bold"></td>
                         <td class="play-opti fw-bold"></td>
@@ -478,7 +276,7 @@
                 </div>
               </div>
               <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
-              <p class="ms-4">EHF<span class="badge bg-success ms-2">1-2</span>; EHFEC<span class="badge bg-danger ms-2">3-5</span>; Esta clasificación se determina una vez jugados los playoff al título.</p>
+              <p class="ms-4">EHF<span class="badge bg-success ms-2">1-2</span>; EHFEC<span class="badge bg-warning ms-2">3-5</span>; Esta clasificación se determina una vez jugados los playoff al título.</p>
             </div>
           </div>
         </div>
