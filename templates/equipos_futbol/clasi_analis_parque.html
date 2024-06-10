@@ -98,7 +98,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_parquesol %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
                         <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="jugados1 fw-bold">{{ equipo['datos']['jugados'] }}</td>
                         <td class="pts-act1 fw-bold">{{ equipo['datos']['puntos'] }}</td>
@@ -235,7 +235,7 @@
                     <tbody>
                       {% for equipo in clasificacion_analisis_parquesol %}
                       <tr class="text-center">
-                        <td class="fw-bold">{{ equipo['equipo'] }}</td>
+                        <td class="fw-bold">{{ equipo.index }}</td>
                         <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                         <td class="desc-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
                         <td class="desc-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
@@ -276,5 +276,6 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 </script> 
   <script src="/static/js/script.js"></script>
   <script src="/static/js/analisis-parquesol.js"></script>
+  <script src="/static/js/num_caracteres.js"></script>
 </body>
 </html>

@@ -55,7 +55,7 @@
                     <tbody>
                     {% for equipo, datos_equipo in tabla_partidos_promesas.items() %}
                       <tr class="text-center">
-                        <th class="text-white">{{ equipo }}</th>
+                        <th class="text-white size_equipos">{{ equipo }}</th>
                         <td class="jorn_ida fw-bold">
                         {% if datos_equipo.get('primer_enfrentamiento') %}
                         J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
@@ -108,10 +108,10 @@
                             {% for partido in goles.partidos %}
                               <tr class="text-center">
                                 <td class="text-center fw-bold">{{ partido.fecha }} {{ partido.hora }}</td>
-                                <td class="text-center fw-bold">{{ partido.local }}</td>
+                                <td class="text-center fw-bold size_equipos">{{ partido.local }}</td>
                                 <td class="text-center text-white">{{ partido.resultadoA }}</td>
                                 <td class="text-center text-white">{{ partido.resultadoB }}</td>
-                                <td class="text-center fw-bold">{{ partido.visitante }}</td>
+                                <td class="text-center fw-bold size_equipos">{{ partido.visitante }}</td>
                               </tr>
                             {% endfor %}
                             </tbody>
@@ -150,6 +150,7 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 </script> 
 <script src="/static/js/script.js"></script>
 <script src="/static/js/leer_mas.js"></script>
+<script src="/static/js/num_caracteres.js"></script>
 <script> 
   document.addEventListener('DOMContentLoaded', function() {
     // Seleccionar todas las filas de la tabla

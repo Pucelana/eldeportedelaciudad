@@ -52,7 +52,7 @@
                               <tbody>
                                 {% for equipo, datos_equipo in tabla_partidos_vcv.items() %}
                                   <tr class="text-center">
-                                    <th class="text-white">{{ equipo }}</th>
+                                    <th class="text-white size_equipos">{{ equipo }}</th>
                                     <td class="jorn_ida fw-bold">
                                       {% if datos_equipo.get('primer_enfrentamiento') %}
                                         J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
@@ -105,10 +105,10 @@
                                     {% for partido in goles.partidos %}
                                     <tr class="text-center">
                                       <td class="text-center fw-bold text-white2">{{ partido.fecha }} {{ partido.hora }}</td>
-                                      <td class="text-center fw-bold">{{ partido.local }}</td>
+                                      <td class="text-center fw-bold size_equipos">{{ partido.local }}</td>
                                       <td class="text-center text-white">{{ partido.resultadoA }}</td>
                                       <td class="text-center text-white">{{ partido.resultadoB }}</td>
-                                      <td class="text-center fw-bold">{{ partido.visitante }}</td>
+                                      <td class="text-center fw-bold size_equipos">{{ partido.visitante }}</td>
                                     </tr>
                                   {% endfor %}
                                   </tbody>
@@ -147,225 +147,8 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
 </script> 
 <script src="/static/js/script.js"></script>
 <script src="/static/js/leer_mas.js"></script>
+<script src="/static/js/num_caracteres.js"></script>
 <script> 
-  /*document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar todas las filas de la tabla
-    var filas = document.querySelectorAll('.tabla_vcv tbody tr');
-    // Iterar sobre cada fila
-    filas.forEach(function(fila) {
-        // Obtener el nombre del equipo de la fila actual
-        var equipo = fila.querySelector('th').textContent.trim();
-        console.log(equipo)
-        // Obtener la jornada y determinar si el Promesas juega en casa o como visitante
-        var jornadaElement = fila.querySelector('.jorn_ida');
-        var esLocal = false; // Por defecto, asumimos que el Promesas juega como visitante
-        if (jornadaElement) {
-            var jornada = jornadaElement.textContent.trim();
-            if (jornada.includes('C')) {
-                esLocal = true;
-            }
-        }
-        // Obtener los valores de los resultados de la fila
-        var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
-        console.log(resultadoA)
-        var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
-        console.log(resultadoB)
-        var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
-        console.log(resultadoAA)
-        var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
-        console.log(resultadoBB)
-        // Comparar los resultados y actualizar el estilo de las celdas correspondientes
-        var part1 = fila.querySelector('.part1');
-        var average = fila.querySelector('.average');        
-        /*if (esLocal) {
-            if (resultadoA > resultadoB) {
-                part1.textContent = '2';
-                part1.style.color = 'deepskyblue';
-            }else if (resultadoA === resultadoB) {
-                part1.textContent = '1';
-                part1.style.color = 'deepskyblue';
-            }else if (resultadoA < resultadoB) {
-                part1.textContent = '0';
-                part1.style.color = 'deepskyblue';
-            } else if (resultadoAA > resultadoBB) {
-                part1.textContent = '2';
-                part1.style.color = 'deepskyblue';
-            } else if (resultadoAA === resultadoBB){
-                part1.textContent = '1';
-                part1.style.color = 'deepskyblue';
-            } else if (resultadoAA < resultadoBB) {
-                part1.textContent = '0';
-                part1.style.color = 'deepskyblue';
-            }
-        } else {
-            if (resultadoB > resultadoA) {
-                part1.textContent = '2';
-                part1.style.color = 'deepskyblue';
-            } else if (resultadoB === resultadoA){
-                part1.textContent = '1';
-                part1.style.color = 'deepskyblue';
-            } else if (resultadoB < resultadoA) {
-                part1.textContent = '0';
-                part1.style.color = 'deepskyblue';
-            } else if(resultadoBB > resultadoAA) {
-                part1.textContent = '2';
-                part1.style.color = 'deepskyblue';
-            } else if (resultadoBB === resultadoAA){
-                part1.textContent = '1';
-                part1.style.color = 'deepskyblue';
-            } else if (resultadoBB < resultadoAA) {
-                part1.textContent = '0';
-                part1.style.color = 'deepskyblue';
-            }
-          }*/
-          /*if (esLocal){
-            if (resultadoA > resultadoB){
-                if (resultadoA == 3 && resultadoB <= 1){
-                    part1.textContent = '3';
-                    part1.style.color = 'deepskyblue';
-                }else if (resultadoA == 3 && resultadoB == 2){
-                    part1.textContent = '2';
-                    part1.style.color = 'deepskyblue';
-                }
-            else if (resultadoA < resultadoB){
-                if (resultadoA == 2 && resultadoB == 3){
-                    part1.textContent = '1';
-                    part1.style.color = 'deepskyblue';
-                }else if (resultadoA <= 1 && resultadoB == 3){
-                    part1.textContent = '0';
-                    part1.style.color = 'deepskyblue';
-                }
-            }
-            else if (resultadoAA > resultadoBB) {
-                if (resultadoAA == 3 && resultadoBB <= 1){
-                    part1.textContent = '3';
-                    part1.style.color = 'deepskyblue';
-                }else if (resultadoAA == 3 && resultadoBB == 2){
-                    part1.textContent = '2';
-                    part1.style.color = 'deepskyblue';
-                }
-            }
-            else if (resultadoAA < resultadoBB) {
-                if (resultadoAA == 2 && resultadoBB == 3){
-                    part1.textContent = '1';
-                    part1.style.color = 'deepskyblue';
-                }else if (resultadoAA <= 1 && resultadoBB == 3){
-                    part1.textContent = '0';
-                    part1.style.color = 'deepskyblue';
-                }
-            }
-          }
-          else{
-            if (resultadoB > resultadoA){
-                if (resultadoB == 3 && resultadoA <= 1){
-                    part1.textContent = '3';
-                    part1.style.color = 'deepskyblue';
-                }else if (resultadoB == 3 && resultadoA ==2){
-                    part1.textContent = '2';
-                    part1.style.color = 'deepskyblue';
-                }
-            }else if (resultadoB < resultadoA){
-                if (resultadoB == 2 && resultadoA == 3){
-                    part1.textContent = '1';
-                    part1.style.color = 'deepskyblue';
-                }else if (resultadoB <= 1 && resultadoA == 3){
-                    part1.textContent = '0';
-                    part1.style.color = 'deepskyblue';
-                }
-            }
-            else if (resultadoBB > resultadoAA) {
-                if (resultadoBB == 3 && resultadoAA <= 1){
-                    part1.textContent = '3';
-                    part1.style.color = 'deepskyblue';
-                }else if (resultadoBB == 3 && resultadoAA == 2){
-                    part1.textContent = '2';
-                    part1.style.color = 'deepskyblue';
-                }
-
-            } else if (resultadoBB < resultadoAA) {
-                if (resultadoBB == 2 && resultadoAA == 3){
-                    part1.textContent = '1';
-                    part1.style.color = 'deepskyblue';
-                }else if (resultadoBB <= 1 && resultadoAA == 3){
-                    part1.textContent = '0';
-                    part1.style.color = 'deepskyblue';
-                }
-            }
-          // Verificar si se tienen los resultados del segundo enfrentamiento
-          if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
-          // Calcular el puntaje del segundo enfrentamiento
-            var puntajeSegundoEnfrentamiento = 0;
-          // Determinar si el equipo juega como local o visitante en el segundo enfrentamiento
-            if (resultadoAA > resultadoBB) {
-          // "AA" gana como local
-              if (!esLocal) {
-                puntajeSegundoEnfrentamiento = 2;
-              }
-            } else if (resultadoAA < resultadoBB) {
-          // "AA" gana como visitante
-              if (esLocal) {
-                puntajeSegundoEnfrentamiento = 2;
-              }
-          } else {
-          // Empate en el segundo enfrentamiento
-            puntajeSegundoEnfrentamiento = 1;
-          }
-          // Actualizar el puntaje total sumando el del segundo enfrentamiento
-        if (part1.textContent === '-') {
-        part1.textContent = puntajeSegundoEnfrentamiento.toString();
-        } else {
-        part1.textContent = (parseInt(part1.textContent) + puntajeSegundoEnfrentamiento).toString();
-        }
-      }
-    }
-}
-    });
-  // Iterar sobre cada fila
-  filas.forEach(function(fila) {
-    // Obtener los valores de resultadoA y resultadoB de la fila actual
-    var resultadoA = parseInt(fila.querySelector('.resultadoA').textContent);
-    var resultadoB = parseInt(fila.querySelector('.resultadoB').textContent);
-    // Obtener los valores de resultadoAA y resultadoBB de la fila actual para la jornada de vuelta
-    var resultadoAA = parseInt(fila.querySelector('.resultadoAA').textContent);
-    var resultadoBB = parseInt(fila.querySelector('.resultadoBB').textContent);
-    // Obtener la celda 'average'
-    var average = fila.querySelector('.average');        
-    // Calcular la diferencia de goles dependiendo si resultadoA juega como local o visitante
-    var diferenciaGolesIda;
-    if (fila.querySelector('.jorn_ida').textContent.includes('C')) {
-        // resultadoA juega en casa
-        diferenciaGolesIda = resultadoA - resultadoB;
-    } else {
-        // resultadoA juega como visitante
-        diferenciaGolesIda = resultadoB - resultadoA;
-    }
-    // Calcular la diferencia de goles para la jornada de vuelta
-    var diferenciaGolesVuelta;
-    if (!isNaN(resultadoAA) && !isNaN(resultadoBB)) {
-        if (fila.querySelector('.jorn_ida').textContent.includes('C')) {
-            // resultadoAA juega como visitante en la jornada de vuelta
-            diferenciaGolesVuelta = resultadoBB - resultadoAA;
-        } else {
-            // resultadoAA juega en casa en la jornada de vuelta
-            diferenciaGolesVuelta = resultadoAA - resultadoBB;
-        }
-    } else {
-        diferenciaGolesVuelta = 0;
-    }
-    // Calcular el average total sumando las diferencias de goles de ambas jornadas
-    var averageTotal = diferenciaGolesIda + diferenciaGolesVuelta;
-    // Asignar el valor del average total a la celda 'average'
-    average.textContent = averageTotal;
-    // Determinar el color de la celda 'average' según la diferencia de goles
-    if (averageTotal > 0) {
-        average.style.color = 'lime'; // Equipo A ganó
-    } else if (averageTotal < 0) {
-        average.style.color = 'darkred'; // Equipo A perdió
-    } else {
-        average.style.color = 'deepskyblue'; // Empate
-    }
-  });
-});*/
 document.addEventListener('DOMContentLoaded', function() {
     // Seleccionar todas las filas de la tabla
     var filas = document.querySelectorAll('.tabla_vcv tbody tr');
