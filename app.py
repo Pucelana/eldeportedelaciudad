@@ -4732,7 +4732,7 @@ def playoffs_salvador():
 def calendarios_salvador():
     datos11 = obtener_datos_salvador()
     nuevos_datos_salvador = [dato for dato in datos11 if dato]
-    equipo_salvador = 'El Salvador'
+    equipo_salvador = 'CR El Salvador'
     tabla_partidos_salvador = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos11:
@@ -5209,7 +5209,7 @@ def playoffs_vrac():
 def calendarios_vrac():
     datos12 = obtener_datos_vrac()
     nuevos_datos_vrac = [dato for dato in datos12 if dato]
-    equipo_vrac = 'VRAC'
+    equipo_vrac = 'VRAC Quesos Entrepinares'
     tabla_partidos_vrac = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos12:
@@ -6125,6 +6125,24 @@ def clasif_analisis_caja():
     clasificacion_analisis_caja = generar_clasificacion_analisis_hockey_caja(data14, total_partidos_temporada_caja)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_caja = sorted(clasificacion_analisis_caja, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+     # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_caja}
+    for club in clubs15:
+        if club not in clubs_set:
+            clasificacion_analisis_caja.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0,
+                    'bonus': 0               
+                }
+            })
      # Añadir un índice a cada equipo
     clasificacion_analisis_caja_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_caja)]
     return render_template('equipos_hockey/clasi_analis_caja.html', clasificacion_analisis_caja=clasificacion_analisis_caja_indexed)
@@ -6200,6 +6218,45 @@ def calendarios_caja():
                     tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_caja[equipo_contrario]['jornadas'][jornada['nombre']]['rol_caja'] = rol_caja
     return render_template('equipos_hockey/calendario_caja.html', tabla_partidos_caja=tabla_partidos_caja, nuevos_datos_caja=nuevos_datos_caja)
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_caja = 'json_clubs/clubs_caja.json'
+def escribir_clubs_caja(clubs15):
+    with open(clubs_caja, 'w') as file:
+        json.dump(clubs15, file, indent=4)
+def leer_clubs_caja():
+    if os.path.exists(clubs_caja):
+        with open(clubs_caja, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs15 = leer_clubs_caja()
+@app.route('/admin/jornada0_caja', methods=['GET', 'POST'])
+def jornada0_caja():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs15.append(club)
+            escribir_clubs_caja(clubs15)
+            return redirect(url_for('jornada0_caja'))
+        else:
+            index = int(request.form['index'])
+            del clubs15[index]  # Eliminar el club de la lista
+            escribir_clubs_caja(clubs15)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_caja'))
+    return render_template('admin/clubs_caja.html', clubs15=clubs15, indices=range(len(clubs15)))
+@app.route('/admin/eliminar_club_caja/<string:club>', methods=['POST'])
+def eliminar_club_caja(club):
+    global clubs15 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs15:
+        # Eliminar el club de la lista
+        clubs15.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_caja(clubs15)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_caja'))
 #Fin proceso CPLV Caja Rural
 
 #Todo el proceso de calendario y clasificación del CPLV Munia Panteras
@@ -6537,6 +6594,24 @@ def clasif_analisis_panteras():
     clasificacion_analisis_panteras = generar_clasificacion_analisis_hockey_panteras(data15, total_partidos_temporada_panteras)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_panteras = sorted(clasificacion_analisis_panteras, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_goles']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_panteras}
+    for club in clubs16:
+        if club not in clubs_set:
+            clasificacion_analisis_panteras.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados': 0,
+                    'empatados': 0,
+                    'perdidos': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_goles': 0,
+                    'bonus': 0               
+                }
+            })
      # Añadir un índice a cada equipo
     clasificacion_analisis_panteras_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_panteras)]
     return render_template('equipos_hockey/clasi_analis_pante.html', clasificacion_analisis_panteras=clasificacion_analisis_panteras_indexed)
@@ -6612,6 +6687,45 @@ def calendarios_panteras():
                     tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_panteras[equipo_contrario]['jornadas'][jornada['nombre']]['rol_panteras'] = rol_panteras
     return render_template('equipos_hockey/calendario_panteras.html', tabla_partidos_panteras=tabla_partidos_panteras, nuevos_datos_panteras=nuevos_datos_panteras)
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_panteras = 'json_clubs/clubs_panteras.json'
+def escribir_clubs_panteras(clubs16):
+    with open(clubs_panteras, 'w') as file:
+        json.dump(clubs16, file, indent=4)
+def leer_clubs_panteras():
+    if os.path.exists(clubs_panteras):
+        with open(clubs_panteras, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs16 = leer_clubs_panteras()
+@app.route('/admin/jornada0_panteras', methods=['GET', 'POST'])
+def jornada0_panteras():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs16.append(club)
+            escribir_clubs_panteras(clubs16)
+            return redirect(url_for('jornada0_panteras'))
+        else:
+            index = int(request.form['index'])
+            del clubs16[index]  # Eliminar el club de la lista
+            escribir_clubs_panteras(clubs16)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_panteras'))
+    return render_template('admin/clubs_panteras.html', clubs16=clubs16, indices=range(len(clubs16)))
+@app.route('/admin/eliminar_club_panteras/<string:club>', methods=['POST'])
+def eliminar_club_panteras(club):
+    global clubs16 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs16:
+        # Eliminar el club de la lista
+        clubs16.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_panteras(clubs16)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_panteras'))
 #Fin proceso CPLV Munia Panteras
 
 #EQUIPOS VOLEIBOL
@@ -6772,6 +6886,24 @@ def clasif_analisis_vcv():
     clasificacion_analisis_vcv = generar_clasificacion_analisis_voley_vcv(data18, total_partidos_temporada_vcv)
     # Ordena la clasificación por puntos y diferencia de goles
     clasificacion_analisis_vcv = sorted(clasificacion_analisis_vcv, key=lambda x: (x['datos']['puntos'], x['datos']['diferencia_sets']), reverse=True)
+    # Agregar equipos nuevos a la clasificación si no están ya en ella
+    clubs_set = {club['equipo'] for club in clasificacion_analisis_vcv}
+    for club in clubs17:
+        if club not in clubs_set:
+            clasificacion_analisis_vcv.append({
+                'equipo': club,
+                'datos': {
+                    'puntos': 0,
+                    'jugados': 0,
+                    'ganados3': 0,
+                    'ganados2': 0,
+                    'perdidos1': 0,
+                    'perdidos0': 0,
+                    'favor': 0,
+                    'contra': 0,
+                    'diferencia_sets': 0               
+                }
+            })
      # Añadir un índice a cada equipo
     clasificacion_analisis_vcv_indexed = [{'index': i + 1, 'equipo': equipo['equipo'], 'datos': equipo['datos']} for i, equipo in enumerate(clasificacion_analisis_vcv)]
     return render_template('equipos_voleibol/clasi_analis_vcv.html', clasificacion_analisis_vcv=clasificacion_analisis_vcv_indexed)
@@ -6841,6 +6973,45 @@ def calendarios_vcv():
                     tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['resultadoBB'] = resultado_b
                     tabla_partidos_vcv[equipo_contrario]['jornadas'][jornada['nombre']]['rol_vcv'] = rol_vcv
     return render_template('equipos_voleibol/calendario_vcv.html', tabla_partidos_vcv=tabla_partidos_vcv, nuevos_datos_vcv=nuevos_datos_vcv)
+# Crear la Jornada 0, inscribir a los club participantes
+clubs_vcv = 'json_clubs/clubs_vcv.json'
+def escribir_clubs_vcv(clubs17):
+    with open(clubs_vcv, 'w') as file:
+        json.dump(clubs17, file, indent=4)
+def leer_clubs_vcv():
+    if os.path.exists(clubs_vcv):
+        with open(clubs_vcv, 'r') as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []        
+clubs17 = leer_clubs_vcv()
+@app.route('/admin/jornada0_vcv', methods=['GET', 'POST'])
+def jornada0_vcv():
+    if request.method == 'POST':
+        club = request.form['equipo']
+        if club:
+            clubs17.append(club)
+            escribir_clubs_vcv(clubs17)
+            return redirect(url_for('jornada0_vcv'))
+        else:
+            index = int(request.form['index'])
+            del clubs17[index]  # Eliminar el club de la lista
+            escribir_clubs_vcv(clubs17)  # Actualizar el archivo JSON
+            return redirect(url_for('jornada0_vcv'))
+    return render_template('admin/clubs_vcv.html', clubs17=clubs17, indices=range(len(clubs17)))
+@app.route('/admin/eliminar_club_vcv/<string:club>', methods=['POST'])
+def eliminar_club_vcv(club):
+    global clubs17 
+    # Verificar si el club está en la lista de clubes aliados
+    if club in clubs17:
+        # Eliminar el club de la lista
+        clubs17.remove(club)
+        # Escribir los clubes actualizados en el archivo JSON
+        escribir_clubs_vcv(clubs17)      
+    # Redireccionar a la página de administración de clubes aliados
+    return redirect(url_for('jornada0_vcv'))
 #Fin proceso Univ. Valladolid VCV
 
 # COPA DEL REY Y COPA DE LA REINA

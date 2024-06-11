@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Equipos - VRAC</title>
+    <title>Equipos - CPLV Caja Rural</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -15,16 +15,16 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb ms-1">
       <li class="breadcrumb-item"><a href="/admin/pub_marcadores" class="text-white text-decoration-none">Inicio</a></li>
-      <li class="breadcrumb-item active text-dark" aria-current="page">Temporada 24/25 VRAC</li>
+      <li class="breadcrumb-item active text-dark" aria-current="page">Temporada 24/25 CPLV Caja Rural</li>
     </ol>
   </nav>
   <header>
-    <h1 class="text-center">Equipos División de Honor 24/25</h1>
+    <h1 class="text-center">Equipos Liga Élite Masculina 24/25</h1>
   </header>
     <section class="container-lg">
       <!-- Formulario para los resultados de los partidos -->
       <div class="container-lg">
-        <form method="POST" action="/admin/jornada0_vrac" class="row mb-3">
+        <form method="POST" action="/admin/jornada0_caja" class="row mb-3">
           <div class="col-md-12">
             <label for="equipo">Nombre Equipos</label>
             <input type="text" class="form-control" id="equipo" name="equipo">
@@ -51,10 +51,10 @@
                   <tbody">
                   {% for index in indices %}
                   <tr class="text-center">
-                    <td class="text-center fw-bold">{{ clubs13[index] }}</td>
+                    <td class="text-center fw-bold">{{ clubs15[index] }}</td>
                     <td>
                       <!-- Botón para cada equipo -->
-                      <form action="{{ url_for('eliminar_club_vrac', club=clubs13[index]) }}" method="POST">
+                      <form action="{{ url_for('eliminar_club_caja', club=clubs15[index]) }}" method="POST">
                           <input type="hidden" name="index" value="{{ index }}">
                           <button type="submit" class="btn btn-danger">Borrar</button>
                       </form>
