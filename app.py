@@ -8501,7 +8501,6 @@ def copas_vrac():
 # PARTICIPACIÓN EUROPEA MASCULINO Y FEMENINO
 # Europa Aula Valladolid
 europa_aula = 'json_europa/europa_aula.json'
-# Fin Europa Aula Valladolid
 def guardar_europa_aula(dataa1):
     with open(europa_aula, 'w', encoding='utf-8') as file:
         json.dump(dataa1, file, indent=4)
@@ -8637,7 +8636,386 @@ def euro_aula():
     return render_template('europa/aula_europa.html', dataa1=dataa1)
 # Fin Europa Aula Valladolid
 
+# Europa VRAC
+europa_vrac = 'json_europa/europa_vrac.json'
+def guardar_europa_vrac(dataa2):
+    with open(europa_vrac, 'w', encoding='utf-8') as file:
+        json.dump(dataa2, file, indent=4)
+def obtener_europa_vrac():
+    try:
+        with open(europa_vrac, 'r', encoding='utf-8') as file:
+            dataa2 = json.load(file)
+        return dataa2
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'final': []}
+nuevas_eliminatorias_vrac = []
+duelos_vrac = None
+# Crear formulario para EHF Aula Valladolid
+@app.route('/admin/europa_vrac/')
+def ver_europa_vrac():
+    dataa2 = obtener_europa_vrac()
+    return render_template('admin/europa_vrac.html', dataa2=dataa2)
+# Crear formulario para Copa Iberica VRAC
+@app.route('/admin/crear_europa_vrac', methods=['GET', 'POST'])
+def crear_europa_vrac():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dataa2 = obtener_europa_vrac()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'final':
+            max_partidos = 1              
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dataa2[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_europa_vrac(dataa2)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_vrac'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/europa_vrac.html', dataa2=dataa2)
+# Toma la lista de EHF Aula Valladolid y los guarda
+def guardar_europa_en_archivo_vrac(dataa2):
+    arch_guardar_europa_vrac = 'json_europa/europa_vrac.json'
+    # Guardar en el archivo
+    with open(arch_guardar_europa_vrac, 'w', encoding='UTF-8') as archivo:
+        json.dump(dataa2, archivo)
+# Modificar los partidos de EHF Aula Valladolid
+@app.route('/modificar_eliminatoria_europa_vrac/<string:id>', methods=['GET', 'POST'])
+def modificar_europa_vrac(id):
+    dataa2 = obtener_europa_vrac()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dataa2.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_europa_vrac(dataa2)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_vrac')) 
+# Ruta para mostrar la Copa Iberica VRAC
+@app.route('/euro_vrac/')
+def euro_vrac():
+    # Obtener datos de las eliminatorias
+    dataa2 = obtener_europa_vrac()
+    return render_template('europa/vrac_europa.html', dataa2=dataa2)
+# Fin Europa VRAC
 
+# Europa CR El Salvador
+europa_salvador = 'json_europa/europa_salvador.json'
+def guardar_europa_salvador(dataa3):
+    with open(europa_salvador, 'w', encoding='utf-8') as file:
+        json.dump(dataa3, file, indent=4)
+def obtener_europa_salvador():
+    try:
+        with open(europa_salvador, 'r', encoding='utf-8') as file:
+            dataa3 = json.load(file)
+        return dataa3
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'final': []}
+nuevas_eliminatorias_salvador = []
+duelos_vrac = None
+# Crear formulario para Copa Ibérica CR El Salvador
+@app.route('/admin/europa_salvador/')
+def ver_europa_salvador():
+    dataa3 = obtener_europa_salvador()
+    return render_template('admin/europa_salvador.html', dataa3=dataa3)
+# Crear formulario para Copa Iberica CR El Salvador
+@app.route('/admin/crear_europa_salvador', methods=['GET', 'POST'])
+def crear_europa_salvador():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dataa3 = obtener_europa_salvador()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'final':
+            max_partidos = 1              
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dataa3[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_europa_salvador(dataa3)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_salvador'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/europa_salvador.html', dataa3=dataa3)
+# Toma la lista de Copa Ibérica CR El Salvador y los guarda
+def guardar_europa_en_archivo_salvador(dataa3):
+    arch_guardar_europa_salvador = 'json_europa/europa_salvador.json'
+    # Guardar en el archivo
+    with open(arch_guardar_europa_salvador, 'w', encoding='UTF-8') as archivo:
+        json.dump(dataa3, archivo)
+# Modificar los partidos de EHF Aula Valladolid
+@app.route('/modificar_eliminatoria_europa_salvador/<string:id>', methods=['GET', 'POST'])
+def modificar_europa_salvador(id):
+    dataa3 = obtener_europa_salvador()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dataa3.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_europa_salvador(dataa3)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_salvador')) 
+# Ruta para mostrar la Copa Iberica CR El Salvador
+@app.route('/euro_salvador/')
+def euro_salvador():
+    # Obtener datos de las eliminatorias
+    dataa3 = obtener_europa_salvador()
+    return render_template('europa/salvador_europa.html', dataa3=dataa3)
+# Fin Europa CR El Salvador
+
+# Europa CR El Salvador Fem.
+europa_salvador_fem = 'json_europa/europa_salvador_fem.json'
+def guardar_europa_salvador(dataa4):
+    with open(europa_salvador_fem, 'w', encoding='utf-8') as file:
+        json.dump(dataa4, file, indent=4)
+def obtener_europa_salvador_fem():
+    try:
+        with open(europa_salvador_fem, 'r', encoding='utf-8') as file:
+            dataa4 = json.load(file)
+        return dataa4
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'final': []}
+nuevas_eliminatorias_salvador_fem = []
+duelos_vrac = None
+# Crear formulario para Copa Ibérica CR El Salvador Fem.
+@app.route('/admin/europa_salvador_fem/')
+def ver_europa_salvador_fem():
+    dataa4 = obtener_europa_salvador_fem()
+    return render_template('admin/europa_salvador_fem.html', dataa4=dataa4)
+# Crear formulario para Copa Iberica CR El Salvador Fem.
+@app.route('/admin/crear_europa_salvador_fem', methods=['GET', 'POST'])
+def crear_europa_salvador_fem():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dataa4 = obtener_europa_salvador_fem()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'final':
+            max_partidos = 1              
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dataa4[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_europa_salvador_fem(dataa4)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_salvador_fem'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/europa_salvador_fem.html', dataa4=dataa4)
+# Toma la lista de Copa Ibérica CR El Salvador Fem. y los guarda
+def guardar_europa_en_archivo_salvador_fem(dataa4):
+    arch_guardar_europa_salvadorfem = 'json_europa/europa_salvador_fem.json'
+    # Guardar en el archivo
+    with open(arch_guardar_europa_salvador_fem, 'w', encoding='UTF-8') as archivo:
+        json.dump(dataa4, archivo)
+# Modificar los partidos de Copa Ibérica CR El Salvador Fem.
+@app.route('/modificar_eliminatoria_europa_salvador_fem/<string:id>', methods=['GET', 'POST'])
+def modificar_europa_salvador_fem(id):
+    dataa4 = obtener_europa_salvador_fem()
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dataa4.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
+            # Actualizar los datos del partido
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante
+            partido['fecha'] = fecha
+            partido['hora'] = hora
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_europa_salvador_fem(dataa4)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_salvador_fem')) 
+# Ruta para mostrar la Copa Iberica CR El Salvador Fem.
+@app.route('/euro_salvador_fem/')
+def euro_salvador_fem():
+    # Obtener datos de las eliminatorias
+    dataa4 = obtener_europa_salvador_fem()
+    return render_template('europa/salvador_fem_europa.html', dataa4=dataa4)
+# Fin Europa CR El Salvador Fem.
 
 
 
