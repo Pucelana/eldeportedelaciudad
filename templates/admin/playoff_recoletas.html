@@ -73,18 +73,18 @@
                 <h5 class="modal-title" id="exampleModalLabel">Editar Final</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              {% for partido in datas12.promocion.partidos %}
+            <div class="modal-body">             
                 <form method="POST" action="/modificar_eliminatoria_recoletas/{{ datas12.promocion.id }}">
+                  {% for partido in datas12.promocion.partidos %}
                     <!-- Campos de entrada para editar el partido -->
                     <div class="mb-3">
                       <label for="fecha{{ loop.index0 }}">Fecha:</label>
                       <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
-                  </div>
-                  <div class="mb-3">
+                    </div>
+                    <div class="mb-3">
                       <label for="hora{{ loop.index0 }}">Hora:</label>
                       <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
-                  </div>
+                    </div>
                     <div class="mb-3">
                         <label for="local{{ loop.index0 }}">Local:</label>
                         <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
@@ -101,10 +101,10 @@
                         <label for="visitante{{ loop.index0 }}">Visitante:</label>
                         <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
                     </div>
-                </form>
-                {% endfor %}
-                <!-- Botón de enviar para enviar los datos modificados -->
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                  {% endfor %}
+                  <!-- Botón de enviar para enviar los datos modificados -->
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>               
             </div>
         </div>
     </div>

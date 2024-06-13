@@ -135,8 +135,8 @@
                             <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
                         </div> 
                         {% endfor %}
-                        <!-- Botón de enviar para enviar los datos modificados -->
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                      <!-- Botón de enviar para enviar los datos modificados -->
+                      <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                 </div>
             </div>
@@ -149,9 +149,9 @@
                   <h5 class="modal-title" id="exampleModalLabel">Editar Semifinales</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                {% for partido in datas8.semifinales.partidos %}
+              <div class="modal-body">              
                   <form method="POST" action="/modificar_eliminatoria_ponce/{{ datas8.semifinales.id }}">
+                    {% for partido in datas8.semifinales.partidos %}
                       <!-- Campos de entrada para editar el partido -->
                       <div class="mb-3">
                         <label for="fecha{{ loop.index0 }}">Fecha:</label>
@@ -177,10 +177,10 @@
                           <label for="visitante{{ loop.index0 }}">Visitante:</label>
                           <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
                       </div>
-                  </form>
-                  {% endfor %}
-                  <!-- Botón de enviar para enviar los datos modificados -->
-                  <button type="submit" class="btn btn-primary">Guardar</button>
+                    {% endfor %}
+                    <!-- Botón de enviar para enviar los datos modificados -->
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                  </form>            
               </div>
           </div>
       </div>
@@ -192,9 +192,9 @@
                 <h5 class="modal-title" id="exampleModalLabel">Editar Final</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              {% for partido in datas8.final.partidos %}
+            <div class="modal-body">             
                 <form method="POST" action="/modificar_eliminatoria_ponce/{{ datas8.final.id }}">
+                  {% for partido in datas8.final.partidos %}
                     <!-- Campos de entrada para editar el partido -->
                     <div class="mb-3">
                       <label for="fecha{{ loop.index0 }}">Fecha:</label>
@@ -220,10 +220,10 @@
                         <label for="visitante{{ loop.index0 }}">Visitante:</label>
                         <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
                     </div>
+                  {% endfor %}
+                  <!-- Botón de enviar para enviar los datos modificados -->
+                  <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
-                {% endfor %}
-                <!-- Botón de enviar para enviar los datos modificados -->
-                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>

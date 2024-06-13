@@ -1,203 +1,287 @@
 {
-    "semifinales": {
-        "id": "750648c1-a1ca-4960-8dda-f4af18527f6d",
+    "primera": {
+        "id": "128577b7-93b5-4460-84ed-bac15e1485c2",
         "partidos": [
             {
-                "local": "Guijuelo",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "UD Logro\u00f1es",
-                "fecha": "11.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Getafe B",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Marbella",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Rayo Cantabria",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "San Sebastaian de los Reyes",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "RZ Deportivo Arag\u00f3n",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Pontevedra",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Atl\u00e9tico Paso",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Barakaldo",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Real Betis B",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Europa",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Utebo",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Numancia",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Sant Andreu",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Zamora",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Lleida Esportiu",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Yeclano Deportivo",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Orihuela",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Badalona Futur",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "San Sebastian de los Reyes",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Rayo Cantabria",
-                "fecha": "18.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Barakaldo",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Atl\u00e9tico Paso",
-                "fecha": "18.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Europa",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Real Betis B",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Marbella",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Getafe B",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "UD Logro\u00f1es",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Guijuelo",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Badalona Futur",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Orihuela",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Pontevedra",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "RZ Deportivo Arag\u00f3n",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Numancia",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Utebo",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Yeclano Deportivo",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Lleida Esportiu",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Zamora",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Sant Andreu",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             }
         ]
     },
-    "final": [],
-    "promocion": {
-        "id": "ab28d371-8221-4fad-8046-4e61cbc33aa1",
+    "final": {
+        "id": "65c7a9b2-8c54-414c-b826-d1565e4e39c9",
         "partidos": [
             {
-                "local": "Formentera",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Izarra",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Manchego Ciudad",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Real Avil\u00e9s",
-                "fecha": "12.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Izarra",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Formentera",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             },
             {
-                "local": "Real Avil\u00e9s",
+                "local": "",
                 "resultadoA": "",
                 "resultadoB": "",
-                "visitante": "Manchego Ciudad",
-                "fecha": "19.05",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            }
+        ]
+    },
+    "promocion": {
+        "id": "58427a06-9eac-4e10-9dee-aa01a49446be",
+        "partidos": [
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
+                "hora": ""
+            },
+            {
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "",
+                "fecha": "",
                 "hora": ""
             }
         ]

@@ -30,7 +30,7 @@
             <label for="eliminatoria">Etapa del Torneo:</label>
             <input type="hidden" class="form-control" id="num_partidos" name="num_partidos" value="0">
             <select id="eliminatoria" name="eliminatoria">
-              <option value="semifinales">Semifinales</option>
+              <option value="primera">Primera Ronda</option>
               <option value="final">Final</option>
               <option value="promocion">Promoción Descenso</option>
             </select>
@@ -48,10 +48,10 @@
     </div>
     </section>  
     <div class="tournament">
-      <h4 class="text-center">Semifinales</h4>
+      <h4 class="text-center">Primera Ronda</h4>
       <table class="table border-secondary">
         <tbody>
-          {% for enfrentamiento in datas11.semifinales.partidos %}
+          {% for enfrentamiento in datas11.primera.partidos %}
           <tr>
             <td>{{ enfrentamiento.fecha }}</td>
             <td>{{ enfrentamiento.hora }}</td>
@@ -63,7 +63,7 @@
           {% endfor %}
         </tbody>
       </table>
-      <button type="submit" id="btn-modificar{{ datas11.semifinales.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ datas11.semifinales.id }}">Modificar</button>
+      <button type="submit" id="btn-modificar{{ datas11.primera.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ datas11.primera.id }}">Modificar</button>
       <h4 class="text-center">Final</h4>
       <table class="table border-secondary">
         <tbody>
@@ -79,7 +79,7 @@
           {% endfor %}
         </tbody>
       </table>
-      <button type="submit" id="btn-modificar{{ datas11.promocion.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ datas11.promocion.id }}">Modificar</button>
+      <button type="submit" id="btn-modificar{{ datas11.final.id }}" class="bg-info text-white border-0 rounded py-1 px-2 me-2" data-bs-toggle="modal" data-bs-target="#modal{{ datas11.final.id }}">Modificar</button>
       <h4 class="text-center">Promoción Descenso</h4>
       <table class="table border-secondary">
         <tbody>
@@ -99,24 +99,112 @@
     </div>
     <!--Fin Carrusel-->
     <!-- Creación del Modal -->
-    <div class="modal fade" id="modal{{ datas11.semifinales.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para Semifinales -->
+  <div class="modal fade" id="modal{{ datas11.primera.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para semifinales -->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar 1ª Ronda</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">                  
+                <form method="POST" action="/modificar_eliminatoria_promesas/{{ datas11.primera.id }}">
+                    {% for partido in datas11.primera.partidos %}
+                    <!-- Campos de entrada para editar el partido -->
+                    <div class="mb-3">
+                        <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                        <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="hora{{ loop.index0 }}">Hora:</label>
+                        <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="local{{ loop.index0 }}">Local:</label>
+                        <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
+                        <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
+                        <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="visitante{{ loop.index0 }}">Visitante:</label>
+                        <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
+                    </div> 
+                    {% endfor %}
+                    <!-- Botón de enviar para enviar los datos modificados -->
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modal{{ datas11.final.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para final -->
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">3º y 4º Puesto</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Final</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">                  
+                  <form method="POST" action="/modificar_eliminatoria_promesas/{{ datas11.final.id }}">
+                      {% for partido in datas11.final.partidos %}
+                      <!-- Campos de entrada para editar el partido -->
+                      <div class="mb-3">
+                          <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                          <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                      </div>
+                      <div class="mb-3">
+                          <label for="hora{{ loop.index0 }}">Hora:</label>
+                          <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                      </div>
+                      <div class="mb-3">
+                          <label for="local{{ loop.index0 }}">Local:</label>
+                          <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
+                      </div>
+                      <div class="mb-3">
+                          <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
+                          <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
+                      </div>
+                      <div class="mb-3">
+                          <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
+                          <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
+                      </div>
+                      <div class="mb-3">
+                          <label for="visitante{{ loop.index0 }}">Visitante:</label>
+                          <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
+                      </div> 
+                      {% endfor %}
+                      <!-- Botón de enviar para enviar los datos modificados -->
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="modal fade" id="modal{{ datas11.promocion.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para la promoción -->
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Promoción</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                {% for partido in datas11.semifinales.partidos %}
-                  <form method="POST" action="/modificar_eliminatoria_promesas/{{ datas11.semifinales.id }}">
+                  <form method="POST" action="/modificar_eliminatoria_promesas/{{ datas11.promocion.id }}">
+                      {% for partido in datas11.promocion.partidos %}
                       <!-- Campos de entrada para editar el partido -->
                       <div class="mb-3">
-                        <label for="fecha{{ loop.index0 }}">Fecha:</label>
-                        <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
+                          <label for="fecha{{ loop.index0 }}">Fecha:</label>
+                          <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
                       </div>
                       <div class="mb-3">
-                        <label for="hora{{ loop.index0 }}">Hora:</label>
-                        <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
+                          <label for="hora{{ loop.index0 }}">Hora:</label>
+                          <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
                       </div>
                       <div class="mb-3">
                           <label for="local{{ loop.index0 }}">Local:</label>
@@ -134,100 +222,16 @@
                           <label for="visitante{{ loop.index0 }}">Visitante:</label>
                           <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
                       </div>
+                      {% endfor %}
+                      <!-- Botón de enviar para enviar los datos modificados -->
+                      <button type="submit" class="btn btn-primary">Guardar</button>
                   </form>
-                  {% endfor %}
-                  <!-- Botón de enviar para enviar los datos modificados -->
-                  <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
           </div>
       </div>
   </div>
-  <div class="modal fade" id="modal{{ datas11.final.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para la Final -->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Final</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              {% for partido in datas11.final.partidos %}
-                <form method="POST" action="/modificar_eliminatoria_promesas/{{ datas11.final.id }}">
-                    <!-- Campos de entrada para editar el partido -->
-                    <div class="mb-3">
-                      <label for="fecha{{ loop.index0 }}">Fecha:</label>
-                      <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
-                    </div>
-                    <div class="mb-3">
-                      <label for="hora{{ loop.index0 }}">Hora:</label>
-                      <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="local{{ loop.index0 }}">Local:</label>
-                        <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
-                        <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
-                        <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="visitante{{ loop.index0 }}">Visitante:</label>
-                        <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
-                    </div>
-                </form>
-                {% endfor %}
-                <!-- Botón de enviar para enviar los datos modificados -->
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modal{{ datas11.promocion.id }}" tabindex="-1" role="dialog" aria-labelledby="modificarModalLabel" aria-hidden="true"> <!-- Modal para la Final -->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Final</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              {% for partido in datas11.promocion.partidos %}
-                <form method="POST" action="/modificar_eliminatoria_promesas/{{ datas11.promocion.id }}">
-                    <!-- Campos de entrada para editar el partido -->
-                    <div class="mb-3">
-                      <label for="fecha{{ loop.index0 }}">Fecha:</label>
-                      <input type="text" class="form-control" id="fecha{{ loop.index0 }}" name="fecha{{ loop.index0 }}" value="{{ partido.fecha }}">
-                    </div>
-                    <div class="mb-3">
-                      <label for="hora{{ loop.index0 }}">Hora:</label>
-                      <input type="time" class="form-control" id="hora{{ loop.index0 }}" name="hora{{ loop.index0 }}" value="{{ partido.hora }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="local{{ loop.index0 }}">Local:</label>
-                        <input type="text" class="form-control" id="local{{ loop.index0 }}" name="local{{ loop.index0 }}" value="{{ partido.local }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="resultadoA{{ loop.index0 }}">Resultado A:</label>
-                        <input type="text" class="form-control" id="resultadoA{{ loop.index0 }}" name="resultadoA{{ loop.index0 }}" value="{{ partido.resultadoA }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="resultadoB{{ loop.index0 }}">Resultado B:</label>
-                        <input type="text" class="form-control" id="resultadoB{{ loop.index0 }}" name="resultadoB{{ loop.index0 }}" value="{{ partido.resultadoB }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="visitante{{ loop.index0 }}">Visitante:</label>
-                        <input type="text" class="form-control" id="visitante{{ loop.index0 }}" name="visitante{{ loop.index0 }}" value="{{ partido.visitante }}">
-                    </div>
-                </form>
-                {% endfor %}
-                <!-- Botón de enviar para enviar los datos modificados -->
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
+  
+  
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -251,12 +255,11 @@
             var selectedOption = selectEliminatoria.value;
             // Determinar el número de partidos según la etapa seleccionada
             var numPartidos;
-            if (selectedOption === "semifinales") {
+            if (selectedOption === "primera") {
                 numPartidos = 20;
             } else if (selectedOption === "final") {
                 numPartidos = 10;
-            }
-            else if (selectedOption === "promocion") {
+            } else if (selectedOption === "promocion") {
                 numPartidos = 4;
             }
             document.getElementById("num_partidos").value = numPartidos;

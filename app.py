@@ -1,10 +1,11 @@
 from flask import Flask
-from flask import render_template, request, redirect,url_for, session, render_template_string, jsonify
+from flask import render_template, request, redirect,url_for, session, render_template_string, jsonify, flash
 from flask_mysqldb import MySQL
 from werkzeug.utils import secure_filename
 from flask_caching import Cache
 from collections import defaultdict
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_mail import Mail, Message
 import os
 import uuid
 import json
@@ -13,7 +14,16 @@ import re
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
+app.secret_key = 'Pucelaninos83@'  # Necesario para mensajes flash
 
+# Configuración de Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'eldeportedelaciudad@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Pucelanos83'
+
+mail = Mail(app)
 
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
@@ -30,6 +40,27 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)"""
+
+# Envio de email
+@app.route('/send_mail', methods=['POST'])
+def send_mail():
+    email = request.form['email']
+    ciudad = request.form['ciudad']
+    provincia = request.form['provincia']
+    mensaje = request.form['mensaje']
+    
+    msg = Message('Sugerencia o Pregunta de ' + email,
+                  sender='tu_correo@gmail.com',
+                  recipients=['eldeportedelaciudad@gmail.com'])
+    msg.body = f"Correo Electrónico: {email}\nCiudad: {ciudad}\nProvincia: {provincia}\nMensaje: {mensaje}"
+    
+    try:
+        mail.send(msg)
+        flash('Mensaje enviado con éxito', 'success')
+    except Exception as e:
+        flash(f'Error al enviar el mensaje: {str(e)}', 'danger')
+    
+    return redirect('/')
 
 # Admin
 @app.route('/news/admin/acceso')
@@ -908,8 +939,8 @@ def modificar_playoff_ponce(id):
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
             visitante = request.form.get(f'visitante{index}')
-            fecha = request.form.get(f'fecha{i}')
-            hora = request.form.get(f'hora{i}')
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             # Actualizar los datos del partido
             partido['local'] = local
             partido['resultadoA'] = resultadoA
@@ -2038,7 +2069,7 @@ def obtener_playoff_promesas():
             datas11 = json.load(file)
         return datas11
     except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return {'semifinales': [], 'final': [], 'promocion': []}
+        return {'primera': [],'final': [], 'promocion': []}
 nuevos_enfrentamientos_promesas = []
 partido_promesas = None
 # Crear formulario para los playoff
@@ -2055,7 +2086,7 @@ def crear_playoff_promesas():
         # Obtener la etapa del torneo seleccionada por el usuario
         eliminatoria = request.form.get('eliminatoria')
         # Verificar el número máximo de partidos permitidos según la etapa del torneo
-        if eliminatoria == 'semifinales':
+        if eliminatoria == 'primera':
             max_partidos = 20
         elif eliminatoria == 'final':
             max_partidos = 10
@@ -5514,7 +5545,7 @@ def modificar_playoff_salvador_fem(id):
     datas3 = obtener_playoff_salvador_fem()
     # Buscar la eliminatoria correspondiente al ID proporcionado
     eliminatoria_encontrada = None
-    for eliminatoria, datos_eliminatoria in datas1.items():
+    for eliminatoria, datos_eliminatoria in datas3.items():
         if datos_eliminatoria['id'] == id:
             eliminatoria_encontrada = datos_eliminatoria
             break
