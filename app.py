@@ -24,6 +24,7 @@ smtp_server = 'smtp.gmail.com'
 smtp_port = 587
 username = 'eldeportedelaciudad@gmail.com'
 password = os.getenv('EMAIL_PASS', 'fhje aibj hxfg vnxc')
+app.config['DEBUG'] = True
 
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
@@ -65,10 +66,6 @@ def enviar_correo():
     except Exception as e:
         flash(f'Error al enviar el correo: {str(e)}', 'danger')
     return redirect(url_for('sitio_home'))
-
-@app.errorhandler(500)
-def internal_server_error(e):
-    return redirect('sitio_home'), 500
 
 # Admin
 @app.route('/news/admin/acceso')
