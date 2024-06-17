@@ -23,7 +23,7 @@ load_dotenv()
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
 username = 'eldeportedelaciudad@gmail.com'
-password = os.getenv('EMAIL_PASS', 'fhje aibj hxfg vnxc')
+password = os.getenv('EMAIL_PASS')
 app.config['DEBUG'] = True
 
 
