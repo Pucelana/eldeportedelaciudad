@@ -5,25 +5,22 @@ from werkzeug.utils import secure_filename
 from flask_caching import Cache
 from collections import defaultdict
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_mail import Mail, Message
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 import os
 import uuid
 import json
 import re
+import smtplib
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
-app.secret_key = 'Pucelaninos83@'  # Necesario para mensajes flash
 
-# Configuración de Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'eldeportedelaciudad@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Pucelanos83'
-
-mail = Mail(app)
+smtp_server = 'smtp.gmail.com'
+smtp_port = 587
+username = 'eldeportedelaciudad@gmail.com'
+password = os.getenv('EMAIL_PASS', 'fhje aibj hxfg vnxc')
 
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
@@ -41,26 +38,33 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)"""
 
-# Envio de email
-@app.route('/send_mail', methods=['POST'])
-def send_mail():
+@app.route('/enviar_correo', methods=['POST'])
+def enviar_correo():
     email = request.form['email']
     ciudad = request.form['ciudad']
     provincia = request.form['provincia']
-    mensaje = request.form['mensaje']
-    
-    msg = Message('Sugerencia o Pregunta de ' + email,
-                  sender='tu_correo@gmail.com',
-                  recipients=['eldeportedelaciudad@gmail.com'])
-    msg.body = f"Correo Electrónico: {email}\nCiudad: {ciudad}\nProvincia: {provincia}\nMensaje: {mensaje}"
-    
+    sugerencia = request.form['sugerencia']
+
+    # Crear el mensaje
+    msg = MIMEMultipart()
+    msg['From'] = username
+    msg['To'] = 'eldeportedelaciudad@gmail.com'
+    msg['Subject'] = 'Nueva sugerencia/pregunta desde eldeportedelaciudad'
+    body = f'Correo Electrónico: {email}\nCiudad: {ciudad}\nProvincia: {provincia}\nSugerencia/Pregunta:\n{sugerencia}'
+    msg.attach(MIMEText(body, 'plain'))
+
+    # Enviar el correo
     try:
-        mail.send(msg)
-        flash('Mensaje enviado con éxito', 'success')
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(username, password)
+        server.sendmail(username, 'eldeportedelaciudad@gmail.com', msg.as_string())
+        server.quit()
+        flash('Correo enviado exitosamente', 'success')
     except Exception as e:
-        flash(f'Error al enviar el mensaje: {str(e)}', 'danger')
-    
-    return redirect('/')
+        flash(f'Error al enviar el correo: {str(e)}', 'danger')
+
+    return redirect(url_for('sitio_home'))
 
 # Admin
 @app.route('/news/admin/acceso')
