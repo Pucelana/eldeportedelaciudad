@@ -26,6 +26,7 @@ username = 'eldeportedelaciudad@gmail.com'
 password = os.getenv('EMAIL_PASS', 'fhje aibj hxfg vnxc')
 app.config['DEBUG'] = True
 
+
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
     import re
