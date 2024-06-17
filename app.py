@@ -68,7 +68,7 @@ def enviar_correo():
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    return render_template('error500.html'), 500
+    return redirect('sitio_home'), 500
 
 # Admin
 @app.route('/news/admin/acceso')
