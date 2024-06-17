@@ -7,6 +7,7 @@ from collections import defaultdict
 from werkzeug.security import generate_password_hash, check_password_hash
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from dotenv import load_dotenv
 import os
 import uuid
 import json
@@ -16,6 +17,8 @@ import smtplib
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
+
+load_dotenv()
 
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
