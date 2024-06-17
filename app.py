@@ -47,7 +47,6 @@ def enviar_correo():
     ciudad = request.form['ciudad']
     provincia = request.form['provincia']
     sugerencia = request.form['sugerencia']
-
     # Crear el mensaje
     msg = MIMEMultipart()
     msg['From'] = username
@@ -55,7 +54,6 @@ def enviar_correo():
     msg['Subject'] = 'Nueva sugerencia/pregunta desde eldeportedelaciudad'
     body = f'Correo Electrónico: {email}\nCiudad: {ciudad}\nProvincia: {provincia}\nSugerencia/Pregunta:\n{sugerencia}'
     msg.attach(MIMEText(body, 'plain'))
-
     # Enviar el correo
     try:
         server = smtplib.SMTP(smtp_server, smtp_port)
@@ -66,8 +64,11 @@ def enviar_correo():
         flash('Correo enviado exitosamente', 'success')
     except Exception as e:
         flash(f'Error al enviar el correo: {str(e)}', 'danger')
-
     return redirect(url_for('sitio_home'))
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('error500.html'), 500
 
 # Admin
 @app.route('/news/admin/acceso')
