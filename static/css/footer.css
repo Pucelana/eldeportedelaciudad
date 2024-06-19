@@ -24,6 +24,11 @@ footer{
     max-width: 60px;
   }
 }
+@media (max-width: 992px){
+  .footer-seccion .logo-footer{
+    max-width: 60px;
+  }
+}
 
 @media (max-width: 768px){
   footer{
