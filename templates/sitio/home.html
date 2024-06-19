@@ -14,6 +14,7 @@
   <link rel="icon" type="image/jpg" href="/static/img/logo.png"/>  
 </head>
 <body>
+ <div class="d-flex flex-column min-vh-100">
   <header class="container-fluid d-none d-lg-block  sticky-top">
     <section id="cabecera1" class="align-items-center">
         <!--<div class="d-flex justify-content-center">
@@ -288,7 +289,7 @@
     </section>
   </header>
   <!--Carrusel-->
-<section id="valladolid" class="container-fluid">
+<section id="valladolid" class="container-fluid flex-fill">
   <div id="carouselExampleControls" class="carousel mt-3" data-bs-ride="carousel">
     <div class="carousel-inner">
       {% for date in nuevos_resultados %}
@@ -332,12 +333,13 @@
           <!-- Agrega más bloques .equipo según sea necesario para otros equipos -->
       </div>
   </section>
-  <footer class="container-fluid">
+</section>
+  <footer class="container-fluid mt-auto">
       <div class="row">
-        <div class="col-lg-3 d-flex justify-content-center align-items-center">
+        <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center">
           <a><h5 class="text-start text-white fw-bold fs-4 ms-2">eldeportedelaciudad &copy; 2024</h5></a>
         </div>
-        <div class="col-lg-7 d-flex justify-content-center align-items-center">
+        <div class="col-12 col-lg-7 d-flex justify-content-center align-items-center">
           <a href="#" id="nosotros-link" class="text-decoration-none"><h5 class="text-white">Nosotros</h5></a>
           <a href="#" id="contactanos-link" class="text-decoration-none"><h5 class="text-white ms-4">Contáctanos</h5></a>
           <a href="#" id="aviso-legal-link" class="text-decoration-none"><h5 class="text-white ms-4">Aviso legal</h5></a>
@@ -350,7 +352,7 @@
           <a><img src="/static/img/twitter.png" class="iconos" alt="twitter"></a>
           <--<a><img src="/static/img/usuario.png" class="usuario" alt="usuario"></a>->
         </div>-->
-        <div class="col-lg-2 d-flex justify-content-center align-items-center ">
+        <div class="col-12 col-lg-2 d-flex justify-content-center align-items-center ">
           <img src="/static/img/logo_sinfondo4.png" class="img-fluid me-2 p-2" alt="eldeportedelaciudad">
         </div>
       </div>
@@ -513,6 +515,7 @@
       </form>
     </div>
   </div>
+ </div>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
