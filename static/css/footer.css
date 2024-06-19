@@ -16,6 +16,15 @@ footer{
     box-shadow: 0px -12px 12px rgba(21, 21, 22, 0.18);
     margin-top: 8%;    
 }
+.logo-footer{
+  max-width: 150px;
+}
+@media (max-width: 576px){
+  .footer-seccion .logo-footer{
+    max-width: 60px;
+  }
+}
+
 @media (max-width: 768px){
   footer{
     height: 30px;

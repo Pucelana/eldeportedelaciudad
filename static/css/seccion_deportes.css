@@ -20,30 +20,36 @@
 .text_seccion{
     padding: 1%;
 }
-@media screen and (min-width: 992px){
+@media (min-width: 992px){
     .fondo_basket{
         background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
     }
+    .text_uemc{
+        font-size: 0.5em;
+    }
 }
-@media screen and (min-width: 768px){
+@media (min-width: 768px){
     .fondo_basket{
         background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
     }
+    .text_uemc{
+        font-size: 0.5em;
+    }
 }
-@media screen and (min-width: 576px){
+@media (min-width: 576px){
     .fondo_basket{
         background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket-mini.png');
     }
     .text_uemc{
-        font-size: 1em;
+        font-size: 0.5em;
     }
 }
-@media screen and (min-width: 320px){
+@media (min-width: 320px){
     .fondo_basket{
         background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket-mini.png');
     }
     .text_uemc{
-        font-size: 1em;
+        font-size: 0.5em;
     }
 }
 .fondo_basket{
@@ -63,13 +69,13 @@
 }
 .text_ponce{
     text-align: center;
-    font-size: 3.5em;
+    font-size: 3em;
     color: white;
     font-weight: bold;
 }
 .text_fundacion{
     text-align: center;
-    font-size: 3.5em;
+    font-size: 3em;
     color: white;
     font-weight: bold;
 }
