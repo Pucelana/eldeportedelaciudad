@@ -10,7 +10,7 @@
 }
 .seccion_deportes{
     margin-top: 5%;
-    margin-bottom: 8%;
+    margin-bottom: 5%;
     font-family: 'Caveat', cursive;
     text-align: start;
     background-color: white;
@@ -19,38 +19,6 @@
 }
 .text_seccion{
     padding: 1%;
-}
-@media (min-width: 992px){
-    .fondo_basket{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
-    }
-    .text_uemc{
-        font-size: 0.5em;
-    }
-}
-@media (min-width: 768px){
-    .fondo_basket{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket.png');
-    }
-    .text_uemc{
-        font-size: 0.5em;
-    }
-}
-@media (min-width: 576px){
-    .fondo_basket{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket-mini.png');
-    }
-    .text_uemc{
-        font-size: 0.5em;
-    }
-}
-@media (min-width: 320px){
-    .fondo_basket{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/static/img/basket-mini.png');
-    }
-    .text_uemc{
-        font-size: 0.5em;
-    }
 }
 .fondo_basket{
     position: relative;

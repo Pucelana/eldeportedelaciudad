@@ -5,7 +5,7 @@
   body {
     margin: 0;
   }*/
-footer{
+.footer-seccion{
     bottom: 0;
     height: 85px;
     font-family: 'Dancing Script', cursive;
@@ -20,8 +20,11 @@ footer{
   max-width: 150px;
 }
 @media (max-width: 576px){
+  .footer-seccion{
+    height: 150px;
+  }
   .footer-seccion .logo-footer{
-    max-width: 60px;
+    max-width: 70px;
   }
 }
 @media (max-width: 992px){
@@ -31,10 +34,25 @@ footer{
 }
 
 @media (max-width: 768px){
-  footer{
-    height: 30px;
+  .footer-seccion{
+    height: 135px;
     font-size: 0.80em;
   }
+  .footer-seccion .logo-footer{
+    max-width: 40px;
+  }
+}
+@media (max-width: 368px){
+  .footer-seccion{
+    height: 135px;
+    font-size: 0.80em;
+  }
+  .footer-seccion .logo-footer{
+    max-width: 40px;
+  }
+}
+.copa{
+  margin-bottom: 8%;
 }
 .copa_uemc{
   margin-bottom: 22%;

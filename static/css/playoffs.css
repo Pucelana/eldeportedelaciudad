@@ -41,6 +41,16 @@
     color: #ddba49;
     font-size: 5em;
 }
+@media (max-width: 576px){
+    .text-playoff{
+        font-size: 1.8em;
+    }
+}
+@media (max-width: 768px){
+    .text-playoff{
+        font-size: 2.5em;
+    }
+}
 .fondo_basket_playoff{
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/img/playoffs_basket.png');
