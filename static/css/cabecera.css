@@ -42,12 +42,6 @@
     content: 100%;
     justify-content: center;
 }
-.bg-menu-sistema{
-    /*background-color: #5290ee;*/
-    background-color: transparent;
-    backdrop-filter: blur(18px);
-    content: 100%;
-}
 .menu-desple{
     border: 0;
     position: relative;
