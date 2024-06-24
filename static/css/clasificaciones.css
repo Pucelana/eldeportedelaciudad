@@ -86,3 +86,9 @@
   color: white !important; /* White text */
   font-weight: bold; /* Bold text */
 }
+@media (max-width: 576px){
+  .text-analisis{
+    font-size: 1.5em;
+  }
+
+}

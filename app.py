@@ -1860,7 +1860,7 @@ def calendarios_valladolid():
     print("Se llamo a la ruta/'equipo_futbol/calendario_vallad")
     datos3 = obtener_datos_valladolid()
     nuevos_datos_valladolid = [dato for dato in datos3 if dato]
-    equipo_valladolid = 'R.Valladolid'
+    equipo_valladolid = 'Real Valladolid'
     tabla_partidos_valladolid = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos3:

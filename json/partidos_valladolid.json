@@ -1,0 +1,604 @@
+[
+    {
+        "id": "d0ddf2a1-98fd-42a2-be4d-df94dc123b1e",
+        "nombre": "Jornada 1",
+        "partidos": [
+            {
+                "local": "Athletic Club",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Getafe",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Girona",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Mallorca",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Madrid",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Las Palmas",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Sevilla",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Villarreal",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Atl\u00e9tico de Madrid",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Valencia",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Barcelona",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Sociedad",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Rayo Vallecano",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Celta de Vigo",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Alav\u00e9s",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Osasuna",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Legan\u00e9s",
+                "fecha": "18.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Espanyol",
+                "fecha": "18.08.2024",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "3c21d902-8353-4afa-91ae-02628cc72ad2",
+        "nombre": "Jornada 2",
+        "partidos": [
+            {
+                "local": "Atl\u00e9tico de Madrid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Girona",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Celta de Vigo",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Valencia",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Getafe",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Rayo Vallecano",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Madrid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Valladolid",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Sevilla",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Villarreal",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Alav\u00e9s",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Betis",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Legan\u00e9s",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Las Palmas",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Espanyol",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Sociedad",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Barcelona",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Athletic Club",
+                "fecha": "25.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Osasuna",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mallorca",
+                "fecha": "25.08.2024",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "5afc0001-e493-4fc3-ad70-8e84e66775aa",
+        "nombre": "Jornada 3",
+        "partidos": [
+            {
+                "local": "Athletic Club",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Valencia",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Getafe",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Girona",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Osasuna",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Mallorca",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Sevilla",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Las Palmas",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Madrid",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Rayo Vallecano",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Barcelona",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Villarreal",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Celta de Vigo",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Sociedad",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Alav\u00e9s",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Legan\u00e9s",
+                "fecha": "28.08.2024",
+                "hora": ""
+            },
+            {
+                "local": "Atl\u00e9tico de Madrid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Espanyol",
+                "fecha": "28.08.2024",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "ebf3c984-fdad-4c5f-9c5e-cc6dff58ba78",
+        "nombre": "Jornada 4",
+        "partidos": [
+            {
+                "local": "Athletic Club",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Atl\u00e9tico de Madrid",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Barcelona",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Valladolid",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Getafe",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Sociedad",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Valencia",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Villarreal",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Alav\u00e9s",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Las Palmas",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Legan\u00e9s",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mallorca",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Espanyol",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Rayo Vallecano",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Madrid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Betis",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Osasuna",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Celta de Vigo",
+                "fecha": "01.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Sevilla",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Girona",
+                "fecha": "01.09.2024",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "716394c0-0efe-4617-8db9-71b74cb7b04c",
+        "nombre": "Jornada 5",
+        "partidos": [
+            {
+                "local": "Atl\u00e9tico de Madrid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Valencia",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Legan\u00e9s",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Celta de Vigo",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Valladolid",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Mallorca",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Villarreal",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Las Palmas",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Athletic Club",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Girona",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Barcelona",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Sevilla",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Getafe",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Rayo Vallecano",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Osasuna",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Sociedad",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Madrid",
+                "fecha": "15.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Espanyol",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Alav\u00e9s",
+                "fecha": "15.09.2024",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "ee19b3f6-86a6-4dde-a87e-3061a8031140",
+        "nombre": "Jornada 6",
+        "partidos": [
+            {
+                "local": "Athletic Club",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Celta de Vigo",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Betis",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Mallorca",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Getafe",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Legan\u00e9s",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Alav\u00e9s",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Sevilla",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Rayo Vallecano",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Atl\u00e9tico de Madrid",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Villarreal",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Barcelona",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Valencia",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Girona",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Valladolid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Sociedad",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Osasuna",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Las Palmas",
+                "fecha": "22.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Madrid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Espanyol",
+                "fecha": "22.09.2024",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "13a66859-336c-43ad-89b8-d6a0a1c7d7a4",
+        "nombre": "Jornada 7",
+        "partidos": [
+            {
+                "local": "Barcelona",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Getafe",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Girona",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Rayo Vallecano",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Mallorca",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Sociedad",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Sevilla",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Valladolid",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Espanyol",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Villarreal",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Legan\u00e9s",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Athletic Club",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Celta de Vigo",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Atl\u00e9tico de Madrid",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Las Palmas",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Real Betis",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Valencia",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Osasuna",
+                "fecha": "25.09.2024",
+                "hora": ""
+            },
+            {
+                "local": "Real Madrid",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Alav\u00e9s",
+                "fecha": "25.09.2024",
+                "hora": ""
+            }
+        ]
+    }
+]
