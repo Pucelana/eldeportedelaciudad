@@ -1,0 +1,42 @@
+{
+    "cuartos": {
+        "id": "f40c89cc-21de-46d9-8c15-9b17856a85a2",
+        "partidos": [
+            {
+                "fecha": "",
+                "hora": "",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "fecha": "",
+                "hora": "",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "fecha": "",
+                "hora": "",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            },
+            {
+                "fecha": "",
+                "hora": "",
+                "local": "",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": ""
+            }
+        ]
+    },
+    "semifinales": [],
+    "eliminados": [],
+    "final": []
+}

@@ -13,6 +13,7 @@ import uuid
 import json
 import re
 import smtplib
+import random
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
@@ -2394,7 +2395,7 @@ def obtener_datos_simancas():
     except json.decoder.JSONDecodeError:
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []       
-# Partidos V Simancas
+# Partidos RV Simancas
 @app.route('/admin/calend_simancas')
 def calend_simancas():
     data5 = obtener_datos_simancas()
@@ -2562,7 +2563,7 @@ def clasif_analisis_simancas():
 def calendarios_simancas():
     datos5 = obtener_datos_simancas()
     nuevos_datos_simancas = [dato for dato in datos5 if dato]
-    equipo_simancas = 'RV Simancas'
+    equipo_simancas = 'Real Valladolid Fem.'
     tabla_partidos_simancas = {}
     # Iteramos sobre cada jornada y partido
     for jornada in datos5:
@@ -7607,15 +7608,53 @@ def obtener_copa_uemc():
             dats5 = json.load(file)
         return dats5
     except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return {'final': []}
-nuevas_eliminatorias_uemc = []
+        return {'grupoA': [], 'grupoB': [], 'grupoC': [], 'grupoD': [], 'grupoE': [], 'grupoF': [], 'grupoG': [], 'grupoH': [], 'cuartos': [], 'semifinales': [], 'final':[], 'clasificacion':{}}
+def actualizar_clasificacion(clasificacion, local, visitante, resultado_local, resultado_visitante):
+    if local not in clasificacion:
+        clasificacion[local] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
+    if visitante not in clasificacion:
+        clasificacion[visitante] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
+    if resultado_local != 0 or resultado_visitante != 0:
+        clasificacion[local]['jugados'] += 1
+        clasificacion[visitante]['jugados'] += 1
+
+        if resultado_local > resultado_visitante:
+            clasificacion[local]['ganados'] += 1
+            clasificacion[visitante]['perdidos'] += 1
+            clasificacion[local]['puntos'] += 2
+            clasificacion[visitante]['puntos'] += 0
+        else:
+            clasificacion[visitante]['ganados'] += 1
+            clasificacion[local]['perdidos'] += 1
+            clasificacion[visitante]['puntos'] += 2
+            clasificacion[local]['puntos'] += 0
 duelos_uemc = None
-# Crear formulario para los playoff
+def obtener_equipos_por_grupo(dats5):
+    equipos_por_grupo = {}
+    for grupo in ['grupoA', 'grupoB', 'grupoC', 'grupoD', 'grupoE', 'grupoF', 'grupoG', 'grupoH']:
+        equipos_por_grupo[grupo] = {}
+        if isinstance(dats5.get(grupo), dict) and 'partidos' in dats5[grupo]:
+            for partido in dats5[grupo]['partidos']:
+                local = partido['local']
+                visitante = partido['visitante']
+                resultadoA = int(partido['resultadoA']) if partido['resultadoA'] else 0
+                resultadoB = int(partido['resultadoB']) if partido['resultadoB'] else 0
+                if local and local not in equipos_por_grupo[grupo]:
+                    equipos_por_grupo[grupo][local] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
+                if visitante and visitante not in equipos_por_grupo[grupo]:
+                    equipos_por_grupo[grupo][visitante] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
+                if local and visitante:
+                    actualizar_clasificacion(equipos_por_grupo[grupo], local, visitante, resultadoA, resultadoB)
+                # Ordenar equipos por ganados, diferencia de puntos y luego por puntos
+        equipos_por_grupo[grupo] = dict(sorted(equipos_por_grupo[grupo].items(), key=lambda item: (-item[1]['ganados'], -item[1]['puntos'])))    
+    return equipos_por_grupo
+# Crear formulario para los grupos y eliminatorias UEMC
 @app.route('/admin/copa_uemc/')
 def ver_copa_uemc():
     dats5 = obtener_copa_uemc()
-    return render_template('admin/copa_uemc.html', dats5=dats5)
-# Crear formulario para los playoff
+    equipos_por_grupo = obtener_equipos_por_grupo(dats5)
+    return render_template('admin/copa_uemc.html', dats5=dats5, equipos_por_grupo=equipos_por_grupo)
+# Crear formulario para los grupos de la Copa UEMC
 @app.route('/admin/crear_copa_uemc', methods=['GET', 'POST'])
 def crear_copa_uemc():
     # Obtener los enfrentamientos actuales del archivo JSON
@@ -7624,8 +7663,28 @@ def crear_copa_uemc():
         # Obtener la etapa del torneo seleccionada por el usuario
         eliminatoria = request.form.get('eliminatoria')
         # Verificar el número máximo de partidos permitidos según la etapa del torneo
-        if eliminatoria == 'final':
-            max_partidos = 1              
+        if eliminatoria == 'grupoA':
+            max_partidos = 20
+        elif eliminatoria == 'grupoB':
+            max_partidos = 20
+        elif eliminatoria == 'grupoC':
+            max_partidos = 20
+        elif eliminatoria == 'grupoD':
+            max_partidos = 20
+        elif eliminatoria == 'grupoE':
+            max_partidos = 20
+        elif eliminatoria == 'grupoF':
+            max_partidos = 20
+        elif eliminatoria == 'grupoG':
+            max_partidos = 20
+        elif eliminatoria == 'grupoH':
+            max_partidos = 20
+        elif eliminatoria == 'cuartos':
+            max_partidos = 8                 
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1               
         else:
             # Manejar caso no válido
             return "Etapa de torneo no válida"
@@ -7685,42 +7744,57 @@ def guardar_copa_en_archivo_uemc(dats5):
 @app.route('/modificar_eliminatoria_copa_uemc/<string:id>', methods=['GET', 'POST'])
 def modificar_copa_uemc(id):
     dats5 = obtener_copa_uemc()
+    print(dats5)
     # Buscar la eliminatoria correspondiente al ID proporcionado
     eliminatoria_encontrada = None
     for eliminatoria, datos_eliminatoria in dats5.items():
         if datos_eliminatoria['id'] == id:
             eliminatoria_encontrada = datos_eliminatoria
-            break
+            break   
     if not eliminatoria_encontrada:
-        return "Eliminatoria no encontrada"
+        return "Eliminatoria no encontrada"  
     if request.method == 'POST':
         nuevos_partidos = []
         for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
             local = request.form.get(f'local{index}')
             resultadoA = request.form.get(f'resultadoA{index}')
             resultadoB = request.form.get(f'resultadoB{index}')
-            visitante = request.form.get(f'visitante{index}')
-            fecha = request.form.get(f'fecha{index}')
-            hora = request.form.get(f'hora{index}')
-            # Actualizar los datos del partido
-            partido['local'] = local
-            partido['resultadoA'] = resultadoA
-            partido['resultadoB'] = resultadoB
-            partido['visitante'] = visitante
-            partido['fecha'] = fecha
-            partido['hora'] = hora
-            nuevos_partidos.append(partido)   
-        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+            visitante = request.form.get(f'visitante{index}')           
+            # Actualizar los datos del partido si están presentes
+            if fecha:
+                partido['fecha'] = fecha
+            if hora:
+                partido['hora'] = hora
+            if local:
+                partido['local'] = local
+            if resultadoA is not None and resultadoB is not None:
+                partido['resultadoA'] = resultadoA
+                partido['resultadoB'] = resultadoB
+            if visitante:
+                partido['visitante'] = visitante            
+            # Actualizar la clasificación solo si hay resultados válidos
+            if resultadoA.isdigit() and resultadoB.isdigit():
+                actualizar_clasificacion(dats5['clasificacion'], local, visitante, int(resultadoA), int(resultadoB))               
+            nuevos_partidos.append(partido)       
+        eliminatoria_encontrada['partidos'] = nuevos_partidos
         # Guardar los cambios en el archivo JSON
-        guardar_copa_uemc(dats5)       
+        guardar_copa_uemc(dats5)
         # Redireccionar a la página de visualización del playoff
-        return redirect(url_for('ver_copa_uemc')) 
-# Ruta para mostrar la copa UEMC Valladolid
+        return redirect(url_for('ver_copa_uemc'))   
+    # Si el método HTTP es GET, simplemente renderiza la página con los datos actuales
+    return render_template('admin/copa_uemc.html', eliminatoria=eliminatoria_encontrada)
+# Ruta para mostrar la copa CPLV Caja Rural
 @app.route('/copa_uemc/')
 def copas_uemc():
     # Obtener datos de las eliminatorias
     dats5 = obtener_copa_uemc()
-    return render_template('copas/uemc_copa.html', dats5=dats5)
+    equipos_por_grupo = obtener_equipos_por_grupo(dats5)
+    print(dats5)  # Debugging
+    print(equipos_por_grupo) 
+    return render_template('copas/uemc_copa.html', dats5=dats5, equipos_por_grupo=equipos_por_grupo)
+
 # Fin copa UEMC Valladolid
 
 # Copa CD Parquesol
