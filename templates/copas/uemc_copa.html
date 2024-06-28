@@ -42,6 +42,7 @@
                   <table class="table border-dark">
                     <thead>
                       <tr>
+                        <th class="text-center text-white"></th>
                         <th class="text-center text-white">Equipo</th>
                         <th class="text-center text-white">PJ</th>
                         <th class="text-center text-white">PG</th>
@@ -52,7 +53,8 @@
                     <tbody>
                       {% if grupo_key in equipos_por_grupo and equipos_por_grupo[grupo_key] %}
                       {% for equipo, datos in equipos_por_grupo[grupo_key].items() %}
-                      <tr>
+                      <tr class="">
+                        <td class="text-center text-white {% if loop.index == 1 %}pos-ascen{% endif %}">{{ loop.index }}</td>
                         <td class="text-center text-white">{{ equipo }}</td>
                         <td class="text-center text-white">{{ datos.jugados }}</td>
                         <td class="text-center text-white">{{ datos.ganados }}</td>
