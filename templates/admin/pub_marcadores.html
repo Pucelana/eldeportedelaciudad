@@ -51,7 +51,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ url_for('modificar_marcador', id=partidos.id) }}" method="POST" class="row">
+              <form action="/modificar_marcador/{{partidos.id}}" method="POST" class="row">
                 <div class="col-md-8 mb-2"> 
                 <label for="seccion">Sección</label>
                 <input type="text" name="seccion" id="seccion" class="form-control" value="{{ partidos.seccion }}">
