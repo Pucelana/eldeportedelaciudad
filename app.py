@@ -291,7 +291,7 @@ def obtener_datos_uemc():
       with open(part_uemc, 'r', encoding='utf-8') as file:
         data = json.load(file)
       return data
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
 def guardar_datos_uemc(data):
@@ -720,19 +720,19 @@ def eliminar_club_uemc(club):
 #Todo el proceso de calendario y clasificación del Ponce
 # Ruta de partidos Ponce Valladolid
 part_ponce = 'json/partidos_ponce.json'
-def guardar_datos_ponce(data1):
-    # Guardar los datos en el archivo JSON
-    with open(part_ponce, 'w', encoding='utf-8') as file:
-        json.dump(data1, file, indent=4)
 def obtener_datos_ponce():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_ponce, 'r', encoding='utf-8') as file:
         data1 = json.load(file)
       return data1
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_ponce(data1):
+    # Guardar los datos en el archivo JSON
+    with open(part_ponce, 'w', encoding='utf-8') as file:
+        json.dump(data1, file, indent=4)
 # Partidos UEMC
 @app.route('/admin/calendario_ponce')
 def calend_ponce():
@@ -1130,19 +1130,19 @@ def eliminar_club_ponce(club):
 #Todo el proceso de calendario y clasificación de Fundación Aliados
 # Ruta de partidos Fundación Aliados
 part_aliados = 'json/partidos_aliados.json'
-def guardar_datos_aliados(data2):
-    # Guardar los datos en el archivo JSON
-    with open(part_aliados, 'w', encoding='utf-8') as file:
-        json.dump(data2, file, indent=4)
 def obtener_datos_aliados():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_aliados, 'r', encoding='utf-8') as file:
         data2 = json.load(file)
       return data2
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_aliados(data2):
+    # Guardar los datos en el archivo JSON
+    with open(part_aliados, 'w', encoding='utf-8') as file:
+        json.dump(data2, file, indent=4)
 # Partidos Fundación Aliados
 @app.route('/admin/calendario_aliados')
 def calend_aliados():
@@ -1533,19 +1533,19 @@ def eliminar_club_aliado(club):
 #Todo el proceso de calendario y clasificación del Real Valladolid
 # Ruta de partidos Real Valladolid
 part_valladolid = 'json/partidos_valladolid.json'
-def guardar_datos_valladolid(data3):
-    # Guardar los datos en el archivo JSON
-    with open(part_valladolid, 'w', encoding='utf-8') as file:
-        json.dump(data3, file, indent=4)
 def obtener_datos_valladolid():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_valladolid, 'r', encoding='utf-8') as file:
         data3 = json.load(file)
       return data3
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_valladolid(data3):
+    # Guardar los datos en el archivo JSON
+    with open(part_valladolid, 'w', encoding='utf-8') as file:
+        json.dump(data3, file, indent=4)
 # Partidos Real Valladolid
 @app.route('/admin/calend_valladolid')
 def calend_valladolid():
@@ -1947,19 +1947,19 @@ def eliminar_club_valladolid(club):
 #Todo el proceso de calendario y clasificación del Promesas
 # Ruta de partidos Promesas
 part_promesas = 'json/partidos_promesas.json'
-def guardar_datos_promesas(data4):
-    # Guardar los datos en el archivo JSON
-    with open(part_promesas, 'w', encoding='utf-8') as file:
-        json.dump(data4, file, indent=4)
 def obtener_datos_promesas():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_promesas, 'r', encoding='utf-8') as file:
         data4 = json.load(file)
       return data4
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_promesas(data4):
+    # Guardar los datos en el archivo JSON
+    with open(part_promesas, 'w', encoding='utf-8') as file:
+        json.dump(data4, file, indent=4)
 # Partidos Promesas
 @app.route('/admin/calend_promesas')
 def calend_promesas():
@@ -2363,19 +2363,19 @@ def eliminar_club_promesas(club):
 #Todo el proceso de calendario y clasificación del RV Simancas
 # Ruta de partidos RV Simancas       
 part_simancas = 'json/partidos_simancas.json'
-def guardar_datos_simancas(data5):
-    # Guardar los datos en el archivo JSON
-    with open(part_simancas, 'w', encoding='utf-8') as file:
-        json.dump(data5, file, indent=4)
 def obtener_datos_simancas():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_simancas, 'r', encoding='utf-8') as file:
         data5 = json.load(file)
       return data5
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
-        return []       
+        return [] 
+def guardar_datos_simancas(data5):
+    # Guardar los datos en el archivo JSON
+    with open(part_simancas, 'w', encoding='utf-8') as file:
+        json.dump(data5, file, indent=4)    
 # Partidos RV Simancas
 @app.route('/admin/calend_simancas')
 def calend_simancas():
@@ -2649,19 +2649,19 @@ def eliminar_club_simancas(club):
 #Todo el proceso de calendario y clasificación del CD Parquesol
 # Ruta de partidos CD Parquesol        
 part_parquesol = 'json/partidos_parquesol.json'
-def guardar_datos_parquesol(data6):
-    # Guardar los datos en el archivo JSON
-    with open(part_parquesol, 'w', encoding='utf-8') as file:
-        json.dump(data6, file, indent=4)
 def obtener_datos_parquesol():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_parquesol, 'r', encoding='utf-8') as file:
         data6 = json.load(file)
       return data6
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
-        return []        
+        return []
+def guardar_datos_parquesol(data6):
+    # Guardar los datos en el archivo JSON
+    with open(part_parquesol, 'w', encoding='utf-8') as file:
+        json.dump(data6, file, indent=4)        
 # Partidos CD Parquesol
 @app.route('/admin/calend_parquesol')
 def calend_parquesol():
@@ -2935,19 +2935,19 @@ def eliminar_club_parquesol(club):
 #Todo el proceso de calendario y clasificación del Valladolid FS
 # Ruta de partidos Valladolid FS
 part_valladolid_fs = 'json/partidos_valladolid_fs.json'
-def guardar_datos_valladolid_fs(data16):
-    # Guardar los datos en el archivo JSON
-    with open(part_valladolid_fs, 'w', encoding='utf-8') as file:
-        json.dump(data16, file, indent=4)
 def obtener_datos_valladolid_fs():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_valladolid_fs, 'r', encoding='utf-8') as file:
         data16 = json.load(file)
       return data16
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
-        return [] 
+        return []
+def guardar_datos_valladolid_fs(data16):
+    # Guardar los datos en el archivo JSON
+    with open(part_valladolid_fs, 'w', encoding='utf-8') as file:
+        json.dump(data16, file, indent=4)
 # Partidos Valladolid FS
 @app.route('/admin/calend_valladolid_fs')
 def calend_valladolid_fs():
@@ -3221,19 +3221,19 @@ def eliminar_club_valladolid_fs(club):
 #Todo el proceso de calendario y clasificación del Universidad Valladolid
 # Ruta de partidos Universidad Valladolid
 part_universidad = 'json/partidos_universidad.json'
-def guardar_datos_universidad(data17):
-    # Guardar los datos en el archivo JSON
-    with open(part_universidad, 'w', encoding='utf-8') as file:
-        json.dump(data17, file, indent=4)
 def obtener_datos_universidad():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_universidad, 'r', encoding='utf-8') as file:
         data17 = json.load(file)
       return data17
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
-        return [] 
+        return []
+def guardar_datos_universidad(data17):
+    # Guardar los datos en el archivo JSON
+    with open(part_universidad, 'w', encoding='utf-8') as file:
+        json.dump(data17, file, indent=4)
 # Partidos Universidad Valladolid
 @app.route('/admin/calend_universidad')
 def calend_universidad():
@@ -3972,19 +3972,19 @@ def eliminar_club_aula(club):
 #Todo el proceso de calendario y clasificación del Atlético Valladolid
 # Ruta de partidos Atlético Valladolid
 part_recoletas = 'json/partidos_recoletas.json'
-def guardar_datos_recoletas(data8):
-    # Guardar los datos en el archivo JSON
-    with open(part_recoletas, 'w', encoding='utf-8') as file:
-        json.dump(data8, file, indent=4)
 def obtener_datos_recoletas():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_recoletas, 'r', encoding='utf-8') as file:
         data8 = json.load(file)
       return data8
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_recoletas(data8):
+    # Guardar los datos en el archivo JSON
+    with open(part_recoletas, 'w', encoding='utf-8') as file:
+        json.dump(data8, file, indent=4)
 # Partidos Atlético Valladolid
 @app.route('/admin/calend_recoletas')
 def calend_recoletas():
@@ -4379,19 +4379,19 @@ def eliminar_club_recoletas(club):
 #Todo el proceso de calendario y clasificación del El Salvador
 # Ruta de partidos El Salvador
 part_salvador = 'json/partidos_salvador.json'
-def guardar_datos_salvador(data11):
-    # Guardar los datos en el archivo JSON
-    with open(part_salvador, 'w', encoding='utf-8') as file:
-        json.dump(data11, file, indent=4)
 def obtener_datos_salvador():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_salvador, 'r', encoding='utf-8') as file:
         data11 = json.load(file)
       return data11
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_salvador(data11):
+    # Guardar los datos en el archivo JSON
+    with open(part_salvador, 'w', encoding='utf-8') as file:
+        json.dump(data11, file, indent=4)
 # Partidos El Salvador
 @app.route('/admin/calend_salvador')
 def calend_salvador():
@@ -4856,19 +4856,19 @@ def eliminar_club_salvador(club):
 #Todo el proceso de calendario y clasificación del VRAC
 # Ruta de partidos VRAC
 part_vrac = 'json/partidos_vrac.json'
-def guardar_datos_vrac(data12):
-    # Guardar los datos en el archivo JSON
-    with open(part_vrac, 'w', encoding='utf-8') as file:
-        json.dump(data12, file, indent=4)
 def obtener_datos_vrac():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_vrac, 'r', encoding='utf-8') as file:
         data12 = json.load(file)
       return data12
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_vrac(data12):
+    # Guardar los datos en el archivo JSON
+    with open(part_vrac, 'w', encoding='utf-8') as file:
+        json.dump(data12, file, indent=4)
 # Partidos VRAC
 @app.route('/admin/calend_vrac')
 def calend_vrac():
@@ -5333,19 +5333,19 @@ def eliminar_club_vrac(club):
 #Todo el proceso de calendario y clasificación del El Salvador Fem.
 # Ruta de partidos El Salvador Fem.
 part_salvador_fem = 'json/partidos_salvador_fem.json'
-def guardar_datos_salvador_fem(data13):
-    # Guardar los datos en el archivo JSON
-    with open(part_salvador_fem, 'w', encoding='utf-8') as file:
-        json.dump(data13, file, indent=4)
 def obtener_datos_salvador_fem():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_salvador_fem, 'r', encoding='utf-8') as file:
         data13 = json.load(file)
       return data13
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_salvador_fem(data13):
+    # Guardar los datos en el archivo JSON
+    with open(part_salvador_fem, 'w', encoding='utf-8') as file:
+        json.dump(data13, file, indent=4)
 # Partidos El Salvador
 @app.route('/admin/calend_salvador_fem')
 def calend_salvador_fem():
@@ -5812,19 +5812,19 @@ def eliminar_club_salvador_fem(club):
 #Todo el proceso de calendario y clasificación del CPLV Caja Rural
 # Ruta de partidos CPLV Caja Rural
 part_caja = 'json/partidos_caja.json'
-def guardar_datos_caja(data14):
-    # Guardar los datos en el archivo JSON
-    with open(part_caja, 'w', encoding='utf-8') as file:
-        json.dump(data14, file, indent=4)
 def obtener_datos_caja():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_caja, 'r', encoding='utf-8') as file:
         data14 = json.load(file)
       return data14
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_caja(data14):
+    # Guardar los datos en el archivo JSON
+    with open(part_caja, 'w', encoding='utf-8') as file:
+        json.dump(data14, file, indent=4)
 # Partidos Caja Rural CPLV
 @app.route('/admin/calend_caja')
 def calend_caja():
@@ -6281,19 +6281,19 @@ def eliminar_club_caja(club):
 #Todo el proceso de calendario y clasificación del CPLV Munia Panteras
 # Ruta de partidos CPLV Munia Panteras
 part_panteras = 'json/partidos_panteras.json'
-def guardar_datos_panteras(data15):
-    # Guardar los datos en el archivo JSON
-    with open(part_panteras, 'w', encoding='utf-8') as file:
-        json.dump(data15, file, indent=4)
 def obtener_datos_panteras():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_panteras, 'r', encoding='utf-8') as file:
         data15 = json.load(file)
       return data15
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_panteras(data15):
+    # Guardar los datos en el archivo JSON
+    with open(part_panteras, 'w', encoding='utf-8') as file:
+        json.dump(data15, file, indent=4)
 # Partidos CPLV Munia Panteras
 @app.route('/admin/calend_panteras')
 def calend_panteras():
@@ -6751,19 +6751,19 @@ def eliminar_club_panteras(club):
 #Todo el proceso de calendario y clasificación del Univ. Valladolid VCV
 # Ruta de partidos Univ. Valladolid VCV
 part_vcv = 'json/partidos_vcv.json'
-def guardar_datos_vcv(data18):
-    # Guardar los datos en el archivo JSON
-    with open(part_vcv, 'w', encoding='utf-8') as file:
-        json.dump(data18, file, indent=4)
 def obtener_datos_vcv():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_vcv, 'r', encoding='utf-8') as file:
         data18 = json.load(file)
       return data18
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_vcv(data18):
+    # Guardar los datos en el archivo JSON
+    with open(part_vcv, 'w', encoding='utf-8') as file:
+        json.dump(data18, file, indent=4)
 # Partidos Univ. Valladolid VCV
 @app.route('/admin/calend_vcv')
 def calend_vcv():
@@ -7036,9 +7036,6 @@ def eliminar_club_vcv(club):
 # COPA DEL REY Y COPA DE LA REINA
 # Copa  Real Valladolid
 copa_valladolid = 'json_copa/copa_valladolid.json'
-def guardar_copa_valladolid(dats1):
-    with open(copa_valladolid, 'w', encoding='utf-8') as file:
-        json.dump(dats1, file, indent=4)
 def obtener_copa_valladolid():
     try:
         with open(copa_valladolid, 'r', encoding='utf-8') as file:
@@ -7046,6 +7043,9 @@ def obtener_copa_valladolid():
         return dats1
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'ronda1': [], 'ronda2': [],'ronda3': [], 'octavos': [],'cuartos': [], 'semis': [], 'final': []}
+def guardar_copa_valladolid(dats1):
+    with open(copa_valladolid, 'w', encoding='utf-8') as file:
+        json.dump(dats1, file, indent=4)
 nuevas_eliminatorias_valladolid = []
 duelos_valladolid = None
 # Crear formulario para los playoff
@@ -7175,9 +7175,6 @@ def copas_valladolid():
 
 # Copa Aula Valladolid
 copa_aula = 'json_copa/copa_aula.json'
-def guardar_copa_aula(dats2):
-    with open(copa_aula, 'w', encoding='utf-8') as file:
-        json.dump(dats2, file, indent=4)
 def obtener_copa_aula():
     try:
         with open(copa_aula, 'r', encoding='utf-8') as file:
@@ -7185,6 +7182,9 @@ def obtener_copa_aula():
         return dats2
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'fase1': [], 'fase2': [], 'cuartos': [], 'semifinales': [], 'final': []}
+def guardar_copa_aula(dats2):
+    with open(copa_aula, 'w', encoding='utf-8') as file:
+        json.dump(dats2, file, indent=4)
 nuevas_eliminatorias_aula = []
 duelos_aula = None
 # Crear formulario para los playoff
@@ -7310,9 +7310,6 @@ def copas_aula():
 
 # Copa Recoletas Atl. Valladolid
 copa_recoletas = 'json_copa/copa_recoletas.json'
-def guardar_copa_recoletas(dats3):
-    with open(copa_recoletas, 'w', encoding='utf-8') as file:
-        json.dump(dats3, file, indent=4)
 def obtener_copa_recoletas():
     try:
         with open(copa_recoletas, 'r', encoding='utf-8') as file:
@@ -7320,6 +7317,9 @@ def obtener_copa_recoletas():
         return dats3
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'ronda1': [], 'ronda2': [],'octavos': [],'cuartos': [], 'semifinales': [], 'final': []}
+def guardar_copa_recoletas(dats3):
+    with open(copa_recoletas, 'w', encoding='utf-8') as file:
+        json.dump(dats3, file, indent=4)
 nuevas_eliminatorias_recoletas = []
 duelos_recoletas = None
 # Crear formulario para los playoff
@@ -7447,9 +7447,6 @@ def copas_recoletas():
 
 # Copa Fundación Aliados
 copa_aliados = 'json_copa/copa_aliados.json'
-def guardar_copa_aliados(dats4):
-    with open(copa_aliados, 'w', encoding='utf-8') as file:
-        json.dump(dats4, file, indent=4)
 def obtener_copa_aliados():
     try:
         with open(copa_aliados, 'r', encoding='utf-8') as file:
@@ -7457,6 +7454,9 @@ def obtener_copa_aliados():
         return dats4
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'cuartos': [], 'semifinales': [], 'eliminados': [], 'final': []}
+def guardar_copa_aliados(dats4):
+    with open(copa_aliados, 'w', encoding='utf-8') as file:
+        json.dump(dats4, file, indent=4)
 nuevas_eliminatorias_aliados = []
 duelos_aliados = None
 # Crear formulario para los playoff
@@ -7580,9 +7580,6 @@ def copas_aliados():
 
 # Copa UEMC Valladolid
 copa_uemc = 'json_copa/copa_uemc.json'
-def guardar_copa_uemc(dats5):
-    with open(copa_uemc, 'w', encoding='utf-8') as file:
-        json.dump(dats5, file, indent=4)
 def obtener_copa_uemc():
     try:
         with open(copa_uemc, 'r', encoding='utf-8') as file:
@@ -7590,6 +7587,9 @@ def obtener_copa_uemc():
         return dats5
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'grupoA': [], 'grupoB': [], 'grupoC': [], 'grupoD': [], 'grupoE': [], 'grupoF': [], 'grupoG': [], 'grupoH': [], 'cuartos': [], 'semifinales': [], 'final':[], 'clasificacion':{}}
+def guardar_copa_uemc(dats5):
+    with open(copa_uemc, 'w', encoding='utf-8') as file:
+        json.dump(dats5, file, indent=4)
 def actualizar_clasificacion(clasificacion, local, visitante, resultado_local, resultado_visitante):
     if local not in clasificacion:
         clasificacion[local] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
@@ -7779,9 +7779,6 @@ def copas_uemc():
 
 # Copa CD Parquesol
 copa_parquesol = 'json_copa/copa_parquesol.json'
-def guardar_copa_parquesol(dats6):
-    with open(copa_parquesol, 'w', encoding='utf-8') as file:
-        json.dump(dats6, file, indent=4)
 def obtener_copa_parquesol():
     try:
         with open(copa_parquesol, 'r', encoding='utf-8') as file:
@@ -7789,6 +7786,9 @@ def obtener_copa_parquesol():
         return dats6
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'ronda1': [],'ronda2': [],'ronda3': [],'octavos': [],'cuartos': [],'semifinales': [],'final': []}
+def guardar_copa_parquesol(dats6):
+    with open(copa_parquesol, 'w', encoding='utf-8') as file:
+        json.dump(dats6, file, indent=4)
 nuevas_eliminatorias_parquesol = []
 duelos_parquesol = None
 # Crear formulario para la copa
@@ -7918,9 +7918,6 @@ def copas_parquesol():
 
 # Copa CPLV Munia Panteras
 copa_panteras = 'json_copa/copa_panteras.json'
-def guardar_copa_panteras(dats7):
-    with open(copa_panteras, 'w', encoding='utf-8') as file:
-        json.dump(dats7, file, indent=4)
 def obtener_copa_panteras():
     try:
         with open(copa_panteras, 'r', encoding='utf-8') as file:
@@ -7928,6 +7925,9 @@ def obtener_copa_panteras():
         return dats7
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'cuartos': [], 'semifinales': [],'final': []}
+def guardar_copa_panteras(dats7):
+    with open(copa_panteras, 'w', encoding='utf-8') as file:
+        json.dump(dats7, file, indent=4)
 nuevas_eliminatorias_panteras = []
 duelos_panteras = None
 # Crear formulario para los playoff
@@ -8049,9 +8049,6 @@ def copas_panteras():
 
 # Copa CPLV Caja Rural
 copa_caja = 'json_copa/copa_caja.json'
-def guardar_copa_caja(dats8):
-    with open(copa_caja, 'w', encoding='utf-8') as file:
-        json.dump(dats8, file, indent=4)
 def obtener_copa_caja():
     try:
         with open(copa_caja, 'r', encoding='utf-8') as file:
@@ -8059,6 +8056,9 @@ def obtener_copa_caja():
         return dats8
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'cuartos': [], 'semifinales': [],'final': []}
+def guardar_copa_caja(dats8):
+    with open(copa_caja, 'w', encoding='utf-8') as file:
+        json.dump(dats8, file, indent=4)
 nuevas_eliminatorias_caja = []
 duelos_caja = None
 # Crear formulario para los playoff
@@ -8180,9 +8180,6 @@ def copas_caja():
 
 # Copa CR El Salvador Fem
 copa_salvador_fem = 'json_copa/copa_salvador_fem.json'
-def guardar_copa_salvador_fem(dats9):
-    with open(copa_salvador_fem, 'w', encoding='utf-8') as file:
-        json.dump(dats9, file, indent=4)
 def obtener_copa_salvador_fem():
     try:
         with open(copa_salvador_fem, 'r', encoding='utf-8') as file:
@@ -8190,6 +8187,9 @@ def obtener_copa_salvador_fem():
         return dats9
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'grupo1': [],'grupo2': [],'grupo3': [],'grupo4': [], 'semifinales': [],'final': []}
+def guardar_copa_salvador_fem(dats9):
+    with open(copa_salvador_fem, 'w', encoding='utf-8') as file:
+        json.dump(dats9, file, indent=4)
 nuevas_eliminatorias_salvador_fem = []
 duelos_salvador_fem = None
 # Crear formulario para los playoff
@@ -8317,9 +8317,6 @@ def copas_salvador_fem():
 
 # Copa CR El Salvador
 copa_salvador = 'json_copa/copa_salvador.json'
-def guardar_copa_salvador(dats10):
-    with open(copa_salvador, 'w', encoding='utf-8') as file:
-        json.dump(dats10, file, indent=4)
 def obtener_copa_salvador():
     try:
         with open(copa_salvador, 'r', encoding='utf-8') as file:
@@ -8327,6 +8324,9 @@ def obtener_copa_salvador():
         return dats10
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'grupo1': [],'grupo2': [],'grupo3': [],'grupo4': [], 'semifinales': [],'final': []}
+def guardar_copa_salvador(dats10):
+    with open(copa_salvador, 'w', encoding='utf-8') as file:
+        json.dump(dats10, file, indent=4)
 nuevas_eliminatorias_salvador = []
 duelos_salvador = None
 # Crear formulario para los playoff
@@ -8454,9 +8454,6 @@ def copas_salvador():
 
 # Copa VRAC
 copa_vrac = 'json_copa/copa_vrac.json'
-def guardar_copa_vrac(dats11):
-    with open(copa_vrac, 'w', encoding='utf-8') as file:
-        json.dump(dats11, file, indent=4)
 def obtener_copa_vrac():
     try:
         with open(copa_vrac, 'r', encoding='utf-8') as file:
@@ -8464,6 +8461,9 @@ def obtener_copa_vrac():
         return dats11
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'grupo1': [],'grupo2': [],'grupo3': [],'grupo4': [], 'semifinales': [],'final': []}
+def guardar_copa_vrac(dats11):
+    with open(copa_vrac, 'w', encoding='utf-8') as file:
+        json.dump(dats11, file, indent=4)
 nuevas_eliminatorias_vrac = []
 duelos_vrac = None
 # Crear formulario para los playoff
@@ -8592,9 +8592,6 @@ def copas_vrac():
 # PARTICIPACIÓN EUROPEA MASCULINO Y FEMENINO
 # Europa Aula Valladolid
 europa_aula = 'json_europa/europa_aula.json'
-def guardar_europa_aula(dataa1):
-    with open(europa_aula, 'w', encoding='utf-8') as file:
-        json.dump(dataa1, file, indent=4)
 def obtener_europa_aula():
     try:
         with open(europa_aula, 'r', encoding='utf-8') as file:
@@ -8602,6 +8599,9 @@ def obtener_europa_aula():
         return dataa1
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'ronda2': [],'ronda3': [],'octavos': [],'cuartos': [], 'semifinales': [],'final': []}
+def guardar_europa_aula(dataa1):
+    with open(europa_aula, 'w', encoding='utf-8') as file:
+        json.dump(dataa1, file, indent=4)
 nuevas_eliminatorias_aula = []
 duelos_aula = None
 # Crear formulario para EHF Aula Valladolid
@@ -8729,9 +8729,6 @@ def euro_aula():
 
 # Europa VRAC
 europa_vrac = 'json_europa/europa_vrac.json'
-def guardar_europa_vrac(dataa2):
-    with open(europa_vrac, 'w', encoding='utf-8') as file:
-        json.dump(dataa2, file, indent=4)
 def obtener_europa_vrac():
     try:
         with open(europa_vrac, 'r', encoding='utf-8') as file:
@@ -8739,6 +8736,9 @@ def obtener_europa_vrac():
         return dataa2
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'final': []}
+def guardar_europa_vrac(dataa2):
+    with open(europa_vrac, 'w', encoding='utf-8') as file:
+        json.dump(dataa2, file, indent=4)
 nuevas_eliminatorias_vrac = []
 duelos_vrac = None
 # Crear formulario para EHF Aula Valladolid
@@ -8856,9 +8856,6 @@ def euro_vrac():
 
 # Europa CR El Salvador
 europa_salvador = 'json_europa/europa_salvador.json'
-def guardar_europa_salvador(dataa3):
-    with open(europa_salvador, 'w', encoding='utf-8') as file:
-        json.dump(dataa3, file, indent=4)
 def obtener_europa_salvador():
     try:
         with open(europa_salvador, 'r', encoding='utf-8') as file:
@@ -8866,6 +8863,9 @@ def obtener_europa_salvador():
         return dataa3
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'final': []}
+def guardar_europa_salvador(dataa3):
+    with open(europa_salvador, 'w', encoding='utf-8') as file:
+        json.dump(dataa3, file, indent=4)
 nuevas_eliminatorias_salvador = []
 duelos_vrac = None
 # Crear formulario para Copa Ibérica CR El Salvador
@@ -8983,9 +8983,6 @@ def euro_salvador():
 
 # Europa CR El Salvador Fem.
 europa_salvador_fem = 'json_europa/europa_salvador_fem.json'
-def guardar_europa_salvador(dataa4):
-    with open(europa_salvador_fem, 'w', encoding='utf-8') as file:
-        json.dump(dataa4, file, indent=4)
 def obtener_europa_salvador_fem():
     try:
         with open(europa_salvador_fem, 'r', encoding='utf-8') as file:
@@ -8993,6 +8990,9 @@ def obtener_europa_salvador_fem():
         return dataa4
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'final': []}
+def guardar_europa_salvador(dataa4):
+    with open(europa_salvador_fem, 'w', encoding='utf-8') as file:
+        json.dump(dataa4, file, indent=4)
 nuevas_eliminatorias_salvador_fem = []
 duelos_vrac = None
 # Crear formulario para Copa Ibérica CR El Salvador Fem.
@@ -9108,11 +9108,8 @@ def euro_salvador_fem():
     return render_template('europa/salvador_fem_europa.html', dataa4=dataa4)
 # Fin Europa CR El Salvador Fem.
 
-# Copa UEMC Valladolid
+# Europa CPLV Caja Rural
 europa_caja = 'json_europa/europa_caja.json'
-def guardar_europa_caja(dataa5):
-    with open(europa_caja, 'w', encoding='utf-8') as file:
-        json.dump(dataa5, file, indent=4)
 def obtener_europa_caja():
     try:
         with open(europa_caja, 'r', encoding='utf-8') as file:
@@ -9120,6 +9117,9 @@ def obtener_europa_caja():
         return dataa5
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'grupoA': [], 'grupoB': [], 'semifinales': [], 'final':[], 'clasificacion':{}}
+def guardar_europa_caja(dataa5):
+    with open(europa_caja, 'w', encoding='utf-8') as file:
+        json.dump(dataa5, file, indent=4)
 def actualizar_clasificacion(clasificacion, local, visitante, resultado_local, resultado_visitante):
     if local not in clasificacion:
         clasificacion[local] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
