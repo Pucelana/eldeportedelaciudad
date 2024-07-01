@@ -21,7 +21,7 @@ ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
 
 # Configuración del logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 load_dotenv()
 
@@ -7202,8 +7202,8 @@ def guardar_copa_aula(dats2):
     try:
         with open(copa_aula, 'w', encoding='utf-8') as file:
             json.dump(dats2, file, indent=4)
-        logging.debug(f"Datos guardados en {copa_aula}: {dats2}")
-        # Comprobación inmediata
+        logging.debug(f"Datos guardados en {copa_aula}: {dats2}")       
+        # Comprobación inmediata de la escritura
         with open(copa_aula, 'r', encoding='utf-8') as file:
             verify_data = json.load(file)
         logging.debug(f"Verificación de datos guardados: {verify_data}")
@@ -7256,11 +7256,11 @@ def crear_copa_aula():
 
     return render_template('admin/crear_copa_aula.html', dats2=dats2)
 # Toma la lista de los playoff y los guarda
-"""def guardar_copa_en_archivo_aula(dats2):
+def guardar_copa_en_archivo_aula(dats2):
     arch_guardar_copa_aula = 'json_playoff/copa_aula.json'
     # Guardar en el archivo
     with open(arch_guardar_copa_aula, 'w', encoding='UTF-8') as archivo:
-        json.dump(dats2, archivo)"""
+        json.dump(dats2, archivo)
 # Ruta para modificar una eliminatoria en la Copa Aula
 @app.route('/modificar_eliminatoria_copa_aula/<string:id>', methods=['GET', 'POST'])
 def modificar_copa_aula(id):
