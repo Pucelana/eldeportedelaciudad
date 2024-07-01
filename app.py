@@ -145,16 +145,17 @@ def sitio_home():
     return render_template('sitio/home.html', nuevos_resultados=nuevos_resultados)
 # Creación de partidos y resultados
 horarios_partidos = 'json/horarios.json'
-def guardar_horarios(data):
-    with open(horarios_partidos, 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4)     
 def cargar_resultados_desde_archivo():
     try:
         with open(horarios_partidos, 'r', encoding='utf-8') as file:
             data = json.load(file)
         return data
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         return []
+def guardar_horarios(data):
+    with open(horarios_partidos, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4)     
+
 resultados = cargar_resultados_desde_archivo()   
 # Ruta de los resultados creados
 @app.route('/admin/pub_marcadores')
@@ -179,23 +180,16 @@ def crear_resultado():
     guardar_horarios_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
 # Toma la lista de los resultados y los guarda
-def guardar_horarios_en_archivo(data):
+"""def guardar_horarios_en_archivo(data):
     # Ruta del archivo donde guardar los resultados
     archivo_horarios = 'json/horarios.json'
     # Guardar en el archivo
     with open(archivo_horarios, 'w', encoding='utf-8') as archivo:
-        json.dump(data, archivo)        
-# Ruta para la publicación de los resultados
-@app.route('/publicar_resultados/<string:id>', methods=['POST'])
-def publicar_resultados(id):
-    marcadores = next((item for item in resultados if item['id'] == id), None)
-    if marcadores:
-        marcadores['enfrentamiento'] =True
-    return redirect(url_for('sitio_home'))  
+        json.dump(data, archivo)"""          
 # Ruta para modificar los resultados
 @app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
-    global resultados
+    #global resultados
     if request.method == 'POST':
         seccion = request.form.get('seccion')
         liga = request.form.get('liga')
@@ -223,6 +217,13 @@ def eliminar_resultado(id):
     resultados = [r for r in resultados if r['id'] != id]
     guardar_resultados_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
+# Ruta para la publicación de los resultados
+@app.route('/publicar_resultados/<string:id>', methods=['POST'])
+def publicar_resultados(id):
+    marcadores = next((item for item in resultados if item['id'] == id), None)
+    if marcadores:
+        marcadores['enfrentamiento'] =True
+    return redirect(url_for('sitio_home'))
 # Ruta sección de baloncesto
 @app.route('/seccion/baloncesto')
 def seccion_baloncesto():
@@ -7794,7 +7795,6 @@ def copas_uemc():
     print(dats5)  # Debugging
     print(equipos_por_grupo) 
     return render_template('copas/uemc_copa.html', dats5=dats5, equipos_por_grupo=equipos_por_grupo)
-
 # Fin copa UEMC Valladolid
 
 # Copa CD Parquesol
@@ -9127,6 +9127,191 @@ def euro_salvador_fem():
     dataa4 = obtener_europa_salvador_fem()
     return render_template('europa/salvador_fem_europa.html', dataa4=dataa4)
 # Fin Europa CR El Salvador Fem.
+
+# Copa UEMC Valladolid
+europa_caja = 'json_europa/europa_caja.json'
+def guardar_europa_caja(dataa5):
+    with open(europa_caja, 'w', encoding='utf-8') as file:
+        json.dump(dataa5, file, indent=4)
+def obtener_europa_caja():
+    try:
+        with open(europa_caja, 'r', encoding='utf-8') as file:
+            dataa5 = json.load(file)
+        return dataa5
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return {'grupoA': [], 'grupoB': [], 'semifinales': [], 'final':[], 'clasificacion':{}}
+def actualizar_clasificacion(clasificacion, local, visitante, resultado_local, resultado_visitante):
+    if local not in clasificacion:
+        clasificacion[local] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
+    if visitante not in clasificacion:
+        clasificacion[visitante] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
+    if resultado_local != 0 or resultado_visitante != 0:
+        clasificacion[local]['jugados'] += 1
+        clasificacion[visitante]['jugados'] += 1
+
+        if resultado_local > resultado_visitante:
+            clasificacion[local]['ganados'] += 1
+            clasificacion[visitante]['perdidos'] += 1
+            clasificacion[local]['puntos'] += 2
+            clasificacion[visitante]['puntos'] += 0
+        else:
+            clasificacion[visitante]['ganados'] += 1
+            clasificacion[local]['perdidos'] += 1
+            clasificacion[visitante]['puntos'] += 2
+            clasificacion[local]['puntos'] += 0
+duelos_europa_caja = None
+def obtener_equipos_por_grupo(dataa5):
+    equipos_por_grupo = {}
+    for grupo in ['grupoA', 'grupoB']:
+        equipos_por_grupo[grupo] = {}
+        if isinstance(dataa5.get(grupo), dict) and 'partidos' in dataa5[grupo]:
+            for partido in dataa5[grupo]['partidos']:
+                local = partido['local']
+                visitante = partido['visitante']
+                resultadoA = int(partido['resultadoA']) if partido['resultadoA'] else 0
+                resultadoB = int(partido['resultadoB']) if partido['resultadoB'] else 0
+                if local and local not in equipos_por_grupo[grupo]:
+                    equipos_por_grupo[grupo][local] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
+                if visitante and visitante not in equipos_por_grupo[grupo]:
+                    equipos_por_grupo[grupo][visitante] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
+                if local and visitante:
+                    actualizar_clasificacion(equipos_por_grupo[grupo], local, visitante, resultadoA, resultadoB)
+                # Ordenar equipos por ganados, diferencia de puntos y luego por puntos
+        equipos_por_grupo[grupo] = dict(sorted(equipos_por_grupo[grupo].items(), key=lambda item: (-item[1]['ganados'], -item[1]['puntos'])))    
+    return equipos_por_grupo
+# Crear formulario para los grupos y eliminatorias UEMC
+@app.route('/admin/europa_caja/')
+def ver_europa_caja():
+    dataa5 = obtener_europa_caja()
+    equipos_por_grupo = obtener_equipos_por_grupo(dataa5)
+    return render_template('admin/europa_caja.html', dataa5=dataa5, equipos_por_grupo=equipos_por_grupo)
+# Crear formulario para los grupos de la Copa de Europa CPLV Caja
+@app.route('/admin/crear_europa_caja', methods=['GET', 'POST'])
+def crear_europa_caja():
+    # Obtener los enfrentamientos actuales del archivo JSON
+    dataa5 = obtener_europa_caja()
+    if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
+        eliminatoria = request.form.get('eliminatoria')
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'grupoA':
+            max_partidos = 6
+        elif eliminatoria == 'grupoB':
+            max_partidos = 6                 
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1               
+        else:
+            # Manejar caso no válido
+            return "Etapa de torneo no válida"
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
+            return "Número de partidos no válido"
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
+        eliminatoria_data = {
+            'id': eliminatoria_id,
+            'partidos': []
+        }
+        # Recuperar los datos de cada partido del formulario
+        for i in range(num_partidos):
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
+            # Crear un nuevo diccionario con los datos del partido
+            partido = {
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante,
+                'fecha' : fecha,
+                'hora' : hora
+            }
+            # Agregar el partido a la lista de partidos de la eliminatoria
+            eliminatoria_data['partidos'].append(partido)
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
+        dataa5[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
+        guardar_europa_caja(dataa5)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_caja'))
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/europa_copa.html', dataa5=dataa5)
+# Toma la lista de los playoff y los guarda
+def guardar_europa_en_archivo_caja(dataa5):
+    arch_guardar_europa_caja = 'json_playoff/europa_caja.json'
+    # Guardar en el archivo
+    with open(arch_guardar_europa_caja, 'w', encoding='UTF-8') as archivo:
+        json.dump(dataa5, archivo)
+# Modificar los partidos de los playoff
+@app.route('/modificar_eliminatoria_europa_caja/<string:id>', methods=['GET', 'POST'])
+def modificar_europa_caja(id):
+    dataa5 = obtener_europa_caja()
+    print(dataa5)
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dataa5.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break   
+    if not eliminatoria_encontrada:
+        return "Eliminatoria no encontrada"  
+    if request.method == 'POST':
+        nuevos_partidos = []
+        for index, partido in enumerate(eliminatoria_encontrada['partidos']):
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')           
+            # Actualizar los datos del partido si están presentes
+            if fecha:
+                partido['fecha'] = fecha
+            if hora:
+                partido['hora'] = hora
+            if local:
+                partido['local'] = local
+            if resultadoA is not None and resultadoB is not None:
+                partido['resultadoA'] = resultadoA
+                partido['resultadoB'] = resultadoB
+            if visitante:
+                partido['visitante'] = visitante            
+            # Actualizar la clasificación solo si hay resultados válidos
+            if resultadoA.isdigit() and resultadoB.isdigit():
+                actualizar_clasificacion(dats5['clasificacion'], local, visitante, int(resultadoA), int(resultadoB))               
+            nuevos_partidos.append(partido)       
+        eliminatoria_encontrada['partidos'] = nuevos_partidos
+        # Guardar los cambios en el archivo JSON
+        guardar_europa_caja(dataa5)
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_europa_caja'))   
+    # Si el método HTTP es GET, simplemente renderiza la página con los datos actuales
+    return render_template('admin/europa_caja.html', eliminatoria=eliminatoria_encontrada)
+# Ruta para mostrar la Copa de Europa CPLV Caja Rural
+@app.route('/euro_caja/')
+def europa_caja():
+    # Obtener datos de las eliminatorias
+    dataa5 = obtener_europa_caja()
+    equipos_por_grupo = obtener_equipos_por_grupo(dataa5)
+    print(dataa5)  # Debugging
+    print(equipos_por_grupo) 
+    return render_template('europa/caja_europa.html', dataa5=dataa5, equipos_por_grupo=equipos_por_grupo)
+# Fin Copa de Europa CPLV Caja Rural
 
 
 
