@@ -159,7 +159,6 @@ def cargar_resultados_desde_archivo():
 def guardar_horarios(data):
     with open(horarios_partidos, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4)     
-
 resultados = cargar_resultados_desde_archivo()   
 # Ruta de los resultados creados
 @app.route('/admin/pub_marcadores')
@@ -7284,7 +7283,6 @@ def modificar_copa_aula(id):
         return redirect(url_for('ver_copa_aula'))
 
     return render_template('admin/modificar_copa_aula.html', eliminatoria=eliminatoria_encontrada)
- 
 # Ruta para mostrar la copa Aula Valladolid
 @app.route('/copa_aula/')
 def copas_aula():
