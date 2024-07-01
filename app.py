@@ -14,16 +14,10 @@ import json
 import re
 import smtplib
 import random
-import logging
-import traceback
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
-
-# Configuración de logging
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger()
 
 load_dotenv()
 
@@ -33,11 +27,6 @@ username = 'eldeportedelaciudad@gmail.com'
 password = os.getenv('EMAIL_PASS')
 app.config['DEBUG'] = True
 
-@app.errorhandler(Exception)
-def handle_error(e):
-    logger.error(f"Error interno del servidor: {str(e)}")
-    traceback.print_exc()
-    return 'Internal Server Error', 500
 
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
@@ -149,36 +138,25 @@ def modificar_noticia(id):
             noticia_a_modificar['categoria'] = categoria
             noticia_a_modificar['fecha_publi'] = fecha_publi
     return redirect(url_for('publi_noticia')) """
-# Creación de partidos y resultados
-horarios_partidos = 'json/horarios.json'
-def inicializar_archivo_json(path):
-    with open(path, 'w', encoding='utf-8') as file:
-        json.dump([], file)
-def cargar_resultados_desde_archivo():
-    try:
-        logger.debug(f"Intentando cargar datos desde {horarios_partidos}")
-        with open(horarios_partidos, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-        return data
-    except json.JSONDecodeError as e:
-        logger.error(f"Error cargando el archivo JSON: {e}")
-        return []
-    except FileNotFoundError:
-        logger.error(f"Archivo no encontrado: {horarios_partidos}")
-        inicializar_archivo_json(horarios_partidos)
-        return []
-    except Exception as e:
-        logger.error(f"Error inesperado: {e}")
-        return []
-resultados = cargar_resultados_desde_archivo() 
-def guardar_horarios(data):
-    with open(horarios_partidos, 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4)     
 # Página inicio y resultados
 @app.route('/')
 def sitio_home():
     nuevos_resultados = [dato for dato in resultados if dato]
     return render_template('sitio/home.html', nuevos_resultados=nuevos_resultados)
+# Creación de partidos y resultados
+horarios_partidos = 'json/horarios.json'
+def cargar_resultados_desde_archivo():
+    try:
+        with open(horarios_partidos, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+        return data
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
+        return []
+def guardar_horarios(data):
+    with open(horarios_partidos, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4)     
+
+resultados = cargar_resultados_desde_archivo()   
 # Ruta de los resultados creados
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
@@ -201,13 +179,13 @@ def crear_resultado():
     resultados.append(nuevo_resultado)
     guardar_horarios_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
-"""# Toma la lista de los resultados y los guarda
+# Toma la lista de los resultados y los guarda
 def guardar_horarios_en_archivo(data):
     # Ruta del archivo donde guardar los resultados
     archivo_horarios = 'json/horarios.json'
     # Guardar en el archivo
     with open(archivo_horarios, 'w', encoding='utf-8') as archivo:
-        json.dump(data, archivo)"""          
+        json.dump(data, archivo)          
 # Ruta para modificar los resultados
 @app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
@@ -230,7 +208,7 @@ def modificar_marcador(id):
             marcador_a_modificar['resultado2'] = resultado2
             marcador_a_modificar['fecha_parti'] = fecha_parti 
             # Guardar los cambios en el archivo JSON
-            guardar_horarios_en_archivo(resultados)    
+            guardar_horarios_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
 # Ruta para eliminar los resultados
 @app.route('/eliminar_resultado/<string:id>', methods=['POST'])
@@ -245,7 +223,6 @@ def publicar_resultados(id):
     marcadores = next((item for item in resultados if item['id'] == id), None)
     if marcadores:
         marcadores['enfrentamiento'] =True
-        guardar_horarios_en_archivo(resultados)
     return redirect(url_for('sitio_home'))
 # Ruta sección de baloncesto
 @app.route('/seccion/baloncesto')
@@ -7197,37 +7174,19 @@ def copas_valladolid():
 # Fin copa Real Valladolid
 
 # Copa Aula Valladolid
-# Ruta del archivo JSON
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-copa_aula = os.path.join(BASE_DIR, 'json_copa', 'copa_aula.json')
-# Función para cargar los datos de la Copa Aula
+copa_aula = 'json_copa/copa_aula.json'
 def obtener_copa_aula():
-    logging.debug(f"Intentando cargar datos desde {copa_aula}")
-    if not os.path.exists(copa_aula):
-        logging.debug(f"El archivo {copa_aula} no existe. Creando uno nuevo.")
-        with open(copa_aula, 'w', encoding='utf-8') as file:
-            json.dump({'fase1': [], 'fase2': [], 'cuartos': [], 'semifinales': [], 'final': []}, file, indent=4)
-    
     try:
         with open(copa_aula, 'r', encoding='utf-8') as file:
             dats2 = json.load(file)
-        logging.debug(f"Datos cargados: {dats2}")
         return dats2
-    except (FileNotFoundError, json.decoder.JSONDecodeError) as e:
-        logging.error(f"Error cargando el archivo JSON: {e}")
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'fase1': [], 'fase2': [], 'cuartos': [], 'semifinales': [], 'final': []}
-# Función para guardar los datos de la Copa Aula
 def guardar_copa_aula(dats2):
-    try:
-        with open(copa_aula, 'w', encoding='utf-8') as file:
-            json.dump(dats2, file, indent=4)
-        logging.debug(f"Datos guardados en {copa_aula}: {dats2}")       
-        # Comprobación inmediata de la escritura
-        with open(copa_aula, 'r', encoding='utf-8') as file:
-            verify_data = json.load(file)
-        logging.debug(f"Verificación de datos guardados: {verify_data}")
-    except Exception as e:
-        logging.error(f"Error guardando o verificando el archivo JSON: {e}")
+    with open(copa_aula, 'w', encoding='utf-8') as file:
+        json.dump(dats2, file, indent=4)
+nuevas_eliminatorias_aula = []
+duelos_aula = None
 # Crear formulario para los playoff
 @app.route('/admin/copa_aula/')
 def ver_copa_aula():
@@ -7236,73 +7195,111 @@ def ver_copa_aula():
 # Crear formulario para los playoff
 @app.route('/admin/crear_copa_aula', methods=['GET', 'POST'])
 def crear_copa_aula():
+    # Obtener los enfrentamientos actuales del archivo JSON
     dats2 = obtener_copa_aula()
     if request.method == 'POST':
+        # Obtener la etapa del torneo seleccionada por el usuario
         eliminatoria = request.form.get('eliminatoria')
-        max_partidos = {
-            'fase1': 6,
-            'fase2': 6,
-            'cuartos': 4,
-            'semifinales': 2,
-            'final': 1
-        }.get(eliminatoria, None)
-        if max_partidos is None:
+        # Verificar el número máximo de partidos permitidos según la etapa del torneo
+        if eliminatoria == 'fase1':
+            max_partidos = 6
+        elif eliminatoria == 'fase2':
+            max_partidos = 6
+        elif eliminatoria == 'cuartos':
+            max_partidos = 4
+        elif eliminatoria == 'semifinales':
+            max_partidos = 2
+        elif eliminatoria == 'final':
+            max_partidos = 1                
+        else:
+            # Manejar caso no válido
             return "Etapa de torneo no válida"
-
-        num_partidos = int(request.form.get('num_partidos', 0))
-        if num_partidos < 0 or num_partidos > max_partidos:
+        # Recuperar los datos del formulario y procesarlos
+        num_partidos_str = request.form.get('num_partidos', '0')  # Valor predeterminado '0' si num_partidos está vacío
+        num_partidos_str = num_partidos_str.strip()  # Eliminar espacios en blanco
+        if num_partidos_str:
+            num_partidos = int(num_partidos_str)
+        else:
+            num_partidos = 0  # Valor predeterminado si num_partidos está vacío
+        # Si num_partidos es cero, se ignora la validación
+        if num_partidos < 0:
             return "Número de partidos no válido"
-
+        # Crear un identificador único para la eliminatoria
+        eliminatoria_id = str(uuid.uuid4())  # Generar un UUID único
+        # Crear un nuevo diccionario con los datos de la eliminatoria
         eliminatoria_data = {
-            'id': str(uuid.uuid4()),
+            'id': eliminatoria_id,
             'partidos': []
         }
-
+        # Recuperar los datos de cada partido del formulario
         for i in range(num_partidos):
+            fecha = request.form.get(f'fecha{i}')
+            hora = request.form.get(f'hora{i}')
+            local = request.form.get(f'local{i}')
+            resultadoA = request.form.get(f'resultadoA{i}')
+            resultadoB = request.form.get(f'resultadoB{i}')
+            visitante = request.form.get(f'visitante{i}')           
+            # Crear un nuevo diccionario con los datos del partido
             partido = {
-                'fecha': request.form.get(f'fecha{i}'),
-                'hora': request.form.get(f'hora{i}'),
-                'local': request.form.get(f'local{i}'),
-                'resultadoA': request.form.get(f'resultadoA{i}'),
-                'resultadoB': request.form.get(f'resultadoB{i}'),
-                'visitante': request.form.get(f'visitante{i}')
+                'fecha': fecha,
+                'hora': hora,
+                'local': local,
+                'resultadoA': resultadoA,
+                'resultadoB': resultadoB,
+                'visitante': visitante
             }
+            # Agregar el partido a la lista de partidos de la eliminatoria
             eliminatoria_data['partidos'].append(partido)
-
+            # Agregar los nuevos enfrentamientos a la lista correspondiente
         dats2[eliminatoria] = eliminatoria_data
+         # Agregar los nuevos enfrentamientos a la lista correspondiente
+        nuevos_enfrentamientos.clear()  
+        # Guardar la lista de partidos en el archivo JSON
         guardar_copa_aula(dats2)
+        # Redireccionar a la página de visualización del playoff
         return redirect(url_for('ver_copa_aula'))
-
-    return render_template('admin/crear_copa_aula.html', dats2=dats2)
+    # Si no es una solicitud POST, renderizar el formulario
+    return render_template('admin/copa_aula.html', dats2=dats2)
 # Toma la lista de los playoff y los guarda
 def guardar_copa_en_archivo_aula(dats2):
     arch_guardar_copa_aula = 'json_playoff/copa_aula.json'
     # Guardar en el archivo
     with open(arch_guardar_copa_aula, 'w', encoding='UTF-8') as archivo:
         json.dump(dats2, archivo)
-# Ruta para modificar una eliminatoria en la Copa Aula
+# Modificar los partidos de los playoff
 @app.route('/modificar_eliminatoria_copa_aula/<string:id>', methods=['GET', 'POST'])
 def modificar_copa_aula(id):
     dats2 = obtener_copa_aula()
-    eliminatoria_encontrada = next((datos for eliminatoria, datos in dats2.items() if datos['id'] == id), None)
-
+    # Buscar la eliminatoria correspondiente al ID proporcionado
+    eliminatoria_encontrada = None
+    for eliminatoria, datos_eliminatoria in dats2.items():
+        if datos_eliminatoria['id'] == id:
+            eliminatoria_encontrada = datos_eliminatoria
+            break
     if not eliminatoria_encontrada:
         return "Eliminatoria no encontrada"
-
     if request.method == 'POST':
+        nuevos_partidos = []
         for index, partido in enumerate(eliminatoria_encontrada['partidos']):
-            partido.update({
-                'fecha': request.form.get(f'fecha{index}'),
-                'hora': request.form.get(f'hora{index}'),
-                'local': request.form.get(f'local{index}'),
-                'resultadoA': request.form.get(f'resultadoA{index}'),
-                'resultadoB': request.form.get(f'resultadoB{index}'),
-                'visitante': request.form.get(f'visitante{index}')
-            })
-        guardar_copa_aula(dats2)
-        return redirect(url_for('ver_copa_aula'))
-
-    return render_template('admin/modificar_copa_aula.html', eliminatoria=eliminatoria_encontrada)
+            fecha = request.form.get(f'fecha{index}')
+            hora = request.form.get(f'hora{index}')
+            local = request.form.get(f'local{index}')
+            resultadoA = request.form.get(f'resultadoA{index}')
+            resultadoB = request.form.get(f'resultadoB{index}')
+            visitante = request.form.get(f'visitante{index}')            
+            # Actualizar los datos del partido
+            partido['fecha'] = fecha
+            partido['hora'] = hora
+            partido['local'] = local
+            partido['resultadoA'] = resultadoA
+            partido['resultadoB'] = resultadoB
+            partido['visitante'] = visitante   
+            nuevos_partidos.append(partido)   
+        eliminatoria_encontrada['partidos'] = nuevos_partidos       
+        # Guardar los cambios en el archivo JSON
+        guardar_copa_aula(dats2)       
+        # Redireccionar a la página de visualización del playoff
+        return redirect(url_for('ver_copa_aula')) 
 # Ruta para mostrar la copa Aula Valladolid
 @app.route('/copa_aula/')
 def copas_aula():
@@ -9113,6 +9110,9 @@ def euro_salvador_fem():
 
 # Europa CPLV Caja Rural
 europa_caja = 'json_europa/europa_caja.json'
+def guardar_europa_caja(dataa5):
+    with open(europa_caja, 'w', encoding='utf-8') as file:
+        json.dump(dataa5, file, indent=4)
 def obtener_europa_caja():
     try:
         with open(europa_caja, 'r', encoding='utf-8') as file:
@@ -9120,9 +9120,6 @@ def obtener_europa_caja():
         return dataa5
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return {'grupoA': [], 'grupoB': [], 'semifinales': [], 'final':[], 'clasificacion':{}}
-def guardar_europa_caja(dataa5):
-    with open(europa_caja, 'w', encoding='utf-8') as file:
-        json.dump(dataa5, file, indent=4)
 def actualizar_clasificacion(clasificacion, local, visitante, resultado_local, resultado_visitante):
     if local not in clasificacion:
         clasificacion[local] = {'jugados': 0, 'ganados': 0, 'perdidos': 0, 'puntos': 0}
