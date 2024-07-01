@@ -252,26 +252,6 @@ def seccion_rugby():
 @app.route('/seccion/voleibol')
 def seccion_voleibol():
     return render_template('secciones/voleibol.html')
-"""# Ruta playoff de baloncesto
-@app.route('/playoff/baloncesto')
-def playoff_baloncesto():
-    return render_template('playoffs/baloncesto.html')
-# Ruta playoff de fútbol
-@app.route('/playoff/futbol')
-def playoff_futbol():
-    return render_template('playoffs/futbol.html')
-# Ruta playoff de balonmano
-@app.route('/playoff/balonmano')
-def playoff_balonmano():
-    return render_template('playoffs/balonmano.html')
-# Ruta playoff de hockey
-@app.route('/playoff/hockey')
-def playoff_hockey():
-    return render_template('playoffs/hockey.html')
-# Ruta playoff de rugby
-@app.route('/playoff/rugby')
-def playoff_rugby():
-    return render_template('playoffs/rugby.html')"""
 # Ruta sistema ligas futbol
 @app.route('/sistema_ligas/futbol')
 def sistema_ligas_futbol():
@@ -305,10 +285,6 @@ def sistema_ligas_voleibol():
 #Todo el proceso de calendario y clasificación del UEMC
 # Rutas de partidos UEMC
 part_uemc = 'json/partidos_uemc.json'
-def guardar_datos_uemc(data):
-    # Guardar los datos en el archivo JSON
-    with open(part_uemc, 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4)
 def obtener_datos_uemc():
     try:
     # Leer los datos desde el archivo JSON
@@ -318,6 +294,10 @@ def obtener_datos_uemc():
     except json.decoder.JSONDecodeError:
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_uemc(data):
+    # Guardar los datos en el archivo JSON
+    with open(part_uemc, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4)
 # Partidos UEMC
 @app.route('/admin/calendario_uemc')
 def calendarios_uemc():
@@ -3527,19 +3507,19 @@ def eliminar_club_universidad(club):
 #Todo el proceso de calendario y clasificación del Aula Valladolid
 # Ruta de partidos Aula Valladolid
 part_aula = 'json/partidos_aula.json'
-def guardar_datos_aula(data7):
-    # Guardar los datos en el archivo JSON
-    with open(part_aula, 'w', encoding='utf-8') as file:
-        json.dump(data7, file, indent=4)
 def obtener_datos_aula():
     try:
     # Leer los datos desde el archivo JSON
       with open(part_aula, 'r', encoding='utf-8') as file:
         data7 = json.load(file)
       return data7
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         # Manejar archivo vacío, inicializar con una estructura JSON válida
         return []
+def guardar_datos_aula(data7):
+    # Guardar los datos en el archivo JSON
+    with open(part_aula, 'w', encoding='utf-8') as file:
+        json.dump(data7, file, indent=4)
 # Partidos Aula
 @app.route('/admin/calend_aula')
 def calend_aula():
