@@ -180,12 +180,12 @@ def crear_resultado():
     guardar_horarios_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
 # Toma la lista de los resultados y los guarda
-"""def guardar_horarios_en_archivo(data):
+def guardar_horarios_en_archivo(data):
     # Ruta del archivo donde guardar los resultados
     archivo_horarios = 'json/horarios.json'
     # Guardar en el archivo
     with open(archivo_horarios, 'w', encoding='utf-8') as archivo:
-        json.dump(data, archivo)"""          
+        json.dump(data, archivo)          
 # Ruta para modificar los resultados
 @app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
