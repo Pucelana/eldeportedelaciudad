@@ -15,6 +15,7 @@ import re
 import smtplib
 import random
 import logging
+import traceback
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
@@ -32,6 +33,11 @@ username = 'eldeportedelaciudad@gmail.com'
 password = os.getenv('EMAIL_PASS')
 app.config['DEBUG'] = True
 
+@app.errorhandler(Exception)
+def handle_error(e):
+    logger.error(f"Error interno del servidor: {str(e)}")
+    traceback.print_exc()
+    return 'Internal Server Error', 500
 
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
@@ -225,6 +231,8 @@ def modificar_marcador(id):
             marcador_a_modificar['fecha_parti'] = fecha_parti 
             # Guardar los cambios en el archivo JSON
             guardar_horarios_en_archivo(resultados)
+        else:
+            logger.error(f"No se encontró el marcador con ID {id}")    
     return redirect(url_for('pub_marcadores'))
 # Ruta para eliminar los resultados
 @app.route('/eliminar_resultado/<string:id>', methods=['POST'])
