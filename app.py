@@ -14,10 +14,14 @@ import json
 import re
 import smtplib
 import random
+import logging
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
+
+# Configuración del logging
+logging.basicConfig(level=logging.DEBUG)
 
 load_dotenv()
 
@@ -7174,29 +7178,37 @@ def copas_valladolid():
 # Fin copa Real Valladolid
 
 # Copa Aula Valladolid
-copa_aula = 'json_copa/copa_aula.json'
+# Ruta del archivo JSON
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+copa_aula = os.path.join(BASE_DIR, 'json_copa', 'copa_aula.json')
 # Función para cargar los datos de la Copa Aula
 def obtener_copa_aula():
+    logging.debug(f"Intentando cargar datos desde {copa_aula}")
     if not os.path.exists(copa_aula):
-        # Crear el archivo si no existe
+        logging.debug(f"El archivo {copa_aula} no existe. Creando uno nuevo.")
         with open(copa_aula, 'w', encoding='utf-8') as file:
             json.dump({'fase1': [], 'fase2': [], 'cuartos': [], 'semifinales': [], 'final': []}, file, indent=4)
+    
     try:
         with open(copa_aula, 'r', encoding='utf-8') as file:
             dats2 = json.load(file)
+        logging.debug(f"Datos cargados: {dats2}")
         return dats2
     except (FileNotFoundError, json.decoder.JSONDecodeError) as e:
-        print(f"Error loading JSON file: {e}")
+        logging.error(f"Error cargando el archivo JSON: {e}")
         return {'fase1': [], 'fase2': [], 'cuartos': [], 'semifinales': [], 'final': []}
 # Función para guardar los datos de la Copa Aula
 def guardar_copa_aula(dats2):
     try:
         with open(copa_aula, 'w', encoding='utf-8') as file:
             json.dump(dats2, file, indent=4)
+        logging.debug(f"Datos guardados en {copa_aula}: {dats2}")
+        # Comprobación inmediata
+        with open(copa_aula, 'r', encoding='utf-8') as file:
+            verify_data = json.load(file)
+        logging.debug(f"Verificación de datos guardados: {verify_data}")
     except Exception as e:
-        print(f"Error saving JSON file: {e}")
-nuevas_eliminatorias_aula = []
-duelos_aula = None
+        logging.error(f"Error guardando o verificando el archivo JSON: {e}")
 # Crear formulario para los playoff
 @app.route('/admin/copa_aula/')
 def ver_copa_aula():
@@ -7254,8 +7266,10 @@ def crear_copa_aula():
 def modificar_copa_aula(id):
     dats2 = obtener_copa_aula()
     eliminatoria_encontrada = next((datos for eliminatoria, datos in dats2.items() if datos['id'] == id), None)
+
     if not eliminatoria_encontrada:
         return "Eliminatoria no encontrada"
+
     if request.method == 'POST':
         for index, partido in enumerate(eliminatoria_encontrada['partidos']):
             partido.update({
@@ -7268,7 +7282,9 @@ def modificar_copa_aula(id):
             })
         guardar_copa_aula(dats2)
         return redirect(url_for('ver_copa_aula'))
-    return render_template('admin/modificar_copa_aula.html', eliminatoria=eliminatoria_encontrada) 
+
+    return render_template('admin/modificar_copa_aula.html', eliminatoria=eliminatoria_encontrada)
+ 
 # Ruta para mostrar la copa Aula Valladolid
 @app.route('/copa_aula/')
 def copas_aula():
