@@ -7175,16 +7175,26 @@ def copas_valladolid():
 
 # Copa Aula Valladolid
 copa_aula = 'json_copa/copa_aula.json'
+# Función para cargar los datos de la Copa Aula
 def obtener_copa_aula():
+    if not os.path.exists(copa_aula):
+        # Crear el archivo si no existe
+        with open(copa_aula, 'w', encoding='utf-8') as file:
+            json.dump({'fase1': [], 'fase2': [], 'cuartos': [], 'semifinales': [], 'final': []}, file, indent=4)
     try:
         with open(copa_aula, 'r', encoding='utf-8') as file:
             dats2 = json.load(file)
         return dats2
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
+    except (FileNotFoundError, json.decoder.JSONDecodeError) as e:
+        print(f"Error loading JSON file: {e}")
         return {'fase1': [], 'fase2': [], 'cuartos': [], 'semifinales': [], 'final': []}
+# Función para guardar los datos de la Copa Aula
 def guardar_copa_aula(dats2):
-    with open(copa_aula, 'w', encoding='utf-8') as file:
-        json.dump(dats2, file, indent=4)
+    try:
+        with open(copa_aula, 'w', encoding='utf-8') as file:
+            json.dump(dats2, file, indent=4)
+    except Exception as e:
+        print(f"Error saving JSON file: {e}")
 nuevas_eliminatorias_aula = []
 duelos_aula = None
 # Crear formulario para los playoff
