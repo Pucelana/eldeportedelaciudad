@@ -20,8 +20,9 @@ UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
 
-# Configuración del logging
-logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+# Configuración de logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger()
 
 load_dotenv()
 
@@ -142,24 +143,36 @@ def modificar_noticia(id):
             noticia_a_modificar['categoria'] = categoria
             noticia_a_modificar['fecha_publi'] = fecha_publi
     return redirect(url_for('publi_noticia')) """
+# Creación de partidos y resultados
+horarios_partidos = 'json/horarios.json'
+def inicializar_archivo_json(path):
+    with open(path, 'w', encoding='utf-8') as file:
+        json.dump([], file)
+def cargar_resultados_desde_archivo():
+    try:
+        logger.debug(f"Intentando cargar datos desde {horarios_partidos}")
+        with open(horarios_partidos, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+        return data
+    except json.JSONDecodeError as e:
+        logger.error(f"Error cargando el archivo JSON: {e}")
+        return []
+    except FileNotFoundError:
+        logger.error(f"Archivo no encontrado: {horarios_partidos}")
+        inicializar_archivo_json(horarios_partidos)
+        return []
+    except Exception as e:
+        logger.error(f"Error inesperado: {e}")
+        return []
+resultados = cargar_resultados_desde_archivo() 
+def guardar_horarios(data):
+    with open(horarios_partidos, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4)     
 # Página inicio y resultados
 @app.route('/')
 def sitio_home():
     nuevos_resultados = [dato for dato in resultados if dato]
     return render_template('sitio/home.html', nuevos_resultados=nuevos_resultados)
-# Creación de partidos y resultados
-horarios_partidos = 'json/horarios.json'
-def cargar_resultados_desde_archivo():
-    try:
-        with open(horarios_partidos, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-        return data
-    except (json.decoder.JSONDecodeError, FileNotFoundError):
-        return []
-def guardar_horarios(data):
-    with open(horarios_partidos, 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4)     
-resultados = cargar_resultados_desde_archivo()   
 # Ruta de los resultados creados
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
@@ -182,13 +195,13 @@ def crear_resultado():
     resultados.append(nuevo_resultado)
     guardar_horarios_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
-# Toma la lista de los resultados y los guarda
+"""# Toma la lista de los resultados y los guarda
 def guardar_horarios_en_archivo(data):
     # Ruta del archivo donde guardar los resultados
     archivo_horarios = 'json/horarios.json'
     # Guardar en el archivo
     with open(archivo_horarios, 'w', encoding='utf-8') as archivo:
-        json.dump(data, archivo)          
+        json.dump(data, archivo)"""          
 # Ruta para modificar los resultados
 @app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
