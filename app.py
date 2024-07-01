@@ -226,6 +226,7 @@ def publicar_resultados(id):
     marcadores = next((item for item in resultados if item['id'] == id), None)
     if marcadores:
         marcadores['enfrentamiento'] =True
+        guardar_horarios_en_archivo(resultados)
     return redirect(url_for('sitio_home'))
 # Ruta sección de baloncesto
 @app.route('/seccion/baloncesto')
