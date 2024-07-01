@@ -230,9 +230,7 @@ def modificar_marcador(id):
             marcador_a_modificar['resultado2'] = resultado2
             marcador_a_modificar['fecha_parti'] = fecha_parti 
             # Guardar los cambios en el archivo JSON
-            guardar_horarios_en_archivo(resultados)
-        else:
-            logger.error(f"No se encontró el marcador con ID {id}")    
+            guardar_horarios_en_archivo(resultados)    
     return redirect(url_for('pub_marcadores'))
 # Ruta para eliminar los resultados
 @app.route('/eliminar_resultado/<string:id>', methods=['POST'])
