@@ -1,1 +1,560 @@
-[]
+[
+    {
+        "id": "2ab3b435-2fce-49eb-9bac-b26a801b2c1e",
+        "nombre": "Jornada 1",
+        "partidos": [
+            {
+                "local": "Aula Valladolid F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Sporting La Rioja F",
+                "fecha": "31.08.24",
+                "hora": ""
+            },
+            {
+                "local": "Beti-Onak F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Bera Bera F",
+                "fecha": "31.08.24",
+                "hora": ""
+            },
+            {
+                "local": "BM Porri\u00f1o F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Zuazo Barakaldo F",
+                "fecha": "31.08.24",
+                "hora": ""
+            },
+            {
+                "local": "Elche F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Granollers F",
+                "fecha": "31.08.24",
+                "hora": ""
+            },
+            {
+                "local": "Elda F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Morvedre F",
+                "fecha": "31.08.24",
+                "hora": ""
+            },
+            {
+                "local": "Guardes F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "La Calzada F",
+                "fecha": "31.08.24",
+                "hora": ""
+            },
+            {
+                "local": "M\u00e1laga F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Rocasa F",
+                "fecha": "31.08.24",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "bf8888f4-18f9-4967-91a5-e936b8591803",
+        "nombre": "Jornada 2",
+        "partidos": [
+            {
+                "local": "Bera Bera F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Aula Valladolid F",
+                "fecha": "14.09.24",
+                "hora": ""
+            },
+            {
+                "local": "BM Granollers F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "M\u00e1laga F",
+                "fecha": "14.09.24",
+                "hora": ""
+            },
+            {
+                "local": "La Calzada F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Beti-Onak F",
+                "fecha": "14.09.24",
+                "hora": ""
+            },
+            {
+                "local": "Morvedre F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Guardes F",
+                "fecha": "14.09.24",
+                "hora": ""
+            },
+            {
+                "local": "Rocasa F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Porri\u00f1o F",
+                "fecha": "14.09.24",
+                "hora": ""
+            },
+            {
+                "local": "Sporting La Rioja F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elche F",
+                "fecha": "14.09.24",
+                "hora": ""
+            },
+            {
+                "local": "Zuazo Barakaldo F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elda F",
+                "fecha": "14.09.24",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "5995c8bd-3c72-4584-aea3-6ce700e95268",
+        "nombre": "Jornada 3",
+        "partidos": [
+            {
+                "local": "Beti-Onak F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Aula Valladolid F",
+                "fecha": "21.09.24",
+                "hora": ""
+            },
+            {
+                "local": "BM Porri\u00f1o F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Granollers F",
+                "fecha": "21.09.24",
+                "hora": ""
+            },
+            {
+                "local": "Elche F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Bera Bera F",
+                "fecha": "21.09.24",
+                "hora": ""
+            },
+            {
+                "local": "Elda F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Rocasa F",
+                "fecha": "21.09.24",
+                "hora": ""
+            },
+            {
+                "local": "Guardes F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Zuazo Barakaldo F",
+                "fecha": "21.09.24",
+                "hora": ""
+            },
+            {
+                "local": "La Calzada F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Morvedre F",
+                "fecha": "21.09.24",
+                "hora": ""
+            },
+            {
+                "local": "M\u00e1laga F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Sporting La Rioja F",
+                "fecha": "21.09.24",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "786faccf-b255-4697-8d39-08ec6ccbd485",
+        "nombre": "Jornada 4",
+        "partidos": [
+            {
+                "local": "Aula Valladolid F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elche F",
+                "fecha": "05.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Bera Bera F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "M\u00e1laga F",
+                "fecha": "05.10.24",
+                "hora": ""
+            },
+            {
+                "local": "BM Granollers F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elda F",
+                "fecha": "05.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Morvedre F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Beti-Onak F",
+                "fecha": "05.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Rocasa F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Guardes F",
+                "fecha": "05.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Sporting La Rioja F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Porri\u00f1o F",
+                "fecha": "05.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Zuazo Barakaldo F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "La Calzada F",
+                "fecha": "05.10.24",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "83500cb5-180b-4514-ab3d-058e5b212589",
+        "nombre": "Jornada 5",
+        "partidos": [
+            {
+                "local": "Beti-Onak F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elche F",
+                "fecha": "12.10.24",
+                "hora": ""
+            },
+            {
+                "local": "BM Porri\u00f1o F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Bera Bera F",
+                "fecha": "12.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Elda F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Sporting La Rioja F",
+                "fecha": "12.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Guardes F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Granollers F",
+                "fecha": "12.10.24",
+                "hora": ""
+            },
+            {
+                "local": "La Calzada F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Rocasa F",
+                "fecha": "12.10.24",
+                "hora": ""
+            },
+            {
+                "local": "M\u00e1laga F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Aula Valladolid F",
+                "fecha": "12.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Morvedre F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Zuazo Barakaldo F",
+                "fecha": "12.10.24",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "109f63ec-5af6-48de-b000-c2ce94c59b8a",
+        "nombre": "Jornada 6",
+        "partidos": [
+            {
+                "local": "Aula Valladolid F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Porri\u00f1o F",
+                "fecha": "19.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Bera Bera F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elda F",
+                "fecha": "19.10.24",
+                "hora": ""
+            },
+            {
+                "local": "BM Granollers F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "La Calzada F",
+                "fecha": "19.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Elche F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "M\u00e1laga F",
+                "fecha": "19.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Rocasa F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Morvedre F",
+                "fecha": "19.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Sporting La Rioja F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Guardes F",
+                "fecha": "19.10.24",
+                "hora": ""
+            },
+            {
+                "local": "Zuazo Barakaldo F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Beti-Onak F",
+                "fecha": "19.10.24",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "eee42f6d-bacf-410f-904a-72ce1aceb35b",
+        "nombre": "Jornada 7",
+        "partidos": [
+            {
+                "local": "Beti-Onak F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "M\u00e1laga F",
+                "fecha": "02.11.24",
+                "hora": ""
+            },
+            {
+                "local": "BM Porri\u00f1o F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elche F",
+                "fecha": "02.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Elda F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Aula Valladolid F",
+                "fecha": "02.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Guardes F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Bera Bera F",
+                "fecha": "02.11.24",
+                "hora": ""
+            },
+            {
+                "local": "La Calzada F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Sporting La Rioja F",
+                "fecha": "02.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Morvedre F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Granollers F",
+                "fecha": "02.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Zuazo Barakaldo F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Rocasa F",
+                "fecha": "02.11.24",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "24826cef-1c40-40ab-979d-9ef3dc895d8c",
+        "nombre": "Jornada 8",
+        "partidos": [
+            {
+                "local": "Aula Valladolid F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Guardes F",
+                "fecha": "09.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Bera Bera F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "La Calzada F",
+                "fecha": "09.11.24",
+                "hora": ""
+            },
+            {
+                "local": "BM Granollers F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Zuazo Barakaldo F",
+                "fecha": "09.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Elche F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elda F",
+                "fecha": "09.11.24",
+                "hora": ""
+            },
+            {
+                "local": "M\u00e1laga F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Porri\u00f1o F",
+                "fecha": "09.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Rocasa F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Beti-Onak F",
+                "fecha": "09.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Sporting La Rioja F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Morvedre F",
+                "fecha": "09.11.24",
+                "hora": ""
+            }
+        ]
+    },
+    {
+        "id": "828b1c84-7351-40e8-ad85-f1b7ca5e8d74",
+        "nombre": "Jornada 9",
+        "partidos": [
+            {
+                "local": "Beti-Onak F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Porri\u00f1o F",
+                "fecha": "16.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Elda F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "M\u00e1laga F",
+                "fecha": "16.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Guardes F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Elche F",
+                "fecha": "16.11.24",
+                "hora": ""
+            },
+            {
+                "local": "La Calzada F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Aula Valladolid F",
+                "fecha": "16.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Morvedre F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Bera Bera F",
+                "fecha": "16.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Rocasa F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "BM Granollers F",
+                "fecha": "16.11.24",
+                "hora": ""
+            },
+            {
+                "local": "Zuazo Barakaldo F",
+                "resultadoA": "",
+                "resultadoB": "",
+                "visitante": "Sporting La Rioja F",
+                "fecha": "16.11.24",
+                "hora": ""
+            }
+        ]
+    }
+]
