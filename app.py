@@ -21,11 +21,11 @@ app = Flask(__name__)
 
 load_dotenv()
 
-smtp_server = 'smtp.gmail.com'
+"""smtp_server = 'smtp.gmail.com'
 smtp_port = 587
 username = 'eldeportedelaciudad@gmail.com'
 password = os.getenv('EMAIL_PASS')
-app.config['DEBUG'] = True
+app.config['DEBUG'] = True"""
 
 
 # Definir la función de reemplazo de regex
@@ -44,7 +44,7 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'app_suculentas'
 mysql = MySQL(app)"""
 
-@app.route('/enviar_correo', methods=['POST'])
+"""@app.route('/enviar_correo', methods=['POST'])
 def enviar_correo():
     email = request.form['email']
     ciudad = request.form['ciudad']
@@ -67,7 +67,7 @@ def enviar_correo():
         flash('Correo enviado exitosamente', 'success')
     except Exception as e:
         flash(f'Error al enviar el correo: {str(e)}', 'danger')
-    return redirect(url_for('sitio_home'))
+    return redirect(url_for('sitio_home'))"""
 
 # Admin
 @app.route('/news/admin/acceso')
