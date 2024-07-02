@@ -143,6 +143,12 @@ def modificar_noticia(id):
             noticia_a_modificar['categoria'] = categoria
             noticia_a_modificar['fecha_publi'] = fecha_publi
     return redirect(url_for('publi_noticia')) """
+
+
+
+
+
+
 # Ajustar permisos del archivo y directorio
 def ajustar_permisos():
     try:
@@ -150,9 +156,17 @@ def ajustar_permisos():
         os.chmod('json', 0o777)
     except Exception as e:
         logger.error(f"Error ajustando permisos: {str(e)}")
-
+# Función para comprobar permisos
+def comprobar_permisos():
+    try:
+        archivo_horarios = 'json/horarios.json'
+        permisos = os.stat(archivo_horarios).st_mode
+        logger.debug(f"Permisos del archivo {archivo_horarios}: {oct(permisos)}")
+    except Exception as e:
+        logger.error(f"Error comprobando permisos: {str(e)}")
 # Llamar a la función de ajuste de permisos al inicio
 ajustar_permisos()
+comprobar_permisos()
 @app.errorhandler(Exception)
 def handle_error(e):
     logger.error(f"Error interno del servidor: {str(e)}")
@@ -209,13 +223,13 @@ def crear_resultado():
     resultados.append(nuevo_resultado)
     guardar_horarios_en_archivo(resultados)
     return redirect(url_for('pub_marcadores'))
-# Toma la lista de los resultados y los guarda
+"""# Toma la lista de los resultados y los guarda
 def guardar_horarios_en_archivo(data):
     # Ruta del archivo donde guardar los resultados
     archivo_horarios = 'json/horarios.json'
     # Guardar en el archivo
     with open(archivo_horarios, 'w', encoding='utf-8') as archivo:
-        json.dump(data, archivo)          
+        json.dump(data, archivo)"""          
 # Ruta para modificar los resultados
 @app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
