@@ -5,21 +5,26 @@ from werkzeug.utils import secure_filename
 from flask_caching import Cache
 from collections import defaultdict
 from werkzeug.security import generate_password_hash, check_password_hash
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from dotenv import load_dotenv
+#from email.mime.multipart import MIMEMultipart
+#from email.mime.text import MIMEText
+#from dotenv import load_dotenv
 import os
 import uuid
 import json
 import re
-import smtplib
+#import smtplib
 import random
+import logging
+import traceback
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
 
-load_dotenv()
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger()
+
+#load_dotenv()
 
 """smtp_server = 'smtp.gmail.com'
 smtp_port = 587
@@ -138,6 +143,21 @@ def modificar_noticia(id):
             noticia_a_modificar['categoria'] = categoria
             noticia_a_modificar['fecha_publi'] = fecha_publi
     return redirect(url_for('publi_noticia')) """
+# Ajustar permisos del archivo y directorio
+def ajustar_permisos():
+    try:
+        os.chmod('json/horarios.json', 0o666)
+        os.chmod('json', 0o777)
+    except Exception as e:
+        logger.error(f"Error ajustando permisos: {str(e)}")
+
+# Llamar a la función de ajuste de permisos al inicio
+ajustar_permisos()
+@app.errorhandler(Exception)
+def handle_error(e):
+    logger.error(f"Error interno del servidor: {str(e)}")
+    traceback.print_exc()
+    return 'Internal Server Error', 500
 # Página inicio y resultados
 @app.route('/')
 def sitio_home():
@@ -152,9 +172,19 @@ def cargar_resultados_desde_archivo():
         return data
     except (json.decoder.JSONDecodeError, FileNotFoundError):
         return []
-def guardar_horarios(data):
+"""def guardar_horarios(data):
     with open(horarios_partidos, 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4)     
+        json.dump(data, file, indent=4)"""
+# Función para guardar horarios en archivo
+def guardar_horarios_en_archivo(data):
+    horarios_partidos = 'json/horarios.json'
+    try:
+        # Ajustar permisos antes de escribir
+        os.chmod(horarios_partidos, 0o666)
+        with open(horarios_partidos, 'w', encoding='utf-8') as archivo:
+            json.dump(data, archivo)
+    except Exception as e:
+        logger.error(f"Error guardando el archivo JSON: {str(e)}")     
 
 resultados = cargar_resultados_desde_archivo()   
 # Ruta de los resultados creados
@@ -190,7 +220,8 @@ def guardar_horarios_en_archivo(data):
 @app.route('/modificar_marcador/<string:id>', methods=['POST'])
 def modificar_marcador(id):
     #global resultados
-    if request.method == 'POST':
+    #if request.method == 'POST':
+    try:
         seccion = request.form.get('seccion')
         liga = request.form.get('liga')
         equipoA = request.form.get('equipoA')
@@ -209,6 +240,8 @@ def modificar_marcador(id):
             marcador_a_modificar['fecha_parti'] = fecha_parti 
             # Guardar los cambios en el archivo JSON
             guardar_horarios_en_archivo(resultados)
+    except Exception as e:
+        logger.error(f"Error modificando el marcador: {str(e)}")        
     return redirect(url_for('pub_marcadores'))
 # Ruta para eliminar los resultados
 @app.route('/eliminar_resultado/<string:id>', methods=['POST'])
