@@ -11,6 +11,20 @@
   <meta name="keywords"
     content="deporte, Valladolid, resultados, liga local, Copa del Rey, Copa de la Reina, competiciones europeas, análisis, sistemas de liga">
   <meta name="author" content="eldeportedelaciudad">
+  <!-- Twitter meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Página deportiva de Valladolid">
+  <meta name="twitter:description" content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta name="twitter:image" content="URL_de_la_imagen">
+  <meta name="twitter:site" content="@tu_cuenta_de_twitter">
+  <meta name="twitter:creator" content="@cuenta_del_autor">
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="Página deportiva de Valladolid">
+  <meta property="og:description" content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta property="og:image" content="URL_de_la_imagen">
+  <meta property="og:url" content="URL_de_tu_página">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="eldeportedelaciudad">
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -57,8 +71,8 @@
                           {% for equipo in clasificacion_analisis_valladolid %}
                           <tr class="text-center">
                             <td
-                              class="fw-bold {% if equipo.index <= 4 %}pos-ascen{% elif equipo.index <= 5 %}pos-playoff{% elif equipo.index <= 6 %}pos-confe{% elif equipo.index <= 17 %}pos-nada{% elif equipo.index <= 20 %}pos-desc{% endif %}">
-                              {{ equipo.index }}</td>
+                              class="fw-bold {% if loop.index <= 4 %}pos-ascen{% elif loop.index <= 5 %}pos-playoff{% elif loop.index <= 6 %}pos-confe{% elif loop.index <= 17 %}pos-nada{% elif loop.index <= 20 %}pos-desc{% endif %}">
+                              {{ loop.index }}</td>
                             <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                             <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
                             <td class="jugados fw-bold ">{{ equipo['datos']['jugados'] }}</td>

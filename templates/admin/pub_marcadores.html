@@ -17,13 +17,10 @@
                 <h6 class="text-center fw-bold text-primary">{{ partidos.liga }}</h6>
                 <h6>{{ partidos.equipoA }}<strong> {{ partidos.resultado1 }}</strong></h6>
                 <h6>{{ partidos.equipoB }}<strong> {{ partidos.resultado2 }}</strong></h6>
-                <h6 class="text-center text-secondary">{{ partidos.fecha_parti }}</h6>
+                <h6 class="text-center text-secondary">{{ partidos.fecha_partido }}</h6>
               </div>
             </div>
             <div class="d-flex ms-1 mt-1">
-              <form action="{{ url_for('publicar_resultados', id=partidos.id) }}" method="POST">
-                <button type="submit" class="bg-success text-white border-0 px-2 me-2">Publicar</button>
-              </form>
                 <button type="submit" id="btn-modificar{{ partidos.id }}" class="bg-info text-white border-0 px-2" data-bs-toggle="modal" data-bs-target="#modal{{ partidos.id }}">Modificar</button>
               <form action="{{ url_for('eliminar_resultado', id=partidos.id) }}" method="POST">
                 <button type="submit" class="bg-danger text-white border-0 px-2">Eliminar</button>
@@ -51,7 +48,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="/modificar_marcador/{{partidos.id}}" method="POST" class="row">
+              <form action="{{ url_for('modificar_marcador', id=partidos.id) }}" method="POST" class="row">
                 <div class="col-md-8 mb-2"> 
                 <label for="seccion">Sección</label>
                 <input type="text" name="seccion" id="seccion" class="form-control" value="{{ partidos.seccion }}">
@@ -78,7 +75,7 @@
                 </div>
                 <div class="col-md-6 mb-2">
                 <label for="fecha_parti">Fecha partido</label>
-                <input type="text" name="fecha_parti" id="fecha_parti" class="form-control" value="{{ partidos.fecha_parti}}">
+                <input type="text" name="fecha_parti" id="fecha_parti" class="form-control" value="{{ partidos.fecha_partido }}">
                 </div>
                 <div class="row">
                   <div class="col-md-6">

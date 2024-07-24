@@ -11,6 +11,20 @@
   <meta name="keywords"
     content="deporte, Valladolid, resultados, liga local, Copa del Rey, Copa de la Reina, competiciones europeas, análisis, sistemas de liga">
   <meta name="author" content="eldeportedelaciudad">
+  <!-- Twitter meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Página deportiva de Valladolid">
+  <meta name="twitter:description" content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta name="twitter:image" content="URL_de_la_imagen">
+  <meta name="twitter:site" content="@tu_cuenta_de_twitter">
+  <meta name="twitter:creator" content="@cuenta_del_autor">
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="Página deportiva de Valladolid">
+  <meta property="og:description" content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta property="og:image" content="URL_de_la_imagen">
+  <meta property="og:url" content="URL_de_tu_página">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="eldeportedelaciudad">
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -18,7 +32,6 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpg" href="/static/img/logo.png" />
 </head>
-
 <body class="bg-white calend_basket">
   <div class="d-flex flex-column min-vh-100">
     <nav aria-label="breadcrumb">
@@ -59,33 +72,49 @@
                       <tbody>
                         {% for equipo, datos_equipo in tabla_partidos_uemc.items() %}
                         <tr class="text-center">
-                          <th class="text-white size_equipos">{{ equipo }}</th>
-                          <td class="jorn_ida fw-bold">
-                            {% if datos_equipo.get('primer_enfrentamiento') %}
-                            J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
-                            {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_uemc'] %}
-                            ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_uemc'] }})
+                            <th class="text-white size_equipos">{{ equipo }}</th>
+                            <td class="jorn_ida fw-bold">
+                                {% if datos_equipo.get('primer_enfrentamiento') %}
+                                J-{{ datos_equipo['primer_enfrentamiento']|regex_replace('Jornada','') }}
+                                {% if datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_uemc'] %}
+                                ({{ datos_equipo['jornadas'][datos_equipo['primer_enfrentamiento']]['rol_uemc'] }})
+                                {% endif %}
+                                {% endif %}
+                            </td>
+                            <td class="jorn_vuelta fw-bold">
+                                {% if datos_equipo.get('segundo_enfrentamiento') %}
+                                J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
+                                {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_uemc'] %}
+                                ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_uemc'] }})
+                                {% endif %}
+                                {% endif %}
+                            </td>
+                            {% if datos_equipo.get('resultadoA') is not none %}
+                            <td class="resultadoA fw-bold">{{ datos_equipo['resultadoA'] }}</td>
+                            {% else %}
+                            <td class="resultadoA fw-bold"></td>
                             {% endif %}
+                            {% if datos_equipo.get('resultadoB') is not none %}
+                            <td class="resultadoB fw-bold">{{ datos_equipo['resultadoB'] }}</td>
+                            {% else %}
+                            <td class="resultadoB fw-bold"></td>
                             {% endif %}
-                          </td>
-                          <td class="jorn_vuelta fw-bold">
-                            {% if datos_equipo.get('segundo_enfrentamiento') %}
-                            J-{{ datos_equipo['segundo_enfrentamiento']|regex_replace('Jornada','') }}
-                            {% if datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_uemc'] %}
-                            ({{ datos_equipo['jornadas'][datos_equipo['segundo_enfrentamiento']]['rol_uemc'] }})
+                            {% if datos_equipo.get('resultadoAA') is not none %}
+                            <td class="resultadoAA fw-bold">{{ datos_equipo['resultadoAA'] }}</td>
+                            {% else %}
+                            <td class="resultadoAA fw-bold"></td>
                             {% endif %}
+                            {% if datos_equipo.get('resultadoBB') is not none %}
+                            <td class="resultadoBB fw-bold">{{ datos_equipo['resultadoBB'] }}</td>
+                            {% else %}
+                            <td class="resultadoBB fw-bold"></td>
                             {% endif %}
-                          </td>
-                          <td class="resultadoA fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoA'] }}</td>
-                          <td class="resultadoB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoB'] }}</td>
-                          <td class="resultadoAA fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoAA'] }}</td>
-                          <td class="resultadoBB fw-bold">{{ tabla_partidos_uemc[equipo]['resultadoBB'] }}</td>
-                          <td class="gan-1"></td>
-                          <td class="per-1"></td>
-                          <td class="average"></td>
+                            <td class="gan-1"></td>
+                            <td class="per-1"></td>
+                            <td class="average"></td>
                         </tr>
                         {% endfor %}
-                      </tbody>
+                    </tbody>
                     </table>
                   </div>
                 </div>

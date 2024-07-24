@@ -26,7 +26,7 @@
  }
 // Mostrar formulario para crear partidos
 // BALONCESTO
- function mostrarFormulario(){
+ function mostrarFormularioUEMC(){
   document.getElementById('form_partidos_uemc').style.display='block';
 }
 function mostrarFormularioPonce(){

@@ -2,10 +2,29 @@
 <html lang="es">
 
 <head>
-  <title>PlayOffs Promoción - Atl. Valladolid</title>
+  <title>PlayOffs Promoción - At. Valladolid</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta name="keywords"
+    content="deporte, Valladolid, resultados, liga local, Copa del Rey, Copa de la Reina, competiciones europeas, análisis, sistemas de liga">
+  <meta name="author" content="eldeportedelaciudad">
+  <!-- Twitter meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Página deportiva de Valladolid">
+  <meta name="twitter:description" content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta name="twitter:image" content="URL_de_la_imagen">
+  <meta name="twitter:site" content="@tu_cuenta_de_twitter">
+  <meta name="twitter:creator" content="@cuenta_del_autor">
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="Página deportiva de Valladolid">
+  <meta property="og:description" content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta property="og:image" content="URL_de_la_imagen">
+  <meta property="og:url" content="URL_de_tu_página">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="eldeportedelaciudad">
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -13,38 +32,47 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpg" href="/static/img/logo.png" />
 </head>
+
 <body class="fondos_playoffs">
   <div class="d-flex flex-column min-vh-100">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb ms-1">
         <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Inicio</a></li>
-        <li class="breadcrumb-item active text-dark" aria-current="page">PlayOffs Atl. Valladolid</li>
+        <li class="breadcrumb-item active text-dark" aria-current="page">PlayOffs Promoción At. Valladolid</li>
       </ol>
     </nav>
-    <h1 class="text-playoff">PlayOff Promoción Descenso</h1>
-    <section class="container-lg flex-fill">
+    <h1 class="text-playoff">Promoción Descenso</h1>
+    <span class="equipo_copa">At. Valladolid</span>
+    <section class="container-lg flex-fill copa"><!-- Eliminatorias -->
       <div class="d-flex justify-content-center">
-        <div class="card tabla_playoff mt-4" style="width: 70rem;">
+        <div class="card tabla_copa mt-4" style="width: 70rem;">
           <div class="card-body">
             <div class="row table-responsive">
               <div class="col-12">
                 <div class="">
-                  <p class="text-center fw-bold text-white fs-3 mt-3">PlayOff Promoción</p>
-                  <table class="table border-secondary mb-3">
-                    {% for partido in datas12.promocion.partidos %}
-                    <tr class="text-center">
-                      <td class="text-center text-white">{{ partido.fecha }} {{ partido.hora }}</td>
-                      <td
-                        class="text-center fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">
-                        {{ partido.local }}</td>
-                      <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
-                      <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
-                      <td
-                        class="text-center fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">
-                        {{ partido.visitante }}</td>
-                    </tr>
-                    {% endfor %}
-                  </table>
+                  {% for ronda, partidos in datos_playoff.items() %}
+                  <p class="text-center fw-bold text-white fs-3">{{ ronda|capitalize }}</p>
+                  <div class="texto-adicional text-center" data-ronda="{{ loop.index }}">
+                    <table class="table border-secondary">
+                      {% for partido in partidos %}
+                      <tr class="text-center">
+                        <td class="text-center text-white">{{ partido.fecha }}</td>
+                        <td class="text-center text-white">{{ partido.hora }}</td>
+                        <td
+                          class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA < partido.resultadoB %}text-danger{% endif %}">
+                          {{ partido.local }}</td>
+                        <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoA }}</td>
+                        <td class="text-center text-white fw-bold fs-5">{{ partido.resultadoB }}</td>
+                        <td
+                          class="text-center text-copa fw-bold fs-5 {% if partido.resultadoA > partido.resultadoB %}text-danger{% endif %}">
+                          {{ partido.visitante }}</td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+                  </div>
+                  <a href="#" class="mostrar-enlace text-decoration-none text-info fw-bold"
+                    data-ronda="{{ loop.index }}">Ver Partidos</a>
+                  {% endfor %}
                 </div>
               </div>
             </div>
@@ -54,12 +82,12 @@
     </section>
     <footer class="container-fluid mt-auto footer-seccion">
       <div class="row">
-        <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center mb-1 mb-lg-0">
+        <div class="col-lg-3 col-md-3 d-flex justify-content-center align-items-center mb-1 mb-lg-0">
           <a>
             <h5 class="text-start text-white fw-bold fs-4 ms-2">eldeportedelaciudad &copy; 2024</h5>
           </a>
         </div>
-        <div class="col-12 col-lg-7 d-flex flex-wrap justify-content-center align-items-center mb-1 mb-lg-0">
+        <div class="col-lg-7 col-md-8 d-flex flex-wrap justify-content-center align-items-center mb-lg-0">
           <a href="#" id="nosotros-link" class="text-decoration-none">
             <h5 class="text-white">Nosotros</h5>
           </a>
@@ -76,8 +104,8 @@
             <h5 class="text-white ms-4">Política de cookies</h5>
           </a>
         </div>
-        <div class="col-12 col-lg-2 d-flex justify-content-center align-items-center ">
-          <img src="/static/img/logo_sinfondo4.png" class="img-fluid me-2 p-2" alt="eldeportedelaciudad">
+        <div class="col-lg-2 col-md-1 d-flex justify-content-center align-items-center ">
+          <img src="/static/img/logo_sinfondo4.png" class="img-fluid me-2 p-1" alt="eldeportedelaciudad">
         </div>
       </div>
     </footer>
@@ -94,7 +122,8 @@
         <p><strong>Correo Electrónico:</strong> eldeportedelaciudad@gmail.com</p>
         <h3><strong>Condiciones de Uso</strong></h3>
         <p>El uso de este sitio web implica la aceptación de las siguientes condiciones. Si no está de acuerdo con
-          ellas, por favor no utilice este sitio web.</p>
+          ellas,
+          por favor no utilice este sitio web.</p>
         <h3><strong>Responsabilidad sobre el Contenido</strong></h3>
         <p>El propietario de este sitio web no se responsabiliza de la veracidad, exactitud y actualidad de los datos
           publicados. La información proporcionada es para fines informativos y puede no estar siempre actualizada.</p>
@@ -103,7 +132,8 @@
           licencia para su uso. Queda prohibida su reproducción total o parcial sin autorización expresa.</p>
         <h3><strong>Enlaces Externos</strong></h3>
         <p>Este sitio web puede contener enlaces a otros sitios web. El propietario no se responsabiliza del contenido
-          de estos sitios externos.</p>
+          de
+          estos sitios externos.</p>
         <p>Última actualización: 23/05/2024</p>
       </div>
     </div>
@@ -127,8 +157,8 @@
           proteger nuestros derechos, o proporcionar nuestros servicios.</p>
         <h3><strong>Derechos de los usuarios</strong></h3>
         <p>Usted tiene derecho a acceder, rectificar y eliminar sus datos personales, así como a oponerse al
-          procesamiento de sus datos. Para ejercer estos derechos, póngase en contacto con nosotros en
-          contacto@example.com.</p>
+          procesamiento
+          de sus datos. Para ejercer estos derechos, póngase en contacto con nosotros en contacto@example.com.</p>
         <p>Última actualización: 23/05/2024</p>
       </div>
     </div>
@@ -140,16 +170,20 @@
           cookies explica qué son las cookies, cómo las usamos y cómo puede gestionarlas.</p>
         <h3><strong>Qué son las cookies</strong></h3>
         <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita nuestro sitio
-          web. Nos ayudan a recordar sus preferencias y a mejorar su experiencia de usuario.</p>
+          web.
+          Nos ayudan a recordar sus preferencias y a mejorar su experiencia de usuario.</p>
         <h3><strong>Tipos de cookies utilizadas</strong></h3>
         <p>Utilizamos cookies de sesión, cookies persistentes y cookies de terceros (como Google Analytics) para
-          recopilar información sobre cómo utiliza nuestro sitio web.</p>
+          recopilar
+          información sobre cómo utiliza nuestro sitio web.</p>
         <h3><strong>Propósito de las cookies</strong></h3>
         <p>Las cookies nos ayudan a mejorar nuestro sitio web, proporcionar una mejor experiencia de usuario y analizar
-          el tráfico del sitio.</p>
+          el
+          tráfico del sitio.</p>
         <h3><strong>Gestión de cookies</strong></h3>
         <p>Usted puede gestionar sus preferencias de cookies a través de la configuración de su navegador. Puede
-          aceptar, rechazar o eliminar cookies siguiendo las instrucciones específicas de su navegador.</p>
+          aceptar,
+          rechazar o eliminar cookies siguiendo las instrucciones específicas de su navegador.</p>
         <p>Para más información sobre cómo gestionar cookies, visite <a
             href="https://www.aboutcookies.org">AboutCookies.org</a>.</p>
         <p>Última actualización: 23/05/2024</p>
@@ -191,7 +225,8 @@
           <h2>Copa y Europa</h2>
           <h5>Eliminatorias de la Copa</h5>
           <p>Sigue de cerca las eliminatorias de la Copa en cada deporte y mantente informado sobre los equipos que
-            luchan por el título.</p>
+            luchan
+            por el título.</p>
           <h5>Competiciones Europeas</h5>
           <p>Accede a la información de las competiciones europeas, con detalles sobre los equipos y los partidos.</p>
         </div>
@@ -208,10 +243,12 @@
           <p>Liga ACB, Liga Leb Oro, Liga Leb Plata, Liga EBA, 1ª División Nacional, Euroliga y Eurocup.</p>
           <h5>Balonmano Femenino</h5>
           <p>Liga Guerrera Ibérdrola, Divisón Honor Oro, División Honor Plata, EHF Champions League y EHF European
-            League.</p>
+            League.
+          </p>
           <h5>Balonmano Masculino</h5>
           <p>Liga Asobal, División Honor Plata, 1ª Divisón Nacional, 2ª División Nacional, Territoriales Autónomicas,
-            EHF Champions League y EHF European League.</p>
+            EHF
+            Champions League y EHF European League.</p>
           <h5>Fútbol Femenino</h5>
           <p>Liga 1ª Divisón Nacional, Liga 1ª Federación, Liga 2ª Federación, Liga 3ª Federación, Liga Gonalpi, Liga
             Doble G y Liga de Campeones.</p>
@@ -245,7 +282,7 @@
         </div>
       </div>
     </div>
-    <div id="contactanos-modal" class="custom-modal contactanos-modal"><!-- Nosotros -->
+    <div id="contactanos-modal" class="custom-modal contactanos-modal"><!-- Contactanos -->
       <div class="custom-modal-content contactanos-content">
         <span class="custom-close" id="close-contactanos">&times;</span>
         <h2 class="text-center fs-1 pb-3"><strong>Contáctanos</strong></h2>
@@ -272,17 +309,41 @@
       </div>
     </div>
   </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-      </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-      </script>
-    <script src="/static/js/proteccion-datos.js"></script>
-    <!--<script src="/static/js/script.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+  <script src="/static/js/proteccion-datos.js"></script>
+  <!--<script src="/static/js/script.js"></script>-->
+  <script src="/static/js/proteccion-datos.js"></script>
+  <script src="/static/js/num_caracteres.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.mostrar-enlace').click(function (e) {
+        e.preventDefault();
+        var enlace = $(this);
+        var ronda = enlace.data('ronda');
+        var textoAdicional = $('.texto-adicional[data-ronda="' + ronda + '"]');
+        // Ocultar todos los demás divs de texto adicional excepto el actual
+        $('.texto-adicional').not(textoAdicional).hide();
+        // Toggle para mostrar u ocultar el texto adicional de la ronda específica
+        textoAdicional.toggle();
+        // Cambiar el texto de todos los enlaces "Ver Partidos" excepto el actual
+        $('.mostrar-enlace').not(enlace).text('Ver Partidos');
+        // Cambiar el texto del enlace actual
+        if (textoAdicional.is(':visible')) {
+          enlace.text('Ocultar');
+        } else {
+          enlace.text('Ver Partidos');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

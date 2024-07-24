@@ -7,10 +7,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description"
-    content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la liga local, la Copa del Rey/Reina, competiciones europeas, y explicaciones de los sistemas de liga.">
+    content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
   <meta name="keywords"
     content="deporte, Valladolid, resultados, liga local, Copa del Rey, Copa de la Reina, competiciones europeas, análisis, sistemas de liga">
   <meta name="author" content="eldeportedelaciudad">
+  <!-- Twitter meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Página deportiva de Valladolid">
+  <meta name="twitter:description" content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta name="twitter:image" content="URL_de_la_imagen">
+  <meta name="twitter:site" content="@tu_cuenta_de_twitter">
+  <meta name="twitter:creator" content="@cuenta_del_autor">
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="Página deportiva de Valladolid">
+  <meta property="og:description" content="Página deportiva dedicada a informar sobre los resultados y análisis de las competiciones deportivas en la ciudad de Valladolid, incluyendo la Liga local, la Copa del Rey/Reina, Competiciones Europeas, y explicaciones de los sistemas de liga.">
+  <meta property="og:image" content="URL_de_la_imagen">
+  <meta property="og:url" content="URL_de_tu_página">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="eldeportedelaciudad">
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -58,8 +72,8 @@
                           {% for equipo in clasificacion_analisis_aula %}
                           <tr class="text-center">
                             <td
-                              class="fw-bold {% if equipo.index <= 8 %}pos-playoff-titulo{% elif equipo.index <= 10 %}pos-nada{% elif equipo.index >= clasificacion_analisis_universidad|length - 3 %}pos-desc{% endif %}">
-                              {{ equipo.index }}
+                              class="fw-bold {% if loop.index <= 8 %}pos-playoff-titulo{% elif loop.index <= 13 %}pos-nada{% elif loop.index >= clasificacion_analisis_aula|length - 1 %}pos-desc{% endif %}">
+                              {{ loop.index }}
                             </td>
                             <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
                             <td class="puntos fw-bold">{{ equipo['datos']['puntos'] }}</td>
@@ -80,7 +94,7 @@
                 <p class="ms-4"> PTS (Puntos); PJ (Partidos Jugados); PG (Partidos Ganados); PE (Partidos Empatados); PP
                   (Partidos Perdidos); GF (Goles Favor); GC(Goles Contra); DG (Diferencia Goles)</p>
                 <p class="ms-4">PlayOffs (Título)<span class="badge bg-success ms-2">1-8</span>; Descenso<span
-                    class="badge bg-danger ms-2">11-14</span></p>
+                    class="badge bg-danger ms-2">14</span>; Puestos Europa Final PlayOff Título<span class="badge bg-success ms-2">1-4</span></p>
               </div>
             </div>
           </div>
@@ -132,7 +146,7 @@
               <div class="card tabla_equipos" style="width: 80rem;">
                 <div class="card-body">
                   <div class="row table-responsive">
-                    <h3 class="text-center mb-4 text-analisis">Salvación - Descenso 1ª División</h3>
+                    <h3 class="text-center mb-4 text-analisis">Descenso División Honor Oro</h3>
                     <div class="col-12">
                       <table id="tablaDescAula" class="table"><!--Tabla Descenso-->
                         <thead>
@@ -170,7 +184,7 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item"><!--Tabla Europa-->
+          <!--<div class="carousel-item"><--Tabla Europa->
             <div class="d-flex justify-content-center">
               <div class="card tabla_equipos" style="width: 80rem;">
                 <div class="card-body">
@@ -182,27 +196,27 @@
                           <tr class="text-center">
                             <th></th>
                             <th>Equipos</th>
-                            <th>PJ</th>
+                            <--<th>PJ</th>
                             <th>PA</th>
                             <th>Prox</th>
                             <th>PM</th>
                             <th>PO</th>
-                            <th>PPes</th>
+                            <th>PPes</th>->
                           </tr>
                         </thead>
                         <tbody>
                           {% for equipo in clasificacion_analisis_aula %}
                           <tr class="text-center">
                             <td
-                              class="fw-bold {% if equipo.index <= 2 %}pos-ehf{% elif equipo.index <= 5 %}pos-ehfec{% elif equipo.index <=14 %}pos-nada{% endif %}">
-                              {{ equipo.index }}</td>
+                              class="fw-bold {% if loop.index <= 1 %}pos-ehf{% elif loop.index <= 4 %}pos-ehfec{% elif loop.index <=14 %}pos-nada{% endif %}">
+                              {{ loop.index }}</td>
                             <td class="fw-bold size_equipos">{{ equipo['equipo'] }}</td>
-                            <td class="play-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
+                            <--<td class="play-jug fw-bold">{{ equipo['datos']['jugados'] }}</td>
                             <td class="play-act fw-bold">{{ equipo['datos']['puntos'] }}</td>
                             <td class="play-prox fw-bold"></td>
                             <td class="play-mate fw-bold"></td>
                             <td class="play-opti fw-bold"></td>
-                            <td class="play-pesi fw-bold"></td>
+                            <td class="play-pesi fw-bold"></td>->
                           </tr>
                           {% endfor %}
                         </tbody>
@@ -210,14 +224,13 @@
                     </div>
                   </div>
                 </div>
-                <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos);
-                  PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
-                <p class="ms-4">EHF<span class="badge bg-success ms-2">1-2</span>; EHFEC<span
-                    class="badge bg-warning ms-2">3-5</span>; Esta clasificación se determina una vez jugados los
+                <p class="ms-4">Esta clasificación se determina una vez jugados los
                   playoff al título.</p>
+                <p class="ms-4">EHF<span class="badge bg-success ms-2">1</span> ; EHFEC<span
+                    class="badge bg-warning ms-2">2-4</span></p>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
           data-bs-slide="prev">
