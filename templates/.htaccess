@@ -1,7 +1,0 @@
-# Habilita el motor de reescritura
-RewriteEngine On
-
-# Redirige todas las solicitudes a app.wsgi
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /app.wsgi [L]

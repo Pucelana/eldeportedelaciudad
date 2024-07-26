@@ -7,29 +7,15 @@ from collections import defaultdict
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from collections import defaultdict
-#from email.mime.multipart import MIMEMultipart
-#from email.mime.text import MIMEText
-#from dotenv import load_dotenv
 import os
 import uuid
-import json
 import re
-#import smtplib
 import random
 import mysql.connector
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
 app = Flask(__name__)
-
-#load_dotenv()
-
-"""smtp_server = 'smtp.gmail.com'
-smtp_port = 587
-username = 'eldeportedelaciudad@gmail.com'
-password = os.getenv('EMAIL_PASS')
-app.config['DEBUG'] = True"""
-
 
 # Definir la función de reemplazo de regex
 def regex_replace(s, find, replace):
@@ -41,13 +27,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.',1)[1].lower()in ALLOWED_EXTENSIONS
 # Creado la conexión a la base de datos
-# Configura la conexión a MySQL
-"""mysql = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='eldeportedb'
-)"""
 # Configura tu conexión MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -55,31 +34,6 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'eldeportedb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
-
-"""@app.route('/enviar_correo', methods=['POST'])
-def enviar_correo():
-    email = request.form['email']
-    ciudad = request.form['ciudad']
-    provincia = request.form['provincia']
-    sugerencia = request.form['sugerencia']
-    # Crear el mensaje
-    msg = MIMEMultipart()
-    msg['From'] = username
-    msg['To'] = 'eldeportedelaciudad@gmail.com'
-    msg['Subject'] = 'Nueva sugerencia/pregunta desde eldeportedelaciudad'
-    body = f'Correo Electrónico: {email}\nCiudad: {ciudad}\nProvincia: {provincia}\nSugerencia/Pregunta:\n{sugerencia}'
-    msg.attach(MIMEText(body, 'plain'))
-    # Enviar el correo
-    try:
-        server = smtplib.SMTP(smtp_server, smtp_port)
-        server.starttls()
-        server.login(username, password)
-        server.sendmail(username, 'eldeportedelaciudad@gmail.com', msg.as_string())
-        server.quit()
-        flash('Correo enviado exitosamente', 'success')
-    except Exception as e:
-        flash(f'Error al enviar el correo: {str(e)}', 'danger')
-    return redirect(url_for('sitio_home'))"""
 
 # Admin
 @app.route('/news/admin/acceso')
@@ -215,7 +169,7 @@ def sitio_home():
     cur.execute('SELECT * FROM horarios')  # Reemplaza 'resultados' por el nombre de tu tabla
     resultados = cur.fetchall()
     cur.close()
-    return render_template('sitio/index.html', resultados=resultados)
+    return render_template('index.html', resultados=resultados)
 # Ruta de los resultados creados
 @app.route('/admin/pub_marcadores')
 def pub_marcadores():
@@ -277,7 +231,6 @@ def modificar_marcador(id):
         (seccion, liga, equipoA, resultado1, equipoB, resultado2, fecha_parti, id))
         mysql.connection.commit()
     return redirect(url_for('pub_marcadores'))
-
 # Ruta para eliminar los resultados
 @app.route('/eliminar_resultado/<string:id>', methods=['POST'])
 def eliminar_resultado(id):

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -139,102 +139,6 @@
               </div>
             </div>
           </div>
-          <!--<div class="carousel-item"><--Tabla PlayOff->
-          <div class="d-flex justify-content-center">
-            <div class="card tabla_equ_futb" style="width: 80rem;">
-              <div class="card-body">
-                <div class="row table-responsive">
-                   <h3 class="text-center mb-4">PlayOff - Liga 1ª RFEF</h3>
-                   <div class="col-1">
-                    <table class="table"> <--Posiciones->
-                      <thead>
-                        <tr>
-                          <th>Posición</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-secondary text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-warning text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="text-white" style="background-color: #e98181;">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">15</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
-                  <table id="tablaPlayParquesol" class="table"><--Tabla PlayOff->
-                    <thead>
-                      <tr class="text-center">
-                        <th>Equipos</th>
-                        <th>PJ</th>
-                        <th>PA</th>
-                        <th>Prox</th>
-                        <th>PM</th>
-                        <th>PO</th>
-                        <th>PPes</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for equipo_info in clasificacion_analisis_parquesol %}
-                      <tr class="text-center">
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="play-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="play-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
-                        <td class="play-proxi fw-bold"></td>
-                        <td class="play-mate fw-bold"></td>
-                        <td class="play-opti fw-bold"></td>
-                        <td class="play-pesi fw-bold"></td>
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
-                  </div>   
-                </div>
-              </div>
-              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
-            </div>
-          </div>
-        </div>-->
           <div class="carousel-item"><!--Tabla Permanencia-->
             <div class="d-flex justify-content-center">
               <div class="card tabla_equ_futb" style="width: 80rem;">
@@ -278,105 +182,6 @@
               </div>
             </div>
           </div>
-          <!--<div class="carousel-item"><--Tabla Permanencia y Descenso Liga Gonalpi->
-          <div class="d-flex justify-content-center">
-            <div class="card tabla_equ_futb" style="width: 80rem;">
-              <div class="card-body">
-                <div class="row table-responsive">
-                  <h3 class="text-center mb-4">Permanencia - Descenso Liga Gonalpi</h3>
-                  <div class="col-1">
-                    <table class="table"> <--Posiciones->
-                      <thead>
-                        <tr>
-                          <th>Pos.</th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <tr>
-                          <td class="bg-secondary text-white">1</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">2</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">3</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">4</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">5</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">6</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">7</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">8</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">9</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">10</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">11</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-secondary text-white">12</td>
-                        </tr>
-                        <tr>
-                          <td class="text-white" style="background-color: #e98181;">13</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">14</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">15</td>
-                        </tr>
-                        <tr>
-                          <td class="bg-danger text-white">16</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-11">
-                  <table id="tablaDesceSimancas" class="table"><--Tabla Permanencia->
-                    <thead>
-                      <tr class="text-center">
-                        <th>Equipos</th>
-                        <th>PJ</th>
-                        <th>PA</th>
-                        <th>Prox</th>
-                        <th>PM</th>
-                        <th>PO</th>
-                        <th>PPes</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for equipo_info in clasificacion_analisis_simancas %}
-                      <tr class="text-center">
-                        <td class="fw-bold size_equipos">{{ equipo_info['equipo'] }}</td>
-                        <td class="desce-jug fw-bold">{{ equipo_info['datos']['jugados'] }}</td>
-                        <td class="desce-act fw-bold">{{ equipo_info['datos']['puntos'] }}</td>
-                        <td class="desce-prox fw-bold"></td>
-                        <td class="desce-mate fw-bold"></td>
-                        <td class="desce-opti fw-bold"></td>
-                        <td class="desce-pesi fw-bold"></td>
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
-                  </div>
-                </div>
-              </div>
-              <p class="ms-4">PJ (Partidos Jugados); PA (Puntos Actuales); Prox (Proximidad); PM (Puntos Matemáticos); PO(Puntos Optimista); PPes (Puntos Pesimista)</p>
-            </div>
-          </div>
-        </div>-->
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
           data-bs-slide="prev">
@@ -587,26 +392,7 @@
       <div class="custom-modal-content contactanos-content">
         <span class="custom-close" id="close-contactanos">&times;</span>
         <h2 class="text-center fs-1 pb-3"><strong>Contáctanos</strong></h2>
-        <p>Escribe tus sugerencias, preguntas o alguna información adicional que se nos haya pasado a nosotros.</p>
-        <form action="/enviar_correo" method="POST">
-          <div class="mb-3">
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" class="form-control" autocomplete="email" required>
-          </div>
-          <div class="mb-3">
-            <label for="ciudad">Ciudad:</label>
-            <input type="text" id="ciudad" name="ciudad" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label for="provincia">Provincia:</label>
-            <input type="text" id="provincia" name="provincia" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label for="sugerencia">Sugerencia o Pregunta:</label>
-            <textarea id="sugerencia" name="sugerencia" class="form-control" rows="10" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+        <p class="fs-4 text-center">Escribenos tus sugerencias, preguntas o alguna información adicional que se nos haya pasado a nosotros. Para cualquier pregunta, sugerencia o información adicional contacta con nosotros directamente a nuestro gmail de la página <a href="mailto:eldeportedelaciudad@gmail.com?subject=Mi consulta desde la página web&body=Hola, me pongo en contacto con vosotros para......" class="fs-5 text-center d-flex justify-content-center pt-3">eldeportedelaciudad@gmail.com</a></p>
       </div>
     </div>
   </div>
