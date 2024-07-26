@@ -11,7 +11,7 @@ import os
 import uuid
 import re
 import random
-import mysql.connector
+#import mysql.connector
 
 UPLOAD_FOLDER = 'static/imagenes/'
 ALLOWED_EXTENSIONS = {'txt','pdf','png','jpg','jpeg','gif'}
